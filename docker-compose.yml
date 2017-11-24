@@ -3,7 +3,7 @@ version: '2'
 services:
   web:
     env_file: .env
-    image: datacite/lupo
+    image: datacite/levriero
     ports:
       - "8065:80"
     volumes:

@@ -18,5 +18,5 @@ else
     }
   }
   config.merge!(YAML.load_file("config/elasticsearch.yml").symbolize_keys)
-  Elasticsearch::Model.client = Elasticsearch::Client.new(config)
+  Elasticsearch::Persistence.client = Elasticsearch::Client.new(config)
 end

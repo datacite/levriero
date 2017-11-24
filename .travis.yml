@@ -21,7 +21,7 @@ before_install:
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.deb
   - sudo dpkg -i --force-confnew elasticsearch-5.1.1.deb
   - sudo service elasticsearch start
-  - mysql -e 'CREATE DATABASE lupo_test;'
+  - mysql -e 'CREATE DATABASE levriero_test;'
 
 install:
   - travis_retry bundle install
@@ -42,7 +42,7 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS";
-    export REPO=datacite/lupo;
+    export REPO=datacite/levriero;
     docker build -f Dockerfile -t $REPO:$COMMIT .;
     docker push $REPO:$COMMIT;
     fi
