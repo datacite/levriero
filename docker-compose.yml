@@ -18,16 +18,16 @@ services:
     image: memcached:1.4.31
     networks:
       - public
-  db:
-    environment:
-      MYSQL_DATABASE: datacite
-      MYSQL_USER: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    image: mysql:5.6
-    ports:
-      - "3309:3306"
-    networks:
-      - public
+  # db:
+  #   environment:
+  #     MYSQL_DATABASE: datacite
+  #     MYSQL_USER: root
+  #     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  #   image: mysql:5.6
+  #   ports:
+  #     - "3309:3306"
+  #   networks:
+  #     - public
   redis:
     image: redis
     ports:
