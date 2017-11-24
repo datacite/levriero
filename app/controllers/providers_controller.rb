@@ -1,10 +1,34 @@
 class ProvidersController < ApplicationController
+
+  include Facetable
+
   before_action :set_provider, only: [:show, :update, :destroy, :getpassword]
-  before_action :set_include, :authenticate_user_from_token!
+  before_action :set_include, :authenticate_user_from_token!, :sanitize_page_params
   load_and_authorize_resource :except => [:index, :show]
 
   def index
-    collection = Provider.all
+    collection = Provider
+    collection = filter_by_query params[:query], collection if params[:query].present?
+
+    collection = filter_by_symbol params[:id], collection if params[:id].present?
+    # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
+    collection = filter_by_year params[:year], collection if params[:year].present?
+    collection = filter_by_region params[:region], collection if params[:region].present?
+
+
+    collection = Provider.all if collection.respond_to?(:search)
+    # regions    = facet_by_region params, collection
+    years      = facet_by_year params, collection
+
+
+
+    # puts collection.first.inspect
+    # # puts collection.methods
+    # # puts collection.first.respond_to?(:records)
+    # puts collection.respond_to?(:search)
+    # puts collection.respond_to?(:find)
+    # puts collection.respond_to?(:find_each)
+    # puts collection.respond_to?(:where)
 
     # if params[:id].present?
     #   collection = collection.where(symbol: params[:id])
@@ -49,15 +73,16 @@ class ProvidersController < ApplicationController
     # total = collection.count
     #
     # order = case params[:sort]
-    #         when "-name" then "allocator.name DESC"
-    #         when "created" then "allocator.created"
-    #         when "-created" then "allocator.created DESC"
-    #         else "allocator.name"
+    #         when "-name" then "name DESC"
+    #         when "created" then "created"
+    #         when "-created" then "created DESC"
+    #         else "name"
     #         end
 
     # @providers = collection.order(order).page(page[:number]).per(page[:size])
+    # @providers = collection.all unless collection.respond_to?(:each_with_hit)
     @providers = collection
-  
+
 
     # meta = { total: total,
     #          total_pages: @providers.total_pages,
@@ -65,9 +90,12 @@ class ProvidersController < ApplicationController
     #          regions: regions,
     #          years: years
     #        }
+    meta = {
+             years: years
+           }
 
            # render jsonapi: @providers, meta: meta, include: @include
-    render jsonapi: @providers
+    render jsonapi: @providers, meta: meta
   end
 
   def show
@@ -152,5 +180,11 @@ class ProvidersController < ApplicationController
       params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active],
               keys: { country: :country_code }
     )
+  end
+
+
+  def sanitize_page_params
+    params[:offset] = params[:offset].to_i
+    params[:year] = params[:year].to_i if params[:year].present?
   end
 end
