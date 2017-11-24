@@ -29,9 +29,9 @@ end
 
 # default values for some ENV variables
 ENV['APPLICATION'] ||= "client-api"
-ENV['HOSTNAME'] ||= "fabbrica.local"
+ENV['HOSTNAME'] ||= "levriero.local"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
-ENV['SITE_TITLE'] ||= "Data Center API"
+ENV['SITE_TITLE'] ||= "ElasticSearch supported API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['REDIS_URL'] ||= "redis://redis:6379/8"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
@@ -39,13 +39,13 @@ ENV['ES_NAME'] ||= "elasticsearch"
 ENV['SOLR_URL'] ||= "https://search.test.datacite.org/api"
 ENV['CONCURRENCY'] ||= "25"
 ENV['CDN_URL'] ||= "https://assets.datacite.org"
-ENV['GITHUB_URL'] ||= "https://github.com/datacite/lupo"
+ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
 ENV['SEARCH_URL'] ||= "https://search.datacite.org/"
 ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org/api"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 
-module Lupo
+module Levriero
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1

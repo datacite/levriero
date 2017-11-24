@@ -6,9 +6,6 @@ class Client < ActiveRecord::Base
   # include helper module for caching infrequently changing resources
   include Cacheable
 
-  # include helper module for counting registered DOIs
-  include Countable
-
   # include helper module for managing associated users
   include Userable
 
@@ -75,7 +72,13 @@ class Client < ActiveRecord::Base
 
   def target_id=(value)
     c = Client.where(symbol: value).first
-    dois.update_all(datacentre: c.id) if c.present?
+    return nil unless c.present?
+
+    dois.update_all(datacentre: c.id)
+
+    # update DOI count for source and target client
+    cached_doi_count(force: true)
+    c.cached_doi_count(force: true)
   end
 
   # backwards compatibility
@@ -86,10 +89,6 @@ class Client < ActiveRecord::Base
 
   def year
     created_at.year if created_at.present?
-  end
-
-  def query_filter
-    "datacentre_symbol:#{symbol}"
   end
 
   def doi_quota_exceeded

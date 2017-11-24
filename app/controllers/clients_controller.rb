@@ -48,10 +48,10 @@ class ClientsController < ApplicationController
     total = collection.count
 
     order = case params[:sort]
-            when "name" then "datacentre.name"
             when "-name" then "datacentre.name DESC"
             when "created" then "datacentre.created"
-            else "datacentre.created DESC"
+            when "-created" then "datacentre.created DESC"
+            else "datacentre.name"
             end
 
     @clients = collection.order(order).page(page[:number]).per(page[:size])
@@ -67,7 +67,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1
   def show
-    meta = { dois: @client.doi_count }
+    meta = { dois: @client.cached_doi_count }
 
     render jsonapi: @client, meta: meta, include: @include
   end
@@ -98,7 +98,7 @@ class ClientsController < ApplicationController
   # don't delete, but set deleted_at timestamp
   # a client with dois or prefixes can't be deleted
   def destroy
-    if @client.doi_count.present?
+    if @client.dois.present?
       message = "Can't delete client that has DOIs."
       status = 400
       Rails.logger.warn message
@@ -142,8 +142,8 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:symbol, :name, "contact-name", "contact-email", :domains, :provider, :repository, :target_id, "is-active", :deleted_at],
-              keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "is-active" => :is_active }
+      params, only: [:symbol, :name, "contact-name", "contact-email", :domains, :provider, :repository, "target-id", "is-active", "deleted-at"],
+              keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end
 end
