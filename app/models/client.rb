@@ -1,64 +1,121 @@
-class Client < ActiveRecord::Base
+class Client
 
-  # index in Elasticsearch
-  # include Indexable
-
-  # include helper module for caching infrequently changing resources
+  include Elasticsearch::Persistence::Model
   include Cacheable
 
-  # include helper module for managing associated users
-  include Userable
+  attribute :symbol,  String,  mapping: { type: 'text' }
+  attribute :region,  String,  mapping: { type: 'text' }
+  attribute :year,  Fixnum,  mapping: { type: 'integer' }
+  attribute :updated,  Date,  mapping: { type: 'date' }
+  attribute :name,  String,  mapping: { type: 'text' }
+  attribute :contact_name,  String, default: "", mapping: { type: 'text' }
+  attribute :contact_email,  String,  mapping: { type: 'text' }
+  attribute :re3data,  String,  mapping: { type: 'text' }
+  attribute :doi_quota_allowed,  Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :version,    Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
+  attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
+  attribute :doi_quota_used,  Fixnum, default: -1, mapping: { type: 'integer' }
+  attribute :comments,  String,  mapping: { type: 'text' }
+  attribute :domains,  String,  mapping: { type: 'text' }
+  attribute :password,  String,  mapping: { type: 'text' }
+  attribute :provider_id,  String,  mapping: { type: 'text' }
+  attribute :provider_symbol,  String,  mapping: { type: 'text' }
+  attribute :experiments,  String,  mapping: { type: 'text' }
+  attribute :deleted_at,  Date,  mapping: { type: 'date' }
 
-  # define table and attribute names
-  # uid is used as unique identifier, mapped to id in serializer
-  self.table_name = "datacentre"
 
-  alias_attribute :uid, :symbol
-  alias_attribute :created_at, :created
-  alias_attribute :updated_at, :updated
-  attr_readonly :uid, :symbol
-  delegate :symbol, to: :provider, prefix: true
-
-  validates_presence_of :symbol, :name, :contact_email
-  validates_uniqueness_of :symbol, message: "This Client ID has already been taken"
-  validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates_numericality_of :doi_quota_allowed, :doi_quota_used
-  validates_numericality_of :version, if: :version?
-  validates_inclusion_of :role_name, :in => %w( ROLE_DATACENTRE ), :message => "Role %s is not included in the list"
-  validate :check_id, :on => :create
-  validate :freeze_symbol, :on => :update
-  belongs_to :provider, foreign_key: :allocator
-  has_many :dois, foreign_key: :datacentre
-  has_many :client_prefixes, foreign_key: :datacentre, dependent: :destroy
-  has_many :prefixes, through: :client_prefixes
-  has_many :provider_prefixes, through: :client_prefixes
-
-  before_validation :set_defaults
-  before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
-  before_create { self.created = Time.zone.now.utc.iso8601 }
-  before_save { self.updated = Time.zone.now.utc.iso8601 }
-
-  default_scope { where(deleted_at: nil) }
-
-  scope :query, ->(query) { where("datacentre.symbol like ? OR datacentre.name like ?", "%#{query}%", "%#{query}%") }
+  # # include helper module for caching infrequently changing resources
+  # include Cacheable
+  #
+  # # include helper module for managing associated users
+  # include Userable
+  #
+  # # define table and attribute names
+  # # uid is used as unique identifier, mapped to id in serializer
+  # self.table_name = "datacentre"
+  #
+  # alias_attribute :uid, :symbol
+  # alias_attribute :created_at, :created
+  # alias_attribute :updated_at, :updated
+  # alias_attribute :updated_at, :updated
+  # attr_readonly :uid, :symbol
+  # delegate :symbol, to: :provider, prefix: true
+  #
+  # validates_presence_of :symbol, :name, :contact_email
+  # validates_uniqueness_of :symbol, message: "This Client ID has already been taken"
+  # validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  # validates_numericality_of :doi_quota_allowed, :doi_quota_used
+  # validates_numericality_of :version, if: :version?
+  # validates_inclusion_of :role_name, :in => %w( ROLE_DATACENTRE ), :message => "Role %s is not included in the list"
+  # validate :check_id, :on => :create
+  # validate :freeze_symbol, :on => :update
+  # belongs_to :provider, foreign_key: :allocator
+  # has_many :dois, foreign_key: :datacentre
+  # has_many :client_prefixes, foreign_key: :datacentre, dependent: :destroy
+  # has_many :prefixes, through: :client_prefixes
+  # has_many :provider_prefixes, through: :client_prefixes
+  #
+  # before_validation :set_defaults
+  # before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
+  # before_create { self.created = Time.zone.now.utc.iso8601 }
+  # before_save { self.updated = Time.zone.now.utc.iso8601 }
+  #
+  # default_scope { where(deleted_at: nil) }
+  #
+  # scope :query, ->(query) { where("datacentre.symbol like ? OR datacentre.name like ?", "%#{query}%", "%#{query}%") }
 
   attr_accessor :target_id
 
-  # workaround for non-standard database column names and association
-  def provider_id
-    provider_symbol.downcase
+  def self.query query, options={}
+   search(
+     {
+       query: {
+         query_string: {
+           query: query,
+           fields: ['symbol^10', 'name^10', 'contact_email', 'region']
+         }
+       }
+     }
+   )
   end
 
-  def es_fields
-    ['symbol^10', 'name^10', 'contact_email', 'repository']
+  def self.query_filter_by field, value
+    search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {}}
+              ],
+            filter: [
+              { term:  { field => value}}
+            ]
+          }
+        }
+      }
+    )
   end
 
-  def provider_id=(value)
-    r = cached_provider_response(value)
-    return nil unless r.present?
+  # # workaround for non-standard database column names and association
+  # def provider_id
+  #   provider_symbol.downcase
+  # end
 
-    write_attribute(:allocator, r.id)
+  def created
+    created_at.iso8601
   end
+
+  def updated
+    updated_at.iso8601
+  end
+
+  # def provider_id=(value)
+  #   r = cached_provider_response(value)
+  #   return nil unless r.present?
+  #
+  #   update provider_id: r.id
+  # end
 
   def repository_id=(value)
     write_attribute(:re3data, value)

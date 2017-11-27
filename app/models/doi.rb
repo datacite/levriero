@@ -1,81 +1,107 @@
 require 'maremma'
 
-class Doi < ActiveRecord::Base
+class Doi
+  include Elasticsearch::Persistence::Model
   include Identifiable
   include Metadatable
   include Cacheable
   include Licensable
 
+  attribute :doi,  String,  mapping: { type: 'text' }
+  attribute :last_landing_page_status,  String,  mapping: { type: 'text' }
+  attribute :last_landing_page_status_check,  Fixnum,  mapping: { type: 'integer' }
+  attribute :las_metadata_status,  Date,  mapping: { type: 'date' }
+  attribute :version,    Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :minted,  String,  mapping: { type: 'text' }
+  attribute :url,  String , mapping: { type: 'text' }
+  attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
+  attribute :client,  String,  mapping: { type: 'text' }
+  attribute :state,  String,  mapping: { type: 'text' }
+
+  attribute :identifier,  String,  mapping: { type: 'text' }
+  attribute :author,  String,  mapping: { type: 'text' }
+  attribute :title,  String,  mapping: { type: 'text' }
+  attribute :container_title,  String,  mapping: { type: 'text' }
+  attribute :description,  String,  mapping: { type: 'text' }
+  attribute :resource_type_subtype,  String,  mapping: { type: 'text' }
+  attribute :license,  String,  mapping: { type: 'text' }
+  attribute :related_identifier,  String,  mapping: { type: 'text' }
+  attribute :xml,  String,  mapping: { type: 'text' }
+  attribute :date_published,  String,  mapping: { type: 'text' }
+  attribute :publisher,  String,  mapping: { type: 'text' }
+  attribute :additional_type,  String,  mapping: { type: 'text' }
+  attribute :schema_version,  Integer,  mapping: { type: 'integer' }
+
   # include state machine
-  include AASM
-
-  aasm :column => 'state', :whiny_transitions => false do
-    # new is default state for new DOIs. This is needed to handle DOIs created
-    # outside of this application (i.e. the MDS API)
-    state :new, :initial => true
-    state :draft, :tombstoned, :registered, :findable, :flagged, :broken, :deleted
-
-    event :draft do
-      transitions :from => :new, :to => :draft
-    end
-
-    event :register do
-      # can't register test prefix
-      transitions :from => [:new, :draft], :to => :registered, :unless => :is_test_prefix?
-    end
-
-    event :publish do
-      transitions :from => [:new, :draft, :tombstoned, :registered], :to => :findable, :unless => :is_test_prefix?
-    end
-
-    event :flag do
-      transitions :from => [:registered, :findable], :to => :flagged
-    end
-
-    event :link_check do
-      transitions :from => [:tombstoned, :registered, :findable, :flagged], :to => :broken
-    end
-
-    # can only delete if state is :draft
-    event :remove do
-      after do
-        destroy
-      end
-
-      transitions :from => [:draft], :to => :deleted
-    end
-  end
-
-  self.table_name = "dataset"
-  alias_attribute :created_at, :created
-  alias_attribute :updated_at, :updated
-  alias_attribute :uid, :doi
-
-  belongs_to :client, foreign_key: :datacentre
-  has_many :media, foreign_key: :dataset, dependent: :destroy
-  has_many :metadata, foreign_key: :dataset, dependent: :destroy
-
-  delegate :provider, to: :client
-
-  validates_presence_of :doi
-
-  # from https://www.crossref.org/blog/dois-and-matching-regular-expressions/ but using uppercase
-  validates_format_of :doi, :with => /\A10\.\d{4,5}\/[-\._;()\/:a-zA-Z0-9]+\z/
-  validates_format_of :url, :with => /https?:\/\/[\S]+/ , if: :url?, message: "Website should be an url"
-  validates_uniqueness_of :doi, message: "This DOI has already been taken"
-  validates_numericality_of :version, if: :version?
-
-  # update cached doi count for client
-  before_destroy :update_doi_count
-  after_create :update_doi_count
-  after_update :update_doi_count, if: :datacentre_changed?
-
-  before_save :set_defaults
-  before_create { self.created = Time.zone.now.utc.iso8601 }
-  before_save { self.updated = Time.zone.now.utc.iso8601 }
-  after_save { UrlJob.perform_later(self) }
-
-  scope :query, ->(query) { where("dataset.doi = ?", query) }
+  # include AASM
+  #
+  # aasm :column => 'state', :whiny_transitions => false do
+  #   # new is default state for new DOIs. This is needed to handle DOIs created
+  #   # outside of this application (i.e. the MDS API)
+  #   state :new, :initial => true
+  #   state :draft, :tombstoned, :registered, :findable, :flagged, :broken, :deleted
+  #
+  #   event :draft do
+  #     transitions :from => :new, :to => :draft
+  #   end
+  #
+  #   event :register do
+  #     # can't register test prefix
+  #     transitions :from => [:new, :draft], :to => :registered, :unless => :is_test_prefix?
+  #   end
+  #
+  #   event :publish do
+  #     transitions :from => [:new, :draft, :tombstoned, :registered], :to => :findable, :unless => :is_test_prefix?
+  #   end
+  #
+  #   event :flag do
+  #     transitions :from => [:registered, :findable], :to => :flagged
+  #   end
+  #
+  #   event :link_check do
+  #     transitions :from => [:tombstoned, :registered, :findable, :flagged], :to => :broken
+  #   end
+  #
+  #   # can only delete if state is :draft
+  #   event :remove do
+  #     after do
+  #       destroy
+  #     end
+  #
+  #     transitions :from => [:draft], :to => :deleted
+  #   end
+  # end
+  #
+  # self.table_name = "dataset"
+  # alias_attribute :created_at, :created
+  # alias_attribute :updated_at, :updated
+  # alias_attribute :uid, :doi
+  #
+  # belongs_to :client, foreign_key: :datacentre
+  # has_many :media, foreign_key: :dataset, dependent: :destroy
+  # has_many :metadata, foreign_key: :dataset, dependent: :destroy
+  #
+  # delegate :provider, to: :client
+  #
+  # validates_presence_of :doi
+  #
+  # # from https://www.crossref.org/blog/dois-and-matching-regular-expressions/ but using uppercase
+  # validates_format_of :doi, :with => /\A10\.\d{4,5}\/[-\._;()\/:a-zA-Z0-9]+\z/
+  # validates_format_of :url, :with => /https?:\/\/[\S]+/ , if: :url?, message: "Website should be an url"
+  # validates_uniqueness_of :doi, message: "This DOI has already been taken"
+  # validates_numericality_of :version, if: :version?
+  #
+  # # update cached doi count for client
+  # before_destroy :update_doi_count
+  # after_create :update_doi_count
+  # after_update :update_doi_count, if: :datacentre_changed?
+  #
+  # before_save :set_defaults
+  # before_create { self.created = Time.zone.now.utc.iso8601 }
+  # before_save { self.updated = Time.zone.now.utc.iso8601 }
+  # after_save { UrlJob.perform_later(self) }
+  #
+  # scope :query, ->(query) { where("dataset.doi = ?", query) }
 
   def client_id
     client.symbol.downcase
@@ -117,22 +143,22 @@ class Doi < ActiveRecord::Base
     r[:data] if r.present?
   end
 
-  # parse metadata using bolognese library
-  def doi_metadata
-    current_metadata = metadata.order('metadata.created DESC').first
+  # # parse metadata using bolognese library
+  # def doi_metadata
+  #   current_metadata = metadata.order('metadata.created DESC').first
+  #
+  #   # return OpenStruct if no metadata record is found to handle delegate
+  #   return OpenStruct.new unless current_metadata
+  #
+  #   DoiSearch.new(input: current_metadata.xml,
+  #                 from: "datacite",
+  #                 doi: doi,
+  #                 sandbox: !Rails.env.production?)
+  # end
 
-    # return OpenStruct if no metadata record is found to handle delegate
-    return OpenStruct.new unless current_metadata
-
-    DoiSearch.new(input: current_metadata.xml,
-                  from: "datacite",
-                  doi: doi,
-                  sandbox: !Rails.env.production?)
-  end
-
-  delegate :author, :title, :container_title, :description, :resource_type_general,
-    :additional_type, :license, :related_identifier, :schema_version,
-    :date_published, :date_accepted, :date_available, :publisher, :xml, to: :doi_metadata
+  # delegate :author, :title, :container_title, :description, :resource_type_general,
+  #   :additional_type, :license, :related_identifier, :schema_version,
+  #   :date_published, :date_accepted, :date_available, :publisher, :xml, to: :doi_metadata
 
   def date_registered
     minted

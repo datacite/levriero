@@ -39,7 +39,7 @@ module Cacheable
 
     def cached_provider_response(symbol)
       Rails.cache.fetch("provider_response/#{symbol}", expires_in: 1.day) do
-        Provider.where(symbol: symbol).first
+        Provider.find_each.select { |item| item.symbol == symbol }.first
       end
     end
 

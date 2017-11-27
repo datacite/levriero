@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] = 'test'
+ENV['ES_HOST'] = "elasticsearch:9200"
 
 # set up Code Climate
 require 'simplecov'
@@ -13,12 +14,11 @@ require "shoulda-matchers"
 require "webmock/rspec"
 require "rack/test"
 require "colorize"
-require "database_cleaner"
 require 'aasm/rspec'
 require "sidekiq/testing"
 
 # Checks for pending migration and applies them before tests are run.
-ActiveRecord::Migration.maintain_test_schema!
+# ActiveRecord::Migration.maintain_test_schema!
 
 WebMock.disable_net_connect!(
   allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['ES_HOST']],
@@ -44,10 +44,10 @@ RSpec.configure do |config|
   config.include RequestSpecHelper, type: :request
 end
 
-VCR.configure do |c|
-  c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-  c.hook_into :webmock
-  c.ignore_localhost = true
-  c.ignore_hosts "codeclimate.com"
-  c.configure_rspec_metadata!
-end
+# VCR.configure do |c|
+#   c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+#   c.hook_into :webmock
+#   c.ignore_localhost = true
+#   c.ignore_hosts "codeclimate.com"
+#   c.configure_rspec_metadata!
+# end

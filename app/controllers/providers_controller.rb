@@ -7,8 +7,10 @@ class ProvidersController < ApplicationController
   load_and_authorize_resource :except => [:index, :show]
 
   def index
-    collection = Provider
+    collection = Client
+
     collection = filter_by_query params[:query], collection if params[:query].present?
+    collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
     # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
@@ -21,52 +23,6 @@ class ProvidersController < ApplicationController
     years      = facet_by_year params, collection
 
 
-
-    # puts collection.first.inspect
-    # # puts collection.methods
-    # # puts collection.first.respond_to?(:records)
-    # puts collection.respond_to?(:search)
-    # puts collection.respond_to?(:find)
-    # puts collection.respond_to?(:find_each)
-    # puts collection.respond_to?(:where)
-
-    # if params[:id].present?
-    #   collection = collection.where(symbol: params[:id])
-    # elsif params[:query].present?
-    #   collection = collection.query(params[:query])
-    # end
-    #
-    # # cache prefixes for faster queries
-    # if params[:prefix].present?
-    #   prefix = cached_prefix_response(params[:prefix])
-    #   collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
-    # end
-    #
-    # if params[:client_id].present?
-    #   client = cached_client_response(params[:client_id].upcase)
-    #   collection = collection.includes(:clients).where('datacentre.id' => client.id)
-    # end
-    #
-    # collection = collection.where(region: params[:region]) if params[:region].present?
-    # collection = collection.where("YEAR(allocator.created) = ?", params[:year]) if params[:year].present?
-    #
-    # if params[:region].present?
-    #   regions = [{ id: params[:region],
-    #                title: REGIONS[params[:region].upcase],
-    #                count: collection.where(region: params[:region]).count }]
-    # else
-    #   regions = collection.where.not(region: nil).group(:region).count
-    #   regions = regions.map { |k,v| { id: k.downcase, title: REGIONS[k], count: v } }
-    # end
-    # if params[:year].present?
-    #   years = [{ id: params[:year],
-    #              title: params[:year],
-    #              count: collection.where("YEAR(allocator.created) = ?", params[:year]).count }]
-    # else
-    #   years = collection.where.not(created: nil).order("YEAR(allocator.created) DESC").group("YEAR(allocator.created)").count
-    #   years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v } }
-    # end
-    #
     # page = params[:page] || {}
     # page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
     # page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
@@ -99,12 +55,12 @@ class ProvidersController < ApplicationController
   end
 
   def show
-    meta = { providers: @provider.provider_count,
-             clients: @provider.client_count,
-             dois: @provider.cached_doi_count
-            }.compact
+    # meta = { providers: @provider.provider_count,
+    #          clients: @provider.client_count,
+    #          dois: @provider.cached_doi_count
+    #         }.compact
 
-    render jsonapi: @provider, meta: meta, include: @include
+    render jsonapi: @provider #, meta: meta, include: @include
   end
 
   # POST /providers
@@ -159,8 +115,8 @@ class ProvidersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    @provider = Provider.unscoped.where(symbol: params[:id]).first
-    fail ActiveRecord::RecordNotFound unless @provider.present?
+    @provider = Provider.find_each.select { |item| item.symbol == params[:id] }.first
+    fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
   end
 
   private

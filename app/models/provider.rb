@@ -1,6 +1,6 @@
 require "countries"
 
-class Provider
+class Provider 
   # index in Elasticsearch
   # include Elasticsearch::Model
   include Elasticsearch::Persistence::Model
@@ -14,9 +14,7 @@ class Provider
 
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
-  attribute :created,  Date,  mapping: { type: 'date' }
   attribute :year,  Fixnum,  mapping: { type: 'integer' }
-  attribute :updated,  Date,  mapping: { type: 'date' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
@@ -239,6 +237,14 @@ class Provider
   #    .sort { |a, b| a.first <=> b.first }
   #    .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
   # end
+
+  def created
+    created_at.iso8601
+  end
+
+  def updated
+    updated_at.iso8601
+  end
 
   def freeze_symbol
     errors.add(:symbol, "cannot be changed") if self.symbol_changed?

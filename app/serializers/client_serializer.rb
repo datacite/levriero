@@ -16,15 +16,15 @@ class ClientSerializer < ActiveModel::Serializer
   end
 
   def provider_id
-    object.provider_symbol
+    object.provider_id
   end
 
   def created
-    object.created.iso8601
+    object.created
   end
 
   def updated
-    object.updated.iso8601
+    object.updated
   end
 
   # def domains

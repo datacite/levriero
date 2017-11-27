@@ -3,35 +3,33 @@ module Facetable
 
   included do
 
-    # def is_results_array?  collection
-    #   collection.respond_to?(:response)
-    # end
+    def filter_by_client client_id, collection
+      collection = collection.respond_to?(:search) ? collection.query_filter_by(:client_id, client_id) : collection.select {|item| item.client_id == client_id}
+    end
+
+    def filter_by_provider provider_id, collection
+      collection = collection.respond_to?(:search) ? collection.query_filter_by(:provider_id, provider_id) : collection.select {|item| item.provider_id == provider_id}
+    end
+
+    def filter_by_publication published, collection
+      collection = collection.respond_to?(:search) ? collection.query_filter_by(:published, published) : collection.select {|item| item.published == published}
+    end
 
     def filter_by_symbol symbol, collection
       collection =collection.select {|item| item.symbol == symbol} unless collection.respond_to?(:search)
       collection = collection.query_filter_by :symbol, symbol if collection.respond_to?(:search)
-      # collection = collection.find_each.select { |item| item.symbol == symbol }
     end
 
     def filter_by_query query, collection
       collection.query(query)
-      # collection = collection.find_each.select { |item| item.symbol == symbol }
-      # collection = collection.query(params[:query])
     end
 
     def filter_by_year year, collection
       collection = collection.respond_to?(:search) ? collection.query_filter_by(:year, year) : collection.select {|item| item.year == year}
-      # collection = collection.select {|item| item[:year] == year} unless collection.respond_to?(:search)
-      # collection = collection.query_filter_by :year, year if collection.respond_to?(:search)
-      # puts collection.respond_to?(:search)
-      # collection = collection.find_each.select { |item| item.symbol == symbol }
     end
 
     def filter_by_region region, collection
       collection = collection.respond_to?(:search) ? collection.query_filter_by(:region, region) : collection.select {|item| item.region == region}
-      # collection = collection.select {|item| item.region == region} unless collection.respond_to?(:search)
-      # collection = collection.query_filter_by :region, region if collection.respond_to?(:search)
-      # collection = collection.find_each.select { |item| item.symbol == symbol }
     end
 
     def filter_by_prefix prefix_id, collection
