@@ -1,7 +1,8 @@
 require "countries"
 
-class Provider
+class Provider 
   # index in Elasticsearch
+  # include Elasticsearch::Model
   include Elasticsearch::Persistence::Model
 
 
@@ -12,8 +13,8 @@ class Provider
   # include Userable
 
   attribute :symbol,  String,  mapping: { type: 'text' }
-  attribute :created,  Date,  mapping: { type: 'date' }
-  attribute :updated,  Date,  mapping: { type: 'date' }
+  attribute :region,  String,  mapping: { type: 'text' }
+  attribute :year,  Fixnum,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
@@ -57,8 +58,9 @@ class Provider
   #
   # scope :query, ->(query) { where("allocator.symbol like ? OR allocator.name like ?", "%#{query}%", "%#{query}%") }
 
+
   def year
-    created
+    created_at.to_datetime.year
   end
 
   def country_name
@@ -81,7 +83,7 @@ class Provider
     "#{ENV['CDN_URL']}/images/members/#{symbol.downcase}.png"
   end
 
-  # Elasticsearch indexing
+  # # Elasticsearch indexing
   # mappings dynamic: 'false' do
   #   indexes :symbol, type: 'text'
   #   indexes :name, type: 'text'
@@ -101,56 +103,147 @@ class Provider
   #   indexes :updated_at, type: 'date'
   # end
 
-  #  def as_indexed_json(options={})
-  #    {
-  #      "symbol" => uid.downcase,
-  #      "name" => name,
-  #      "description" => description,
-  #      "region" => region_name,
-  #      "country" => country_name,
-  #      "year" => year,
-  #      "logo_url" => logo_url,
-  #      "is_active" => is_active,
-  #      "contact_email" => contact_email,
-  #     #  "website" => website,
-  #     #  "phone" => phone,
-  #      "created" => created_at.iso8601,
-  #      "updated" => updated_at.iso8601 }
-  #  end
+   # def as_indexed_json(options={})
+   #   {
+   #     "symbol" => uid.downcase,
+   #     "name" => name,
+   #     "description" => description,
+   #     "region" => region_name,
+   #     "country" => country_name,
+   #     "year" => year,
+   #     "logo_url" => logo_url,
+   #     "is_active" => is_active,
+   #     "contact_email" => contact_email,
+   #    #  "website" => website,
+   #    #  "phone" => phone,
+   #     "created" => created_at.iso8601,
+   #     "updated" => updated_at.iso8601 }
+   # end
+
+  def self.query query, options={}
+   search(
+     {
+       query: {
+         query_string: {
+           query: query,
+           fields: ['symbol^10', 'name^10', 'contact_email', 'region']
+         }
+       }
+     }
+   )
+  end
+
+  def self.query_filter_by field, value
+    search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {}}
+              ],
+            filter: [
+              { term:  { field => value}}
+            ]
+          }
+        }
+      }
+    )
+  end
+  # #
+  # cumulative count clients that have not been deleted
+  # show all clients for admin
+  def client_count
+    Client.search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {} }
+             ],
+            filter: [
+              { term:  { provider_id: symbol}}
+            ]
+          }
+        },
+        size: 0,
+        aggregations: {
+          clients_count: {
+            terms: {
+              field: "year"
+            }
+          }
+        }
+      }
+    ).aggregations.clients_count.buckets
+  end
+
+  def dois_count
+    Doi.search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {} }
+             ],
+            filter: [
+              { term:  { client_id: symbol}}
+            ]
+          }
+        },
+        size: 0,
+        aggregations: {
+          clients_count: {
+            terms: {
+              field: "year"
+            }
+          }
+        }
+      }
+    ).aggregations.clients_count.buckets
+  end
+
 
   # cumulative count clients by year
   # count until the previous year if client has been deleted
   # show all clients for admin
-  def client_count
-    c = clients.unscoped
-    c = c.where("datacentre.allocator = ?", id) if symbol != "ADMIN"
-    c = c.pluck(:created, :deleted_at).reduce([]) do |sum, a|
-      from = a[0].year
-      to = a[1] ? a[1].year : Date.today.year + 1
-      sum += (from...to).to_a
-    end
-    return nil if c.empty?
+  # def client_count
+  #   c = clients.unscoped
+  #   c = c.where("datacentre.allocator = ?", id) if symbol != "ADMIN"
+  #   c = c.pluck(:created, :deleted_at).reduce([]) do |sum, a|
+  #     from = a[0].year
+  #     to = a[1] ? a[1].year : Date.today.year + 1
+  #     sum += (from...to).to_a
+  #   end
+  #   return nil if c.empty?
+  #
+  #   c += (c.min..Date.today.year).to_a
+  #   c.group_by { |a| a }
+  #    .sort { |a, b| a.first <=> b.first }
+  #    .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
+  # end
+  #
+  # # show provider count for admin
+  # def provider_count
+  #   return nil if symbol != "ADMIN"
+  #
+  #   p = Provider.unscoped.where("allocator.role_name IN ('ROLE_ALLOCATOR', 'ROLE_DEV')")
+  #   p = p.pluck(:created, :deleted_at).reduce([]) do |sum, a|
+  #     from = a[0].year
+  #     to = a[1] ? a[1].year : Date.today.year + 1
+  #     sum += (from...to).to_a
+  #   end
+  #   p += (p.min..Date.today.year).to_a
+  #   p.group_by { |a| a }
+  #    .sort { |a, b| a.first <=> b.first }
+  #    .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
+  # end
 
-    c += (c.min..Date.today.year).to_a
-    c.group_by { |a| a }
-     .sort { |a, b| a.first <=> b.first }
-     .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
+  def created
+    created_at.iso8601
   end
 
-  # show provider count for admin
-  def provider_count
-    return nil if symbol != "ADMIN"
-
-    p = Provider.unscoped.where("allocator.role_name IN ('ROLE_ALLOCATOR', 'ROLE_DEV')")
-    p = p.pluck(:created, :deleted_at).reduce([]) do |sum, a|
-      from = a[0].year
-      to = a[1] ? a[1].year : Date.today.year + 1
-      sum += (from...to).to_a
-    end
-    p += (p.min..Date.today.year).to_a
-    p.group_by { |a| a }
-     .sort { |a, b| a.first <=> b.first }
-     .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
+  def updated
+    updated_at.iso8601
   end
 
   def freeze_symbol

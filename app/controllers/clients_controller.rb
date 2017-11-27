@@ -1,68 +1,91 @@
 class ClientsController < ApplicationController
+
+  include Facetable
+
   before_action :set_client, only: [:show, :update, :destroy, :getpassword]
-  before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!, :sanitize_page_params
   before_action :set_include
   load_and_authorize_resource :except => [:index, :show]
 
   def index
-    # support nested routes
-    if params[:provider_id].present?
-      provider = Provider.where('allocator.symbol = ?', params[:provider_id]).first
-      collection = provider.present? ? provider.clients : Client.none
-    else
-      collection = Client
-    end
 
-    if params[:id].present?
-      collection = collection.where(symbol: params[:id])
-    elsif params[:query].present?
-      collection = collection.query(params[:query])
-    end
+    collection = Client
+    collection = filter_by_query params[:query], collection if params[:query].present?
 
-    # cache prefixes for faster queries
-    if params[:prefix].present?
-      prefix = cached_prefix_response(params[:prefix])
-      collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
-    end
+    collection = filter_by_symbol params[:id], collection if params[:id].present?
+    # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
+    collection = filter_by_year params[:year], collection if params[:year].present?
 
-    collection = collection.where('YEAR(datacentre.created) = ?', params[:year]) if params[:year].present?
+    collection = Client.all if collection.respond_to?(:search)
+    # regions    = facet_by_region params, collection
+    years      = facet_by_year params, collection
 
-    # calculate facet counts after filtering
+    # # support nested routes
+    # if params[:provider_id].present?
+    #   provider = Provider.where('allocator.symbol = ?', params[:provider_id]).first
+    #   collection = provider.present? ? provider.clients : Client.none
+    # else
+    #   collection = Client
+    # end
+    #
+    # if params[:id].present?
+    #   collection = collection.where(symbol: params[:id])
+    # elsif params[:query].present?
+    #   collection = collection.query(params[:query])
+    # end
+    #
+    # # cache prefixes for faster queries
+    # if params[:prefix].present?
+    #   prefix = cached_prefix_response(params[:prefix])
+    #   collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
+    # end
+    #
+    # collection = collection.where('YEAR(datacentre.created) = ?', params[:year]) if params[:year].present?
+    #
+    # # calculate facet counts after filtering
+    #
+    # providers = collection.joins(:provider).select('allocator.symbol, allocator.name, count(allocator.id) as count').order('count DESC').group('allocator.id')
+    # # workaround, as selecting allocator.symbol as id doesn't work
+    # providers = providers.map { |p| { id: p.symbol, title: p.name, count: p.count } }
+    #
+    # if params[:year].present?
+    #   years = [{ id: params[:year],
+    #              title: params[:year],
+    #              count: collection.where('YEAR(datacentre.created) = ?', params[:year]).count }]
+    # else
+    #   years = collection.where.not(created: nil).order("YEAR(datacentre.created) DESC").group("YEAR(datacentre.created)").count
+    #   years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v } }
+    # end
+    #
+    # page = params[:page] || {}
+    # page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
+    # page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
+    # total = collection.count
+    #
+    # order = case params[:sort]
+    #         when "-name" then "datacentre.name DESC"
+    #         when "created" then "datacentre.created"
+    #         when "-created" then "datacentre.created DESC"
+    #         else "datacentre.name"
+    #         end
+    #
+    # @clients = collection.order(order).page(page[:number]).per(page[:size])
+    #
+    # meta = { total: total,
+    #          total_pages: @clients.total_pages,
+    #          page: page[:number].to_i,
+    #          providers: providers,
+    #          years: years }
+    #
+    # render jsonapi: @clients, meta: meta, include: @include
+    #
+    @clients = collection
 
-    providers = collection.joins(:provider).select('allocator.symbol, allocator.name, count(allocator.id) as count').order('count DESC').group('allocator.id')
-    # workaround, as selecting allocator.symbol as id doesn't work
-    providers = providers.map { |p| { id: p.symbol, title: p.name, count: p.count } }
+    meta = {
+             years: years
+           }
 
-    if params[:year].present?
-      years = [{ id: params[:year],
-                 title: params[:year],
-                 count: collection.where('YEAR(datacentre.created) = ?', params[:year]).count }]
-    else
-      years = collection.where.not(created: nil).order("YEAR(datacentre.created) DESC").group("YEAR(datacentre.created)").count
-      years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v } }
-    end
-
-    page = params[:page] || {}
-    page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
-    page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
-    total = collection.count
-
-    order = case params[:sort]
-            when "-name" then "datacentre.name DESC"
-            when "created" then "datacentre.created"
-            when "-created" then "datacentre.created DESC"
-            else "datacentre.name"
-            end
-
-    @clients = collection.order(order).page(page[:number]).per(page[:size])
-
-    meta = { total: total,
-             total_pages: @clients.total_pages,
-             page: page[:number].to_i,
-             providers: providers,
-             years: years }
-
-    render jsonapi: @clients, meta: meta, include: @include
+    render jsonapi: @clients, meta: meta
   end
 
   # GET /clients/1
@@ -74,7 +97,7 @@ class ClientsController < ApplicationController
 
   # POST /clients
   def create
-    @client = Client.new(safe_params)
+    @client = Client.create(safe_params)
     authorize! :create, @client
 
     if @client.save
@@ -133,8 +156,10 @@ class ClientsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     # params[:id] = params[:id][/.+?(?=\/)/]
-    @client = Client.where(symbol: params[:id]).first
-    fail ActiveRecord::RecordNotFound unless @client.present?
+    @client = Client.find_each.select { |item| item.symbol == params[:id] }.first
+    fail Elasticsearch::Persistence::RecordNotFound unless @client.present?
+    # @client = Client.where(symbol: params[:id]).first
+    # fail ActiveRecord::RecordNotFound unless @client.present?
   end
 
   private
@@ -145,5 +170,9 @@ class ClientsController < ApplicationController
       params, only: [:symbol, :name, "contact-name", "contact-email", :domains, :provider, :repository, "target-id", "is-active", "deleted-at"],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
+  end
+  def sanitize_page_params
+    params[:offset] = params[:offset].to_i
+    params[:year] = params[:year].to_i if params[:year].present?
   end
 end
