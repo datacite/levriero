@@ -59,8 +59,9 @@ class ProvidersController < ApplicationController
     #          clients: @provider.client_count,
     #          dois: @provider.cached_doi_count
     #         }.compact
+    meta = { clients: @provider.client_count }
 
-    render jsonapi: @provider #, meta: meta, include: @include
+    render jsonapi: @provider, meta: meta, include: @include
   end
 
   # POST /providers
@@ -133,7 +134,7 @@ class ProvidersController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active],
+      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active, :created],
               keys: { country: :country_code }
     )
   end

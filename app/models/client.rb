@@ -1,12 +1,13 @@
 class Client
-
+  # include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
   include Cacheable
 
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
   attribute :year,  Fixnum,  mapping: { type: 'integer' }
-  attribute :updated,  Date,  mapping: { type: 'date' }
+  attribute :created,  Date,  mapping: { type: 'date' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
@@ -42,9 +43,9 @@ class Client
   # attr_readonly :uid, :symbol
   # delegate :symbol, to: :provider, prefix: true
   #
-  # validates_presence_of :symbol, :name, :contact_email
-  # validates_uniqueness_of :symbol, message: "This Client ID has already been taken"
-  # validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :symbol, :name,  :contact_email, presence: :true
+  # validates :symbol, uniqueness: { message: "This Client ID has already been taken"}
+  validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   # validates_numericality_of :doi_quota_allowed, :doi_quota_used
   # validates_numericality_of :version, if: :version?
   # validates_inclusion_of :role_name, :in => %w( ROLE_DATACENTRE ), :message => "Role %s is not included in the list"
@@ -56,8 +57,8 @@ class Client
   # has_many :prefixes, through: :client_prefixes
   # has_many :provider_prefixes, through: :client_prefixes
   #
-  # before_validation :set_defaults
-  # before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
+  before_save :set_defaults
+  before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
   # before_create { self.created = Time.zone.now.utc.iso8601 }
   # before_save { self.updated = Time.zone.now.utc.iso8601 }
   #
@@ -66,6 +67,24 @@ class Client
   # scope :query, ->(query) { where("datacentre.symbol like ? OR datacentre.name like ?", "%#{query}%", "%#{query}%") }
 
   attr_accessor :target_id
+
+
+  def as_indexed_json(options={})
+    {
+      "symbol" => uid.downcase,
+      "name" => name,
+      "description" => description,
+      "region" => region_name,
+      "country" => country_name,
+      "year" => created.to_datetime.year,
+      "logo_url" => logo_url,
+      "is_active" => is_active,
+      "contact_email" => contact_email,
+     #  "website" => website,
+     #  "phone" => phone,
+      "created" => created.iso8601,
+      "updated" => updated_at.iso8601 }
+  end
 
   def self.query query, options={}
    search(
@@ -102,9 +121,9 @@ class Client
   #   provider_symbol.downcase
   # end
 
-  def created
-    created_at.iso8601
-  end
+  # def created=(value)
+  #   created.to_datetime.iso8601
+  # end
 
   def updated
     updated_at.iso8601
@@ -145,7 +164,8 @@ class Client
   end
 
   def year
-    created_at.year if created_at.present?
+    # created_at.year if created_at.present?
+    created.year 
   end
 
   def doi_quota_exceeded
@@ -171,15 +191,16 @@ class Client
   private
 
   def set_test_prefix
-    return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
-
-    prefixes << cached_prefix_response("10.5072")
+    # return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
+    #
+    # prefixes << cached_prefix_response("10.5072")
   end
 
   def set_defaults
     self.contact_name = "" unless contact_name.present?
+    self.created = created.present? ? created.to_datetime.iso8601 : created_at.iso8601
     self.domains = "*" unless domains.present?
-    self.is_active = is_active? ? "\x01" : "\x00"
+    self.is_active = is_active.present? ? "\x01" : "\x00"
     self.role_name = "ROLE_DATACENTRE" unless role_name.present?
     self.doi_quota_used = 0 unless doi_quota_used.to_i > 0
     self.doi_quota_allowed = -1 unless doi_quota_allowed.to_i > 0
