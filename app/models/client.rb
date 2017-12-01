@@ -4,6 +4,9 @@ class Client
   include Elasticsearch::Persistence::Model
   include Cacheable
 
+  mapping _parent: { type: 'providers' } do
+  end
+
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
   attribute :year,  Fixnum,  mapping: { type: 'integer' }

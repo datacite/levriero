@@ -14,18 +14,18 @@ class Provider
 
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
-  attribute :year,  Fixnum,  mapping: { type: 'integer' }
+  attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :created,  Date,  mapping: { type: 'date' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
   attribute :country_code,  String,  mapping: { type: 'text' }
   attribute :website,  String,  mapping: { type: 'text' }
-  attribute :doi_quota_allowed,  Fixnum, default: 0, mapping: { type: 'integer' }
-  attribute :version,    Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :doi_quota_allowed,  Integer, default: 0, mapping: { type: 'integer' }
+  attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
   attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
-  attribute :doi_quota_used,  Fixnum, default: -1, mapping: { type: 'integer' }
+  attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
 
   # define table and attribute names
   # uid is used as unique identifier, mapped to id in serializer
@@ -138,6 +138,7 @@ class Provider
   end
 
   def self.query_filter_by field, value
+    page ||= 1
     search(
       {
         query: {

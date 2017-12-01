@@ -9,7 +9,7 @@ class ProvidersController < ApplicationController
   def index
     collection = Client
 
-    collection = filter_by_query params[:query], collection if params[:query].present?
+    # collection = filter_by_query params[:query], collection if params[:query].present?
     collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
@@ -23,30 +23,28 @@ class ProvidersController < ApplicationController
     years      = facet_by_year params, collection
 
 
-    # page = params[:page] || {}
-    # page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
-    # page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
-    # total = collection.count
+    page = params[:page] || {}
+    page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
+    page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
+    total = collection.response.hits.total
     #
-    # order = case params[:sort]
-    #         when "-name" then "name DESC"
-    #         when "created" then "created"
-    #         when "-created" then "created DESC"
-    #         else "name"
-    #         end
+    order = case params[:sort]
+            when "-name" then "-name"
+            when "created" then "created"
+            when "-created" then "-created"
+            else "name"
+            end
 
-    # @providers = collection.order(order).page(page[:number]).per(page[:size])
-    # @providers = collection.all unless collection.respond_to?(:each_with_hit)
-    @providers = collection
+    
+    # https://github.com/elastic/elasticsearch-rails/issues/338
+    @providers = collection.all unless collection.respond_to?(:each_with_hit)
+    @providers = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
 
 
-    # meta = { total: total,
-    #          total_pages: @providers.total_pages,
-    #          page: page[:number].to_i,
-    #          regions: regions,
-    #          years: years
-    #        }
-    meta = {
+    meta = { total: total,
+             total_pages: @providers.total_pages,
+             page: page[:number].to_i,
+            #  regions: regions,
              years: years
            }
 
