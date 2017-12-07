@@ -23,35 +23,33 @@ class ProvidersController < ApplicationController
     years      = facet_by_year params, collection
 
 
-    # page = params[:page] || {}
-    # page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
-    # page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
-    # total = collection.count
+    page = params[:page] || {}
+    page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
+    page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
+    total = collection.response.hits.total
     #
-    # order = case params[:sort]
-    #         when "-name" then "name DESC"
-    #         when "created" then "created"
-    #         when "-created" then "created DESC"
-    #         else "name"
-    #         end
+    order = case params[:sort]
+            when "-name" then "-name"
+            when "created" then "created"
+            when "-created" then "-created"
+            else "name"
+            end
 
-    # @providers = collection.order(order).page(page[:number]).per(page[:size])
-    # @providers = collection.all unless collection.respond_to?(:each_with_hit)
-    @providers = collection
+    
+    # https://github.com/elastic/elasticsearch-rails/issues/338
+    @providers = collection.all unless collection.respond_to?(:each_with_hit)
+    @providers = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
 
 
-    # meta = { total: total,
-    #          total_pages: @providers.total_pages,
-    #          page: page[:number].to_i,
-    #          regions: regions,
-    #          years: years
-    #        }
-    meta = {
+    meta = { total: total,
+             total_pages: @providers.total_pages,
+             page: page[:number].to_i,
+            #  regions: regions,
              years: years
            }
 
-           # render jsonapi: @providers, meta: meta, include: @include
-    render jsonapi: @providers, meta: meta
+    render jsonapi: @providers, meta: meta, include: @include
+    # render jsonapi: @providers, meta: meta
   end
 
   def show
@@ -59,8 +57,10 @@ class ProvidersController < ApplicationController
     #          clients: @provider.client_count,
     #          dois: @provider.cached_doi_count
     #         }.compact
+    # meta = { clients: @provider.client_count }
 
-    render jsonapi: @provider #, meta: meta, include: @include
+    # render jsonapi: @provider, meta: meta, include: @include
+    render jsonapi: @provider
   end
 
   # POST /providers
@@ -115,7 +115,7 @@ class ProvidersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    @provider = Provider.find_each.select { |item| item.symbol == params[:id] }.first
+    @provider = Provider.find_each.select { |item| item.symbol.casecmp params[:id] }.first
     fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
   end
 
@@ -133,7 +133,7 @@ class ProvidersController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active],
+      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active, :created],
               keys: { country: :country_code }
     )
   end

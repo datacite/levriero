@@ -1,8 +1,8 @@
 require "countries"
 
-class Provider 
-  # index in Elasticsearch
+class Provider
   # include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
 
 
@@ -14,16 +14,19 @@ class Provider
 
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
-  attribute :year,  Fixnum,  mapping: { type: 'integer' }
+  attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
+  attribute :created,  Date,  mapping: { type: 'date' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
+  attribute :country_code,  String,  mapping: { type: 'text' }
   attribute :website,  String,  mapping: { type: 'text' }
-  attribute :doi_quota_allowed,  Fixnum, default: 0, mapping: { type: 'integer' }
-  attribute :version,    Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :doi_quota_allowed,  Integer, default: 0, mapping: { type: 'integer' }
+  attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
   attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
-  attribute :doi_quota_used,  Fixnum, default: -1, mapping: { type: 'integer' }
+  attribute :password,  String, mapping: { type: 'text' }
+  attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
 
   # define table and attribute names
   # uid is used as unique identifier, mapped to id in serializer
@@ -34,7 +37,9 @@ class Provider
   # alias_attribute :updated_at, :updated
   # attr_readonly :uid, :symbol
 
-  # validates_presence_of :symbol, :name, :contact_name, :contact_email
+  validates :symbol, :name, :contact_name, :contact_email, presence: :true
+  # validates :symbol, unique: true # {message: "This Client ID has already been taken"}
+  validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   # validates_uniqueness_of :symbol, message: "This name has already been taken"
   # validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
   # validates_format_of :website, :with => /https?:\/\/[\S]+/ , if: :website?, message: "Website should be an url"
@@ -48,8 +53,8 @@ class Provider
   # has_many :provider_prefixes, foreign_key: :allocator, dependent: :destroy
   # has_many :prefixes, through: :provider_prefixes
   #
-  # before_validation :set_region, :set_defaults
-  # before_create :set_test_prefix
+  before_save :set_region, :set_defaults
+  before_create :set_test_prefix
   # before_create { self.created = Time.zone.now.utc.iso8601 }
   # before_save { self.updated = Time.zone.now.utc.iso8601 }
   # accepts_nested_attributes_for :prefixes
@@ -60,7 +65,7 @@ class Provider
 
 
   def year
-    created_at.to_datetime.year
+    created.to_datetime.year
   end
 
   def country_name
@@ -83,7 +88,7 @@ class Provider
     "#{ENV['CDN_URL']}/images/members/#{symbol.downcase}.png"
   end
 
-  # # Elasticsearch indexing
+  # # # Elasticsearch indexing
   # mappings dynamic: 'false' do
   #   indexes :symbol, type: 'text'
   #   indexes :name, type: 'text'
@@ -103,22 +108,24 @@ class Provider
   #   indexes :updated_at, type: 'date'
   # end
 
-   # def as_indexed_json(options={})
-   #   {
-   #     "symbol" => uid.downcase,
-   #     "name" => name,
-   #     "description" => description,
-   #     "region" => region_name,
-   #     "country" => country_name,
-   #     "year" => year,
-   #     "logo_url" => logo_url,
-   #     "is_active" => is_active,
-   #     "contact_email" => contact_email,
-   #    #  "website" => website,
-   #    #  "phone" => phone,
-   #     "created" => created_at.iso8601,
-   #     "updated" => updated_at.iso8601 }
-   # end
+   def as_indexed_json(options={})
+     {
+       "symbol" => uid.downcase,
+       "name" => name,
+       "description" => description,
+       "region" => region_name,
+       "country" => country_name,
+       "year" => year,
+       "logo_url" => logo_url,
+       "is_active" => is_active,
+       "contact_email" => contact_email,
+      #  "website" => website,
+      #  "phone" => phone,
+       "created" => created.iso8601,
+       "updated" => updated_at.iso8601 
+      
+      }
+   end
 
   def self.query query, options={}
    search(
@@ -134,6 +141,7 @@ class Provider
   end
 
   def self.query_filter_by field, value
+    page ||= 1
     search(
       {
         query: {
@@ -153,7 +161,7 @@ class Provider
   # cumulative count clients that have not been deleted
   # show all clients for admin
   def client_count
-    Client.search(
+    counts = Client.search(
       {
         query: {
           bool: {
@@ -161,7 +169,7 @@ class Provider
               { match_all: {} }
              ],
             filter: [
-              { term:  { provider_id: symbol}}
+              { term:  { provider_id: symbol.downcase}}
             ]
           }
         },
@@ -169,16 +177,17 @@ class Provider
         aggregations: {
           clients_count: {
             terms: {
-              field: "year"
+              field: :year
             }
           }
         }
       }
-    ).aggregations.clients_count.buckets
+    ).response.aggregations.clients_count.buckets
+    counts.map! { |k| { id: k[:key], title: k[:key], count: k[:doc_count] } }
   end
 
   def dois_count
-    Doi.search(
+    counts = Doi.search(
       {
         query: {
           bool: {
@@ -192,14 +201,15 @@ class Provider
         },
         size: 0,
         aggregations: {
-          clients_count: {
+          dois_count: {
             terms: {
-              field: "year"
+              field: :published
             }
           }
         }
       }
-    ).aggregations.clients_count.buckets
+    ).response.aggregations.dois_count.buckets
+    counts.map! { |k| { id: k[:key], title: k[:key], count: k[:doc_count] } }
   end
 
 
@@ -238,9 +248,9 @@ class Provider
   #    .map { |a| { "id" => a[0], "title" => a[0], "count" => a[1].count - 1 } }
   # end
 
-  def created
-    created_at.iso8601
-  end
+  # def created
+  #   created_at.iso8601
+  # end
 
   def updated
     updated_at.iso8601
@@ -262,7 +272,8 @@ class Provider
     else
       r = nil
     end
-    write_attribute(:region, r)
+    # write_attribute(:region, r)
+    region =r
   end
 
   # def set_provider_type
@@ -275,13 +286,14 @@ class Provider
   # end
 
   def set_test_prefix
-    return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
-
-    prefixes << cached_prefix_response("10.5072")
+    # return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
+    #
+    # prefixes << cached_prefix_response("10.5072")
   end
 
   def set_defaults
     self.symbol = symbol.upcase if symbol.present?
+    self.created = created.present? ? created.to_datetime.iso8601 : created_at.iso8601
     self.is_active = is_active ? "\x01" : "\x00"
     self.contact_name = "" unless contact_name.present?
     self.role_name = "ROLE_ALLOCATOR" unless role_name.present?

@@ -10,6 +10,7 @@ class ClientsController < ApplicationController
   def index
 
     collection = Client
+    puts Client.public_methods
     collection = filter_by_query params[:query], collection if params[:query].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
@@ -57,35 +58,40 @@ class ClientsController < ApplicationController
     #   years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v } }
     # end
     #
-    # page = params[:page] || {}
-    # page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
-    # page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
-    # total = collection.count
-    #
-    # order = case params[:sort]
-    #         when "-name" then "datacentre.name DESC"
-    #         when "created" then "datacentre.created"
-    #         when "-created" then "datacentre.created DESC"
-    #         else "datacentre.name"
-    #         end
-    #
-    # @clients = collection.order(order).page(page[:number]).per(page[:size])
-    #
-    # meta = { total: total,
-    #          total_pages: @clients.total_pages,
-    #          page: page[:number].to_i,
-    #          providers: providers,
-    #          years: years }
-    #
-    # render jsonapi: @clients, meta: meta, include: @include
-    #
-    @clients = collection
+    page = params[:page] || {}
+    page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
+    page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
+    total = collection.count
+    
+    order = case params[:sort]
+    when "-name" then "-name"
+    when "created" then "created"
+    when "-created" then "-created"
+    else "name"
+    end
 
-    meta = {
-             years: years
-           }
 
-    render jsonapi: @clients, meta: meta
+    # https://github.com/elastic/elasticsearch-rails/issues/338
+    @clients = collection.all unless collection.respond_to?(:each_with_hit)
+    @clients = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
+
+
+    
+    meta = { total: total,
+             total_pages: @clients.total_pages,
+             page: page[:number].to_i,
+            #  providers: providers
+             years: years 
+            }
+    #
+    render jsonapi: @clients, meta: meta #, include: @include
+    #
+
+    # meta = {
+    #          years: years
+    #        }
+
+    # render jsonapi: @clients, meta: meta
   end
 
   # GET /clients/1
@@ -156,7 +162,7 @@ class ClientsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     # params[:id] = params[:id][/.+?(?=\/)/]
-    @client = Client.find_each.select { |item| item.symbol == params[:id] }.first
+    @client = Client.find_each.select { |item| item.symbol.casecmp params[:id] }.first
     fail Elasticsearch::Persistence::RecordNotFound unless @client.present?
     # @client = Client.where(symbol: params[:id]).first
     # fail ActiveRecord::RecordNotFound unless @client.present?
@@ -167,7 +173,7 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:symbol, :name, "contact-name", "contact-email", :domains, :provider, :repository, "target-id", "is-active", "deleted-at"],
+      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, :provider, :repository, "target-id", "is-active", "deleted-at"],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end

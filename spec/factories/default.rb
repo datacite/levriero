@@ -62,10 +62,10 @@ FactoryBot.define do
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
     symbol { Faker::Code.asin + Faker::Code.asin }
-    name "My provider"
+    name { Faker::GameOfThrones.city }
     country_code { Faker::Address.country_code }
 
-    initialize_with { Provider.where(symbol: symbol).first_or_initialize }
+    # initialize_with { Provider.where(symbol: symbol).first_or_initialize }
   end
 
   factory :provider_prefix do

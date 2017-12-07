@@ -4,6 +4,7 @@ MAINTAINER Kristian Garza "kgarza@datacite.org"
 # Set correct environment variables.
 ENV HOME /home/app
 ENV DOCKERIZE_VERSION v0.2.0
+ENV ES_JAVA_OPTS "-Xmx256m -Xms256m"
 
 # Allow app user to read /etc/container_environment
 RUN usermod -a -G docker_env app
@@ -22,6 +23,10 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&
 # install dockerize
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.4.tar.gz && \
+    tar -C /usr/share -xvf elasticsearch-5.6.4.tar.gz
+ENV PATH /usr/share/elasticsearch-5.6.4/bin:$PATH
 
 # Remove unused SSH service
 RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
@@ -76,7 +81,7 @@ RUN mkdir -p /home/app/.handle \
 RUN mkdir -p /etc/my_init.d
 COPY vendor/docker/70_templates.sh /etc/my_init.d/70_templates.sh
 COPY vendor/docker/80_flush_cache.sh /etc/my_init.d/80_flush_cache.sh
-COPY vendor/docker/90_migrate.sh /etc/my_init.d/90_migrate.sh
+# COPY vendor/docker/90_migrate.sh /etc/my_init.d/90_migrate.sh
 
 # Expose web
 EXPOSE 80
