@@ -129,7 +129,7 @@ class Client
   # end
 
   def updated
-    updated_at.iso8601
+    updated_at
   end
 
   # def provider_id=(value)

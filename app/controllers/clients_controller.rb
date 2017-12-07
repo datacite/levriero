@@ -10,6 +10,7 @@ class ClientsController < ApplicationController
   def index
 
     collection = Client
+    puts Client.public_methods
     collection = filter_by_query params[:query], collection if params[:query].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
@@ -154,14 +155,14 @@ class ClientsController < ApplicationController
       @include = params[:include].split(",").map { |i| i.downcase.underscore }.join(",")
       @include = [@include]
     else
-      @include = ["providers", "repository"]
+      @include = ["provider", "repository"]
     end
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     # params[:id] = params[:id][/.+?(?=\/)/]
-    @client = Client.find_each.select { |item| item.symbol == params[:id] }.first
+    @client = Client.find_each.select { |item| item.symbol.casecmp params[:id] }.first
     fail Elasticsearch::Persistence::RecordNotFound unless @client.present?
     # @client = Client.where(symbol: params[:id]).first
     # fail ActiveRecord::RecordNotFound unless @client.present?

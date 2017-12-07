@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Providers", type: :request  do
+RSpec.describe "Providers", elasticsearch: true, type: :request  do
   # initialize test data
-  let!(:providers)  { create_list(:provider, 10) }
+  let!(:providers)  { build_list(:provider, 10) }
   let!(:provider) { providers.first }
   let(:params) do
     { "data" => { "type" => "providers",
@@ -17,7 +17,7 @@ RSpec.describe "Providers", type: :request  do
   # Test suite for GET /providers
   describe 'GET /providers' do
     # make HTTP get request before each example
-    before { get '/providers', headers: headers }
+    before {  get '/providers', headers: headers }
 
     it 'returns providers' do
       expect(json).not_to be_empty

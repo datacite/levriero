@@ -25,6 +25,7 @@ class Provider
   attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
   attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
+  attribute :password,  String, mapping: { type: 'text' }
   attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
 
   # define table and attribute names
@@ -64,7 +65,7 @@ class Provider
 
 
   def year
-    created_at.to_datetime.year
+    created.to_datetime.year
   end
 
   def country_name
@@ -121,7 +122,9 @@ class Provider
       #  "website" => website,
       #  "phone" => phone,
        "created" => created.iso8601,
-       "updated" => updated_at.iso8601 }
+       "updated" => updated_at.iso8601 
+      
+      }
    end
 
   def self.query query, options={}

@@ -43,8 +43,9 @@ config.before :all, elasticsearch: true do
 end
 
 config.after :all, elasticsearch: true do
+  Maremma.delete("http://elasticsearch:9200/_all")
+  # Provider.destroy
   
-
 end
 
 #

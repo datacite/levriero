@@ -9,7 +9,7 @@ class ProvidersController < ApplicationController
   def index
     collection = Client
 
-    # collection = filter_by_query params[:query], collection if params[:query].present?
+    collection = filter_by_query params[:query], collection if params[:query].present?
     collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
@@ -48,8 +48,8 @@ class ProvidersController < ApplicationController
              years: years
            }
 
-           # render jsonapi: @providers, meta: meta, include: @include
-    render jsonapi: @providers, meta: meta
+    render jsonapi: @providers, meta: meta, include: @include
+    # render jsonapi: @providers, meta: meta
   end
 
   def show
@@ -57,9 +57,10 @@ class ProvidersController < ApplicationController
     #          clients: @provider.client_count,
     #          dois: @provider.cached_doi_count
     #         }.compact
-    meta = { clients: @provider.client_count }
+    # meta = { clients: @provider.client_count }
 
-    render jsonapi: @provider, meta: meta, include: @include
+    # render jsonapi: @provider, meta: meta, include: @include
+    render jsonapi: @provider
   end
 
   # POST /providers
@@ -114,7 +115,7 @@ class ProvidersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    @provider = Provider.find_each.select { |item| item.symbol == params[:id] }.first
+    @provider = Provider.find_each.select { |item| item.symbol.casecmp params[:id] }.first
     fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
   end
 
