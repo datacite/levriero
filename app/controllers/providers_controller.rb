@@ -115,7 +115,8 @@ class ProvidersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    @provider = Provider.find_each.select { |item| item.symbol.casecmp params[:id] }.first
+    # @provider = Provider.find_each.select { |item| item.symbol.casecmp params[:id] }.first
+    @provider = Provider.query_filter_by(:symbol, params[:id]).first
     fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
   end
 

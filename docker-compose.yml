@@ -35,6 +35,17 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - public
+  elasticsearch-test:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+    volumes:
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9250:9200"
+      - "9350:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - public
 networks:
   public:
     driver: bridge

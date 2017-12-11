@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryBot.define do
   factory :client do
-    association :provider, factory: :provider, strategy: :create
+    association :provider, factory: :provider, strategy: :build
 
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
@@ -10,6 +10,8 @@ FactoryBot.define do
     name "My data center"
     role_name "ROLE_DATACENTRE"
     provider_id  { provider.symbol.downcase }
+    created { Faker::Time.between(DateTime.now - 10, DateTime.now) }
+    
   end
 
   factory :client_prefix do
@@ -64,7 +66,8 @@ FactoryBot.define do
     symbol { Faker::Code.asin + Faker::Code.asin }
     name { Faker::GameOfThrones.city }
     country_code { Faker::Address.country_code }
-
+    created { Faker::Time.between(DateTime.now - 10, DateTime.now) }
+    
     # initialize_with { Provider.where(symbol: symbol).first_or_initialize }
   end
 
