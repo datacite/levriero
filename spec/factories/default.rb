@@ -32,7 +32,7 @@ FactoryBot.define do
     minted {Faker::Time.backward(15, :evening)}
     client_id  { client.symbol.upcase }
 
-    initialize_with { Doi.where(doi: doi).first_or_initialize }
+    # initialize_with { Doi.where(doi: doi).first_or_initialize }
   end
 
   factory :metadata do
