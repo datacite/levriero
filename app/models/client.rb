@@ -9,17 +9,17 @@ class Client
 
   attribute :symbol,  String,  mapping: { type: 'text' }
   attribute :region,  String,  mapping: { type: 'text' }
-  attribute :year,  Fixnum,  mapping: { type: 'integer' }
+  attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :created,  Date,  mapping: { type: 'date' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'text' }
   attribute :re3data,  String,  mapping: { type: 'text' }
-  attribute :doi_quota_allowed,  Fixnum, default: 0, mapping: { type: 'integer' }
-  attribute :version,    Fixnum, default: 0, mapping: { type: 'integer' }
+  attribute :doi_quota_allowed,  Integer, default: 0, mapping: { type: 'integer' }
+  attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
   attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
-  attribute :doi_quota_used,  Fixnum, default: -1, mapping: { type: 'integer' }
+  attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
   attribute :comments,  String,  mapping: { type: 'text' }
   attribute :domains,  String,  mapping: { type: 'text' }
   attribute :password,  String,  mapping: { type: 'text' }
@@ -167,8 +167,7 @@ class Client
   end
 
   def year
-    # created_at.year if created_at.present?
-    created.year 
+    created.to_datetime.year
   end
 
   def doi_quota_exceeded

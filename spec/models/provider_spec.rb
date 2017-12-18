@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Provider, elasticsearch: true, type: :model do
-  let!(:providers)  { build_list(:provider, 25) }
-  let!(:provider) { providers.first }
+  let!(:providers)     { build_list(:provider, 25) }
+  let!(:provider)      { providers.first }
+  let!(:clients)        { build_list(:client, 10, provider_id: provider.symbol) }  
+  let!(:provider_last) { providers.last }
   # describe "Validations" do
   #   # it { should validate_presence_of(:symbol) }
   #   # it { should validate_presence_of(:name) }
@@ -10,71 +12,185 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
   #   # it { should validate_presence_of(:contact_name) }
   # end
 
-  describe "methods" do
+  describe "List Providers" do
+    context "when there are providers" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        clients.each   { |item| Client.create(item) }
+        sleep 2
+      end
 
-    it "providers all" do
-      providers.each { |item| Provider.create(item) }
-      sleep 2
-      
-      collection = Provider.all
-      expect(collection.length).to eq(providers.length)
-      single = Provider.find_each.select { |item| item.symbol == provider.symbol }.first
-      expect(single.name).to eq(provider.name)
-      expect(single.role_name).to eq(provider.role_name)
-      # meta = providers[:meta]
-      # expect(meta["resource-types"]).not_to be_empty
-      # expect(meta["years"]).not_to be_empty
-      # expect(meta).not_to be_empty
+      it "returns all providers" do
+        collection = Provider.all
+        expect(collection.length).to eq(providers.length)
+      end
+
+      it "returns correct attributes" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.name).to eq(provider.name)
+        expect(single.role_name).to eq(provider.role_name)
+      end
+
+      it "returns correct number of clients" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        client_count = single.client_count
+        expect(client_count.first[:count]).to eq(clients.length)
+      end
     end
 
-    # it "providers with where year" do
-    #   collection = Provider.where("YEAR(allocator.created) = ?", provider.created)
-    #   single = collection.first
-    #   expect(single.year).to eq(provider.created.year)
-    #   expect(single.name).to eq(provider.name)
-    #   expect(single.symbol).to eq(provider.symbol)
-    # end
-    
-    # it "should not update the symbol" do
-    #   provider.update_attributes :symbol => provider.symbol+'foo.bar'
-    #   expect(provider.reload.symbol).to eq(provider.symbol)
-    # end
+    context "when there are not providers" do 
 
-    # it "providers with where sort by role_name" do
-    #   collection = Provider.where(name: "australia", sort: "role_name")
-    #   expect(collection.length).to eq(1)
-    #   provider = collection.first
-    #   expect(provider.name).to eq("Australian National Data Service")
-    #   expect(provider.symbol).to eq("ands")
-    # end
-    #
-    # it "providers with where and resource-type-id" do
-    #   collection = Provider.where(where: "cancer", "resource-type-id" => "dataset")
-    #   expect(collection[:data].length).to eq(3)
-    #   provider = collection[:data].first
-    #   expect(provider.title).to eq("Landings of European lobster (Homarus gammarus) and edible crab (Cancer pagurus) in 2011, Helgoland, North Sea")
-    #   expect(provider.resource_type.title).to eq("Dataset")
-    # end
-    #
-    # it "providers with where and resource-type-id and data-center-id" do
-    #   collection = Provider.where(where: "cancer", "resource-type-id" => "dataset", "data-center-id" => "FIGSHARE.ARS")
-    #   expect(collection[:data].length).to eq(25)
-    #   provider = collection[:data].first
-    #   expect(provider.title).to eq("Achilles_v3.3.7_README.txt")
-    #   expect(provider.resource_type.title).to eq("Dataset")
-    # end
-
-    # it "provider" do
-    #   single = Provider.where(symbol: provider.symbol).first
-    #   expect(single.name).to eq(provider.name)
-    #   expect(single.symbol).to eq(provider.symbol)
-    #   expect(single.role_name).to eq(provider.role_name)
-    #   expect(single.created).to be_truthy
-    #   expect(single.updated).to be_truthy
-    #   expect(single.region).to be_truthy
-    #   expect(single.is_active).to be_truthy
-    #   expect(single.doi_quota_allowed).to be_truthy
-    #   expect(single.doi_quota_used).to be_truthy
-    # end
+      it "returns no providers" do
+        # collection = Provider.all
+        # expect(collection.length).to eq(0)
+      end
+    end
   end
+
+  describe "Show Provider" do
+    context "when the provider exist" do 
+      before do 
+        Provider.create(provider) 
+        sleep 2
+      end
+
+      it "returns correct attributes" do
+
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.name).to eq(provider.name)
+        expect(single.symbol).to eq(provider.symbol)
+        expect(single.role_name).to eq(provider.role_name)
+        expect(single.created).to be_truthy
+        expect(single.updated).to be_truthy
+        # expect(single.region).to be_truthy
+        expect(single.is_active).to be_truthy
+        expect(single.doi_quota_allowed).to be_truthy
+        expect(single.doi_quota_used).to be_truthy
+      end
+    end
+    context "when the provider do not exist" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2
+      end
+
+      it "returns no attributes" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.name).not_to eq(provider_last.name)
+        expect(single.symbol).not_to eq(provider_last.symbol)
+      end
+    end
+  end
+
+  describe "Create Provider" do
+    context "when the provider do not exist" do 
+      before do 
+        Provider.create(provider) 
+        sleep 2
+      end
+
+      it "returns correct attributes" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.name).to eq(provider.name)
+        expect(single.symbol).to eq(provider.symbol)
+        expect(single.role_name).to eq(provider.role_name)
+        expect(single.created).to be_truthy
+        expect(single.updated).to be_truthy
+        # expect(single.region).to be_truthy
+        expect(single.is_active).to be_truthy
+        expect(single.doi_quota_allowed).to be_truthy
+        expect(single.doi_quota_used).to be_truthy
+      end
+    end
+    context "when the provider  exist" do 
+      before do 
+        Provider.create(provider) 
+        sleep 2
+        Provider.create(provider) 
+        sleep 2
+      end
+
+      it "returns correct attributes" do
+        prov = Provider.query_filter_by(:symbol, provider.symbol).count
+        expect(prov).to eq(2)
+      end
+    end
+  end
+
+  describe "Update Provider" do
+    context "when parameter are correct" do 
+      before do 
+        pv = Provider.create(provider) 
+        sleep 2
+        pv.update_attributes name: "Logan"
+        sleep 2      
+      end
+
+      it "returns correct attributes" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.name).not_to eq(provider.name)
+        expect(single.symbol).to eq(provider.symbol)
+        expect(single.role_name).to eq(provider.role_name)
+        expect(single.created).to be_truthy
+      end
+    end
+  end
+
+  describe "Delete Provider" do
+    context "when the provider exist" do 
+      before do 
+        pv = Provider.create(provider) 
+        sleep 2 
+        pv.destroy
+        sleep 2
+      end
+
+      it "returns correct response" do
+        single = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(single.respond_to?(:name)).to be false
+      end
+    end
+
+    context "when the provider do not exist" do 
+      before do 
+        Provider.create(provider) 
+        sleep 2 
+      end
+
+      it "returns correct attributes" do
+
+      end
+    end
+  end
+
+  describe "Query Provider" do
+    context "when the provider exist" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2         
+      end
+
+      it "returns correct attributes" do
+        collection = Provider.query(provider.name)
+        results = collection.select { |item| item.symbol.casecmp provider.symbol }
+        expect(results.length).to be > 0 
+        expect(results.length).to be < providers.length
+        expect(collection.first.respond_to?(:name)).to be true
+      end
+    end
+    context "when the provider do not exist" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2 
+      end
+
+      it "returns correct attributes" do
+        single = Provider.query("TIB").first
+        expect(single.respond_to?(:name)).to be false        
+      end
+    end
+  end
+
+  
+
 end

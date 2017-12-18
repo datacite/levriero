@@ -4,7 +4,7 @@ class Provider
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
-
+  
 
   # # include helper module for caching infrequently changing resources
   # include Cacheable
@@ -150,7 +150,7 @@ class Provider
               { match_all: {}}
               ],
             filter: [
-              { term:  { field => value}}
+              { term:  { field => value.downcase}}
             ]
           }
         }
