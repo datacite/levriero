@@ -10,7 +10,6 @@ class ClientsController < ApplicationController
   def index
 
     collection = Client
-    puts Client.public_methods
     collection = filter_by_query params[:query], collection if params[:query].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?

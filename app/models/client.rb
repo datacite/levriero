@@ -7,24 +7,24 @@ class Client
   mapping _parent: { type: 'providers' } do
   end
 
-  attribute :symbol,  String,  mapping: { type: 'text' }
-  attribute :region,  String,  mapping: { type: 'text' }
+  attribute :symbol,  String,  mapping: { type: 'keyword' }
+  attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :created,  Date,  mapping: { type: 'date' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
-  attribute :contact_email,  String,  mapping: { type: 'text' }
-  attribute :re3data,  String,  mapping: { type: 'text' }
+  attribute :contact_email,  String,  mapping: { type: 'keyword' }
+  attribute :re3data,  String,  mapping: { type: 'keyword' }
   attribute :doi_quota_allowed,  Integer, default: 0, mapping: { type: 'integer' }
   attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
-  attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
+  attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'keyword' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
   attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
   attribute :comments,  String,  mapping: { type: 'text' }
   attribute :domains,  String,  mapping: { type: 'text' }
   attribute :password,  String,  mapping: { type: 'text' }
-  attribute :provider_id,  String,  mapping: { type: 'text' }
-  attribute :provider_symbol,  String,  mapping: { type: 'text' }
+  attribute :provider_id,  String,  mapping: { type: 'keyword' }
+  # attribute :provider_symbol,  String,  mapping: { type: 'text' }
   attribute :experiments,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
 
@@ -72,22 +72,22 @@ class Client
   attr_accessor :target_id
 
 
-  def as_indexed_json(options={})
-    {
-      "symbol" => uid.downcase,
-      "name" => name,
-      "description" => description,
-      "region" => region_name,
-      "country" => country_name,
-      "year" => created.to_datetime.year,
-      "logo_url" => logo_url,
-      "is_active" => is_active,
-      "contact_email" => contact_email,
-     #  "website" => website,
-     #  "phone" => phone,
-      "created" => created.iso8601,
-      "updated" => updated_at.iso8601 }
-  end
+  # def as_indexed_json(options={})
+  #   {
+  #     "symbol" => uid.downcase,
+  #     "name" => name,
+  #     "description" => description,
+  #     "region" => region_name,
+  #     "country" => country_name,
+  #     "year" => created.to_datetime.year,
+  #     "logo_url" => logo_url,
+  #     "is_active" => is_active,
+  #     "contact_email" => contact_email,
+  #    #  "website" => website,
+  #    #  "phone" => phone,
+  #     "created" => created.iso8601,
+  #     "updated" => updated_at.iso8601 }
+  # end
 
   def self.query query, options={}
    search(
@@ -103,7 +103,8 @@ class Client
   end
 
   def self.query_filter_by field, value
-    search(
+    page ||= 1    
+    query = search(
       {
         query: {
           bool: {
@@ -111,12 +112,13 @@ class Client
               { match_all: {}}
               ],
             filter: [
-              { term:  { field => value}}
+              { term:  { field => value.downcase}}
             ]
           }
         }
       }
     )
+    query.length > 0 ? query : ["RecordNotFound"]
   end
 
   # # workaround for non-standard database column names and association

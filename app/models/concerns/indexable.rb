@@ -11,18 +11,18 @@ module Indexable
 
   module ClassMethods
     # Elasticsearch custom search
-    def query query, options={}
-      __elasticsearch__.search(
-        {
-          query: {
-            query_string: {
-              query: query,
-              fields: self.new.es_fields
-            }
-          }
-        }
-      ).records
-    end
+    # def query query, options={}
+    #   __elasticsearch__.search(
+    #     {
+    #       query: {
+    #         query_string: {
+    #           query: query,
+    #           fields: self.new.es_fields
+    #         }
+    #       }
+    #     }
+    #   ).records
+    # end
 
   #   def query query, options={}
   #

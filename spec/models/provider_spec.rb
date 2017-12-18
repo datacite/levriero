@@ -5,12 +5,7 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
   let!(:provider)      { providers.first }
   let!(:clients)        { build_list(:client, 10, provider_id: provider.symbol) }  
   let!(:provider_last) { providers.last }
-  # describe "Validations" do
-  #   # it { should validate_presence_of(:symbol) }
-  #   # it { should validate_presence_of(:name) }
-  #   # it { should validate_presence_of(:contact_email) }
-  #   # it { should validate_presence_of(:contact_name) }
-  # end
+
 
   describe "List Providers" do
     context "when there are providers" do 
@@ -147,7 +142,7 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
 
       it "returns correct response" do
         single = Provider.query_filter_by(:symbol, provider.symbol).first
-        expect(single.respond_to?(:name)).to be false
+        expect(single).to eq("RecordNotFound")
       end
     end
 

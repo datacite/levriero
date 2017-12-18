@@ -12,18 +12,18 @@ class Provider
   # # include helper module for managing associated users
   # include Userable
 
-  attribute :symbol,  String,  mapping: { type: 'text' }
-  attribute :region,  String,  mapping: { type: 'text' }
+  attribute :symbol,  String,  mapping: { type: 'keyword' }
+  attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :created,  Date,  mapping: { type: 'date' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
-  attribute :contact_email,  String,  mapping: { type: 'text' }
-  attribute :country_code,  String,  mapping: { type: 'text' }
-  attribute :website,  String,  mapping: { type: 'text' }
+  attribute :contact_email,  String,  mapping: { type: 'keyword' }
+  attribute :country_code,  String,  mapping: { type: 'keyword' }
+  attribute :website,  String,  mapping: { type: 'keyword' }
   attribute :doi_quota_allowed,  Integer, default: 0, mapping: { type: 'integer' }
   attribute :version,    Integer, default: 0, mapping: { type: 'integer' }
-  attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'text' }
+  attribute :role_name,  String, default: "ROLE_ALLOCATOR" , mapping: { type: 'keyword' }
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
   attribute :password,  String, mapping: { type: 'text' }
   attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
@@ -108,24 +108,24 @@ class Provider
   #   indexes :updated_at, type: 'date'
   # end
 
-   def as_indexed_json(options={})
-     {
-       "symbol" => uid.downcase,
-       "name" => name,
-       "description" => description,
-       "region" => region_name,
-       "country" => country_name,
-       "year" => year,
-       "logo_url" => logo_url,
-       "is_active" => is_active,
-       "contact_email" => contact_email,
-      #  "website" => website,
-      #  "phone" => phone,
-       "created" => created.iso8601,
-       "updated" => updated_at.iso8601 
+  #  def as_indexed_json(options={})
+  #    {
+  #      "symbol" => uid.downcase,
+  #      "name" => name,
+  #      "description" => description,
+  #      "region" => region_name,
+  #      "country" => country_name,
+  #      "year" => year,
+  #      "logo_url" => logo_url,
+  #      "is_active" => is_active,
+  #      "contact_email" => contact_email,
+  #     #  "website" => website,
+  #     #  "phone" => phone,
+  #      "created" => created.iso8601,
+  #      "updated" => updated_at.iso8601 
       
-      }
-   end
+  #     }
+  #  end
 
   def self.query query, options={}
    search(
@@ -142,7 +142,7 @@ class Provider
 
   def self.query_filter_by field, value
     page ||= 1
-    search(
+    query = search(
       {
         query: {
           bool: {
@@ -156,6 +156,7 @@ class Provider
         }
       }
     )
+    query.length > 0 ? query : ["RecordNotFound"] 
   end
   # #
   # cumulative count clients that have not been deleted
