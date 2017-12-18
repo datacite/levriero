@@ -6,8 +6,8 @@ FactoryBot.define do
 
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
-    symbol { provider.symbol + "." + Faker::Code.asin + Faker::Code.isbn }
-    name "My data center"
+    symbol { provider_id + "." + Faker::Code.asin + Faker::Code.isbn }
+    name { Faker::DragonBall.character }
     role_name "ROLE_DATACENTRE"
     provider_id  { provider.symbol.downcase }
     created { Faker::Time.between(DateTime.now - 10, DateTime.now) }
