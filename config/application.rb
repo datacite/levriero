@@ -28,10 +28,10 @@ if File.exist?(env_json_file)
 end
 
 # default values for some ENV variables
-ENV['APPLICATION'] ||= "elasticsearch-api"
+ENV['APPLICATION'] ||= "elastic-api"
 ENV['HOSTNAME'] ||= "levriero.local"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
-ENV['SITE_TITLE'] ||= "ElasticSearch supported API"
+ENV['SITE_TITLE'] ||= "DataCite's ElasticSearch supported API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['REDIS_URL'] ||= "redis://redis:6379/8"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
