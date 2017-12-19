@@ -1,7 +1,7 @@
 require 'rails_helper'
 require "cancan/matchers"
 
-describe User, type: :model do
+describe User, type: :model, :skip => true do
   let(:token) { User.generate_token }
   let(:user) { User.new(token) }
   let(:provider) { create(:provider) }
