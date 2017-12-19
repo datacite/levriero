@@ -65,7 +65,7 @@ namespace :elasticsearch do
     desc "Delete indexes"
     task :all => :environment do
       es_client = Elasticsearch::Client.new host: ENV['ES_HOST']
-      es_client.indices.delete index: ['providers', 'provider','provider_services','dois',]
+      es_client.indices.delete index: ['providers','clients']
     end
   end
 end
