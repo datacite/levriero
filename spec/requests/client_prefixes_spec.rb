@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Client Prefixes", type: :request   do
+RSpec.describe "Client Prefixes", type: :request, :skip => true   do
   let!(:client_prefixes)  { create_list(:client_prefix, 5) }
   let(:client_prefix) { client_prefixes.first }
   let(:bearer) { User.generate_token(role_id: "staff_admin") }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Prefixes", type: :request   do
+RSpec.describe "Prefixes", type: :request, :skip => true   do
   # initialize test data
   let!(:prefixes)  { create_list(:prefix, 10) }
   let(:prefix_id) { prefixes.first.prefix }

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe MediaController, type: :routing do
+RSpec.describe MediaController, type: :routing, :skip => true do
   describe "routing" do
 
     it "routes to #index" do

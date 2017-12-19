@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe DatasetsController, type: :routing do
+RSpec.describe DatasetsController, type: :routing, :skip => true do
   describe "routing" do
 
     it "routes to #index" do

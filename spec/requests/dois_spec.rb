@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "dois", type: :request do
+RSpec.describe "dois", type: :request, :skip => true do
   let(:doi) { create(:doi) }
   let(:client)  { create(:client) }
   let(:bearer) { User.generate_token(role_id: "staff_admin") }

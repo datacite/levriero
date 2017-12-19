@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Providers", elasticsearch: true, type: :request  do
+RSpec.describe "Providers", elasticsearch: true, type: :request, :skip => true  do
   # initialize test data
   let!(:providers)  { build_list(:provider, 10) }
   let!(:provider) { providers.first }
