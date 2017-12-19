@@ -3,7 +3,7 @@ RSpec.configure do |config|
   config.before :suite, elasticsearch: true do
     # Elasticsearch::Persistence.client = Elasticsearch::Client.new host: 'http://localhost:9200', tracer: true
     # Elasticsearch::Persistence.client = Elasticsearch::Client.new host: "elasticsearch-test:9250"
-    Elasticsearch::Persistence.client = Elasticsearch::Client.new host: "elasticsearch:9200"
+    Elasticsearch::Persistence.client = Elasticsearch::Client.new host: ENV['ES_HOST']
     sleep 5
   end
 #
@@ -45,7 +45,7 @@ end
 
 config.after :all, elasticsearch: true do
   # Maremma.delete("elasticsearch-test:9250/_all")
-  Maremma.delete("http://elasticsearch:9200/_all")
+  Maremma.delete("http://"+ENV['ES_HOST']+"/_all")
 end
 
 #
