@@ -158,6 +158,18 @@ class Provider
     )
     query.length > 0 ? query : ["RecordNotFound"] 
   end
+
+  # def self.query_filter_by field, value
+  #   page ||= 1
+  #   query = search(
+  #     {
+  #       query: {
+  #              term:  { field => value.downcase}
+  #         }
+  #       }
+  #   )
+  #   query.length > 0 ? query : ["RecordNotFound"] 
+  # end
   # #
   # cumulative count clients that have not been deleted
   # show all clients for admin

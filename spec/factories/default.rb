@@ -10,7 +10,7 @@ FactoryBot.define do
     name { Faker::DragonBall.character }
     role_name "ROLE_DATACENTRE"
     provider_id  { provider.symbol.downcase }
-    created { Faker::Time.between(DateTime.now - 10, DateTime.now) }
+    created { Faker::Time.between(DateTime.now - 2, DateTime.now) }
     
   end
 
@@ -66,7 +66,7 @@ FactoryBot.define do
     symbol { Faker::Code.asin + Faker::Code.asin }
     name { Faker::GameOfThrones.city }
     country_code { Faker::Address.country_code }
-    created { Faker::Time.between(DateTime.now - 10, DateTime.now) }
+    created { Faker::Time.between(DateTime.now - 2, DateTime.now) }
     
     # initialize_with { Provider.where(symbol: symbol).first_or_initialize }
   end
