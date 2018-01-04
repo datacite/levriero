@@ -9,6 +9,8 @@ class ClientsController < ApplicationController
 
   def index
 
+    puts ENV['ES_HOST']
+    puts "SOLD"
     collection = Client
     collection = filter_by_query params[:query], collection if params[:query].present?
 
