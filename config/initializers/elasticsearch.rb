@@ -17,6 +17,5 @@ else
       request: { timeout: 5 }
     }
   }
-  config.merge!(YAML.load_file("config/elasticsearch.yml").symbolize_keys)
-  Elasticsearch::Persistence.client = Elasticsearch::Client.new(config)
+  Elasticsearch::Persistence.client = Elasticsearch::Client.new host: ENV['ES_HOST'], log: true
 end
