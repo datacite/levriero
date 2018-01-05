@@ -65,7 +65,7 @@ RUN mkdir -p /home/app/webapp/tmp/pids && \
 WORKDIR /home/app/webapp
 RUN gem update --system && \
     gem install bundler && \
-    /sbin/setuser app bundle update
+    /sbin/setuser app bundle install --path vendor/bundle
 
 # Add Runit script for sidekiq workers
 RUN mkdir /etc/service/sidekiq
