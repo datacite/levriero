@@ -24,7 +24,7 @@ class Client
   attribute :domains,  String,  mapping: { type: 'text' }
   attribute :password,  String,  mapping: { type: 'text' }
   attribute :provider_id,  String,  mapping: { type: 'keyword' }
-  # attribute :provider_symbol,  String,  mapping: { type: 'text' }
+  attribute :provider_symbol,  String,  mapping: { type: 'text' }
   attribute :experiments,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
 

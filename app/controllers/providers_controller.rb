@@ -49,18 +49,17 @@ class ProvidersController < ApplicationController
            }
 
     render jsonapi: @providers, meta: meta, include: @include
-    # render jsonapi: @providers, meta: meta
   end
 
   def show
-    # meta = { providers: @provider.provider_count,
-    #          clients: @provider.client_count,
-    #          dois: @provider.cached_doi_count
-    #         }.compact
+    meta = { 
+            # providers: @provider.provider_count,
+             clients: @provider.client_count
+            #  dois: @provider.cached_doi_count
+            }.compact
     # meta = { clients: @provider.client_count }
 
-    # render jsonapi: @provider, meta: meta, include: @include
-    render jsonapi: @provider
+    render jsonapi: @provider, meta: meta, include: @include
   end
 
   # POST /providers

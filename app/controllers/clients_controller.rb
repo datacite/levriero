@@ -9,8 +9,6 @@ class ClientsController < ApplicationController
 
   def index
 
-    puts ENV['ES_HOST']
-    puts "SOLD"
     collection = Client
     collection = filter_by_query params[:query], collection if params[:query].present?
 
@@ -22,43 +20,6 @@ class ClientsController < ApplicationController
     # regions    = facet_by_region params, collection
     years      = facet_by_year params, collection
 
-    # # support nested routes
-    # if params[:provider_id].present?
-    #   provider = Provider.where('allocator.symbol = ?', params[:provider_id]).first
-    #   collection = provider.present? ? provider.clients : Client.none
-    # else
-    #   collection = Client
-    # end
-    #
-    # if params[:id].present?
-    #   collection = collection.where(symbol: params[:id])
-    # elsif params[:query].present?
-    #   collection = collection.query(params[:query])
-    # end
-    #
-    # # cache prefixes for faster queries
-    # if params[:prefix].present?
-    #   prefix = cached_prefix_response(params[:prefix])
-    #   collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
-    # end
-    #
-    # collection = collection.where('YEAR(datacentre.created) = ?', params[:year]) if params[:year].present?
-    #
-    # # calculate facet counts after filtering
-    #
-    # providers = collection.joins(:provider).select('allocator.symbol, allocator.name, count(allocator.id) as count').order('count DESC').group('allocator.id')
-    # # workaround, as selecting allocator.symbol as id doesn't work
-    # providers = providers.map { |p| { id: p.symbol, title: p.name, count: p.count } }
-    #
-    # if params[:year].present?
-    #   years = [{ id: params[:year],
-    #              title: params[:year],
-    #              count: collection.where('YEAR(datacentre.created) = ?', params[:year]).count }]
-    # else
-    #   years = collection.where.not(created: nil).order("YEAR(datacentre.created) DESC").group("YEAR(datacentre.created)").count
-    #   years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v } }
-    # end
-    #
     page = params[:page] || {}
     page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
     page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
@@ -71,34 +32,27 @@ class ClientsController < ApplicationController
     else "name"
     end
 
-
     # https://github.com/elastic/elasticsearch-rails/issues/338
     @clients = collection.all unless collection.respond_to?(:each_with_hit)
     @clients = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
 
-
-    
     meta = { total: total,
              total_pages: @clients.total_pages,
              page: page[:number].to_i,
             #  providers: providers
              years: years 
             }
-    #
+    
     render jsonapi: @clients, meta: meta #, include: @include
-    #
-
-    # meta = {
-    #          years: years
-    #        }
-
-    # render jsonapi: @clients, meta: meta
   end
 
   # GET /clients/1
   def show
-    meta = { dois: @client.cached_doi_count }
+    meta = { 
+      # dois: @client.cached_doi_count 
+    }
 
+    puts @include.inspect
     render jsonapi: @client, meta: meta, include: @include
   end
 
@@ -156,7 +110,7 @@ class ClientsController < ApplicationController
       @include = params[:include].split(",").map { |i| i.downcase.underscore }.join(",")
       @include = [@include]
     else
-      @include = ["provider", "repository"]
+      @include = ["provider_id", "repository"]
     end
   end
 
