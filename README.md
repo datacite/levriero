@@ -17,6 +17,16 @@ You can now point your browser to `http://localhost:8080` and use the applicatio
 
 ## Development
 
+One can generate a user with writting access from the rails console:
+
+```
+~/webapp# bin/rails c
+
+2.4.1 :001 > User.generate_token(exp: 365)
+
+```
+
+
 We use Rspec for unit and acceptance testing:
 
 ```
@@ -24,6 +34,7 @@ bundle exec rspec spec
 ```
 
 Follow along via [Github Issues](https://github.com/datacite/levriero/issues).
+
 
 ### Note on Patches/Pull Requests
 
