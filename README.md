@@ -21,11 +21,16 @@ One can generate a user with writting access from the rails console:
 
 ```
 ~/webapp# bin/rails c
-
 2.4.1 :001 > User.generate_token(exp: 365)
 
 ```
 
+One can also prepoluate the database with:
+
+```
+bundle exec rake elasticsearch:start_dummy_index:all 
+
+```
 
 We use Rspec for unit and acceptance testing:
 
