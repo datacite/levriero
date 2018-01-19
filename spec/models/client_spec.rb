@@ -1,4 +1,6 @@
 require 'rails_helper'
+WebMock.enable!
+include WebMock::API
 
 RSpec.describe Client, elasticsearch: true, type: :model do
   let!(:provider)    { build(:provider) }  

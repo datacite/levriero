@@ -55,7 +55,7 @@ class ProvidersController < ApplicationController
     meta = { 
             # providers: @provider.provider_count,
              clients: @provider.client_count
-            #  dois: @provider.cached_doi_count
+            #  dois: dois_count("tib.tib")
             }.compact
     # meta = { clients: @provider.client_count }
 

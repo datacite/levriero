@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
 
   include Facetable
+  include Delegatable
 
   before_action :set_client, only: [:show, :update, :destroy, :getpassword]
   before_action :authenticate_user_from_token!, :sanitize_page_params
@@ -24,6 +25,7 @@ class ClientsController < ApplicationController
     page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
     page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
     total = collection.count
+
     
     order = case params[:sort]
     when "-name" then "-name"
@@ -39,7 +41,7 @@ class ClientsController < ApplicationController
     meta = { total: total,
              total_pages: @clients.total_pages,
              page: page[:number].to_i,
-            #  providers: providers
+            #  providers: providers,
              years: years 
             }
     
@@ -49,10 +51,9 @@ class ClientsController < ApplicationController
   # GET /clients/1
   def show
     meta = { 
-      # dois: @client.cached_doi_count 
+      dois: dois_count("tib.tib")
     }
 
-    puts @include.inspect
     render jsonapi: @client, meta: meta, include: @include
   end
 

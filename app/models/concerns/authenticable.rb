@@ -52,7 +52,7 @@ module Authenticable
         client_id: attributes.fetch(:client_id, nil),
         role_id: attributes.fetch(:role_id, "staff_admin"),
         iat: Time.now.to_i,
-        exp: Time.now.to_i + attributes.fetch(:exp, 30)
+        exp: Time.now.to_i + attributes.fetch(:exp, 1000)
       }.compact
 
       encode_token(payload)
