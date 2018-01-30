@@ -5,7 +5,7 @@ services:
     env_file: .env
     image: datacite/levriero
     ports:
-      - "8065:80"
+      - "8070:80"
     volumes:
       - ./app:/home/app/webapp/app
       - ./config:/home/app/webapp/config
@@ -21,7 +21,7 @@ services:
   redis:
     image: redis
     ports:
-      - "6379:6379"
+      - "6380:6379"
     networks:
       - public
   elasticsearch:
@@ -52,5 +52,5 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.0.40.0/24
-        gateway: 10.0.40.1
+      - subnet: 10.0.70.0/24
+        gateway: 10.0.70.1
