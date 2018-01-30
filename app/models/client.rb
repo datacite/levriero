@@ -3,6 +3,7 @@ class Client
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
   include Cacheable
+  include Indexable
 
   mapping _parent: { type: 'providers' } do
   end
@@ -47,7 +48,7 @@ class Client
   # delegate :symbol, to: :provider, prefix: true
   #
   validates :symbol, :name,  :contact_email, presence: :true
-  # validates :symbol, uniqueness: { message: "This Client ID has already been taken"}
+  validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   # validates_numericality_of :doi_quota_allowed, :doi_quota_used
   # validates_numericality_of :version, if: :version?

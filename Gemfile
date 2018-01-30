@@ -4,6 +4,7 @@ gem 'rails', '~> 5.1.1'
 gem 'mysql2'
 gem 'dotenv'
 gem 'multi_json'
+gem 'activemodel'
 gem 'json', '~> 1.8', '>= 1.8.5'
 gem 'oj', '~> 2.18', '>= 2.18.1'
 gem 'equivalent-xml', '~> 0.6.0'
@@ -35,6 +36,7 @@ gem 'bergamasco', '~> 0.3.10'
 gem 'pwqgen'
 gem 'base32-crockford-checksum', '~> 0.2.3'
 gem 'faraday_middleware-aws-signers-v4'
+gem 'elasticsearch-dsl'
 
 
 group :development, :test do

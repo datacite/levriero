@@ -4,13 +4,13 @@ class Provider
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
-  
+  include ActiveModel::Validations
 
   # # include helper module for caching infrequently changing resources
   # include Cacheable
   #
   # # include helper module for managing associated users
-  # include Userable
+  include Indexable
 
   attribute :symbol,  String,  mapping: { type: 'keyword' }
   attribute :region,  String,  mapping: { type: 'keyword' }
@@ -38,7 +38,7 @@ class Provider
   # attr_readonly :uid, :symbol
 
   validates :symbol, :name, :contact_name, :contact_email, presence: :true
-  # validates :symbol, unique: true # {message: "This Client ID has already been taken"}
+  validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   # validates_uniqueness_of :symbol, message: "This name has already been taken"
   # validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"

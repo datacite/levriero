@@ -2,14 +2,16 @@ module Indexable
   extend ActiveSupport::Concern
 
   included do
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
 
-    after_save { IndexerJob.perform_later(self, operation: "index") }
-    after_destroy { IndexerJob.perform_later(self, operation: "delete") }
   end
 
   module ClassMethods
-   
+    def create_index(options={})
+      client     = self.gateway.client
+      index_name = self.index_name
+
+      client.indices.delete index: index_name rescue nil if options[:force]
+      client.indices.create index: index_name
+    end
   end
 end
