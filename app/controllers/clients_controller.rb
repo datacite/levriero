@@ -51,7 +51,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   def show
     meta = { 
-      dois: dois_count("tib.tib")
+      dois: dois_count(@client.symbol)
     }
 
     render jsonapi: @client, meta: meta, include: @include
@@ -118,10 +118,11 @@ class ClientsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     # params[:id] = params[:id][/.+?(?=\/)/]
-    @client = Client.find_each.select { |item| item.symbol.casecmp params[:id] }.first
-    fail Elasticsearch::Persistence::RecordNotFound unless @client.present?
+  
     # @client = Client.where(symbol: params[:id]).first
     # fail ActiveRecord::RecordNotFound unless @client.present?
+    @client = Client.query_filter_by(:symbol, params[:id]).first
+    fail Elasticsearch::Persistence::RecordNotFound unless @client.present?
   end
 
   private

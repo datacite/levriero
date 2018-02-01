@@ -1,16 +1,18 @@
 class ProvidersController < ApplicationController
 
   include Facetable
+  include Delegatable
+
 
   before_action :set_provider, only: [:show, :update, :destroy, :getpassword]
   before_action :set_include, :authenticate_user_from_token!, :sanitize_page_params
   load_and_authorize_resource :except => [:index, :show]
 
   def index
-    collection = Client
+    collection = Provider
 
     collection = filter_by_query params[:query], collection if params[:query].present?
-    collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
+    # collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
     # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
@@ -53,11 +55,9 @@ class ProvidersController < ApplicationController
 
   def show
     meta = { 
-            # providers: @provider.provider_count,
-             clients: @provider.client_count
-            #  dois: dois_count("tib.tib")
+             clients: @provider.client_count,
+             dois: dois_count(@provider.symbol)
             }.compact
-    # meta = { clients: @provider.client_count }
 
     render jsonapi: @provider, meta: meta, include: @include
   end
@@ -114,7 +114,6 @@ class ProvidersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    # @provider = Provider.find_each.select { |item| item.symbol.casecmp params[:id] }.first
     @provider = Provider.query_filter_by(:symbol, params[:id]).first
     fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
   end

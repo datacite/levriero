@@ -1,5 +1,5 @@
 class ClientSerializer < ActiveModel::Serializer
-  cache key: 'client'
+  # cache key: 'client'
 
   attributes :name, :symbol, :year, :contact_name, :contact_email, :domains, :is_active, :password, :created, :updated
 

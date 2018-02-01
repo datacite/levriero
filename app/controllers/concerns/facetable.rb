@@ -4,7 +4,7 @@ module Facetable
   included do
 
     def filter_by_client client_id, collection
-      collection = collection.respond_to?(:search) ? collection.query_filter_by(:client_id, client_id) : collection.select {|item| item.client_id == client_id}
+        collection = collection.respond_to?(:search) ? collection.query_filter_by(:client_id, client_id) : collection.select {|item| item.client_id == client_id}
     end
 
     def filter_by_provider provider_id, collection
@@ -16,8 +16,8 @@ module Facetable
     end
 
     def filter_by_symbol symbol, collection
-      collection =collection.select {|item| item.symbol == symbol} unless collection.respond_to?(:search)
-      collection = collection.query_filter_by :symbol, symbol if collection.respond_to?(:search)
+        collection =collection.select {|item| item.symbol == symbol} unless collection.respond_to?(:search)
+        collection = collection.query_filter_by :symbol, symbol if collection.respond_to?(:search)
     end
 
     def filter_by_query query, collection

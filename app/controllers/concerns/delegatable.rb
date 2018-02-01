@@ -4,15 +4,15 @@ require 'json'
 
   included do
 
-    def dois_count uid
-
-      if self.is_a?(ClientsController)
-        response = Maremma.get(ENV['API_URL']+"clients/"+uid)  
-      elsif  self.is_a?(ProvidersController) 
-        response = Maremma.get(ENV['API_URL']+"providers/"+uid)  
+    def dois_count uid, **options
+      Rails.cache.fetch("dois_count/#{uid}", expires_in: 6.hours, force: options[:force]) do
+        if self.is_a?(ClientsController)
+          response = Maremma.get(ENV['API_URL']+"clients/"+uid)  
+        elsif  self.is_a?(ProvidersController) 
+          response = Maremma.get(ENV['API_URL']+"providers/"+uid)  
+        end
+        response.body["meta"]["dois"]
       end
-
-      response.body["meta"]["dois"]
     end
 
 
