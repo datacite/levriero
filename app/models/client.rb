@@ -27,6 +27,7 @@ class Client
   attribute :provider_id,  String,  mapping: { type: 'keyword' }
   attribute :provider_symbol,  String,  mapping: { type: 'text' }
   attribute :experiments,  String,  mapping: { type: 'text' }
+  attribute :url,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
 
 
@@ -150,12 +151,6 @@ class Client
     updated_at
   end
 
-  # def provider_id=(value)
-  #   r = cached_provider_response(value)
-  #   return nil unless r.present?
-  #
-  #   update provider_id: r.id
-  # end
 
   def repository_id=(value)
     write_attribute(:re3data, value)

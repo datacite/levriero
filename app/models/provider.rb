@@ -12,7 +12,7 @@ class Provider
   # # include helper module for managing associated users
   include Indexable
 
-  attribute :symbol,  String,  mapping: { type: 'keyword' }
+  attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword" }
   attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
