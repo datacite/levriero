@@ -20,8 +20,8 @@ namespace :elasticsearch do
   namespace :create_index do
     desc "Create indexes"
     task :all => :environment do
-      Provider.create_index force: true
-      Client.create_index force: true
+      Provider.recreate_index force: true
+      Client.recreate_index force: true
   
 
     end

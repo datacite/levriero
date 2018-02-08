@@ -7,7 +7,7 @@ module Indexable
   end
 
   module ClassMethods
-    def create_index(options={})
+    def recreate_index(options={})
       client     = self.gateway.client
       index_name = self.index_name
 
