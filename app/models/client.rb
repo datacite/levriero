@@ -31,65 +31,14 @@ class Client
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
 
 
-  # # include helper module for caching infrequently changing resources
-  # include Cacheable
-  #
-  # # include helper module for managing associated users
-  # include Userable
-  #
-  # # define table and attribute names
-  # # uid is used as unique identifier, mapped to id in serializer
-  # self.table_name = "datacentre"
-  #
-  # alias_attribute :uid, :symbol
-  # alias_attribute :created_at, :created
-  # alias_attribute :updated_at, :updated
-  # alias_attribute :updated_at, :updated
-  # attr_readonly :uid, :symbol
-  # delegate :symbol, to: :provider, prefix: true
-  #
   validates :symbol, :name,  :contact_email, presence: :true
   validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
-  # validates_numericality_of :doi_quota_allowed, :doi_quota_used
-  # validates_numericality_of :version, if: :version?
-  # validates_inclusion_of :role_name, :in => %w( ROLE_DATACENTRE ), :message => "Role %s is not included in the list"
-  # validate :check_id, :on => :create
-  # validate :freeze_symbol, :on => :update
-  # belongs_to :provider, foreign_key: :allocator
-  # has_many :dois, foreign_key: :datacentre
-  # has_many :client_prefixes, foreign_key: :datacentre, dependent: :destroy
-  # has_many :prefixes, through: :client_prefixes
-  # has_many :provider_prefixes, through: :client_prefixes
-  #
+
   before_save :set_defaults
   before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
-  # before_create { self.created = Time.zone.now.utc.iso8601 }
-  # before_save { self.updated = Time.zone.now.utc.iso8601 }
-  #
-  # default_scope { where(deleted_at: nil) }
-  #
-  # scope :query, ->(query) { where("datacentre.symbol like ? OR datacentre.name like ?", "%#{query}%", "%#{query}%") }
 
   attr_accessor :target_id
-
-
-  # def as_indexed_json(options={})
-  #   {
-  #     "symbol" => uid.downcase,
-  #     "name" => name,
-  #     "description" => description,
-  #     "region" => region_name,
-  #     "country" => country_name,
-  #     "year" => created.to_datetime.year,
-  #     "logo_url" => logo_url,
-  #     "is_active" => is_active,
-  #     "contact_email" => contact_email,
-  #    #  "website" => website,
-  #    #  "phone" => phone,
-  #     "created" => created.iso8601,
-  #     "updated" => updated_at.iso8601 }
-  # end
 
   def self.query query, options={}
    search(
@@ -141,11 +90,6 @@ class Client
     query.first
   end
 
-  # # workaround for non-standard database column names and association
-
-  # def created=(value)
-  #   created.to_datetime.iso8601
-  # end
 
   def updated
     updated_at
