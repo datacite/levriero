@@ -4,7 +4,7 @@ class Provider
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
-  include ActiveModel::Validations
+
 
   # # include helper module for caching infrequently changing resources
   # include Cacheable
@@ -156,7 +156,27 @@ class Provider
         }
       }
     )
-    query.length > 0 ? query : ["RecordNotFound"] 
+  end
+
+  def self.find_id symbol
+    page ||= 1
+    query = search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {}}
+              ],
+            filter: [
+              { term:  { symbol: symbol.downcase}}
+            ]
+          }
+        }
+      }
+    )
+    puts query.results
+    puts "cdcd"
+    query.first
   end
 
   # def self.query_filter_by field, value

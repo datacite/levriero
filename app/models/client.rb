@@ -119,7 +119,25 @@ class Client
         }
       }
     )
-    query.length > 0 ? query : ["RecordNotFound"]
+  end
+
+  def self.find_id symbol
+    page ||= 1
+    query = search(
+      {
+        query: {
+          bool: {
+            must: [
+              { match_all: {}}
+              ],
+            filter: [
+              { term:  { symbol: symbol.downcase}}
+            ]
+          }
+        }
+      }
+    )
+    query.first
   end
 
   # # workaround for non-standard database column names and association

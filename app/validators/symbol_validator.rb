@@ -6,7 +6,7 @@ class SymbolValidator < ActiveModel::EachValidator
 
       result = Provider.query_filter_by(attribute, value)
   
-      unless  result.first.respond_to? :downcase 
+      unless  result.length == 0 
         record.errors.add(attribute, "This ID has already been taken") 
       end
     end

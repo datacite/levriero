@@ -115,7 +115,7 @@ class ProvidersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
     @provider = Provider.query_filter_by(:symbol, params[:id]).first
-    fail Elasticsearch::Persistence::RecordNotFound unless @provider.present?
+    fail ActiveRecord::RecordNotFound unless @provider.present?
   end
 
   private
