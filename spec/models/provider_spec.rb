@@ -107,7 +107,7 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
 
       it "returns correct attributes" do
         prov = Provider.query_filter_by(:symbol, provider.symbol).count
-        expect(prov).to eq(2)
+        expect(prov).to eq(1)
       end
     end
   end
@@ -141,8 +141,8 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
       end
 
       it "returns correct response" do
-        single = Provider.query_filter_by(:symbol, provider.symbol).first
-        expect(single).to eq("RecordNotFound")
+        single = Provider.query_filter_by(:symbol, provider.symbol)
+        expect(single.length).to eq(0)
       end
     end
 

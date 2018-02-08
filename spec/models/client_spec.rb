@@ -49,127 +49,126 @@ RSpec.describe Client, elasticsearch: true, type: :model do
     end
   end
 
-  # describe "Show Client" do
-  #   context "when the client exist" do 
-  #     before do 
-  #       Provider.create(provider)                 
-  #       Client.create(client) 
-  #       sleep 2
-  #     end
+  describe "Show Client" do
+    context "when the client exist" do 
+      before do 
+        Provider.create(provider)                 
+        Client.create(client) 
+        sleep 2
+      end
 
-  #     it "returns correct attributes" do
+      it "returns correct attributes" do
 
-  #       single = Client.query_filter_by(:symbol, client.symbol).first
-  #       # puts single.inspect
-  #       expect(single.name).to eq(client.name)
-  #       expect(single.symbol).to eq(client.symbol)
-  #       expect(single.role_name).to eq(client.role_name)
-  #       expect(single.created).to be_truthy
-  #       expect(single.updated).to be_truthy
-  #       # expect(single.region).to be_truthy
-  #       expect(single.is_active).to be_truthy
-  #       expect(single.doi_quota_allowed).to be_truthy
-  #       expect(single.doi_quota_used).to be_truthy
-  #     end
-  #   end
-  #   context "when the client do not exist" do 
-  #     before do 
-  #       clients.each { |item| Client.create(item) }
-  #       sleep 2
-  #     end
+        single = Client.query_filter_by(:symbol, client.symbol).first
+        expect(single.name).to eq(client.name)
+        expect(single.symbol).to eq(client.symbol)
+        expect(single.role_name).to eq(client.role_name)
+        expect(single.created).to be_truthy
+        expect(single.updated).to be_truthy
+        # expect(single.region).to be_truthy
+        expect(single.is_active).to be_truthy
+        expect(single.doi_quota_allowed).to be_truthy
+        expect(single.doi_quota_used).to be_truthy
+      end
+    end
+    context "when the client do not exist" do 
+      before do 
+        clients.each { |item| Client.create(item) }
+        sleep 2
+      end
 
-  #     it "returns no attributes" do
-  #       single = Client.query_filter_by(:symbol, client.symbol).first
-  #       expect(single.name).not_to eq(provider_last.name)
-  #       expect(single.symbol).not_to eq(provider_last.symbol)
-  #     end
-  #   end
-  # end
+      it "returns no attributes" do
+        single = Client.query_filter_by(:symbol, client.symbol).first
+        expect(single.name).not_to eq(client_last.name)
+        expect(single.symbol).not_to eq(client_last.symbol)
+      end
+    end
+  end
 
-  # describe "Create Client" do
-  #   context "when the client do not exist" do 
-  #     before do 
-  #       Provider.create(provider)                 
-  #       Client.create(client) 
-  #       sleep 2
-  #     end
+  describe "Create Client" do
+    context "when the client do not exist" do 
+      before do 
+        Provider.create(provider)                 
+        Client.create(client) 
+        sleep 2
+      end
 
-  #     it "returns correct attributes" do
-  #       single = Client.query_filter_by(:symbol, client.symbol).first
-  #       expect(single.name).to eq(client.name)
-  #       expect(single.symbol).to eq(client.symbol)
-  #       expect(single.role_name).to eq(client.role_name)
-  #       expect(single.created).to be_truthy
-  #       expect(single.updated).to be_truthy
-  #       # expect(single.region).to be_truthy
-  #       expect(single.is_active).to be_truthy
-  #       expect(single.doi_quota_allowed).to be_truthy
-  #       expect(single.doi_quota_used).to be_truthy
-  #     end
-  #   end
-  #   context "when the client  exist" do 
-  #     before do 
-  #       Provider.create(provider)                 
-  #       Client.create(client) 
-  #       sleep 2
-  #       Client.create(client) 
-  #       sleep 2
-  #     end
+      it "returns correct attributes" do
+        single = Client.query_filter_by(:symbol, client.symbol).first
+        expect(single.name).to eq(client.name)
+        expect(single.symbol).to eq(client.symbol)
+        expect(single.role_name).to eq(client.role_name)
+        expect(single.created).to be_truthy
+        expect(single.updated).to be_truthy
+        # expect(single.region).to be_truthy
+        expect(single.is_active).to be_truthy
+        expect(single.doi_quota_allowed).to be_truthy
+        expect(single.doi_quota_used).to be_truthy
+      end
+    end
+    context "when the client  exist" do 
+      before do 
+        Provider.create(provider)                 
+        Client.create(client) 
+        sleep 2
+        Client.create(client) 
+        sleep 2
+      end
 
-  #     it "returns correct attributes" do
-  #       prov = Client.query_filter_by(:symbol, client.symbol).count
-  #       expect(prov).to eq(2)
-  #     end
-  #   end
-  # end
+      it "returns correct attributes" do
+        prov = Client.query_filter_by(:symbol, client.symbol).count
+        expect(prov).to eq(2)
+      end
+    end
+  end
 
-  # describe "Update Client" do
-  #   context "when parameter are correct" do 
-  #     before do 
-  #       pv = Client.create(client) 
-  #       sleep 2
-  #       pv.update_attributes name: "Logan"
-  #       sleep 2      
-  #     end
+  describe "Update Client" do
+    context "when parameter are correct" do 
+      before do 
+        pv = Client.create(client) 
+        sleep 2
+        pv.update_attributes name: "Logan"
+        sleep 2      
+      end
 
-  #     it "returns correct attributes" do
-  #       single = Client.query_filter_by(:symbol, client.symbol).first
-  #       expect(single.name).not_to eq(client.name)
-  #       expect(single.symbol).to eq(client.symbol)
-  #       expect(single.role_name).to eq(client.role_name)
-  #       expect(single.created).to be_truthy
-  #     end
-  #   end
-  # end
+      it "returns correct attributes" do
+        single = Client.query_filter_by(:symbol, client.symbol).first
+        expect(single.name).not_to eq(client.name)
+        expect(single.symbol).to eq(client.symbol)
+        expect(single.role_name).to eq(client.role_name)
+        expect(single.created).to be_truthy
+      end
+    end
+  end
 
-  # describe "Delete Client" do
-  #   context "when the client exist" do 
-  #     before do 
-  #       Provider.create(provider)                 
-  #       pv = Client.create(client) 
-  #       sleep 2 
-  #       pv.destroy
-  #       sleep 2
-  #     end
+  describe "Delete Client" do
+    context "when the client exist" do 
+      before do 
+        Provider.create(provider)                 
+        pv = Client.create(client) 
+        sleep 2 
+        pv.destroy
+        sleep 2
+      end
 
-  #     it "returns correct response" do
-  #       single = Client.query_filter_by(:symbol, client.symbol).first
-  #       expect(single.respond_to?(:name)).to be false
-  #     end
-  #   end
+      it "returns correct response" do
+        single = Client.query_filter_by(:symbol, client.symbol).first
+        expect(single.respond_to?(:name)).to be false
+      end
+    end
 
-  #   context "when the client do not exist" do 
-  #     before do 
-  #       Provider.create(provider)                 
-  #       Client.create(client) 
-  #       sleep 2 
-  #     end
+    context "when the client do not exist" do 
+      before do 
+        Provider.create(provider)                 
+        Client.create(client) 
+        sleep 2 
+      end
 
-  #     it "returns correct attributes" do
+      it "returns correct attributes" do
 
-  #     end
-  #   end
-  # end
+      end
+    end
+  end
 
   # describe "Query Client" do
   #   context "when the client exist" do 

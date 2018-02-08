@@ -7,7 +7,8 @@ RSpec.configure do |config|
   end
 
   config.before :all, elasticsearch: true do
-
+    Provider.recreate_index
+    Client.recreate_index
   end
 
   config.after :all, elasticsearch: true do

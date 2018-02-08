@@ -6,7 +6,7 @@ FactoryBot.define do
 
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
-    symbol { provider_id + "." + Faker::Code.asin + Faker::Code.isbn }
+    symbol { provider_id + "." + Faker::Code.asin + Faker::Number.unique.number(10) }
     name { Faker::DragonBall.character }
     role_name "ROLE_DATACENTRE"
     provider_id  { provider.symbol.downcase }
