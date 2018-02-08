@@ -8,7 +8,7 @@ class Client
   mapping _parent: { type: 'providers' } do
   end
 
-  attribute :symbol,  String,  mapping: { type: 'keyword' }
+  attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword" }
   attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :created,  Date,  mapping: { type: 'date' }
@@ -141,9 +141,6 @@ class Client
   end
 
   # # workaround for non-standard database column names and association
-  # def provider_id
-  #   provider_symbol.downcase
-  # end
 
   # def created=(value)
   #   created.to_datetime.iso8601

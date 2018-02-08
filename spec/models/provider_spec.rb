@@ -53,7 +53,7 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
 
         single = Provider.query_filter_by(:symbol, provider.symbol).first
         expect(single.name).to eq(provider.name)
-        expect(single.symbol).to eq(provider.symbol)
+        expect(single.symbol).to match(%r{#{provider.symbol}}i)
         expect(single.role_name).to eq(provider.role_name)
         expect(single.created).to be_truthy
         expect(single.updated).to be_truthy
@@ -87,7 +87,7 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
       it "returns correct attributes" do
         single = Provider.query_filter_by(:symbol, provider.symbol).first
         expect(single.name).to eq(provider.name)
-        expect(single.symbol).to eq(provider.symbol)
+        expect(single.symbol).to match(%r{#{provider.symbol}}i)
         expect(single.role_name).to eq(provider.role_name)
         expect(single.created).to be_truthy
         expect(single.updated).to be_truthy

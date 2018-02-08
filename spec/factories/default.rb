@@ -6,8 +6,8 @@ FactoryBot.define do
 
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
-    symbol { provider_id + "." + Faker::Code.asin + Faker::Number.unique.number(10) }
-    name { Faker::DragonBall.character }
+    symbol { provider_id + "." + Faker::Lorem.unique.characters(10)  }
+    name { Faker::GameOfThrones.city  }
     role_name "ROLE_DATACENTRE"
     provider_id  { provider.symbol.downcase }
     created { Faker::Time.between(DateTime.now - 2, DateTime.now) }
@@ -63,7 +63,7 @@ FactoryBot.define do
   factory :provider do
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
-    symbol { Faker::Code.asin + Faker::Code.asin }
+    symbol { Faker::Lorem.unique.characters(10) }
     name { Faker::GameOfThrones.city }
     country_code { Faker::Address.country_code }
     created { Faker::Time.between(DateTime.now - 2, DateTime.now) }

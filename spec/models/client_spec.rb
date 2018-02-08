@@ -52,7 +52,8 @@ RSpec.describe Client, elasticsearch: true, type: :model do
   describe "Show Client" do
     context "when the client exist" do 
       before do 
-        Provider.create(provider)                 
+        Provider.create(provider)         
+        sleep 2        
         Client.create(client) 
         sleep 2
       end
@@ -116,8 +117,9 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct attributes" do
-        prov = Client.query_filter_by(:symbol, client.symbol).count
-        expect(prov).to eq(2)
+        prov = Client.query_filter_by(:symbol, client.symbol)
+        puts prov
+        expect(prov.length).to eq(1)
       end
     end
   end
