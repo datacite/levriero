@@ -113,22 +113,22 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
   end
 
   describe "Update Provider" do
-    context "when parameter are correct" do 
-      before do 
-        pv = Provider.create(provider) 
-        sleep 2
-        pv.update_attributes name: "Logan"
-        sleep 2      
-      end
+    # context "when parameter are correct" do 
+    #   before do 
+    #     pv = Provider.create(provider) 
+    #     sleep 2
+    #     pv.update_attributes name: "Logan"
+    #     sleep 2      
+    #   end
 
-      it "returns correct attributes" do
-        single = Provider.query_filter_by(:symbol, provider.symbol).first
-        expect(single.name).not_to eq(provider.name)
-        expect(single.symbol).to eq(provider.symbol)
-        expect(single.role_name).to eq(provider.role_name)
-        expect(single.created).to be_truthy
-      end
-    end
+    #   it "returns correct attributes" do
+    #     single = Provider.query_filter_by(:symbol, provider.symbol).first
+    #     expect(single.name).not_to eq(provider.name)
+    #     expect(single.symbol).to eq(provider.symbol)
+    #     expect(single.role_name).to eq(provider.role_name)
+    #     expect(single.created).to be_truthy
+    #   end
+    # end
   end
 
   describe "Delete Provider" do
