@@ -61,7 +61,7 @@ class Provider
      {
        query: {
          query_string: {
-           query: query,
+           query: query+"*",
            fields: ['symbol^10', 'name^10', 'contact_email', 'region']
          }
        }

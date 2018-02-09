@@ -74,7 +74,7 @@ RSpec.describe Client, elasticsearch: true, type: :model do
     # end
     context "when the client do not exist" do 
       before do 
-        clients.each { |item| Client.create(item) }
+        Client.create(client)
         sleep 2
       end
 
@@ -89,7 +89,7 @@ RSpec.describe Client, elasticsearch: true, type: :model do
   describe "Create Client" do
     context "when the client do not exist" do 
       before do 
-        Provider.create(provider)                 
+        Provider.create(provider)    
         Client.create(client) 
         sleep 2
       end
