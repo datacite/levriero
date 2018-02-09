@@ -88,25 +88,9 @@ class Provider
     )
   end
 
-  def self.find_id symbol
-    page ||= 1
-    query = search(
-      {
-        query: {
-          bool: {
-            must: [
-              { match_all: {}}
-              ],
-            filter: [
-              { term:  { symbol: symbol.downcase}}
-            ]
-          }
-        }
-      }
-    )
-    puts query.results
-    puts "cdcd"
-    query.first
+  def self.find_by_id symbol
+    providers = Provider.find_each.select { |provider| provider.symbol === symbol }
+    providers.first
   end
 
   # show all clients for admin

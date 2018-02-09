@@ -55,6 +55,7 @@ class Client
 
   def self.query_filter_by field, value
     page ||= 1    
+    value.respond_to?(:to_str) ? value.downcase! : value
     query = search(
       {
         query: {
@@ -63,7 +64,7 @@ class Client
               { match_all: {}}
               ],
             filter: [
-              { term:  { field => value.downcase}}
+              { term:  { field => value}}
             ]
           }
         }
@@ -71,23 +72,9 @@ class Client
     )
   end
 
-  def self.find_id symbol
-    page ||= 1
-    query = search(
-      {
-        query: {
-          bool: {
-            must: [
-              { match_all: {}}
-              ],
-            filter: [
-              { term:  { symbol: symbol.downcase}}
-            ]
-          }
-        }
-      }
-    )
-    query.first
+  def self.find_by_id symbol
+    clients = Client.find_each.select { |client| client.symbol === symbol }
+    clients.first
   end
 
 

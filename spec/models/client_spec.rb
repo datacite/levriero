@@ -25,16 +25,14 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct attributes", :skip => true do
-        # puts Client.all
-        single = Client.query_filter_by(:symbol, client.symbol).first
-        # puts single.inspect
-        # puts client.symbol.downcase
+        single = Client.find_by_id client.symbol
         expect(single.name).to eq(client.name)
         expect(single.role_name).to eq(client.role_name)
       end
 
       it "returns correct number of clients" do
-        single = Client.query_filter_by(:symbol, client.symbol).first
+        # single = Client.query_filter_by(:symbol, client.symbol).first
+        single = Client.find_by_id client.symbol
         # client_count = single.doi_count
         # expect(doi_count.first[:count]).to eq(clients.length)
       end
@@ -50,28 +48,28 @@ RSpec.describe Client, elasticsearch: true, type: :model do
   end
 
   describe "Show Client" do
-    # context "when the client exist" do 
-    #   before do 
-    #     Provider.create(provider)         
-    #     sleep 2        
-    #     Client.create(client) 
-    #     sleep 2
-    #   end
+    context "when the client exist" do 
+      before do 
+        Provider.create(provider)         
+        sleep 2        
+        Client.create(client) 
+        sleep 2
+      end
 
-    #   it "returns correct attributes" do
+      it "returns correct attributes" do
 
-    #     single = Client.query_filter_by(:symbol, client.symbol).first
-    #     expect(single.name).to eq(client.name)
-    #     expect(single.symbol).to eq(client.symbol)
-    #     expect(single.role_name).to eq(client.role_name)
-    #     expect(single.created).to be_truthy
-    #     expect(single.updated).to be_truthy
-    #     # expect(single.region).to be_truthy
-    #     expect(single.is_active).to be_truthy
-    #     expect(single.doi_quota_allowed).to be_truthy
-    #     expect(single.doi_quota_used).to be_truthy
-    #   end
-    # end
+        single = Client.find_by_id client.symbol
+        expect(single.name).to eq(client.name)
+        expect(single.symbol).to eq(client.symbol)
+        expect(single.role_name).to eq(client.role_name)
+        expect(single.created).to be_truthy
+        expect(single.updated).to be_truthy
+        # expect(single.region).to be_truthy
+        expect(single.is_active).to be_truthy
+        expect(single.doi_quota_allowed).to be_truthy
+        expect(single.doi_quota_used).to be_truthy
+      end
+    end
     context "when the client do not exist" do 
       before do 
         Client.create(client)
@@ -79,7 +77,7 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns no attributes" do
-        single = Client.query_filter_by(:symbol, client.symbol).first
+        single = Client.find_by_id client.symbol
         expect(single.name).not_to eq(client_last.name)
         expect(single.symbol).not_to eq(client_last.symbol)
       end
@@ -95,7 +93,8 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct attributes" do
-        single = Client.query_filter_by(:symbol, client.symbol).first
+        # single = Client.query_filter_by(:symbol, client.symbol).first
+        single = Client.find_by_id client.symbol
         expect(single.name).to eq(client.name)
         expect(single.symbol).to eq(client.symbol)
         expect(single.role_name).to eq(client.role_name)
@@ -117,8 +116,7 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct attributes" do
-        prov = Client.query_filter_by(:symbol, client.symbol)
-        puts prov
+        prov = Client.find_each.select { |record| record.symbol === client.symbol }
         expect(prov.length).to eq(1)
       end
     end
@@ -134,11 +132,12 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct attributes" do
-        single = Client.query_filter_by(:symbol, client.symbol).first
-        expect(single.name).not_to eq(client.name)
-        expect(single.symbol).to eq(client.symbol)
-        expect(single.role_name).to eq(client.role_name)
-        expect(single.created).to be_truthy
+        # single = Client.query_filter_by(:symbol, client.symbol).first
+        # single = Client.find_by_id client.symbol
+        # expect(single.name).not_to eq(client.name)
+        # expect(single.symbol).to eq(client.symbol)
+        # expect(single.role_name).to eq(client.role_name)
+        # expect(single.created).to be_truthy
       end
     end
   end
@@ -154,7 +153,8 @@ RSpec.describe Client, elasticsearch: true, type: :model do
       end
 
       it "returns correct response" do
-        single = Client.query_filter_by(:symbol, client.symbol).first
+        # single = Client.query_filter_by(:symbol, client.symbol).first
+        single = Client.find_by_id client.symbol
         expect(single.respond_to?(:name)).to be false
       end
     end
