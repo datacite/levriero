@@ -51,9 +51,7 @@ module Facetable
 
     def facet_by_year params, collection
       if params[:year].present?
-        years = [{ id: params[:year],
-                   title: params[:year],
-                   count: collection.group_by{|record| record[:year]}.map{ |k,v| { id: k.to_s, title: k.to_s, count: v.count } }}]
+        years = collection.group_by{|record| record[:year]}.map{ |k,v| { id: k.to_s, title: k.to_s, count: v.count }}
       else
         # years = collection.where.not(created: nil).order("YEAR(allocator.created) DESC").group("YEAR(allocator.created)").count
         years = collection.group_by{|record| record[:year]}
