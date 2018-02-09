@@ -11,7 +11,7 @@ require 'json'
         elsif  self.is_a?(ProvidersController) 
           response = Maremma.get(ENV['API_URL']+"providers/"+uid)  
         end
-        response.body["meta"]["dois"]
+        response.status == 200 ? response.body["meta"]["dois"] : "null"
       end
     end
 
