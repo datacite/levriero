@@ -71,6 +71,7 @@ class Provider
 
   def self.query_filter_by field, value
     page ||= 1
+    value.respond_to?(:to_str) ? value.downcase! : value
     query = search(
       {
         query: {
@@ -79,7 +80,7 @@ class Provider
               { match_all: {}}
               ],
             filter: [
-              { term:  { field => value.downcase}}
+              { term:  { field => value}}
             ]
           }
         }
