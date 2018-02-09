@@ -59,5 +59,12 @@ module Facetable
       end
     end
 
-  end
+    def get_providers collection, **options
+      Rails.cache.fetch("providers_set", expires_in: 6.hours, force: options[:force]) do
+        providers = collection.group_by{|record| record[:provider_id]}
+        providers = providers.map { |k,v| { id: k.to_s.upcase, title: k.to_s, count: v.count } }
+        providers
+      end
+     end
+    end
 end

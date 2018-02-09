@@ -25,6 +25,7 @@ class ClientsController < ApplicationController
     page[:number] = page[:number] && page[:number].to_i > 0 ? page[:number].to_i : 1
     page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
     total = collection.count
+    providers = get_providers collection
     
     order = case params[:sort]
     when "-name" then "-name"
@@ -40,11 +41,11 @@ class ClientsController < ApplicationController
     meta = { total: total,
              total_pages: @clients.total_pages,
              page: page[:number].to_i,
-            #  providers: providers,
+             providers: providers,
              years: years 
             }
     
-    render jsonapi: @clients, meta: meta #, include: @include
+    render jsonapi: @clients, meta: meta, include: ["provider_id", "repository"]
   end
 
   # GET /clients/1
@@ -125,7 +126,7 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, :provider, :url, :repository, "target-id", "is-active", "deleted-at"],
+      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, "provider-id", :provider, :url, :repository, "target-id", "is-active", "deleted-at"],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end

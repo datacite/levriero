@@ -5,8 +5,6 @@ class Client
   include Cacheable
   include Indexable
 
-  mapping _parent: { type: 'providers' } do
-  end
 
   attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword" }
   attribute :region,  String,  mapping: { type: 'keyword' }
@@ -25,11 +23,11 @@ class Client
   attribute :domains,  String,  mapping: { type: 'text' }
   attribute :password,  String,  mapping: { type: 'text' }
   attribute :provider_id,  String,  mapping: { type: 'keyword' }
-  attribute :provider_symbol,  String,  mapping: { type: 'text' }
+  attribute :provider_symbol,  String,  mapping: { type: 'keyword' }
   attribute :experiments,  String,  mapping: { type: 'text' }
   attribute :url,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
-
+  
 
   validates :symbol, :name,  :contact_email, presence: :true
   validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
