@@ -30,13 +30,21 @@ class Client
   
 
   validates :symbol, :name,  :contact_email, presence: :true
-  validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
+  # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
   before_save :set_defaults
-  before_create :set_test_prefix #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
+  before_create :set_test_prefix, :validate_uniqueness #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
 
   attr_accessor :target_id
+
+  def validate_uniqueness
+    r = Client.find_each.select { |client| client.symbol == self.symbol }
+    unless  r.length == 0 
+      fail ActiveRecord::RecordNotFound 
+    end
+  end
+
 
   def provider
     return nil unless provider_id.present?
