@@ -1,6 +1,6 @@
 class ClientSerializer < ActiveModel::Serializer
   cache key: 'client'
-  type 'clients'
+  type 'client'
 
 
   attributes :name, :symbol, :year, :contact_name, :contact_email, :domains, :url, :is_active, :has_password, :created, :updated
@@ -32,8 +32,4 @@ class ClientSerializer < ActiveModel::Serializer
   def updated
     object.updated.iso8601
   end
-
-  # def domains
-  #   object.domains.to_s.split(/\s*,\s*/).presence
-  # end
 end

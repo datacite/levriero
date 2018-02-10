@@ -67,4 +67,15 @@ module Facetable
       end
      end
     end
+
+    def filter_providers_by_client client_id, collection, **options
+      Rails.cache.fetch("providers_by_client", expires_in: 6.hours, force: options[:force]) do
+        client =  Client.query_filter_by(:symbol, params[:client_id])
+        if collection = collection.respond_to?(:search) 
+          collection = Provider.query_filter_by(:symbol, client.first[:provider_id])        
+        else
+          collection = collection.select {|provider| provider.symbol == client.provider_id}
+        end
+      end
+     end
 end

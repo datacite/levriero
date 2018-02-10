@@ -45,16 +45,18 @@ class ClientsController < ApplicationController
              years: years 
             }
     
-    render jsonapi: @clients, meta: meta, include: ["provider_id", "repository"]
+    render jsonapi: @clients, meta: meta, include: ["provider", "repository"]
   end
 
   # GET /clients/1
   def show
+    puts "djdhd"
+    puts @client.inspect
     meta = { 
       dois: dois_count(@client.symbol)
     }
 
-    render jsonapi: @client, meta: meta, include: @include
+    render jsonapi: @client, meta: meta, include: ["provider", "repository"]
   end
 
   # POST /clients
@@ -126,7 +128,7 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, "provider-id", :provider, :url, :repository, "target-id", "is-active", "deleted-at"],
+      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, "provider-id", "re3data", :provider, :url, :repository, "target-id", "is-active", "deleted-at"],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end

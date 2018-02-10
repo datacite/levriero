@@ -39,7 +39,8 @@ module Cacheable
 
     def cached_provider_response(symbol)
       Rails.cache.fetch("provider_response/#{symbol}", expires_in: 1.day) do
-        Provider.find_each.select { |item| item.symbol == symbol }.first
+        # Provider.find_each.select { |item| item.symbol == symbol }.first
+        Provider.query_filter_by(:symbol, provider_id).first
       end
     end
 
@@ -53,6 +54,12 @@ module Cacheable
       Rails.cache.fetch("repository_response/#{id}", expires_in: 7.days) do
         Repository.where(id: id)
       end
+    end
+  end
+
+  def cached_clients(provider_id)
+    Rails.cache.fetch("clients", expires_in: 1.day) do
+      Client.query_filter_by(:provider_id, provider_id)
     end
   end
 
@@ -78,11 +85,11 @@ module Cacheable
       end
     end
 
-    # def cached_clients
-    #   Rails.cache.fetch("clients", expires_in: 1.day) do
-    #     Client.all.select(:id, :symbol, :name, :updated)
-    #   end
-    # end
+    def cached_clients
+      Rails.cache.fetch("clients", expires_in: 1.day) do
+        Client.all.select(:id, :symbol, :name, :updated)
+      end
+    end
 
     def cached_datasets
       Rails.cache.fetch("datasets", expires_in: 1.day) do

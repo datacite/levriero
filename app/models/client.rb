@@ -38,6 +38,12 @@ class Client
 
   attr_accessor :target_id
 
+  def provider
+    return nil unless provider_id.present?
+      r = cached_provider_response provider_id
+      r if r.present?
+  end
+
   def self.query query, options={}
    search(
      {

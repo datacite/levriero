@@ -13,6 +13,7 @@ class ProvidersController < ApplicationController
 
     collection = filter_by_query params[:query], collection if params[:query].present?
     # collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
+    collection = filter_providers_by_client params[:client_id], collection if params[:client_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
     # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?

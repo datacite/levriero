@@ -6,6 +6,7 @@ class Provider
 
   # # include helper module for managing associated users
   include Indexable
+  include Cacheable
 
   attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword" }
   attribute :region,  String,  mapping: { type: 'keyword' }
@@ -35,6 +36,12 @@ class Provider
   def year
     created.to_datetime.year
   end
+
+
+  def clients
+      cached_clients(symbol)
+  end
+
 
   def country_name
     return nil unless country_code.present?
