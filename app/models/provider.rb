@@ -30,8 +30,14 @@ class Provider
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
   before_save :set_region, :set_defaults
-  before_create :set_test_prefix
+  before_create :set_test_prefix, :validate_uniqueness
 
+  def validate_uniqueness
+    r = Provider.find_each.select { |p| p.symbol == self.symbol }
+    unless  r.length == 0 
+      fail ActiveRecord::RecordNotFound 
+    end
+  end
 
   def year
     created.to_datetime.year
