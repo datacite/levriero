@@ -57,7 +57,7 @@ class Client
      {
        query: {
          query_string: {
-           query: query,
+           query: query+"*",
            fields: ['symbol^10', 'name^10', 'contact_email', 'region']
          }
        }
@@ -154,13 +154,4 @@ class Client
     # prefixes << cached_prefix_response("10.5072")
   end
 
-  def set_defaults
-    self.contact_name = "" unless contact_name.present?
-    self.created = created.present? ? created.to_datetime.iso8601 : created_at.iso8601
-    self.domains = "*" unless domains.present?
-    self.is_active = is_active.present? ? "\x01" : "\x00"
-    self.role_name = "ROLE_DATACENTRE" unless role_name.present?
-    self.doi_quota_used = 0 unless doi_quota_used.to_i > 0
-    self.doi_quota_allowed = -1 unless doi_quota_allowed.to_i > 0
-  end
 end
