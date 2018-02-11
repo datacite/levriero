@@ -32,10 +32,36 @@ module Facetable
       collection = collection.respond_to?(:search) ? collection.query_filter_by(:region, region) : collection.select {|item| item.region == region}
     end
 
-    def filter_by_prefix prefix_id, collection
-      prefix = cached_prefix_response(prefix_id)
-      collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
+
+    def filter_by_ids ids, collection
+      r = []
+      ids = ids.split(",")
+      if collection.respond_to?(:search)
+        # ids.each { |id|  r << Client.query_filter_by(:symbol, id).first }
+        ids.each { |id|  r << Client.find_by_id(id) if Client.find_by_id(id).present? }
+      else
+        ids.each { |id|  r << collection.select {|item| item.symbol == item}.first }
+      end
+      enumerator = r.to_enum(:each)
+      enumerator.each do |record| 
+        puts record
+        puts record.class.name
+      end
+      # enumerator.ddd
+      enumerator
+      # r
     end
+
+    # def filter_by_prefix prefix, collection
+    #   collection = collection.respond_to?(:search) ? 
+    #     collection.query_filter_by(:prefix, prefix) 
+    #   : collection.select {|item| item.prefix == prefix}
+
+      
+
+    #   prefix = cached_prefix_response(prefix_id)
+    #   collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
+    # end
 
     def facet_by_region params, collection
       if params[:region].present?
@@ -54,7 +80,7 @@ module Facetable
         years = collection.group_by{|record| record[:year]}.map{ |k,v| { id: k.to_s, title: k.to_s, count: v.count }}
       else
         # years = collection.where.not(created: nil).order("YEAR(allocator.created) DESC").group("YEAR(allocator.created)").count
-        years = collection.group_by{|record| record[:year]}
+        years = collection.group_by{|record| record.year}
         years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v.count } }
       end
     end
