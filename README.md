@@ -3,7 +3,12 @@
 <!-- [![Identifier](https://img.shields.io/badge/doi-10.5438%2Ft1jg--hvhn-fca709.svg)](https://doi.org/10.5438/t1jg-hvhn) -->
 [![Build Status](https://travis-ci.org/datacite/levriero.svg?branch=master)](https://travis-ci.org/datacite/levriero) [![Code Climate](https://codeclimate.com/github/datacite/levriero/badges/gpa.svg)](https://codeclimate.com/github/datacite/levriero) [![Test Coverage](https://codeclimate.com/github/datacite/levriero/badges/coverage.svg)](https://codeclimate.com/github/datacite/levriero/coverage)
 
-Rails API only application for managing the Members, Datacentres and Prefixes from the DataCite database. The API is based on the JSONAPI specification.
+
+Levriero is the DataCite REST API that allow anybody to search and reuse our DataCite members' metadata in sophisticated ways.
+
+
+![](http://www.ioeilmioanimale.it/wp-content/uploads/2017/09/italian-greyhound-nature-523160830.jpg)
+
 
 ## Installation
 
