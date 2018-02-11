@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Clients', type: :request, :skip => true  do
-  let!(:clients)  { create_list(:client, 10) }
-  let!(:provider) { create(:provider) }
-  let!(:client) { create(:client) }
+RSpec.describe 'Clients', type: :request  do
+  let!(:provider) { build(:provider) }
+  let!(:clients)  { build_list(:client, 10, provider_id: provider.symbol) }
+  let!(:client) { clients.first }
   let(:params) do
     { "data" => { "type" => "clients",
                   "attributes" => {
@@ -20,16 +20,22 @@ RSpec.describe 'Clients', type: :request, :skip => true  do
                 			}
                 		}} }
   end
-  let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' + ENV['JWT_TOKEN']}}
+  let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' + User.generate_token}}
   let(:query) { "jamon"}
 
   # Test suite for GET /clients
   describe 'GET /clients' do
-    before { get '/clients', headers: headers }
+    before do
+      Provider.create(provider)         
+      clients.each { |item| Client.create(item) }
+      # dois.each   { |item| Doi.create(item) }
+      sleep 2 
+      get '/clients', headers: headers 
+    end
 
     it 'returns clients' do
       expect(json).not_to be_empty
-      expect(json['data'].size).to eq(11)
+      expect(json['data'].size).to eq(10)
     end
 
     it 'returns status code 200' do
