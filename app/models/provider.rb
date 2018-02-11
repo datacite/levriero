@@ -23,13 +23,14 @@ class Provider
   attribute :is_active,  String, default: "\x01", mapping: { type: 'boolean' }
   attribute :password,  String, mapping: { type: 'text' }
   attribute :doi_quota_used,  Integer, default: -1, mapping: { type: 'integer' }
+  attribute :prefixes,  String,  mapping: { type: 'text' }
 
 
   validates :symbol, :name, :contact_name, :contact_email, presence: :true
   validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
-  before_save :set_region, :set_defaults
+  before_save :set_region
   before_create :set_test_prefix, :validate_uniqueness
 
   def validate_uniqueness
@@ -80,6 +81,19 @@ class Provider
      }
    )
   end
+
+  def self.query_prefixes prefixes, options={}
+  search(
+    {
+      query: {
+        query_string: {
+          query: prefixes,
+          fields: ['prefixes']
+        }
+      }
+    }
+  )
+ end
 
   def self.query_filter_by field, value
     page ||= 1

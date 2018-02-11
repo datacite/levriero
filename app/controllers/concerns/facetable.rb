@@ -52,16 +52,9 @@ module Facetable
       # r
     end
 
-    # def filter_by_prefix prefix, collection
-    #   collection = collection.respond_to?(:search) ? 
-    #     collection.query_filter_by(:prefix, prefix) 
-    #   : collection.select {|item| item.prefix == prefix}
-
-      
-
-    #   prefix = cached_prefix_response(prefix_id)
-    #   collection = collection.includes(:prefixes).where('prefix.id' => prefix.id)
-    # end
+    def filter_by_prefix prefix, collection
+      collection = collection.respond_to?(:search) ? collection.query_prefixes(prefix) : collection.select {|item| item.prefixes.include? prefix}
+    end
 
     def facet_by_region params, collection
       if params[:region].present?
@@ -96,7 +89,7 @@ module Facetable
 
     def filter_providers_by_client client_id, collection, **options
       Rails.cache.fetch("providers_by_client", expires_in: 6.hours, force: options[:force]) do
-        client =  Client.query_filter_by(:symbol, params[:client_id])
+        client =  Client.query_filter_by(:symbol, client_id)
         if collection = collection.respond_to?(:search) 
           collection = Provider.query_filter_by(:symbol, client.first[:provider_id])        
         else

@@ -27,13 +27,14 @@ class Client
   attribute :experiments,  String,  mapping: { type: 'text' }
   attribute :url,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
+  attribute :prefixes,  String,  mapping: { type: 'text' }
   
 
   validates :symbol, :name,  :contact_email, presence: :true
   # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
-  before_save :set_defaults
+
   before_create :set_test_prefix, :validate_uniqueness #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
 
   attr_accessor :target_id
@@ -50,6 +51,20 @@ class Client
     return nil unless provider_id.present?
       r = cached_provider_response provider_id
       r if r.present?
+  end
+
+
+    def self.query_prefixes prefixes, options={}
+    search(
+      {
+        query: {
+          query_string: {
+            query: prefixes,
+            fields: ['prefixes']
+          }
+        }
+      }
+    )
   end
 
   def self.query query, options={}
