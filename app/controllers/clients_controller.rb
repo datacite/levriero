@@ -14,9 +14,13 @@ class ClientsController < ApplicationController
     collection = filter_by_query params[:query], collection if params[:query].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
+    collection = filter_by_provider params[:provider_id], collection if params[:provider_id].present?
     # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
     collection = filter_by_year params[:year], collection if params[:year].present?
-
+ 
+    
+    collection = filter_by_ids params[:ids], collection if params[:ids].present?
+ 
     collection = Client.all if collection.respond_to?(:search)
     # regions    = facet_by_region params, collection
     years      = facet_by_year params, collection
@@ -27,16 +31,21 @@ class ClientsController < ApplicationController
     total = collection.count
     providers = get_providers collection
     
-    order = case params[:sort]
-    when "-name" then "-name"
-    when "created" then "created"
-    when "-created" then "-created"
-    else "name"
+    variable = case params[:sort]
+      when "created" then "created"
+      else "name"
     end
 
+    ordered = case params[:sort]
+        when "-name" then collection.sort_by { |hsh| hsh[variable] }.reverse
+        when "-created" then collection.sort_by { |hsh| hsh[variable] }.reverse
+        else collection.sort_by { |hsh| hsh[variable] }
+    end
+
+      # collection.last.symbol.ddd
     # https://github.com/elastic/elasticsearch-rails/issues/338
-    @clients = collection.all unless collection.respond_to?(:each_with_hit)
-    @clients = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
+    @clients = collection.all unless collection.respond_to?(:each)
+    @clients = Kaminari.paginate_array(ordered, total_count: total).page(page[:number]).per(page[:size])
 
     meta = { total: total,
              total_pages: @clients.total_pages,
@@ -50,8 +59,6 @@ class ClientsController < ApplicationController
 
   # GET /clients/1
   def show
-    puts "djdhd"
-    puts @client.inspect
     meta = { 
       dois: dois_count(@client.symbol)
     }

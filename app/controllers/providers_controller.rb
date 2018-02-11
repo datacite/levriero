@@ -16,7 +16,7 @@ class ProvidersController < ApplicationController
     collection = filter_providers_by_client params[:client_id], collection if params[:client_id].present?
 
     collection = filter_by_symbol params[:id], collection if params[:id].present?
-    # collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
+    collection = filter_by_prefix params[:prefix], collection if params[:prefix].present?
     collection = filter_by_year params[:year], collection if params[:year].present?
     collection = filter_by_region params[:region], collection if params[:region].present?
 
@@ -31,18 +31,21 @@ class ProvidersController < ApplicationController
     page[:size] = page[:size] && (1..1000).include?(page[:size].to_i) ? page[:size].to_i : 25
     total = collection.response.hits.total
     #
-    order = case params[:sort]
-            when "-name" then "-name"
-            when "created" then "created"
-            when "-created" then "-created"
-            else "name"
-            end
+    variable = case params[:sort]
+      when "created" then "created"
+      else "name"
+    end
 
-    
+    ordered = case params[:sort]
+        when "-name" then collection.sort_by { |hsh| hsh[variable] }.reverse
+        when "-created" then collection.sort_by { |hsh| hsh[variable] }.reverse
+        else collection.sort_by { |hsh| hsh[variable] }
+    end
+
+      # collection.last.symbol.ddd
     # https://github.com/elastic/elasticsearch-rails/issues/338
-    @providers = collection.all unless collection.respond_to?(:each_with_hit)
-    @providers = Kaminari.paginate_array(collection.sort_by! { |hsh| hsh[order] }, total_count: total).page(page[:number])
-
+    @providers = collection.all unless collection.respond_to?(:each)
+    @providers = Kaminari.paginate_array(ordered, total_count: total).page(page[:number]).per(page[:size])
 
     meta = { total: total,
              total_pages: @providers.total_pages,
