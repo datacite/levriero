@@ -79,16 +79,16 @@ module Facetable
     end
 
     def get_providers collection, **options
-      Rails.cache.fetch("providers_set", expires_in: 6.hours, force: options[:force]) do
+      # Rails.cache.fetch("providers_set", expires_in: 6.hours, force: options[:force]) do
         providers = collection.group_by{|record| record[:provider_id]}
         providers = providers.map { |k,v| { id: k.to_s.upcase, title: k.to_s, count: v.count } }
         providers
-      end
+      # end
      end
     end
 
     def filter_providers_by_client client_id, collection, **options
-      Rails.cache.fetch("providers_by_client", expires_in: 6.hours, force: options[:force]) do
+      Rails.cache.fetch("providers_by_client/#{client_id}", expires_in: 6.hours, force: options[:force]) do
         client =  Client.query_filter_by(:symbol, client_id)
         if collection = collection.respond_to?(:search) 
           collection = Provider.query_filter_by(:symbol, client.first[:provider_id])        
