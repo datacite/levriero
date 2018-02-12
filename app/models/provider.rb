@@ -1,8 +1,10 @@
 require "countries"
+ActiveSupport.halt_callback_chains_on_return_false = true
 
-class Provider
+class Provider 
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
+  include ActiveModel::Validations
 
   # # include helper module for managing associated users
   include Indexable
@@ -27,17 +29,26 @@ class Provider
 
 
   validates :symbol, :name, :contact_name, :contact_email, presence: :true
-  validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
+  # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
   before_save :set_region
-  before_create :set_test_prefix, :validate_uniqueness
+  before_create :set_test_prefix
 
-  def validate_uniqueness
-    r = Provider.find_each.select { |p| p.symbol == self.symbol }
-    unless  r.length == 0 
-      fail ActiveRecord::RecordNotFound 
-    end
+  # validates_with SymbolValidator, on: :create
+  # validate :instance_validations, on: :index_document
+
+  # def validate_uniqueness
+  #   r = Provider.find_each.select { |p| p.symbol == self.symbol }
+  #   unless  r.length == 0 
+  #     self.errors.add(:symbol, "This ID has already been taken")  
+  #   end
+  # end
+  def instance_validations
+    validates_with SymbolValidator
+    # self.errors.messages.dd
+    # throw(:abort) if self.errors.first.present?
+    # throw(:abort)
   end
 
   def year

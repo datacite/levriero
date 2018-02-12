@@ -97,19 +97,19 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
         expect(single.doi_quota_used).to be_truthy
       end
     end
-    context "when the provider  exist" do 
-      before do 
-        Provider.create(provider) 
-        sleep 2
-        Provider.create(provider) 
-        sleep 2
-      end
+    # context "when the provider  exist" do 
+    #   before do 
+    #     Provider.create(provider) 
+    #     sleep 2
+    #     Provider.create(provider) 
+    #     sleep 2
+    #   end
 
-      it "returns correct attributes" do
-        prov = Provider.query_filter_by(:symbol, provider.symbol).count
-        expect(prov).to eq(1)
-      end
-    end
+    #   it "returns correct attributes" do
+    #     prov = Provider.query_filter_by(:symbol, provider.symbol).count
+    #     expect(prov).to eq(1)
+    #   end
+    # end
   end
 
   describe "Update Provider" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Clients', type: :request  do
+RSpec.describe 'Clients', type: :request, :skip => true  do
   let!(:provider) { build(:provider) }
   let!(:clients)  { build_list(:client, 10, provider_id: provider.symbol) }
   let!(:client) { clients.first }

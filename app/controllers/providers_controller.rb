@@ -72,7 +72,13 @@ class ProvidersController < ApplicationController
     @provider = Provider.create(safe_params)
     authorize! :create, @provider
 
-    if @provider.save
+    # unless @provider
+    #   x = Provider.errors.add(:symbol, "This ID has already been taken")
+    #   Rails.logger.warn x.errors.inspect
+    #   render jsonapi: serialize(x.errors), status: :unprocessable_entity
+    # end
+
+    if @provider.save 
       render jsonapi: @provider, status: :created, location: @provider
     else
       Rails.logger.warn @provider.errors.inspect

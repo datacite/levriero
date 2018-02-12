@@ -34,7 +34,7 @@ require "colorize"
 # ActiveRecord::Migration.maintain_test_schema!
 
 WebMock.disable_net_connect!(
-  allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['ES_HOST'],  ENV['API_URL',  ENV['APP_URL']],
+  allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['ES_HOST'],  ENV['API_URL'],  ENV['APP_URL']],
   allow_localhost: true
 )
 

@@ -35,7 +35,7 @@ class Client
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
 
-  before_create :set_test_prefix, :validate_uniqueness #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
+  # before_create :set_test_prefix, :validate_uniqueness #, if: Proc.new { |client| client.provider_symbol == "SANDBOX" }
 
   attr_accessor :target_id
 
