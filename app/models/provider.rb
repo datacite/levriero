@@ -56,7 +56,7 @@ class Provider
   end
 
   def clients
-      cached_clients(symbol)
+    cached_clients_provider_id(symbol)
   end
 
 
