@@ -53,7 +53,7 @@ class ClientsController < ApplicationController
              years: years 
             }
     
-    render jsonapi: @clients, meta: meta, include: ["provider", "repository"]
+    render jsonapi: @clients, meta: meta, include: @include
   end
 
   # GET /clients/1
@@ -62,7 +62,7 @@ class ClientsController < ApplicationController
       dois: dois_count(@client.symbol)
     }
 
-    render jsonapi: @client, meta: meta, include: ["provider", "repository"]
+    render jsonapi: @client, meta: meta, include: @include
   end
 
   # POST /clients
