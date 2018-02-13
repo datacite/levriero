@@ -23,6 +23,7 @@ require 'rspec/rails/file_fixture_support'
 require 'rspec/rails/fixture_file_upload_support'
 require 'rspec/rails/example'
 
+require 'rspec/rails/configuration'
 
 require "shoulda-matchers"
 require "webmock/rspec"
@@ -49,7 +50,6 @@ end
 RSpec.configure do |config|
   # add `FactoryBot` methods
   config.include FactoryBot::Syntax::Methods
-
   # don't use transactions, use database_clear gem via support file
   # config.use_transactional_fixtures = false
 
@@ -57,10 +57,3 @@ RSpec.configure do |config|
   config.include RequestSpecHelper, type: :request
 end
 
-# VCR.configure do |c|
-#   c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-#   c.hook_into :webmock
-#   c.ignore_localhost = true
-#   c.ignore_hosts "codeclimate.com"
-#   c.configure_rspec_metadata!
-# end
