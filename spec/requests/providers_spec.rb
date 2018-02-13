@@ -104,7 +104,7 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
         { "type" => "providers",
           "attributes" => {
             "symbol" => "BL",
-            "contact-name" => "timAus",
+            "contact_name" => "timAus",
             "name" => "British Library",
             "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
             "country_code" => "GB" } }
@@ -132,13 +132,11 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
                         "name" => "British Library",
                         "region" => "Americas",
                         "symbol" => provider.symbol,
-                        "contact-email" => "Pepe@mdm.cod",
-                        "contact-name" => "timAus",
+                        "contact_email" => "Pepe@mdm.cod",
+                        "contact_name" => "timAus",
                         "country_code" => "GB" } } }
       end
       before do
-         puts provider 
-         puts "alalala"
          post '/providers', params: provider.to_jsonapi.to_json, headers: headers
          sleep 1
          put "/providers/#{provider.symbol}", params: params.to_json, headers: headers 
@@ -146,8 +144,6 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
       end
   
       it 'updates the record' do
-        puts json
-        puts "shshshs"
         expect(json.dig('data', 'attributes', 'contact-name')).to eq("timAus")
         expect(json.dig('data', 'attributes', 'contact-email')).not_to eq(provider.contact_email)
         expect(response).to have_http_status(200)

@@ -1,5 +1,4 @@
 require "countries"
-ActiveSupport.halt_callback_chains_on_return_false = true
 
 class Provider 
   include Elasticsearch::Model::Callbacks
@@ -181,6 +180,13 @@ class Provider
       }
     ).response.aggregations.dois_count.buckets
     counts.map! { |k| { id: k[:key], title: k[:key], count: k[:doc_count] } }
+  end
+
+  def to_jsonapi
+    attributes = self.attributes
+    # attributes.transform_keys! { |key| key.tr('_', '-') }
+    params = { "data" => { "type" => "providers", "attributes" => attributes } }
+    params
   end
 
   def updated
