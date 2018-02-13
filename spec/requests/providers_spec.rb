@@ -121,6 +121,25 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
       #   expect(response["exception"]).to eq("#<JSON::ParserError: You need to provide a payload following the JSONAPI spec>")
       # end
     end
+
+    context 'when the the resource exist already' do
+      before do
+         post '/providers', params: provider.to_jsonapi.to_json, headers: headers 
+         sleep 1
+         post '/providers', params: provider.to_jsonapi.to_json, headers: headers 
+         sleep 1
+      end
+  
+      it 'returns status code 422' do
+        puts json
+        expect(response).to have_http_status(422)
+      end
+  
+      # it 'returns a validation failure message' do
+      #   puts json
+      #   expect(response["exception"]).to eq("#<JSON::ParserError: You need to provide a payload following the JSONAPI spec>")
+      # end
+    end
   end
   #
   # # Test suite for PUT /providers/:id
@@ -140,7 +159,7 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
          post '/providers', params: provider.to_jsonapi.to_json, headers: headers
          sleep 1
          put "/providers/#{provider.symbol}", params: params.to_json, headers: headers 
-         sleep 1
+         sleep 2
       end
   
       it 'updates the record' do
@@ -164,6 +183,39 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
   
         it 'returns status code 404' do
           expect(response).to have_http_status(404)
+        end
+      end
+
+      context 'when the changeing symbol' do
+        let(:params) do
+          { "data" => { "type" => "providers",
+                        "attributes" => {
+                          "name" => "British Library",
+                          "region" => "Americas",
+                          "symbol" => provider.symbol,
+                          "contact_email" => "Pepe@mdm.cod",
+                          "contact_name" => "timAus",
+                          "country_code" => "GB" } } }
+        end
+        let(:params2) do
+          { "data" => { "type" => "providers",
+                        "attributes" => {
+                          "name" => "British Library",
+                          "region" => "Americas",
+                          "symbol" => "Rainbow Dash",
+                          "contact_email" => "Pepe@mdm.cod",
+                          "contact_name" => "timAus",
+                          "country_code" => "GB" } } }
+        end
+  
+        before do
+          post '/providers', params: params.to_json, headers: headers
+          sleep 1
+          put "/providers/#{provider.symbol}", params: params2.to_json, headers: headers 
+          sleep 1
+       end  
+        it 'returns status code 422' do
+          expect(response).to have_http_status(422)
         end
       end
     end
