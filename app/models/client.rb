@@ -1,4 +1,4 @@
-class Client
+class Client 
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
@@ -42,7 +42,7 @@ class Client
   def validate_uniqueness
     r = Client.find_each.select { |client| client.symbol == self.symbol }
     unless  r.length == 0 
-      fail ActiveRecord::RecordNotFound 
+      fail Elasticsearch::Transport::Transport::Errors::NotFound 
     end
   end
 

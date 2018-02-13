@@ -120,7 +120,7 @@ class ClientsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     @client = Client.query_filter_by(:symbol, params[:id]).first
-    fail ActiveRecord::RecordNotFound unless @client.present?
+    fail Elasticsearch::Transport::Transport::Errors::NotFound unless @client.present?
   end
 
   private

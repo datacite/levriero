@@ -72,11 +72,11 @@ class ProvidersController < ApplicationController
     @provider = Provider.create(safe_params)
     authorize! :create, @provider
 
-    # unless @provider
-    #   x = Provider.errors.add(:symbol, "This ID has already been taken")
-    #   Rails.logger.warn x.errors.inspect
-    #   render jsonapi: serialize(x.errors), status: :unprocessable_entity
-    # end
+    unless @provider
+      x = Provider.errors.add(:symbol, "This ID has already been taken")
+      Rails.logger.warn x.errors.inspect
+      render jsonapi: serialize(x.errors), status: :unprocessable_entity
+    end
 
     if @provider.save 
       render jsonapi: @provider, status: :created, location: @provider
@@ -119,7 +119,7 @@ class ProvidersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
     @provider = Provider.query_filter_by(:symbol, params[:id]).first
-    fail ActiveRecord::RecordNotFound unless @provider.present?
+    fail Elasticsearch::Transport::Transport::Errors::NotFound unless @provider.present?
   end
 
   private

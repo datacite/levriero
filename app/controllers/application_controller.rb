@@ -64,7 +64,7 @@ class ApplicationController < ActionController::API
     rescue_from *RESCUABLE_EXCEPTIONS do |exception|
       status = case exception.class.to_s
                when "CanCan::AccessDenied", "JWT::DecodeError" then 401
-               when "ActiveRecord::RecordNotFound", "AbstractController::ActionNotFound",  "ActionController::RoutingError" then 404
+               when "ActiveRecord::RecordNotFound", "Elasticsearch::Transport::Transport::Errors::NotFound","AbstractController::ActionNotFound",  "ActionController::RoutingError" then 404
                when "ActiveModel::ForbiddenAttributesError", "ActionController::ParameterMissing", "ActionController::UnpermittedParameters", "NoMethodError" then 422
                else 400
                end
