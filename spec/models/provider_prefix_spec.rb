@@ -1,5 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-describe ProviderPrefix, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# describe ProviderPrefix, type: :model do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
