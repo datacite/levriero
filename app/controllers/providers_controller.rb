@@ -72,11 +72,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.create(safe_params)
     authorize! :create, @provider
 
-    unless @provider
-      x = Provider.errors.add(:symbol, "This ID has already been taken")
-      Rails.logger.warn x.errors.inspect
-      render jsonapi: serialize(x.errors), status: :unprocessable_entity
-    end
+    return render json: { errors: [{ status: "422", title: "This ID has already been taken" }] }.to_json, status: :unprocessable_entity unless @provider.respond_to?(:save)
 
     if @provider.save 
       render jsonapi: @provider, status: :created, location: @provider
@@ -88,6 +84,7 @@ class ProvidersController < ApplicationController
 
   # PATCH/PUT /providers/1
   def update
+    return render json: { errors: [{ status: "422", title: "Symbol cannot be changed" }] }.to_json, status: :unprocessable_entity unless @provider.symbol.casecmp(safe_params[:symbol]) == 0
     if @provider.update_attributes(safe_params)
       render jsonapi: @provider
     else

@@ -31,23 +31,10 @@ class Provider
   # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates :contact_email, format:  {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
-  before_save :set_region
-  before_create :set_test_prefix
+  before_create :set_test_prefix, :instance_validations
 
-  # validates_with SymbolValidator, on: :create
-  # validate :instance_validations, on: :index_document
-
-  # def validate_uniqueness
-  #   r = Provider.find_each.select { |p| p.symbol == self.symbol }
-  #   unless  r.length == 0 
-  #     self.errors.add(:symbol, "This ID has already been taken")  
-  #   end
-  # end
   def instance_validations
-    validates_with SymbolValidator
-    # self.errors.messages.dd
-    # throw(:abort) if self.errors.first.present?
-    # throw(:abort)
+    validates_with UniquenessValidator
   end
 
   def year
@@ -193,9 +180,6 @@ class Provider
     updated_at.iso8601
   end
 
-  def freeze_symbol
-    errors.add(:symbol, "cannot be changed") if self.symbol_changed?
-  end
 
   def user_url
     ENV["VOLPINO_URL"] + "/users?provider-id=" + symbol.downcase

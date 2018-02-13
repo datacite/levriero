@@ -70,6 +70,8 @@ class ClientsController < ApplicationController
     @client = Client.create(safe_params)
     authorize! :create, @client
 
+    return render json: { errors: [{ status: "422", title: "This ID has already been taken" }] }.to_json, status: :unprocessable_entity unless @client.respond_to?(:save)
+
     if @client.save
       render jsonapi: @client, status: :created
     else
@@ -80,6 +82,7 @@ class ClientsController < ApplicationController
 
   # PATCH/PUT /clients/1
   def update
+    return render json: { errors: [{ status: "422", title: "Symbol cannot be changed" }] }.to_json, status: :unprocessable_entity unless @client.symbol.casecmp(safe_params[:symbol]) == 0
     if @client.update_attributes(safe_params)
       render jsonapi: @client
     else
