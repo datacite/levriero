@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   # support for legacy routes
   resources :members, only: [:show, :index]
-  # resources :data_centers, only: [:show, :index], constraints: { :id => /.+/ }, path: "/data-centers"
+  resources :data_centers, only: [:show, :index], constraints: { :id => /.+/ }, path: "/data-centers"
   # resources :works, only: [:show, :index], constraints: { :id => /.+/ }
 
   # rescue routing errors
