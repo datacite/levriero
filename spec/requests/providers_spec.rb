@@ -66,7 +66,7 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
                         "region" => "EMEA",
                         "contact_email" => "doe@joe.joe",
                         "contact_name" => "timAus",
-                        "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
+                        "created" => "2017-10-26T08:03:22Z" ,
                         "year" => "2008",
                         "country-code" => "GB" } } }
       end

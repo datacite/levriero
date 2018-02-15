@@ -6,10 +6,10 @@ class Client
   include Indexable
 
 
-  attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword" }
+  attribute :symbol,  String,  mapping: { type: 'keyword', analyzer: "keyword", tokenizer: "keyword" }
   attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
-  attribute :created,  Date,  mapping: { type: 'date' }
+  attribute :created,  DateTime,  mapping: { type: :date }
   attribute :name,  String,  mapping: { type: 'text' }
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'keyword' }
@@ -51,7 +51,7 @@ class Client
   end
 
 
-    def self.query_prefixes prefixes, options={}
+  def self.query_prefixes prefixes, options={}
     search(
       {
         query: {
@@ -88,7 +88,8 @@ class Client
               { match_all: {}}
               ],
             filter: [
-              { term:  { field => value}}
+              { term:  { field => value}
+              }
             ]
           }
         }
@@ -96,11 +97,20 @@ class Client
     )
   end
 
+  #### Work with exact value only
   def self.find_by_id symbol
+    symbol.upcase!
     clients = Client.find_each.select { |client| client.symbol === symbol }
     clients.first
   end
 
+  # def self.find_by_id symbol
+  #   # symbol.downcase!
+    
+  #   client = self.query_filter_by(:symbol, symbol)
+  #   puts client
+  #   client.first
+  # end
 
   def updated
     updated_at

@@ -116,7 +116,7 @@ class ClientsController < ApplicationController
       @include = params[:include].split(",").map { |i| i.downcase.underscore }.join(",")
       @include = [@include]
     else
-      @include = ["provider_id", "repository"]
+      @include = ["provider", "repository"]
     end
   end
 
@@ -131,7 +131,7 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, "provider-id", "re3data", :provider, :url, :repository, "target-id", "is-active", "deleted-at", :prefixes],
+      params, only: [:symbol, :name, :created, "contact-name", "contact-email", :domains, "provider-id", "re3data", :provider, :url, :repository, "target-id", "is-active", "deleted-at", :prefixes, :password],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "target-id" => :target_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end

@@ -133,7 +133,7 @@ class ProvidersController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active, :created, :prefixes],
+      params, only: [:name, :symbol, :contact_name, :contact_email, :country, :is_active, :created, :prefixes, :password],
               keys: { country: :country_code }
     )
   end
@@ -142,5 +142,6 @@ class ProvidersController < ApplicationController
   def sanitize_page_params
     params[:offset] = params[:offset].to_i
     params[:year] = params[:year].to_i if params[:year].present?
+   
   end
 end

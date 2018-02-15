@@ -76,6 +76,7 @@ module Facetable
         years = collection.group_by{|record| record.year}
         years = years.map { |k,v| { id: k.to_s, title: k.to_s, count: v.count } }
       end
+      years.sort_by { |hsh| hsh[:id] }
     end
 
     def get_providers collection, **options

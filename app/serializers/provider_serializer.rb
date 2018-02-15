@@ -15,6 +15,10 @@ class ProviderSerializer < ActiveModel::Serializer
     object.password.present?
   end
 
+  def created
+    object.created.strftime("%FT%TZ")
+  end
+
   def is_active
     object.is_active == "\u0001" ? true : false
   end

@@ -13,7 +13,7 @@ class Provider
   attribute :region,  String,  mapping: { type: 'keyword' }
   attribute :year,  Integer,  mapping: { type: 'integer' }
   attribute :name,  String,  mapping: { type: 'text' }
-  attribute :created,  Date,  mapping: { type: 'date' }
+  attribute :created,  DateTime,  mapping: { type: :date}
   attribute :contact_name,  String, default: "", mapping: { type: 'text' }
   attribute :contact_email,  String,  mapping: { type: 'keyword' }
   attribute :country_code,  String,  mapping: { type: 'keyword' }
@@ -80,17 +80,17 @@ class Provider
   end
 
   def self.query_prefixes prefixes, options={}
-  search(
-    {
-      query: {
-        query_string: {
-          query: prefixes,
-          fields: ['prefixes']
+    search(
+      {
+        query: {
+          query_string: {
+            query: prefixes,
+            fields: ['prefixes']
+          }
         }
       }
-    }
-  )
- end
+    )
+  end
 
   def self.query_filter_by field, value
     page ||= 1
@@ -111,9 +111,17 @@ class Provider
     )
   end
 
+  # def self.find_by_id symbol
+  #   provider = Provider.query_filter_by(:symbol, symbol)
+  #   provider.first
+  # end
+
+
+  #### Work with exact value only
   def self.find_by_id symbol
-    providers = Provider.find_each.select { |provider| provider.symbol === symbol }
-    providers.first
+    symbol.upcase!
+    collection = Provider.find_each.select { |provider| provider.symbol === symbol }
+    collection.first
   end
 
   # show all clients for admin
@@ -185,6 +193,10 @@ class Provider
     ENV["VOLPINO_URL"] + "/users?provider-id=" + symbol.downcase
   end
 
+
+  def set_test_prefix
+
+  end
   private
 
   def set_region
@@ -193,14 +205,9 @@ class Provider
     else
       r = nil
     end
-    # write_attribute(:region, r)
-    region =r
+    r
   end
 
-  def set_test_prefix
-    # return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
-    #
-    # prefixes << cached_prefix_response("10.5072")
-  end
+
 
 end

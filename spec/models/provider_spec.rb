@@ -184,6 +184,75 @@ RSpec.describe Provider, elasticsearch: true, type: :model do
         expect(single.respond_to?(:name)).to be false        
       end
     end
+
+    context "when the provider exist and case insentive" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2         
+      end
+
+      it "returns always the correct resource" do
+        provider_r = Provider.find_by_id(provider.symbol.downcase)
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.find_by_id(provider.symbol.upcase)
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.find_by_id(provider.symbol)
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.find_by_id(provider.symbol.titlecase)
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+      end
+    end
+
+    context "when the provider exist and case insentive" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2         
+      end
+
+      it "returns always the correct resource" do
+        provider_r = Provider.query_filter_by(:symbol, provider.symbol.downcase).first
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.query_filter_by(:symbol, provider.symbol.upcase).first
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.query_filter_by(:symbol, provider.symbol).first
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+
+        provider_r = Provider.query_filter_by(:symbol, provider.symbol.titlecase).first
+        expect(provider_r.respond_to?(:symbol)).to be true
+        expect(provider_r.symbol).to match(%r{#{provider.symbol}}i)
+      end
+    end
+
+    context "when the provider exist and case insentive and incomplete" do 
+      before do 
+        providers.each { |item| Provider.create(item) }
+        sleep 2         
+      end
+
+      it "returns always the correct resource" do
+        collection = Provider.query("tes")
+        expect(collection.respond_to?(:response)).to be true
+        expect(collection.count).to be > 1
+      end
+
+      it "returns always the correct resource" do
+        collection = Provider.query("ROGERMANANANANA")
+        expect(collection.respond_to?(:response)).to be true
+        expect(collection.count).to be == 0
+      end
+    end
   end
 
   

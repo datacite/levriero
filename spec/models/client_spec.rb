@@ -2,7 +2,7 @@ require 'rails_helper'
 WebMock.enable!
 include WebMock::API
 
-RSpec.describe Client, elasticsearch: true, type: :model, :skip => true do
+RSpec.describe Client, elasticsearch: true, type: :model do
   let!(:provider)    { build(:provider) }  
   let!(:clients)     { build_list(:client, 25, provider_id: provider.symbol) }
   let!(:client)      { clients.first }
@@ -116,8 +116,8 @@ RSpec.describe Client, elasticsearch: true, type: :model, :skip => true do
       end
 
       it "returns correct attributes" do
-        prov = Client.find_each.select { |record| record.symbol === client.symbol }
-        expect(prov.length).to eq(1)
+        prov = Client.find_by_id(client.symbol)
+        expect(prov.symbol).to match(%r{#{client.symbol}}i)
       end
     end
   end
@@ -172,33 +172,107 @@ RSpec.describe Client, elasticsearch: true, type: :model, :skip => true do
     end
   end
 
-  # describe "Query Client" do
-  #   context "when the client exist" do 
-  #     before do 
-  #       clients.each { |item| Client.create(item) }
-  #       sleep 2         
-  #     end
+  describe "Query Client" do
+    context "when the client exist" do 
+      before do 
+        Provider.create(provider)         
+        clients.each { |item| Client.create(item) }
+        sleep 2         
+      end
 
-  #     it "returns correct attributes" do
-  #       collection = Client.query(client.name)
-  #       results = collection.select { |item| item.symbol.casecmp client.symbol }
-  #       expect(results.length).to be > 0 
-  #       expect(results.length).to be < clients.length
-  #       expect(collection.first.respond_to?(:name)).to be true
-  #     end
-  #   end
-  #   context "when the client do not exist" do 
-  #     before do 
-  #       clients.each { |item| Client.create(item) }
-  #       sleep 2 
-  #     end
+      it "returns correct attributes" do
+        collection = Client.query(client.name)
+        results = collection.select { |item| item.symbol.casecmp client.symbol }
+        expect(results.length).to be > 0 
+        expect(results.length).to be < clients.length
+        expect(collection.first.respond_to?(:name)).to be true
+      end
+    end
+    context "when the client do not exist" do 
+      before do 
+        Provider.create(provider)         
+        clients.each { |item| Client.create(item) }
+        sleep 2 
+      end
 
-  #     it "returns correct attributes" do
-  #       single = Client.query("TIB").first
-  #       expect(single.respond_to?(:name)).to be false        
-  #     end
-  #   end
-  # end
+      it "returns correct attributes" do
+        single = Client.query("TIB").first
+        expect(single.respond_to?(:name)).to be false        
+      end
+    end
+
+    context "when the client exist and case insentive" do 
+      before do 
+        Provider.create(provider)         
+        clients.each { |item| Client.create(item) }
+        sleep 2         
+      end
+
+      it "returns always the correct resource" do
+        client_r = Client.find_by_id(client.symbol.downcase)
+        expect(client_r.respond_to?(:symbol)).to be true
+        expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+        client_r = Client.find_by_id(client.symbol.upcase)
+        expect(client_r.respond_to?(:symbol)).to be true
+        expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+        client_r = Client.find_by_id(client.symbol)
+        expect(client_r.respond_to?(:symbol)).to be true
+        expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+        client_r = Client.find_by_id(client.symbol.titlecase)
+        expect(client_r.respond_to?(:symbol)).to be true
+        expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+      end
+    end
+
+    # context "when the client exist and case insentive" do 
+    #   before do 
+    #     Provider.create(provider)         
+    #     clients.each { |item| Client.create(item) }
+    #     sleep 2         
+    #   end
+
+    #   it "returns always the correct resource" do
+    #     client_r = Client.query_filter_by(:symbol, client.symbol.downcase).first
+    #     expect(client_r.respond_to?(:symbol)).to be true
+    #     expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+    #     client_r = Client.query_filter_by(:symbol, client.symbol.upcase).first
+    #     expect(client_r.respond_to?(:symbol)).to be true
+    #     expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+    #     client_r = Client.query_filter_by(:symbol, client.symbol).first
+    #     expect(client_r.respond_to?(:symbol)).to be true
+    #     expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+
+    #     client_r = Client.query_filter_by(:symbol, client.symbol.titlecase).first
+    #     expect(client_r.respond_to?(:symbol)).to be true
+    #     expect(client_r.symbol).to match(%r{#{client.symbol}}i)
+    #   end
+    # end
+
+    context "when the client exist and case insentive and incomplete" do 
+      before do 
+        Provider.create(provider)         
+        clients.each { |item| Client.create(item) }
+        sleep 2         
+      end
+
+      it "returns always the correct resource" do
+        collection = Client.query("tes")
+        expect(collection.respond_to?(:response)).to be true
+        expect(collection.count).to be > 1
+      end
+
+      it "returns always the correct resource" do
+        collection = Client.query("ROGERMANANANANA")
+        expect(collection.respond_to?(:response)).to be true
+        expect(collection.count).to be == 0
+      end
+    end
+  end
 
   
 
