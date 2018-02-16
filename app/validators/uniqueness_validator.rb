@@ -3,16 +3,16 @@ class UniquenessValidator < ActiveModel::Validator
 
     def validate(record)
 
+      result = ""
       if record.is_a?(Client)
-        result = Client.query_filter_by :symbol, record.symbol.downcase
+        result = Client.find_by_id record.symbol
       elsif  record.is_a?(Provider) 
-        result = Provider.query_filter_by :symbol, record.symbol.downcase
+        result = Provider.find_by_id record.symbol
       else
         record.errors.add(:symbol, "Wrong Object passed") 
-        result = ["422","422"]
-     end
+      end
 
-      unless  result.count == 0 
+      if  result.respond_to?(:symbol)
         record.errors.add(:symbol, "This ID has already been taken")
         throw(:abort, record)        
       end

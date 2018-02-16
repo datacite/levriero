@@ -2,6 +2,8 @@ class Client
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
+  include ActiveModel::Validations
+
   include Cacheable
   include Indexable
 
@@ -116,6 +118,13 @@ class Client
     updated_at
   end
 
+  def to_jsonapi
+    attributes = self.attributes
+    attributes["contact-name"] = attributes[:contact_name]
+    attributes["contact-email"] = attributes[:contact_email]
+    params = { "data" => { "type" => "clients", "attributes" => attributes } }
+    params
+  end
 
   def repository_id=(value)
     write_attribute(:re3data, value)

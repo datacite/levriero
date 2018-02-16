@@ -137,8 +137,7 @@ class ProvidersController < ApplicationController
               keys: { country: :country_code }
     )
   end
-
-
+  
   def sanitize_page_params
     params[:offset] = params[:offset].to_i
     params[:year] = params[:year].to_i if params[:year].present?

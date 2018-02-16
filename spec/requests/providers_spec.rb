@@ -66,15 +66,18 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
                         "region" => "EMEA",
                         "contact_email" => "doe@joe.joe",
                         "contact_name" => "timAus",
-                        "created" => "2017-10-26T08:03:22Z" ,
+                        "created" => "2017-08-29T06:54:15Z" ,
                         "year" => "2008",
                         "country-code" => "GB" } } }
       end
       before do
-         post '/providers', params: params.to_json, headers: headers 
+         post '/providers', params: params.to_json, headers: headers
       end
   
       it 'creates a provider' do
+        puts params
+        puts params.to_json
+        puts json
         expect(json.dig('data', 'attributes', 'contact-email')).to eq("doe@joe.joe")
         expect(response).to have_http_status(201)
       end
@@ -84,10 +87,10 @@ RSpec.describe "Providers", type: :request, elasticsearch: true do
       let(:params) do
         { "data" => { "type" => "providers",
                       "attributes" => {
-                        "symbol" => "BL",
+                        "symbol" => "BLS",
                         "name" => "British Library",
                         "contact_name" => "timAus",
-                        "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
+                        "created" =>"2017-08-29T06:54:15Z" ,
                         "country_code" => "GB" } } }
       end
   

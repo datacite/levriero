@@ -94,8 +94,12 @@ class ClientsController < ApplicationController
   # don't delete, but set deleted_at timestamp
   # a client with dois or prefixes can't be deleted
   def destroy
+    # puts "Cccc"
+    # puts @client.destroy
+    # puts "chchchc"
+    # result  = @client.destroy
     if @client.destroy
-      render jsonapi: @client, status: :destroyed
+      render json: { errors: [{ status: "204", title: "Document has been deleted" }] }.to_json, status: :destroyed
     else
       Rails.logger.warn @client.errors.inspect
       render jsonapi: serialize(@client.errors), status: :unprocessable_entity
@@ -122,7 +126,8 @@ class ClientsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client
-    @client = Client.query_filter_by(:symbol, params[:id]).first
+    # @client = Client.query_filter_by(:symbol, params[:id]).first
+    @client = Client.find_by_id params[:id]
     fail Elasticsearch::Transport::Transport::Errors::NotFound unless @client.present?
   end
 

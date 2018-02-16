@@ -33,11 +33,12 @@ require "colorize"
 
 # Checks for pending migration and applies them before tests are run.
 # ActiveRecord::Migration.maintain_test_schema!
+WebMock.allow_net_connect!
 
-WebMock.disable_net_connect!(
-  allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['ES_HOST'],  ENV['API_URL'],  ENV['APP_URL']],
-  allow_localhost: true
-)
+# WebMock.disable_net_connect!(
+#   allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['ES_HOST'],  ENV['API_URL'],  ENV['APP_URL']],
+#   allow_localhost: true
+# )
 
 # configure shoulda matchers to use rspec as the test framework and full matcher libraries for rails
 Shoulda::Matchers.configure do |config|
