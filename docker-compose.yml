@@ -2,14 +2,12 @@ version: '2'
 
 services:
   web:
-    env_file: .env
     image: datacite/levriero
     ports:
-      - "8070:80"
+      - "8090:80"
     volumes:
       - ./app:/home/app/webapp/app
       - ./config:/home/app/webapp/config
-      - ./db:/home/app/webapp/db
       - ./lib:/home/app/webapp/lib
       - ./spec:/home/app/webapp/spec
     networks:
