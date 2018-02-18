@@ -31,16 +31,13 @@ end
 ENV['APPLICATION'] ||= "elastic-api"
 ENV['HOSTNAME'] ||= "levriero.local"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
-ENV['SITE_TITLE'] ||= "DataCite's ElasticSearch supported API"
+ENV['SITE_TITLE'] ||= "DataCite REST API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['REDIS_URL'] ||= "redis://redis:6379/7"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
 ENV['ES_NAME'] ||= "elasticsearch"
-ENV['SOLR_URL'] ||= "https://search.datacite.org/api"
 ENV['CONCURRENCY'] ||= "25"
-ENV['CDN_URL'] ||= "https://assets.datacite.org"
 ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
-ENV['SEARCH_URL'] ||= "https://search.datacite.org/"
 ENV['API_URL'] ||= "https://api.datacite.org/"
 ENV['APP_URL'] ||= "https://app.datacite.org/"
 ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org/api"
@@ -80,9 +77,6 @@ module Levriero
 
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
-
-    config.action_view.sanitized_allowed_tags = %w(strong em b i code pre sub sup br)
-    config.action_view.sanitized_allowed_attributes = []
 
     # compress responses with deflate or gzip
     config.middleware.use Rack::Deflater
