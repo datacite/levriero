@@ -1,4 +1,4 @@
-class Client 
+class Client
   # include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Elasticsearch::Persistence::Model
@@ -30,7 +30,7 @@ class Client
   attribute :url,  String,  mapping: { type: 'text' }
   attribute :deleted_at,  Date,  mapping: { type: 'date' }
   attribute :prefixes,  String,  mapping: { type: 'text' }
-  
+
 
   validates :symbol, :name,  :contact_email, presence: :true
   # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
@@ -45,13 +45,11 @@ class Client
     validates_with UniquenessValidator
   end
 
-
   def provider
     return nil unless provider_id.present?
-      r = cached_provider_response provider_id
-      r if r.present?
+    r = cached_provider_response provider_id
+    r if r.present?
   end
-
 
   def self.query_prefixes prefixes, options={}
     search(
@@ -67,8 +65,8 @@ class Client
   end
 
   def self.query query, options={}
-   search(
-     {
+    search(
+      {
        query: {
          query_string: {
            query: query+"*",
@@ -80,7 +78,7 @@ class Client
   end
 
   def self.query_filter_by field, value
-    page ||= 1    
+    page ||= 1
     value.respond_to?(:to_str) ? value.downcase! : value
     query = search(
       {
@@ -108,7 +106,7 @@ class Client
 
   # def self.find_by_id symbol
   #   # symbol.downcase!
-    
+
   #   client = self.query_filter_by(:symbol, symbol)
   #   puts client
   #   client.first
@@ -176,13 +174,4 @@ class Client
   def user_url
     ENV["VOLPINO_URL"] + "/users?client-id=" + symbol.downcase
   end
-
-  private
-
-  def set_test_prefix
-    # return if Rails.env.test? || prefixes.where(prefix: "10.5072").first
-    #
-    # prefixes << cached_prefix_response("10.5072")
-  end
-
 end
