@@ -35,7 +35,7 @@ services:
     environment:
       discovery.type: single-node
       ES_JAVA_OPTS: -Xmx256m -Xms256m
-      ELASTIC_PASSWORD: secret
+      ELASTIC_PASSWORD: changeme
     networks:
       - public
     healthcheck:
@@ -50,7 +50,7 @@ services:
     environment:
       discovery.type: single-node
       ES_JAVA_OPTS: -Xmx256m -Xms256m
-      ELASTIC_PASSWORD: secret
+      ELASTIC_PASSWORD: changeme
     networks:
       - public
 networks:

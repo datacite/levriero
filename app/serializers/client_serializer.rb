@@ -3,7 +3,7 @@ class ClientSerializer < ActiveModel::Serializer
   type 'clients'
 
 
-  attributes :name, :symbol, :year, :contact_name, :contact_email, :domains, :url, :is_active, :has_password, :created, :updated
+  attributes :name, :symbol, :year, :contact_name, :contact_email, :domains, :url, :is_active, :created, :updated
 
   has_many :prefixes
   belongs_to :provider
@@ -11,14 +11,6 @@ class ClientSerializer < ActiveModel::Serializer
 
   def id
     object.symbol.downcase
-  end
-
-  def is_active
-    object.is_active == "\u0001" ? true : false
-  end
-
-  def has_password
-    object.password.present?
   end
 
   def provider_id
