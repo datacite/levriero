@@ -1,5 +1,4 @@
 ENV['RAILS_ENV'] = 'test'
-ENV['ES_HOST'] ||= "elasticsearch:9200"
 ENV["TEST_CLUSTER_NODES"] = "1"
 
 # set up Code Climate
