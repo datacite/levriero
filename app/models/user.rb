@@ -14,7 +14,7 @@ class User
       @email = payload.fetch("email", nil)
       @role_id = payload.fetch("role_id", nil)
       @provider_id = payload.fetch("provider_id", nil)
-      @datacenter_id = payload.fetch("datacenter_id", nil)
+      @client_id = payload.fetch("client_id", nil)
     else
       @role_id = "anonymous"
     end
