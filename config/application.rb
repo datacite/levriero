@@ -1,12 +1,11 @@
 require_relative 'boot'
 
 require "rails"
-# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
-# require "active_record/railtie"
 require "action_controller/railtie"
 require "rails/test_unit/railtie"
+require 'syslog/logger'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -38,9 +37,9 @@ ENV['ES_HOST'] ||= "elasticsearch:9200"
 ENV['ES_NAME'] ||= "elasticsearch"
 ENV['CONCURRENCY'] ||= "25"
 ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
-ENV['API_URL'] ||= "https://api.datacite.org/"
-ENV['APP_URL'] ||= "https://app.datacite.org/"
-ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org/api"
+ENV['API_URL'] ||= "https://api.test.datacite.org/"
+ENV['APP_URL'] ||= "https://app.test.datacite.org/"
+ENV['VOLPINO_URL'] ||= "https://profiles.test.datacite.org/api"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 
@@ -73,7 +72,7 @@ module Levriero
     # add elasticsearch instrumentation to logs
     require 'elasticsearch/rails/lograge'
 
-    config.cache_store = :dalli_store, nil, { :namespace => "api" }
+    config.cache_store = :dalli_store, nil, { namespace: ENV['APPLICATION'] }
 
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
