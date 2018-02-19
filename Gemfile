@@ -23,10 +23,10 @@ gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
 gem "facets", require: false
-gem 'elasticsearch'
-gem 'elasticsearch-model', require: 'elasticsearch/model'
-gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
-gem 'elasticsearch-rails'
+gem 'bolognese', '~> 0.9.75'
+gem 'elasticsearch-model', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/model'
+gem 'elasticsearch-persistence', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/persistence/model'
+gem 'elasticsearch-rails', '~> 5.0', '>= 5.0.2'
 gem 'sidekiq', '~> 5.0', '>= 5.0.4'
 gem 'faraday_middleware-aws-signers-v4'
 
@@ -47,6 +47,7 @@ end
 group :test do
   gem 'capybara'
   gem 'webmock', '~> 3.1'
+  gem 'vcr', '~> 3.0.3'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'simplecov'
 
