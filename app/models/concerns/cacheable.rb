@@ -139,25 +139,9 @@ module Cacheable
       end
     end
 
-    def cached_years_by_provider_response(id, options={})
-      Rails.cache.fetch("years_response", expires_in: 1.day) do
-        query = self.ds.where(is_active: true, allocator: id)
-        years = query.group_and_count(Sequel.extract(:year, :created)).all
-        years.map { |y| { id: y.values.first.to_s, title: y.values.first.to_s, count: y.values.last } }
-             .sort { |a, b| b.fetch(:id) <=> a.fetch(:id) }
-      end
-    end
-
     def cached_client_response(id, options={})
       Rails.cache.fetch("client_response/#{id}", expires_in: 1.day) do
         Client.where(symbol: id).first
-      end
-    end
-
-    def cached_clients_by_provider_response(id, options={})
-      Rails.cache.fetch("client_by_provider_response/#{id}", expires_in: 1.day) do
-        query = self.ds.where(is_active: true, allocator: id)
-        query.limit(25).offset(0).order(:name)
       end
     end
   end

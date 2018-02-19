@@ -17,7 +17,7 @@ module Importable
 
         response.body.fetch("data", []).each do |record|
           params = record.fetch("attributes", {}).except("has-password").transform_keys! { |key| key.tr('-', '_') }
-          parameters = ActionController::Parameters.new(params)
+          parameters = ActionController::Parameters.new(params.merge(id: record.fetch("id")))
           record = self.create(parameters.permit(self.safe_params))
 
           Rails.logger.info record.errors.inspect unless record.valid?
