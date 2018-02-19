@@ -2,8 +2,9 @@ version: '2.1'
 
 services:
   web:
+    env_file: .env
     environment:
-      - LOG_LEVEL=debug
+      - LOG_LEVEL=info
       - ELASTIC_PASSWORD=changeme
     image: datacite/levriero
     ports:
