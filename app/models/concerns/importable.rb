@@ -18,7 +18,9 @@ module Importable
         response.body.fetch("data", []).each do |record|
           params = record.fetch("attributes", {}).except("has-password").transform_keys! { |key| key.tr('-', '_') }
           parameters = ActionController::Parameters.new(params)
-          self.create(parameters.permit(self.safe_params))
+          record = self.create(parameters.permit(self.safe_params))
+
+          Rails.logger.info record.errors.inspect unless record.valid?
         end
 
         page_number = response.body.dig("meta", "page").to_i + 1
