@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe ProvidersController, type: :routing, :skip => true do
+describe ProvidersController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
