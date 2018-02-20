@@ -39,7 +39,7 @@ script:
   - bundle exec rspec spec
   - bundle exec codeclimate-test-reporter
 
-after_script:
+after_success:
   - set -e
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
   - REPO=datacite/levriero;
