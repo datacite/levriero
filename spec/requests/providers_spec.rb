@@ -73,6 +73,42 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'page[size]=2' do
+      before do
+        sleep 1
+        get '/providers?page[size]=2', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(2)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'page[size]=100' do
+      before do
+        sleep 1
+        get '/providers?page[size]=100', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'page[size]=2 and page[number]=2' do
+      before do
+        sleep 1
+        get '/providers?page[size]=2&page[number]=2', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(1)
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 
   describe 'GET /providers/:id' do
