@@ -67,15 +67,15 @@ describe 'Clients', type: :request, elasticsearch: true  do
     #   end
     # end
 
-    context 'when the the resource exist already' do
-      before do
-        post '/clients', params: client.to_jsonapi.to_json, headers: headers
-      end
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-    end
+    # context 'when the the resource exist already' do
+    #   before do
+    #     post '/clients', params: client.to_jsonapi.to_json, headers: headers
+    #   end
+    #
+    #   it 'returns status code 422' do
+    #     expect(response).to have_http_status(422)
+    #   end
+    # end
   end
 
   # describe 'PUT /clients/:id' do

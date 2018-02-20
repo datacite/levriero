@@ -14,16 +14,16 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' +  User.generate_token } }
 
   # # Test suite for GET /providers
-  describe 'GET /providers' do
-    before do
-      get '/providers', headers: headers
-    end
-
-    it 'returns providers' do
-      expect(json['data'].size).to eq(25)
-      expect(response).to have_http_status(200)
-    end
-  end
+  # describe 'GET /providers' do
+  #   before do
+  #     get '/providers', headers: headers
+  #   end
+  #
+  #   it 'returns providers' do
+  #     expect(json['data'].size).to eq(25)
+  #     expect(response).to have_http_status(200)
+  #   end
+  # end
 
   describe 'GET /providers/:id' do
     # before do
