@@ -2,6 +2,10 @@ module Indexable
   extend ActiveSupport::Concern
 
   module ClassMethods
+    def find_by_id(id, options={})
+      __elasticsearch__.find(id.downcase)
+    end
+
     def recreate_index(options={})
       client     = self.gateway.client
       index_name = self.index_name

@@ -53,16 +53,6 @@ class Provider
     })
   end
 
-  def self.find_by_id(id, options={})
-    __elasticsearch__.search({
-      query: {
-        match: {
-          id: id
-        }
-      }
-    })
-  end
-
   def self.safe_params
     [:id, :name, :symbol, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
   end

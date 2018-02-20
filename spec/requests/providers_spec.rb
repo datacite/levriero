@@ -118,10 +118,21 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
       before { get "/providers/#{provider.id}", headers: headers }
 
       it 'returns the provider' do
-        expect(response.body).not_to be_empty
+        expect(response).to have_http_status(200)
         expect(json.dig('data', 'id')).to eq(provider.id)
         expect(json.dig('data', 'attributes', 'name')).to eq(provider.name)
+      end
+    end
+
+    context 'when the record exists upcase' do
+      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+
+      before { get "/providers/#{provider.symbol}", headers: headers }
+
+      it 'returns the provider' do
         expect(response).to have_http_status(200)
+        expect(json.dig('data', 'id')).to eq(provider.id)
+        expect(json.dig('data', 'attributes', 'name')).to eq(provider.name)
       end
     end
 

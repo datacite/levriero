@@ -49,16 +49,6 @@ class Client
     })
   end
 
-  def self.find_by_id(id, options={})
-    __elasticsearch__.search({
-      query: {
-        match: {
-          id: id
-        }
-      }
-    })
-  end
-
   def self.safe_params
     [:id, :symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :provider, :url, :repository, :is_active, :deleted_at, :prefixes]
   end

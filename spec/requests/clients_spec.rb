@@ -128,6 +128,19 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
       it 'returns the client' do
         expect(response).to have_http_status(200)
+        expect(json.dig('data', 'id')).to eq(client.id)
+        expect(json.dig('data', 'attributes', 'name')).to eq(client.name)
+      end
+    end
+
+    context 'when the record exists upcase' do
+      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+
+      before { get "/clients/#{client.id.upcase}", headers: headers }
+
+      it 'returns the client' do
+        expect(response).to have_http_status(200)
+        expect(json.dig('data', 'id')).to eq(client.id)
         expect(json.dig('data', 'attributes', 'name')).to eq(client.name)
       end
     end

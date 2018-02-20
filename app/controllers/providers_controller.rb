@@ -7,29 +7,29 @@ class ProvidersController < ApplicationController
   load_and_authorize_resource :except => [:index, :show]
 
   def index
+    page = (params.dig(:page, :number) || 1).to_i
+    size = (params.dig(:page, :size) || 25).to_i
+    from = (page - 1) * size
+
+    sort = case params[:sort]
+           when "-name" then { "name.keyword" => { order: 'desc' }}
+           when "created" then { created: { order: 'asc' }}
+           when "-created" then { created: { order: 'desc' }}
+           else { "name.keyword" => { order: 'asc' }}
+           end
+           
     if params[:id].present?
       response = Provider.find_by_id(params[:id])
     elsif params[:ids].present?
       response = Provider.query(params[:ids])
     else
-      page = (params.dig(:page, :number) || 1).to_i
-      size = (params.dig(:page, :size) || 25).to_i
-      from = (page - 1) * size
-
-      sort = case params[:sort]
-             when "-name" then { "name.keyword" => { order: 'desc' }}
-             when "created" then { created: { order: 'asc' }}
-             when "-created" then { created: { order: 'desc' }}
-             else { "name.keyword" => { order: 'asc' }}
-             end
-
       params[:query] ||= "*"
       response = Provider.query(params[:query], from: from, size: size, sort: sort)
-      total = response.total
-      total_pages = (total.to_f / size).ceil
-
-      years = facet_by_year(response.response.aggregations.years.buckets)
     end
+
+    total = response.total
+    total_pages = (total.to_f / size).ceil
+    years = total > 0 ? facet_by_year(response.response.aggregations.years.buckets) : nil
 
     @providers = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)
 
@@ -89,7 +89,7 @@ class ProvidersController < ApplicationController
   protected
 
   def set_provider
-    @provider = Provider.find(params[:id])
+    @provider = Provider.find_by_id(params[:id])
     fail Elasticsearch::Transport::Transport::Errors::NotFound unless @provider.present?
   end
 
