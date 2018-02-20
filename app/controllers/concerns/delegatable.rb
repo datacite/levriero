@@ -4,12 +4,12 @@ require 'json'
 
   included do
 
-    def dois_count uid, **options
+    def dois_count(uid, **options)
       Rails.cache.fetch("dois_count/#{uid}", expires_in: 6.hours, force: options[:force]) do
         if self.is_a?(ClientsController)
-          response = Maremma.get(ENV['APP_URL']+"clients/" + uid)
-        elsif  self.is_a?(ProvidersController)
-          response = Maremma.get(ENV['APP_URL']+"providers/" + uid)
+          response = Maremma.get(ENV['APP_URL'] + "/clients/" + uid)
+        elsif self.is_a?(ProvidersController)
+          response = Maremma.get(ENV['APP_URL'] + "/providers/" + uid)
         end
         response.body.to_h.dig("meta", "dois")
       end
@@ -18,9 +18,9 @@ require 'json'
 
     # def prefixes_count uid
     #   if self.is_a?(ClientsController)
-    #     response = Maremma.get(ENV['API_URL']+"clients/"+uid)
+    #     response = Maremma.get(ENV['API_URL']+"/clients/"+uid)
     #   elsif  self.is_a?(ProvidersController)
-    #     response = Maremma.get(ENV['API_URL']+"providers/"+uid)
+    #     response = Maremma.get(ENV['API_URL']+"/providers/"+uid)
     #   end
 
     #   response.body["meta"]["prefixes"]
@@ -29,9 +29,9 @@ require 'json'
 
     # def repository_count uid
     #   if self.is_a?(ClientsController)
-    #     response = Maremma.get(ENV['API_URL']+"clients/"+uid)
+    #     response = Maremma.get(ENV['API_URL']+"/clients/"+uid)
     #   elsif  self.is_a?(ProvidersController)
-    #     response = Maremma.get(ENV['API_URL']+"providers/"+uid)
+    #     response = Maremma.get(ENV['API_URL']+"/providers/"+uid)
     #   end
 
     #   response.body["meta"]["repositories"]

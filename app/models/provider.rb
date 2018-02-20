@@ -13,11 +13,12 @@ class Provider
 
   index_name "providers-#{Rails.env}"
 
+  attribute :id, String, mapping: { type: 'keyword', normalizer: "case_insensitive" }
   attribute :symbol, String, mapping: { type: 'keyword' }
   attribute :region, String, mapping: { type: 'keyword' }
   attribute :year, Integer, mapping: { type: 'integer' }
-  attribute :name, String, mapping: { type: 'keyword' }
-  attribute :created, DateTime, mapping: { type: :date}
+  attribute :name, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
+  attribute :created, DateTime, mapping: { type: :date }
   attribute :contact_name, String, default: "", mapping: { type: 'text' }
   attribute :contact_email, String, mapping: { type: 'keyword' }
   attribute :country_code, String, mapping: { type: 'keyword' }
@@ -36,10 +37,10 @@ class Provider
   #before_create :set_test_prefix, :instance_validations
 
   def self.query(query, options={})
-    search({
+    __elasticsearch__.search({
       from: options[:from],
       size: options[:size],
-      sort: [options[:sort], "_doc"],
+      sort: [options[:sort]],
       query: {
         query_string: {
           query: query + "*",
@@ -49,6 +50,16 @@ class Provider
       aggregations: {
         years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
       },
+    })
+  end
+
+  def self.find_by_id(id, options={})
+    __elasticsearch__.search({
+      query: {
+        match: {
+          id: id
+        }
+      }
     })
   end
 

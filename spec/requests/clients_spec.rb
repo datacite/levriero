@@ -1,12 +1,10 @@
 require 'rails_helper'
 
-describe 'Clients', type: :request, elasticsearch: true  do
-  let(:parameters) { ActionController::Parameters.new(id: "abc.def", symbol: "ABC.DEF", name: "Test", contact_name: "Josiah Carberry", contact_email: "josiah@example.org", created: Time.zone.now) }
-  let!(:client) { Client.create(parameters.permit(Client.safe_params)) }
+describe 'Clients', type: :request, elasticsearch: true, vcr: true do
   let(:params) do
     { "data" => { "type" => "clients",
                   "attributes" => {
-                    "symbol" => client.symbol,
+                    "symbol" => "BL.IMPERIAL",
                     "name" => "Imperial College",
                     "contact-name" => "Madonna",
                     "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
@@ -14,7 +12,7 @@ describe 'Clients', type: :request, elasticsearch: true  do
                     "relationships" => {
                 			"provider" => {
                 				"data" => {
-                					"type" => "providers",
+                					"type" => "clients",
                 					"id" => "ABC"
                 				}
                 			}
@@ -22,29 +20,81 @@ describe 'Clients', type: :request, elasticsearch: true  do
   end
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' + User.generate_token}}
 
-  # describe 'GET /clients' do
-  #   before do
-  #     get '/clients', headers: headers
-  #   end
-  #
-  #   it 'returns clients' do
-  #     expect(json).not_to be_empty
-  #     expect(json['data'].size).to eq(10)
-  #     expect(response).to have_http_status(200)
-  #   end
-  # end
+  describe 'GET /clients' do
+    let!(:clients) { create_list(:client, 3) }
 
-  describe 'GET /clients/:id' do
-    before do
-      get "/clients/#{client.symbol}", headers: headers
+    context 'sort by created' do
+      before do
+        sleep 1
+        get '/clients?sort=created', headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
     end
 
-    # context 'when the record exists' do
-    #   it 'returns the client' do
-    #     expect(response).to have_http_status(200)
-    #     expect(json.dig('data', 'attributes', 'name')).to eq(client.name)
-    #   end
-    # end
+    context 'sort by created desc' do
+      before do
+        sleep 1
+        get '/clients?sort=-created', headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort by name' do
+      before do
+        sleep 1
+        get '/clients?sort=name', headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort by name desc' do
+      before do
+        sleep 1
+        get '/clients?sort=-name', headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort default' do
+      before do
+        sleep 1
+        get '/clients', headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe 'GET /clients/:id' do
+    context 'when the record exists' do
+      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+
+      before { get "/clients/#{client.id}", headers: headers }
+
+      it 'returns the client' do
+        expect(response).to have_http_status(200)
+        expect(json.dig('data', 'attributes', 'name')).to eq(client.name)
+      end
+    end
 
     context 'when the record does not exist' do
       before { get "/clients/xxx", headers: headers }

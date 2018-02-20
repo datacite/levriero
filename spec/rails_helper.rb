@@ -19,7 +19,7 @@ require "sidekiq/testing"
 WebMock.allow_net_connect!
 
 WebMock.disable_net_connect!(
-  allow: ['codeclimate.com:443', 'eleasticsearch:9250'],
+  allow: ['codeclimate.com:443', 'eleasticsearch:9200'],
   allow_localhost: true
 )
 
@@ -32,6 +32,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
   # add custom json method
   config.include RequestSpecHelper, type: :request
 end

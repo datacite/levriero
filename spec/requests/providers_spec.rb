@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe "Providers", type: :request, elasticsearch: true, vcr: true do
-  let(:parameters) { ActionController::Parameters.new(id: "abc", symbol: "ABC", name: "Test", contact_name: "Josiah Carberry", contact_email: "josiah@example.org", created: Time.zone.now) }
-  let!(:provider) { Provider.create(parameters.permit(Provider.safe_params)) }
   let(:params) do
     { "data" => { "type" => "providers",
                   "attributes" => {
@@ -13,30 +11,83 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
   end
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' +  User.generate_token } }
 
-  # # Test suite for GET /providers
-  # describe 'GET /providers' do
-  #   before do
-  #     get '/providers', headers: headers
-  #   end
-  #
-  #   it 'returns providers' do
-  #     expect(json['data'].size).to eq(25)
-  #     expect(response).to have_http_status(200)
-  #   end
-  # end
+  describe 'GET /providers' do
+    let!(:providers) { create_list(:provider, 3) }
+
+    context 'sort by created' do
+      before do
+        sleep 1
+        get '/providers?sort=created', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort by created desc' do
+      before do
+        sleep 1
+        get '/providers?sort=-created', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort by name' do
+      before do
+        sleep 1
+        get '/providers?sort=name', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort by name desc' do
+      before do
+        sleep 1
+        get '/providers?sort=-name', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'sort default' do
+      before do
+        sleep 1
+        get '/providers', headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(3)
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 
   describe 'GET /providers/:id' do
-    # before do
-    #   get "/providers/#{provider.symbol}" , headers: headers
-    # end
-    #
-    # context 'when the record exists' do
-    #   it 'returns the provider' do
-    #     expect(response.body).not_to be_empty
-    #     expect(json['data']).to eq(provider.symbol.downcase)
-    #     expect(response).to have_http_status(200)
-    #   end
-    # end
+    context 'when the record exists' do
+      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+
+      before { get "/providers/#{provider.id}", headers: headers }
+
+      it 'returns the provider' do
+        expect(response.body).not_to be_empty
+        expect(json.dig('data', 'id')).to eq(provider.id)
+        expect(json.dig('data', 'attributes', 'name')).to eq(provider.name)
+        expect(response).to have_http_status(200)
+      end
+    end
 
     context 'when the record does not exist' do
       before { get "/providers/xxx" , headers: headers}

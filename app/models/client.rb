@@ -10,10 +10,11 @@ class Client
 
   index_name "clients-#{Rails.env}"
 
+  attribute :id, String, mapping: { type: 'keyword' }
   attribute :symbol, String, mapping: { type: 'keyword' }
   attribute :year, Integer, mapping: { type: 'integer' }
   attribute :created, DateTime, mapping: { type: :date }
-  attribute :name, String, mapping: { type: 'keyword' }
+  attribute :name, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :contact_name, String, default: "", mapping: { type: 'text' }
   attribute :contact_email, String, mapping: { type: 'keyword' }
   attribute :re3data, String, mapping: { type: 'keyword' }
@@ -32,10 +33,10 @@ class Client
   #before_create :instance_validations
 
   def self.query(query, options={})
-    search({
+    __elasticsearch__.search({
       from: options[:from],
       size: options[:size],
-      sort: [options[:sort], "_doc"],
+      sort: [options[:sort]],
       query: {
         query_string: {
           query: query + "*",
@@ -43,9 +44,18 @@ class Client
         }
       },
       aggregations: {
-        years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } },
-        providers: { terms: { field: 'provider_id', min_doc_count: 1 } }
+        years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
       },
+    })
+  end
+
+  def self.find_by_id(id, options={})
+    __elasticsearch__.search({
+      query: {
+        match: {
+          id: id
+        }
+      }
     })
   end
 

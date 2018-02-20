@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
 
   def index
     if params[:id].present?
-      response = Client.find(params[:id])
+      response = Client.find_by_id(params[:id])
     elsif params[:ids].present?
       response = Client.query(params[:ids])
     else
@@ -17,10 +17,10 @@ class ClientsController < ApplicationController
       from = (page - 1) * size
 
       sort = case params[:sort]
-             when "name" then "name"
-             when "-name" then "name: desc"
-             when "created" then "created"
-             else "created"
+             when "-name" then { "name.keyword" => { order: 'desc' }}
+             when "created" then { created: { order: 'asc' }}
+             when "-created" then { created: { order: 'desc' }}
+             else { "name.keyword" => { order: 'asc' }}
              end
 
       params[:query] ||= "*"
@@ -29,7 +29,6 @@ class ClientsController < ApplicationController
       total_pages = (total.to_f / size).ceil
 
       years = facet_by_year(response.response.aggregations.years.buckets)
-      providers = facet_by_provider(response.response.aggregations.providers.buckets)
     end
 
     @clients = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)

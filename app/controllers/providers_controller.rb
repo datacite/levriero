@@ -8,7 +8,7 @@ class ProvidersController < ApplicationController
 
   def index
     if params[:id].present?
-      response = Provider.find(params[:id])
+      response = Provider.find_by_id(params[:id])
     elsif params[:ids].present?
       response = Provider.query(params[:ids])
     else
@@ -17,10 +17,10 @@ class ProvidersController < ApplicationController
       from = (page - 1) * size
 
       sort = case params[:sort]
-             when "name" then "name"
-             when "-name" then "name: desc"
-             when "created" then "created"
-             else "created"
+             when "-name" then { "name.keyword" => { order: 'desc' }}
+             when "created" then { created: { order: 'asc' }}
+             when "-created" then { created: { order: 'desc' }}
+             else { "name.keyword" => { order: 'asc' }}
              end
 
       params[:query] ||= "*"

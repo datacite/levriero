@@ -1,18 +1,16 @@
 ## https://github.com/elastic/elasticsearch-ruby/issues/462
+SEARCHABLE_MODELS = [Client, Provider]
+
 RSpec.configure do |config|
-  config.before(:suite) do
+  config.around :each, elasticsearch: true do |example|
+    SEARCHABLE_MODELS.each do |model|
+      model.gateway.client.indices.create index: model.index_name rescue nil
+    end
 
-    Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], user: "elastic", password: ENV['ELASTIC_PASSWORD'])
-    sleep 5
+    example.run
+
+    SEARCHABLE_MODELS.each do |model|
+      model.gateway.client.indices.delete index: model.index_name
+    end
   end
-
-  # config.before :all, elasticsearch: true do
-  #   Provider.recreate_index
-  #   Client.recreate_index
-  # end
-
-  config.after :all, elasticsearch: true do
-    Maremma.delete("http://#{ENV['ES_HOST']}/_all")
-  end
-
 end

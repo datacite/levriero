@@ -4,7 +4,7 @@ describe "Importable", type: :model, vcr: true do
   describe "import_from_api" do
     # return number of clients or providers imported into Elasticsearch
     it "client" do
-      expect(Client.import_from_api).to eq(1438)
+      expect(Client.import_from_api).to eq(1439)
     end
 
     it "provider" do
