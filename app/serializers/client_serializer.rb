@@ -2,28 +2,7 @@ class ClientSerializer < ActiveModel::Serializer
   cache key: 'client'
   type 'clients'
 
-
-  attributes :name, :symbol, :year, :contact_name, :contact_email, :domains, :url, :is_active, :has_password, :created, :updated
-
-  has_many :prefixes
-  belongs_to :provider
-  belongs_to :repository, serializer: RepositorySerializer
-
-  def id
-    object.symbol.downcase
-  end
-
-  def is_active
-    object.is_active == "\u0001" ? true : false
-  end
-
-  def has_password
-    object.password.present?
-  end
-
-  def provider_id
-    object.provider_symbol
-  end
+  attributes :name, :symbol, :year, :contact_name, :contact_email, :provider_id, :domains, :url, :is_active, :created, :updated
 
   def created
     object.created.strftime("%FT%TZ")

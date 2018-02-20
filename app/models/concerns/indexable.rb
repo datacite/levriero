@@ -1,10 +1,5 @@
 module Indexable
   extend ActiveSupport::Concern
-  
-  
-  included do
-
-  end
 
   module ClassMethods
     def recreate_index(options={})
@@ -16,5 +11,3 @@ module Indexable
     end
   end
 end
-
-

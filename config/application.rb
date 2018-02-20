@@ -1,12 +1,11 @@
 require_relative 'boot'
 
 require "rails"
-# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
-# require "active_record/railtie"
 require "action_controller/railtie"
 require "rails/test_unit/railtie"
+require 'syslog/logger'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,19 +30,17 @@ end
 ENV['APPLICATION'] ||= "elastic-api"
 ENV['HOSTNAME'] ||= "levriero.local"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
-ENV['SITE_TITLE'] ||= "DataCite's ElasticSearch supported API"
+ENV['SITE_TITLE'] ||= "DataCite REST API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['REDIS_URL'] ||= "redis://redis:6379/7"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
 ENV['ES_NAME'] ||= "elasticsearch"
-ENV['SOLR_URL'] ||= "https://search.datacite.org/api"
 ENV['CONCURRENCY'] ||= "25"
-ENV['CDN_URL'] ||= "https://assets.datacite.org"
 ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
-ENV['SEARCH_URL'] ||= "https://search.datacite.org/"
-ENV['API_URL'] ||= "https://api.datacite.org/"
-ENV['APP_URL'] ||= "https://app.datacite.org/"
-ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org/api"
+ENV['API_URL'] ||= "https://api.test.datacite.org/"
+ENV['APP_URL'] ||= "https://app.test.datacite.org/"
+ENV['CDN_URL'] ||= "https://assets.datacite.org/"
+ENV['VOLPINO_URL'] ||= "https://profiles.test.datacite.org/api"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 
@@ -76,13 +73,10 @@ module Levriero
     # add elasticsearch instrumentation to logs
     require 'elasticsearch/rails/lograge'
 
-    config.cache_store = :dalli_store, nil, { :namespace => "api" }
+    config.cache_store = :dalli_store, nil, { namespace: ENV['APPLICATION'] }
 
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
-
-    config.action_view.sanitized_allowed_tags = %w(strong em b i code pre sub sup br)
-    config.action_view.sanitized_allowed_attributes = []
 
     # compress responses with deflate or gzip
     config.middleware.use Rack::Deflater

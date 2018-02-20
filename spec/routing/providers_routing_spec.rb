@@ -1,12 +1,11 @@
 require "rails_helper"
 
-RSpec.describe ProvidersController, type: :routing, :skip => true do
+describe ProvidersController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
       expect(:get => "/providers").to route_to("providers#index")
     end
-
 
     it "routes to #show" do
       expect(:get => "/providers/1").to route_to("providers#show", :id => "1")
@@ -28,6 +27,5 @@ RSpec.describe ProvidersController, type: :routing, :skip => true do
     it "routes to #destroy" do
       expect(:delete => "/providers/1").to route_to("providers#destroy", :id => "1")
     end
-
   end
 end

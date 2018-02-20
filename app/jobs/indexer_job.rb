@@ -17,6 +17,6 @@ class IndexerJob < ActiveJob::Base
       when "delete"
         es_client.delete index: record.index, type: record.type, id: record.id
       else raise ArgumentError, "Unknown operation '#{operation}'"
-    end
+      end
   end
 end

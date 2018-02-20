@@ -17,5 +17,5 @@ else
       request: { timeout: 5 }
     }
   }
-  Elasticsearch::Persistence.client = Elasticsearch::Client.new host: ENV['ES_HOST'], log: true
+  Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], user: "elastic", password: ENV['ELASTIC_PASSWORD'], log: true)
 end

@@ -2,7 +2,7 @@ class User
   # include jwt encode and decode
   include Authenticable
 
-  attr_accessor :name, :uid, :email, :role_id, :jwt, :orcid, :provider_id, :client_id, :allocator, :datacentre
+  attr_accessor :name, :uid, :email, :role_id, :jwt, :orcid, :provider_id, :client_id
 
   def initialize(token)
     if token.present?
@@ -31,24 +31,5 @@ class User
   # Helper method to check for admin or staff user
   def is_admin_or_staff?
     ["staff_admin", "staff_user"].include?(role_id)
-  end
-
-  # Helper method to check for admin or staff user
-  def is_admin_or_staff?
-    ["staff_admin", "staff_user"].include?(role_id)
-  end
-
-  def allocator
-    return nil unless provider_id.present?
-
-    p = Provider.where(symbol: provider_id).first
-    p.id if p.present?
-  end
-
-  def datacentre
-    return nil unless client_id.present?
-
-    c = Client.where(symbol: client_id).first
-    c.id if c.present?
   end
 end
