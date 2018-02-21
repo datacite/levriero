@@ -31,17 +31,11 @@ class Provider
   attribute :prefixes, String, mapping: { type: 'text' }
 
   validates :symbol, :name, :contact_name, :contact_email, presence: :true
-  # validates :symbol, symbol: {uniqueness: true} # {message: "This Client ID has already been taken"}
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
-
-  #before_create :set_test_prefix, :instance_validations
+  validates_with UniquenessValidator, :if => :new_record?
 
   def self.safe_params
     [:id, :name, :symbol, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
-  end
-
-  def instance_validations
-    validates_with UniquenessValidator
   end
 
   def year

@@ -2,8 +2,13 @@ module Indexable
   extend ActiveSupport::Concern
 
   module ClassMethods
+    # don't raise an exception when not found
     def find_by_id(id, options={})
+      return nil unless id.present?
+      
       __elasticsearch__.find(id.downcase)
+    rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Persistence::Repository::DocumentNotFound
+      nil
     end
 
     def query(query, options={})

@@ -8,6 +8,20 @@ describe Provider, elasticsearch: true, type: :model do
     it { should validate_presence_of(:contact_name) }
   end
 
+  describe "uniqueness" do
+    let(:provider) { build(:provider, id: "bl") }
+
+    it "validates" do
+      expect(provider).to be_valid
+    end
+
+    it "does not validate" do
+      create(:provider, id: "bl")
+      expect(provider).not_to be_valid
+      expect(provider.errors.to_a).to eq(["Symbol This ID has already been taken"])
+    end
+  end
+
   describe "country code" do
     let(:provider) { build(:provider, country_code: "AU") }
 
