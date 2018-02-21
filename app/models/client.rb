@@ -8,7 +8,8 @@ class Client
   include Indexable
   include Importable
 
-  index_name "clients-#{Rails.env}"
+  # use different index for testing
+  index_name Rails.env.test? ? "clients-test" : "clients"
 
   attribute :id, String, mapping: { type: 'keyword' }
   attribute :symbol, String, mapping: { type: 'keyword' }
@@ -46,23 +47,6 @@ class Client
     r if r.present?
   end
 
-  def self.query_filter_by(field, value)
-    page ||= 1
-    value.respond_to?(:to_str) ? value.downcase! : value
-    query = search({
-      query: {
-        bool: {
-          must: [
-            { match_all: {} }
-          ],
-          filter: [
-            { term: { field => value } }
-          ]
-        }
-      }
-    })
-  end
-
   def updated
     updated_at
   end
@@ -73,10 +57,6 @@ class Client
     attributes["contact-email"] = attributes[:contact_email]
 
     { "data" => { "type" => "clients", "attributes" => attributes } }
-  end
-
-  def repository_id=(value)
-    write_attribute(:re3data, value)
   end
 
   def repository

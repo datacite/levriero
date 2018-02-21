@@ -6,12 +6,12 @@ class Provider
   include Elasticsearch::Persistence::Model
   include ActiveModel::Validations
 
-  # # include helper module for managing associated users
   include Indexable
   include Cacheable
   include Importable
 
-  index_name "providers-#{Rails.env}"
+  # use different index for testing
+  index_name Rails.env.test? ? "providers-test" : "providers"
 
   attribute :id, String, mapping: { type: 'keyword', normalizer: "case_insensitive" }
   attribute :symbol, String, mapping: { type: 'keyword' }
@@ -76,25 +76,6 @@ class Provider
 
   def logo_url
     "#{ENV['CDN_URL']}/images/members/#{symbol.downcase}.png"
-  end
-
-  def self.query_filter_by field, value
-    page ||= 1
-    value.respond_to?(:to_str) ? value.downcase! : value
-    query = search(
-      {
-        query: {
-          bool: {
-            must: [
-              { match_all: {}}
-              ],
-            filter: [
-              { term:  { field => value}}
-            ]
-          }
-        }
-      }
-    )
   end
 
   # show all clients for admin
