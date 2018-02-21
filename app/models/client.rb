@@ -32,7 +32,11 @@ class Client
   validates_with UniquenessValidator, :if => :new_record?
 
   def self.safe_params
-    [:id, :symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :provider, :url, :repository, :is_active, :deleted_at, :prefixes]
+    [:symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :provider, :url, :repository, :is_active, :deleted_at, :prefixes]
+  end
+
+  def id
+    symbol.downcase
   end
 
   def provider

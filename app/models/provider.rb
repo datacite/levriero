@@ -35,7 +35,11 @@ class Provider
   validates_with UniquenessValidator, :if => :new_record?
 
   def self.safe_params
-    [:id, :name, :symbol, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
+    [:symbol, :name, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
+  end
+
+  def id
+    symbol.downcase
   end
 
   def year

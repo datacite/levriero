@@ -3,8 +3,7 @@ require 'faker'
 FactoryBot.define do
   factory :client do
     sequence(:provider_id) { |n| "test#{n}" }
-    sequence(:id) { |n| provider_id + ".test#{n}" }
-    symbol { id.upcase }
+    sequence(:symbol) { |n| provider_id.upcase + ".TEST#{n}" }
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
     name { Faker::GameOfThrones.city  }
@@ -15,8 +14,7 @@ FactoryBot.define do
   end
 
   factory :provider do
-    sequence(:id) { |n| "test#{n}" }
-    symbol { id.upcase }
+    sequence(:symbol) { |n| "TEST#{n}" }
     contact_email { Faker::Internet.email }
     contact_name { Faker::Name.name }
     name { Faker::GameOfThrones.city }
