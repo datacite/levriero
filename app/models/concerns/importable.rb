@@ -16,11 +16,24 @@ module Importable
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
 
         response.body.fetch("data", []).each do |record|
+          id = record.fetch("id", nil)
           params = record.fetch("attributes", {}).except("has-password").transform_keys! { |key| key.tr('-', '_') }
-          parameters = ActionController::Parameters.new(params.merge(id: record.fetch("id")))
-          record = self.create(parameters.permit(self.safe_params))
+          parameters = ActionController::Parameters.new(params)
+          safe_params = parameters.permit(self.safe_params)
+          result = find_by_id(id)
 
-          Rails.logger.info record.errors.inspect unless record.valid?
+          if result.present?
+            # result = result.update_attributes(safe_params)
+            # Rails.logger.info self.name + " " + id + " updated."
+          else
+            result = self.create(safe_params)
+
+            if result.valid?
+              Rails.logger.info self.name + " " + id + " created."
+            else
+              Rails.logger.info self.name + " " + id + " not created: " + result.errors.messages.values.first.first
+            end
+          end
         end
 
         page_number = response.body.dig("meta", "page").to_i + 1
