@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://app.test.datacite.org/providers/TEST39
+    uri: https://app.test.datacite.org/clients/TEST38.TEST38
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 21 Feb 2018 19:43:21 GMT
+      - Wed, 21 Feb 2018 19:43:06 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,9 +29,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 5c172b2e-5e96-4675-8af0-7979e7041842
+      - 2435f862-43eb-46c2-8040-36c98084d7df
       X-Runtime:
-      - '0.003251'
+      - '0.003256'
       X-Powered-By:
       - Phusion Passenger 5.2.0
       Server:
@@ -41,5 +41,5 @@ http_interactions:
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Wed, 21 Feb 2018 19:44:01 GMT
+  recorded_at: Wed, 21 Feb 2018 19:43:46 GMT
 recorded_with: VCR 3.0.3

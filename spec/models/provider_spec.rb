@@ -9,14 +9,14 @@ describe Provider, elasticsearch: true, type: :model do
   end
 
   describe "uniqueness" do
-    let(:provider) { build(:provider, id: "bl") }
+    let(:provider) { build(:provider, symbol: "BL") }
 
     it "validates" do
       expect(provider).to be_valid
     end
 
     it "does not validate" do
-      create(:provider, id: "bl")
+      create(:provider, symbol: "BL")
       expect(provider).not_to be_valid
       expect(provider.errors.to_a).to eq(["Symbol This ID has already been taken"])
     end

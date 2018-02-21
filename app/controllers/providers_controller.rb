@@ -21,10 +21,10 @@ class ProvidersController < ApplicationController
     if params[:id].present?
       response = Provider.find_by_id(params[:id])
     elsif params[:ids].present?
-      response = Provider.query(params[:ids])
+      response = Provider.find_by_ids(params[:ids], from: from, size: size, sort: sort)
     else
       params[:query] ||= "*"
-      response = Provider.query(params[:query], year: params[:year], from: from, size: size, sort: sort)
+      response = Provider.query(params[:query], year: params[:year], ids: params[:ids], from: from, size: size, sort: sort)
     end
 
     total = response.total
@@ -107,7 +107,7 @@ class ProvidersController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:id, :name, :symbol, "contact-name", "contact-email", "country-code", "is-active", :created, :updated, :prefixes],
+      params, only: [:name, :symbol, "contact-name", "contact-email", "country-code", "is-active", :created, :updated, :prefixes],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "country-code" => :country_code, "is-active" => :is_active }
     )
   end

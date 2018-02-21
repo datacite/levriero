@@ -113,7 +113,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
     context 'filter by year' do
       let(:created) { Time.zone.now - 1.year }
-      let!(:client) { create(:client, id: "bl.imperial", name: "Imperial College", created: created) }
+      let!(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College", created: created) }
 
       before do
         sleep 1
@@ -129,8 +129,8 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
     context 'filter by two years' do
       let(:created) { Time.zone.now - 1.year }
       let(:years) { [created.year, created.year - 1].join(",") }
-      let!(:client) { create(:client, id: "bl.imperial", created: created) }
-      let!(:alt_client) { create(:client, id: "bl.ccdc", created: created - 1.year) }
+      let!(:client) { create(:client, symbol: "BL.IMPERIAL", created: created) }
+      let!(:alt_client) { create(:client, symbol: "BL.CCDC", created: created - 1.year) }
 
       before do
         sleep 1
@@ -142,11 +142,26 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'find by ids' do
+      let!(:client) { create(:client, symbol: "BL.IMPERIAL") }
+      let!(:alt_client) { create(:client, symbol: "BL.CCDC") }
+
+      before do
+        sleep 1
+        get "/clients?ids=bl.imperial,bl.ccdc", headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(2)
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 
   describe 'GET /clients/:id' do
     context 'when the record exists' do
-      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+      let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
       before { get "/clients/#{client.id}", headers: headers }
 
@@ -158,7 +173,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
     end
 
     context 'when the record exists upcase' do
-      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+      let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
       before { get "/clients/#{client.id.upcase}", headers: headers }
 
@@ -190,7 +205,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
     end
 
     context 'when the the resource exist already' do
-      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+      let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
       before { post '/clients', params: client.to_jsonapi.to_json, headers: headers }
 
@@ -202,7 +217,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
   describe 'PUT /clients/:id' do
     context 'when the record exists' do
-      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+      let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
       let(:params) do
         { "data" => { "type" => "clients",
@@ -228,7 +243,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
   describe 'DELETE /clients/:id' do
     context 'when the resources exist' do
-      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+      let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
       before { delete "/clients/#{client.id}", headers: headers }
 

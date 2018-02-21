@@ -5,10 +5,24 @@ module Indexable
     # don't raise an exception when not found
     def find_by_id(id, options={})
       return nil unless id.present?
-      
+
       __elasticsearch__.find(id.downcase)
     rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Persistence::Repository::DocumentNotFound
       nil
+    end
+
+    def find_by_ids(ids, options={})
+      __elasticsearch__.search({
+        from: options[:from],
+        size: options[:size],
+        sort: [options[:sort]],
+        query: {
+          ids: {
+            values: ids.split(",").map(&:downcase)
+          }
+        },
+        aggregations: query_aggregations
+      })
     end
 
     def query(query, options={})

@@ -9,14 +9,14 @@ describe Client, elasticsearch: true, type: :model do
   end
 
   describe "uniqueness" do
-    let(:client) { build(:client, id: "bl.cdcc") }
+    let(:client) { build(:client, symbol: "BL.CDCC") }
 
     it "validates" do
       expect(client).to be_valid
     end
 
     it "does not validate" do
-      create(:client, id: "bl.cdcc")
+      create(:client, symbol: "BL.CDCC")
       expect(client).not_to be_valid
       expect(client.errors.to_a).to eq(["Symbol This ID has already been taken"])
     end

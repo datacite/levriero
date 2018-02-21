@@ -112,7 +112,7 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
 
     context 'filter by year' do
       let(:created) { Time.zone.now - 1.year }
-      let!(:provider) { create(:provider, id: "bl", name: "British Library", created: created) }
+      let!(:provider) { create(:provider, symbol: "BL", name: "British Library", created: created) }
 
       before do
         sleep 1
@@ -128,8 +128,8 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
     context 'filter by two years' do
       let(:created) { Time.zone.now - 1.year }
       let(:years) { [created.year, created.year - 1].join(",") }
-      let!(:provider) { create(:provider, id: "bl", name: "British Library", created: created) }
-      let!(:alt_provider) { create(:provider, id: "sl", name: "Scottish Library", created: created - 1.year) }
+      let!(:provider) { create(:provider, symbol: "BL", name: "British Library", created: created) }
+      let!(:alt_provider) { create(:provider, symbol: "SL", name: "Scottish Library", created: created - 1.year) }
 
       before do
         sleep 1
@@ -141,11 +141,26 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'find by ids' do
+      let!(:provider) { create(:provider, symbol: "BL", name: "British Library") }
+      let!(:alt_provider) { create(:provider, symbol: "SL", name: "Scottish Library") }
+
+      before do
+        sleep 1
+        get "/providers?ids=bl,sl", headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(2)
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 
   describe 'GET /providers/:id' do
     context 'when the record exists' do
-      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+      let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
       before { get "/providers/#{provider.id}", headers: headers }
 
@@ -157,7 +172,7 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
     end
 
     context 'when the record exists upcase' do
-      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+      let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
       before { get "/providers/#{provider.symbol}", headers: headers }
 
@@ -245,7 +260,7 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
     end
 
     context 'when the the resource exist already' do
-      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+      let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
       before { post '/providers', params: provider.to_jsonapi.to_json, headers: headers }
 
@@ -257,7 +272,7 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
 
   describe 'PUT /providers/:id' do
     context 'when the record exists' do
-      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+      let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
       let(:params) do
         { "data" => { "type" => "providers",
@@ -301,7 +316,7 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
 
   describe 'DELETE /providers/:id' do
     context 'when the resources exist' do
-      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+      let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
       before { delete "/providers/#{provider.id}", headers: headers }
 

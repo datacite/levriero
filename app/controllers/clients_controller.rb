@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
     if params[:id].present?
       response = Client.find_by_id(params[:id])
     elsif params[:ids].present?
-      response = Client.query(params[:ids])
+      response = Client.find_by_ids(params[:ids], from: from, size: size, sort: sort)
     else
       params[:query] ||= "*"
       response = Client.query(params[:query], year: params[:year], from: from, size: size, sort: sort)
@@ -103,7 +103,7 @@ class ClientsController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:id, :symbol, :name, :created, :updated, "contact-name", "contact-email", :domains, :year, "provider-id", "re3data", :provider, :url, :repository, "is-active", "deleted-at", :prefixes],
+      params, only: [:symbol, :name, :created, :updated, "contact-name", "contact-email", :domains, :year, "provider-id", "re3data", :provider, :url, :repository, "is-active", "deleted-at", :prefixes],
               keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end
