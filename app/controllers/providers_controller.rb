@@ -79,7 +79,7 @@ class ProvidersController < ApplicationController
 
   def destroy
     if @provider.destroy
-      render jsonapi: @provider, status: :destroyed
+      head :no_content
     else
       Rails.logger.warn @provider.errors.inspect
       render jsonapi: serialize(@provider.errors), status: :unprocessable_entity
@@ -107,8 +107,8 @@ class ProvidersController < ApplicationController
   def safe_params
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
-      params, only: [:id, :name, :symbol, :contact_name, :contact_email, :country_code, :is_active, :created, :updated, :prefixes],
-              keys: { country: :country_code }
+      params, only: [:id, :name, :symbol, "contact-name", "contact-email", "country-code", "is-active", :created, :updated, :prefixes],
+              keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "country-code" => :country_code, "is-active" => :is_active }
     )
   end
 end

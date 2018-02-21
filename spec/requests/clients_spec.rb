@@ -8,15 +8,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
                     "name" => "Imperial College",
                     "contact-name" => "Madonna",
                     "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
-                    "contact-email" => "bob@example.com" },
-                    "relationships" => {
-                			"client" => {
-                				"data" => {
-                					"type" => "clients",
-                					"id" => "ABC"
-                				}
-                			}
-                		}} }
+                    "contact-email" => "bob@example.com" } } }
   end
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' + User.generate_token}}
 
@@ -121,7 +113,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
     context 'filter by year' do
       let(:created) { Time.zone.now - 1.year }
-      let!(:client) { create(:client, id: "bl", name: "British Library", created: created) }
+      let!(:client) { create(:client, id: "bl.imperial", name: "Imperial College", created: created) }
 
       before do
         sleep 1
@@ -137,8 +129,8 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
     context 'filter by two years' do
       let(:created) { Time.zone.now - 1.year }
       let(:years) { [created.year, created.year - 1].join(",") }
-      let!(:client) { create(:client, id: "bl", name: "British Library", created: created) }
-      let!(:alt_client) { create(:client, id: "sl", name: "Scottish Library", created: created - 1.year) }
+      let!(:client) { create(:client, id: "bl.imperial", created: created) }
+      let!(:alt_client) { create(:client, id: "bl.ccdc", created: created - 1.year) }
 
       before do
         sleep 1
@@ -188,61 +180,65 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
   end
 
   describe 'POST /clients' do
-    # context 'when the request is valid' do
-    #   before do
-    #      post '/clients', params: params.to_json, headers: headers
-    #   end
-    #   it 'creates a client' do
-    #     expect(response).to have_http_status(201)
-    #     expect(json.dig('data', 'attributes', 'name')).to eq("Imperial College")
-    #   end
-    # end
+    context 'when the request is valid' do
+      before { post '/clients', params: params.to_json, headers: headers }
 
-    # context 'when the the resource exist already' do
-    #   before do
-    #     post '/clients', params: client.to_jsonapi.to_json, headers: headers
-    #   end
-    #
-    #   it 'returns status code 422' do
-    #     expect(response).to have_http_status(422)
-    #   end
-    # end
+      it 'creates a client' do
+        expect(response).to have_http_status(201)
+        expect(json.dig('data', 'attributes', 'name')).to eq("Imperial College")
+      end
+    end
+
+    context 'when the the resource exist already' do
+      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+
+      before { post '/clients', params: client.to_jsonapi.to_json, headers: headers }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
-  # describe 'PUT /clients/:id' do
-  #   context 'when the record exists' do
-  #     let(:params) do
-  #       { "data" => { "type" => "clients",
-  #                     "attributes" => {
-  #                       "contact_email" => "bob@example.com",
-  #                       "contact_name" => "sugar Juanm",
-  #                       "symbol" => client.symbol,
-  #                       "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
-  #                       "name" => "Imperial College 2"}} }
-  #     end
-  #
-  #     before do
-  #       put "/clients/#{client.symbol}", params: params.to_json, headers: headers
-  #     end
-  #
-  #     it 'updates the record' do
-  #       expect(json.dig('data', 'attributes', 'name')).to eq("Imperial College 2")
-  #       expect(json.dig('data', 'attributes', 'name')).not_to eq(client.contact_email)
-  #       expect(response).to have_http_status(200)
-  #     end
-  #   end
-  # end
+  describe 'PUT /clients/:id' do
+    context 'when the record exists' do
+      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
+
+      let(:params) do
+        { "data" => { "type" => "clients",
+                      "attributes" => {
+                        "contact-email" => "bob@example.com",
+                        "contact-name" => "Josiah Carberry",
+                        "symbol" => client.symbol,
+                        "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
+                        "name" => "Imperial College 2"}} }
+      end
+
+      before do
+        put "/clients/#{client.id}", params: params.to_json, headers: headers
+      end
+
+      it 'updates the record' do
+        expect(json.dig('data', 'attributes', 'name')).to eq("Imperial College 2")
+        expect(json.dig('data', 'attributes', 'contact-name')).to eq("Josiah Carberry")
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 
   describe 'DELETE /clients/:id' do
-    # before do
-    #   delete "/clients/#{client.symbol}", headers: headers
-    # end
-    #
-    # it 'returns status code 204' do
-    #   expect(response).to have_http_status(204)
-    # end
+    context 'when the resources exist' do
+      let(:client) { create(:client, id: "bl.imperial", name: "Imperial College") }
 
-    context 'when the resources doesnt exist' do
+      before { delete "/clients/#{client.id}", headers: headers }
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+        expect(response.body).to be_blank
+      end
+    end
+
+    context 'when the resources doesn\'t exist' do
       before { delete '/clients/xxx', params: params.to_json, headers: headers }
 
       it 'returns status code 404' do

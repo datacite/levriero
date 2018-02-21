@@ -55,8 +55,6 @@ class ClientsController < ApplicationController
     @client = Client.create(safe_params)
     authorize! :create, @client
 
-    return render json: { errors: [{ status: "422", title: "This ID has already been taken" }] }.to_json, status: :unprocessable_entity unless @client.respond_to?(:save)
-
     if @client.save
       render jsonapi: @client, status: :created
     else
@@ -77,7 +75,7 @@ class ClientsController < ApplicationController
 
   def destroy
     if @client.destroy
-      render json: { errors: [{ status: "204", title: "Document has been deleted" }] }.to_json, status: :destroyed
+      head :no_content
     else
       Rails.logger.warn @client.errors.inspect
       render jsonapi: serialize(@client.errors), status: :unprocessable_entity

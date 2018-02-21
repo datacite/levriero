@@ -12,6 +12,7 @@ services:
     volumes:
       - ./app:/home/app/webapp/app
       - ./config:/home/app/webapp/config
+      - ./lib:/home/app/webapp/lib
       - ./spec:/home/app/webapp/spec
     depends_on:
       elasticsearch:

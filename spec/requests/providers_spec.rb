@@ -6,8 +6,8 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
                   "attributes" => {
                     "symbol" => "BL",
                     "name" => "British Library",
-                    "contact_email" => "bob@example.com",
-                    "country_code" => "GB" } } }
+                    "contact-email" => "bob@example.com",
+                    "country-code" => "GB" } } }
   end
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' +  User.generate_token } }
 
@@ -186,8 +186,8 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
                         "symbol" => "BL",
                         "name" => "British Library",
                         "region" => "EMEA",
-                        "contact_email" => "doe@joe.joe",
-                        "contact_name" => "timAus",
+                        "contact-email" => "doe@joe.joe",
+                        "contact-name" => "timAus",
                         "created" => "2017-08-29T06:54:15Z" ,
                         "year" => "2008",
                         "country-code" => "GB" } } }
@@ -209,9 +209,9 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
                       "attributes" => {
                         "symbol" => "BLS",
                         "name" => "British Library",
-                        "contact_name" => "timAus",
+                        "contact-name" => "timAus",
                         "created" =>"2017-08-29T06:54:15Z" ,
-                        "country_code" => "GB" } } }
+                        "country-code" => "GB" } } }
       end
 
       before { post '/providers', params: params.to_json, headers: headers }
@@ -235,81 +235,81 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
 
       before { post '/providers', params: params.to_json, headers: headers }
 
-      # it 'returns status code 500' do
-      #   expect(response).to have_http_status(500)
-      # end
+      it 'returns status code 400' do
+        expect(response).to have_http_status(400)
+      end
 
       it 'returns a validation failure message' do
         expect(json["errors"].first).to eq("status"=>"400", "title"=>"You need to provide a payload following the JSONAPI spec")
       end
     end
 
-    # context 'when the the resource exist already' do
-    #   before do
-    #      post '/providers', params: provider.to_jsonapi.to_json, headers: headers
-    #   end
-    #
-    #   it 'returns status code 422' do
-    #     puts json
-    #     expect(response).to have_http_status(422)
-    #   end
-    #
-    #   it 'returns a validation failure message' do
-    #     expect(response).to have_http_status(422)
-    #     expect(json["errors"].first).to eq("id"=>"contact_email", "title"=>"Contact email can't be blank")
-    #   end
-    # end
+    context 'when the the resource exist already' do
+      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+
+      before { post '/providers', params: provider.to_jsonapi.to_json, headers: headers }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe 'PUT /providers/:id' do
     context 'when the record exists' do
-    #   let(:params) do
-    #     { "data" => { "type" => "providers",
-    #                   "attributes" => {
-    #                     "name" => "British Library",
-    #                     "region" => "Americas",
-    #                     "symbol" => provider.symbol,
-    #                     "contact_email" => "Pepe@mdm.cod",
-    #                     "contact_name" => "timAus",
-    #                     "country_code" => "GB" } } }
-    #   end
-    #
-    #   before do
-    #      put "/providers/#{provider.symbol}", params: params.to_json, headers: headers
-    #   end
-    #
-    #   it 'updates the record' do
-    #     expect(json.dig('data', 'attributes', 'contact-name')).to eq("timAus")
-    #     expect(json.dig('data', 'attributes', 'contact-email')).not_to eq(provider.contact_email)
-    #     expect(response).to have_http_status(200)
-    #   end
+      let(:provider) { create(:provider, id: "bl", name: "British Library") }
 
-      context 'when the resources doesnt exist' do
-        let(:params) do
-          { "data" => { "type" => "providers",
-                        "attributes" => {
-                          "name" => "British Library",
-                          "region" => "Americas",
-                          "contact_email" => "Pepe@mdm.cod",
-                          "contact_name" => "timAus",
-                          "country_code" => "GB" } } }
-        end
+      let(:params) do
+        { "data" => { "type" => "providers",
+                      "attributes" => {
+                        "contact-email" => "bob@example.com",
+                        "contact-name" => "Josiah Carberry",
+                        "symbol" => provider.symbol,
+                        "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
+                        "name" => "British Library 2"}} }
+      end
 
-        before { put '/providers/xxx', params: params.to_json, headers: headers }
+      before do
+        put "/providers/#{provider.id}", params: params.to_json, headers: headers
+      end
 
-        it 'returns status code 404' do
-          expect(response).to have_http_status(404)
-        end
+      it 'updates the record' do
+        expect(json.dig('data', 'attributes', 'name')).to eq("British Library 2")
+        expect(json.dig('data', 'attributes', 'contact-name')).to eq("Josiah Carberry")
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the resources doesnt exist' do
+      let(:params) do
+        { "data" => { "type" => "providers",
+                      "attributes" => {
+                        "name" => "British Library",
+                        "region" => "Americas",
+                        "contact_email" => "Pepe@mdm.cod",
+                        "contact_name" => "timAus",
+                        "country_code" => "GB" } } }
+      end
+
+      before { put '/providers/xxx', params: params.to_json, headers: headers }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
       end
     end
   end
 
   describe 'DELETE /providers/:id' do
-    # before { delete "/providers/#{provider.symbol}", headers: headers }
-    #
-    # it 'returns status code 204' do
-    #   expect(response).to have_http_status(204)
-    # end
+    context 'when the resources exist' do
+      let(:provider) { create(:provider, id: "bl", name: "British Library") }
+
+      before { delete "/providers/#{provider.id}", headers: headers }
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+        expect(response.body).to be_blank
+      end
+    end
 
     context 'when the resources doesnt exist' do
       before { delete '/providers/xxx', headers: headers }
