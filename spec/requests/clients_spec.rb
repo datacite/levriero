@@ -10,7 +10,7 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
                     "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
                     "contact-email" => "bob@example.com" },
                     "relationships" => {
-                			"provider" => {
+                			"client" => {
                 				"data" => {
                 					"type" => "clients",
                 					"id" => "ABC"
@@ -115,6 +115,38 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
 
       it 'returns clients' do
         expect(json['data'].size).to eq(1)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'filter by year' do
+      let(:created) { Time.zone.now - 1.year }
+      let!(:client) { create(:client, id: "bl", name: "British Library", created: created) }
+
+      before do
+        sleep 1
+        get "/clients?year=#{created.year}", headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(1)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'filter by two years' do
+      let(:created) { Time.zone.now - 1.year }
+      let(:years) { [created.year, created.year - 1].join(",") }
+      let!(:client) { create(:client, id: "bl", name: "British Library", created: created) }
+      let!(:alt_client) { create(:client, id: "sl", name: "Scottish Library", created: created - 1.year) }
+
+      before do
+        sleep 1
+        get "/clients?year=#{years}", headers: headers
+      end
+
+      it 'returns clients' do
+        expect(json['data'].size).to eq(2)
         expect(response).to have_http_status(200)
       end
     end

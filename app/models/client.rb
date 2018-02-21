@@ -32,23 +32,6 @@ class Client
 
   #before_create :instance_validations
 
-  def self.query(query, options={})
-    __elasticsearch__.search({
-      from: options[:from],
-      size: options[:size],
-      sort: [options[:sort]],
-      query: {
-        query_string: {
-          query: query + "*",
-          fields: ['symbol^10', 'name^10', 'contact_name^10', 'contact_email^10', '_all']
-        }
-      },
-      aggregations: {
-        years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
-      },
-    })
-  end
-
   def self.safe_params
     [:id, :symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :provider, :url, :repository, :is_active, :deleted_at, :prefixes]
   end

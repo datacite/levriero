@@ -17,14 +17,14 @@ class ProvidersController < ApplicationController
            when "-created" then { created: { order: 'desc' }}
            else { "name.keyword" => { order: 'asc' }}
            end
-           
+
     if params[:id].present?
       response = Provider.find_by_id(params[:id])
     elsif params[:ids].present?
       response = Provider.query(params[:ids])
     else
       params[:query] ||= "*"
-      response = Provider.query(params[:query], from: from, size: size, sort: sort)
+      response = Provider.query(params[:query], year: params[:year], from: from, size: size, sort: sort)
     end
 
     total = response.total

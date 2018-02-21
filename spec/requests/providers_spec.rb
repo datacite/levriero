@@ -109,6 +109,38 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'filter by year' do
+      let(:created) { Time.zone.now - 1.year }
+      let!(:provider) { create(:provider, id: "bl", name: "British Library", created: created) }
+
+      before do
+        sleep 1
+        get "/providers?year=#{created.year}", headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(1)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'filter by two years' do
+      let(:created) { Time.zone.now - 1.year }
+      let(:years) { [created.year, created.year - 1].join(",") }
+      let!(:provider) { create(:provider, id: "bl", name: "British Library", created: created) }
+      let!(:alt_provider) { create(:provider, id: "sl", name: "Scottish Library", created: created - 1.year) }
+
+      before do
+        sleep 1
+        get "/providers?year=#{years}", headers: headers
+      end
+
+      it 'returns providers' do
+        expect(json['data'].size).to eq(2)
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 
   describe 'GET /providers/:id' do

@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
       response = Client.query(params[:ids])
     else
       params[:query] ||= "*"
-      response = Client.query(params[:query], from: from, size: size, sort: sort)
+      response = Client.query(params[:query], year: params[:year], from: from, size: size, sort: sort)
     end
 
     total = response.total

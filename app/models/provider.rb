@@ -36,23 +36,6 @@ class Provider
 
   #before_create :set_test_prefix, :instance_validations
 
-  def self.query(query, options={})
-    __elasticsearch__.search({
-      from: options[:from],
-      size: options[:size],
-      sort: [options[:sort]],
-      query: {
-        query_string: {
-          query: query + "*",
-          fields: ['symbol^10', 'name^10', 'contact_name^10', 'contact_email^10', '_all']
-        }
-      },
-      aggregations: {
-        years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
-      },
-    })
-  end
-
   def self.safe_params
     [:id, :name, :symbol, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
   end
