@@ -17,7 +17,15 @@ module Importable
 
         response.body.fetch("data", []).each do |record|
           id = record.fetch("id", nil)
-          params = record.fetch("attributes", {}).except("has-password").transform_keys! { |key| key.tr('-', '_') }
+          params = record.fetch("attributes", {})
+            .except("has-password")
+            .transform_keys! { |key| key.tr('-', '_') }
+
+          if self.name == "Client"
+            provider_id = record.dig("relationships", "provider", "data", "id")
+            params = params.merge("provider_id" => provider_id)
+          end
+
           parameters = ActionController::Parameters.new(params)
           safe_params = parameters.permit(self.safe_params)
           result = find_by_id(id)
@@ -42,6 +50,10 @@ module Importable
       end
 
       total
+    end
+
+    def to_kebab_case(hsh)
+      hsh.stringify_keys.transform_keys! { |key| key.tr('-', '_') }
     end
   end
 end

@@ -34,6 +34,12 @@ class Provider
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
   validates_with UniquenessValidator, :if => :new_record?
 
+  def self.query_aggregations
+    {
+      years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
+    }
+  end
+
   def self.safe_params
     [:symbol, :name, :year, :contact_name, :contact_email, :logo_url, :is_active, :country_code, :created, :updated, :prefixes]
   end
@@ -130,9 +136,7 @@ class Provider
   end
 
   def to_jsonapi
-    attributes = self.attributes
-    # attributes.transform_keys! { |key| key.tr('_', '-') }
-    { "data" => { "type" => "providers", "attributes" => attributes } }
+    { "data" => { "type" => "providers", "attributes" => Provider.to_kebab_case(attributes) } }
   end
 
   def updated
