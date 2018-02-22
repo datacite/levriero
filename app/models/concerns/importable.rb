@@ -27,14 +27,19 @@ module Importable
           end
 
           parameters = ActionController::Parameters.new(params)
-          safe_params = parameters.permit(self.safe_params)
           result = find_by_id(id)
 
           if result.present?
-            # result = result.update_attributes(safe_params)
-            # Rails.logger.info self.name + " " + id + " updated."
+            # strong_parameters throws an error
+            result.update_attributes(params)
+
+            if result.valid?
+              Rails.logger.info self.name + " " + id + " updated."
+            else
+              Rails.logger.info self.name + " " + id + " not updated: " + result.errors.messages.values.first.first
+            end
           else
-            result = self.create(safe_params)
+            result = self.create(parameters.permit(self.safe_params))
 
             if result.valid?
               Rails.logger.info self.name + " " + id + " created."
