@@ -58,7 +58,7 @@ class DataCentersController < ApplicationController
       @include = params[:include].split(",").map { |i| i.downcase.underscore }.join(",")
       @include = [@include]
     else
-      @include = ["provider", "repository"]
+      @include = ["member"]
     end
   end
 
