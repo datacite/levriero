@@ -2,44 +2,48 @@
 http_interactions:
 - request:
     method: get
-    uri: https://app.test.datacite.org/providers/TEST39
+    uri: https://app.test.datacite.org/providers/BL
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://5e9abf49fca2
+      - Maremma - http://79fc56d93dad
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Date:
-      - Wed, 21 Feb 2018 19:43:21 GMT
+      - Thu, 22 Feb 2018 08:20:13 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 404 Not Found
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 5c172b2e-5e96-4675-8af0-7979e7041842
+      - d5a80563-755e-4794-93e5-fb309981e43d
+      Etag:
+      - W/"e4c38a92158d5dab3fe1dfb2d6f473d1"
       X-Runtime:
-      - '0.003251'
+      - '0.289979'
       X-Powered-By:
       - Phusion Passenger 5.2.0
       Server:
       - nginx/1.12.2 + Phusion Passenger 5.2.0
     body:
       encoding: UTF-8
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
+      string: '{"data":{"id":"bl","type":"providers","attributes":{"name":"The British
+        Library","symbol":"BL","year":2010,"contact-name":"Rachael Kotarski","contact-email":"datasets@bl.uk","logo-url":"https://assets.datacite.org/images/members/bl.png","is-active":true,"has-password":true,"created":"2010-01-01T00:00:00.000Z","updated":"2018-02-22T01:25:39.000Z"},"relationships":{"clients":{"meta":{}},"prefixes":{"meta":{}}}},"meta":{"clients":[{"id":2010,"title":2010,"count":4},{"id":2011,"title":2011,"count":13},{"id":2012,"title":2012,"count":24},{"id":2013,"title":2013,"count":38},{"id":2014,"title":2014,"count":67},{"id":2015,"title":2015,"count":99},{"id":2016,"title":2016,"count":113},{"id":2017,"title":2017,"count":126},{"id":2018,"title":2018,"count":126}],"dois":[{"id":2011,"title":2011,"count":17020},{"id":2012,"title":2012,"count":1117},{"id":2013,"title":2013,"count":52},{"id":2014,"title":2014,"count":87876},{"id":2015,"title":2015,"count":99199},{"id":2016,"title":2016,"count":21081},{"id":2017,"title":2017,"count":14244},{"id":2018,"title":2018,"count":4504}]}}'
     http_version: 
-  recorded_at: Wed, 21 Feb 2018 19:44:01 GMT
+  recorded_at: Thu, 22 Feb 2018 08:20:14 GMT
 recorded_with: VCR 3.0.3

@@ -12,11 +12,12 @@ module Indexable
     end
 
     def find_by_ids(ids, options={})
-      sort = options[:sort] || { "name.keyword" => { order: 'asc' }}
+      options[:sort] ||= { "_doc" => { order: 'asc' }}
+
       __elasticsearch__.search({
         from: options[:from] || 0,
         size: options[:size] || 25,
-        sort: [sort],
+        sort: [options[:sort]],
         query: {
           ids: {
             values: ids.split(",").map(&:downcase)
