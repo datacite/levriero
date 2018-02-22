@@ -1,7 +1,7 @@
 require 'faraday_middleware/aws_signers_v4'
 
 if ENV['AWS_REGION']
-  Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], port: '443', scheme: 'https') do |f|
+  Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], port: '80', scheme: 'http') do |f|
     f.request :aws_signers_v4,
       credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
       service_name: 'es',
