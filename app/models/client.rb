@@ -22,7 +22,7 @@ class Client
   attribute :version, Integer, default: 0, mapping: { type: 'integer' }
   attribute :is_active, Integer, default: true, mapping: { type: 'boolean' }
   attribute :domains, String, mapping: { type: 'text' }
-  attribute :provider_id, String, mapping: { type: 'keyword' }
+  attribute :provider_id, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :url, String, mapping: { type: 'text' }
   attribute :deleted_at, Date, mapping: { type: 'date' }
   attribute :prefixes, String, mapping: { type: 'text' }
@@ -31,8 +31,15 @@ class Client
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
   validates_with UniquenessValidator, :if => :new_record?
 
+  def self.query_aggregations
+    {
+      years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } },
+      providers: { terms: { field: 'provider_id.keyword', size: 15, min_doc_count: 1 } }
+    }
+  end
+
   def self.safe_params
-    [:symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :provider, :url, :repository, :is_active, :deleted_at, :prefixes]
+    [:symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :url, :repository, :is_active, :deleted_at, :prefixes]
   end
 
   def id
@@ -40,9 +47,7 @@ class Client
   end
 
   def provider
-    return nil unless provider_id.present?
-    r = cached_provider_response provider_id
-    r if r.present?
+    Provider.find_by_id(provider_id)
   end
 
   def updated
@@ -50,11 +55,7 @@ class Client
   end
 
   def to_jsonapi
-    attributes = self.attributes
-    attributes["contact-name"] = attributes[:contact_name]
-    attributes["contact-email"] = attributes[:contact_email]
-
-    { "data" => { "type" => "clients", "attributes" => attributes } }
+    { "data" => { "type" => "clients", "attributes" => Client.to_kebab_case(attributes) } }
   end
 
   def repository

@@ -12,10 +12,11 @@ module Indexable
     end
 
     def find_by_ids(ids, options={})
+      sort = options[:sort] || { "name.keyword" => { order: 'asc' }}
       __elasticsearch__.search({
-        from: options[:from],
-        size: options[:size],
-        sort: [options[:sort]],
+        from: options[:from] || 0,
+        size: options[:size] || 25,
+        sort: [sort],
         query: {
           ids: {
             values: ids.split(",").map(&:downcase)
@@ -56,12 +57,6 @@ module Indexable
         terms: {
           year: options[:year].split(",")
         }
-      }
-    end
-
-    def query_aggregations
-      {
-        years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
       }
     end
 

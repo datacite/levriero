@@ -30,6 +30,7 @@ class ClientsController < ApplicationController
     total = response.total
     total_pages = (total.to_f / size).ceil
     years = total > 0 ? facet_by_year(response.response.aggregations.years.buckets) : nil
+    providers = total > 0 ? facet_by_provider(response.response.aggregations.providers.buckets) : nil
 
     @clients = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)
 
@@ -37,7 +38,8 @@ class ClientsController < ApplicationController
       total: total,
       total_pages: total_pages,
       page: page,
-      years: years
+      years: years,
+      providers: providers
     }.compact
 
     render jsonapi: @clients, meta: meta, include: @include
@@ -89,7 +91,7 @@ class ClientsController < ApplicationController
       @include = params[:include].split(",").map { |i| i.downcase.underscore }.join(",")
       @include = [@include]
     else
-      @include = ["provider", "repository"]
+      @include = ["provider"]
     end
   end
 
@@ -104,7 +106,7 @@ class ClientsController < ApplicationController
     fail JSON::ParserError, "You need to provide a payload following the JSONAPI spec" unless params[:data].present?
     ActiveModelSerializers::Deserialization.jsonapi_parse!(
       params, only: [:symbol, :name, :created, :updated, "contact-name", "contact-email", :domains, :year, "provider-id", "re3data", :provider, :url, :repository, "is-active", "deleted-at", :prefixes],
-              keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "is-active" => :is_active, "deleted-at" => :deleted_at }
+              keys: { "contact-name" => :contact_name, "contact-email" => :contact_email, "provider-id" => :provider_id, "is-active" => :is_active, "deleted-at" => :deleted_at }
     )
   end
 end
