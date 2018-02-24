@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://79fc56d93dad
+      - Maremma - http://c02c4e2557e8
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 22 Feb 2018 08:20:13 GMT
+      - Sat, 24 Feb 2018 22:17:27 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - d5a80563-755e-4794-93e5-fb309981e43d
+      - 9b03cd6b-4d6f-40cb-ae68-99c07519d7f0
       Etag:
-      - W/"e4c38a92158d5dab3fe1dfb2d6f473d1"
+      - W/"b83dc8b44c7fced9110c0e95fd75b8b4"
       X-Runtime:
-      - '0.289979'
+      - '0.303196'
       X-Powered-By:
       - Phusion Passenger 5.2.0
       Server:
@@ -43,7 +43,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"id":"bl","type":"providers","attributes":{"name":"The British
-        Library","symbol":"BL","year":2010,"contact-name":"Rachael Kotarski","contact-email":"datasets@bl.uk","logo-url":"https://assets.datacite.org/images/members/bl.png","is-active":true,"has-password":true,"created":"2010-01-01T00:00:00.000Z","updated":"2018-02-22T01:25:39.000Z"},"relationships":{"clients":{"meta":{}},"prefixes":{"meta":{}}}},"meta":{"clients":[{"id":2010,"title":2010,"count":4},{"id":2011,"title":2011,"count":13},{"id":2012,"title":2012,"count":24},{"id":2013,"title":2013,"count":38},{"id":2014,"title":2014,"count":67},{"id":2015,"title":2015,"count":99},{"id":2016,"title":2016,"count":113},{"id":2017,"title":2017,"count":126},{"id":2018,"title":2018,"count":126}],"dois":[{"id":2011,"title":2011,"count":17020},{"id":2012,"title":2012,"count":1117},{"id":2013,"title":2013,"count":52},{"id":2014,"title":2014,"count":87876},{"id":2015,"title":2015,"count":99199},{"id":2016,"title":2016,"count":21081},{"id":2017,"title":2017,"count":14244},{"id":2018,"title":2018,"count":4504}]}}'
+        Library","symbol":"BL","year":2010,"contact-name":"Rachael Kotarski","contact-email":"datasets@bl.uk","logo-url":"https://assets.datacite.org/images/members/bl.png","is-active":true,"has-password":true,"created":"2010-01-01T00:00:00.000Z","updated":"2018-02-24T01:25:39.000Z"},"relationships":{"clients":{"meta":{}},"prefixes":{"meta":{}}}},"meta":{"clients":[{"id":2010,"title":2010,"count":4},{"id":2011,"title":2011,"count":13},{"id":2012,"title":2012,"count":24},{"id":2013,"title":2013,"count":38},{"id":2014,"title":2014,"count":67},{"id":2015,"title":2015,"count":99},{"id":2016,"title":2016,"count":113},{"id":2017,"title":2017,"count":126},{"id":2018,"title":2018,"count":126}],"dois":[{"id":2011,"title":2011,"count":17020},{"id":2012,"title":2012,"count":1117},{"id":2013,"title":2013,"count":52},{"id":2014,"title":2014,"count":87876},{"id":2015,"title":2015,"count":99199},{"id":2016,"title":2016,"count":21081},{"id":2017,"title":2017,"count":14244},{"id":2018,"title":2018,"count":4623}]}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 08:20:14 GMT
+  recorded_at: Sat, 24 Feb 2018 22:17:36 GMT
 recorded_with: VCR 3.0.3

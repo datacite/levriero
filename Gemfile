@@ -22,6 +22,7 @@ gem 'api-pagination'
 gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
+gem "facets", require: false
 gem 'bolognese', '~> 0.9.75'
 gem 'elasticsearch-model', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/model'
 gem 'elasticsearch-persistence', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/persistence/model'
