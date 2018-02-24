@@ -2,7 +2,7 @@ namespace :elasticsearch do
   namespace :client do
     desc 'Import all clients'
     task :import => :environment do
-      ImportClientJob.perform_later
+      Client.import_from_api
     end
 
     desc "Create index for clients"

@@ -2,7 +2,7 @@ namespace :elasticsearch do
   namespace :provider do
     desc 'Import all providers'
     task :import => :environment do
-      ImportProviderJob.perform_later
+      Provider.import_from_api
     end
 
     desc "Create index for providers"

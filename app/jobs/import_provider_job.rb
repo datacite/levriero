@@ -1,11 +1,7 @@
 class ImportProviderJob < ActiveJob::Base
-  queue_as :default
+  queue_as :levriero
 
-  rescue_from ActiveJob::DeserializationError, Faraday::TimeoutError do
-    retry_job wait: 5.minutes, queue: :default
-  end
-
-  def perform
-    Provider.import_from_api
+  def perform(list)
+    Provider.import_list(list)
   end
 end

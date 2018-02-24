@@ -14,7 +14,6 @@ require "shoulda-matchers"
 require "webmock/rspec"
 require "rack/test"
 require "colorize"
-require "sidekiq/testing"
 
 WebMock.allow_net_connect!
 

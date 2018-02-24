@@ -10,7 +10,6 @@ sudo: required
 services:
   - docker
   - memcached
-  - redis-server
 
 addons:
   code_climate:
@@ -32,7 +31,6 @@ before_script:
   - cp .env.travis .env
   - mkdir -p tmp/pids
   - mkdir -p log
-  - bundle exec sidekiq -d --config config/sidekiq.yml -L log/sidekiq.log
   - sleep 10
 
 script:

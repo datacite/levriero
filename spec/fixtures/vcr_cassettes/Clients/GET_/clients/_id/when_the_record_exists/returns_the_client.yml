@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://79fc56d93dad
+      - Maremma - http://c02c4e2557e8
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 22 Feb 2018 08:20:46 GMT
+      - Sat, 24 Feb 2018 22:17:07 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -30,12 +30,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 5d433e2f-1b60-4c3f-8d9c-13e676a73919
       Etag:
-      - W/"23b2cd6010feb5b8da5e692d400481a2"
+      - W/"b259bc738c3c47361091c5de9134e642"
       X-Runtime:
-      - '0.010483'
+      - '0.011338'
+      X-Request-Id:
+      - 99ff0fd9-ff17-4dd1-922d-e53602f3e93d
       X-Powered-By:
       - Phusion Passenger 5.2.0
       Server:
@@ -44,8 +44,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"id":"bl.imperial","type":"clients","attributes":{"name":"Imperial
         College London","symbol":"BL.IMPERIAL","year":2013,"contact-name":"Andrew
-        Mclean","contact-email":"andrew.mclean@imperial.ac.uk","domains":"imperial.ac.uk","url":null,"is-active":true,"has-password":true,"created":"2013-08-19T12:58:20Z","updated":"2018-02-22T01:30:26Z"},"relationships":{"prefixes":{"meta":{}},"provider":{"data":{"id":"bl","type":"providers"}},"repository":{"data":null}}},"included":[{"id":"bl","type":"providers","attributes":{"name":"The
-        British Library","symbol":"BL","year":2010,"contact-name":"Rachael Kotarski","contact-email":"datasets@bl.uk","logo-url":"https://assets.datacite.org/images/members/bl.png","is-active":true,"has-password":true,"created":"2010-01-01T00:00:00.000Z","updated":"2018-02-22T01:25:39.000Z"},"relationships":{"clients":{"meta":{}},"prefixes":{"meta":{}}}}],"meta":{"dois":[]}}'
+        Mclean","contact-email":"andrew.mclean@imperial.ac.uk","domains":"imperial.ac.uk","url":null,"is-active":true,"has-password":true,"created":"2013-08-19T12:58:20Z","updated":"2018-02-24T01:30:27Z"},"relationships":{"prefixes":{"meta":{}},"provider":{"data":{"id":"bl","type":"providers"}},"repository":{"data":null}}},"included":[{"id":"bl","type":"providers","attributes":{"name":"The
+        British Library","symbol":"BL","year":2010,"contact-name":"Rachael Kotarski","contact-email":"datasets@bl.uk","logo-url":"https://assets.datacite.org/images/members/bl.png","is-active":true,"has-password":true,"created":"2010-01-01T00:00:00.000Z","updated":"2018-02-24T01:25:39.000Z"},"relationships":{"clients":{"meta":{}},"prefixes":{"meta":{}}}}],"meta":{"dois":[]}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 08:20:47 GMT
+  recorded_at: Sat, 24 Feb 2018 22:17:16 GMT
 recorded_with: VCR 3.0.3
