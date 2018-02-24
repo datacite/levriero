@@ -22,14 +22,13 @@ gem 'api-pagination'
 gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
-gem "facets", require: false
 gem 'bolognese', '~> 0.9.75'
 gem 'elasticsearch-model', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/model'
 gem 'elasticsearch-persistence', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails', '~> 5.0', '>= 5.0.2'
-gem 'sidekiq', '~> 5.0', '>= 5.0.4'
-gem 'faraday_middleware-aws-signers-v4'
-
+gem 'shoryuken', '~> 3.2', '>= 3.2.2'
+gem 'aws-sdk-sqs', '~> 1.3'
+gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
@@ -54,6 +53,3 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'elasticsearch-extensions'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
