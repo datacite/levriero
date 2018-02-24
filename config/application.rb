@@ -32,7 +32,6 @@ ENV['HOSTNAME'] ||= "levriero.local"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
 ENV['SITE_TITLE'] ||= "DataCite REST API"
 ENV['LOG_LEVEL'] ||= "info"
-ENV['REDIS_URL'] ||= "redis://redis:6379/7"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
 ENV['ES_NAME'] ||= "elasticsearch"
 ENV['CONCURRENCY'] ||= "25"
@@ -82,7 +81,12 @@ module Levriero
     config.middleware.use Rack::Deflater
 
     # set Active Job queueing backend
-    config.active_job.queue_adapter = :sidekiq
+    if ENV['AWS_REGION']
+      config.active_job.queue_adapter = :shoryuken
+    else
+      config.active_job.queue_adapter = :inline
+    end
+    config.active_job.queue_name_prefix = Rails.env
 
     config.generators do |g|
       g.fixture_replacement :factory_bot

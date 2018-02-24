@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :heartbeat, only: [:index]
   resources :index, path: '/', only: [:index]
-  resources :status, only: [:index]
 
   resources :clients, constraints: { :id => /.+/ }
   resources :providers do
