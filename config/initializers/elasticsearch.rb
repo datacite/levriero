@@ -1,4 +1,5 @@
 require 'faraday_middleware/aws_sigv4'
+require 'net/http/persistent'
 
 if ENV['ES_HOST'] == "elasticsearch:9200"
   config = {
@@ -7,7 +8,9 @@ if ENV['ES_HOST'] == "elasticsearch:9200"
       request: { timeout: 5 }
     }
   }
-  Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], user: "elastic", password: ENV['ELASTIC_PASSWORD'], log: ENV['LOG_LEVEL'] == "debug")
+  Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], user: "elastic", password: ENV['ELASTIC_PASSWORD']) do |f|
+    f.adapter :net_http_persistent
+  end
 else
   Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST']) do |f|
     f.request :aws_sigv4,
@@ -15,7 +18,6 @@ else
       service: 'es',
       region: ENV['AWS_REGION']
 
-    f.response :logger
-    f.adapter  Faraday.default_adapter
+    f.adapter :net_http_persistent
   end
 end
