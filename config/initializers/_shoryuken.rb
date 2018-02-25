@@ -1,8 +1,2 @@
-if ENV['AWS_REGION']
-  Shoryuken.configure_server do |config|
-    Rails.logger = Shoryuken::Logging.logger
-    Rails.logger.level = Logger.const_get(ENV["LOG_LEVEL"].upcase)
-  end
-
-  Shoryuken.active_job_queue_name_prefixing = true
-end
+Shoryuken.active_job_queue_name_prefixing = true
+Shoryuken.logger.level = Logger.const_get(ENV["LOG_LEVEL"].upcase)
