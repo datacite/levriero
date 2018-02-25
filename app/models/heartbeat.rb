@@ -13,13 +13,8 @@ class Heartbeat
     end
   end
 
-  def services_up?
-    [memcached_up?].all?
-  end
-
   def memcached_up?
-    host = ENV["MEMCACHE_SERVERS"]
-    memcached_client = Dalli::Client.new("#{host}:11211")
+    memcached_client = Dalli::Client.new
     memcached_client.alive!
     true
   rescue
