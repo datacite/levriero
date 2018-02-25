@@ -9,7 +9,7 @@ gem 'equivalent-xml', '~> 0.6.0'
 gem 'nokogiri', '~> 1.8.1'
 gem 'iso8601', '~> 0.9.0'
 gem 'maremma', '~> 4.0'
-gem 'net-http-persistent', '~> 3.0', require: false
+gem 'patron', '~> 0.12.1', require: false
 gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.5'
 gem 'bugsnag', '~> 5.3'
