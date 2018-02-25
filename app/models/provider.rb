@@ -19,6 +19,7 @@ class Provider
   attribute :year, Integer, mapping: { type: 'integer' }
   attribute :name, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :created, DateTime, mapping: { type: :date }
+  attribute :updated, DateTime, mapping: { type: :date }
   attribute :contact_name, String, default: "", mapping: { type: 'text' }
   attribute :contact_email, String, mapping: { type: 'keyword' }
   attribute :country_code, String, mapping: { type: 'keyword' }
@@ -28,10 +29,10 @@ class Provider
   attribute :website, String, mapping: { type: 'keyword' }
   attribute :version, Integer, default: 0, mapping: { type: 'integer' }
   attribute :is_active, Integer, default: true, mapping: { type: 'boolean' }
-  attribute :prefixes, String, mapping: { type: 'text' }
+  attribute :prefixes, Array, default: [], mapping: { type: 'text' }
 
   validates :symbol, :name, :contact_name, :contact_email, presence: :true
-  validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
+  validates_format_of :contact_email, if: Proc.new { |p| p.contact_email.present? }, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
   validates_with UniquenessValidator, :if => :new_record?
 
   def self.query_aggregations
@@ -136,11 +137,19 @@ class Provider
   end
 
   def to_jsonapi
-    { "data" => { "type" => "providers", "attributes" => Provider.to_kebab_case(attributes) } }
-  end
+    attributes = {
+      "symbol" => symbol,
+      "name" => name,
+      "contact-name" => contact_name,
+      "contact-email" => contact_email,
+      "prefixes" => prefixes,
+      "country-code" => country_code,
+      "is-active" => is_active,
+      "version" => version,
+      "created" => created.iso8601,
+      "updated" => updated.iso8601 }
 
-  def updated
-    updated_at.iso8601
+    { "id" => symbol.downcase, "type" => "providers", "attributes" => attributes }
   end
 
   def user_url

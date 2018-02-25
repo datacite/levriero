@@ -11,6 +11,6 @@ class ClientSerializer < ActiveModel::Serializer
   end
 
   def updated
-    object.updated.iso8601
+    object.updated.strftime("%FT%TZ")
   end
 end

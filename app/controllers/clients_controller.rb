@@ -54,14 +54,15 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.create(safe_params)
+    @client = Client.new(safe_params)
     authorize! :create, @client
 
     if @client.save
       render jsonapi: @client, status: :created
     else
       Rails.logger.warn @client.errors.inspect
-      render jsonapi: serialize(@client.errors), status: :unprocessable_entity
+      status = @client.errors.to_a.include?("Symbol This ID has already been taken") ? :conflict : :unprocessable_entity
+      render jsonapi: serialize(@client.errors), status: status
     end
   end
 
@@ -76,7 +77,7 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    if @client.destroy
+    if @client.destroy(refresh: true)
       head :no_content
     else
       Rails.logger.warn @client.errors.inspect

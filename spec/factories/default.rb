@@ -8,6 +8,7 @@ FactoryBot.define do
     contact_name { Faker::Name.name }
     name { Faker::GameOfThrones.city  }
     created { Faker::Time.between(DateTime.now - 2, DateTime.now) }
+    updated { created }
 
     skip_create
     initialize_with { Client.create(attributes) }
@@ -20,6 +21,7 @@ FactoryBot.define do
     name { Faker::GameOfThrones.city }
     country_code { Faker::Address.country_code }
     created { Faker::Time.between(DateTime.now - 2, DateTime.now) }
+    updated { created }
 
     skip_create
     initialize_with { Provider.create(attributes) }

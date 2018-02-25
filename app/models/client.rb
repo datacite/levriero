@@ -15,20 +15,20 @@ class Client
   attribute :symbol, String, mapping: { type: 'keyword' }
   attribute :year, Integer, mapping: { type: 'integer' }
   attribute :created, DateTime, mapping: { type: :date }
+  attribute :updated, DateTime, mapping: { type: :date }
   attribute :name, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :contact_name, String, default: "", mapping: { type: 'text' }
   attribute :contact_email, String, mapping: { type: 'keyword' }
   attribute :re3data, String, mapping: { type: 'keyword' }
   attribute :version, Integer, default: 0, mapping: { type: 'integer' }
   attribute :is_active, Integer, default: true, mapping: { type: 'boolean' }
-  attribute :domains, String, mapping: { type: 'text' }
+  attribute :domains, String, default: "*", mapping: { type: 'text' }
   attribute :provider_id, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :url, String, mapping: { type: 'text' }
-  attribute :deleted_at, Date, mapping: { type: 'date' }
-  attribute :prefixes, String, mapping: { type: 'text' }
+  attribute :prefixes, Array, default: [], mapping: { type: 'text' }
 
-  validates :symbol, :name, :contact_name, :contact_email, presence: :true
-  validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
+  validates :symbol, :name, :contact_name, :contact_email, :domains, presence: :true
+  validates_format_of :contact_email, if: Proc.new { |c| c.contact_email.present? }, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "contact_email should be an email"
   validates_with UniquenessValidator, :if => :new_record?
 
   def self.query_aggregations
@@ -39,7 +39,7 @@ class Client
   end
 
   def self.safe_params
-    [:symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :url, :repository, :is_active, :deleted_at, :prefixes]
+    [:symbol, :name, :created, :updated, :contact_name, :contact_email, :domains, :year, :provider_id, :re3data, :url, :repository, :is_active, :version, {:prefixes => []} ]
   end
 
   def id
@@ -48,10 +48,6 @@ class Client
 
   def provider
     Provider.find_by_id(provider_id)
-  end
-
-  def updated
-    updated_at
   end
 
   def to_jsonapi
@@ -72,6 +68,25 @@ class Client
 
   def year
     created.to_datetime.year
+  end
+
+  def to_jsonapi
+    attributes = {
+      "symbol" => symbol,
+      "name" => name,
+      "contact-name" => contact_name,
+      "contact-email" => contact_email,
+      "url" => url,
+      "re3data" => re3data,
+      "domains" => domains,
+      "provider-id" => provider_id,
+      "prefixes" => prefixes,
+      "is-active" => is_active,
+      "version" => version,
+      "created" => created.iso8601,
+      "updated" => updated.iso8601 }
+
+    { "id" => symbol.downcase, "type" => "clients", "attributes" => attributes }
   end
 
   protected

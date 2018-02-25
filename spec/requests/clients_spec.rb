@@ -7,7 +7,8 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
                     "symbol" => "BL.IMPERIAL",
                     "name" => "Imperial College",
                     "contact-name" => "Madonna",
-                    "created" => Faker::Time.between(DateTime.now - 2, DateTime.now) ,
+                    "created" => Faker::Time.between(DateTime.now - 2, DateTime.now),
+                    "updated" => Faker::Time.between(DateTime.now - 2, DateTime.now),
                     "contact-email" => "bob@example.com" } } }
   end
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json', 'Authorization' => 'Bearer ' + User.generate_token}}
@@ -207,10 +208,10 @@ describe 'Clients', type: :request, elasticsearch: true, vcr: true do
     context 'when the the resource exist already' do
       let(:client) { create(:client, symbol: "BL.IMPERIAL", name: "Imperial College") }
 
-      before { post '/clients', params: client.to_jsonapi.to_json, headers: headers }
+      before { post '/clients', params: { data: client.to_jsonapi }.to_json, headers: headers }
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns status code 409' do
+        expect(response).to have_http_status(409)
       end
     end
   end

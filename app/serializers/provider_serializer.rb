@@ -7,4 +7,8 @@ class ProviderSerializer < ActiveModel::Serializer
   def created
     object.created.strftime("%FT%TZ")
   end
+
+  def updated
+    object.updated.strftime("%FT%TZ")
+  end
 end

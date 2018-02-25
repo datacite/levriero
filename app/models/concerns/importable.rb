@@ -1,6 +1,25 @@
 module Importable
   extend ActiveSupport::Concern
 
+  included do
+    # strong_parameters throws an error, using attributes hash
+    def update_record(attributes)
+      if update_attributes(attributes)
+        Rails.logger.debug self.class.name + " " + id + " updated."
+      else
+        Rails.logger.info self.class.name + " " + id + " not updated: " + errors.to_a.inspect
+      end
+    end
+
+    def delete_record
+      if destroy(refresh: true)
+        Rails.logger.debug self.class.name + " record deleted."
+      else
+        Rails.logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
+      end
+    end
+  end
+
   module ClassMethods
     def import_from_api
       route = self.name.downcase + "s"
@@ -14,12 +33,18 @@ module Importable
         url = ENV['APP_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
-        
-        if self.name == "Client"
-          ImportClientJob.perform_later(response.body.fetch("data", []))
-        else
-          ImportProviderJob.perform_later(response.body.fetch("data", []))
+        records = response.body.fetch("data", [])
+
+        records.each do |data|
+          if self.name == "Client"
+            provider_id = data.dig("relationships", "provider", "data", "id")
+            data["attributes"]["provider_id"] = provider_id
+          end
+
+          ImportJob.perform_later(data.except("relationships"))
         end
+
+        Rails.logger.info "#{records.size} " + self.name.downcase + "s processed."
 
         page_number = response.body.dig("meta", "page").to_i + 1
         total = response.body.dig("meta", "total") || total
@@ -29,38 +54,33 @@ module Importable
       total
     end
 
-    def import_list(list)
-      list.each do |record|
-        id = record.fetch("id", nil)
-        params = record.fetch("attributes", {})
-          .except("has-password")
-          .transform_keys! { |key| key.tr('-', '_') }
+    def import_record(data)
+      attributes = to_kebab_case(data.fetch("attributes").except("has-password"))
+      record = find_by_id(data["id"])
 
-        if self.name == "Client"
-          provider_id = record.dig("relationships", "provider", "data", "id")
-          params = params.merge("provider_id" => provider_id)
-        end
+      if record.present?
+        record.update_record(attributes)
+        record
+      else
+        create_record(attributes)
+      end
+    end
 
-        parameters = ActionController::Parameters.new(params)
-        result = find_by_id(id)
+    def create_record(attributes)
+      parameters = ActionController::Parameters.new(attributes)
+      record = self.new(parameters.permit(self.safe_params))
 
-        if result.present?
-          # strong_parameters throws an error
-          result.update_attributes(params)
-          Rails.logger.info self.name + " " + id + " not updated: " + result.errors.messages.values.first.first unless
-            result.valid?
-        else
-          result = self.create(parameters.permit(self.safe_params))
-          Rails.logger.info self.name + " " + id + " not created: " + result.errors.messages.values.first.first unless
-            result.valid?
-        end
+      if record.save
+        Rails.logger.debug self.name + " " + record.id + " created."
+      else
+        Rails.logger.info self.name + " " + record.id + " not created: " + record.errors.to_a.inspect
       end
 
-      Rails.logger.info "#{list.size} " + self.name.downcase + "s processed."
+      record
     end
 
     def to_kebab_case(hsh)
-      hsh.stringify_keys.transform_keys! { |key| key.tr('-', '_') }
+      hsh.stringify_keys.transform_keys!(&:underscore)
     end
   end
 end

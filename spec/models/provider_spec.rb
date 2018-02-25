@@ -38,4 +38,16 @@ describe Provider, elasticsearch: true, type: :model do
       expect(provider.region_name).to be_nil
     end
   end
+
+  describe "to_jsonapi" do
+    let(:provider) { create(:provider) }
+    
+    it "works" do
+      params = provider.to_jsonapi
+      expect(params.dig("id")).to eq(provider.symbol.downcase)
+      expect(params.dig("attributes","symbol")).to eq(provider.symbol)
+      expect(params.dig("attributes","contact-email")).to eq(provider.contact_email)
+      expect(params.dig("attributes","is-active")).to be true
+    end
+  end
 end

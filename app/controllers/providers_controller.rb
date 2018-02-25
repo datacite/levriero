@@ -63,7 +63,8 @@ class ProvidersController < ApplicationController
       render jsonapi: @provider, status: :created, location: @provider
     else
       Rails.logger.warn @provider.errors.inspect
-      render jsonapi: serialize(@provider.errors), status: :unprocessable_entity
+      status = @provider.errors.to_a.include?("Symbol This ID has already been taken") ? :conflict : :unprocessable_entity
+      render jsonapi: serialize(@provider.errors), status: status
     end
   end
 
@@ -78,7 +79,7 @@ class ProvidersController < ApplicationController
   end
 
   def destroy
-    if @provider.destroy
+    if @provider.destroy(refresh: true)
       head :no_content
     else
       Rails.logger.warn @provider.errors.inspect

@@ -203,7 +203,8 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
                         "region" => "EMEA",
                         "contact-email" => "doe@joe.joe",
                         "contact-name" => "timAus",
-                        "created" => "2017-08-29T06:54:15Z" ,
+                        "created" => Faker::Time.between(DateTime.now - 2, DateTime.now),
+                        "updated" => Faker::Time.between(DateTime.now - 2, DateTime.now),
                         "year" => "2008",
                         "country-code" => "GB" } } }
       end
@@ -262,10 +263,10 @@ describe "Providers", type: :request, elasticsearch: true, vcr: true do
     context 'when the the resource exist already' do
       let(:provider) { create(:provider, symbol: "BL", name: "British Library") }
 
-      before { post '/providers', params: provider.to_jsonapi.to_json, headers: headers }
+      before { post '/providers', params: { data: provider.to_jsonapi }.to_json, headers: headers }
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns status code 409' do
+        expect(response).to have_http_status(409)
       end
     end
   end
