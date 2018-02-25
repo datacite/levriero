@@ -29,8 +29,7 @@ gem 'elasticsearch-model', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/model'
 gem 'elasticsearch-persistence', '~> 5.0', '>= 5.0.2', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails', '~> 5.0', '>= 5.0.2'
 gem 'shoryuken', '~> 3.2', '>= 3.2.2'
-gem 'aws-sdk-sqs', '~> 1.3'
-gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
+gem 'faraday_middleware-aws-signers-v4', '~> 0.1.9', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
