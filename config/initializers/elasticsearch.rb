@@ -8,7 +8,7 @@ if ENV['ES_HOST'] == "elasticsearch:9200"
     }
   }
   Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], user: "elastic", password: ENV['ELASTIC_PASSWORD']) do |f|
-    f.adapter :default
+    f.adapter Faraday.default_adapter
   end
 else
   Elasticsearch::Persistence.client = Elasticsearch::Client.new(host: ENV['ES_HOST'], port: '80', scheme: 'http') do |f|
@@ -17,6 +17,6 @@ else
       service_name: 'es',
       region: ENV['AWS_REGION']
 
-    f.adapter :default
+    f.adapter Faraday.default_adapter
   end
 end
