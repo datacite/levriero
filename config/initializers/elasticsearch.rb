@@ -1,3 +1,4 @@
+require 'faraday_middleware'
 require 'faraday_middleware/aws_sigv4'
 require 'patron'
 
