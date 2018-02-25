@@ -33,8 +33,9 @@ module Importable
         url = ENV['APP_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
-        records = response.body.fetch("data", [])
+        Rails.logger.warn response.body["errors"].inspect if response.body.fetch("errors", nil).present?
 
+        records = response.body.fetch("data", [])
         records.each do |data|
           if self.name == "Client"
             provider_id = data.dig("relationships", "provider", "data", "id")
