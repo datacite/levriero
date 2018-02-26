@@ -29,7 +29,7 @@ module Importable
 
       # paginate through API results
       while page_number <= total_pages
-        params = { "page[number]" => page_number, "page[size]" => 1000 }.compact
+        params = { "page[number]" => page_number, "page[size]" => 100 }.compact
         url = ENV['APP_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
@@ -45,7 +45,8 @@ module Importable
           ImportJob.perform_later(data.except("relationships"))
         end
 
-        Rails.logger.info "#{records.size} " + self.name.downcase + "s processed."
+        processed = (page_number - 1) * 100 + records.size
+        Rails.logger.info "#{processed} " + self.name.downcase + "s processed."
 
         page_number = response.body.dig("meta", "page").to_i + 1
         total = response.body.dig("meta", "total") || total
