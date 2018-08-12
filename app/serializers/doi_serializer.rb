@@ -1,4 +1,4 @@
-class MemberSerializer < ActiveModel::Serializer
+class DoiSerializer < ActiveModel::Serializer
   attributes :title, :description, :member_type, :region, :country, :year, :logo_url, :email, :website, :phone, :created, :updated
 
   def id

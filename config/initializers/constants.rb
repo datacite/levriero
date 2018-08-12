@@ -1,11 +1,11 @@
 RESCUABLE_EXCEPTIONS = [CanCan::AccessDenied,
+                        CanCan::AuthorizationNotPerformed,
                         JWT::VerificationError,
                         JSON::ParserError,
-                        AbstractController::ActionNotFound,
+                        #AbstractController::ActionNotFound,
                         ActionController::RoutingError,
                         ActionController::ParameterMissing,
                         ActionController::UnpermittedParameters,
-                        Elasticsearch::Transport::Transport::Errors::NotFound,
                         NoMethodError]
 
 # Format used for DOI validation

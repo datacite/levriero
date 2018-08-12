@@ -18,7 +18,7 @@ require "colorize"
 WebMock.allow_net_connect!
 
 WebMock.disable_net_connect!(
-  allow: ['codeclimate.com:443', 'eleasticsearch:9200'],
+  allow: ['codeclimate.com:443', 'eleasticsearch:9201'],
   allow_localhost: true
 )
 

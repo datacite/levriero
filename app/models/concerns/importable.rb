@@ -70,15 +70,7 @@ module Importable
 
     def create_record(attributes)
       parameters = ActionController::Parameters.new(attributes)
-      record = self.new(parameters.permit(self.safe_params))
-
-      if record.save
-        Rails.logger.debug self.name + " " + record.id + " created."
-      else
-        Rails.logger.info self.name + " " + record.id + " not created: " + record.errors.to_a.inspect
-      end
-
-      record
+      self.new(parameters.permit(self.safe_params))
     end
 
     def to_kebab_case(hsh)
