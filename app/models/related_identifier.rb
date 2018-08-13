@@ -52,7 +52,13 @@ class RelatedIdentifier < Base
       related_identifier = related_identifier.strip.downcase
       prefix = validate_prefix(related_identifier)
       registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
-      source_id = "datacite_" + registration_agencies[prefix].downcase
+      if registration_agencies[prefix] == "DataCite"
+        source_id = "datacite_related"
+      elsif registration_agencies[prefix].present?
+        source_id = "datacite_" + registration_agencies[prefix].downcase
+      else
+        source_id = "datacite_other"
+      end
 
       ssum << { "id" => SecureRandom.uuid,
                 "message_action" => "create",
