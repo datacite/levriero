@@ -58,20 +58,26 @@ class RelatedIdentifier < Base
       elsif registration_agencies[prefix] == "Crossref"
         source_id = "datacite_crossref"
         source_token = ENV['DATACITE_CROSSREF_SOURCE_TOKEN']
-      else
-        source_id = "datacite_other"
+      elsif registration_agencies[prefix].present?
+        source_id = "datacite_#{registration_agencies[prefix].downcase}"
         source_token = ENV['DATACITE_OTHER_SOURCE_TOKEN']
       end
 
-      ssum << { "id" => SecureRandom.uuid,
-                "message_action" => "create",
-                "subj_id" => pid,
-                "obj_id" => normalize_doi(related_identifier),
-                "relation_type_id" => raw_relation_type.underscore,
-                "source_id" => source_id,
-                "source_token" => source_token,
-                "occurred_at" => item.fetch("updated"),
-                "license" => LICENSE }
+      obj_id = normalize_doi(related_identifier)
+
+      if registration_agencies[prefix].present? && obj_id.present?
+        ssum << { "id" => SecureRandom.uuid,
+                  "message_action" => "create",
+                  "subj_id" => pid,
+                  "obj_id" => obj_id,
+                  "relation_type_id" => raw_relation_type.underscore,
+                  "source_id" => source_id,
+                  "source_token" => source_token,
+                  "occurred_at" => item.fetch("updated"),
+                  "license" => LICENSE }
+      else
+        ssum
+      end
     end
 
     # there can be one or more related_identifier per DOI
