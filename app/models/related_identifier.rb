@@ -33,6 +33,7 @@ class RelatedIdentifier < Base
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
+    Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
       RelatedIdentifierImportJob.perform_later(item)
@@ -75,9 +76,9 @@ class RelatedIdentifier < Base
                   "source_token" => source_token,
                   "occurred_at" => item.fetch("updated"),
                   "license" => LICENSE }
-      else
-        ssum
       end
+      
+      ssum
     end
 
     # there can be one or more related_identifier per DOI
