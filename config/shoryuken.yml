@@ -1,6 +1,6 @@
-concurrency: 25
+concurrency: 10
 delay: 30
 pidfile: tmp/pids/shoryuken.pid
 queues:
-  - elastic
+  - event
   - levriero
