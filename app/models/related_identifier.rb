@@ -54,10 +54,13 @@ class RelatedIdentifier < Base
       registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
       if registration_agencies[prefix] == "DataCite"
         source_id = "datacite_related"
-      elsif registration_agencies[prefix].present?
-        source_id = "datacite_" + registration_agencies[prefix].downcase
+        source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
+      elsif registration_agencies[prefix] == "Crossref"
+        source_id = "datacite_crossref"
+        source_token = ENV['DATACITE_CROSSREF_SOURCE_TOKEN']
       else
         source_id = "datacite_other"
+        source_token = ENV['DATACITE_OTHER_SOURCE_TOKEN']
       end
 
       ssum << { "id" => SecureRandom.uuid,
@@ -66,7 +69,7 @@ class RelatedIdentifier < Base
                 "obj_id" => normalize_doi(related_identifier),
                 "relation_type_id" => raw_relation_type.underscore,
                 "source_id" => source_id,
-                "source_token" => ENV['SOURCE_TOKENF'],
+                "source_token" => source_token,
                 "occurred_at" => item.fetch("updated"),
                 "license" => LICENSE }
     end
