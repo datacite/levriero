@@ -88,8 +88,8 @@ class RelatedIdentifier < Base
               "message-action" => iiitem["message_action"],
               "subj-id" => iiitem["subj_id"],
               "obj-id" => iiitem["obj_id"],
-              "relation-type-id" => iiitem["relation_type_id"],
-              "source-id" => iiitem["source_id"].dasherize,
+              "relation-type-id" => iiitem["relation_type_id"].to_s.dasherize,
+              "source-id" => iiitem["source_id"].to_s.dasherize,
               "source-token" => iiitem["source_token"],
               "occurred-at" => iiitem["occurred_at"],
               "license" => iiitem["license"] } }}
