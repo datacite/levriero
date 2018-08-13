@@ -43,3 +43,14 @@ VCR.configure do |config|
   config.ignore_hosts "codeclimate.com", "elasticsearch"
   config.configure_rspec_metadata!
 end
+
+def capture_stdout(&block)
+  original_stdout = $stdout
+  $stdout = fake = StringIO.new
+  begin
+    yield
+  ensure
+    $stdout = original_stdout
+  end
+  fake.string
+end

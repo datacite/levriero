@@ -32,6 +32,7 @@ gem 'faraday_middleware-aws-signers-v4', '~> 0.1.9', require: false
 gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
 gem 'rack-utf8_sanitizer', '~> 1.6'
 gem 'oj_mimic_json', '~> 1.0', '>= 1.0.1'
+gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'

@@ -21,6 +21,47 @@ module Importable
   end
 
   module ClassMethods
+    def get_doi_ra(prefix)
+      return nil if prefix.blank?
+  
+      url = ENV['API_URL'] + "/prefixes/#{prefix}"
+      result = Maremma.get(url)
+  
+      return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
+  
+      result.body.dig('data', 'attributes', 'registration-agency')
+    end
+  
+    def validate_doi(doi)
+      Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
+    end
+  
+    def validate_prefix(doi)
+      Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5})\/.+\z/.match(doi)).last
+    end
+  
+    def normalize_doi(doi)
+      doi = validate_doi(doi)
+      return nil unless doi.present?
+  
+      # remove non-printing whitespace and downcase
+      doi = doi.delete("\u200B").downcase
+  
+      # turn DOI into URL, escape unsafe characters
+      "https://doi.org/" + Addressable::URI.encode(doi)
+    end
+  
+    def orcid_from_url(url)
+      Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
+    end
+  
+    def orcid_as_url(orcid)
+      "http://orcid.org/#{orcid}" if orcid.present?
+    end
+  
+    def validate_orcid(orcid)
+      Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
+    end
     def import_from_api
       route = self.name.downcase + "s"
       page_number = 1

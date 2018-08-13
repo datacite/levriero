@@ -47,27 +47,7 @@ class Doi
   def self.safe_params
     [:doi, :xml, :created, :published, :registered, :updated]
   end
-
-  def self.import_by_month(options={})
-    from_date = options[:from_date] || Date.current.beginning_of_month
-    until_date = options[:until_date] || Date.current.end_of_month
-
-    # get first day of every month between from_date and until_date
-    (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      ImportRelatedJob(from_date: m, until_date: m.end_of_month)
-    end
-  end
-
-  def self.import(options={})
-    from_date = options[:from_date] || Date.current.beginning_of_month
-    until_date = options[:until_date] || Date.current.end_of_month
-
-    # get first day of every month between from_date and until_date
-    (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      ImportRelatedJob(from_date: m, until_date: m.end_of_month)
-    end
-  end
-
+  
   def self.get_query_url(options={})
     if options[:id].present?
       "#{url}/#{options[:id]}"

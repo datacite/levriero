@@ -1,10 +1,6 @@
-require 'maremma'
-require 'erb'
-require 'slack-notifier'
-require 'namae'
-require 'gender_detector'
-
 class Base
+  include Importable
+
   # icon for Slack messages
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
@@ -24,12 +20,14 @@ class Base
       q = query
     end
 
-    params = { q: q,
-                start: options[:offset],
-                rows: options[:rows],
-                fl: "doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,minted,updated",
-                fq: fq,
-                wt: "json" }
+    params = { 
+      q: q,
+      start: options[:offset],
+      rows: options[:rows],
+      fl: "doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,minted,updated",
+      fq: fq,
+      wt: "json" }
+
     url +  URI.encode_www_form(params)
   end
 
@@ -55,19 +53,14 @@ class Base
       (0...total_pages).each do |page|
         options[:offset] = page * job_batch_size
         options[:total] = total
-        err = process_data(options)
-        if err.is_a?(Integer)
-          error_total += err
-        else
-          puts err.inspect
-        end
+        process_data(options)
       end
-      text = "#{total} works processed with #{error_total} errors for date range #{options[:from_date]} - #{options[:until_date]}."
+      text = "Queued import for #{total} DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
-      text = "No works found for date range #{options[:from_date]} - #{options[:until_date]}."
+      text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     end
 
-    puts text
+    Rails.logger.info text
 
     # send slack notification
     if total == 0
@@ -86,10 +79,6 @@ class Base
 
   def process_data(options = {})
     data = get_data(options.merge(timeout: timeout, source_id: source_id))
-    data = parse_data(data, options)
-
-    return [OpenStruct.new(body: { "data" => [] })] if data.empty?
-
     push_data(data, options)
   end
 
@@ -98,25 +87,8 @@ class Base
     Maremma.get(query_url, options)
   end
 
-  # method returns number of errors
-  def push_data(items, options={})
-    if items.empty?
-      puts "No works found for date range #{options[:from_date]} - #{options[:until_date]}."
-      0
-    elsif options[:access_token].blank?
-      puts "An error occured: Access token missing."
-      options[:total]
-    else
-      error_total = 0
-      Array(items).each do |item|
-        error_total += push_item(item, options)
-      end
-      error_total
-    end
-  end
-
   def url
-    "https://search.datacite.org/api?"
+    ENV['SOLR_URL'] + "/api?"
   end
 
   def timeout
@@ -141,48 +113,6 @@ class Base
                                     icon_url: ICON_URL
     response = notifier.post attachments: [attachment]
     response.first
-  end
-
-  def get_doi_ra(prefix)
-    return nil if prefix.blank?
-
-    url = "https://api.datacite.org/prefixes/#{prefix}"
-    result = Maremma.get(url)
-
-    return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
-
-    result.body.fetch("data", {}).fetch('attributes', {}).fetch('registration-agency', nil)
-  end
-
-  def validate_doi(doi)
-    Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
-  end
-
-  def validate_prefix(doi)
-    Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5})\/.+\z/.match(doi)).last
-  end
-
-  def normalize_doi(doi)
-    doi = validate_doi(doi)
-    return nil unless doi.present?
-
-    # remove non-printing whitespace and downcase
-    doi = doi.delete("\u200B").downcase
-
-    # turn DOI into URL, escape unsafe characters
-    "https://doi.org/" + Addressable::URI.encode(doi)
-  end
-
-  def orcid_from_url(url)
-    Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
-  end
-
-  def orcid_as_url(orcid)
-    "http://orcid.org/#{orcid}" if orcid.present?
-  end
-
-  def validate_orcid(orcid)
-    Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
   end
 
   # parse author string into CSL format

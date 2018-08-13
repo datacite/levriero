@@ -1,6 +1,26 @@
 class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
 
+  def self.import_by_month(options={})
+    from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
+    until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+
+    # get first day of every month between from_date and until_date
+    (from_date..until_date).select {|d| d.day == 1}.each do |m|
+      RelatedIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+    end
+
+    "Queued import for DOIs updated from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
+  end
+
+  def self.import(options={})
+    from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
+    until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
+
+    related_identifier = RelatedIdentifier.new
+    related_identifier.queue_jobs(related_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
+  end
+
   def source_id
     "datacite_related"
   end
@@ -9,96 +29,95 @@ class RelatedIdentifier < Base
     "relatedIdentifier:DOI\\:*"
   end
 
-  def parse_data(result, options={})
+  def push_data(result, options={})
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
-    registration_agencies = {}
 
-    Array.wrap(items).reduce([]) do |sum, item|
-      doi = item.fetch("doi")
-      pid = normalize_doi(doi)
-      related_doi_identifiers = item.fetch('relatedIdentifier', []).select { |id| id =~ /:DOI:.+/ }
-
-      # don't generate event if there is a DOI for identical content with same prefix
-      skip_doi = related_doi_identifiers.any? do |related_identifier|
-        ["IsIdenticalTo"].include?(related_identifier.split(':', 3).first) &&
-        related_identifier.split(':', 3).last.to_s.starts_with?(validate_prefix(doi))
-      end
-
-      unless skip_doi
-        sum += Array(related_doi_identifiers).reduce([]) do |ssum, iitem|
-          raw_relation_type, _related_identifier_type, related_identifier = iitem.split(':', 3)
-          related_identifier = related_identifier.strip.downcase
-          prefix = validate_prefix(related_identifier)
-          registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
-
-          # check whether this is a DataCite DOI
-          if %w(Crossref).include?(registration_agencies[prefix])
-            ssum << { "id" => SecureRandom.uuid,
-                      "message_action" => "create",
-                      "subj_id" => pid,
-                      "obj_id" => normalize_doi(related_identifier),
-                      "relation_type_id" => raw_relation_type.underscore,
-                      "source_id" => "datacite",
-                      "source_token" => options[:source_token],
-                      "occurred_at" => item.fetch("updated"),
-                      "license" => LICENSE }
-          else
-            ssum
-          end
-        end
-      end
-
-      sum
+    Array.wrap(items).map do |item|
+      RelatedIdentifierImportJob.perform_later(item)
     end
+
+    items.length
   end
 
-  def push_item(item, options={})
-    if options[:access_token].blank?
-      puts "Access token missing."
-      return 1
+  def self.push_item(item)
+    doi = item.fetch("doi")
+    pid = normalize_doi(doi)
+    related_doi_identifiers = item.fetch('relatedIdentifier', []).select { |id| id =~ /:DOI:.+/ }
+    registration_agencies = {}
+
+    push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
+      raw_relation_type, _related_identifier_type, related_identifier = iitem.split(':', 3)
+      related_identifier = related_identifier.strip.downcase
+      prefix = validate_prefix(related_identifier)
+      registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
+      source_id = "datacite_" + registration_agencies[prefix].downcase
+
+      ssum << { "id" => SecureRandom.uuid,
+                "message_action" => "create",
+                "subj_id" => pid,
+                "obj_id" => normalize_doi(related_identifier),
+                "relation_type_id" => raw_relation_type.underscore,
+                "source_id" => source_id,
+                "source_token" => ENV['SOURCE_TOKENF'],
+                "occurred_at" => item.fetch("updated"),
+                "license" => LICENSE }
     end
 
-    host = options[:push_url].presence || "https://bus.eventdata.crossref.org"
-    push_url = host + "/events"
+    # there can be one or more related_identifier per DOI
+    Array.wrap(push_items).each do |iiitem|
+      # send to DataCite Event Data Query API
+      if ENV['LAGOTTINO_TOKEN'].present?
+        push_url = ENV['LAGOTTINO_URL'] + "/events"
 
-    if options[:jsonapi]
-      data = { "data" => {
-                  "id" => item["id"],
-                  "type" => "events",
-                  "attributes" => {
-                    "message-action" => item["message_action"],
-                    "subj-id" => item["subj_id"],
-                    "obj-id" => item["obj_id"],
-                    "relation-type-id" => item["relation_type_id"],
-                    "source-id" => "datacite-crossref",
-                    "source-token" => item["source_token"],
-                    "occurred-at" => item["occurred_at"],
-                    "license" => item["license"] } }}
+        data = { 
+          "data" => {
+            "id" => iiitem["id"],
+            "type" => "events",
+            "attributes" => {
+              "message-action" => iiitem["message_action"],
+              "subj-id" => iiitem["subj_id"],
+              "obj-id" => iiitem["obj_id"],
+              "relation-type-id" => iiitem["relation_type_id"],
+              "source-id" => "datacite-crossref",
+              "source-token" => iiitem["source_token"],
+              "occurred-at" => iiitem["occurred_at"],
+              "license" => iiitem["license"] } }}
 
-      response = Maremma.post(push_url, data: data.to_json,
-                                        bearer: options[:access_token],
-                                        content_type: 'json',
-                                        host: host)
-    else
-      response = Maremma.post(push_url, data: item.to_json,
-                                        bearer: options[:access_token],
-                                        content_type: 'json',
-                                        host: host)
-    end
+        response = Maremma.post(push_url, data: data.to_json,
+                                          bearer: ENV['LAGOTTINO_TOKEN'],
+                                          content_type: 'json')
 
-    # return 0 if successful, 1 if error
-    if response.status == 201
-      puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
-      0
-    elsif response.status == 409
-      puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
-      0
-    elsif response.body["errors"].present?
-      puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error:"
-      puts "#{response.body['errors'].first['title']}"
-      1
+        if response.status == 201
+          Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+        elsif response.status == 409
+          Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+        elsif response.body["errors"].present?
+          Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+        end
+      end
+      
+      # send to Event Data Bus
+      # host = ENV['EVENTDATA_URL']
+      # push_url = host + "/events"
+      # response = Maremma.post(push_url, data: item.to_json,
+      #                                   bearer: ENV['EVENTDATA_TOKEN'],
+      #                                   content_type: 'json',
+      #                                   host: host)
+
+      # return 0 if successful, 1 if error
+      # if response.status == 201
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
+      #   0
+      # elsif response.status == 409
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
+      #   0
+      # elsif response.body["errors"].present?
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error:"
+      #   puts "#{response.body['errors'].first['title']}"
+      #   1
+      # end
     end
   end
 end

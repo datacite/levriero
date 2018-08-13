@@ -27,16 +27,18 @@ if File.exist?(env_json_file)
 end
 
 # default values for some ENV variables
-ENV['APPLICATION'] ||= "elastic-api"
-ENV['HOSTNAME'] ||= "levriero.local"
+ENV['APPLICATION'] ||= "levriero"
 ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
 ENV['SITE_TITLE'] ||= "DataCite REST API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['CONCURRENCY'] ||= "25"
 ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
 ENV['API_URL'] ||= "https://api.test.datacite.org"
+ENV['SOLR_URL'] ||= "https://solr.test.datacite.org"
 ENV['CDN_URL'] ||= "https://assets.datacite.org"
 ENV['VOLPINO_URL'] ||= "https://profiles.test.datacite.org/api"
+ENV['LAGOTTINO_URL'] ||= "https://api.test.datacite.org"
+ENV['EVENTDATA_URL'] ||= "https://bus-staging.eventdata.crossref.org"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 
