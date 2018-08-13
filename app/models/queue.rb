@@ -1,5 +1,3 @@
-require 'aws-sdk-sqs'
-
 module Queue
   def queue options={}
     puts "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?

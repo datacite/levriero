@@ -89,7 +89,7 @@ class RelatedIdentifier < Base
               "subj-id" => iiitem["subj_id"],
               "obj-id" => iiitem["obj_id"],
               "relation-type-id" => iiitem["relation_type_id"],
-              "source-id" => "datacite-crossref",
+              "source-id" => iiitem["source_id"],
               "source-token" => iiitem["source_token"],
               "occurred-at" => iiitem["occurred_at"],
               "license" => iiitem["license"] } }}
