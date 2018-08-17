@@ -11,21 +11,21 @@ class Base
     Aws::SQS::Client.new(region: region.to_s, stub_responses: false)
   end
 
-  def get_total options={}
-    req = @sqs.get_queue_attributes(
-      {
-        queue_url: queue_url, attribute_names: 
-          [
-            'ApproximateNumberOfMessages', 
-            'ApproximateNumberOfMessagesNotVisible'
-          ]
-      }
-    )
+  # def get_total options={}
+  #   req = @sqs.get_queue_attributes(
+  #     {
+  #       queue_url: queue_url, attribute_names: 
+  #         [
+  #           'ApproximateNumberOfMessages', 
+  #           'ApproximateNumberOfMessagesNotVisible'
+  #         ]
+  #     }
+  #   )
 
-    msgs_available = req.attributes['ApproximateNumberOfMessages']
-    msgs_in_flight = req.attributes['ApproximateNumberOfMessagesNotVisible']
-    msgs_available.to_i
-  end
+  #   msgs_available = req.attributes['ApproximateNumberOfMessages']
+  #   msgs_in_flight = req.attributes['ApproximateNumberOfMessagesNotVisible']
+  #   msgs_available.to_i
+  # end
 
   def get_message options={}
     @sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
@@ -92,6 +92,7 @@ class Base
     options[:rows] = options[:rows].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
     options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
+    options[:content_type] = 'json'
 
     total = get_total(options)
 

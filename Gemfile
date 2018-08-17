@@ -54,6 +54,7 @@ group :test do
   gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'rubocop-rspec', '~> 1.28'
   gem 'faker'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'elasticsearch-extensions'

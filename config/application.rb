@@ -39,6 +39,7 @@ ENV['CDN_URL'] ||= "https://assets.datacite.org"
 ENV['VOLPINO_URL'] ||= "https://profiles.test.datacite.org/api"
 ENV['LAGOTTINO_URL'] ||= "https://api.test.datacite.org"
 ENV['EVENTDATA_URL'] ||= "https://bus-staging.eventdata.crossref.org"
+ENV['CROSSREF_QUERY_URL'] ||= "https://api.eventdata.crossref.org"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 
