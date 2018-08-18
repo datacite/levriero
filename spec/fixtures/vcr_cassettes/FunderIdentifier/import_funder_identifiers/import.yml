@@ -1,0 +1,134 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://solr.test.datacite.org/api?fl=doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated&fq=updated:%5B2018-01-04T00:00:00Z%20TO%202018-01-31T23:59:59Z%5D%20AND%20has_metadata:true%20AND%20is_active:true&q=funderIdentifier:*&rows=0&start=0&wt=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Aug 2018 21:24:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: '{"responseHeader":{"status":0,"QTime":1},"response":{"numFound":31,"start":0,"docs":[]}}
+
+'
+    http_version: 
+  recorded_at: Sat, 18 Aug 2018 21:24:06 GMT
+- request:
+    method: get
+    uri: https://solr.test.datacite.org/api?fl=doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated&fq=updated:%5B2018-01-04T00:00:00Z%20TO%202018-01-31T23:59:59Z%5D%20AND%20has_metadata:true%20AND%20is_active:true&q=funderIdentifier:*&rows=1000&start=0&wt=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Aug 2018 21:24:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: '{"responseHeader":{"status":0,"QTime":0},"response":{"numFound":31,"start":0,"docs":[{"minted":"2018-01-10T12:47:33Z","updated":"2018-01-10T12:47:33Z","doi":"10.21953/LSE.6PV8EY9VXC10","relatedIdentifier":["IsPartOf:URL:http://etheses.lse.ac.uk/view/sets/LSE-GI.html"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/100011326"],"resourceTypeGeneral":"Text"},{"minted":"2018-01-12T10:56:08Z","updated":"2018-01-12T14:22:51Z","doi":"10.21953/LSE.VJUU30KSC7KD","relatedIdentifier":["IsPartOf:URL:http://etheses.lse.ac.uk/view/sets/LSE-GV.html"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100002322/Funder ID"],"resourceTypeGeneral":"Text"},{"minted":"2018-01-12T11:26:46Z","updated":"2018-01-12T14:22:22Z","doi":"10.21953/LSE.ZUCSE37VLJA1","relatedIdentifier":["IsPartOf:URL:http://etheses.lse.ac.uk/view/sets/LSE-SA.html"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100000613/Funder ID"],"resourceTypeGeneral":"Text"},{"minted":"2018-01-15T12:46:35Z","updated":"2018-01-15T12:46:35Z","doi":"10.0133/32061","relatedIdentifier":["IsCitedBy:DOI:10.1055/s-3001-26742764"],"funderIdentifier":["Crossref
+        Funder ID:501100001659"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:0000-0002-5139-5511"]},{"minted":"2018-01-25T08:19:11Z","updated":"2018-01-25T08:19:11Z","doi":"10.0133/1516868342172","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-25T08:21:09Z","updated":"2018-01-25T08:21:09Z","doi":"10.0133/32069","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-25T08:24:58Z","updated":"2018-01-25T08:24:58Z","doi":"10.0133/32076","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-25T09:13:48Z","updated":"2018-01-25T09:13:48Z","doi":"10.0133/1516871620634","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-25T09:15:28Z","updated":"2018-01-25T09:15:28Z","doi":"10.0133/32089","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-25T09:19:02Z","updated":"2018-01-25T09:19:02Z","doi":"10.0133/32096","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-28T07:14:00Z","updated":"2018-01-28T07:14:00Z","doi":"10.0133/1517123630279","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-28T07:16:13Z","updated":"2018-01-28T07:16:13Z","doi":"10.0133/32115","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-28T07:20:57Z","updated":"2018-01-28T07:20:57Z","doi":"10.0133/32122","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T08:03:10Z","updated":"2018-01-29T08:03:10Z","doi":"10.0133/1517212979670","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T08:05:38Z","updated":"2018-01-29T08:05:38Z","doi":"10.0133/32141","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T08:10:25Z","updated":"2018-01-29T08:10:25Z","doi":"10.0133/32148","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:17:29Z","updated":"2018-01-29T09:17:29Z","doi":"10.0133/1517217439318","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:19:37Z","updated":"2018-01-29T09:19:37Z","doi":"10.0133/32156","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:24:02Z","updated":"2018-01-29T09:24:02Z","doi":"10.0133/32163","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:36:19Z","updated":"2018-01-29T09:36:19Z","doi":"10.0133/1517218568221","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:39:44Z","updated":"2018-01-29T09:39:44Z","doi":"10.0133/32170","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-29T09:47:01Z","updated":"2018-01-29T09:47:01Z","doi":"10.0133/32177","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T08:46:48Z","updated":"2018-01-30T08:46:48Z","doi":"10.0133/1517301998029","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T08:48:45Z","updated":"2018-01-30T08:48:45Z","doi":"10.0133/32184","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T08:52:46Z","updated":"2018-01-30T08:52:46Z","doi":"10.0133/32191","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T09:12:25Z","updated":"2018-01-30T09:12:25Z","doi":"10.0133/1517303536301","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T09:14:05Z","updated":"2018-01-30T09:14:05Z","doi":"10.0133/32198","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T09:17:53Z","updated":"2018-01-30T09:17:53Z","doi":"10.0133/32205","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T13:28:28Z","updated":"2018-01-30T13:28:28Z","doi":"10.0133/1517318898074","relatedIdentifier":["Cites:bibcode:Bibibibib","IsCompiledBy:URL:ENENENENEEEAAAANNN"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Text","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T13:30:11Z","updated":"2018-01-30T13:30:11Z","doi":"10.0133/32231","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]},{"minted":"2018-01-30T13:34:07Z","updated":"2018-01-30T13:34:07Z","doi":"10.0133/32238","relatedIdentifier":["IsCitedBy:bibcode:Identifier
+        of complementary material related to this resource e.g. a scientific article"],"funderIdentifier":["Crossref
+        Funder ID:http://dx.doi.org/10.13039/501100001659","ISNI:033000012150090X"],"resourceTypeGeneral":"Dataset","nameIdentifier":["ORCID:2220-0021-5000-0004"]}]}}
+
+'
+    http_version: 
+  recorded_at: Sat, 18 Aug 2018 21:24:06 GMT
+recorded_with: VCR 3.0.3

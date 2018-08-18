@@ -74,7 +74,7 @@ class Base
       q: q,
       start: options[:offset],
       rows: options[:rows],
-      fl: "doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,minted,updated",
+      fl: "doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated",
       fq: fq,
       wt: "json" }
 
