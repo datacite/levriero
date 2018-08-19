@@ -50,15 +50,17 @@ class RelatedUrl < Base
     push_items = Array.wrap(related_urls).reduce([]) do |ssum, iitem|
       raw_relation_type, _related_identifier_type, related_url = iitem.split(':', 3)
       related_url = related_url.strip.downcase
-      
+
+      obj_id = normalize_url(related_url)
       source_id = "datacite_url"
       source_token = ENV['DATACITE_URL_SOURCE_TOKEN']
 
-      if related_url.present?
+      # only create event if valid http/https/ftp URL
+      if obj_id.present?
         ssum << { "id" => SecureRandom.uuid,
                   "message_action" => "create",
                   "subj_id" => pid,
-                  "obj_id" => related_url,
+                  "obj_id" => obj_id,
                   "relation_type_id" => raw_relation_type.underscore,
                   "source_id" => source_id,
                   "source_token" => source_token,

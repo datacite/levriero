@@ -50,6 +50,19 @@ module Importable
       # turn DOI into URL, escape unsafe characters
       "https://doi.org/" + Addressable::URI.encode(doi)
     end
+
+    def normalize_url(id)
+      return nil unless id.present?
+
+      # check for valid protocol. We support AWS S3 and Google Cloud Storage
+      uri = Addressable::URI.parse(id)
+      return nil unless uri && uri.host && %w(http https ftp s3 gs).include?(uri.scheme)
+
+      # clean up URL
+      uri = PostRank::URI.clean(id)
+    rescue Addressable::URI::InvalidURIError
+      nil
+    end
   
     def orcid_from_url(url)
       Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
