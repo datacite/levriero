@@ -93,7 +93,9 @@ class FunderIdentifier < Base
               "source-id" => iiitem["source_id"].to_s.dasherize,
               "source-token" => iiitem["source_token"],
               "occurred-at" => iiitem["occurred_at"],
-              "license" => iiitem["license"] } }}
+              "license" => iiitem["license"],
+              "subj" => iiitem["subj"],
+              "obj" => iiitem["obj"] } }}
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
@@ -121,6 +123,7 @@ class FunderIdentifier < Base
 
     {
       "id" => id,
+      "uid" => id,
       "type" => "funder",
       "name" => message["name"],
       "alternate-name" => message["alt-names"] }.compact

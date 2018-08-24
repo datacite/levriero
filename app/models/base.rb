@@ -199,6 +199,7 @@ class Base
 
     {
       "id" => id,
+      "uid" => id,
       "type" => type.underscore.dasherize,
       "name" => attributes["title"],
       "author" => author,
@@ -227,6 +228,7 @@ class Base
 
     {
       "id" => id,
+      "uid" => id,
       "type" => type.underscore.dasherize,
       "name" => Array.wrap(message["title"]).first,
       "author" => author,
