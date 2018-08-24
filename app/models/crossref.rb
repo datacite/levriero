@@ -98,6 +98,9 @@ class Crossref < Base
   end
 
   def self.push_item(item)
+    subj = cached_crossref_response(item["subj_id"])
+    obj = cached_datacite_response(item["obj_id"])
+
     if ENV['LAGOTTINO_TOKEN'].present?
       push_url = ENV['LAGOTTINO_URL'] + "/events"
 
@@ -114,7 +117,9 @@ class Crossref < Base
             "source-token" => item["source_token"],
             "occurred-at" => item["occurred_at"],
             "timestamp" => item["timestamp"],
-            "license" => item["license"] } }}
+            "license" => item["license"],
+            "subj" => subj,
+            "obj" => obj } }}
 
       response = Maremma.post(push_url, data: data.to_json,
                                         bearer: ENV['LAGOTTINO_TOKEN'],

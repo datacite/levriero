@@ -15,5 +15,14 @@ describe FunderIdentifier, type: :model, vcr: true do
       response = FunderIdentifier.import(from_date: from_date, until_date: until_date)
       expect(response).to eq(31)
     end
+
+    it "fetch funder metadata" do
+      id = "https://doi.org/10.13039/100011326"
+      response = FunderIdentifier.get_funder_metadata(id)
+      expect(response["id"]).to eq("https://doi.org/10.13039/100011326")
+      expect(response["type"]).to eq("funder")
+      expect(response["name"]).to eq("London School of Economics and Political Science")
+      expect(response["alternate-name"]).to eq(["London School of Economics & Political Science", "LSE"])
+    end
   end
 end

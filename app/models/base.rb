@@ -1,5 +1,9 @@
+require "bolognese"
+
 class Base
   include Importable
+  include Cacheable
+  include ::Bolognese::MetadataUtils
 
   # icon for Slack messages
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
@@ -74,7 +78,7 @@ class Base
       q: q,
       start: options[:offset],
       rows: options[:rows],
-      fl: "doi,resourceTypeGeneral,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated",
+      fl: "doi,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated",
       fq: fq,
       wt: "json" }
 
@@ -166,82 +170,79 @@ class Base
     response.first
   end
 
-  # parse author string into CSL format
-  # only assume personal name when using sort-order: "Turing, Alan"
-  def get_one_author(author)
-    return { "literal" => "" } if author.strip.blank?
-
-    author = cleanup_author(author)
-    names = Namae.parse(author)
-
-    if names.blank? || is_personal_name?(author).blank?
-      { "literal" => author }
-    else
-      name = names.first
-
-      { "family" => name.family,
-        "given" => name.given }.compact
+  def self.doi_from_url(url)
+    if /\A(?:(http|https):\/\/(dx\.)?(doi.org|handle.test.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(url)
+      uri = Addressable::URI.parse(url)
+      uri.path.gsub(/^\//, '').downcase
     end
   end
 
-  def cleanup_author(author)
-    # detect pattern "Smith J.", but not "Smith, John K."
-    author = author.gsub(/[[:space:]]([A-Z]\.)?(-?[A-Z]\.)$/, ', \1\2') unless author.include?(",")
+  def self.get_datacite_metadata(id)
+    doi = doi_from_url(id)
+    url = "https://api.datacite.org/works/#{doi}"
+    response = Maremma.get(url)
 
-    # titleize strings
-    # remove non-standard space characters
-    author.my_titleize
-          .gsub(/[[:space:]]/, ' ')
-  end
+    return {} if response.status != 200
+    
+    attributes = response.body.dig("data", "attributes")
 
-  def is_personal_name?(author)
-    return true if author.include?(",")
-
-    # lookup given name
-    name_detector.name_exists?(author.split.first)
-  end
-
-  # parse array of author strings into CSL format
-  def get_authors(authors, options={})
-    Array(authors).map { |author| get_one_author(author) }
-  end
-
-  # parse array of author hashes into CSL format
-  def get_hashed_authors(authors)
-    Array(authors).map { |author| get_one_hashed_author(author) }
-  end
-
-  def get_one_hashed_author(author)
-    raw_name = author.fetch("creatorName", nil)
-
-    author_hsh = get_one_author(raw_name)
-    author_hsh["ORCID"] = get_name_identifier(author)
-    author_hsh.compact
-  end
-
-  def get_name_identifier(author)
-    name_identifier = author.fetch("nameIdentifier", nil)
-    name_identifier_scheme = author.fetch("nameIdentifierScheme", "orcid").downcase
-    if name_identifier_scheme == "orcid" && name_identifier = validate_orcid(name_identifier)
-      "http://orcid.org/#{name_identifier}"
-    else
-      nil
+    resource_type = attributes["resource-type-subtype"]
+    resource_type_general = attributes["resource-type-id"]
+    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[resource_type.to_s.underscore.camelcase] || Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.underscore.camelcase(first_letter = :upper)] || "CreativeWork"
+    author = Array.wrap(attributes["author"]).map do |a| 
+      {
+        "given-name" => a["given"],
+        "family-name" => a["family"],
+        "name" => a["family"].present? ? nil : a["name"] }.compact
     end
+    client_id = attributes["data-center-id"]
+
+    {
+      "id" => id,
+      "type" => type.underscore.dasherize,
+      "name" => attributes["title"],
+      "author" => author,
+      "publisher" => attributes["container-title"],
+      "version" => attributes["version"],
+      "date-published" => attributes["published"],
+      "provider-id" => "datacite.#{client_id}" }.compact
   end
 
-  def name_detector
-    GenderDetector.new
+  def self.get_crossref_metadata(id)
+    doi = doi_from_url(id)
+    url = "https://api.crossref.org/works/#{doi}"
+    response = Maremma.get(url, host: true)
+
+    return {} if response.status != 200
+    
+    message = response.body.dig("data", "message")
+
+    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "creative-work"
+    author = Array.wrap(message["author"]).map do |a| 
+      {
+        "given-name" => a["given"],
+        "family-name" => a["family"],
+        "name" => a["name"] }.compact
+    end
+
+    {
+      "id" => id,
+      "type" => type.underscore.dasherize,
+      "name" => Array.wrap(message["title"]).first,
+      "author" => author,
+      "periodical" => Array.wrap(message["container-title"]).first,
+      "volume-number" => message["volume"],
+      "issue-number" => message["issue"],
+      "pagination" => message["page"],
+      "publisher" => message["publisher"],
+      "issn" => message["ISSN"],
+      "date-published" => Base.new.get_date_from_date_parts(message["issued"]),
+      "provider-id" => "crossref.#{message["member"]}" }.compact
   end
 
   def unfreeze(hsh)
     new_hash = {}
     hsh.each_pair { |k,v| new_hash.merge!({k.downcase.to_sym => v})  }
     new_hash
-  end
-end
-
-class String
-  def my_titleize
-    self.gsub(/(\b|_)(.)/) { "#{$1}#{$2.upcase}" }
   end
 end

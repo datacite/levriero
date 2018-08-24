@@ -54,9 +54,11 @@ class FunderIdentifier < Base
       source_id = "datacite_funder"
       source_token = ENV['DATACITE_FUNDER_SOURCE_TOKEN']
       obj_id = normalize_doi(funder_identifier)
-      puts obj_id
 
       if obj_id.present?
+        subj = cached_datacite_response(pid)
+        obj = cached_funder_response(obj_id)
+
         ssum << { "id" => SecureRandom.uuid,
                   "message_action" => "create",
                   "subj_id" => pid,
@@ -65,7 +67,9 @@ class FunderIdentifier < Base
                   "source_id" => source_id,
                   "source_token" => source_token,
                   "occurred_at" => item.fetch("updated"),
-                  "license" => LICENSE }
+                  "license" => LICENSE,
+                  "subj" => subj,
+                  "obj" => obj }
       end
       
       ssum
@@ -104,5 +108,21 @@ class FunderIdentifier < Base
         end
       end
     end
+  end
+
+  def self.get_funder_metadata(id)
+    doi = doi_from_url(id)
+    url = "https://api.crossref.org/funders/#{doi}"
+    response = Maremma.get(url, host: true)
+
+    return {} if response.status != 200
+    
+    message = response.body.dig("data", "message")
+
+    {
+      "id" => id,
+      "type" => "funder",
+      "name" => message["name"],
+      "alternate-name" => message["alt-names"] }.compact
   end
 end

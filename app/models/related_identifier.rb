@@ -51,22 +51,28 @@ class RelatedIdentifier < Base
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
       raw_relation_type, _related_identifier_type, related_identifier = iitem.split(':', 3)
       related_identifier = related_identifier.strip.downcase
+      obj_id = normalize_doi(related_identifier)
+
       prefix = validate_prefix(related_identifier)
       registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
+
       if registration_agencies[prefix] == "DataCite"
         source_id = "datacite_related"
         source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
+        obj = cached_datacite_response(obj_id)
       elsif registration_agencies[prefix] == "Crossref"
         source_id = "datacite_crossref"
         source_token = ENV['DATACITE_CROSSREF_SOURCE_TOKEN']
+        obj = cached_crossref_response(obj_id)
       elsif registration_agencies[prefix].present?
         source_id = "datacite_#{registration_agencies[prefix].downcase}"
         source_token = ENV['DATACITE_OTHER_SOURCE_TOKEN']
+        obj = {}
       end
 
-      obj_id = normalize_doi(related_identifier)
-
       if registration_agencies[prefix].present? && obj_id.present?
+        subj = cached_datacite_response(pid)
+
         ssum << { "id" => SecureRandom.uuid,
                   "message_action" => "create",
                   "subj_id" => pid,
@@ -75,7 +81,9 @@ class RelatedIdentifier < Base
                   "source_id" => source_id,
                   "source_token" => source_token,
                   "occurred_at" => item.fetch("updated"),
-                  "license" => LICENSE }
+                  "license" => LICENSE,
+                  "subj" => subj,
+                  "obj" => obj }
       end
       
       ssum

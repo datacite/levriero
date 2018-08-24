@@ -57,6 +57,8 @@ class RelatedUrl < Base
 
       # only create event if valid http/https/ftp URL
       if obj_id.present?
+        subj = cached_datacite_response(pid)
+
         ssum << { "id" => SecureRandom.uuid,
                   "message_action" => "create",
                   "subj_id" => pid,
@@ -65,7 +67,9 @@ class RelatedUrl < Base
                   "source_id" => source_id,
                   "source_token" => source_token,
                   "occurred_at" => item.fetch("updated"),
-                  "license" => LICENSE }
+                  "license" => LICENSE,
+                  "subj" => subj,
+                  "obj" => {} }
       end
       
       ssum
@@ -89,7 +93,9 @@ class RelatedUrl < Base
               "source-id" => iiitem["source_id"].to_s.dasherize,
               "source-token" => iiitem["source_token"],
               "occurred-at" => iiitem["occurred_at"],
-              "license" => iiitem["license"] } }}
+              "license" => iiitem["license"],
+              "subj" => iiitem["subj"],
+              "obj" => iiitem["obj"] } }}
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
