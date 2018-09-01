@@ -191,22 +191,22 @@ class Base
     type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[resource_type.to_s.underscore.camelcase] || Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.underscore.camelcase(first_letter = :upper)] || "CreativeWork"
     author = Array.wrap(attributes["author"]).map do |a| 
       {
-        "given-name" => a["given"],
-        "family-name" => a["family"],
+        "given_name" => a["given"],
+        "family_name" => a["family"],
         "name" => a["family"].present? ? nil : a["name"] }.compact
     end
     client_id = attributes["data-center-id"]
 
     {
       "id" => id,
-      "uid" => id,
       "type" => type.underscore.dasherize,
       "name" => attributes["title"],
       "author" => author,
       "publisher" => attributes["container-title"],
       "version" => attributes["version"],
-      "date-published" => attributes["published"],
-      "provider-id" => "datacite.#{client_id}" }.compact
+      "date_published" => attributes["published"],
+      "date_modified" => attributes["updated"],
+      "provider_id" => "datacite.#{client_id}" }.compact
   end
 
   def self.get_crossref_metadata(id)
@@ -221,25 +221,25 @@ class Base
     type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "creative-work"
     author = Array.wrap(message["author"]).map do |a| 
       {
-        "given-name" => a["given"],
-        "family-name" => a["family"],
+        "given_name" => a["given"],
+        "family_name" => a["family"],
         "name" => a["name"] }.compact
     end
 
     {
       "id" => id,
-      "uid" => id,
       "type" => type.underscore.dasherize,
       "name" => Array.wrap(message["title"]).first,
       "author" => author,
       "periodical" => Array.wrap(message["container-title"]).first,
-      "volume-number" => message["volume"],
-      "issue-number" => message["issue"],
+      "volume_number" => message["volume"],
+      "issue_number" => message["issue"],
       "pagination" => message["page"],
       "publisher" => message["publisher"],
       "issn" => message["ISSN"],
-      "date-published" => Base.new.get_date_from_date_parts(message["issued"]),
-      "provider-id" => "crossref.#{message["member"]}" }.compact
+      "date_published" => Base.new.get_date_from_date_parts(message["issued"]),
+      "date_modified" => message.dig("indexed", "date-time"),
+      "provider_id" => "crossref.#{message["member"]}" }.compact
   end
 
   def unfreeze(hsh)

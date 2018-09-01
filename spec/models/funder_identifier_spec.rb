@@ -22,7 +22,8 @@ describe FunderIdentifier, type: :model, vcr: true do
       expect(response["id"]).to eq("https://doi.org/10.13039/100011326")
       expect(response["type"]).to eq("funder")
       expect(response["name"]).to eq("London School of Economics and Political Science")
-      expect(response["alternate-name"]).to eq(["London School of Economics & Political Science", "LSE"])
+      expect(response["alternate_name"]).to eq(["London School of Economics & Political Science", "LSE"])
+      expect(response["date_modified"]).to eq("2018-07-11T00:00:00Z")
     end
   end
 end
