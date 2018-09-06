@@ -102,7 +102,7 @@ class Crossref < Base
     obj = cached_datacite_response(item["obj_id"])
 
     if ENV['LAGOTTINO_TOKEN'].present?
-      push_url = ENV['LAGOTTINO_URL'] + "/events"
+      push_url = ENV['LAGOTTINO_URL'] + "/events/#{item["id"]}"
 
       data = { 
         "data" => {
@@ -121,9 +121,9 @@ class Crossref < Base
             "subj" => subj,
             "obj" => obj } }}
 
-      response = Maremma.post(push_url, data: data.to_json,
-                                        bearer: ENV['LAGOTTINO_TOKEN'],
-                                        content_type: 'json')
+      response = Maremma.put(push_url, data: data.to_json,
+                                       bearer: ENV['LAGOTTINO_TOKEN'],
+                                       content_type: 'json')
 
       if response.status == 201
         Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
