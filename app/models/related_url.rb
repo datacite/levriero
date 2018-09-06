@@ -67,6 +67,7 @@ class RelatedUrl < Base
                   "source_id" => source_id,
                   "source_token" => source_token,
                   "occurred_at" => item.fetch("updated"),
+                  "timestamp" => Time.zone.now.iso8601,
                   "license" => LICENSE,
                   "subj" => subj,
                   "obj" => {} }
@@ -79,7 +80,7 @@ class RelatedUrl < Base
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data Query API
       if ENV['LAGOTTINO_TOKEN'].present?
-        push_url = ENV['LAGOTTINO_URL'] + "/events"
+        push_url = ENV['LAGOTTINO_URL'] + "/events/#{iiitem["id"]}s"
 
         data = { 
           "data" => {
@@ -93,13 +94,14 @@ class RelatedUrl < Base
               "source-id" => iiitem["source_id"].to_s.dasherize,
               "source-token" => iiitem["source_token"],
               "occurred-at" => iiitem["occurred_at"],
+              "timestamp" => iiitem["timestamp"],
               "license" => iiitem["license"],
               "subj" => iiitem["subj"],
               "obj" => iiitem["obj"] } }}
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV['LAGOTTINO_TOKEN'],
-                                          content_type: 'json')
+        response = Maremma.put(push_url, data: data.to_json,
+                                         bearer: ENV['LAGOTTINO_TOKEN'],
+                                         content_type: 'application/vnd.api+json')
 
         if response.status == 201
           Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
