@@ -123,9 +123,9 @@ class Crossref < Base
 
       response = Maremma.put(push_url, data: data.to_json,
                                        bearer: ENV['LAGOTTINO_TOKEN'],
-                                       content_type: 'json')
+                                       content_type: 'application/vnd.api+json')
 
-      if response.status == 201
+      if [200, 201].include?(response.status)
         Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
       elsif response.status == 409
         Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."

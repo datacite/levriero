@@ -117,7 +117,7 @@ class RelatedIdentifier < Base
                                           bearer: ENV['LAGOTTINO_TOKEN'],
                                           content_type: 'application/vnd.api+json')
 
-        if response.status == 201
+        if [200, 201].include?(response.status)
           Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
         elsif response.status == 409
           Rails.logger.info "#{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
