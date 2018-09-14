@@ -2,14 +2,6 @@ require 'rails_helper'
 
 describe UsageUpdate, type: :model, vcr: true do
 
-  # let(:queue_url){"https://sqs.#{ENV['AWS_REGION']}.amazonaws.com/404017989009/test_usage"}
-  # let(:queue_name){:test_usage}
-  # let!(:sqs)     {Aws::SQS::Client.new(region: ENV['AWS_REGION'].to_s, stub_responses: true)}
-  # let!(:body)    {File.read(fixture_path + 'usage_event.json')}
-  # let!(:message){[body: body]}
-
-  # let(:dummy_message){sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)}
-
 
   describe "get_data" do
     # context "when there are messages" do
@@ -74,31 +66,31 @@ describe UsageUpdate, type: :model, vcr: true do
       it "should parsed it correctly" do
         body = File.read(fixture_path + 'usage_update.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
-        response = subject.parse_data(result, source_token: ENV['SOURCE_TOKEN'])
+        response = subject.parse_data(result, source_token: ENV['SASHIMI_SOURCE_TOKEN'])
         expect(response.length).to eq(2)
-        expect(response.last.except("uuid")).to eq("subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['SOURCE_TOKEN'])
+        expect(response.last.except("uuid")).to eq("subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['SASHIMI_SOURCE_TOKEN'])
       end
 
       it "should parsed it correctly when it has five metrics  and two DOIs" do
         body = File.read(fixture_path + 'usage_update_3.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
-        response = subject.parse_data(result, source_token: ENV['SOURCE_TOKEN'])
+        response = subject.parse_data(result, source_token: ENV['SASHIMI_SOURCE_TOKEN'])
         expect(response.length).to eq(5)
-        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
+        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['SASHIMI_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
       end
 
       it "should parsed it correctly when it has two metrics per DOI " do
         body = File.read(fixture_path + 'usage_update_2.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")
-        response = subject.parse_data(result, source_token: ENV['SOURCE_TOKEN'])
+        response = subject.parse_data(result, source_token: ENV['SASHIMI_SOURCE_TOKEN'])
         expect(response.length).to eq(4)
-        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
+        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"pid"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['SASHIMI_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
       end
 
       it "should send a warning if there are more than 4 metrics" do
         body = File.read(fixture_path + 'usage_update_1.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
-        response = subject.parse_data(result, source_token: ENV['SOURCE_TOKEN'])
+        response = subject.parse_data(result, source_token: ENV['SASHIMI_SOURCE_TOKEN'])
         expect(response.length).to eq(1)
         expect(subject.parse_data(result)).to be_a(Array)
         expect(response.last.body).to eq({"errors"=>"There are too many instances in 10.7291/D1Q94R for report https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad. There can only be 4"})
