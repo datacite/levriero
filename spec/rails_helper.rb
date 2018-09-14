@@ -30,6 +30,10 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+def fixture_path
+  File.expand_path("../fixtures", __FILE__) + '/'
+end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # add custom json method

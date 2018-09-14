@@ -1,0 +1,6 @@
+{
+  "errors": [{
+    "status": "404",
+    "title": "The resource you are looking for doesn't exist."
+  }]
+}

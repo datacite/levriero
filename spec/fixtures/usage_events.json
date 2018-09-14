@@ -1,0 +1,63 @@
+[
+  {
+    "uuid": "a17e783b-8214-451e-9b0d-077213c2acae",
+    "message-action": "create",
+    "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
+    "subj": {
+      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "issued": "2128-04-09"
+    },
+    "total": 3,
+    "obj-id": "https://doi.org/10.7291/d1q94r",
+    "relation-type-id": "total-dataset-investigations-regular",
+    "source-id": "datacite",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }, {
+    "uuid": "fc6860b8-4230-41bc-8b8e-21d60e9a7d9a",
+    "message-action": "create",
+    "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
+    "subj": {
+      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "issued": "2128-04-09"
+    },
+    "total": 3,
+    "obj-id": "https://doi.org/10.7291/d1q94r",
+    "relation-type-id": "unique-dataset-investigations-regular",
+    "source-id": "datacite-usage",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }, {
+    "uuid": "054da0ad-9821-492e-877e-5c3adbfd5ccf",
+    "message-action": "create",
+    "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
+    "subj": {
+      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "issued": "2128-04-09"
+    },
+    "total": 254,
+    "obj-id": "https://doi.org/10.6071/z7wc73",
+    "relation-type-id": "Total-Dataset-Requests-Machine",
+    "source-id": "datacite-usage",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }, {
+    "uuid": "6d6fd620-2123-42da-91f3-6c02e63f3cec",
+    "message-action": "create",
+    "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
+    "subj": {
+      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "issued": "2128-04-09"
+    },
+    "total": 208,
+    "obj-id": "https://doi.org/10.6071/z7wc73",
+    "relation-type-id": "Unique-Dataset-Requests-Machine",
+    "source-id": "datacite-usage",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+]
