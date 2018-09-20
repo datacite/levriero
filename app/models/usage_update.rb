@@ -87,7 +87,6 @@ class UsageUpdate < Base
         num_messages -= queued
         puts num_messages
         puts queued
-        puts "queso"
     end
     text = "#{queued} reports queued out of #{total} for Usage Reports Queue"
 
