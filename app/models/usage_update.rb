@@ -1,5 +1,6 @@
 class UsageUpdate < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
+  LOGGER = Logger.new(STDOUT)
 
   def self.import_by_month(options={})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
@@ -52,7 +53,6 @@ class UsageUpdate < Base
 
   def sqs
     sqs = Aws::SQS::Client.new(region: ENV["AWS_REGION"])
-    puts sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
     sqs
   end
 
@@ -78,7 +78,7 @@ class UsageUpdate < Base
     total = get_total(options)
     
     if total < 1
-      text = "No works found for in the Usage Reports Queue."
+      text = "No works found in the Usage Reports Queue."
     end
 
     num_messages = total
@@ -90,7 +90,7 @@ class UsageUpdate < Base
     end
     text = "#{queued} reports queued out of #{total} for Usage Reports Queue"
 
-    Rails.logger.info text
+    LOGGER.info text
     # send slack notification
     if queued == 0
       options[:level] = "warning"
@@ -111,15 +111,14 @@ class UsageUpdate < Base
     header = report.body.dig("data","report","report-header")
     report_id = report.url
 
-    created = header.fetch("created")
     Array.wrap(items).reduce([]) do |x, item|
-      data = {}
-      data[:doi] = item.dig("dataset-id").first.dig("value")
-      data[:pid] = normalize_doi(data[:doi])
-      data[:created] = created
-      data[:report_id] = report_id
-      data[:created_at] = created
-
+      data = { 
+        doi: item.dig("dataset-id").first.dig("value"), 
+        id: normalize_doi(item.dig("dataset-id").first.dig("value")),
+        created: header.fetch("created"), 
+        report_id: report.url,
+        created_at: header.fetch("created")
+      }
       instances = item.dig("performance", 0, "instance")
 
       return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{report_id}. There can only be 4" })] if instances.size > 8
@@ -141,11 +140,11 @@ class UsageUpdate < Base
       "message-action" => "create",
       "subj-id" => data[:report_id],
       "subj"=> {
-        "pid"=> data[:report_id],
+        "id"=> data[:report_id],
         "issued"=> data[:created]
       },
       "total"=> data[:count],
-      "obj-id" => data[:pid],
+      "obj-id" => data[:id],
       "relation-type-id" => type,
       "source-id" => "datacite-usage",
       "source-token" => ENV['SASHIMI_SOURCE_TOKEN'],
@@ -158,7 +157,7 @@ class UsageUpdate < Base
   def self.push_data items, options={}
     items.class
     if items.empty?
-      Rails.logger.info  "No works found in the Queue."
+      LOGGER.info  "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
         UsageUpdateImportJob.perform_later(item.to_json)
@@ -168,46 +167,48 @@ class UsageUpdate < Base
 
   def self.push_item item, options={}
     item = JSON.parse(item)
+
     if item["subj-id"].blank?
-      return Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "There is no Subject" }] })
+      return LOGGER.info OpenStruct.new(body: { "errors" => [{ "title" => "There is no Subject" }] })
     elsif ENV['LAGOTTINO_TOKEN'].blank?
-      return Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "Access token missing." }] })
+      return LOGGER.info OpenStruct.new(body: { "errors" => [{ "title" => "Access token missing." }] })
     elsif item["errors"].present?
-      return Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "#{item["errors"]["title"]}" }] }) 
+      return LOGGER.info OpenStruct.new(body: { "errors" => [{ "title" => "#{item["errors"]["title"]}" }] }) 
     end
 
-    obj = cached_datacite_response(item["obj_id"])
+    obj = cached_datacite_response(item["obj-id"])
     push_url = ENV['LAGOTTINO_URL']  + "/events/" + item["uuid"].to_s
     data = { 
       "data" => {
         "id" => item["uuid"],
         "type" => "events",
         "attributes" => {
-          "message-action" => item["message_action"],
-          "subj-id" => item["subj_id"],
-          "obj-id" => item["obj_id"],
-          "relation-type-id" => item["relation_type_id"].to_s.dasherize,
-          "source-id" => item["source_id"].to_s.dasherize,
-          "source-token" => item["source_token"],
-          "occurred-at" => item["occurred_at"],
+          "message-action" => item["message-action"],
+          "subj-id" => item["subj-id"],
+          "obj-id" => item["obj-id"],
+          "relation-type-id" => item["relation-type-id"].to_s.dasherize,
+          "source-id" => item["source-id"].to_s.dasherize,
+          "source-token" => item["source-token"],
+          "occurred-at" => item["occurred-at"],
           "timestamp" => item["timestamp"],
           "license" => item["license"],
-          "subj" => subj,
+          "subj" => "",
           "obj" => obj } }}
   
+    host = URI.parse(push_url).host.downcase
     response = Maremma.put(push_url, data: data.to_json,
                                     bearer: ENV['LAGOTTINO_TOKEN'],
                                     content_type: 'json',
                                     host: host)
-                                
-    if response.status == 201 
-      Rails.logger.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service."
-    elsif response.status == 200
-      Rails.logger.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service for update."
-    elsif response.body["errors"].present?
-      Rails.logger.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} had an error:"
-      Rails.logger.info "#{response.body['errors'].first['title']}"
-    end
+    response                 
+    # if response.status == 201 
+    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service."
+    # elsif response.status == 200
+    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service for update."
+    # elsif response.body["errors"].present?
+    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} had an error:"
+    #   LOGGER.info "#{response.body['errors'].first['title']}"
+    # end
   end
 end
 
