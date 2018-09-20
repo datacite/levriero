@@ -3,7 +3,7 @@ class UsageUpdate < Base
   LOGGER = Logger.new(STDOUT)
 
 
-  def self.import(options={})
+  def self.import(_options={})
     usage_update = UsageUpdate.new
     usage_update.queue_jobs 
   end
@@ -24,13 +24,13 @@ class UsageUpdate < Base
     messages.length
   end
 
-  def get_query_url options={}
+  def get_query_url _options={}
     queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
     resp = sqs.receive_message(queue_url: queue_url, max_number_of_messages: 5, wait_time_seconds: 1)
     resp.messages
   end
 
-  def self.get_data report_id, options={}
+  def self.get_data report_id, _options={}
     return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_id.blank?
     host = URI.parse(report_id).host.downcase
     report = Maremma.get(report_id, timeout: 120, host: host)
@@ -43,7 +43,7 @@ class UsageUpdate < Base
   end
 
 
-  def get_total options={}
+  def get_total _options={}
     queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
     req = sqs.get_queue_attributes(
       {
@@ -140,7 +140,7 @@ class UsageUpdate < Base
   end
 
   # method returns number of errors
-  def self.push_data items, options={}
+  def self.push_data items, _options={}
     if items.empty?
       LOGGER.info  "No works found in the Queue."
     else
