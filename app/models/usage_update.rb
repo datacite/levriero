@@ -120,7 +120,7 @@ class UsageUpdate < Base
 
   def self.format_event type, data, options={}
     fail "Not type given. Report #{data[:report_id]} not proccessed" if type.blank?
-    fail "Access token missing." if ENV['SASHIMI_SOURCE_TOKEN'].blank?
+    fail "Access token missing." if ENV['DATACITE_USAGE_SOURCE_TOKEN'].blank?
     fail "Report_id is missing" if data[:report_id].blank?
     { "uuid" => SecureRandom.uuid,
       "message-action" => "create",
@@ -133,7 +133,7 @@ class UsageUpdate < Base
       "obj-id" => data[:id],
       "relation-type-id" => type,
       "source-id" => "datacite-usage",
-      "source-token" => ENV['SASHIMI_SOURCE_TOKEN'],
+      "source-token" =>ENV['DATACITE_USAGE_SOURCE_TOKEN'],
       "occurred-at" => data[:created_at],
       "license" => LICENSE 
     }
