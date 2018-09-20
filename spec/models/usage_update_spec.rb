@@ -4,35 +4,24 @@ describe UsageUpdate, type: :model, vcr: true do
 
 
   describe "get_data" do
-    # context "when there are messages" do
-    #   it "should return the data for one message" do
-    #     sqs.stub_responses(:receive_message, messages: message)
-    #     sqs.stub_responses(:receive_message, messages: message)
-    #     sqs.stub_responses(:receive_message, messages: message)
-    #     sqs.stub_responses(:receive_message, messages: message)
-    #     response = sqs.receive_message({queue_url: queue_url})
-    #     response = subject.get_data(response)
-    #     expect(response.body["data"]["report"]["report-header"]["report-name"]).to eq("Dataset Master Report")
-    #   end
-    # end
 
-    # context "when there is ONE message" do
-    #   it "should return the data for one message" do
-    #     sqs.stub_responses(:receive_message, messages: message)
-    #     response = sqs.receive_message({queue_url: queue_url})
-    #     response = subject.get_data(response)
-    #     expect(response.body["data"]["report"]["report-header"]["report-name"]).to eq("Dataset Master Report")
-    #   end
-    # end
+    context "when there is ONE message" do
+      it "should return the data for one message" do
+        options ={}
+        message= "https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"
+        response = UsageUpdate.get_data(message,options)
+        expect(response.body["data"]["report"]["report-header"]["report-name"]).to eq("Dataset Master Report")
+      end
+    end
 
-    # context "when there are NOT messages" do
-    #   it "should return empty" do
-    #     sqs.stub_responses(:receive_message, messages: [])
-    #     response = sqs.receive_message({queue_url: queue_url})
-    #     response = subject.get_data(response)
-    #     expect(response.body["errors"]).to eq("Queue is empty")
-    #   end
-    # end
+    context "when there are NOT messages" do
+      it "should return empty" do
+        options ={}
+        message= ""
+        response = UsageUpdate.get_data(message,options)
+        expect(response.body["errors"]).to eq("No Report given given")
+      end
+    end
   end
 
   describe "queue" do 
@@ -46,10 +35,6 @@ describe UsageUpdate, type: :model, vcr: true do
     context "get_message" do
       it "should return one message when there are multiple messages" do
         expect(subject.get_query_url).to respond_to(:each)
-      end
-
-      it "should return no meessage when the queue is empty" do
-        expect(subject.get_query_url).not_to respond_to(:+)
       end
     end
   end
@@ -119,32 +104,6 @@ describe UsageUpdate, type: :model, vcr: true do
 
   context "push_data" do
     let!(:events) {create_list(:event,10)}
-    it "should report if there are no works returned by the Queue" do
-      result = []
-      expect { UsageUpdate.push_data(result) }.to output("No works found in the Queue.\n").to_stdout
-    end
-
-    it "should fail if format of the event is wrong" do
-      body = File.read(fixture_path + 'usage_events.json')
-      expect = File.read(fixture_path + 'event_data_resp_2')
-      # result = JSON.parse(body)
-      options = { }
-      expect(UsageUpdate.push_data(body, options)).to eq(4)
-    end
-
-    it "should fail if format of the event is empty" do
-      body = File.read(fixture_path + 'events_empty.json')
-      # result = JSON.parse(body)
-      options = { }
-      expect((UsageUpdate.push_data(body, options))).to eq(2)
-    end
-
-    # it "should work with DataCite Event Data 2" do
-    #   dd = events.map {|event| event.to_h.stringify_keys}
-    #   all_events = dd.map {|item| item.map{ |k, v| [k.dasherize, v] }.to_h}
-    #   options = { }
-    #   expect(subject.push_data(all_events, options)).to eq(0)
-    # end
 
     it "should work with a single item" do
       body = File.read(fixture_path + 'usage_events.json')

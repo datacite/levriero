@@ -2,24 +2,9 @@ class UsageUpdate < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
   LOGGER = Logger.new(STDOUT)
 
-  def self.import_by_month(options={})
-    from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
-    until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
-
-    # get first day of every month between from_date and until_date
-    (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      UsageUpdateImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
-    end
-
-    "Queued import for Report updated from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
-  end
 
   def self.import(options={})
-    # from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
-    # until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
-
     usage_update = UsageUpdate.new
-    # usage_update.queue_jobs(usage_update.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
     usage_update.queue_jobs 
   end
 
@@ -46,6 +31,7 @@ class UsageUpdate < Base
   end
 
   def self.get_data report_id, options={}
+    return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_id.blank?
     host = URI.parse(report_id).host.downcase
     report = Maremma.get(report_id, timeout: 120, host: host)
     report
@@ -155,7 +141,6 @@ class UsageUpdate < Base
 
   # method returns number of errors
   def self.push_data items, options={}
-    items.class
     if items.empty?
       LOGGER.info  "No works found in the Queue."
     else
