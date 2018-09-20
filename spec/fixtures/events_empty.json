@@ -1,0 +1,33 @@
+[
+  {
+    "uuid": "",
+    "message-action": "create",
+    "subj-id": "",
+    "subj": {
+      "pid": "",
+      "issued": ""
+    },
+    "total": 3,
+    "obj-id": "",
+    "relation-type-id": "",
+    "source-id": "datacite",
+    "source-token": "",
+    "occurred-at": "",
+    "license": ""
+  }, {
+    "uuid": "fc6860b8-4230-41bc-8b8e-21d60e9a7d9a",
+    "message-action": "create",
+    "subj-id": "https://api.test.datacite.org/reports/2018-3-Dashs",
+    "subj": {
+      "pid": "https://api.test.datacite.org/reports/2018-3-Dashs",
+      "issued": "2128-04-09"
+    },
+    "total": 3,
+    "obj-id": "https://doi.org/10.7291/d1q94r",
+    "relation-type-id": "unique-dataset-investigations-regular",
+    "source-id": "datacite",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+]
