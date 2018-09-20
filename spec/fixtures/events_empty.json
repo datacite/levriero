@@ -4,7 +4,7 @@
     "message-action": "create",
     "subj-id": "",
     "subj": {
-      "pid": "",
+      "id": "",
       "issued": ""
     },
     "total": 3,
@@ -19,7 +19,7 @@
     "message-action": "create",
     "subj-id": "https://api.test.datacite.org/reports/2018-3-Dashs",
     "subj": {
-      "pid": "https://api.test.datacite.org/reports/2018-3-Dashs",
+      "id": "https://api.test.datacite.org/reports/2018-3-Dashs",
       "issued": "2128-04-09"
     },
     "total": 3,

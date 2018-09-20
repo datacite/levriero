@@ -2,7 +2,6 @@ ENV['RAILS_ENV'] = 'test'
 ENV["TEST_CLUSTER_NODES"] = "1"
 ENV['AWS_REGION'] = 'eu-west-1'
 
-
 # set up Code Climate
 require 'simplecov'
 SimpleCov.start

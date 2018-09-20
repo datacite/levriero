@@ -4,7 +4,7 @@
     "message-action": "create",
     "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
     "subj": {
-      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "id": "https://api.test.datacite.org/reports/2018-3-Dash",
       "issued": "2128-04-09"
     },
     "total": 3,
@@ -19,7 +19,7 @@
     "message-action": "create",
     "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
     "subj": {
-      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "id": "https://api.test.datacite.org/reports/2018-3-Dash",
       "issued": "2128-04-09"
     },
     "total": 3,
@@ -34,7 +34,7 @@
     "message-action": "create",
     "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
     "subj": {
-      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "id": "https://api.test.datacite.org/reports/2018-3-Dash",
       "issued": "2128-04-09"
     },
     "total": 254,
@@ -49,7 +49,7 @@
     "message-action": "create",
     "subj-id": "https://api.test.datacite.org/reports/2018-3-Dash",
     "subj": {
-      "pid": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "id": "https://api.test.datacite.org/reports/2018-3-Dash",
       "issued": "2128-04-09"
     },
     "total": 208,

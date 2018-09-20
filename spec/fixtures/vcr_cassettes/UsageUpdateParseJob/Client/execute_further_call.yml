@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 19 Sep 2018 11:38:45 GMT
+      - Thu, 20 Sep 2018 10:47:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,9 +33,9 @@ http_interactions:
       Etag:
       - W/"a2af7c772d0e1af937e036db75f8bbb1"
       X-Runtime:
-      - '0.006766'
+      - '0.006294'
       X-Request-Id:
-      - e6d9af40-54a6-408b-9fce-a494f56b36e2
+      - bc56e121-2f51-499a-8a20-3987e8730906
       X-Powered-By:
       - Phusion Passenger 5.3.4
       Server:
@@ -48,5 +48,197 @@ http_interactions:
         of the Tabonuco Forest trees and shrubs.","dataset-contributors":[{"type":"name","value":"Jess
         Zimmerman"}]}]}}'
     http_version: 
-  recorded_at: Wed, 19 Sep 2018 11:38:45 GMT
+  recorded_at: Thu, 20 Sep 2018 10:47:13 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/events/c41770f8-6261-46b9-8946-de9b25592c15
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"c41770f8-6261-46b9-8946-de9b25592c15","type":"events","attributes":{"message-action":"create","subj-id":"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad","obj-id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","relation-type-id":"total-dataset-requests-regular","source-id":"datacite-usage","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","occurred-at":"2018-05-22","timestamp":null,"license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":"","obj":{"id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","type":"dataset","name":"Phenologies
+        of the Tabonuco Forest trees and shrubs","author":[{"given_name":"Jess","family_name":"Zimmerman"}],"publisher":"Environmental
+        Data Initiative","date_published":"2018","date_modified":"2018-03-13T22:13:04Z","provider_id":"datacite.edi.edi"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 20 Sep 2018 10:47:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 72ab491c-47f0-449a-b6a1-c912dee67eb0
+      X-Runtime:
+      - '0.024472'
+      X-Powered-By:
+      - Phusion Passenger 5.3.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
+    http_version: 
+  recorded_at: Thu, 20 Sep 2018 10:47:13 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/events/7be1d99a-a22c-4306-af4f-520e9e2e49fd
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"7be1d99a-a22c-4306-af4f-520e9e2e49fd","type":"events","attributes":{"message-action":"create","subj-id":"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad","obj-id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","relation-type-id":"unique-dataset-requests-regular","source-id":"datacite-usage","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","occurred-at":"2018-05-22","timestamp":null,"license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":"","obj":{"id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","type":"dataset","name":"Phenologies
+        of the Tabonuco Forest trees and shrubs","author":[{"given_name":"Jess","family_name":"Zimmerman"}],"publisher":"Environmental
+        Data Initiative","date_published":"2018","date_modified":"2018-03-13T22:13:04Z","provider_id":"datacite.edi.edi"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 20 Sep 2018 10:47:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 9f4ed78b-c90e-4f13-9ec6-0bb14d7ff216
+      X-Runtime:
+      - '0.024422'
+      X-Powered-By:
+      - Phusion Passenger 5.3.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
+    http_version: 
+  recorded_at: Thu, 20 Sep 2018 10:47:13 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/events/7f4cf199-9782-4448-827f-e9f533a96e5e
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"7f4cf199-9782-4448-827f-e9f533a96e5e","type":"events","attributes":{"message-action":"create","subj-id":"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad","obj-id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","relation-type-id":"total-dataset-investigations-regular","source-id":"datacite-usage","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","occurred-at":"2018-05-22","timestamp":null,"license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":"","obj":{"id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","type":"dataset","name":"Phenologies
+        of the Tabonuco Forest trees and shrubs","author":[{"given_name":"Jess","family_name":"Zimmerman"}],"publisher":"Environmental
+        Data Initiative","date_published":"2018","date_modified":"2018-03-13T22:13:04Z","provider_id":"datacite.edi.edi"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 20 Sep 2018 10:47:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Runtime:
+      - '0.024528'
+      X-Request-Id:
+      - 35fbbfee-8585-431b-9508-d5a7c61a8070
+      X-Powered-By:
+      - Phusion Passenger 5.3.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
+    http_version: 
+  recorded_at: Thu, 20 Sep 2018 10:47:14 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/events/532c8ea8-1755-45e2-8c58-947dbeaf11d3
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"532c8ea8-1755-45e2-8c58-947dbeaf11d3","type":"events","attributes":{"message-action":"create","subj-id":"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad","obj-id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","relation-type-id":"unique-dataset-investigations-regular","source-id":"datacite-usage","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","occurred-at":"2018-05-22","timestamp":null,"license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":"","obj":{"id":"https://doi.org/10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4","type":"dataset","name":"Phenologies
+        of the Tabonuco Forest trees and shrubs","author":[{"given_name":"Jess","family_name":"Zimmerman"}],"publisher":"Environmental
+        Data Initiative","date_published":"2018","date_modified":"2018-03-13T22:13:04Z","provider_id":"datacite.edi.edi"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 20 Sep 2018 10:47:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Runtime:
+      - '0.024286'
+      X-Request-Id:
+      - 96857e08-26fa-4b7b-9f72-4a390b23cbbf
+      X-Powered-By:
+      - Phusion Passenger 5.3.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
+    http_version: 
+  recorded_at: Thu, 20 Sep 2018 10:47:14 GMT
 recorded_with: VCR 3.0.3
