@@ -16,11 +16,11 @@ class Base
   end
 
   def get_message options={}
-    @sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
+    sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
   end
 
   def delete_message message
-    reponse = @sqs.delete_message({
+    reponse = sqs.delete_message({
       queue_url: queue_url,
       receipt_handle: message[:receipt_handle]    
     })
@@ -34,8 +34,8 @@ class Base
   def queue_url options={}
     options[:queue_name] ||= "#{ENV['ENVIRONMENT']}_usage" 
     queue_name = options[:queue_name] 
-    # puts "Using  #{@sqs.get_queue_url(queue_name: queue_name).queue_url} queue"
-    @sqs.get_queue_url(queue_name: queue_name).queue_url
+    # puts "Using  #{sqs.get_queue_url(queue_name: queue_name).queue_url} queue"
+    sqs.get_queue_url(queue_name: queue_name).queue_url
   end
   
   def get_query_url(options={})
@@ -163,6 +163,8 @@ class Base
     response = Maremma.get(url)
 
     return {} if response.status != 200
+
+    puts doi
     
     attributes = response.body.dig("data", "attributes")
 
