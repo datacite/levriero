@@ -12,11 +12,11 @@ describe UsageUpdateParseJob, type: :job, vcr: true do
         .on_queue("test_levriero")
     end
 
-    it 'execute further call' do
-      perform_enqueued_jobs do
-        UsageUpdateParseJob.new.perform(item)
-      end
-    end
+    # it 'execute further call' do
+    #   perform_enqueued_jobs do
+    #     UsageUpdateParseJob.new.perform(item)
+    #   end
+    # end
   end
 end
 
