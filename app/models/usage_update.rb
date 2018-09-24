@@ -181,24 +181,12 @@ class UsageUpdate < Base
           "subj" => subj,
           "obj" => obj } }}
   
-
-          LOGGER.info "MEGASASA"
-
-    LOGGER.info data
     host = URI.parse(push_url).host.downcase
     response = Maremma.put(push_url, data: data.to_json,
                                     bearer: ENV['LAGOTTINO_TOKEN'],
                                     content_type: 'json',
                                     host: host)
     response                 
-    # if response.status == 201 
-    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service."
-    # elsif response.status == 200
-    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service for update."
-    # elsif response.body["errors"].present?
-    #   LOGGER.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} had an error:"
-    #   LOGGER.info "#{response.body['errors'].first['title']}"
-    # end
   end
 end
 
