@@ -140,12 +140,12 @@ class UsageUpdate < Base
   end
 
   # method returns number of errors
-  def self.push_data items, _options={}
+  def self.push_data items, options={}
     if items.empty?
       LOGGER.info  "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
-        UsageUpdateImportJob.perform_later(item.to_json)
+        UsageUpdateImportJob.perform_later(item.to_json, options)
       end
     end
   end
@@ -162,6 +162,7 @@ class UsageUpdate < Base
     end
 
     obj = cached_datacite_response(item["obj-id"])
+    subj = options[:report_meta]
     push_url = ENV['LAGOTTINO_URL']  + "/events/" + item["uuid"].to_s
     data = { 
       "data" => {
@@ -177,9 +178,13 @@ class UsageUpdate < Base
           "occurred-at" => item["occurred-at"],
           "timestamp" => item["timestamp"],
           "license" => item["license"],
-          "subj" => "",
+          "subj" => subj,
           "obj" => obj } }}
   
+
+          LOGGER.info "MEGASASA"
+
+    LOGGER.info data
     host = URI.parse(push_url).host.downcase
     response = Maremma.put(push_url, data: data.to_json,
                                     bearer: ENV['LAGOTTINO_TOKEN'],
