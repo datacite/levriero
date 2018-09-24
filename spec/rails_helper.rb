@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] = 'test'
 ENV["TEST_CLUSTER_NODES"] = "1"
+ENV['AWS_REGION'] = 'eu-west-1'
 
 # set up Code Climate
 require 'simplecov'
@@ -28,6 +29,10 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+def fixture_path
+  File.expand_path("../fixtures", __FILE__) + '/'
 end
 
 RSpec.configure do |config|

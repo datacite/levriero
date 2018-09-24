@@ -42,6 +42,7 @@ ENV['EVENTDATA_URL'] ||= "https://bus-staging.eventdata.crossref.org"
 ENV['CROSSREF_QUERY_URL'] ||= "https://api.eventdata.crossref.org"
 ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
+ENV['SASHIMI_QUERY_URL'] ||= "https://api.test.datacite.org"
 
 module Levriero
   class Application < Rails::Application
