@@ -1,10 +1,11 @@
 class UsageUpdateImportJob < ActiveJob::Base
   queue_as :levriero
 
-  def perform(item)
+  def perform(item, options={})
     logger = Logger.new(STDOUT)
     logger.info item
-    response = UsageUpdate.push_item(item)
+    response = UsageUpdate.push_item(item, options)
+    item = JSON.parse(item)
     if response.status == 201 
       logger.info "#{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service."
     elsif response.status == 200
