@@ -75,6 +75,7 @@ module Importable
     def validate_orcid(orcid)
       Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
     end
+
     def import_from_api
       route = self.name.downcase + "s"
       page_number = 1
@@ -110,15 +111,17 @@ module Importable
       total
     end
 
-    def import_record(data)
-      attributes = to_kebab_case(data.fetch("attributes").except("has-password"))
-      record = find_by_id(data["id"])
+    def parse_record(data)
+      logger = Logger.new(STDOUT)
+
+      id = "https://doi.org/#{data["id"]}"
+      record = cached_datacite_response(id)
 
       if record.present?
         record.update_record(attributes)
-        record
+        logger.info "Parsed DOI #{data["id"]}"
       else
-        create_record(attributes)
+        logger.info "DOI #{data["id"]} not found"
       end
     end
 
