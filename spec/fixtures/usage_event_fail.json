@@ -1,0 +1,17 @@
+[{
+    "id": 12332423432432,
+    "message-action": "create",
+    "subj": {
+      "id": "https://api.test.datacite.org/reports/2018-3-Dash",
+      "issued": "2128-04-09"
+    },
+    "total": "208",
+    "obj-id": "https://doi.org/10.6071/z7wc73",
+    "relation-type-id": "Unique-Dataset-Requests-Machine",
+    "source-id": "datacite",
+    "source-token": "28276d12-b320-41ba-9272-bb0adc3466ff",
+    "occurred-at": "2128-04-09",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+]
+
