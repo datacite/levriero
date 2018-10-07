@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 08:43:13 GMT
+      - Sun, 07 Oct 2018 09:24:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,9 +33,9 @@ http_interactions:
       Etag:
       - W/"239206b78aeb856d049bba0ca4f75ed4"
       X-Runtime:
-      - '0.021247'
+      - '0.037431'
       X-Request-Id:
-      - f05eeffe-624c-4d96-9ead-7144c50bf13a
+      - 9b6a76c7-09ec-4824-9783-d9ae8573db7c
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -52,7 +52,7 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 08:43:13 GMT
+  recorded_at: Sun, 07 Oct 2018 09:24:27 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/prefixes/10.5438
@@ -70,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 08:43:13 GMT
+      - Sun, 07 Oct 2018 09:24:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -83,12 +83,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - fcfcaab0-8086-467e-9b6d-57169d9fab2f
       Etag:
       - W/"f56cfe8f7a6e86b0ac59c50bd06fa401"
       X-Runtime:
-      - '0.018622'
+      - '0.016908'
+      X-Request-Id:
+      - 1ccbf233-0a66-419e-bd01-b047bdf5c450
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -99,13 +99,190 @@ http_interactions:
         Fenner","contact-email":"support@datacite.org","domains":"datacite.org","url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2018-08-26T01:30:27.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.23725","type":"prefixes"}]}}},{"id":"datacite","type":"providers","attributes":{"name":"DataCite","symbol":"DATACITE","website":null,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","phone":null,"description":null,"region":null,"country":null,"logo-url":null,"institution-type":null,"is-active":true,"has-password":true,"joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.0138","type":"prefixes"},{"id":"10.15497","type":"prefixes"},{"id":"10.0158","type":"prefixes"},{"id":"10.0159","type":"prefixes"},{"id":"10.18130","type":"prefixes"},{"id":"10.23725","type":"prefixes"},{"id":"10.24367","type":"prefixes"},{"id":"10.24366","type":"prefixes"},{"id":"10.24365","type":"prefixes"},{"id":"10.24364","type":"prefixes"},{"id":"10.24409","type":"prefixes"},{"id":"10.24360","type":"prefixes"},{"id":"10.24361","type":"prefixes"},{"id":"10.24408","type":"prefixes"},{"id":"10.24362","type":"prefixes"},{"id":"10.24407","type":"prefixes"},{"id":"10.24363","type":"prefixes"},{"id":"10.24354","type":"prefixes"},{"id":"10.24356","type":"prefixes"},{"id":"10.24355","type":"prefixes"},{"id":"10.24358","type":"prefixes"},{"id":"10.24357","type":"prefixes"},{"id":"10.24359","type":"prefixes"},{"id":"10.24411","type":"prefixes"},{"id":"10.24410","type":"prefixes"},{"id":"10.24415","type":"prefixes"},{"id":"10.24414","type":"prefixes"},{"id":"10.24413","type":"prefixes"},{"id":"10.24412","type":"prefixes"},{"id":"10.24419","type":"prefixes"},{"id":"10.24418","type":"prefixes"},{"id":"10.24417","type":"prefixes"},{"id":"10.24416","type":"prefixes"},{"id":"10.24420","type":"prefixes"},{"id":"10.24422","type":"prefixes"},{"id":"10.24421","type":"prefixes"},{"id":"10.24424","type":"prefixes"},{"id":"10.24423","type":"prefixes"},{"id":"10.24426","type":"prefixes"},{"id":"10.24425","type":"prefixes"},{"id":"10.24428","type":"prefixes"},{"id":"10.24427","type":"prefixes"},{"id":"10.24429","type":"prefixes"},{"id":"10.24432","type":"prefixes"},{"id":"10.24433","type":"prefixes"},{"id":"10.24430","type":"prefixes"},{"id":"10.24431","type":"prefixes"},{"id":"10.0310","type":"prefixes"},{"id":"10.0311","type":"prefixes"},{"id":"10.0312","type":"prefixes"},{"id":"10.0330","type":"prefixes"},{"id":"10.0307","type":"prefixes"},{"id":"10.0308","type":"prefixes"},{"id":"10.0309","type":"prefixes"},{"id":"10.0320","type":"prefixes"},{"id":"10.0321","type":"prefixes"},{"id":"10.0322","type":"prefixes"},{"id":"10.70000","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"},{"id":"10.70004","type":"prefixes"},{"id":"10.70003","type":"prefixes"},{"id":"10.70005","type":"prefixes"},{"id":"10.70006","type":"prefixes"},{"id":"10.70007","type":"prefixes"},{"id":"10.70008","type":"prefixes"},{"id":"10.70009","type":"prefixes"},{"id":"10.70010","type":"prefixes"},{"id":"10.70011","type":"prefixes"},{"id":"10.70048","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 08:43:13 GMT
+  recorded_at: Sun, 07 Oct 2018 09:24:28 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.5438/0000-00ss
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 07 Oct 2018 09:24:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Runtime:
+      - '0.008006'
+      X-Request-Id:
+      - e37b77a8-2d77-4bef-88be-b6e26c6d04f7
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
+    http_version: 
+  recorded_at: Sun, 07 Oct 2018 09:24:28 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.5438/4k3m-nyvgx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 07 Oct 2018 09:24:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"239206b78aeb856d049bba0ca4f75ed4"
+      X-Runtime:
+      - '0.019034'
+      X-Request-Id:
+      - 492092b5-baf3-4730-9fd4-ca706845e317
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"10.5438/4k3m-nyvgx","type":"dois","attributes":{"doi":"10.5438/4k3m-nyvgx","identifier":"https://handle.test.datacite.org/10.5438/4k3m-nyvgx","url":null,"prefix":"10.5438","suffix":"4k3m-nyvgx","author":[{"type":"Person","id":"https://orcid.org/0000-0003-1419-2405","name":"Fenner,
+        Martin","givenName":"Martin","familyName":"Fenner"}],"title":"Eating your
+        own Dog Food","publisher":"DataCite","resource-type-subtype":"BlogPosting","description":"Eating
+        your own dog food is a slang term to describe that an organization should
+        itself use the products and services it provides. For DataCite this means
+        that we should use DOIs with appropriate metadata and strategies for long-term
+        preservation for...","version":"1.0","metadata-version":0,"schema-version":"http://datacite.org/schema/kernel-4","reason":null,"source":"mds","state":"findable","is-active":true,"landing-page":{"status":null,"content-type":null,"checked":null},"published":"2016-12-20","created":"2018-08-01T21:04:36.000Z","registered":null,"updated":"2018-08-01T22:04:58.000Z","xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTQzOC80SzNNLU5ZVkdYPC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+RmVubmVyLCBNYXJ0aW48L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPk1hcnRpbjwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5GZW5uZXI8L2ZhbWlseU5hbWU+CiAgICAgIDxuYW1lSWRlbnRpZmllciBzY2hlbWVVUkk9Imh0dHA6Ly9vcmNpZC5vcmcvIiBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPmh0dHA6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTE0MTktMjQwNTwvbmFtZUlkZW50aWZpZXI+CiAgICA8L2NyZWF0b3I+CiAgPC9jcmVhdG9ycz4KICA8dGl0bGVzPgogICAgPHRpdGxlPkVhdGluZyB5b3VyIG93biBEb2cgRm9vZDwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EYXRhQ2l0ZTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNjwvcHVibGljYXRpb25ZZWFyPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iVGV4dCI+QmxvZ1Bvc3Rpbmc8L3Jlc291cmNlVHlwZT4KICA8YWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgICA8YWx0ZXJuYXRlSWRlbnRpZmllciBhbHRlcm5hdGVJZGVudGlmaWVyVHlwZT0iIi8+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5kYXRhY2l0ZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PmRvaTwvc3ViamVjdD4KICAgIDxzdWJqZWN0Pm1ldGFkYXRhPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+ZmVhdHVyZWQ8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8ZGF0ZXM+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iQ3JlYXRlZCI+MjAxNi0xMi0yMDwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTYtMTItMjA8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iVXBkYXRlZCI+MjAxNi0xMi0yMDwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNQYXJ0T2YiPjEwLjU0MzgvMDAwMC0wMHNzPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC41NDM4LzAwMTI8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjU0MzgvNTVlNS10NWMwPC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8dmVyc2lvbj4xLjA8L3ZlcnNpb24+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC8iPmh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvPC9yaWdodHM+CiAgPC9yaWdodHNMaXN0PgogIDxkZXNjcmlwdGlvbnM+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJBYnN0cmFjdCI+RWF0aW5nIHlvdXIgb3duIGRvZyBmb29kIGlzIGEgc2xhbmcgdGVybSB0byBkZXNjcmliZSB0aGF0IGFuIG9yZ2FuaXphdGlvbiBzaG91bGQgaXRzZWxmIHVzZSB0aGUgcHJvZHVjdHMgYW5kIHNlcnZpY2VzIGl0IHByb3ZpZGVzLiBGb3IgRGF0YUNpdGUgdGhpcyBtZWFucyB0aGF0IHdlIHNob3VsZCB1c2UgRE9JcyB3aXRoIGFwcHJvcHJpYXRlIG1ldGFkYXRhIGFuZCBzdHJhdGVnaWVzIGZvciBsb25nLXRlcm0gcHJlc2VydmF0aW9uIGZvci4uLjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+Cg==","cache-key":"dois/10.5438/4k3m-nyvgx-2018-08-01T22:04:58Z"},"relationships":{"client":{"data":{"id":"demo.datacite","type":"clients"}},"resource-type":{"data":{"id":"text","type":"resource_types"}},"media":{"data":[]}}},"included":[{"id":"demo.datacite","type":"clients","attributes":{"name":"DataCite
+        Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contact-name":"DataCite
+        Support","contact-email":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
+    http_version: 
+  recorded_at: Sun, 07 Oct 2018 09:24:28 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.5438/0012
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 07 Oct 2018 09:24:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 7b307d27-91f5-4420-959d-66a2adbf4bbc
+      X-Runtime:
+      - '0.004714'
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
+    http_version: 
+  recorded_at: Sun, 07 Oct 2018 09:24:28 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.5438/55e5-t5c0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 07 Oct 2018 09:24:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Runtime:
+      - '0.007829'
+      X-Request-Id:
+      - b9017648-5981-4daa-9804-c5df8859ea10
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
+    http_version: 
+  recorded_at: Sun, 07 Oct 2018 09:24:29 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:43:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T09:24:28Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","provider_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -122,7 +299,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 08:43:13 GMT
+      - Sun, 07 Oct 2018 09:24:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -136,11 +313,11 @@ http_interactions:
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - 1800dc72-e64a-4216-b591-8fe11fde0091
+      - 7159d39f-e277-4570-b8d0-006b7d90de60
       Etag:
       - W/"244ee9f9356cc82f69a66fef3db6cdf6"
       X-Runtime:
-      - '0.056830'
+      - '0.099278'
       X-Powered-By:
       - Phusion Passenger 5.3.4
       Server:
@@ -149,13 +326,13 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"6010daf2-28d4-43a5-be7b-a72ac36e5ebb","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","source-id":"datacite-related","relation-type-id":"is-part-of","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:01:03.158Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/0000-00ss","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 08:43:13 GMT
+  recorded_at: Sun, 07 Oct 2018 09:24:29 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:43:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T09:24:28Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","provider_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -172,7 +349,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 08:43:14 GMT
+      - Sun, 07 Oct 2018 09:24:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -186,11 +363,11 @@ http_interactions:
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - f3f46efa-e8bf-40a5-852c-06fa5f010cf7
+      - 888fe340-ed08-458a-abb8-ea8b8f1362d2
       Etag:
       - W/"2b8006781cf80fc8e9cc5f62ee12de9c"
       X-Runtime:
-      - '0.034772'
+      - '0.043736'
       X-Powered-By:
       - Phusion Passenger 5.3.4
       Server:
@@ -199,13 +376,13 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"746441d1-8bae-49b1-a648-45b6d7d050e6","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","source-id":"datacite-related","relation-type-id":"references","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:01:03.530Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/0012","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 08:43:14 GMT
+  recorded_at: Sun, 07 Oct 2018 09:24:29 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:43:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T09:24:29Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","provider_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -222,7 +399,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 08:43:14 GMT
+      - Sun, 07 Oct 2018 09:24:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -236,11 +413,11 @@ http_interactions:
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - 6996f52e-42f4-4bd6-93db-8c8b45e25e5d
+      - 3c07e135-6395-4654-8710-6f908daa0087
       Etag:
       - W/"60908b39eff5f7847419574558fa0d3a"
       X-Runtime:
-      - '0.112612'
+      - '0.032098'
       X-Powered-By:
       - Phusion Passenger 5.3.4
       Server:
@@ -249,5 +426,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"6c7a94d5-4bad-40f0-8f1e-a4fdafa667f7","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","source-id":"datacite-related","relation-type-id":"references","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-07T08:01:03.797Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/55e5-t5c0","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 08:43:14 GMT
+  recorded_at: Sun, 07 Oct 2018 09:24:29 GMT
 recorded_with: VCR 3.0.3

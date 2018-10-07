@@ -90,9 +90,9 @@ class Base
         options[:total] = total
         process_data(options)
       end
-      text = "Queued import for #{total} DOIs updated #{options[:from_date]} - #{options[:until_date]}."
+      text = "[Event Data] Queued #{source_id} import for #{total} DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
-      text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
+      text = "[Event Data] No DOIs updated #{options[:from_date]} - #{options[:until_date]} for #{source_id}."
     end
 
     Rails.logger.info text
@@ -208,7 +208,7 @@ class Base
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)
     return {} unless doi.present?
-    
+
     url = "https://api.crossref.org/works/#{doi}"
     response = Maremma.get(url, host: true)
 
