@@ -159,6 +159,8 @@ class Base
 
   def self.get_datacite_xml(id)
     doi = doi_from_url(id)
+    return {} unless doi.present?
+
     url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
 
@@ -205,6 +207,8 @@ class Base
 
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)
+    return {} unless doi.present?
+    
     url = "https://api.crossref.org/works/#{doi}"
     response = Maremma.get(url, host: true)
 
