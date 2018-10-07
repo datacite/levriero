@@ -9,8 +9,9 @@ class Base
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
   def queue options={}
-    Rails.logger.info "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?
-    Rails.logger.info "AWS_REGION has not been specified" unless ENV['AWS_REGION'].present?
+    logger = Logger.new(STDOUT)
+    logger.info "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?
+    logger.info "AWS_REGION has not been specified" unless ENV['AWS_REGION'].present?
     region = ENV['AWS_REGION'] ||= 'eu-west-1'
     Aws::SQS::Client.new(region: region.to_s, stub_responses: false)
   end
@@ -20,14 +21,16 @@ class Base
   end
 
   def delete_message message
+    logger = Logger.new(STDOUT)
+
     reponse = sqs.delete_message({
       queue_url: queue_url,
       receipt_handle: message[:receipt_handle]    
     })
     if reponse.successful?
-      Rails.logger.info "Message #{message[:receipt_handle]} deleted"
+      logger.info "Message #{message[:receipt_handle]} deleted"
     else
-      Rails.logger.info "Could NOT delete Message #{message[:receipt_handle]}"
+      logger.info "Could NOT delete Message #{message[:receipt_handle]}"
     end
   end
 
@@ -72,6 +75,8 @@ class Base
   end
 
   def queue_jobs(options={})
+    logger = Logger.new(STDOUT)
+
     options[:offset] = options[:offset].to_i || 0
     options[:rows] = options[:rows].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
@@ -95,7 +100,7 @@ class Base
       text = "[Event Data] No DOIs updated #{options[:from_date]} - #{options[:until_date]} for #{source_id}."
     end
 
-    Rails.logger.info text
+    logger.info text
 
     # send slack notification
     if total == 0
@@ -158,13 +163,21 @@ class Base
   end
 
   def self.get_datacite_xml(id)
+    logger = Logger.new(STDOUT)
+
     doi = doi_from_url(id)
-    return {} unless doi.present?
+    unless doi.present?
+      logger.info "#{id} is not a valid DOI"
+      return {}
+    end
 
     url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
 
-    return {} if response.status != 200
+    if response.status != 200
+      logger.info "DOI #{doi} not found"
+      return {}
+    end
     
     xml = response.body.dig("data", "attributes", "xml")
     xml = Base64.decode64(xml) if xml.present?

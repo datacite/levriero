@@ -4,18 +4,22 @@ module Importable
   included do
     # strong_parameters throws an error, using attributes hash
     def update_record(attributes)
+      logger = Logger.new(STDOUT)
+
       if update_attributes(attributes)
-        Rails.logger.debug self.class.name + " " + id + " updated."
+        logger.debug self.class.name + " " + id + " updated."
       else
-        Rails.logger.info self.class.name + " " + id + " not updated: " + errors.to_a.inspect
+        logger.info self.class.name + " " + id + " not updated: " + errors.to_a.inspect
       end
     end
 
     def delete_record
+      logger = Logger.new(STDOUT)
+
       if destroy(refresh: true)
-        Rails.logger.debug self.class.name + " record deleted."
+        logger.debug self.class.name + " record deleted."
       else
-        Rails.logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
+        logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
       end
     end
   end
@@ -77,6 +81,8 @@ module Importable
     end
 
     def import_from_api
+      logger = Logger.new(STDOUT)
+
       route = self.name.downcase + "s"
       page_number = 1
       total_pages = 1
@@ -88,7 +94,7 @@ module Importable
         url = ENV['APP_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
-        Rails.logger.warn response.body["errors"].inspect if response.body.fetch("errors", nil).present?
+        logger.warn response.body["errors"].inspect if response.body.fetch("errors", nil).present?
 
         records = response.body.fetch("data", [])
         records.each do |data|
@@ -101,7 +107,7 @@ module Importable
         end
 
         processed = (page_number - 1) * 100 + records.size
-        Rails.logger.info "#{processed} " + self.name.downcase + "s processed."
+        logger.info "#{processed} " + self.name.downcase + "s processed."
 
         page_number = response.body.dig("meta", "page").to_i + 1
         total = response.body.dig("meta", "total") || total
@@ -113,7 +119,6 @@ module Importable
 
     def parse_record(sqs_msg: nil, data: nil)
       logger = Logger.new(STDOUT)
-      logger.debug data.inspect
 
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_xml(id)
@@ -137,10 +142,6 @@ module Importable
         RelatedUrl.push_item(item)
       end
 
-      related_identifiers.each do |related_identifier| 
-        logger.info "[Event Data] DOI #{data["id"]} #{related_identifier["relationType"].underscore} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
-      end
-
       funding_references = Array.wrap(response.dig("fundingReferences", "fundingReference")).select { |f| f.dig("funderIdentifier","funderIdentifierType") == "Crossref Funder ID" }
       if funding_references.present?
         item = {
@@ -149,12 +150,10 @@ module Importable
           "updated" => data.dig("attributes", "updated")
         }
         FunderIdentifier.push_item(item)
-      end
+      end  
 
-      funding_references.each do |funder_reference| 
-        logger.info "[Event Data] DOI #{data["id"]} is_funded_by #{funder_reference.dig("funderIdentifier","funderIdentifierType")} #{funder_reference.dig("funderIdentifier","__content__")}"
-      end
-
+      logger.info "[Event Data] #{related_identifiers.length} related_identifiers for DOI #{data["id"]} found" if related_identifiers.present?
+      logger.info "[Event Data] #{funding_references.length} funding_references for DOI #{data["id"]} found" if funding_references.present?
       logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && funding_references.blank?
 
       related_identifiers + funding_references

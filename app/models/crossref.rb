@@ -43,6 +43,8 @@ class Crossref < Base
   end
 
   def queue_jobs(options={})
+    logger = Logger.new(STDOUT)
+
     options[:offset] = options[:offset].to_i || 0
     options[:rows] = options[:rows].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
@@ -67,7 +69,7 @@ class Crossref < Base
       text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     end
 
-    Rails.logger.info text
+    logger.info "[Event Data] " + text
 
     # send slack notification
     if total == 0
@@ -98,6 +100,8 @@ class Crossref < Base
   end
 
   def self.push_item(item)
+    logger = Logger.new(STDOUT)
+
     subj = cached_crossref_response(item["subj_id"])
     obj = cached_datacite_response(item["obj_id"])
 
@@ -126,11 +130,11 @@ class Crossref < Base
                                        content_type: 'application/vnd.api+json')
 
       if [200, 201].include?(response.status)
-        Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
+        logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
       elsif response.status == 409
-        Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
+        logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
       elsif response.body["errors"].present?
-        Rails.logger.info "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors'].first['title']}"
+        logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors'].first['title']}"
       end
     end
   end
