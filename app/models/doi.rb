@@ -1,8 +1,6 @@
-class Doi
+class Doi < Base
   include Searchable
-  include Importable
   include Indexable
-  include Cacheable
 
   def self.get_query_url(options={})
     if options[:id].present?

@@ -157,14 +157,25 @@ class Base
     end
   end
 
-  def self.get_datacite_metadata(id)
+  def self.get_datacite_xml(id)
     doi = doi_from_url(id)
     url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
 
     return {} if response.status != 200
+    
+    xml = response.body.dig("data", "attributes", "xml")
+    xml = Base64.decode64(xml) if xml.present?
+    Maremma.from_xml(xml).fetch("resource", {})
+  end
 
-    puts doi
+  def self.get_datacite_metadata(id)
+    doi = doi_from_url(id)
+    return {} unless doi.present?
+
+    url = ENV['API_URL'] + "/dois/#{doi}"
+    response = Maremma.get(url)
+    return {} if response.status != 200
     
     attributes = response.body.dig("data", "attributes")
     relationships = response.body.dig("data", "relationships")

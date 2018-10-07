@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 describe Base, type: :model, vcr: true do
+  context "get_datacite_xml" do
+    it "fetch metadata scholarly-article" do
+      id = "https://doi.org/10.5438/4k3m-nyvgx"
+      response = Base.get_datacite_xml(id)
+      expect(response.dig("relatedIdentifiers", "relatedIdentifier").length).to eq(3)
+      expect(response.dig("relatedIdentifiers", "relatedIdentifier").last).to eq("__content__"=>"10.5438/55e5-t5c0", "relatedIdentifierType"=>"DOI", "relationType"=>"References")
+    end
+
+    it "fetch metadata dataset" do
+      id = "https://doi.org/10.4124/ccvcn4z"
+      response = Base.get_datacite_xml(id)
+      expect(response.dig("relatedIdentifiers", "relatedIdentifier")).to eq("__content__"=>"10.1021/ja906895j", "relatedIdentifierType"=>"DOI", "relationType"=>"IsSupplementTo")
+    end
+  end
+
   context "get_datacite_metadata" do
     it "fetch metadata scholarly-article" do
       id = "https://doi.org/10.5438/4k3m-nyvg"

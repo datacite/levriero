@@ -111,20 +111,23 @@ module Importable
       total
     end
 
-    def parse_record(data)
+    def parse_record(hsh)
       logger = Logger.new(STDOUT)
-      logger.info data.inspect
 
-      id = "https://doi.org/#{data[:id].to_s}"
-      record = cached_datacite_response(id)
+      data = ActiveSupport::HashWithIndifferentAccess.new(hsh)
+      id = "https://doi.org/#{data["id"]}"
+      response = get_datacite_xml(id)
+      related_identifiers = response.dig("relatedIdentifiers", "relatedIdentifier")
 
-      if record.present?
-        logger.info "Parsed DOI #{data[:id].to_s}"
+      if related_identifiers.present?
+        Array.wrap(related_identifiers).each do |related_identifier| 
+          logger.info "DOI #{data["id"]} #{related_identifier["relationType"]} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
+        end
       else
-        logger.info "DOI #{data[:id].to_s} not found"
+        logger.info "No related identifiers found for DOI #{data["id"]}"
       end
 
-      record
+      related_identifiers
     end
 
     def create_record(attributes)
