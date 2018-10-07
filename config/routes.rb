@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :index, path: '/', only: [:index]
 
   # trigger agents
-  post 'events/import-crossref', :to => 'events#import_crossref'
+  post 'agents/crossref', :to => 'agents#crossref'
 
   # rescue routing errors
   match "*path", to: "index#routing_error", via: :all

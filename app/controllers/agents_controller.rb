@@ -1,7 +1,7 @@
-class EventsController < ApplicationController
+class AgentsController < ApplicationController
   before_action :authenticate_user_from_token!
 
-  def import_crossref
+  def crossref
     total = Crossref.import
 
     render json: { message: "Queued import for #{total} DOIs." }.to_json, status: :ok
