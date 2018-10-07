@@ -43,7 +43,7 @@ class UsageUpdate < Base
   end
 
 
-  def get_total _options={}
+  def get_total(options={})
     queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
     req = sqs.get_queue_attributes(
       {
@@ -122,8 +122,8 @@ class UsageUpdate < Base
     fail "Not type given. Report #{data[:report_id]} not proccessed" if type.blank?
     fail "Access token missing." if ENV['DATACITE_USAGE_SOURCE_TOKEN'].blank?
     fail "Report_id is missing" if data[:report_id].blank?
-    { "uuid" => SecureRandom.uuid,
-      "message-action" => "create",
+    
+    { "message-action" => "create",
       "subj-id" => data[:report_id],
       "subj"=> {
         "id"=> data[:report_id],
@@ -163,10 +163,9 @@ class UsageUpdate < Base
 
     obj = cached_datacite_response(item["obj-id"])
     subj = options[:report_meta]
-    push_url = ENV['LAGOTTINO_URL']  + "/events/" + item["uuid"].to_s
+    push_url = ENV['LAGOTTINO_URL']  + "/events"
     data = { 
       "data" => {
-        "id" => item["uuid"],
         "type" => "events",
         "attributes" => {
           "message-action" => item["message-action"],
@@ -181,12 +180,9 @@ class UsageUpdate < Base
           "subj" => subj,
           "obj" => obj } }}
   
-    host = URI.parse(push_url).host.downcase
-    response = Maremma.put(push_url, data: data.to_json,
-                                    bearer: ENV['LAGOTTINO_TOKEN'],
-                                    content_type: 'json',
-                                    host: host)
-    response                 
+    response = Maremma.post(push_url, data: data.to_json,
+                                      bearer: ENV['LAGOTTINO_TOKEN'],
+                                      content_type: 'application/vnd.api+json')               
   end
 end
 

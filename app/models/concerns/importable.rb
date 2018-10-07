@@ -117,11 +117,29 @@ module Importable
       data = ActiveSupport::HashWithIndifferentAccess.new(hsh)
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_xml(id)
-      related_identifiers = response.dig("relatedIdentifiers", "relatedIdentifier")
+      related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier"))
+
+      if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
+        item = {
+          "doi" => data["id"],
+          "relatedIdentifier" => related_identifiers.map { |r| "#{r["relationType"]}:#{r["relatedIdentifierType"]}:#{r["__content__"]}" },
+          "updated" => data.dig("attributes", "updated")
+        }
+        RelatedIdentifier.push_item(item)
+      end
+
+      if related_identifiers.any? { |r| r["relatedIdentifierType"] == "URL" }
+        item = {
+          "doi" => data["id"],
+          "relatedIdentifier" => related_identifiers.map { |r| "#{r["relationType"]}:#{r["relatedIdentifierType"]}:#{r["__content__"]}" },
+          "updated" => data.dig("attributes", "updated")
+        }
+        RelatedUrl.push_item(item)
+      end
 
       if related_identifiers.present?
-        Array.wrap(related_identifiers).each do |related_identifier| 
-          logger.info "DOI #{data["id"]} #{related_identifier["relationType"]} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
+        related_identifiers.each do |related_identifier| 
+          logger.info "[Event Data] DOI #{data["id"]} #{related_identifier["relationType"].underscore} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
         end
       else
         logger.info "No related identifiers found for DOI #{data["id"]}"

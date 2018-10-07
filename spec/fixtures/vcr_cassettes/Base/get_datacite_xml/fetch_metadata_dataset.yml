@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 07:22:46 GMT
+      - Sun, 07 Oct 2018 08:15:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,12 +30,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 74c478c2-b73f-4c3a-8cbd-5d22e4653008
       Etag:
       - W/"71d9614e29ae63c2055a97904f438008"
       X-Runtime:
-      - '0.018237'
+      - '0.019359'
+      X-Request-Id:
+      - 31304b5e-977b-4d54-ab5c-64b1f6f408dd
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -54,5 +54,5 @@ http_interactions:
         Cambridge Structural Database","symbol":"BL.CCDC","year":2013,"contact-name":"Ian
         Bruno","contact-email":"bruno@ccdc.cam.ac.uk","domains":"ccdc.cam.ac.uk","url":null,"created":"2013-09-24T12:20:11.000Z","updated":"2018-08-26T01:30:30.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.5517","type":"prefixes"},{"id":"10.5072","type":"prefixes"}]}}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 07:22:47 GMT
+  recorded_at: Sun, 07 Oct 2018 08:15:38 GMT
 recorded_with: VCR 3.0.3

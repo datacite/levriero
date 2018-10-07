@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 06:25:48 GMT
+      - Sun, 07 Oct 2018 08:15:24 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
@@ -36,11 +36,11 @@ http_interactions:
       - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
       encoding: ASCII-8BIT
-      string: '{"responseHeader":{"status":0,"QTime":0},"response":{"numFound":425,"start":0,"docs":[]}}
+      string: '{"responseHeader":{"status":0,"QTime":1},"response":{"numFound":425,"start":0,"docs":[]}}
 
 '
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 06:25:48 GMT
+  recorded_at: Sun, 07 Oct 2018 08:15:24 GMT
 - request:
     method: get
     uri: https://solr.test.datacite.org/api?fl=doi,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated&fq=updated:%5B2018-01-04T00:00:00Z%20TO%202018-08-05T23:59:59Z%5D%20AND%20has_metadata:true%20AND%20is_active:true&q=relatedIdentifier:URL%5C:*&rows=1000&start=0&wt=json
@@ -60,7 +60,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 06:25:48 GMT
+      - Sun, 07 Oct 2018 08:15:25 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
@@ -259,5 +259,5 @@ http_interactions:
 
 '
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 06:25:48 GMT
+  recorded_at: Sun, 07 Oct 2018 08:15:26 GMT
 recorded_with: VCR 3.0.3

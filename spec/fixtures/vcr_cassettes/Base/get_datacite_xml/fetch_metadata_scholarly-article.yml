@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 07 Oct 2018 07:22:46 GMT
+      - Sun, 07 Oct 2018 08:15:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,12 +30,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 38ef9500-bdb4-4f33-9609-eaa53dba688e
       Etag:
       - W/"239206b78aeb856d049bba0ca4f75ed4"
       X-Runtime:
-      - '0.019373'
+      - '0.019727'
+      X-Request-Id:
+      - fdee2a13-cf41-4441-af9c-9016a34a6327
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -52,5 +52,5 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sun, 07 Oct 2018 07:22:46 GMT
+  recorded_at: Sun, 07 Oct 2018 08:15:37 GMT
 recorded_with: VCR 3.0.3
