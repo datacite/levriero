@@ -111,13 +111,15 @@ module Importable
       total
     end
 
-    def parse_record(hsh)
+    def parse_record(sqs_msg: nil, args: nil)
       logger = Logger.new(STDOUT)
+      logger.debug sqs_msg.inspect
+      logger.debug args.inspect
 
-      data = ActiveSupport::HashWithIndifferentAccess.new(hsh)
+      data = ActiveSupport::HashWithIndifferentAccess.new(args)
 
       logger.debug data.inspect
-      
+
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_xml(id)
       related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier")).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
