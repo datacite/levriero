@@ -152,8 +152,8 @@ module Importable
         FunderIdentifier.push_item(item)
       end  
 
-      logger.info "[Event Data] #{related_identifiers.length} related_identifiers for DOI #{data["id"]} found" if related_identifiers.present?
-      logger.info "[Event Data] #{funding_references.length} funding_references for DOI #{data["id"]} found" if funding_references.present?
+      logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
+      logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
       logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && funding_references.blank?
 
       related_identifiers + funding_references
