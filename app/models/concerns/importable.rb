@@ -111,13 +111,8 @@ module Importable
       total
     end
 
-    def parse_record(sqs_msg: nil, args: nil)
+    def parse_record(sqs_msg: nil, data: nil)
       logger = Logger.new(STDOUT)
-      logger.debug sqs_msg.inspect
-      logger.debug args.inspect
-
-      data = ActiveSupport::HashWithIndifferentAccess.new(args)
-
       logger.debug data.inspect
 
       id = "https://doi.org/#{data["id"]}"

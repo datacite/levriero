@@ -3,7 +3,7 @@ class DoiImportWorker
 
   shoryuken_options queue: ->{ "#{ENV['RAILS_ENV']}_doi" }, auto_delete: true
 
-  def perform(sqs_msg, args)
-    Doi.parse_record(sqs_msg: sqs_msg, args: args)
+  def perform(sqs_msg, data)
+    Doi.parse_record(sqs_msg: sqs_msg, data: data)
   end
 end
