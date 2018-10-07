@@ -3,7 +3,7 @@ require 'rails_helper'
 describe DoiImportWorker do
   context "related_identifier", vcr: true do
     let(:doi) { "10.5438/4k3m-nyvgx" }
-    let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}} }
+    let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json }
     let(:sqs_msg) { double message_id: 'fc754df7-9cc2-4c41-96ca-5996a44b771e', body: data, delete: nil }
     
     subject { DoiImportWorker.new }
@@ -17,7 +17,7 @@ describe DoiImportWorker do
 
   context "funder_identifier", vcr: true do
     let(:doi) { "10.0133/32096" }
-    let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}} }
+    let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json }
     let(:sqs_msg) { double message_id: 'fc754df7-9cc2-4c41-96ca-5996a44b771e', body: data, delete: nil }
   
     it 'find funder_identifier' do
