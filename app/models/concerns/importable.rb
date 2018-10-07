@@ -115,6 +115,9 @@ module Importable
       logger = Logger.new(STDOUT)
 
       data = ActiveSupport::HashWithIndifferentAccess.new(hsh)
+
+      logger.debug data.inspect
+      
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_xml(id)
       related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier")).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
