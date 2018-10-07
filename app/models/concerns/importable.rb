@@ -113,14 +113,15 @@ module Importable
 
     def parse_record(data)
       logger = Logger.new(STDOUT)
+      logger.info data.inspect
 
-      id = "https://doi.org/#{data[:id]}"
+      id = "https://doi.org/#{data[:id].to_s}"
       record = cached_datacite_response(id)
 
       if record.present?
-        logger.info "Parsed DOI #{data[:id]}"
+        logger.info "Parsed DOI #{data[:id].to_s}"
       else
-        logger.info "DOI #{data[:id]} not found"
+        logger.info "DOI #{data[:id].to_s} not found"
       end
 
       record
