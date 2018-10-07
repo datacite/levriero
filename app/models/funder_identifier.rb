@@ -59,8 +59,7 @@ class FunderIdentifier < Base
         subj = cached_datacite_response(pid)
         obj = cached_funder_response(obj_id)
 
-        ssum << { "id" => SecureRandom.uuid,
-                  "message_action" => "create",
+        ssum << { "message_action" => "create",
                   "subj_id" => pid,
                   "obj_id" => obj_id,
                   "relation_type_id" => relation_type_id,
@@ -80,11 +79,10 @@ class FunderIdentifier < Base
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data Query API
       if ENV['LAGOTTINO_TOKEN'].present?
-        push_url = ENV['LAGOTTINO_URL'] + "/events/#{iiitem["id"]}"
+        push_url = ENV['LAGOTTINO_URL'] + "/events"
 
         data = { 
           "data" => {
-            "id" => iiitem["id"],
             "type" => "events",
             "attributes" => {
               "message-action" => iiitem["message_action"],
@@ -99,7 +97,7 @@ class FunderIdentifier < Base
               "subj" => iiitem["subj"],
               "obj" => iiitem["obj"] } }}
 
-        response = Maremma.put(push_url, data: data.to_json,
+        response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
                                           content_type: 'application/vnd.api+json')
 

@@ -117,8 +117,8 @@ module Importable
       data = ActiveSupport::HashWithIndifferentAccess.new(hsh)
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_xml(id)
-      related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier"))
-
+      related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier")).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
+       
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
         item = {
           "doi" => data["id"],
@@ -137,15 +137,25 @@ module Importable
         RelatedUrl.push_item(item)
       end
 
-      if related_identifiers.present?
-        related_identifiers.each do |related_identifier| 
-          logger.info "[Event Data] DOI #{data["id"]} #{related_identifier["relationType"].underscore} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
-        end
-      else
-        logger.info "No related identifiers found for DOI #{data["id"]}"
+      related_identifiers.each do |related_identifier| 
+        logger.info "[Event Data] DOI #{data["id"]} #{related_identifier["relationType"].underscore} #{related_identifier["relatedIdentifierType"]} #{related_identifier["__content__"]}"
       end
 
-      related_identifiers
+      funding_references = Array.wrap(response.dig("fundingReferences", "fundingReference")).select { |f| f.dig("funderIdentifier","funderIdentifierType") == "Crossref Funder ID" }
+      if funding_references.present?
+        item = {
+          "doi" => data["id"],
+          "funderIdentifier" => funding_references.map { |f| "#{f.dig("funderIdentifier","funderIdentifierType")}:#{f.dig("funderIdentifier","__content__")}" },
+          "updated" => data.dig("attributes", "updated")
+        }
+        FunderIdentifier.push_item(item)
+      end
+
+      funding_references.each do |funder_reference| 
+        logger.info "[Event Data] DOI #{data["id"]} is_funded_by #{funder_reference.dig("funderIdentifier","funderIdentifierType")} #{funder_reference.dig("funderIdentifier","__content__")}"
+      end
+
+      related_identifiers + funding_references
     end
 
     def create_record(attributes)
