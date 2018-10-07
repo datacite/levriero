@@ -159,7 +159,7 @@ class Base
 
   def self.get_datacite_metadata(id)
     doi = doi_from_url(id)
-    url = "https://api.datacite.org/works/#{doi}"
+    url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
 
     return {} if response.status != 200
@@ -167,24 +167,25 @@ class Base
     puts doi
     
     attributes = response.body.dig("data", "attributes")
+    relationships = response.body.dig("data", "relationships")
 
-    resource_type = attributes["resource-type-subtype"]
-    resource_type_general = attributes["resource-type-id"]
+    resource_type = response.body.dig("data", "relationships")
+    resource_type_general = relationships.dig("resource-type", "data", "id")
     type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[resource_type.to_s.underscore.camelcase] || Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.underscore.camelcase(first_letter = :upper)] || "CreativeWork"
     author = Array.wrap(attributes["author"]).map do |a| 
       {
-        "given_name" => a["given"],
-        "family_name" => a["family"],
-        "name" => a["family"].present? ? nil : a["name"] }.compact
+        "given_name" => a["givenName"],
+        "family_name" => a["familyName"],
+        "name" => a["familyName"].present? ? nil : a["name"] }.compact
     end
-    client_id = attributes["data-center-id"]
+    client_id = relationships.dig("client", "data", "id")
 
     {
       "id" => id,
       "type" => type.underscore.dasherize,
       "name" => attributes["title"],
       "author" => author,
-      "publisher" => attributes["container-title"],
+      "publisher" => attributes["publisher"],
       "version" => attributes["version"],
       "date_published" => attributes["published"],
       "date_modified" => attributes["updated"],

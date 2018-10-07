@@ -9,21 +9,21 @@ describe Base, type: :model, vcr: true do
       expect(response["type"]).to eq("scholarly-article")
       expect(response["name"]).to eq("Eating your own Dog Food")
       expect(response["publisher"]).to eq("DataCite")
-      expect(response["provider_id"]).to eq("datacite.datacite.datacite")
-      expect(response["date_published"]).to eq("2016")
-      expect(response["date_modified"]).to eq("2017-01-09T13:53:12Z")
+      expect(response["provider_id"]).to eq("datacite.demo.datacite")
+      expect(response["date_published"]).to eq("2016-12-20")
+      expect(response["date_modified"]).to eq("2018-08-01T22:04:55.000Z")
     end
 
     it "fetch metadata dataset" do
-      id = "https://doi.org/10.5061/dryad.8515"
+      id = "https://doi.org/10.4124/ccvcn4z"
       response = Base.get_datacite_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.5061/dryad.8515")
+      expect(response["id"]).to eq("https://doi.org/10.4124/ccvcn4z")
       expect(response["type"]).to eq("dataset")
-      expect(response["name"]).to eq("Data from: A new malaria agent in African hominids.")
-      expect(response["publisher"]).to eq("Dryad Digital Repository")
-      expect(response["provider_id"]).to eq("datacite.dryad.dryad")
-      expect(response["date_published"]).to eq("2011")
-      expect(response["date_modified"]).to eq("2018-03-30T21:47:26Z")
+      expect(response["name"]).to eq("CCDC 785761: Experimental Crystal Structure Determination")
+      expect(response["publisher"]).to eq("Cambridge Crystallographic Data Centre")
+      expect(response["provider_id"]).to eq("datacite.bl.ccdc")
+      expect(response["date_published"]).to eq("2010")
+      expect(response["date_modified"]).to eq("2018-02-05T09:53:27.000Z")
     end
   end
 

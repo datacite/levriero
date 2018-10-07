@@ -1,7 +1,7 @@
 require 'faker'
 
 FactoryBot.define do
-  factory :doi do
+  factory :doi, class: OpenStruct do
     doi { ("10.14454/" + Faker::Internet.password(8)).downcase }
     url {Faker::Internet.url }
     is_active { true }
@@ -14,20 +14,20 @@ FactoryBot.define do
     initialize_with { new(attributes) }
   end
 
-  factory :event , class: OpenStruct do
+  factory :event, class: OpenStruct do
     sequence(:uuid) { |n| "#{SecureRandom.uuid}-#{n}" }
     message_action { "create" } 
     sequence(:obj_id) { |n| "#{Faker::Internet.url}#{n}" }
     sequence(:subj_id) { |n| "#{Faker::Internet.url}#{n}" }
-    total {Faker::Number.number(3)}
+    total { Faker::Number.number(3) }
     subj {{
       "id" => "#{SecureRandom.uuid}",
       "issued" => Faker::Time.between(DateTime.now - 2, DateTime.now),
     }}
-    relation_type_id {["total-dataset-investigations-regular","total-dataset-investigations-machine","unique-dataset-investigations-machine","total-dataset-investigations-machine"].sample}
-    source_id {"datacite-usage"}
+    relation_type_id { ["total-dataset-investigations-regular","total-dataset-investigations-machine","unique-dataset-investigations-machine","total-dataset-investigations-machine"].sample }
+    source_id { "datacite-usage" }
     sequence(:source_token) { |n| "#{SecureRandom.uuid}-#{n}" }
-    occurred_at {Faker::Time.between(DateTime.now - 2, DateTime.now)}
-    license {"https://creativecommons.org/publicdomain/zero/1.0/"}
-end
+    occurred_at { Faker::Time.between(DateTime.now - 2, DateTime.now) }
+    license { "https://creativecommons.org/publicdomain/zero/1.0/" }
+  end
 end
