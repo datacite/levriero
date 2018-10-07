@@ -155,6 +155,8 @@ module Importable
         logger.info "[Event Data] DOI #{data["id"]} is_funded_by #{funder_reference.dig("funderIdentifier","funderIdentifierType")} #{funder_reference.dig("funderIdentifier","__content__")}"
       end
 
+      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && funding_references.blank?
+
       related_identifiers + funding_references
     end
 
