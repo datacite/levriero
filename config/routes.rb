@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   post 'agents/crossref', :to => 'agents#crossref'
 
   # rescue routing errors
-  match "*path", to: "index#routing_error", via: :all
+  # match "*path", to: "index#routing_error", via: :all
 end
