@@ -10,7 +10,7 @@ class RelatedIdentifier < Base
       RelatedIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for DOIs updated from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
+    "Queued import for DOIs created from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
   end
 
   def self.import(options={})
@@ -33,7 +33,7 @@ class RelatedIdentifier < Base
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
-    # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
+    # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs created from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
       RelatedIdentifierImportJob.perform_later(item)

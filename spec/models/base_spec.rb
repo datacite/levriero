@@ -24,7 +24,7 @@ describe Base, type: :model, vcr: true do
       expect(response["type"]).to eq("scholarly-article")
       expect(response["name"]).to eq("Eating your own Dog Food")
       expect(response["publisher"]).to eq("DataCite")
-      expect(response["provider_id"]).to eq("datacite.demo.datacite")
+      expect(response["registrant_id"]).to eq("datacite.demo.datacite")
       expect(response["date_published"]).to eq("2016-12-20")
       expect(response["date_modified"]).to eq("2018-08-01T22:04:55.000Z")
     end
@@ -36,7 +36,7 @@ describe Base, type: :model, vcr: true do
       expect(response["type"]).to eq("dataset")
       expect(response["name"]).to eq("CCDC 785761: Experimental Crystal Structure Determination")
       expect(response["publisher"]).to eq("Cambridge Crystallographic Data Centre")
-      expect(response["provider_id"]).to eq("datacite.bl.ccdc")
+      expect(response["registrant_id"]).to eq("datacite.bl.ccdc")
       expect(response["date_published"]).to eq("2010")
       expect(response["date_modified"]).to eq("2018-02-05T09:53:27.000Z")
     end
@@ -52,7 +52,7 @@ describe Base, type: :model, vcr: true do
       expect(response["periodical"]).to eq("Synlett")
       expect(response["issn"]).to eq(["0936-5214", "1437-2096"])
       expect(response["publisher"]).to eq("Georg Thieme Verlag KG")
-      expect(response["provider_id"]).to eq("crossref.194")
+      expect(response["registrant_id"]).to eq("crossref.194")
       expect(response["date_published"]).to eq("2011-03-10")
       expect(response["date_modified"]).to eq("2018-05-04T00:15:33Z")
     end

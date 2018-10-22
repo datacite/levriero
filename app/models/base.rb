@@ -215,7 +215,7 @@ class Base
       "version" => attributes["version"],
       "date_published" => attributes["published"],
       "date_modified" => attributes["updated"],
-      "provider_id" => "datacite.#{client_id}" }.compact
+      "registrant_id" => "datacite.#{client_id}" }.compact
   end
 
   def self.get_crossref_metadata(id)
@@ -250,7 +250,7 @@ class Base
       "issn" => message["ISSN"],
       "date_published" => Base.new.get_date_from_date_parts(message["issued"]),
       "date_modified" => message.dig("indexed", "date-time"),
-      "provider_id" => "crossref.#{message["member"]}" }.compact
+      "registrant_id" => "crossref.#{message["member"]}" }.compact
   end
 
   def unfreeze(hsh)
