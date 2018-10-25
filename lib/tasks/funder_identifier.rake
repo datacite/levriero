@@ -14,6 +14,6 @@ namespace :funder_identifier do
     until_date = ENV['UNTIL_DATE'] || Date.current.strftime("%F")
 
     response = FunderIdentifier.import(from_date: from_date, until_date: until_date)
-    puts "Queued import for #{response} DOIs updated from #{from_date} - #{until_date}."
+    puts "Queued import for #{response} DOIs created from #{from_date} - #{until_date}."
   end
 end

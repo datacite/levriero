@@ -7,7 +7,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
 
     it "import_by_month" do
       response = RelatedIdentifier.import_by_month(from_date: from_date, until_date: until_date)
-      expect(response).to eq("Queued import for DOIs updated from 2018-01-01 until 2018-08-31.")
+      expect(response).to eq("Queued import for DOIs created from 2018-01-01 until 2018-08-31.")
     end
 
     it "import" do

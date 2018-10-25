@@ -1,4 +1,4 @@
-class FunderIdentifier < Base
+class NameIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
 
   def self.import_by_month(options={})
@@ -7,7 +7,7 @@ class FunderIdentifier < Base
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      FunderIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+      NameIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
     "Queued import for DOIs created from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
@@ -17,26 +17,26 @@ class FunderIdentifier < Base
     from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
 
-    funder_identifier = FunderIdentifier.new
-    funder_identifier.queue_jobs(funder_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
+    name_identifier = NameIdentifier.new
+    name_identifier.queue_jobs(name_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
   end
 
   def source_id
-    "datacite_funder"
+    "datacite_orcid_auto_update"
   end
 
   def query
-    "funderIdentifier:*"
+    "nameIdentifier:ORCID\\:*"
   end
 
   def push_data(result, options={})
+    logger = Logger.new(STDOUT)
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
-    # Rails.logger.info "Extracting funder identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
-      FunderIdentifierImportJob.perform_later(item)
+      NameIdentifierImportJob.perform_later(item)
     end
 
     items.length
@@ -47,19 +47,25 @@ class FunderIdentifier < Base
 
     doi = item.fetch("doi")
     pid = normalize_doi(doi)
-    funder_identifiers = item.fetch('funderIdentifier', []).select { |id| id =~ /Crossref Funder ID:.+/ }
+    related_identifiers = item.fetch("relatedIdentifier", [])
+    skip_doi = related_identifiers.any? do |related_identifier|
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier.split(':', 3).first)
+    end
+    name_identifiers = item.fetch("nameIdentifier", [])
 
-    push_items = Array.wrap(funder_identifiers).reduce([]) do |ssum, iitem|
-      _funder_identifier_type, funder_identifier = iitem.split(':', 2)
-      funder_identifier = funder_identifier.strip.downcase
-      relation_type_id = "is_funded_by"
-      source_id = "datacite_funder"
-      source_token = ENV['DATACITE_FUNDER_SOURCE_TOKEN']
-      obj_id = normalize_doi(funder_identifier)
+    return nil if name_identifiers.blank? || skip_doi
+
+    push_items = Array.wrap(name_identifiers).reduce([]) do |ssum, iitem|
+      name_identifier_scheme, name_identifier = iitem.split(':', 2)
+      name_identifier = name_identifier.strip
+      obj_id = normalize_orcid(name_identifier)
+      relation_type_id = "is_authored_by"
+      source_id = "datacite_orcid_auto_update"
+      source_token = ENV['DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN']
 
       if obj_id.present?
         subj = cached_datacite_response(pid)
-        obj = cached_funder_response(obj_id)
+        obj = cached_orcid_response(obj_id)
 
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
@@ -77,7 +83,7 @@ class FunderIdentifier < Base
       ssum
     end
 
-    # there can be one or more funder_identifier per DOI
+    # there can be one or more name_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data Query API
       if ENV['LAGOTTINO_TOKEN'].present?
@@ -111,33 +117,27 @@ class FunderIdentifier < Base
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
         end
       end
-    end
-  end
+      
+      # send to Event Data Bus
+      # host = ENV['EVENTDATA_URL']
+      # push_url = host + "/events"
+      # response = Maremma.post(push_url, data: item.to_json,
+      #                                   bearer: ENV['EVENTDATA_TOKEN'],
+      #                                   content_type: 'json',
+      #                                   host: host)
 
-  def self.get_funder_metadata(id)
-    doi = doi_from_url(id)
-    url = "https://api.crossref.org/funders/#{doi}"
-    response = Maremma.get(url, host: true)
-
-    return {} if response.status != 200
-    
-    message = response.body.dig("data", "message")
-    
-    if message["location"].present?
-      location = { 
-        "type" => "postalAddress",
-        "addressCountry" => message["location"]
-      }
-    else
-      location = nil
+      # return 0 if successful, 1 if error
+      # if response.status == 201
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
+      #   0
+      # elsif response.status == 409
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
+      #   0
+      # elsif response.body["errors"].present?
+      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error:"
+      #   puts "#{response.body['errors'].first['title']}"
+      #   1
+      # end
     end
-    
-    {
-      "id" => id,
-      "type" => "funder",
-      "name" => message["name"],
-      "alternate_name" => message["alt-names"],
-      "location" => location,
-      "date_modified" => "2018-07-11T00:00:00Z" }.compact
   end
 end

@@ -69,7 +69,7 @@ module Importable
     end
   
     def orcid_from_url(url)
-      Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
+      Array(/\A(http|https):\/\/orcid\.org\/(.+)/.match(url)).last
     end
   
     def orcid_as_url(orcid)
@@ -77,7 +77,16 @@ module Importable
     end
   
     def validate_orcid(orcid)
-      Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
+      orcid = Array(/\A(?:(http|https):\/\/(www\.)?orcid\.org\/)?(\d{4}[[:space:]-]\d{4}[[:space:]-]\d{4}[[:space:]-]\d{3}[0-9X]+)\z/.match(orcid)).last
+      orcid.gsub(/[[:space:]]/, "-") if orcid.present?
+    end
+
+    def normalize_orcid(orcid)
+      orcid = validate_orcid(orcid)
+      return nil unless orcid.present?
+
+      # turn ORCID ID into URL
+      "http://orcid.org/" + Addressable::URI.encode(orcid)
     end
 
     def import_from_api
@@ -150,13 +159,24 @@ module Importable
           "updated" => data.dig("attributes", "updated")
         }
         FunderIdentifier.push_item(item)
-      end  
+      end 
+
+      name_identifiers = Array.wrap(response.dig("creators", "creator")).select { |n| n.dig("nameIdentifier", "nameIdentifierScheme") == "ORCID" }
+      if name_identifiers.present?
+        item = {
+          "doi" => data["id"],
+          "nameIdentifier" => name_identifiers.map { |n| "#{n.dig("nameIdentifier", "nameIdentifierScheme")}:#{n.dig("nameIdentifier", "__content__")}" },
+          "updated" => data.dig("attributes", "updated")
+        }
+        NameIdentifier.push_item(item)
+      end
 
       logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
+      logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data["id"]}" if name_identifiers.present?
       logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
-      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && funding_references.blank?
+      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank?
 
-      related_identifiers + funding_references
+      related_identifiers + name_identifiers + funding_references
     end
 
     def create_record(attributes)

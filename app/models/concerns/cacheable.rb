@@ -19,5 +19,11 @@ module Cacheable
         FunderIdentifier.get_funder_metadata(id)
       end
     end
+
+    def cached_orcid_response(id)
+      Rails.cache.fetch("orcid/#{id}", expires_in: 1.day) do
+        Base.get_orcid_metadata(id)
+      end
+    end
   end
 end

@@ -57,4 +57,16 @@ describe Base, type: :model, vcr: true do
       expect(response["date_modified"]).to eq("2018-05-04T00:15:33Z")
     end
   end
+
+  context "get_orcid_metadata" do
+    it "fetch orcid metadata" do
+      id = "https://orcid.org/0000-0003-1419-2405"
+      response = Base.get_orcid_metadata(id)
+      expect(response["id"]).to eq("https://orcid.org/0000-0003-1419-2405")
+      expect(response["type"]).to eq("person")
+      expect(response["givenName"]).to eq("Martin")
+      expect(response["familyName"]).to eq("Fenner")
+      expect(response["name"]).to eq("Martin Fenner")
+    end
+  end
 end

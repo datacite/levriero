@@ -253,6 +253,24 @@ class Base
       "registrant_id" => "crossref.#{message["member"]}" }.compact
   end
 
+  def self.get_orcid_metadata(id)
+    orcid = orcid_from_url(id)
+    return {} unless orcid.present?
+
+    url = ENV['ORCID_API_URL'] + "/#{orcid}/person"
+    response = Maremma.get(url, accept: "application/vnd.orcid+json")
+    return {} if response.status != 200
+
+    data = response.body.fetch("data", {})
+
+    {
+      "id" => id,
+      "type" => "person",
+      "givenName" => data.dig("name", "given-names", "value"),
+      "familyName" => data.dig("name", "family-name", "value"),
+      "name" => data.dig("name", "credit-name", "value") }.compact
+  end
+
   def unfreeze(hsh)
     new_hash = {}
     hsh.each_pair { |k,v| new_hash.merge!({k.downcase.to_sym => v})  }

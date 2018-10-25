@@ -7,7 +7,7 @@ describe FunderIdentifier, type: :model, vcr: true do
 
     it "import_by_month" do
       response = FunderIdentifier.import_by_month(from_date: from_date, until_date: until_date)
-      expect(response).to eq("Queued import for DOIs updated from 2018-01-01 until 2018-08-31.")
+      expect(response).to eq("Queued import for DOIs created from 2018-01-01 until 2018-08-31.")
     end
 
     it "import" do
@@ -23,6 +23,7 @@ describe FunderIdentifier, type: :model, vcr: true do
       expect(response["type"]).to eq("funder")
       expect(response["name"]).to eq("London School of Economics and Political Science")
       expect(response["alternate_name"]).to eq(["London School of Economics & Political Science", "LSE"])
+      expect(response["location"]).to eq("addressCountry"=>"United Kingdom", "type"=>"postalAddress")
       expect(response["date_modified"]).to eq("2018-07-11T00:00:00Z")
     end
   end
