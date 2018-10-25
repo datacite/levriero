@@ -85,7 +85,7 @@ class NameIdentifier < Base
 
     # there can be one or more name_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Data Query API
+      # send to DataCite Event Datas API
       if ENV['LAGOTTINO_TOKEN'].present?
         push_url = ENV['LAGOTTINO_URL'] + "/events"
 
@@ -117,27 +117,32 @@ class NameIdentifier < Base
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
         end
       end
-      
-      # send to Event Data Bus
-      # host = ENV['EVENTDATA_URL']
-      # push_url = host + "/events"
-      # response = Maremma.post(push_url, data: item.to_json,
-      #                                   bearer: ENV['EVENTDATA_TOKEN'],
-      #                                   content_type: 'json',
-      #                                   host: host)
 
-      # return 0 if successful, 1 if error
-      # if response.status == 201
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
-      #   0
-      # elsif response.status == 409
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
-      #   0
-      # elsif response.body["errors"].present?
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error:"
-      #   puts "#{response.body['errors'].first['title']}"
-      #   1
-      # end
+      # send to Profiles service, which then pushes to ORCID
+      if ENV['VOLPINO_TOKEN'].present?
+        push_url = ENV['VOLPINO_URL'] + "/claims"
+        doi = doi_from_url(iiitem["subj_id"])
+        orcid = orcid_from_url(iiitem["obj_id"])
+
+        data = { 
+          "claim" => {
+            "doi" => doi,
+            "orcid" => orcid,
+            "source_id" => "orcid_update",
+            "claim_action"=> "create" }}
+
+        response = Maremma.post(push_url, data: data.to_json,
+                                          bearer: ENV['VOLPINO_TOKEN'],
+                                          content_type: 'application/json')
+                                        
+        if response.status == 202
+          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
+        elsif response.status == 409
+          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
+        elsif response.body["errors"].present?
+          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors'].first['title']}"
+        end
+      end
     end
   end
 end
