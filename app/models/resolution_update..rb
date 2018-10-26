@@ -145,7 +145,7 @@ class ResolutionUpdate < Base
       LOGGER.info  "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
-        ResolutionUpdateImportJob.perform_later(item.to_json, options)
+        ResolutionUpdateExportJob.perform_later(item.to_json, options)
       end
     end
   end
