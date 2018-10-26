@@ -68,6 +68,7 @@ describe UsageUpdate, type: :model, vcr: true do
 
     context "when the report was found" do
       it "should parsed it correctly" do
+        # result = Maremma.get("https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", host: "https://api.test.datacite.org/")
         body = File.read(fixture_path + 'usage_update.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         response = UsageUpdate.parse_data(result)
