@@ -64,8 +64,6 @@ module Levriero
     # secret_key_base is not used by Rails API, as there are no sessions
     config.secret_key_base = 'blipblapblup'
 
-    config.cache_store = :dalli_store, nil, { namespace: ENV['APPLICATION'] }
-
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
 

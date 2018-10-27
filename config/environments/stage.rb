@@ -13,11 +13,10 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local = false
 
-  # Global enable/disable all memcached usage
-  config.perform_caching = true
-
   # Disable/enable fragment and page caching in ActionController
-  config.action_controller.perform_caching = false
+  config.perform_caching = true
+  config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store, nil, { namespace: ENV['APPLICATION'] }
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.

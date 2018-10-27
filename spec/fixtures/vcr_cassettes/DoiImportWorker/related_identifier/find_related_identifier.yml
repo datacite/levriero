@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.5438/4k3m-nyvgx
+    uri: https://api.test.datacite.org/dois/10.5438/4k3m-nyvgx
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:10 GMT
+      - Sat, 27 Oct 2018 11:06:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,9 +33,9 @@ http_interactions:
       Etag:
       - W/"8f91e64c1e83682541ef14eb1c74ba0a"
       X-Runtime:
-      - '0.033303'
+      - '0.019785'
       X-Request-Id:
-      - c7387d36-3e93-40c1-bf5e-2d1dcbd691ee
+      - 4b0ba92f-3e89-432a-9ef8-dd89f25d0169
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -52,10 +52,10 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:10 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:51 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org//prefixes/10.5438
+    uri: https://api.test.datacite.org/prefixes/10.5438
     body:
       encoding: US-ASCII
       string: ''
@@ -70,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:10 GMT
+      - Sat, 27 Oct 2018 11:06:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -86,9 +86,9 @@ http_interactions:
       Etag:
       - W/"2ee122c3107fa399fd9ccba1087a5b90"
       X-Runtime:
-      - '0.028138'
+      - '0.019036'
       X-Request-Id:
-      - 957e0974-e01f-496a-9683-990c983b4da2
+      - 91c33851-587d-4e0e-b1b3-525e4acbf80e
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -99,10 +99,10 @@ http_interactions:
         Fenner","contact-email":"support@datacite.org","domains":"datacite.org","url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2018-08-26T01:30:27.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.23725","type":"prefixes"}]}}},{"id":"datacite","type":"providers","attributes":{"name":"DataCite","symbol":"DATACITE","website":null,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","phone":null,"description":null,"region":"EMEA","country":"DE","logo-url":null,"organization-type":null,"focus-area":null,"is-active":true,"has-password":true,"joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2018-10-24T13:15:15.000Z"},"relationships":{"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.0138","type":"prefixes"},{"id":"10.15497","type":"prefixes"},{"id":"10.0158","type":"prefixes"},{"id":"10.0159","type":"prefixes"},{"id":"10.18130","type":"prefixes"},{"id":"10.23725","type":"prefixes"},{"id":"10.24367","type":"prefixes"},{"id":"10.24366","type":"prefixes"},{"id":"10.24365","type":"prefixes"},{"id":"10.24364","type":"prefixes"},{"id":"10.24409","type":"prefixes"},{"id":"10.24360","type":"prefixes"},{"id":"10.24361","type":"prefixes"},{"id":"10.24408","type":"prefixes"},{"id":"10.24362","type":"prefixes"},{"id":"10.24407","type":"prefixes"},{"id":"10.24363","type":"prefixes"},{"id":"10.24354","type":"prefixes"},{"id":"10.24356","type":"prefixes"},{"id":"10.24355","type":"prefixes"},{"id":"10.24358","type":"prefixes"},{"id":"10.24357","type":"prefixes"},{"id":"10.24359","type":"prefixes"},{"id":"10.24411","type":"prefixes"},{"id":"10.24410","type":"prefixes"},{"id":"10.24415","type":"prefixes"},{"id":"10.24414","type":"prefixes"},{"id":"10.24413","type":"prefixes"},{"id":"10.24412","type":"prefixes"},{"id":"10.24419","type":"prefixes"},{"id":"10.24418","type":"prefixes"},{"id":"10.24417","type":"prefixes"},{"id":"10.24416","type":"prefixes"},{"id":"10.24420","type":"prefixes"},{"id":"10.24422","type":"prefixes"},{"id":"10.24421","type":"prefixes"},{"id":"10.24424","type":"prefixes"},{"id":"10.24423","type":"prefixes"},{"id":"10.24426","type":"prefixes"},{"id":"10.24425","type":"prefixes"},{"id":"10.24428","type":"prefixes"},{"id":"10.24427","type":"prefixes"},{"id":"10.24429","type":"prefixes"},{"id":"10.24432","type":"prefixes"},{"id":"10.24433","type":"prefixes"},{"id":"10.24430","type":"prefixes"},{"id":"10.24431","type":"prefixes"},{"id":"10.0310","type":"prefixes"},{"id":"10.0311","type":"prefixes"},{"id":"10.0312","type":"prefixes"},{"id":"10.0330","type":"prefixes"},{"id":"10.0307","type":"prefixes"},{"id":"10.0308","type":"prefixes"},{"id":"10.0309","type":"prefixes"},{"id":"10.0320","type":"prefixes"},{"id":"10.0321","type":"prefixes"},{"id":"10.0322","type":"prefixes"},{"id":"10.70000","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"},{"id":"10.70004","type":"prefixes"},{"id":"10.70003","type":"prefixes"},{"id":"10.70005","type":"prefixes"},{"id":"10.70006","type":"prefixes"},{"id":"10.70007","type":"prefixes"},{"id":"10.70008","type":"prefixes"},{"id":"10.70009","type":"prefixes"},{"id":"10.70010","type":"prefixes"},{"id":"10.70011","type":"prefixes"},{"id":"10.70048","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:10 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:51 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.5438/0000-00ss
+    uri: https://api.test.datacite.org/dois/10.5438/0000-00ss
     body:
       encoding: US-ASCII
       string: ''
@@ -117,7 +117,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:12 GMT
+      - Sat, 27 Oct 2018 11:06:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -129,9 +129,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Runtime:
-      - '0.015874'
+      - '0.009336'
       X-Request-Id:
-      - efe33a4b-1fa4-4fe2-80f1-3060829c4903
+      - 7bb3e004-4683-4c49-89d8-36125a9cbb5d
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -140,10 +140,10 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:12 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:51 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.5438/4k3m-nyvgx
+    uri: https://api.test.datacite.org/dois/10.5438/4k3m-nyvgx
     body:
       encoding: US-ASCII
       string: ''
@@ -158,7 +158,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:13 GMT
+      - Sat, 27 Oct 2018 11:06:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -174,9 +174,9 @@ http_interactions:
       Etag:
       - W/"8f91e64c1e83682541ef14eb1c74ba0a"
       X-Runtime:
-      - '0.028606'
+      - '0.020544'
       X-Request-Id:
-      - d6b55b51-a3a2-4f9b-8907-9a1ded27acd1
+      - 12431006-0d60-4397-b5a1-a0cd91a2c1f0
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -193,10 +193,10 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:13 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:51 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.5438/0012
+    uri: https://api.test.datacite.org/dois/10.5438/0012
     body:
       encoding: US-ASCII
       string: ''
@@ -211,7 +211,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:13 GMT
+      - Sat, 27 Oct 2018 11:06:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -223,9 +223,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Runtime:
-      - '0.004184'
+      - '0.004337'
       X-Request-Id:
-      - 80ca0e11-c68a-4b31-9e98-d39e4be0ae54
+      - 2ecf9ffa-3b1f-4eb3-8132-f010b9ba3d5b
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -235,10 +235,10 @@ http_interactions:
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:13 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:51 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.5438/55e5-t5c0
+    uri: https://api.test.datacite.org/dois/10.5438/55e5-t5c0
     body:
       encoding: US-ASCII
       string: ''
@@ -253,7 +253,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:13 GMT
+      - Sat, 27 Oct 2018 11:06:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -265,9 +265,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Runtime:
-      - '0.008618'
+      - '0.009100'
       X-Request-Id:
-      - 2366051c-1d69-418c-9db8-248a091f24ca
+      - ec971bec-80e1-4ab7-b0d9-be12312b3767
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -276,13 +276,13 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:13 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:52 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:51:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T11:06:51Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","registrant_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -292,44 +292,47 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:13 GMT
+      - Sat, 27 Oct 2018 11:06:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Etag:
+      - W/"090bfe667b7d795df2a3dcc3e06737d3"
       X-Runtime:
-      - '0.047193'
+      - '0.192603'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
       X-Request-Id:
-      - 4a2966e4-4875-47c6-8dae-d9904435e2f0
+      - 666c13bc-550a-4f6f-b599-585854e7fc0c
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"401","title":"You are not authorized to access
-        this resource."}]}'
+      string: '{"data":{"id":"6010daf2-28d4-43a5-be7b-a72ac36e5ebb","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0000-00ss","source-id":"datacite-related","relation-type-id":"is-part-of","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:21:33.935Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/0000-00ss","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:13 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:52 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","relation-type-id":"references","source-id":"datacite-related","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:51:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T11:06:51Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","registrant_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -339,44 +342,47 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:14 GMT
+      - Sat, 27 Oct 2018 11:06:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Etag:
+      - W/"298e41414ae92ad36da6d537952accf2"
       X-Runtime:
-      - '0.013343'
+      - '0.070762'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
       X-Request-Id:
-      - d9a139ad-b1a4-42f8-8413-ee9a10ac9e19
+      - 757245b7-55b3-4b29-965c-57f9075eb357
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"401","title":"You are not authorized to access
-        this resource."}]}'
+      string: '{"data":{"id":"746441d1-8bae-49b1-a648-45b6d7d050e6","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/0012","source-id":"datacite-related","relation-type-id":"references","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:21:34.149Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/0012","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:14 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:52 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","relation-type-id":"references","source-id":"datacite-related","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:51:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","relation-type-id":"references","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T11:06:52Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","registrant_id":"datacite.demo.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
@@ -386,38 +392,41 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:14 GMT
+      - Sat, 27 Oct 2018 11:06:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Etag:
+      - W/"3ac1f2b4143fd79954fe78738aa656fa"
       X-Runtime:
-      - '0.010488'
+      - '0.052628'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
       X-Request-Id:
-      - 1193be3a-754c-4491-adb4-4075df3513dd
+      - 73e04a1e-4950-4813-89fc-eca3427a4217
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"401","title":"You are not authorized to access
-        this resource."}]}'
+      string: '{"data":{"id":"6c7a94d5-4bad-40f0-8f1e-a4fdafa667f7","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"https://doi.org/10.5438/55e5-t5c0","source-id":"datacite-related","relation-type-id":"references","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:21:34.360Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/55e5-t5c0","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:14 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:52 GMT
 - request:
     method: get
     uri: https://pub.orcid.org/v2.1/0000-0003-1419-2405/person
@@ -441,7 +450,7 @@ http_interactions:
       Content-Type:
       - application/vnd.orcid+json; qs=4;charset=UTF-8
       Date:
-      - Sat, 27 Oct 2018 10:51:15 GMT
+      - Sat, 27 Oct 2018 11:06:53 GMT
       Expires:
       - '0'
       Pragma:
@@ -455,7 +464,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=AC7FD72D56BC49A75A07C0057E9FFEE4; path=/
+      - X-Mapping-fjhppofk=FAC9A421C8E47CC7F8C08879007190C1; path=/
       X-Frame-Options:
       - DENY
     body:
@@ -463,13 +472,13 @@ http_interactions:
       string: !binary |-
         ewogICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgInZhbHVlIiA6IDE1MTc4NzMyNTY2MzYKICB9LAogICJuYW1lIiA6IHsKICAgICJjcmVhdGVkLWRhdGUiIDogewogICAgICAidmFsdWUiIDogMTQ2MDc2MzY2NDQwNQogICAgfSwKICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgICAidmFsdWUiIDogMTQ2MDc2MzY2NDQwNQogICAgfSwKICAgICJnaXZlbi1uYW1lcyIgOiB7CiAgICAgICJ2YWx1ZSIgOiAiTWFydGluIgogICAgfSwKICAgICJmYW1pbHktbmFtZSIgOiB7CiAgICAgICJ2YWx1ZSIgOiAiRmVubmVyIgogICAgfSwKICAgICJjcmVkaXQtbmFtZSIgOiB7CiAgICAgICJ2YWx1ZSIgOiAiTWFydGluIEZlbm5lciIKICAgIH0sCiAgICAic291cmNlIiA6IG51bGwsCiAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICJwYXRoIiA6ICIwMDAwLTAwMDMtMTQxOS0yNDA1IgogIH0sCiAgIm90aGVyLW5hbWVzIiA6IHsKICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgICAidmFsdWUiIDogMTQ0Njc2MDcwMzcyMgogICAgfSwKICAgICJvdGhlci1uYW1lIiA6IFsgewogICAgICAiY3JlYXRlZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQwNjgzNjQyMTY5OQogICAgICB9LAogICAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQwNjgzNjQyMTY5OQogICAgICB9LAogICAgICAic291cmNlIiA6IHsKICAgICAgICAic291cmNlLW9yY2lkIiA6IHsKICAgICAgICAgICJ1cmkiIDogImh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgInBhdGgiIDogIjAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgImhvc3QiIDogIm9yY2lkLm9yZyIKICAgICAgICB9LAogICAgICAgICJzb3VyY2UtY2xpZW50LWlkIiA6IG51bGwsCiAgICAgICAgInNvdXJjZS1uYW1lIiA6IHsKICAgICAgICAgICJ2YWx1ZSIgOiAiTWFydGluIEZlbm5lciIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJjb250ZW50IiA6ICJNIEZlbm5lciIsCiAgICAgICJ2aXNpYmlsaXR5IiA6ICJQVUJMSUMiLAogICAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvb3RoZXItbmFtZXMvMjQ3MDQzIiwKICAgICAgInB1dC1jb2RlIiA6IDI0NzA0MywKICAgICAgImRpc3BsYXktaW5kZXgiIDogMAogICAgfSwgewogICAgICAiY3JlYXRlZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQwNjgzNjQyMTcwMAogICAgICB9LAogICAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQwNjgzNjQyMTcwMAogICAgICB9LAogICAgICAic291cmNlIiA6IHsKICAgICAgICAic291cmNlLW9yY2lkIiA6IHsKICAgICAgICAgICJ1cmkiIDogImh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgInBhdGgiIDogIjAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgImhvc3QiIDogIm9yY2lkLm9yZyIKICAgICAgICB9LAogICAgICAgICJzb3VyY2UtY2xpZW50LWlkIiA6IG51bGwsCiAgICAgICAgInNvdXJjZS1uYW1lIiA6IHsKICAgICAgICAgICJ2YWx1ZSIgOiAiTWFydGluIEZlbm5lciIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJjb250ZW50IiA6ICJNSCBGZW5uZXIiLAogICAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L290aGVyLW5hbWVzLzI0NzA0NCIsCiAgICAgICJwdXQtY29kZSIgOiAyNDcwNDQsCiAgICAgICJkaXNwbGF5LWluZGV4IiA6IDAKICAgIH0sIHsKICAgICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0MzgzMjE1ODM5OTQKICAgICAgfSwKICAgICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0MzgzMjE1ODM5OTQKICAgICAgfSwKICAgICAgInNvdXJjZSIgOiB7CiAgICAgICAgInNvdXJjZS1vcmNpZCIgOiB7CiAgICAgICAgICAidXJpIiA6ICJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJwYXRoIiA6ICIwMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJob3N0IiA6ICJvcmNpZC5vcmciCiAgICAgICAgfSwKICAgICAgICAic291cmNlLWNsaWVudC1pZCIgOiBudWxsLAogICAgICAgICJzb3VyY2UtbmFtZSIgOiB7CiAgICAgICAgICAidmFsdWUiIDogIk1hcnRpbiBGZW5uZXIiCiAgICAgICAgfQogICAgICB9LAogICAgICAiY29udGVudCIgOiAiTWFydGluIEguIEZlbm5lciIsCiAgICAgICJ2aXNpYmlsaXR5IiA6ICJQVUJMSUMiLAogICAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvb3RoZXItbmFtZXMvNTA5ODQ2IiwKICAgICAgInB1dC1jb2RlIiA6IDUwOTg0NiwKICAgICAgImRpc3BsYXktaW5kZXgiIDogMAogICAgfSwgewogICAgICAiY3JlYXRlZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQ0Njc2MDcwMzcyMgogICAgICB9LAogICAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgICAidmFsdWUiIDogMTQ0Njc2MDcwMzcyMgogICAgICB9LAogICAgICAic291cmNlIiA6IHsKICAgICAgICAic291cmNlLW9yY2lkIiA6IHsKICAgICAgICAgICJ1cmkiIDogImh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgInBhdGgiIDogIjAwMDAtMDAwMy0xNDE5LTI0MDUiLAogICAgICAgICAgImhvc3QiIDogIm9yY2lkLm9yZyIKICAgICAgICB9LAogICAgICAgICJzb3VyY2UtY2xpZW50LWlkIiA6IG51bGwsCiAgICAgICAgInNvdXJjZS1uYW1lIiA6IHsKICAgICAgICAgICJ2YWx1ZSIgOiAiTWFydGluIEZlbm5lciIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJjb250ZW50IiA6ICJNYXJ0aW4gSGVsbG11dCBGZW5uZXIiLAogICAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L290aGVyLW5hbWVzLzU2NjkxNCIsCiAgICAgICJwdXQtY29kZSIgOiA1NjY5MTQsCiAgICAgICJkaXNwbGF5LWluZGV4IiA6IDAKICAgIH0gXSwKICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9vdGhlci1uYW1lcyIKICB9LAogICJiaW9ncmFwaHkiIDogewogICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICJ2YWx1ZSIgOiAxNDYwNzYzNjY0NDA4CiAgICB9LAogICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICJ2YWx1ZSIgOiAxNDkzMjQxNzczMzkyCiAgICB9LAogICAgImNvbnRlbnQiIDogIk1hcnRpbiBGZW5uZXIgaXMgdGhlIERhdGFDaXRlIFRlY2huaWNhbCBEaXJlY3RvciBhbmQgbWFuYWdlcyB0aGUgdGVjaG5pY2FsIGFyY2hpdGVjdHVyZSBmb3IgRGF0YWNpdGUgYXMgd2VsbCBhcyBEYXRhQ2l0ZeKAmXMgdGVjaG5pY2FsIGNvbnRyaWJ1dGlvbnMgZm9yIHRoZSBFVS1mdW5kZWQgVEhPUiBwcm9qZWN0LiBGcm9tIDIwMTIgdG8gMjAxNSBoZSB3YXMgdGhlIHRlY2huaWNhbCBsZWFkIGZvciB0aGUgUExPUyBBcnRpY2xlLUxldmVsIE1ldHJpY3MgcHJvamVjdC4gTWFydGluIGhhcyBhIG1lZGljYWwgZGVncmVlIGZyb20gdGhlIEZyZWUgVW5pdmVyc2l0eSBvZiBCZXJsaW4gYW5kIGlzIGEgQm9hcmQtY2VydGlmaWVkIG1lZGljYWwgb25jb2xvZ2lzdC4iLAogICAgInZpc2liaWxpdHkiIDogIlBVQkxJQyIsCiAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvYmlvZ3JhcGh5IgogIH0sCiAgInJlc2VhcmNoZXItdXJscyIgOiB7CiAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgInZhbHVlIiA6IDE0ODAyNTUyMDAzOTQKICAgIH0sCiAgICAicmVzZWFyY2hlci11cmwiIDogWyB7CiAgICAgICJjcmVhdGVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxNDA2ODM2NDIxNzAzCiAgICAgIH0sCiAgICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxNDgwMjU1MjAwMzk0CiAgICAgIH0sCiAgICAgICJzb3VyY2UiIDogewogICAgICAgICJzb3VyY2Utb3JjaWQiIDogewogICAgICAgICAgInVyaSIgOiAiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTE0MTktMjQwNSIsCiAgICAgICAgICAicGF0aCIgOiAiMDAwMC0wMDAzLTE0MTktMjQwNSIsCiAgICAgICAgICAiaG9zdCIgOiAib3JjaWQub3JnIgogICAgICAgIH0sCiAgICAgICAgInNvdXJjZS1jbGllbnQtaWQiIDogbnVsbCwKICAgICAgICAic291cmNlLW5hbWUiIDogewogICAgICAgICAgInZhbHVlIiA6ICJNYXJ0aW4gRmVubmVyIgogICAgICAgIH0KICAgICAgfSwKICAgICAgInVybC1uYW1lIiA6ICJNeSBTY2lFTkNWIiwKICAgICAgInVybCIgOiB7CiAgICAgICAgInZhbHVlIiA6ICJodHRwOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvbXluY2JpL21mZW5uZXIvY3YvMTQxMy8iCiAgICAgIH0sCiAgICAgICJ2aXNpYmlsaXR5IiA6ICJQVUJMSUMiLAogICAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvcmVzZWFyY2hlci11cmxzLzMzNDQxNSIsCiAgICAgICJwdXQtY29kZSIgOiAzMzQ0MTUsCiAgICAgICJkaXNwbGF5LWluZGV4IiA6IDQKICAgIH0sIHsKICAgICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0MDY4MzY0MjE3MDIKICAgICAgfSwKICAgICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0ODAyNTUyMDAzOTQKICAgICAgfSwKICAgICAgInNvdXJjZSIgOiB7CiAgICAgICAgInNvdXJjZS1vcmNpZCIgOiB7CiAgICAgICAgICAidXJpIiA6ICJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJwYXRoIiA6ICIwMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJob3N0IiA6ICJvcmNpZC5vcmciCiAgICAgICAgfSwKICAgICAgICAic291cmNlLWNsaWVudC1pZCIgOiBudWxsLAogICAgICAgICJzb3VyY2UtbmFtZSIgOiB7CiAgICAgICAgICAidmFsdWUiIDogIk1hcnRpbiBGZW5uZXIiCiAgICAgICAgfQogICAgICB9LAogICAgICAidXJsLW5hbWUiIDogIlR3aXR0ZXIiLAogICAgICAidXJsIiA6IHsKICAgICAgICAidmFsdWUiIDogImh0dHA6Ly90d2l0dGVyLmNvbS9tZmVubmVyIgogICAgICB9LAogICAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L3Jlc2VhcmNoZXItdXJscy8zMzQ0MTQiLAogICAgICAicHV0LWNvZGUiIDogMzM0NDE0LAogICAgICAiZGlzcGxheS1pbmRleCIgOiAzCiAgICB9LCB7CiAgICAgICJjcmVhdGVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxNDA2ODM2NDIxNzAyCiAgICAgIH0sCiAgICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxNDgwMjU1MjAwMzk0CiAgICAgIH0sCiAgICAgICJzb3VyY2UiIDogewogICAgICAgICJzb3VyY2Utb3JjaWQiIDogewogICAgICAgICAgInVyaSIgOiAiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTE0MTktMjQwNSIsCiAgICAgICAgICAicGF0aCIgOiAiMDAwMC0wMDAzLTE0MTktMjQwNSIsCiAgICAgICAgICAiaG9zdCIgOiAib3JjaWQub3JnIgogICAgICAgIH0sCiAgICAgICAgInNvdXJjZS1jbGllbnQtaWQiIDogbnVsbCwKICAgICAgICAic291cmNlLW5hbWUiIDogewogICAgICAgICAgInZhbHVlIiA6ICJNYXJ0aW4gRmVubmVyIgogICAgICAgIH0KICAgICAgfSwKICAgICAgInVybC1uYW1lIiA6ICJCbG9nIiwKICAgICAgInVybCIgOiB7CiAgICAgICAgInZhbHVlIiA6ICJodHRwOi8vYmxvZy5tYXJ0aW5mZW5uZXIub3JnIgogICAgICB9LAogICAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L3Jlc2VhcmNoZXItdXJscy8zMzQ0MTMiLAogICAgICAicHV0LWNvZGUiIDogMzM0NDEzLAogICAgICAiZGlzcGxheS1pbmRleCIgOiAyCiAgICB9IF0sCiAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvcmVzZWFyY2hlci11cmxzIgogIH0sCiAgImVtYWlscyIgOiB7CiAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IG51bGwsCiAgICAiZW1haWwiIDogWyBdLAogICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L2VtYWlsIgogIH0sCiAgImFkZHJlc3NlcyIgOiB7CiAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgInZhbHVlIiA6IDE0NjUyMjY5NzY5NTIKICAgIH0sCiAgICAiYWRkcmVzcyIgOiBbIHsKICAgICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0NTM2NjA0MjcxMTkKICAgICAgfSwKICAgICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0NjUyMjY5NzY5NTIKICAgICAgfSwKICAgICAgInNvdXJjZSIgOiB7CiAgICAgICAgInNvdXJjZS1vcmNpZCIgOiB7CiAgICAgICAgICAidXJpIiA6ICJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJwYXRoIiA6ICIwMDAwLTAwMDMtMTQxOS0yNDA1IiwKICAgICAgICAgICJob3N0IiA6ICJvcmNpZC5vcmciCiAgICAgICAgfSwKICAgICAgICAic291cmNlLWNsaWVudC1pZCIgOiBudWxsLAogICAgICAgICJzb3VyY2UtbmFtZSIgOiB7CiAgICAgICAgICAidmFsdWUiIDogIk1hcnRpbiBGZW5uZXIiCiAgICAgICAgfQogICAgICB9LAogICAgICAiY291bnRyeSIgOiB7CiAgICAgICAgInZhbHVlIiA6ICJERSIKICAgICAgfSwKICAgICAgInZpc2liaWxpdHkiIDogIlBVQkxJQyIsCiAgICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9hZGRyZXNzLzM0ODA3MSIsCiAgICAgICJwdXQtY29kZSIgOiAzNDgwNzEsCiAgICAgICJkaXNwbGF5LWluZGV4IiA6IDAKICAgIH0gXSwKICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9hZGRyZXNzIgogIH0sCiAgImtleXdvcmRzIiA6IHsKICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogbnVsbCwKICAgICJrZXl3b3JkIiA6IFsgXSwKICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9rZXl3b3JkcyIKICB9LAogICJleHRlcm5hbC1pZGVudGlmaWVycyIgOiB7CiAgICAibGFzdC1tb2RpZmllZC1kYXRlIiA6IHsKICAgICAgInZhbHVlIiA6IDE1MTc4NzMyNTY2MzYKICAgIH0sCiAgICAiZXh0ZXJuYWwtaWRlbnRpZmllciIgOiBbIHsKICAgICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDEzNzg5MjE4ODczMDQKICAgICAgfSwKICAgICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE1MTc4NzMyNTY2MzYKICAgICAgfSwKICAgICAgInNvdXJjZSIgOiB7CiAgICAgICAgInNvdXJjZS1vcmNpZCIgOiBudWxsLAogICAgICAgICJzb3VyY2UtY2xpZW50LWlkIiA6IHsKICAgICAgICAgICJ1cmkiIDogImh0dHBzOi8vb3JjaWQub3JnL2NsaWVudC8wMDAwLTAwMDItNTk4Mi04OTgzIiwKICAgICAgICAgICJwYXRoIiA6ICIwMDAwLTAwMDItNTk4Mi04OTgzIiwKICAgICAgICAgICJob3N0IiA6ICJvcmNpZC5vcmciCiAgICAgICAgfSwKICAgICAgICAic291cmNlLW5hbWUiIDogewogICAgICAgICAgInZhbHVlIiA6ICJTY29wdXMgLSBFbHNldmllciIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJleHRlcm5hbC1pZC10eXBlIiA6ICJTY29wdXMgQXV0aG9yIElEIiwKICAgICAgImV4dGVybmFsLWlkLXZhbHVlIiA6ICI3MDA2NjAwODI1IiwKICAgICAgImV4dGVybmFsLWlkLXVybCIgOiB7CiAgICAgICAgInZhbHVlIiA6ICJodHRwOi8vd3d3LnNjb3B1cy5jb20vaW53YXJkL2F1dGhvckRldGFpbHMudXJsP2F1dGhvcklEPTcwMDY2MDA4MjUmcGFydG5lcklEPU1OOFRPQVJTIgogICAgICB9LAogICAgICAiZXh0ZXJuYWwtaWQtcmVsYXRpb25zaGlwIiA6ICJTRUxGIiwKICAgICAgInZpc2liaWxpdHkiIDogIlBVQkxJQyIsCiAgICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9leHRlcm5hbC1pZGVudGlmaWVycy8xNDM5MjgiLAogICAgICAicHV0LWNvZGUiIDogMTQzOTI4LAogICAgICAiZGlzcGxheS1pbmRleCIgOiAzCiAgICB9LCB7CiAgICAgICJjcmVhdGVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxMzg3MzgyMjc3MjU5CiAgICAgIH0sCiAgICAgICJsYXN0LW1vZGlmaWVkLWRhdGUiIDogewogICAgICAgICJ2YWx1ZSIgOiAxNTE3ODczMjU2NjM2CiAgICAgIH0sCiAgICAgICJzb3VyY2UiIDogewogICAgICAgICJzb3VyY2Utb3JjaWQiIDogbnVsbCwKICAgICAgICAic291cmNlLWNsaWVudC1pZCIgOiB7CiAgICAgICAgICAidXJpIiA6ICJodHRwczovL29yY2lkLm9yZy9jbGllbnQvMDAwMC0wMDAzLTA0MTItMTg1NyIsCiAgICAgICAgICAicGF0aCIgOiAiMDAwMC0wMDAzLTA0MTItMTg1NyIsCiAgICAgICAgICAiaG9zdCIgOiAib3JjaWQub3JnIgogICAgICAgIH0sCiAgICAgICAgInNvdXJjZS1uYW1lIiA6IHsKICAgICAgICAgICJ2YWx1ZSIgOiAiSVNOSTJPUkNJRCBzZWFyY2ggYW5kIGxpbmsiCiAgICAgICAgfQogICAgICB9LAogICAgICAiZXh0ZXJuYWwtaWQtdHlwZSIgOiAiSVNOSSIsCiAgICAgICJleHRlcm5hbC1pZC12YWx1ZSIgOiAiMDAwMDAwMDM1MDYwNTQ5WCIsCiAgICAgICJleHRlcm5hbC1pZC11cmwiIDogewogICAgICAgICJ2YWx1ZSIgOiAiaHR0cDovL2lzbmkub3JnLzAwMDAwMDAzNTA2MDU0OVgiCiAgICAgIH0sCiAgICAgICJleHRlcm5hbC1pZC1yZWxhdGlvbnNoaXAiIDogIlNFTEYiLAogICAgICAidmlzaWJpbGl0eSIgOiAiUFVCTElDIiwKICAgICAgInBhdGgiIDogIi8wMDAwLTAwMDMtMTQxOS0yNDA1L2V4dGVybmFsLWlkZW50aWZpZXJzLzE4Mjc3OCIsCiAgICAgICJwdXQtY29kZSIgOiAxODI3NzgsCiAgICAgICJkaXNwbGF5LWluZGV4IiA6IDIKICAgIH0sIHsKICAgICAgImNyZWF0ZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0OTc5NzI3ODk0NDgKICAgICAgfSwKICAgICAgImxhc3QtbW9kaWZpZWQtZGF0ZSIgOiB7CiAgICAgICAgInZhbHVlIiA6IDE0OTc5NzI3ODk0NDgKICAgICAgfSwKICAgICAgInNvdXJjZSIgOiB7CiAgICAgICAgInNvdXJjZS1vcmNpZCIgOiBudWxsLAogICAgICAgICJzb3VyY2UtY2xpZW50LWlkIiA6IHsKICAgICAgICAgICJ1cmkiIDogImh0dHBzOi8vb3JjaWQub3JnL2NsaWVudC8wMDAwLTAwMDEtODA5OS02OTg0IiwKICAgICAgICAgICJwYXRoIiA6ICIwMDAwLTAwMDEtODA5OS02OTg0IiwKICAgICAgICAgICJob3N0IiA6ICJvcmNpZC5vcmciCiAgICAgICAgfSwKICAgICAgICAic291cmNlLW5hbWUiIDogewogICAgICAgICAgInZhbHVlIiA6ICJEYXRhQ2l0ZSIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJleHRlcm5hbC1pZC10eXBlIiA6ICJHaXRIdWIiLAogICAgICAiZXh0ZXJuYWwtaWQtdmFsdWUiIDogIm1mZW5uZXIiLAogICAgICAiZXh0ZXJuYWwtaWQtdXJsIiA6IHsKICAgICAgICAidmFsdWUiIDogImh0dHBzOi8vZ2l0aHViLmNvbS9tZmVubmVyIgogICAgICB9LAogICAgICAiZXh0ZXJuYWwtaWQtcmVsYXRpb25zaGlwIiA6ICJTRUxGIiwKICAgICAgInZpc2liaWxpdHkiIDogIlBVQkxJQyIsCiAgICAgICJwYXRoIiA6ICIvMDAwMC0wMDAzLTE0MTktMjQwNS9leHRlcm5hbC1pZGVudGlmaWVycy83Mzc1NDkiLAogICAgICAicHV0LWNvZGUiIDogNzM3NTQ5LAogICAgICAiZGlzcGxheS1pbmRleCIgOiAwCiAgICB9IF0sCiAgICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvZXh0ZXJuYWwtaWRlbnRpZmllcnMiCiAgfSwKICAicGF0aCIgOiAiLzAwMDAtMDAwMy0xNDE5LTI0MDUvcGVyc29uIgp9
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:15 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:53 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"http://orcid.org/0000-0003-1419-2405","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:51:15Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"http://orcid.org/0000-0003-1419-2405","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T11:06:53Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"scholarly-article","name":"Eating
         your own Dog Food","author":[{"given_name":"Martin","family_name":"Fenner"}],"publisher":"DataCite","version":"1.0","date_published":"2016-12-20","date_modified":"2018-08-01T22:04:58.000Z","registrant_id":"datacite.demo.datacite"},"obj":{"id":"http://orcid.org/0000-0003-1419-2405","type":"person","givenName":"Martin","familyName":"Fenner","name":"Martin
         Fenner"}}}}'
     headers:
@@ -480,36 +489,93 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sat, 27 Oct 2018 10:51:15 GMT
+      - Sat, 27 Oct 2018 11:06:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Etag:
+      - W/"e9f234a9906b73d1d87b05734b204ccf"
       X-Runtime:
-      - '0.014677'
+      - '0.040725'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
       X-Request-Id:
-      - b72820cf-a5c3-44a5-89f5-cf1c4b86bdda
+      - 98ab530b-8034-439f-a212-864de2e7765d
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"401","title":"You are not authorized to access
-        this resource."}]}'
+      string: '{"data":{"id":"fcbe64ad-bd08-4d67-bbeb-17ab289b1587","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/4k3m-nyvgx","obj-id":"http://orcid.org/0000-0003-1419-2405","source-id":"datacite-orcid-auto-update","relation-type-id":"is-authored-by","total":1,"message-action":"create","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:40:23.359Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/4k3m-nyvgx","type":"objects"}},"obj":{"data":{"id":"http://orcid.org/0000-0003-1419-2405","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Sat, 27 Oct 2018 10:51:15 GMT
+  recorded_at: Sat, 27 Oct 2018 11:06:54 GMT
+- request:
+    method: post
+    uri: https://profiles.test.datacite.org/api/claims
+    body:
+      encoding: UTF-8
+      string: '{"claim":{"doi":"10.5438/4k3m-nyvgx","orcid":"0000-0003-1419-2405","source_id":"orcid_update","claim_action":"create"}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
+      Content-Type:
+      - application/json
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Sat, 27 Oct 2018 11:06:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 202 Accepted
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Runtime:
+      - '0.016651'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Credential-Username:
+      - 0000-0002-8599-0773
+      X-Request-Id:
+      - 9eaedc94-b89f-41dc-833f-76526c005fac
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"a41c6181-9e4c-434f-a182-8bf573352e63","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5438/4k3m-nyvgx","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":[{"title":"Missing
+        data"}],"put-code":null,"claimed":null,"created":"2018-10-25T20:52:56Z","updated":"2018-10-27T11:06:54Z"}}}'
+    http_version: 
+  recorded_at: Sat, 27 Oct 2018 11:06:54 GMT
 recorded_with: VCR 3.0.3
