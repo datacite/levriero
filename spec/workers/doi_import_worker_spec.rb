@@ -32,8 +32,8 @@ describe DoiImportWorker do
       doi = "10.3204/pubdb-2018-02197"
       data = { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json
       name_identifiers = subject.perform(sqs_msg, data)
-      # expect(name_identifiers.length).to eq(36)
-      # expect(name_identifiers.first).to eq("creatorName"=>"Friedl, Markus", "nameIdentifier"=>{"__content__"=>"0000-0002-7420-2559", "nameIdentifierScheme"=>"ORCID", "schemeURI"=>"http://orcid.org"})
+      expect(name_identifiers.length).to eq(36)
+      expect(name_identifiers.first).to eq("creatorName"=>"Friedl, Markus", "nameIdentifier"=>{"__content__"=>"0000-0002-7420-2559", "nameIdentifierScheme"=>"ORCID", "schemeURI"=>"http://orcid.org"})
     end
   end
 

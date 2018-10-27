@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.5438/0x88-gvge
+    uri: https://api.test.datacite.org//dois/10.5438/0x88-gvge
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:52:56 GMT
+      - Sat, 27 Oct 2018 10:53:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,12 +30,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 1b05af2b-9645-401e-8e39-efdc7926b33f
       Etag:
-      - W/"789467b169362604f3d42a80b6ef271c"
+      - W/"d86099a34abe6de718a049e1115723a4"
       X-Runtime:
-      - '0.033155'
+      - '0.020595'
+      X-Request-Id:
+      - 1aed63bd-4c24-44d8-99e6-3dc94b49fd3d
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -43,12 +43,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJkYXRhIjp7ImlkIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJ0eXBlIjoiZG9pcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJpZGVudGlmaWVyIjoiaHR0cHM6Ly9oYW5kbGUudGVzdC5kYXRhY2l0ZS5vcmcvMTAuNTQzOC8weDg4LWd2Z2UiLCJ1cmwiOiJodHRwczovL2Jsb2cuZGF0YWNpdGUub3JnL2V6aWQtZG9pLXNlcnZpY2UtaXMtZXZvbHZpbmcvIiwicHJlZml4IjoiMTAuNTQzOCIsInN1ZmZpeCI6IjB4ODgtZ3ZnZSIsImF1dGhvciI6W3sidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAyLTkzMDAtNTI3OCIsIm5hbWUiOiJDcnVzZSwgUGF0cmljaWEiLCJnaXZlbk5hbWUiOiJQYXRyaWNpYSIsImZhbWlseU5hbWUiOiJDcnVzZSJ9LHsidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTQyMjEtNzk1NiIsIm5hbWUiOiJXaXR0LCBNaWNoYWVsIiwiZ2l2ZW5OYW1lIjoiTWljaGFlbCIsImZhbWlseU5hbWUiOiJXaXR0In0seyJ0eXBlIjoiUGVyc29uIiwiaWQiOiJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDItNzI4NS0wMjdYIiwibmFtZSI6IlN0YXJyLCBKb2FuIiwiZ2l2ZW5OYW1lIjoiSm9hbiIsImZhbWlseU5hbWUiOiJTdGFyciJ9XSwidGl0bGUiOiJFWklEIERPSSBTZXJ2aWNlIGlzIEV2b2x2aW5nIiwicHVibGlzaGVyIjoiRGF0YUNpdGUiLCJyZXNvdXJjZS10eXBlLXN1YnR5cGUiOiJCbG9nUG9zdGluZyIsImRlc2NyaXB0aW9uIjoiVGhlIENhbGlmb3JuaWEgRGlnaXRhbCBMaWJyYXJ5IChDREwpIGFuZCBQdXJkdWUgVW5pdmVyc2l0eSBhcmUgYWRvcHRpbmcgYSBuZXcgc3RyYXRlZ2ljIGRpcmVjdGlvbiBmb3IgdGhlaXIgRVpJRCBkaWdpdGFsIG9iamVjdCBpZGVudGlmaWVyIChET0kpIHNlcnZpY2VzIHRvIHN1cHBvcnQgRGF0YUNpdGXigJlzIGxvbmctdGVybSBzdXN0YWluYWJpbGl0eSBhbmQgdG8gaW1wcm92ZSBET0kgc2VydmljZXMgZm9yIHRoZSBicm9hZGVyIGNvbW11bml0eS4uLiIsInZlcnNpb24iOiIxLjAiLCJtZXRhZGF0YS12ZXJzaW9uIjowLCJzY2hlbWEtdmVyc2lvbiI6Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC00IiwicmVhc29uIjpudWxsLCJzb3VyY2UiOiJmYWJyaWNhIiwic3RhdGUiOiJmaW5kYWJsZSIsImlzLWFjdGl2ZSI6dHJ1ZSwibGFuZGluZy1wYWdlIjp7InN0YXR1cyI6bnVsbCwiY29udGVudC10eXBlIjpudWxsLCJjaGVja2VkIjpudWxsLCJyZXN1bHQiOm51bGx9LCJwdWJsaXNoZWQiOiIyMDE3LTA4LTA0IiwiY3JlYXRlZCI6IjIwMTgtMTAtMjVUMTY6Mjc6MzYuMDAwWiIsInJlZ2lzdGVyZWQiOiIyMDE4LTEwLTI1VDE2OjI3OjM3LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0xMC0yNVQxNjoyNzozNy4wMDBaIiwieG1sIjoiUEQ5NGJXd2dkbVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpUHo0S1BISmxjMjkxY21ObElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6UFNKb2RIUndPaTh2WkdGMFlXTnBkR1V1YjNKbkwzTmphR1Z0WVM5clpYSnVaV3d0TkNJZ2VITnBPbk5qYUdWdFlVeHZZMkYwYVc5dVBTSm9kSFJ3T2k4dlpHRjBZV05wZEdVdWIzSm5MM05qYUdWdFlTOXJaWEp1Wld3dE5DQm9kSFJ3T2k4dmMyTm9aVzFoTG1SaGRHRmphWFJsTG05eVp5OXRaWFJoTDJ0bGNtNWxiQzAwTDIxbGRHRmtZWFJoTG5oelpDSStDaUFnUEdsa1pXNTBhV1pwWlhJZ2FXUmxiblJwWm1sbGNsUjVjR1U5SWtSUFNTSStNVEF1TlRRek9DOHdXRGc0TFVkV1IwVThMMmxrWlc1MGFXWnBaWEkrQ2lBZ1BHTnlaV0YwYjNKelBnb2dJQ0FnUEdOeVpXRjBiM0krQ2lBZ0lDQWdJRHhqY21WaGRHOXlUbUZ0WlQ1RGNuVnpaU3dnVUdGMGNtbGphV0U4TDJOeVpXRjBiM0pPWVcxbFBnb2dJQ0FnSUNBOFoybDJaVzVPWVcxbFBsQmhkSEpwWTJsaFBDOW5hWFpsYms1aGJXVStDaUFnSUNBZ0lEeG1ZVzFwYkhsT1lXMWxQa055ZFhObFBDOW1ZVzFwYkhsT1lXMWxQZ29nSUNBZ0lDQThibUZ0WlVsa1pXNTBhV1pwWlhJZ2MyTm9aVzFsVlZKSlBTSm9kSFJ3T2k4dmIzSmphV1F1YjNKbkx5SWdibUZ0WlVsa1pXNTBhV1pwWlhKVFkyaGxiV1U5SWs5U1EwbEVJajVvZEhSd2N6b3ZMMjl5WTJsa0xtOXlaeTh3TURBd0xUQXdNREl0T1RNd01DMDFNamM0UEM5dVlXMWxTV1JsYm5ScFptbGxjajRLSUNBZ0lEd3ZZM0psWVhSdmNqNEtJQ0FnSUR4amNtVmhkRzl5UGdvZ0lDQWdJQ0E4WTNKbFlYUnZjazVoYldVK1YybDBkQ3dnVFdsamFHRmxiRHd2WTNKbFlYUnZjazVoYldVK0NpQWdJQ0FnSUR4bmFYWmxiazVoYldVK1RXbGphR0ZsYkR3dloybDJaVzVPWVcxbFBnb2dJQ0FnSUNBOFptRnRhV3g1VG1GdFpUNVhhWFIwUEM5bVlXMXBiSGxPWVcxbFBnb2dJQ0FnSUNBOGJtRnRaVWxrWlc1MGFXWnBaWElnYzJOb1pXMWxWVkpKUFNKb2RIUndPaTh2YjNKamFXUXViM0puTHlJZ2JtRnRaVWxrWlc1MGFXWnBaWEpUWTJobGJXVTlJazlTUTBsRUlqNW9kSFJ3Y3pvdkwyOXlZMmxrTG05eVp5OHdNREF3TFRBd01ETXROREl5TVMwM09UVTJQQzl1WVcxbFNXUmxiblJwWm1sbGNqNEtJQ0FnSUR3dlkzSmxZWFJ2Y2o0S0lDQWdJRHhqY21WaGRHOXlQZ29nSUNBZ0lDQThZM0psWVhSdmNrNWhiV1UrVTNSaGNuSXNJRXB2WVc0OEwyTnlaV0YwYjNKT1lXMWxQZ29nSUNBZ0lDQThaMmwyWlc1T1lXMWxQa3B2WVc0OEwyZHBkbVZ1VG1GdFpUNEtJQ0FnSUNBZ1BHWmhiV2xzZVU1aGJXVStVM1JoY25JOEwyWmhiV2xzZVU1aGJXVStDaUFnSUNBZ0lEeHVZVzFsU1dSbGJuUnBabWxsY2lCelkyaGxiV1ZWVWtrOUltaDBkSEE2THk5dmNtTnBaQzV2Y21jdklpQnVZVzFsU1dSbGJuUnBabWxsY2xOamFHVnRaVDBpVDFKRFNVUWlQbWgwZEhCek9pOHZiM0pqYVdRdWIzSm5MekF3TURBdE1EQXdNaTAzTWpnMUxUQXlOMWc4TDI1aGJXVkpaR1Z1ZEdsbWFXVnlQZ29nSUNBZ1BDOWpjbVZoZEc5eVBnb2dJRHd2WTNKbFlYUnZjbk0rQ2lBZ1BIUnBkR3hsY3o0S0lDQWdJRHgwYVhSc1pUNUZXa2xFSUVSUFNTQlRaWEoyYVdObElHbHpJRVYyYjJ4MmFXNW5QQzkwYVhSc1pUNEtJQ0E4TDNScGRHeGxjejRLSUNBOGNIVmliR2x6YUdWeVBrUmhkR0ZEYVhSbFBDOXdkV0pzYVhOb1pYSStDaUFnUEhCMVlteHBZMkYwYVc5dVdXVmhjajR5TURFM1BDOXdkV0pzYVdOaGRHbHZibGxsWVhJK0NpQWdQSEpsYzI5MWNtTmxWSGx3WlNCeVpYTnZkWEpqWlZSNWNHVkhaVzVsY21Gc1BTSlVaWGgwSWo1Q2JHOW5VRzl6ZEdsdVp6d3ZjbVZ6YjNWeVkyVlVlWEJsUGdvZ0lEeHpkV0pxWldOMGN6NEtJQ0FnSUR4emRXSnFaV04wUG1WNmFXUThMM04xWW1wbFkzUStDaUFnSUNBOGMzVmlhbVZqZEQ1alpHdzhMM04xWW1wbFkzUStDaUFnSUNBOGMzVmlhbVZqZEQ1d2RYSmtkV1U4TDNOMVltcGxZM1ErQ2lBZ1BDOXpkV0pxWldOMGN6NEtJQ0E4WkdGMFpYTStDaUFnSUNBOFpHRjBaU0JrWVhSbFZIbHdaVDBpUTNKbFlYUmxaQ0krTWpBeE55MHdPQzB3TkR3dlpHRjBaVDRLSUNBZ0lEeGtZWFJsSUdSaGRHVlVlWEJsUFNKSmMzTjFaV1FpUGpJd01UY3RNRGd0TURROEwyUmhkR1UrQ2lBZ0lDQThaR0YwWlNCa1lYUmxWSGx3WlQwaVZYQmtZWFJsWkNJK01qQXhOeTB3T0Mwd05Ed3ZaR0YwWlQ0S0lDQThMMlJoZEdWelBnb2dJRHh5Wld4aGRHVmtTV1JsYm5ScFptbGxjbk0rQ2lBZ0lDQThjbVZzWVhSbFpFbGtaVzUwYVdacFpYSWdjbVZzWVhSbFpFbGtaVzUwYVdacFpYSlVlWEJsUFNKRVQwa2lJSEpsYkdGMGFXOXVWSGx3WlQwaVNYTlFZWEowVDJZaVBqRXdMalUwTXpndk1EQXdNQzB3TUhOelBDOXlaV3hoZEdWa1NXUmxiblJwWm1sbGNqNEtJQ0E4TDNKbGJHRjBaV1JKWkdWdWRHbG1hV1Z5Y3o0S0lDQThkbVZ5YzJsdmJqNHhMakE4TDNabGNuTnBiMjQrQ2lBZ1BISnBaMmgwYzB4cGMzUStDaUFnSUNBOGNtbG5hSFJ6SUhKcFoyaDBjMVZTU1QwaWFIUjBjSE02THk5amNtVmhkR2wyWldOdmJXMXZibk11YjNKbkwyeHBZMlZ1YzJWekwySjVMelF1TUM4aVBtaDBkSEJ6T2k4dlkzSmxZWFJwZG1WamIyMXRiMjV6TG05eVp5OXNhV05sYm5ObGN5OWllUzgwTGpBdlBDOXlhV2RvZEhNK0NpQWdQQzl5YVdkb2RITk1hWE4wUGdvZ0lEeGtaWE5qY21sd2RHbHZibk0rQ2lBZ0lDQThaR1Z6WTNKcGNIUnBiMjRnWkdWelkzSnBjSFJwYjI1VWVYQmxQU0pUWlhKcFpYTkpibVp2Y20xaGRHbHZiaUkrUkdGMFlVTnBkR1VnUW14dlp6d3ZaR1Z6WTNKcGNIUnBiMjQrQ2lBZ0lDQThaR1Z6WTNKcGNIUnBiMjRnWkdWelkzSnBjSFJwYjI1VWVYQmxQU0pCWW5OMGNtRmpkQ0krVkdobElFTmhiR2xtYjNKdWFXRWdSR2xuYVhSaGJDQk1hV0p5WVhKNUlDaERSRXdwSUdGdVpDQlFkWEprZFdVZ1ZXNXBkbVZ5YzJsMGVTQmhjbVVnWVdSdmNIUnBibWNnWVNCdVpYY2djM1J5WVhSbFoybGpJR1JwY21WamRHbHZiaUJtYjNJZ2RHaGxhWElnUlZwSlJDQmthV2RwZEdGc0lHOWlhbVZqZENCcFpHVnVkR2xtYVdWeUlDaEVUMGtwSUhObGNuWnBZMlZ6SUhSdklITjFjSEJ2Y25RZ1JHRjBZVU5wZEdYaWdKbHpJR3h2Ym1jdGRHVnliU0J6ZFhOMFlXbHVZV0pwYkdsMGVTQmhibVFnZEc4Z2FXMXdjbTkyWlNCRVQwa2djMlZ5ZG1salpYTWdabTl5SUhSb1pTQmljbTloWkdWeUlHTnZiVzExYm1sMGVTNHVMand2WkdWelkzSnBjSFJwYjI0K0NpQWdQQzlrWlhOamNtbHdkR2x2Ym5NK0Nqd3ZjbVZ6YjNWeVkyVStDZz09IiwiY2FjaGUta2V5IjoiZG9pcy8xMC41NDM4LzB4ODgtZ3ZnZS0yMDE4LTEwLTI1VDE2OjI3OjM3WiJ9LCJyZWxhdGlvbnNoaXBzIjp7ImNsaWVudCI6eyJkYXRhIjp7ImlkIjoiZGF0YWNpdGUuZGF0YWNpdGUiLCJ0eXBlIjoiY2xpZW50cyJ9fSwicmVzb3VyY2UtdHlwZSI6eyJkYXRhIjp7ImlkIjoidGV4dCIsInR5cGUiOiJyZXNvdXJjZV90eXBlcyJ9fSwibWVkaWEiOnsiZGF0YSI6W119fX0sImluY2x1ZGVkIjpbeyJpZCI6ImRhdGFjaXRlLmRhdGFjaXRlIiwidHlwZSI6ImNsaWVudHMiLCJhdHRyaWJ1dGVzIjp7Im5hbWUiOiJEYXRhQ2l0ZSIsInN5bWJvbCI6IkRBVEFDSVRFLkRBVEFDSVRFIiwieWVhciI6MjAxMSwiY29udGFjdC1uYW1lIjoiTWFydGluIEZlbm5lciIsImNvbnRhY3QtZW1haWwiOiJzdXBwb3J0QGRhdGFjaXRlLm9yZyIsImRvbWFpbnMiOiJkYXRhY2l0ZS5vcmciLCJ1cmwiOm51bGwsImNyZWF0ZWQiOiIyMDExLTEyLTA3VDEzOjQzOjM5LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0wOC0yNlQwMTozMDoyNy4wMDBaIiwiaXMtYWN0aXZlIjp0cnVlLCJoYXMtcGFzc3dvcmQiOnRydWV9LCJyZWxhdGlvbnNoaXBzIjp7InByb3ZpZGVyIjp7ImRhdGEiOnsiaWQiOiJkYXRhY2l0ZSIsInR5cGUiOiJwcm92aWRlcnMifX0sInByZWZpeGVzIjp7ImRhdGEiOlt7ImlkIjoiMTAuNTQzOCIsInR5cGUiOiJwcmVmaXhlcyJ9LHsiaWQiOiIxMC41MDcyIiwidHlwZSI6InByZWZpeGVzIn0seyJpZCI6IjEwLjE0NDU0IiwidHlwZSI6InByZWZpeGVzIn0seyJpZCI6IjEwLjIzNzI1IiwidHlwZSI6InByZWZpeGVzIn1dfX19LHsiaWQiOiJ0ZXh0IiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IlRleHQiLCJ1cGRhdGVkIjoiMjAxNi0wOS0yMVQwMDowMDowMFoifSwicmVsYXRpb25zaGlwcyI6e319XX0=
+        eyJkYXRhIjp7ImlkIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJ0eXBlIjoiZG9pcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJpZGVudGlmaWVyIjoiaHR0cHM6Ly9oYW5kbGUudGVzdC5kYXRhY2l0ZS5vcmcvMTAuNTQzOC8weDg4LWd2Z2UiLCJ1cmwiOiJodHRwczovL2Jsb2cuZGF0YWNpdGUub3JnL2V6aWQtZG9pLXNlcnZpY2UtaXMtZXZvbHZpbmcvIiwicHJlZml4IjoiMTAuNTQzOCIsInN1ZmZpeCI6IjB4ODgtZ3ZnZSIsImF1dGhvciI6W3sidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAyLTkzMDAtNTI3OCIsIm5hbWUiOiJDcnVzZSwgUGF0cmljaWEiLCJnaXZlbk5hbWUiOiJQYXRyaWNpYSIsImZhbWlseU5hbWUiOiJDcnVzZSJ9LHsidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTQyMjEtNzk1NiIsIm5hbWUiOiJXaXR0LCBNaWNoYWVsIiwiZ2l2ZW5OYW1lIjoiTWljaGFlbCIsImZhbWlseU5hbWUiOiJXaXR0In0seyJ0eXBlIjoiUGVyc29uIiwiaWQiOiJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDItNzI4NS0wMjdYIiwibmFtZSI6IlN0YXJyLCBKb2FuIiwiZ2l2ZW5OYW1lIjoiSm9hbiIsImZhbWlseU5hbWUiOiJTdGFyciJ9XSwidGl0bGUiOiJFWklEIERPSSBTZXJ2aWNlIGlzIEV2b2x2aW5nIiwicHVibGlzaGVyIjoiRGF0YUNpdGUiLCJyZXNvdXJjZS10eXBlLXN1YnR5cGUiOiJCbG9nUG9zdGluZyIsImRlc2NyaXB0aW9uIjoiVGhlIENhbGlmb3JuaWEgRGlnaXRhbCBMaWJyYXJ5IChDREwpIGFuZCBQdXJkdWUgVW5pdmVyc2l0eSBhcmUgYWRvcHRpbmcgYSBuZXcgc3RyYXRlZ2ljIGRpcmVjdGlvbiBmb3IgdGhlaXIgRVpJRCBkaWdpdGFsIG9iamVjdCBpZGVudGlmaWVyIChET0kpIHNlcnZpY2VzIHRvIHN1cHBvcnQgRGF0YUNpdGXigJlzIGxvbmctdGVybSBzdXN0YWluYWJpbGl0eSBhbmQgdG8gaW1wcm92ZSBET0kgc2VydmljZXMgZm9yIHRoZSBicm9hZGVyIGNvbW11bml0eS4uLiIsInZlcnNpb24iOiIxLjAiLCJtZXRhZGF0YS12ZXJzaW9uIjowLCJzY2hlbWEtdmVyc2lvbiI6Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC00IiwicmVhc29uIjpudWxsLCJzb3VyY2UiOiJmYWJyaWNhIiwic3RhdGUiOiJmaW5kYWJsZSIsImlzLWFjdGl2ZSI6dHJ1ZSwibGFuZGluZy1wYWdlIjp7InN0YXR1cyI6MjAwLCJjb250ZW50LXR5cGUiOiJ0ZXh0L2h0bWwiLCJjaGVja2VkIjoiMjAxOC0xMC0yN1QwMTo0MjoyMS4wMDBaIiwicmVzdWx0Ijp7ImVycm9yIjoiIiwiYm9keS1oYXMtcGlkIjp0cnVlLCJjaXRhdGlvbi1kb2kiOm51bGwsImRjLWlkZW50aWZpZXIiOm51bGwsInJlZGlyZWN0LXVybHMiOltdLCJzY2hlbWEtb3JnLWlkIjoiaHR0cHM6Ly9kb2kub3JnLzEwLjU0MzgvMHg4OC1ndmdlIiwiaGFzLXNjaGVtYS1vcmciOnRydWUsInJlZGlyZWN0LWNvdW50IjowLCJkb3dubG9hZC1sYXRlbmN5IjozNjk0LjI1NTU5MDQzODg0fX0sInB1Ymxpc2hlZCI6IjIwMTctMDgtMDQiLCJjcmVhdGVkIjoiMjAxOC0xMC0yNVQxNjoyNzozNi4wMDBaIiwicmVnaXN0ZXJlZCI6IjIwMTgtMTAtMjVUMTY6Mjc6MzcuMDAwWiIsInVwZGF0ZWQiOiIyMDE4LTEwLTI3VDAyOjAwOjQ4LjAwMFoiLCJ4bWwiOiJQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpVlZSR0xUZ2lQejRLUEhKbGMyOTFjbU5sSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpQU0pvZEhSd09pOHZaR0YwWVdOcGRHVXViM0puTDNOamFHVnRZUzlyWlhKdVpXd3ROQ0lnZUhOcE9uTmphR1Z0WVV4dlkyRjBhVzl1UFNKb2RIUndPaTh2WkdGMFlXTnBkR1V1YjNKbkwzTmphR1Z0WVM5clpYSnVaV3d0TkNCb2RIUndPaTh2YzJOb1pXMWhMbVJoZEdGamFYUmxMbTl5Wnk5dFpYUmhMMnRsY201bGJDMDBMMjFsZEdGa1lYUmhMbmh6WkNJK0NpQWdQR2xrWlc1MGFXWnBaWElnYVdSbGJuUnBabWxsY2xSNWNHVTlJa1JQU1NJK01UQXVOVFF6T0M4d1dEZzRMVWRXUjBVOEwybGtaVzUwYVdacFpYSStDaUFnUEdOeVpXRjBiM0p6UGdvZ0lDQWdQR055WldGMGIzSStDaUFnSUNBZ0lEeGpjbVZoZEc5eVRtRnRaVDVEY25WelpTd2dVR0YwY21samFXRThMMk55WldGMGIzSk9ZVzFsUGdvZ0lDQWdJQ0E4WjJsMlpXNU9ZVzFsUGxCaGRISnBZMmxoUEM5bmFYWmxiazVoYldVK0NpQWdJQ0FnSUR4bVlXMXBiSGxPWVcxbFBrTnlkWE5sUEM5bVlXMXBiSGxPWVcxbFBnb2dJQ0FnSUNBOGJtRnRaVWxrWlc1MGFXWnBaWElnYzJOb1pXMWxWVkpKUFNKb2RIUndPaTh2YjNKamFXUXViM0puTHlJZ2JtRnRaVWxrWlc1MGFXWnBaWEpUWTJobGJXVTlJazlTUTBsRUlqNW9kSFJ3Y3pvdkwyOXlZMmxrTG05eVp5OHdNREF3TFRBd01ESXRPVE13TUMwMU1qYzRQQzl1WVcxbFNXUmxiblJwWm1sbGNqNEtJQ0FnSUR3dlkzSmxZWFJ2Y2o0S0lDQWdJRHhqY21WaGRHOXlQZ29nSUNBZ0lDQThZM0psWVhSdmNrNWhiV1UrVjJsMGRDd2dUV2xqYUdGbGJEd3ZZM0psWVhSdmNrNWhiV1UrQ2lBZ0lDQWdJRHhuYVhabGJrNWhiV1UrVFdsamFHRmxiRHd2WjJsMlpXNU9ZVzFsUGdvZ0lDQWdJQ0E4Wm1GdGFXeDVUbUZ0WlQ1WGFYUjBQQzltWVcxcGJIbE9ZVzFsUGdvZ0lDQWdJQ0E4Ym1GdFpVbGtaVzUwYVdacFpYSWdjMk5vWlcxbFZWSkpQU0pvZEhSd09pOHZiM0pqYVdRdWIzSm5MeUlnYm1GdFpVbGtaVzUwYVdacFpYSlRZMmhsYldVOUlrOVNRMGxFSWo1b2RIUndjem92TDI5eVkybGtMbTl5Wnk4d01EQXdMVEF3TURNdE5ESXlNUzAzT1RVMlBDOXVZVzFsU1dSbGJuUnBabWxsY2o0S0lDQWdJRHd2WTNKbFlYUnZjajRLSUNBZ0lEeGpjbVZoZEc5eVBnb2dJQ0FnSUNBOFkzSmxZWFJ2Y2s1aGJXVStVM1JoY25Jc0lFcHZZVzQ4TDJOeVpXRjBiM0pPWVcxbFBnb2dJQ0FnSUNBOFoybDJaVzVPWVcxbFBrcHZZVzQ4TDJkcGRtVnVUbUZ0WlQ0S0lDQWdJQ0FnUEdaaGJXbHNlVTVoYldVK1UzUmhjbkk4TDJaaGJXbHNlVTVoYldVK0NpQWdJQ0FnSUR4dVlXMWxTV1JsYm5ScFptbGxjaUJ6WTJobGJXVlZVa2s5SW1oMGRIQTZMeTl2Y21OcFpDNXZjbWN2SWlCdVlXMWxTV1JsYm5ScFptbGxjbE5qYUdWdFpUMGlUMUpEU1VRaVBtaDBkSEJ6T2k4dmIzSmphV1F1YjNKbkx6QXdNREF0TURBd01pMDNNamcxTFRBeU4xZzhMMjVoYldWSlpHVnVkR2xtYVdWeVBnb2dJQ0FnUEM5amNtVmhkRzl5UGdvZ0lEd3ZZM0psWVhSdmNuTStDaUFnUEhScGRHeGxjejRLSUNBZ0lEeDBhWFJzWlQ1RldrbEVJRVJQU1NCVFpYSjJhV05sSUdseklFVjJiMngyYVc1blBDOTBhWFJzWlQ0S0lDQThMM1JwZEd4bGN6NEtJQ0E4Y0hWaWJHbHphR1Z5UGtSaGRHRkRhWFJsUEM5d2RXSnNhWE5vWlhJK0NpQWdQSEIxWW14cFkyRjBhVzl1V1dWaGNqNHlNREUzUEM5d2RXSnNhV05oZEdsdmJsbGxZWEkrQ2lBZ1BISmxjMjkxY21ObFZIbHdaU0J5WlhOdmRYSmpaVlI1Y0dWSFpXNWxjbUZzUFNKVVpYaDBJajVDYkc5blVHOXpkR2x1Wnp3dmNtVnpiM1Z5WTJWVWVYQmxQZ29nSUR4emRXSnFaV04wY3o0S0lDQWdJRHh6ZFdKcVpXTjBQbVY2YVdROEwzTjFZbXBsWTNRK0NpQWdJQ0E4YzNWaWFtVmpkRDVqWkd3OEwzTjFZbXBsWTNRK0NpQWdJQ0E4YzNWaWFtVmpkRDV3ZFhKa2RXVThMM04xWW1wbFkzUStDaUFnUEM5emRXSnFaV04wY3o0S0lDQThaR0YwWlhNK0NpQWdJQ0E4WkdGMFpTQmtZWFJsVkhsd1pUMGlRM0psWVhSbFpDSStNakF4Tnkwd09DMHdORHd2WkdGMFpUNEtJQ0FnSUR4a1lYUmxJR1JoZEdWVWVYQmxQU0pKYzNOMVpXUWlQakl3TVRjdE1EZ3RNRFE4TDJSaGRHVStDaUFnSUNBOFpHRjBaU0JrWVhSbFZIbHdaVDBpVlhCa1lYUmxaQ0krTWpBeE55MHdPQzB3TkR3dlpHRjBaVDRLSUNBOEwyUmhkR1Z6UGdvZ0lEeHlaV3hoZEdWa1NXUmxiblJwWm1sbGNuTStDaUFnSUNBOGNtVnNZWFJsWkVsa1pXNTBhV1pwWlhJZ2NtVnNZWFJsWkVsa1pXNTBhV1pwWlhKVWVYQmxQU0pFVDBraUlISmxiR0YwYVc5dVZIbHdaVDBpU1hOUVlYSjBUMllpUGpFd0xqVTBNemd2TURBd01DMHdNSE56UEM5eVpXeGhkR1ZrU1dSbGJuUnBabWxsY2o0S0lDQThMM0psYkdGMFpXUkpaR1Z1ZEdsbWFXVnljejRLSUNBOGRtVnljMmx2Ymo0eExqQThMM1psY25OcGIyNCtDaUFnUEhKcFoyaDBjMHhwYzNRK0NpQWdJQ0E4Y21sbmFIUnpJSEpwWjJoMGMxVlNTVDBpYUhSMGNITTZMeTlqY21WaGRHbDJaV052YlcxdmJuTXViM0puTDJ4cFkyVnVjMlZ6TDJKNUx6UXVNQzhpUG1oMGRIQnpPaTh2WTNKbFlYUnBkbVZqYjIxdGIyNXpMbTl5Wnk5c2FXTmxibk5sY3k5aWVTODBMakF2UEM5eWFXZG9kSE0rQ2lBZ1BDOXlhV2RvZEhOTWFYTjBQZ29nSUR4a1pYTmpjbWx3ZEdsdmJuTStDaUFnSUNBOFpHVnpZM0pwY0hScGIyNGdaR1Z6WTNKcGNIUnBiMjVVZVhCbFBTSlRaWEpwWlhOSmJtWnZjbTFoZEdsdmJpSStSR0YwWVVOcGRHVWdRbXh2Wnp3dlpHVnpZM0pwY0hScGIyNCtDaUFnSUNBOFpHVnpZM0pwY0hScGIyNGdaR1Z6WTNKcGNIUnBiMjVVZVhCbFBTSkJZbk4wY21GamRDSStWR2hsSUVOaGJHbG1iM0p1YVdFZ1JHbG5hWFJoYkNCTWFXSnlZWEo1SUNoRFJFd3BJR0Z1WkNCUWRYSmtkV1VnVlc1cGRtVnljMmwwZVNCaGNtVWdZV1J2Y0hScGJtY2dZU0J1WlhjZ2MzUnlZWFJsWjJsaklHUnBjbVZqZEdsdmJpQm1iM0lnZEdobGFYSWdSVnBKUkNCa2FXZHBkR0ZzSUc5aWFtVmpkQ0JwWkdWdWRHbG1hV1Z5SUNoRVQwa3BJSE5sY25acFkyVnpJSFJ2SUhOMWNIQnZjblFnUkdGMFlVTnBkR1hpZ0pseklHeHZibWN0ZEdWeWJTQnpkWE4wWVdsdVlXSnBiR2wwZVNCaGJtUWdkRzhnYVcxd2NtOTJaU0JFVDBrZ2MyVnlkbWxqWlhNZ1ptOXlJSFJvWlNCaWNtOWhaR1Z5SUdOdmJXMTFibWwwZVM0dUxqd3ZaR1Z6WTNKcGNIUnBiMjQrQ2lBZ1BDOWtaWE5qY21sd2RHbHZibk0rQ2p3dmNtVnpiM1Z5WTJVK0NnPT0iLCJjYWNoZS1rZXkiOiJkb2lzLzEwLjU0MzgvMHg4OC1ndmdlLTIwMTgtMTAtMjdUMDI6MDA6NDhaIn0sInJlbGF0aW9uc2hpcHMiOnsiY2xpZW50Ijp7ImRhdGEiOnsiaWQiOiJkYXRhY2l0ZS5kYXRhY2l0ZSIsInR5cGUiOiJjbGllbnRzIn19LCJyZXNvdXJjZS10eXBlIjp7ImRhdGEiOnsiaWQiOiJ0ZXh0IiwidHlwZSI6InJlc291cmNlX3R5cGVzIn19LCJtZWRpYSI6eyJkYXRhIjpbXX19fSwiaW5jbHVkZWQiOlt7ImlkIjoiZGF0YWNpdGUuZGF0YWNpdGUiLCJ0eXBlIjoiY2xpZW50cyIsImF0dHJpYnV0ZXMiOnsibmFtZSI6IkRhdGFDaXRlIiwic3ltYm9sIjoiREFUQUNJVEUuREFUQUNJVEUiLCJ5ZWFyIjoyMDExLCJjb250YWN0LW5hbWUiOiJNYXJ0aW4gRmVubmVyIiwiY29udGFjdC1lbWFpbCI6InN1cHBvcnRAZGF0YWNpdGUub3JnIiwiZG9tYWlucyI6ImRhdGFjaXRlLm9yZyIsInVybCI6bnVsbCwiY3JlYXRlZCI6IjIwMTEtMTItMDdUMTM6NDM6MzkuMDAwWiIsInVwZGF0ZWQiOiIyMDE4LTA4LTI2VDAxOjMwOjI3LjAwMFoiLCJpcy1hY3RpdmUiOnRydWUsImhhcy1wYXNzd29yZCI6dHJ1ZX0sInJlbGF0aW9uc2hpcHMiOnsicHJvdmlkZXIiOnsiZGF0YSI6eyJpZCI6ImRhdGFjaXRlIiwidHlwZSI6InByb3ZpZGVycyJ9fSwicHJlZml4ZXMiOnsiZGF0YSI6W3siaWQiOiIxMC41NDM4IiwidHlwZSI6InByZWZpeGVzIn0seyJpZCI6IjEwLjUwNzIiLCJ0eXBlIjoicHJlZml4ZXMifSx7ImlkIjoiMTAuMTQ0NTQiLCJ0eXBlIjoicHJlZml4ZXMifSx7ImlkIjoiMTAuMjM3MjUiLCJ0eXBlIjoicHJlZml4ZXMifV19fX0seyJpZCI6InRleHQiLCJ0eXBlIjoicmVzb3VyY2UtdHlwZXMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiVGV4dCIsInVwZGF0ZWQiOiIyMDE2LTA5LTIxVDAwOjAwOjAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7fX1dfQ==
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:56 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:02 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/prefixes/10.5438
+    uri: https://api.test.datacite.org//prefixes/10.5438
     body:
       encoding: US-ASCII
       string: ''
@@ -63,7 +63,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:52:56 GMT
+      - Sat, 27 Oct 2018 10:53:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -76,12 +76,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 2bc0b456-96ea-4231-82e5-de4b073b79de
       Etag:
       - W/"2ee122c3107fa399fd9ccba1087a5b90"
       X-Runtime:
-      - '0.016842'
+      - '0.016385'
+      X-Request-Id:
+      - 335a136a-9504-4691-a195-0d9e8df57848
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -92,60 +92,14 @@ http_interactions:
         Fenner","contact-email":"support@datacite.org","domains":"datacite.org","url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2018-08-26T01:30:27.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.23725","type":"prefixes"}]}}},{"id":"datacite","type":"providers","attributes":{"name":"DataCite","symbol":"DATACITE","website":null,"contact-name":"DataCite
         Support","contact-email":"support@datacite.org","phone":null,"description":null,"region":"EMEA","country":"DE","logo-url":null,"organization-type":null,"focus-area":null,"is-active":true,"has-password":true,"joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2018-10-24T13:15:15.000Z"},"relationships":{"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.0138","type":"prefixes"},{"id":"10.15497","type":"prefixes"},{"id":"10.0158","type":"prefixes"},{"id":"10.0159","type":"prefixes"},{"id":"10.18130","type":"prefixes"},{"id":"10.23725","type":"prefixes"},{"id":"10.24367","type":"prefixes"},{"id":"10.24366","type":"prefixes"},{"id":"10.24365","type":"prefixes"},{"id":"10.24364","type":"prefixes"},{"id":"10.24409","type":"prefixes"},{"id":"10.24360","type":"prefixes"},{"id":"10.24361","type":"prefixes"},{"id":"10.24408","type":"prefixes"},{"id":"10.24362","type":"prefixes"},{"id":"10.24407","type":"prefixes"},{"id":"10.24363","type":"prefixes"},{"id":"10.24354","type":"prefixes"},{"id":"10.24356","type":"prefixes"},{"id":"10.24355","type":"prefixes"},{"id":"10.24358","type":"prefixes"},{"id":"10.24357","type":"prefixes"},{"id":"10.24359","type":"prefixes"},{"id":"10.24411","type":"prefixes"},{"id":"10.24410","type":"prefixes"},{"id":"10.24415","type":"prefixes"},{"id":"10.24414","type":"prefixes"},{"id":"10.24413","type":"prefixes"},{"id":"10.24412","type":"prefixes"},{"id":"10.24419","type":"prefixes"},{"id":"10.24418","type":"prefixes"},{"id":"10.24417","type":"prefixes"},{"id":"10.24416","type":"prefixes"},{"id":"10.24420","type":"prefixes"},{"id":"10.24422","type":"prefixes"},{"id":"10.24421","type":"prefixes"},{"id":"10.24424","type":"prefixes"},{"id":"10.24423","type":"prefixes"},{"id":"10.24426","type":"prefixes"},{"id":"10.24425","type":"prefixes"},{"id":"10.24428","type":"prefixes"},{"id":"10.24427","type":"prefixes"},{"id":"10.24429","type":"prefixes"},{"id":"10.24432","type":"prefixes"},{"id":"10.24433","type":"prefixes"},{"id":"10.24430","type":"prefixes"},{"id":"10.24431","type":"prefixes"},{"id":"10.0310","type":"prefixes"},{"id":"10.0311","type":"prefixes"},{"id":"10.0312","type":"prefixes"},{"id":"10.0330","type":"prefixes"},{"id":"10.0307","type":"prefixes"},{"id":"10.0308","type":"prefixes"},{"id":"10.0309","type":"prefixes"},{"id":"10.0320","type":"prefixes"},{"id":"10.0321","type":"prefixes"},{"id":"10.0322","type":"prefixes"},{"id":"10.70000","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"},{"id":"10.70004","type":"prefixes"},{"id":"10.70003","type":"prefixes"},{"id":"10.70005","type":"prefixes"},{"id":"10.70006","type":"prefixes"},{"id":"10.70007","type":"prefixes"},{"id":"10.70008","type":"prefixes"},{"id":"10.70009","type":"prefixes"},{"id":"10.70010","type":"prefixes"},{"id":"10.70011","type":"prefixes"},{"id":"10.70048","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:56 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5438/0x88-gvge
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 25 Oct 2018 20:52:57 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 2ca81932-1de5-4c65-957b-138a187e265b
-      Etag:
-      - W/"789467b169362604f3d42a80b6ef271c"
-      X-Runtime:
-      - '0.019246'
-      X-Powered-By:
-      - Phusion Passenger 5.3.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.5
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjp7ImlkIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJ0eXBlIjoiZG9pcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNTQzOC8weDg4LWd2Z2UiLCJpZGVudGlmaWVyIjoiaHR0cHM6Ly9oYW5kbGUudGVzdC5kYXRhY2l0ZS5vcmcvMTAuNTQzOC8weDg4LWd2Z2UiLCJ1cmwiOiJodHRwczovL2Jsb2cuZGF0YWNpdGUub3JnL2V6aWQtZG9pLXNlcnZpY2UtaXMtZXZvbHZpbmcvIiwicHJlZml4IjoiMTAuNTQzOCIsInN1ZmZpeCI6IjB4ODgtZ3ZnZSIsImF1dGhvciI6W3sidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAyLTkzMDAtNTI3OCIsIm5hbWUiOiJDcnVzZSwgUGF0cmljaWEiLCJnaXZlbk5hbWUiOiJQYXRyaWNpYSIsImZhbWlseU5hbWUiOiJDcnVzZSJ9LHsidHlwZSI6IlBlcnNvbiIsImlkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTQyMjEtNzk1NiIsIm5hbWUiOiJXaXR0LCBNaWNoYWVsIiwiZ2l2ZW5OYW1lIjoiTWljaGFlbCIsImZhbWlseU5hbWUiOiJXaXR0In0seyJ0eXBlIjoiUGVyc29uIiwiaWQiOiJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDItNzI4NS0wMjdYIiwibmFtZSI6IlN0YXJyLCBKb2FuIiwiZ2l2ZW5OYW1lIjoiSm9hbiIsImZhbWlseU5hbWUiOiJTdGFyciJ9XSwidGl0bGUiOiJFWklEIERPSSBTZXJ2aWNlIGlzIEV2b2x2aW5nIiwicHVibGlzaGVyIjoiRGF0YUNpdGUiLCJyZXNvdXJjZS10eXBlLXN1YnR5cGUiOiJCbG9nUG9zdGluZyIsImRlc2NyaXB0aW9uIjoiVGhlIENhbGlmb3JuaWEgRGlnaXRhbCBMaWJyYXJ5IChDREwpIGFuZCBQdXJkdWUgVW5pdmVyc2l0eSBhcmUgYWRvcHRpbmcgYSBuZXcgc3RyYXRlZ2ljIGRpcmVjdGlvbiBmb3IgdGhlaXIgRVpJRCBkaWdpdGFsIG9iamVjdCBpZGVudGlmaWVyIChET0kpIHNlcnZpY2VzIHRvIHN1cHBvcnQgRGF0YUNpdGXigJlzIGxvbmctdGVybSBzdXN0YWluYWJpbGl0eSBhbmQgdG8gaW1wcm92ZSBET0kgc2VydmljZXMgZm9yIHRoZSBicm9hZGVyIGNvbW11bml0eS4uLiIsInZlcnNpb24iOiIxLjAiLCJtZXRhZGF0YS12ZXJzaW9uIjowLCJzY2hlbWEtdmVyc2lvbiI6Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC00IiwicmVhc29uIjpudWxsLCJzb3VyY2UiOiJmYWJyaWNhIiwic3RhdGUiOiJmaW5kYWJsZSIsImlzLWFjdGl2ZSI6dHJ1ZSwibGFuZGluZy1wYWdlIjp7InN0YXR1cyI6bnVsbCwiY29udGVudC10eXBlIjpudWxsLCJjaGVja2VkIjpudWxsLCJyZXN1bHQiOm51bGx9LCJwdWJsaXNoZWQiOiIyMDE3LTA4LTA0IiwiY3JlYXRlZCI6IjIwMTgtMTAtMjVUMTY6Mjc6MzYuMDAwWiIsInJlZ2lzdGVyZWQiOiIyMDE4LTEwLTI1VDE2OjI3OjM3LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0xMC0yNVQxNjoyNzozNy4wMDBaIiwieG1sIjoiUEQ5NGJXd2dkbVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpUHo0S1BISmxjMjkxY21ObElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6UFNKb2RIUndPaTh2WkdGMFlXTnBkR1V1YjNKbkwzTmphR1Z0WVM5clpYSnVaV3d0TkNJZ2VITnBPbk5qYUdWdFlVeHZZMkYwYVc5dVBTSm9kSFJ3T2k4dlpHRjBZV05wZEdVdWIzSm5MM05qYUdWdFlTOXJaWEp1Wld3dE5DQm9kSFJ3T2k4dmMyTm9aVzFoTG1SaGRHRmphWFJsTG05eVp5OXRaWFJoTDJ0bGNtNWxiQzAwTDIxbGRHRmtZWFJoTG5oelpDSStDaUFnUEdsa1pXNTBhV1pwWlhJZ2FXUmxiblJwWm1sbGNsUjVjR1U5SWtSUFNTSStNVEF1TlRRek9DOHdXRGc0TFVkV1IwVThMMmxrWlc1MGFXWnBaWEkrQ2lBZ1BHTnlaV0YwYjNKelBnb2dJQ0FnUEdOeVpXRjBiM0krQ2lBZ0lDQWdJRHhqY21WaGRHOXlUbUZ0WlQ1RGNuVnpaU3dnVUdGMGNtbGphV0U4TDJOeVpXRjBiM0pPWVcxbFBnb2dJQ0FnSUNBOFoybDJaVzVPWVcxbFBsQmhkSEpwWTJsaFBDOW5hWFpsYms1aGJXVStDaUFnSUNBZ0lEeG1ZVzFwYkhsT1lXMWxQa055ZFhObFBDOW1ZVzFwYkhsT1lXMWxQZ29nSUNBZ0lDQThibUZ0WlVsa1pXNTBhV1pwWlhJZ2MyTm9aVzFsVlZKSlBTSm9kSFJ3T2k4dmIzSmphV1F1YjNKbkx5SWdibUZ0WlVsa1pXNTBhV1pwWlhKVFkyaGxiV1U5SWs5U1EwbEVJajVvZEhSd2N6b3ZMMjl5WTJsa0xtOXlaeTh3TURBd0xUQXdNREl0T1RNd01DMDFNamM0UEM5dVlXMWxTV1JsYm5ScFptbGxjajRLSUNBZ0lEd3ZZM0psWVhSdmNqNEtJQ0FnSUR4amNtVmhkRzl5UGdvZ0lDQWdJQ0E4WTNKbFlYUnZjazVoYldVK1YybDBkQ3dnVFdsamFHRmxiRHd2WTNKbFlYUnZjazVoYldVK0NpQWdJQ0FnSUR4bmFYWmxiazVoYldVK1RXbGphR0ZsYkR3dloybDJaVzVPWVcxbFBnb2dJQ0FnSUNBOFptRnRhV3g1VG1GdFpUNVhhWFIwUEM5bVlXMXBiSGxPWVcxbFBnb2dJQ0FnSUNBOGJtRnRaVWxrWlc1MGFXWnBaWElnYzJOb1pXMWxWVkpKUFNKb2RIUndPaTh2YjNKamFXUXViM0puTHlJZ2JtRnRaVWxrWlc1MGFXWnBaWEpUWTJobGJXVTlJazlTUTBsRUlqNW9kSFJ3Y3pvdkwyOXlZMmxrTG05eVp5OHdNREF3TFRBd01ETXROREl5TVMwM09UVTJQQzl1WVcxbFNXUmxiblJwWm1sbGNqNEtJQ0FnSUR3dlkzSmxZWFJ2Y2o0S0lDQWdJRHhqY21WaGRHOXlQZ29nSUNBZ0lDQThZM0psWVhSdmNrNWhiV1UrVTNSaGNuSXNJRXB2WVc0OEwyTnlaV0YwYjNKT1lXMWxQZ29nSUNBZ0lDQThaMmwyWlc1T1lXMWxQa3B2WVc0OEwyZHBkbVZ1VG1GdFpUNEtJQ0FnSUNBZ1BHWmhiV2xzZVU1aGJXVStVM1JoY25JOEwyWmhiV2xzZVU1aGJXVStDaUFnSUNBZ0lEeHVZVzFsU1dSbGJuUnBabWxsY2lCelkyaGxiV1ZWVWtrOUltaDBkSEE2THk5dmNtTnBaQzV2Y21jdklpQnVZVzFsU1dSbGJuUnBabWxsY2xOamFHVnRaVDBpVDFKRFNVUWlQbWgwZEhCek9pOHZiM0pqYVdRdWIzSm5MekF3TURBdE1EQXdNaTAzTWpnMUxUQXlOMWc4TDI1aGJXVkpaR1Z1ZEdsbWFXVnlQZ29nSUNBZ1BDOWpjbVZoZEc5eVBnb2dJRHd2WTNKbFlYUnZjbk0rQ2lBZ1BIUnBkR3hsY3o0S0lDQWdJRHgwYVhSc1pUNUZXa2xFSUVSUFNTQlRaWEoyYVdObElHbHpJRVYyYjJ4MmFXNW5QQzkwYVhSc1pUNEtJQ0E4TDNScGRHeGxjejRLSUNBOGNIVmliR2x6YUdWeVBrUmhkR0ZEYVhSbFBDOXdkV0pzYVhOb1pYSStDaUFnUEhCMVlteHBZMkYwYVc5dVdXVmhjajR5TURFM1BDOXdkV0pzYVdOaGRHbHZibGxsWVhJK0NpQWdQSEpsYzI5MWNtTmxWSGx3WlNCeVpYTnZkWEpqWlZSNWNHVkhaVzVsY21Gc1BTSlVaWGgwSWo1Q2JHOW5VRzl6ZEdsdVp6d3ZjbVZ6YjNWeVkyVlVlWEJsUGdvZ0lEeHpkV0pxWldOMGN6NEtJQ0FnSUR4emRXSnFaV04wUG1WNmFXUThMM04xWW1wbFkzUStDaUFnSUNBOGMzVmlhbVZqZEQ1alpHdzhMM04xWW1wbFkzUStDaUFnSUNBOGMzVmlhbVZqZEQ1d2RYSmtkV1U4TDNOMVltcGxZM1ErQ2lBZ1BDOXpkV0pxWldOMGN6NEtJQ0E4WkdGMFpYTStDaUFnSUNBOFpHRjBaU0JrWVhSbFZIbHdaVDBpUTNKbFlYUmxaQ0krTWpBeE55MHdPQzB3TkR3dlpHRjBaVDRLSUNBZ0lEeGtZWFJsSUdSaGRHVlVlWEJsUFNKSmMzTjFaV1FpUGpJd01UY3RNRGd0TURROEwyUmhkR1UrQ2lBZ0lDQThaR0YwWlNCa1lYUmxWSGx3WlQwaVZYQmtZWFJsWkNJK01qQXhOeTB3T0Mwd05Ed3ZaR0YwWlQ0S0lDQThMMlJoZEdWelBnb2dJRHh5Wld4aGRHVmtTV1JsYm5ScFptbGxjbk0rQ2lBZ0lDQThjbVZzWVhSbFpFbGtaVzUwYVdacFpYSWdjbVZzWVhSbFpFbGtaVzUwYVdacFpYSlVlWEJsUFNKRVQwa2lJSEpsYkdGMGFXOXVWSGx3WlQwaVNYTlFZWEowVDJZaVBqRXdMalUwTXpndk1EQXdNQzB3TUhOelBDOXlaV3hoZEdWa1NXUmxiblJwWm1sbGNqNEtJQ0E4TDNKbGJHRjBaV1JKWkdWdWRHbG1hV1Z5Y3o0S0lDQThkbVZ5YzJsdmJqNHhMakE4TDNabGNuTnBiMjQrQ2lBZ1BISnBaMmgwYzB4cGMzUStDaUFnSUNBOGNtbG5hSFJ6SUhKcFoyaDBjMVZTU1QwaWFIUjBjSE02THk5amNtVmhkR2wyWldOdmJXMXZibk11YjNKbkwyeHBZMlZ1YzJWekwySjVMelF1TUM4aVBtaDBkSEJ6T2k4dlkzSmxZWFJwZG1WamIyMXRiMjV6TG05eVp5OXNhV05sYm5ObGN5OWllUzgwTGpBdlBDOXlhV2RvZEhNK0NpQWdQQzl5YVdkb2RITk1hWE4wUGdvZ0lEeGtaWE5qY21sd2RHbHZibk0rQ2lBZ0lDQThaR1Z6WTNKcGNIUnBiMjRnWkdWelkzSnBjSFJwYjI1VWVYQmxQU0pUWlhKcFpYTkpibVp2Y20xaGRHbHZiaUkrUkdGMFlVTnBkR1VnUW14dlp6d3ZaR1Z6WTNKcGNIUnBiMjQrQ2lBZ0lDQThaR1Z6WTNKcGNIUnBiMjRnWkdWelkzSnBjSFJwYjI1VWVYQmxQU0pCWW5OMGNtRmpkQ0krVkdobElFTmhiR2xtYjNKdWFXRWdSR2xuYVhSaGJDQk1hV0p5WVhKNUlDaERSRXdwSUdGdVpDQlFkWEprZFdVZ1ZXNXBkbVZ5YzJsMGVTQmhjbVVnWVdSdmNIUnBibWNnWVNCdVpYY2djM1J5WVhSbFoybGpJR1JwY21WamRHbHZiaUJtYjNJZ2RHaGxhWElnUlZwSlJDQmthV2RwZEdGc0lHOWlhbVZqZENCcFpHVnVkR2xtYVdWeUlDaEVUMGtwSUhObGNuWnBZMlZ6SUhSdklITjFjSEJ2Y25RZ1JHRjBZVU5wZEdYaWdKbHpJR3h2Ym1jdGRHVnliU0J6ZFhOMFlXbHVZV0pwYkdsMGVTQmhibVFnZEc4Z2FXMXdjbTkyWlNCRVQwa2djMlZ5ZG1salpYTWdabTl5SUhSb1pTQmljbTloWkdWeUlHTnZiVzExYm1sMGVTNHVMand2WkdWelkzSnBjSFJwYjI0K0NpQWdQQzlrWlhOamNtbHdkR2x2Ym5NK0Nqd3ZjbVZ6YjNWeVkyVStDZz09IiwiY2FjaGUta2V5IjoiZG9pcy8xMC41NDM4LzB4ODgtZ3ZnZS0yMDE4LTEwLTI1VDE2OjI3OjM3WiJ9LCJyZWxhdGlvbnNoaXBzIjp7ImNsaWVudCI6eyJkYXRhIjp7ImlkIjoiZGF0YWNpdGUuZGF0YWNpdGUiLCJ0eXBlIjoiY2xpZW50cyJ9fSwicmVzb3VyY2UtdHlwZSI6eyJkYXRhIjp7ImlkIjoidGV4dCIsInR5cGUiOiJyZXNvdXJjZV90eXBlcyJ9fSwibWVkaWEiOnsiZGF0YSI6W119fX0sImluY2x1ZGVkIjpbeyJpZCI6ImRhdGFjaXRlLmRhdGFjaXRlIiwidHlwZSI6ImNsaWVudHMiLCJhdHRyaWJ1dGVzIjp7Im5hbWUiOiJEYXRhQ2l0ZSIsInN5bWJvbCI6IkRBVEFDSVRFLkRBVEFDSVRFIiwieWVhciI6MjAxMSwiY29udGFjdC1uYW1lIjoiTWFydGluIEZlbm5lciIsImNvbnRhY3QtZW1haWwiOiJzdXBwb3J0QGRhdGFjaXRlLm9yZyIsImRvbWFpbnMiOiJkYXRhY2l0ZS5vcmciLCJ1cmwiOm51bGwsImNyZWF0ZWQiOiIyMDExLTEyLTA3VDEzOjQzOjM5LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0wOC0yNlQwMTozMDoyNy4wMDBaIiwiaXMtYWN0aXZlIjp0cnVlLCJoYXMtcGFzc3dvcmQiOnRydWV9LCJyZWxhdGlvbnNoaXBzIjp7InByb3ZpZGVyIjp7ImRhdGEiOnsiaWQiOiJkYXRhY2l0ZSIsInR5cGUiOiJwcm92aWRlcnMifX0sInByZWZpeGVzIjp7ImRhdGEiOlt7ImlkIjoiMTAuNTQzOCIsInR5cGUiOiJwcmVmaXhlcyJ9LHsiaWQiOiIxMC41MDcyIiwidHlwZSI6InByZWZpeGVzIn0seyJpZCI6IjEwLjE0NDU0IiwidHlwZSI6InByZWZpeGVzIn0seyJpZCI6IjEwLjIzNzI1IiwidHlwZSI6InByZWZpeGVzIn1dfX19LHsiaWQiOiJ0ZXh0IiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IlRleHQiLCJ1cGRhdGVkIjoiMjAxNi0wOS0yMVQwMDowMDowMFoifSwicmVsYXRpb25zaGlwcyI6e319XX0=
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:57 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:02 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T20:52:57Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
-        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-25T16:27:37.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{}}}}'
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"https://doi.org/10.5438/0000-00ss","relation-type-id":"is-part-of","source-id":"datacite-related","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:53:02Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
+        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-27T02:00:48.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
@@ -154,735 +108,45 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:52:57 GMT
+      - Sat, 27 Oct 2018 10:53:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"ea6b3eece48ca66826d6b0b7c7eb1d1f"
       X-Runtime:
-      - '0.037057'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
+      - '0.009366'
       X-Request-Id:
-      - 8242f1be-15bb-4197-b521-c118a7131a11
+      - fe41f23e-34f0-4125-aaca-725221b7f660
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"60a2c220-7b1d-4386-b428-7c5510c56ef5","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"https://doi.org/10.5438/0000-00ss","source-id":"datacite-related","relation-type-id":"is-part-of","total":1,"message-action":"create","source-token":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:28:08.820Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/0x88-gvge","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5438/0000-00ss","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:57 GMT
-- request:
-    method: get
-    uri: https://pub.orcid.org/v2.1/0000-0002-9300-5278/person
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Accept:
-      - application/vnd.orcid+json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.4.6 (Ubuntu)
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/vnd.orcid+json; qs=4;charset=UTF-8
-      Date:
-      - Thu, 25 Oct 2018 20:52:58 GMT
-      Expires:
-      - '0'
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Content-Type-Options:
-      - nosniff
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - X-Mapping-fjhppofk=AC7FD72D56BC49A75A07C0057E9FFEE4; path=/
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "last-modified-date" : {
-            "value" : 1465226976952
-          },
-          "name" : {
-            "created-date" : {
-              "value" : 1460762383098
-            },
-            "last-modified-date" : {
-              "value" : 1460762383098
-            },
-            "given-names" : {
-              "value" : "Patricia"
-            },
-            "family-name" : {
-              "value" : "Cruse"
-            },
-            "credit-name" : null,
-            "source" : null,
-            "visibility" : "PUBLIC",
-            "path" : "0000-0002-9300-5278"
-          },
-          "other-names" : {
-            "last-modified-date" : {
-              "value" : 1433793300730
-            },
-            "other-name" : [ {
-              "created-date" : {
-                "value" : 1433793300730
-              },
-              "last-modified-date" : {
-                "value" : 1433793300730
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0002-9300-5278",
-                  "path" : "0000-0002-9300-5278",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Patricia Cruse"
-                }
-              },
-              "content" : "Trisha Cruse",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-9300-5278/other-names/470210",
-              "put-code" : 470210,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-9300-5278/other-names"
-          },
-          "biography" : {
-            "created-date" : {
-              "value" : 1460762383100
-            },
-            "last-modified-date" : {
-              "value" : 1460762383100
-            },
-            "content" : "",
-            "visibility" : "PUBLIC",
-            "path" : "/0000-0002-9300-5278/biography"
-          },
-          "researcher-urls" : {
-            "last-modified-date" : null,
-            "researcher-url" : [ ],
-            "path" : "/0000-0002-9300-5278/researcher-urls"
-          },
-          "emails" : {
-            "last-modified-date" : null,
-            "email" : [ ],
-            "path" : "/0000-0002-9300-5278/email"
-          },
-          "addresses" : {
-            "last-modified-date" : {
-              "value" : 1465226976952
-            },
-            "address" : [ {
-              "created-date" : {
-                "value" : 1453660687851
-              },
-              "last-modified-date" : {
-                "value" : 1465226976952
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0002-9300-5278",
-                  "path" : "0000-0002-9300-5278",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Patricia Cruse"
-                }
-              },
-              "country" : {
-                "value" : "US"
-              },
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-9300-5278/address/395954",
-              "put-code" : 395954,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-9300-5278/address"
-          },
-          "keywords" : {
-            "last-modified-date" : null,
-            "keyword" : [ ],
-            "path" : "/0000-0002-9300-5278/keywords"
-          },
-          "external-identifiers" : {
-            "last-modified-date" : null,
-            "external-identifier" : [ ],
-            "path" : "/0000-0002-9300-5278/external-identifiers"
-          },
-          "path" : "/0000-0002-9300-5278/person"
-        }
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:58 GMT
-- request:
-    method: get
-    uri: https://pub.orcid.org/v2.1/0000-0003-4221-7956/person
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Accept:
-      - application/vnd.orcid+json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.4.6 (Ubuntu)
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/vnd.orcid+json; qs=4;charset=UTF-8
-      Date:
-      - Thu, 25 Oct 2018 20:52:58 GMT
-      Expires:
-      - '0'
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Content-Type-Options:
-      - nosniff
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - X-Mapping-fjhppofk=286B142B3C5849CB06CC59D0E32CD23F; path=/
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "last-modified-date" : {
-            "value" : 1517873256636
-          },
-          "name" : {
-            "created-date" : {
-              "value" : 1460765466142
-            },
-            "last-modified-date" : {
-              "value" : 1460765466142
-            },
-            "given-names" : {
-              "value" : "Michael"
-            },
-            "family-name" : {
-              "value" : "Witt"
-            },
-            "credit-name" : {
-              "value" : "Michael Witt"
-            },
-            "source" : null,
-            "visibility" : "PUBLIC",
-            "path" : "0000-0003-4221-7956"
-          },
-          "other-names" : {
-            "last-modified-date" : {
-              "value" : 1405985744261
-            },
-            "other-name" : [ {
-              "created-date" : {
-                "value" : 1405985744260
-              },
-              "last-modified-date" : {
-                "value" : 1405985744260
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Michael C. Witt",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/other-names/230674",
-              "put-code" : 230674,
-              "display-index" : 0
-            }, {
-              "created-date" : {
-                "value" : 1405985744261
-              },
-              "last-modified-date" : {
-                "value" : 1405985744261
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Michael Christopher Witt",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/other-names/230675",
-              "put-code" : 230675,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0003-4221-7956/other-names"
-          },
-          "biography" : {
-            "created-date" : {
-              "value" : 1460765466144
-            },
-            "last-modified-date" : {
-              "value" : 1460765466144
-            },
-            "content" : "Michael Witt is the head of the Distributed Data Curation Center (D2C2) and an associate professor of library science at Purdue University.",
-            "visibility" : "PUBLIC",
-            "path" : "/0000-0003-4221-7956/biography"
-          },
-          "researcher-urls" : {
-            "last-modified-date" : {
-              "value" : 1405985744262
-            },
-            "researcher-url" : [ {
-              "created-date" : {
-                "value" : 1405985744262
-              },
-              "last-modified-date" : {
-                "value" : 1405985744262
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "url-name" : "Michael Witt, Purdue University",
-              "url" : {
-                "value" : "http://www.lib.purdue.edu/research/witt"
-              },
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/researcher-urls/314365",
-              "put-code" : 314365,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0003-4221-7956/researcher-urls"
-          },
-          "emails" : {
-            "last-modified-date" : null,
-            "email" : [ ],
-            "path" : "/0000-0003-4221-7956/email"
-          },
-          "addresses" : {
-            "last-modified-date" : null,
-            "address" : [ ],
-            "path" : "/0000-0003-4221-7956/address"
-          },
-          "keywords" : {
-            "last-modified-date" : {
-              "value" : 1456802191180
-            },
-            "keyword" : [ {
-              "created-date" : {
-                "value" : 1400685563183
-              },
-              "last-modified-date" : {
-                "value" : 1456802191180
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Library Science",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/keywords/131909",
-              "put-code" : 131909,
-              "display-index" : 4
-            }, {
-              "created-date" : {
-                "value" : 1400685563187
-              },
-              "last-modified-date" : {
-                "value" : 1456802191180
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Research Data Management",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/keywords/131910",
-              "put-code" : 131910,
-              "display-index" : 3
-            }, {
-              "created-date" : {
-                "value" : 1400685563191
-              },
-              "last-modified-date" : {
-                "value" : 1456802191180
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Institutional Repositories",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/keywords/131911",
-              "put-code" : 131911,
-              "display-index" : 2
-            }, {
-              "created-date" : {
-                "value" : 1400685520020
-              },
-              "last-modified-date" : {
-                "value" : 1456802191180
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Data Curation",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/keywords/131907",
-              "put-code" : 131907,
-              "display-index" : 1
-            }, {
-              "created-date" : {
-                "value" : 1456802191169
-              },
-              "last-modified-date" : {
-                "value" : 1456802191169
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0003-4221-7956",
-                  "path" : "0000-0003-4221-7956",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Michael Witt"
-                }
-              },
-              "content" : "Digital Libraries",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/keywords/381438",
-              "put-code" : 381438,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0003-4221-7956/keywords"
-          },
-          "external-identifiers" : {
-            "last-modified-date" : {
-              "value" : 1517873256636
-            },
-            "external-identifier" : [ {
-              "created-date" : {
-                "value" : 1383332900235
-              },
-              "last-modified-date" : {
-                "value" : 1517869567419
-              },
-              "source" : {
-                "source-orcid" : null,
-                "source-client-id" : {
-                  "uri" : "https://orcid.org/client/0000-0003-1377-5676",
-                  "path" : "0000-0003-1377-5676",
-                  "host" : "orcid.org"
-                },
-                "source-name" : {
-                  "value" : "ResearcherID"
-                }
-              },
-              "external-id-type" : "ResearcherID",
-              "external-id-value" : "L-6590-2013",
-              "external-id-url" : {
-                "value" : "http://www.researcherid.com/rid/L-6590-2013"
-              },
-              "external-id-relationship" : "SELF",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/external-identifiers/54053",
-              "put-code" : 54053,
-              "display-index" : 0
-            }, {
-              "created-date" : {
-                "value" : 1383333116274
-              },
-              "last-modified-date" : {
-                "value" : 1517873256636
-              },
-              "source" : {
-                "source-orcid" : null,
-                "source-client-id" : {
-                  "uri" : "https://orcid.org/client/0000-0002-5982-8983",
-                  "path" : "0000-0002-5982-8983",
-                  "host" : "orcid.org"
-                },
-                "source-name" : {
-                  "value" : "Scopus - Elsevier"
-                }
-              },
-              "external-id-type" : "Scopus Author ID",
-              "external-id-value" : "15119883100",
-              "external-id-url" : {
-                "value" : "http://www.scopus.com/inward/authorDetails.url?authorID=15119883100&partnerID=MN8TOARS"
-              },
-              "external-id-relationship" : "SELF",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0003-4221-7956/external-identifiers/168013",
-              "put-code" : 168013,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0003-4221-7956/external-identifiers"
-          },
-          "path" : "/0000-0003-4221-7956/person"
-        }
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:58 GMT
-- request:
-    method: get
-    uri: https://pub.orcid.org/v2.1/0000-0002-7285-027X/person
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Accept:
-      - application/vnd.orcid+json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.4.6 (Ubuntu)
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/vnd.orcid+json; qs=4;charset=UTF-8
-      Date:
-      - Thu, 25 Oct 2018 20:52:59 GMT
-      Expires:
-      - '0'
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Content-Type-Options:
-      - nosniff
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - X-Mapping-fjhppofk=286B142B3C5849CB06CC59D0E32CD23F; path=/
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "last-modified-date" : {
-            "value" : 1405919060708
-          },
-          "name" : {
-            "created-date" : {
-              "value" : 1460761181288
-            },
-            "last-modified-date" : {
-              "value" : 1460761181288
-            },
-            "given-names" : {
-              "value" : "Joan"
-            },
-            "family-name" : {
-              "value" : "Starr"
-            },
-            "credit-name" : {
-              "value" : "Joan Starr"
-            },
-            "source" : null,
-            "visibility" : "PUBLIC",
-            "path" : "0000-0002-7285-027X"
-          },
-          "other-names" : {
-            "last-modified-date" : {
-              "value" : 1405919060708
-            },
-            "other-name" : [ {
-              "created-date" : {
-                "value" : 1405919060708
-              },
-              "last-modified-date" : {
-                "value" : 1405919060708
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0002-7285-027X",
-                  "path" : "0000-0002-7285-027X",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Joan Starr"
-                }
-              },
-              "content" : "Joan B. Starr",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-7285-027X/other-names/226239",
-              "put-code" : 226239,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-7285-027X/other-names"
-          },
-          "biography" : {
-            "created-date" : {
-              "value" : 1460761181290
-            },
-            "last-modified-date" : {
-              "value" : 1533262488727
-            },
-            "content" : "Retired; former Service Manager for EZID (http://ezid.cdlib.org) , the easy way to assign ARKs and DataCite DOIs, from California Digital Library, University of California Office of the President.",
-            "visibility" : "PUBLIC",
-            "path" : "/0000-0002-7285-027X/biography"
-          },
-          "researcher-urls" : {
-            "last-modified-date" : null,
-            "researcher-url" : [ ],
-            "path" : "/0000-0002-7285-027X/researcher-urls"
-          },
-          "emails" : {
-            "last-modified-date" : null,
-            "email" : [ ],
-            "path" : "/0000-0002-7285-027X/email"
-          },
-          "addresses" : {
-            "last-modified-date" : null,
-            "address" : [ ],
-            "path" : "/0000-0002-7285-027X/address"
-          },
-          "keywords" : {
-            "last-modified-date" : {
-              "value" : 1362859893389
-            },
-            "keyword" : [ {
-              "created-date" : {
-                "value" : 1362859893389
-              },
-              "last-modified-date" : {
-                "value" : 1362859893389
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0002-7285-027X",
-                  "path" : "0000-0002-7285-027X",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Joan Starr"
-                }
-              },
-              "content" : "metadata, data management, collaboration, identifiers, persistent identifiers, long-term identifiers, library sustainability",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-7285-027X/keywords/11327",
-              "put-code" : 11327,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-7285-027X/keywords"
-          },
-          "external-identifiers" : {
-            "last-modified-date" : null,
-            "external-identifier" : [ ],
-            "path" : "/0000-0002-7285-027X/external-identifiers"
-          },
-          "path" : "/0000-0002-7285-027X/person"
-        }
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:59 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:02 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-9300-5278","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T20:52:58Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
-        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-25T16:27:37.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0002-9300-5278","type":"person","givenName":"Patricia","familyName":"Cruse"}}}}'
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-9300-5278","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:53:02Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
+        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-27T02:00:48.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0002-9300-5278","type":"person","givenName":"Patricia","familyName":"Cruse"}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
@@ -891,101 +155,45 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:52:59 GMT
+      - Sat, 27 Oct 2018 10:53:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Etag:
-      - W/"055d6b188c51213324e667b4e0ebc473"
-      X-Runtime:
-      - '0.044865'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - d7d4e493-0ab3-4ff0-a926-65fd76b2f2b1
-      X-Powered-By:
-      - Phusion Passenger 5.3.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.5
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"7490e2bc-b7d6-4351-ad14-e7ec25b37f20","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-9300-5278","source-id":"datacite-orcid-auto-update","relation-type-id":"is-authored-by","total":1,"message-action":"create","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:36:04.619Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/0x88-gvge","type":"objects"}},"obj":{"data":{"id":"http://orcid.org/0000-0002-9300-5278","type":"objects"}}}}}'
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:59 GMT
-- request:
-    method: post
-    uri: https://profiles.test.datacite.org/api/claims
-    body:
-      encoding: UTF-8
-      string: '{"claim":{"doi":"10.5438/0x88-gvge","orcid":"0000-0002-9300-5278","source_id":"orcid_update","claim_action":"create"}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Content-Type:
-      - application/json
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
-  response:
-    status:
-      code: 202
-      message: Accepted
-    headers:
-      Date:
-      - Thu, 25 Oct 2018 20:52:59 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 202 Accepted
+      - 401 Unauthorized
       Cache-Control:
       - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - 2b8d2f5e-5a16-45f7-9e32-b4946143e6b4
       X-Runtime:
-      - '0.019210'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
+      - '0.008941'
+      X-Request-Id:
+      - 4bedb85b-baa2-4395-ba43-a460ca5e5bca
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"55c82aa1-5826-4fcb-b5a9-49edbc4c5ca5","type":"claims","attributes":{"orcid":"0000-0002-9300-5278","doi":"10.5438/0x88-gvge","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":null,"put-code":null,"claimed":null,"created":"2018-10-25T20:52:59Z","updated":"2018-10-25T20:52:59Z"}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:52:59 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:02 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0003-4221-7956","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T20:52:58Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
-        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-25T16:27:37.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0003-4221-7956","type":"person","givenName":"Michael","familyName":"Witt","name":"Michael
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0003-4221-7956","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:53:02Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
+        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-27T02:00:48.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0003-4221-7956","type":"person","givenName":"Michael","familyName":"Witt","name":"Michael
         Witt"}}}}'
     headers:
       User-Agent:
@@ -995,101 +203,45 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:53:00 GMT
+      - Sat, 27 Oct 2018 10:53:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Etag:
-      - W/"06b45fd60b4995b61b2e9fdb8f0cb6c4"
-      X-Runtime:
-      - '0.034136'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - 2e4c35d2-0d44-4821-92d2-309460661aca
-      X-Powered-By:
-      - Phusion Passenger 5.3.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.5
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"fb3173cb-b856-4831-9452-d0650e75e6ad","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0003-4221-7956","source-id":"datacite-orcid-auto-update","relation-type-id":"is-authored-by","total":1,"message-action":"create","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:36:04.848Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/0x88-gvge","type":"objects"}},"obj":{"data":{"id":"http://orcid.org/0000-0003-4221-7956","type":"objects"}}}}}'
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:53:00 GMT
-- request:
-    method: post
-    uri: https://profiles.test.datacite.org/api/claims
-    body:
-      encoding: UTF-8
-      string: '{"claim":{"doi":"10.5438/0x88-gvge","orcid":"0000-0003-4221-7956","source_id":"orcid_update","claim_action":"create"}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Content-Type:
-      - application/json
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
-  response:
-    status:
-      code: 202
-      message: Accepted
-    headers:
-      Date:
-      - Thu, 25 Oct 2018 20:53:00 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 202 Accepted
+      - 401 Unauthorized
       Cache-Control:
       - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - ea286cb8-fb87-47cd-92fb-48291f4fe823
       X-Runtime:
-      - '0.029896'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
+      - '0.009444'
+      X-Request-Id:
+      - 17f2658c-697c-453f-92dc-c70b4db7088e
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"85f3d0ac-92d3-40ba-96f5-0c027f6a2c3a","type":"claims","attributes":{"orcid":"0000-0003-4221-7956","doi":"10.5438/0x88-gvge","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":null,"put-code":null,"claimed":null,"created":"2018-10-25T20:53:00Z","updated":"2018-10-25T20:53:00Z"}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:53:00 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:03 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-7285-027X","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T20:52:59Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
-        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-25T16:27:37.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0002-7285-027X","type":"person","givenName":"Joan","familyName":"Starr","name":"Joan
+      string: '{"data":{"type":"events","attributes":{"message-action":"create","subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-7285-027X","relation-type-id":"is-authored-by","source-id":"datacite-orcid-auto-update","source-token":null,"occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-27T10:53:02Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"id":"https://doi.org/10.5438/0x88-gvge","type":"scholarly-article","name":"EZID
+        DOI Service is Evolving","author":[{"given_name":"Patricia","family_name":"Cruse"},{"given_name":"Michael","family_name":"Witt"},{"given_name":"Joan","family_name":"Starr"}],"publisher":"DataCite","version":"1.0","date_published":"2017-08-04","date_modified":"2018-10-27T02:00:48.000Z","registrant_id":"datacite.datacite.datacite"},"obj":{"id":"http://orcid.org/0000-0002-7285-027X","type":"person","givenName":"Joan","familyName":"Starr","name":"Joan
         Starr"}}}}'
     headers:
       User-Agent:
@@ -1099,92 +251,36 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Thu, 25 Oct 2018 20:53:00 GMT
+      - Sat, 27 Oct 2018 10:53:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Etag:
-      - W/"b0bc23be5041e138e15d5cdf9f3859fe"
-      X-Runtime:
-      - '0.043442'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - eccc7d66-7669-4151-8502-25cffb2cb92a
-      X-Powered-By:
-      - Phusion Passenger 5.3.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.5
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"6ae6a33c-fdab-47cb-85a6-2bf61be604c1","type":"events","attributes":{"subj-id":"https://doi.org/10.5438/0x88-gvge","obj-id":"http://orcid.org/0000-0002-7285-027X","source-id":"datacite-orcid-auto-update","relation-type-id":"is-authored-by","total":1,"message-action":"create","source-token":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-10-07T05:42:36.000Z","timestamp":"2018-10-25T16:36:05.054Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5438/0x88-gvge","type":"objects"}},"obj":{"data":{"id":"http://orcid.org/0000-0002-7285-027X","type":"objects"}}}}}'
-    http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:53:00 GMT
-- request:
-    method: post
-    uri: https://profiles.test.datacite.org/api/claims
-    body:
-      encoding: UTF-8
-      string: '{"claim":{"doi":"10.5438/0x88-gvge","orcid":"0000-0002-7285-027X","source_id":"orcid_update","claim_action":"create"}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.1.1; +https://github.com/datacite/maremma)
-      Content-Type:
-      - application/json
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
-  response:
-    status:
-      code: 202
-      message: Accepted
-    headers:
-      Date:
-      - Thu, 25 Oct 2018 20:53:00 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 202 Accepted
+      - 401 Unauthorized
       Cache-Control:
       - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - 965d1372-7b6b-42d9-b650-699baa8197dd
       X-Runtime:
-      - '0.018227'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
+      - '0.010592'
+      X-Request-Id:
+      - b4ab2105-c603-4225-b668-cb9300d4648b
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"a9d8f1e6-8a79-4c00-8344-e8882c204518","type":"claims","attributes":{"orcid":"0000-0002-7285-027X","doi":"10.5438/0x88-gvge","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":null,"put-code":null,"claimed":null,"created":"2018-10-25T20:53:00Z","updated":"2018-10-25T20:53:00Z"}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 20:53:00 GMT
+  recorded_at: Sat, 27 Oct 2018 10:53:03 GMT
 recorded_with: VCR 3.0.3
