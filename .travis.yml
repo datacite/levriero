@@ -78,7 +78,7 @@ after_success:
       fi
 
       git commit -m "Adding levriero git variables for latest commit";
-      git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git" $CURRENT_BRANCH;
+      git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git" ${CURRENT_BRANCH};
     fi
 
 notifications:
