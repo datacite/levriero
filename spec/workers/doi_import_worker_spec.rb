@@ -27,6 +27,14 @@ describe DoiImportWorker do
       expect(name_identifiers.length).to eq(4)
       expect(name_identifiers.first).to eq("__content__"=>"10.5438/0000-00ss", "relatedIdentifierType"=>"DOI", "relationType"=>"IsPartOf")
     end
+
+    it 'find name_identifier many authors' do
+      doi = "10.3204/pubdb-2018-02197"
+      data = { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json
+      name_identifiers = subject.perform(sqs_msg, data)
+      expect(name_identifiers.length).to eq(36)
+      expect(name_identifiers.first).to eq("creatorName"=>"Friedl, Markus", "nameIdentifier"=>{"__content__"=>"0000-0002-7420-2559", "nameIdentifierScheme"=>"ORCID", "schemeURI"=>"http://orcid.org"})
+    end
   end
 
   context "funder_identifier", vcr: true do
