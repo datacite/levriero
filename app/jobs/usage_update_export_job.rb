@@ -1,4 +1,4 @@
-class UsageUpdateImportJob < ActiveJob::Base
+class UsageUpdateExportJob < ActiveJob::Base
   queue_as :levriero
 
   def perform(item, options={})

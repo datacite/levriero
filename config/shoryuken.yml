@@ -4,3 +4,4 @@ pidfile: tmp/pids/shoryuken.pid
 queues:
   - doi
   - levriero
+  - usage

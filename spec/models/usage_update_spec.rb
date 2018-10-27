@@ -24,20 +24,20 @@ describe UsageUpdate, type: :model, vcr: true do
     end
   end
 
-  describe "queue" do 
-    context "get_total" do
-      it "when is working with AWS" do
-        expect(subject.get_total()).to respond_to(:+)
-        expect(subject.get_total()).not_to respond_to(:each)
-      end
-    end
+  # describe "queue" do 
+  #   context "get_total" do
+  #     it "when is working with AWS" do
+  #       expect(subject.get_total()).to respond_to(:+)
+  #       expect(subject.get_total()).not_to respond_to(:each)
+  #     end
+  #   end
 
-    context "get_message" do
-      it "should return one message when there are multiple messages" do
-        expect(subject.get_query_url).to respond_to(:each)
-      end
-    end
-  end
+  #   context "get_message" do
+  #     it "should return one message when there are multiple messages" do
+  #       expect(subject.get_query_url).to respond_to(:each)
+  #     end
+  #   end
+  # end
 
   describe "parse_data" do
     context "when the usage event was NOT found" do
@@ -68,6 +68,7 @@ describe UsageUpdate, type: :model, vcr: true do
 
     context "when the report was found" do
       it "should parsed it correctly" do
+        # result = Maremma.get("https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", host: "https://api.test.datacite.org/")
         body = File.read(fixture_path + 'usage_update.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         response = UsageUpdate.parse_data(result)

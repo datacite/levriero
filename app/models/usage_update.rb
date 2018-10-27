@@ -9,26 +9,26 @@ class UsageUpdate < Base
   end
 
   def source_id
-    "usage_update"
+    "datacite-usage"
   end
 
 
-  def process_data options={} 
-    messages = get_query_url options
-    messages.each do |message|
-      body = JSON.parse(message.body)
-      report_id = body["report_id"]
-      UsageUpdateParseJob.perform_later(report_id, options)
-      delete_message message
-    end if messages.respond_to?("each")
-    messages.length
-  end
+  # def process_data options={} 
+  #   messages = get_query_url options
+  #   messages.each do |message|
+  #     body = JSON.parse(message.body)
+  #     report_id = body["report_id"]
+  #     UsageUpdateParseJob.perform_later(report_id, options)
+  #     delete_message message
+  #   end if messages.respond_to?("each")
+  #   messages.length
+  # end
 
-  def get_query_url _options={}
-    queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
-    resp = sqs.receive_message(queue_url: queue_url, max_number_of_messages: 5, wait_time_seconds: 1)
-    resp.messages
-  end
+  # def get_query_url _options={}
+  #   queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
+  #   resp = sqs.receive_message(queue_url: queue_url, max_number_of_messages: 5, wait_time_seconds: 1)
+  #   resp.messages
+  # end
 
   def self.get_data report_id, _options={}
     return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_id.blank?
@@ -37,56 +37,61 @@ class UsageUpdate < Base
     report
   end
 
+  def self.parse_record sqs_msg: nil, data: nil
+    report_id = data.fetch("report_id", "")
+    UsageUpdateParseJob.perform_later(report_id)
+  end
+
   def sqs
     sqs = Aws::SQS::Client.new(region: ENV["AWS_REGION"])
     sqs
   end
 
 
-  def get_total(options={})
-    queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
-    req = sqs.get_queue_attributes(
-      {
-        queue_url: queue_url, attribute_names: 
-          [
-            'ApproximateNumberOfMessages', 
-            'ApproximateNumberOfMessagesNotVisible'
-          ]
-      }
-    )
+  # def get_total(options={})
+  #   queue_url = sqs.get_queue_url(queue_name: "#{Rails.env}_usage" ).queue_url
+  #   req = sqs.get_queue_attributes(
+  #     {
+  #       queue_url: queue_url, attribute_names: 
+  #         [
+  #           'ApproximateNumberOfMessages', 
+  #           'ApproximateNumberOfMessagesNotVisible'
+  #         ]
+  #     }
+  #   )
 
-    msgs_available = req.attributes['ApproximateNumberOfMessages']
-    msgs_available.to_i
-  end
+  #   msgs_available = req.attributes['ApproximateNumberOfMessages']
+  #   msgs_available.to_i
+  # end
 
-  def queue_jobs(options={})
+  # def queue_jobs(options={})
 
-    total = get_total(options)
+  #   total = get_total(options)
     
-    if total < 1
-      text = "No works found in the Usage Reports Queue."
-    end
+  #   if total < 1
+  #     text = "No works found in the Usage Reports Queue."
+  #   end
 
-    num_messages = total
-    while num_messages > 0 
-        queued = process_data(options)
-        num_messages -= queued
-        puts num_messages
-        puts queued
-    end
-    text = "#{queued} reports queued out of #{total} for Usage Reports Queue"
+  #   num_messages = total
+  #   while num_messages > 0 
+  #       queued = process_data(options)
+  #       num_messages -= queued
+  #       puts num_messages
+  #       puts queued
+  #   end
+  #   text = "#{queued} reports queued out of #{total} for Usage Reports Queue"
 
-    LOGGER.info text
-    # send slack notification
-    if queued == 0
-      options[:level] = "warning"
-    else
-      options[:level] = "good"
-    end
-    options[:title] = "Report for #{source_id}"
-    send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
-    queued
-  end
+  #   LOGGER.info text
+  #   # send slack notification
+  #   if queued == 0
+  #     options[:level] = "warning"
+  #   else
+  #     options[:level] = "good"
+  #   end
+  #   options[:title] = "Report for #{source_id}"
+  #   send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
+  #   queued
+  # end
 
   def self.parse_data report, options={}
 
@@ -133,7 +138,7 @@ class UsageUpdate < Base
       "obj-id" => data[:id],
       "relation-type-id" => type,
       "source-id" => "datacite-usage",
-      "source-token" =>ENV['DATACITE_USAGE_SOURCE_TOKEN'],
+      "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'],
       "occurred-at" => data[:created_at],
       "license" => LICENSE 
     }
@@ -145,7 +150,7 @@ class UsageUpdate < Base
       LOGGER.info  "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
-        UsageUpdateImportJob.perform_later(item.to_json, options)
+        UsageUpdateExportJob.perform_later(item.to_json, options)
       end
     end
   end

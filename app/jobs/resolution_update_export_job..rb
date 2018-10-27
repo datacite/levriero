@@ -1,4 +1,4 @@
-class ResolutionUpdateImportJob < ActiveJob::Base
+class ResolutionUpdateExportJob < ActiveJob::Base
   queue_as :levriero
 
   def perform(item, options={})
