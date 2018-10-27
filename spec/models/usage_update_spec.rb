@@ -68,12 +68,21 @@ describe UsageUpdate, type: :model, vcr: true do
 
     context "when the report was found" do
       it "should parsed it correctly" do
-        # result = Maremma.get("https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", host: "https://api.test.datacite.org/")
         body = File.read(fixture_path + 'usage_update.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         response = UsageUpdate.parse_data(result)
         expect(response.length).to eq(2)
         expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'])
+      end
+
+      it "should parsed it correctly from call" do
+        result = Maremma.get("https://api.test.datacite.org/reports/02b739dc-5ec6-41a1-a72c-74e852f04c8a", host: "https://api.test.datacite.org/")
+        # result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
+        response = UsageUpdate.parse_data(result)
+        expect(response.length).to eq(1642)
+        doi_instances =response.select {|instance| instance.dig("obj-id") == "https://doi.org/10.7272/q6qn64nk" }
+        total_requests_regular = doi_instances.select {|instance| instance.dig("relation-type-id") == "total-dataset-requests-regular"}
+        expect(total_requests_regular.first.dig("total")).to eq(1083)
       end
 
       it "should parsed it correctly when it has five metrics  and two DOIs" do

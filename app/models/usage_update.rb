@@ -98,8 +98,10 @@ class UsageUpdate < Base
     return report.body.fetch("errors") if report.body.fetch("errors", nil).present?
     return [{ "errors" => { "title" => "The report is blank" }}] if report.body.blank?
 
-    items = report.body.dig("data","report","report-datasets")
-    header = report.body.dig("data","report","report-header")
+    data = report.body.fetch("data", {})
+
+    items = data.dig("report","report-datasets")
+    header = data.dig("report","report-header")
     report_id = report.url
 
     Array.wrap(items).reduce([]) do |x, item|
@@ -176,6 +178,7 @@ class UsageUpdate < Base
           "message-action" => item["message-action"],
           "subj-id" => item["subj-id"],
           "obj-id" => item["obj-id"],
+          "total" => item["total"],
           "relation-type-id" => item["relation-type-id"].to_s.dasherize,
           "source-id" => item["source-id"].to_s.dasherize,
           "source-token" => item["source-token"],
