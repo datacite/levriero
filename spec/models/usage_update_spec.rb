@@ -112,6 +112,22 @@ describe UsageUpdate, type: :model, vcr: true do
     end
   end
 
+
+  describe "wrap event" do
+    let(:options) {
+      {report_meta:{
+        report_id: "1a6e79ea-5291-4f5f-a25e-2cb071715bfc", 
+        created_by: 'datacite', 
+        reporting_period: ""}}
+    }
+    let(:item) {{"obj-id"=>"https://doi.org/10.14278/rodaretest.11"}}
+    
+    it "should format correctly" do
+      expect((UsageUpdate.wrap_event(item,options)).dig("data","attributes","obj")).to eq({"id"=>"https://doi.org/10.14278/rodaretest.11", "type"=>"dataset", "name"=>"Large Image", "author"=>[{"given_name"=>"Tester", "family_name"=>"Test"}], "publisher"=>"Rodare", "date_published"=>"2018-04-10", "date_modified"=>"2018-10-28T02:01:02.000Z", "registrant_id"=>"datacite.tib.hzdr"})
+    end
+
+  end
+
   context "push_data" do
     let!(:events) {create_list(:event,10)}
 

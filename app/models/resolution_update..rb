@@ -139,6 +139,26 @@ class ResolutionUpdate < Base
     }
   end
 
+  def self.wrap_event item, options={}
+    obj = cached_datacite_response(item["obj-id"])
+    subj = options[:report_meta]
+    { 
+      "data" => {
+        "type" => "events",
+        "attributes" => {
+          "message-action" => item["message-action"],
+          "subj-id" => item["subj-id"],
+          "obj-id" => item["obj-id"],
+          "relation-type-id" => item["relation-type-id"].to_s.dasherize,
+          "source-id" => item["source-id"].to_s.dasherize,
+          "source-token" => item["source-token"],
+          "occurred-at" => item["occurred-at"],
+          "timestamp" => item["timestamp"],
+          "license" => item["license"],
+          "subj" => subj,
+          "obj" => obj } }}
+  end
+
   # method returns number of errors
   def self.push_data items, options={}
     if items.empty?
@@ -161,24 +181,25 @@ class ResolutionUpdate < Base
       return LOGGER.info OpenStruct.new(body: { "errors" => [{ "title" => "#{item["errors"]["title"]}" }] }) 
     end
 
-    obj = cached_datacite_response(item["obj-id"])
-    subj = options[:report_meta]
+    # obj = cached_datacite_response(item["obj-id"])
+    # subj = options[:report_meta]
+    data = wrap_event item
     push_url = ENV['LAGOTTINO_URL']  + "/events"
-    data = { 
-      "data" => {
-        "type" => "events",
-        "attributes" => {
-          "message-action" => item["message-action"],
-          "subj-id" => item["subj-id"],
-          "obj-id" => item["obj-id"],
-          "relation-type-id" => item["relation-type-id"].to_s.dasherize,
-          "source-id" => item["source-id"].to_s.dasherize,
-          "source-token" => item["source-token"],
-          "occurred-at" => item["occurred-at"],
-          "timestamp" => item["timestamp"],
-          "license" => item["license"],
-          "subj" => subj,
-          "obj" => obj } }}
+    # data = { 
+    #   "data" => {
+    #     "type" => "events",
+    #     "attributes" => {
+    #       "message-action" => item["message-action"],
+    #       "subj-id" => item["subj-id"],
+    #       "obj-id" => item["obj-id"],
+    #       "relation-type-id" => item["relation-type-id"].to_s.dasherize,
+    #       "source-id" => item["source-id"].to_s.dasherize,
+    #       "source-token" => item["source-token"],
+    #       "occurred-at" => item["occurred-at"],
+    #       "timestamp" => item["timestamp"],
+    #       "license" => item["license"],
+    #       "subj" => subj,
+    #       "obj" => obj } }}
   
     response = Maremma.post(push_url, data: data.to_json,
                                       bearer: ENV['LAGOTTINO_TOKEN'],
