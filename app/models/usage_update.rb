@@ -2,14 +2,27 @@ class UsageUpdate < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
   LOGGER = Logger.new(STDOUT)
 
+  USAGE_RELATIONS = [
+    "total-dataset-investigations-regular",
+    "total-dataset-investigations-machine",
+    "total-dataset-requests-machine",
+    "total-dataset-requests-regular",
+    "unique-dataset-investigations-regular",
+    "unique-dataset-investigations-machine",
+    "unique-dataset-requests-machine",
+    "unique-dataset-requests-regular"
+  ]
+
+  RESOLUTION_RELATIONS = [
+    "total-resolutions-regular",
+    "total-resolutions-machine",
+    "unique-resolutions-machine",
+    "unique-resolutions-regular"
+  ]
 
   def self.import(_options={})
     usage_update = UsageUpdate.new
     usage_update.queue_jobs 
-  end
-
-  def source_id
-    "datacite-usage"
   end
 
   def self.get_data report_id, _options={}
@@ -64,9 +77,15 @@ class UsageUpdate < Base
 
   def self.format_event type, data, options={}
     fail "Not type given. Report #{data[:report_id]} not proccessed" if type.blank?
-    fail "Access token missing." if ENV['DATACITE_USAGE_SOURCE_TOKEN'].blank?
     fail "Report_id is missing" if data[:report_id].blank?
-    
+
+    if USAGE_RELATIONS.include?(type.downcase)
+      source_id = "datacite-usage"
+      source_token = ENV['DATACITE_USAGE_SOURCE_TOKEN']
+    elsif RESOLUTION_RELATIONS.include?(type.downcase)
+      source_id = "datacite-resolution"
+      source_token = ENV['DATACITE_RESOLUTION_SOURCE_TOKEN']
+    end
     { "message-action" => "create",
       "subj-id" => data[:report_id],
       "subj"=> {
@@ -76,8 +95,8 @@ class UsageUpdate < Base
       "total"=> data[:count],
       "obj-id" => data[:id],
       "relation-type-id" => type,
-      "source-id" => "datacite-usage",
-      "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'],
+      "source-id" => source_id,
+      "source-token" => source_token,
       "occurred-at" => data[:created_at],
       "license" => LICENSE 
     }
