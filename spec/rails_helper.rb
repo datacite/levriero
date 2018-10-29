@@ -43,10 +43,6 @@ end
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-  config.default_cassette_options = {
-    :match_requests_on => [:method,
-      VCR.request_matchers.uri_without_param(:url)]
-  }
   config.hook_into :webmock
   config.ignore_localhost = true
   config.ignore_hosts "codeclimate.com", "elasticsearch"
