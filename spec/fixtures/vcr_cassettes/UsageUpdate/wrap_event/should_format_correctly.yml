@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.14278/rodaretest.11
+    uri: https://api.test.datacite.org//dois/10.14278/rodaretest.11
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 29 Oct 2018 10:21:24 GMT
+      - Mon, 29 Oct 2018 10:53:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 3251ab33-e444-4422-920d-461d3ac7d546
+      - 8e6de8b8-cdcc-42af-b4fc-164ef63fdf03
       Etag:
       - W/"3ebf5c2030928b9ac1839a5cee209b8c"
       X-Runtime:
-      - '0.030474'
+      - '0.022145'
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -48,5 +48,5 @@ http_interactions:
         lookup failure","body-has-pid":null,"citation-doi":null,"dc-identifier":null,"redirect-urls":[],"schema-org-id":null,"has-schema-org":false,"redirect-count":0,"download-latency":null}},"published":"2018-04-10","created":"2018-04-10T13:15:27.000Z","registered":"2018-04-10T13:15:27.000Z","updated":"2018-10-28T02:01:02.000Z","xml":"PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0ndXRmLTgnPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00LjEvbWV0YWRhdGEueHNkIj4KICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xNDI3OC9yb2RhcmV0ZXN0LjExPC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+VGVzdCwgVGVzdGVyPC9jcmVhdG9yTmFtZT4KICAgICAgPGdpdmVuTmFtZT5UZXN0ZXI8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+VGVzdDwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+TGFyZ2UgSW1hZ2U8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+Um9kYXJlPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE4PC9wdWJsaWNhdGlvblllYXI+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxOC0wNC0xMDwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCIvPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJ1cmwiPmh0dHBzOi8vcm9kYXJlLXRlc3QuaHpkci5kZS9yZWNvcmQvMTE8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iVVJOIiByZWxhdGlvblR5cGU9IkRvY3VtZW50cyI+dXJuOm5ibjpkZTpic3o6ZDEyMC1xdWNvc2EtMjI0NDA0PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1ZlcnNpb25PZiI+MTAuMTQyNzgvcm9kYXJldGVzdC4xMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaW5mbzpldS1yZXBvL3NlbWFudGljcy9jbG9zZWRBY2Nlc3MiPkNsb3NlZCBBY2Nlc3M8L3JpZ2h0cz4KICA8L3JpZ2h0c0xpc3Q+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij4mbHQ7cCZndDtUZXN0IG9mIGxhcmdlIGltYWdlIHByZXZpZXcuJmx0Oy9wJmd0OzwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+Cg==","cache-key":"dois/10.14278/rodaretest.11-2018-10-28T02:01:02Z"},"relationships":{"client":{"data":{"id":"tib.hzdr","type":"clients"}},"resource-type":{"data":{"id":"dataset","type":"resource_types"}},"media":{"data":[]}}},"included":[{"id":"tib.hzdr","type":"clients","attributes":{"name":"Helmholtz-Zentrum
         Dresden-Rossendorf","symbol":"TIB.HZDR","year":2013,"contact-name":"Uwe Konrad","contact-email":"u.konrad@hzdr.de","domains":"hzdr.de","url":null,"created":"2013-09-27T08:15:32.000Z","updated":"2018-08-26T01:30:37.000Z","is-active":true,"has-password":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.14278","type":"prefixes"}]}}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Mon, 29 Oct 2018 10:21:24 GMT
+  recorded_at: Mon, 29 Oct 2018 10:53:23 GMT
 recorded_with: VCR 3.0.3
