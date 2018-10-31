@@ -75,6 +75,15 @@ describe UsageUpdate, type: :model, vcr: true do
         expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'])
       end
 
+      it "should parsed it correctly resolution" do
+        body = File.read(fixture_path + 'resolution_update.json')
+        result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
+        response = UsageUpdate.parse_data(result)
+        expect(response.length).to eq(136)
+        puts response.last
+        expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"},"total"=>37,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.6084/m9.figshare.6158567.v1", "relation-type-id"=>"total-resolutions-machine", "source-id"=>"datacite-resolution", "occurred-at"=>"2018-10-28", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_RESOLUTION_SOURCE_TOKEN'])
+      end
+
       it "should parsed it correctly from call" do
         result = Maremma.get("https://api.test.datacite.org/reports/02b739dc-5ec6-41a1-a72c-74e852f04c8a", host: "https://api.test.datacite.org/")
         # result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
@@ -120,10 +129,11 @@ describe UsageUpdate, type: :model, vcr: true do
         created_by: 'datacite', 
         reporting_period: ""}}
     }
-    let(:item) {{"obj-id"=>"https://doi.org/10.14278/rodaretest.11"}}
+    let(:item) {{"obj-id"=>"https://doi.org/10.14278/rodaretest.11", "total"=>45}}
     
     it "should format correctly" do
       # expect((UsageUpdate.wrap_event(item,options)).dig("data","attributes","obj")).to eq({"id"=>"https://doi.org/10.14278/rodaretest.11", "type"=>"dataset", "name"=>"Large Image", "author"=>[{"given_name"=>"Tester", "family_name"=>"Test"}], "publisher"=>"Rodare", "date_published"=>"2018-04-10", "date_modified"=>"2018-10-28T02:01:02.000Z", "registrant_id"=>"datacite.tib.hzdr"})
+      # expect((UsageUpdate.wrap_event(item,options)).dig("data","attributes","total")).to eq(45)
     end
 
   end

@@ -142,6 +142,7 @@ class UsageUpdate < Base
         "attributes" => {
           "message-action" => item["message-action"],
           "subj-id" => item["subj-id"],
+          "total" => item["total"],
           "obj-id" => item["obj-id"],
           "relation-type-id" => item["relation-type-id"].to_s.dasherize,
           "source-id" => item["source-id"].to_s.dasherize,
