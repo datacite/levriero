@@ -1,3 +1,7 @@
+require 'yajl'
+require 'digest'
+
+
 class UsageUpdate < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
   LOGGER = Logger.new(STDOUT)
@@ -50,7 +54,9 @@ class UsageUpdate < Base
 
     data = report.body.fetch("data", {})
 
-    items = data.dig("report","report-datasets")
+    items = data.fetch("report",{}).key?("gzip") ? self.parse_report(data.dig("report","gzip"),data.dig("report","checksum")) : data.dig("report","report-datasets")
+
+    # items = data.dig("report","report-datasets")
     header = data.dig("report","report-header")
     report_id = report.url
 
@@ -73,6 +79,35 @@ class UsageUpdate < Base
         ssum
       end
     end    
+  end
+
+  def self.decompress_report gzip
+    ActiveSupport::Gzip.decompress(gzip)
+  end
+
+  def self.decode_report encoded_report
+    gzip = Base64.decode64(encoded_report)
+    self.decompress_report(gzip)
+  end
+
+  def self.parse_report encoded_report, checksum
+    fail "Report checksum doesn't match" if self.correct_checksum?(encoded_report, checksum).nil?
+    json = self.decode_report(encoded_report)
+    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    parser = Yajl::Parser.new
+    pp= parser.parse(json)
+    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    elapsed = ending - starting
+    puts elapsed # => 9.183449000120163 seconds
+    pp.fetch("report-datasets",[])
+  end
+
+  def self.correct_checksum? encoded_report, checksum
+    # Digest::SHA256.hexdigest(self.decode_report(report))
+    puts checksum
+    puts Digest::SHA256.hexdigest(Base64.decode64(encoded_report))
+    return nil if Digest::SHA256.hexdigest(Base64.decode64(encoded_report)) != checksum
+    true
   end
 
   def self.format_event type, data, options={}
