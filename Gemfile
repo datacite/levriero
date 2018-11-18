@@ -34,6 +34,7 @@ gem 'oj_mimic_json', '~> 1.0', '>= 1.0.1'
 gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 gem 'aws-sdk-sqs', '~> 1.3'
 gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
+gem 'yajl-ruby', require: 'yajl'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
@@ -58,4 +59,5 @@ group :test do
   gem 'faker'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'elasticsearch-extensions'
+  gem 'yajl-ruby', require: 'yajl'
 end
