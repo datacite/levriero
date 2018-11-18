@@ -119,6 +119,21 @@ describe UsageUpdate, type: :model, vcr: true do
         expect(response.last.body).to eq({"errors"=>"There are too many instances in 10.7291/D1Q94R for report https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad. There can only be 4"})
       end
     end
+
+    describe "parse_data compressed" do
+      context "when the usage event is ok" do
+        it "should return report parsed" do
+          body = File.read(fixture_path + 'pisco_compress.json')
+          result = OpenStruct.new(body:  JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad" )
+          parsed = UsageUpdate.parse_data(result)
+          puts parsed.first.except("uuid")
+
+          expect(parsed).to be_a(Array)
+          expect(parsed.first.except("uuid")).to be({"message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-29"}, "total"=>58, "obj-id"=>"https://doi.org/10.6085/aa/mlpa_intertidal.80.3", "relation-type-id"=>"total-dataset-investigations-", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2018-10-29", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/"})
+          expect(parsed.length).to be(104198)
+        end
+      end
+    end
   end
 
 
