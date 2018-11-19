@@ -8,7 +8,8 @@ class UsageUpdateParseJob < ActiveJob::Base
       logger.info "Report #{item} not found"
       return {}
     else
-      data = UsageUpdate.parse_data(response, options)
+      # data = UsageUpdate.parse_data(response, options)
+      data = Report.new(response, options).parse_data
       message  = data.respond_to?("each") ? "[Usage Report Parsing] Successfully parsed Report #{item} with #{data.length} instances"  : "[Usage Report Parsing] Error parsing Report #{item}"
       logger.info message
       
