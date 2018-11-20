@@ -127,7 +127,7 @@ describe UsageUpdate, type: :model, vcr: true do
         # response = UsageUpdate.parse_data(result)
         response = Report.new(result).parse_data
         expect(response.length).to eq(1)
-        expect(UsageUpdate.parse_data(result)).to be_a(Array)
+        expect(response).to be_a(Array)
         expect(response.last.body).to eq({"errors"=>"There are too many instances in 10.7291/D1Q94R for report https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad. There can only be 4"})
       end
     end
