@@ -11,7 +11,17 @@ class Report < Base
     @checksum  = @data.dig("report").fetch("checksum","")
     @report_id = report.url
     @gzip=""
-    @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+
+    if @data.dig("report","report-header").fetch("exceptions",nil)
+      code = @data.dig("report","report-header","exceptions",0,"code")
+      @items = @data.dig("report","report-datasets") if code.nil? || code != 69
+      @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+    else
+      @items = @data.dig("report","report-datasets")
+    end
+
+
+    # @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
 
  
   end
