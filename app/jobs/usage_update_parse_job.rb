@@ -10,7 +10,7 @@ class UsageUpdateParseJob < ActiveJob::Base
     else
       # data = UsageUpdate.parse_data(response, options)
       data = Report.new(response, options).parse_data
-      send_message(data,item,options)
+      send_message(data,item,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
       # message  = data.respond_to?("each") ? "[Usage Report Parsing] Successfully parsed Report #{item} with #{data.length} instances"  : "[Usage Report Parsing] Error parsing Report #{item}"
       
       options.merge(
