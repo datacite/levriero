@@ -7,10 +7,12 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
-    @encoded_report = @data.dig("report","gzip")
-    @checksum  = @data.dig("report","checksum")
+    @encoded_report = @data.dig("report").fetch("gzip","")
+    @checksum  = @data.dig("report").fetch("checksum","")
     @report_id = report.url
     @gzip=""
+    @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+
  
   end
 
@@ -24,7 +26,10 @@ class Report < Base
   end
 
   def parse_report_datasets
-    fail "Report checksum doesn't match" unless correct_checksum?
+    unless correct_checksum?
+      @errors = [{"errors": "checksum does not match"}]
+      return []
+    end
     json = decode_report
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     parser = Yajl::Parser.new
@@ -37,10 +42,11 @@ class Report < Base
 
   def parse_data options={}
     return @errors if @data.nil?
+    return @errors if @errors
 
-    items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+    # items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
 
-    Array.wrap(items).reduce([]) do |x, item|
+    Array.wrap(@items).reduce([]) do |x, item|
       data = { 
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
