@@ -6,7 +6,9 @@
     "report-name": "Dataset Report",
     "report-id": "DSR",
     "created-by": "Dash",
-    "created": "2022-04-04"
+    "created": "2022-04-04",
+    "exceptions": []
+
   },
   "report-datasets": [
     {

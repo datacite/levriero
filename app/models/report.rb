@@ -7,23 +7,17 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
-    @encoded_report = @data.dig("report").fetch("gzip","")
-    @checksum  = @data.dig("report").fetch("checksum","")
     @report_id = report.url
     @gzip=""
 
-    if @data.dig("report","report-header").fetch("exceptions",nil)
-      code = @data.dig("report","report-header","exceptions",0,"code")
-      @items = @data.dig("report","report-datasets") if code.nil? || code != 69
-      @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+    if compressed_report?
+      @encoded_report = @data.dig("report").fetch("gzip","")
+      @checksum  = @data.dig("report").fetch("checksum","")
+      @items =parse_report_datasets
     else
       @items = @data.dig("report","report-datasets")
     end
 
-
-    # @items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
-
- 
   end
 
   def decompress_report 
@@ -75,6 +69,18 @@ class Report < Base
         ssum
       end
     end    
+  end
+
+  def compressed_report?
+    return nil unless @data.dig("report","report-header","exceptions").present?
+    return nil unless @data.dig("report","report-header","exceptions").any?
+    exceptions = @data.dig("report","report-header","exceptions") 
+    code = exceptions.first.fetch("code","")
+    if code == 69
+      true
+    else
+      nil
+    end
   end
 
   def correct_checksum?

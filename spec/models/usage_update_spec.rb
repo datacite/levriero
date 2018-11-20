@@ -103,6 +103,16 @@ describe UsageUpdate, type: :model, vcr: true do
         expect(total_requests_regular.first.dig("total")).to eq(1083)
       end
 
+      it "should parsed it correctly from dataone with strange doi names" do
+        body = File.read(fixture_path + 'dataone.json')
+        result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/f0e06846-7af1-4e43-a32b-8d299e99bd21"  )
+        # response = UsageUpdate.parse_data(result)
+        response = Report.new(result).parse_data
+        puts response
+        expect(response.last.fetch("obj-id")).to eq("https://doi.org/10.5063/aa/bowdish.122.10")
+        # expect(doi_instances.first.dig("total")).to eq(1083)
+      end
+
       it "should parsed it correctly when it has five metrics  and two DOIs" do
         body = File.read(fixture_path + 'usage_update_3.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
