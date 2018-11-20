@@ -1,6 +1,9 @@
 class UsageUpdateParseJob < ActiveJob::Base
   queue_as :levriero
 
+  ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
+
+
   def perform(item, options={})
     logger = Logger.new(STDOUT)
     response = UsageUpdate.get_data(item, options)
@@ -40,6 +43,17 @@ class UsageUpdateParseJob < ActiveJob::Base
     end
 
     logger.info text
-    send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
+
+    if options[:slack_webhook_url].present?
+      attachment = {
+        title: options[:title] || "Report",
+        text: text,
+        color: options[:level] || "good"
+      }
+      notifier = Slack::Notifier.new options[:slack_webhook_url],
+                                      username: "Event Data Agent",
+                                      icon_url: ICON_URL
+      notifier.post attachments: [attachment]
+    end
   end
 end
