@@ -9,8 +9,9 @@
      "created": "2128-04-09",
      "created-by": "dash",
      "report-attributes": [],
-     "report-filters": [
-        {
+     "report-filters": [],
+     "reporting-period": [
+               {
          "name": "begin-date",
          "value": "2018-03-01"
        },
