@@ -142,22 +142,22 @@ describe UsageUpdate, type: :model, vcr: true do
       end
     end
 
-    # describe "parse_data compressed" do
-    #   context "when the usage event is ok" do
-    #     it "should return report parsed" do
-    #       body = File.read(fixture_path + 'resolution_compress_small.json')
-    #       result = OpenStruct.new(body:  JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad" )
-    #       # parsed = UsageUpdate.parse_data(result)
-    #       parsed = Report.new(result).parse_data
-    #       # parsed =report3
-    #       # puts parsed.first.except("uuid")
-    #       puts parsed
-    #       # expect(parsed).to be_a(Array)
-    #       # expect(parsed.first.except("uuid")).to eq({"message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"}, "total"=>551, "obj-id"=>"https://doi.org/10.5066/f7s75fjm", "relation-type-id"=>"total-resolutions-regular", "source-id"=>"datacite-resolution", "source-token"=>"65903a54-01c8-4a3f-9bf2-04ecc658247a", "occurred-at"=>"2018-10-28", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/"})
-    #       # expect(parsed.length).to be(136)
-    #     end
-    #   end
-    # end
+    describe "parse_data compressed" do
+      context "when the usage event is ok" do
+        it "should return report parsed" do
+          body = File.read(fixture_path + 'resolution_compress_small.json')
+          result = OpenStruct.new(body:  JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad" )
+          # parsed = UsageUpdate.parse_data(result)
+          report = Report.new(result)
+          # parsed =report3
+          # puts parsed.first.except("uuid")
+          # puts parsed
+          expect(Report.new(result).compressed_report?).to be(true)
+          # expect(parsed.first.except("uuid")).to eq({"message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"}, "total"=>551, "obj-id"=>"https://doi.org/10.5066/f7s75fjm", "relation-type-id"=>"total-resolutions-regular", "source-id"=>"datacite-resolution", "source-token"=>"65903a54-01c8-4a3f-9bf2-04ecc658247a", "occurred-at"=>"2018-10-28", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/"})
+          # expect(parsed.length).to be(136)
+        end
+      end
+    end
   end
 
 

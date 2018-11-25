@@ -4,7 +4,7 @@ require 'ffi_yajl'
 
 class Report < Base
 
-  COMPRESSED_HASH_MESSAGE = {"code": 69,"severity": "warning","message": "report is compressed using gzip","help-url": "https://github.com/datacite/sashimi","data": "usage data needs to be uncompressed"}
+  COMPRESSED_HASH_MESSAGE = {"code"=>69, "severity"=>"warning", "message"=>"report is compressed using gzip", "help-url"=>"https://github.com/datacite/sashimi", "data"=>"usage data needs to be uncompressed"}
   
   def initialize report, options={}
     @errors = report.body.fetch("errors") if report.body.fetch("errors", nil).present?
