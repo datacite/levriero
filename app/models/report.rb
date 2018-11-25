@@ -13,6 +13,7 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
+    @type = @data.dig("report","report-header","release")
     @report_id = report.url
     @gzip=""
 
@@ -40,7 +41,8 @@ class Report < Base
       options= {symbolize_keys:false}
       parser = Yajl::Parser.new(options)
 
-      json =  json.gsub('\"', '"')[1..-2]
+      json =  type == "rd1" ? json : json.gsub('\"', '"')[1..-2]
+
       parser.on_parse_complete = method(:parse_report_datasets)
       pp = parser.parse_chunk(json) 
     else
