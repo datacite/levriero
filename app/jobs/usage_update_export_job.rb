@@ -5,12 +5,12 @@ class UsageUpdateExportJob < ActiveJob::Base
     logger = Logger.new(STDOUT)
     logger.info item
     response = UsageUpdate.push_item(item, options)
-    send_message(response,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
+    send_message(response,item,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
 
   end
 
 
-  def send_message response, options={}
+  def send_message response,item, options={}
     logger = Logger.new(STDOUT)
     if response.status == 201 
       text =  "[Event Data] #{item['subj-id']} #{item['relation-type-id']} #{item['obj-id']} pushed to Event Data service."
