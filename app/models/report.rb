@@ -67,10 +67,17 @@ class Report < Base
       instances = item.dig("performance", 0, "instance")
 
       return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{@report_id}. There can only be 4" })] if instances.size > 8
-   
+
       x += Array.wrap(instances).reduce([]) do |ssum, instance|
         data[:count] = instance.dig("count")
         event_type = "#{instance.dig("metric-type")}-#{instance.dig("access-method")}"
+        event = UsageUpdate.format_event(event_type, data, options)
+        options.merge(
+          report_meta:{
+            report_id: @report_id, 
+            created_by: @header.fetch("created-by"), 
+            reporting_period: @header.fetch("reporting-period")})
+        UsageUpdateExportJob.perform_later(event.to_json, options) unless Rails.env.test?
         ssum << UsageUpdate.format_event(event_type, data, options)
         ssum
       end
