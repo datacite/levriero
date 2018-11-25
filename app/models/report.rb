@@ -1,4 +1,10 @@
+require 'ffi_yajl'
+# require 'json/streamer'
+
+
 class Report < Base
+
+  COMPRESSED_HASH_MESSAGE = {"code": 69,"severity": "warning","message": "report is compressed using gzip","help-url": "https://github.com/datacite/sashimi","data": "usage data needs to be uncompressed"}
   
   def initialize report, options={}
     @errors = report.body.fetch("errors") if report.body.fetch("errors", nil).present?
@@ -11,11 +17,9 @@ class Report < Base
     @gzip=""
 
     if compressed_report?
+      puts "compressed"
       @encoded_report = @data.dig("report").fetch("gzip","")
       @checksum  = @data.dig("report").fetch("checksum","")
-      @items =parse_report_datasets
-    else
-      @items = @data.dig("report","report-datasets")
     end
 
   end
@@ -29,28 +33,28 @@ class Report < Base
     decompress_report
   end
 
-  def parse_report_datasets
-    unless correct_checksum?
-      @errors = [{"errors": "checksum does not match"}]
-      return []
+  def parse_data 
+    return @errors if @data.nil?
+    if compressed_report?
+      json = decode_report
+      options= {symbolize_keys:false}
+      parser = Yajl::Parser.new(options)
+
+      json =  json.gsub('\"', '"')[1..-2]
+      parser.on_parse_complete = method(:parse_report_datasets)
+      pp = parser.parse_chunk(json) 
+    else
+      json = @data.dig("report")
+      parse_report_datasets(json)
     end
-    json = decode_report
-    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    parser = Yajl::Parser.new
-    pp= parser.parse(json)
-    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    elapsed = ending - starting
-    puts elapsed # => 9.183449000120163 seconds
-    pp.fetch("report-datasets",[])
   end
 
-  def parse_data options={}
-    return @errors if @data.nil?
-    return @errors if @errors
 
-    # items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
-
-    Array.wrap(@items).reduce([]) do |x, item|
+  def parse_report_datasets report, options={}
+    Array.wrap(report["report-datasets"]).reduce([]) do |x, item|
+      next unless item.respond_to?("dig")
+      next unless item.fetch("dataset-id",nil)
+      puts item
       data = { 
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
@@ -68,19 +72,13 @@ class Report < Base
         ssum << UsageUpdate.format_event(event_type, data, options)
         ssum
       end
-    end    
+    end   
   end
 
   def compressed_report?
     return nil unless @data.dig("report","report-header","exceptions").present?
     return nil unless @data.dig("report","report-header","exceptions").any?
-    exceptions = @data.dig("report","report-header","exceptions") 
-    code = exceptions.first.fetch("code","")
-    if code == 69
-      true
-    else
-      nil
-    end
+    @data.dig("report","report-header","exceptions").include?(COMPRESSED_HASH_MESSAGE)
   end
 
   def correct_checksum?
