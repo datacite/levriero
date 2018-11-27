@@ -1,7 +1,6 @@
 {"data":{
   "report": {
-    "id": "baa9c7a3-3408-47fd-af44-575b8e811bd8",
-    "report-header": {
+    "report-header":{
       "report-name": "resolution report",
       "report-id": "baa9c7a3-3408-47fd-af44-575b8e811bd8",
       "release": "drl",

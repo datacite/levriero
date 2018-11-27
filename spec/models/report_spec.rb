@@ -11,7 +11,7 @@ describe Report, type: :model do
     context "when there is ONE message" do
 
       it "should return the data for one message" do
-        puts report
+        # puts report
         # expect(report.decode_report).to eq(ActiveSupport::Gzip.decompress(Base64.decode64(response.dig("data","report","gzip"))))
       end
     end
