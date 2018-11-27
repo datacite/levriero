@@ -1,5 +1,7 @@
 class Report < Base
-  
+
+  COMPRESSED_HASH_MESSAGE = {"code"=>69, "severity"=>"warning", "message"=>"Report is compressed using gzip", "help-url"=>"https://github.com/datacite/sashimi", "data"=>"usage data needs to be uncompressed"}
+
   def initialize report, options={}
     @errors = report.body.fetch("errors") if report.body.fetch("errors", nil).present?
     return @errors if report.body.fetch("errors", nil).present?
@@ -7,17 +9,18 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
+    @type = @data.dig("report","report-header","release")
     @report_id = report.url
     @gzip=""
 
+    
     if compressed_report?
       @encoded_report = @data.dig("report").fetch("gzip","")
       @checksum  = @data.dig("report").fetch("checksum","")
-      @items =parse_report_datasets
+      @items = parse_report_datasets
     else
       @items = @data.dig("report","report-datasets")
     end
-
   end
 
   def decompress_report 
@@ -34,13 +37,12 @@ class Report < Base
       @errors = [{"errors": "checksum does not match"}]
       return []
     end
+
     json = decode_report
-    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     parser = Yajl::Parser.new
+    json =  @type == "rd1" ? json : json.gsub('\"', '"')[1..-2]
+    json =  @type == "rd1" ? json : json.gsub('\n', '')
     pp= parser.parse(json)
-    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    elapsed = ending - starting
-    puts elapsed # => 9.183449000120163 seconds
     pp.fetch("report-datasets",[])
   end
 
@@ -72,8 +74,10 @@ class Report < Base
   end
 
   def compressed_report?
+    puts @data.dig("report","report-header","exceptions")
     return nil unless @data.dig("report","report-header","exceptions").present?
     return nil unless @data.dig("report","report-header","exceptions").any?
+    # @data.dig("report","report-header","exceptions").include?(COMPRESSED_HASH_MESSAGE)
     exceptions = @data.dig("report","report-header","exceptions") 
     code = exceptions.first.fetch("code","")
     if code == 69
@@ -81,6 +85,7 @@ class Report < Base
     else
       nil
     end
+
   end
 
   def correct_checksum?
