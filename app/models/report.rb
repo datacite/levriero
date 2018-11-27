@@ -1,10 +1,4 @@
-require 'ffi_yajl'
-# require 'json/streamer'
-
-
 class Report < Base
-
-  COMPRESSED_HASH_MESSAGE = {"code"=>69, "severity"=>"warning", "message"=>"report is compressed using gzip", "help-url"=>"https://github.com/datacite/sashimi", "data"=>"usage data needs to be uncompressed"}
   
   def initialize report, options={}
     @errors = report.body.fetch("errors") if report.body.fetch("errors", nil).present?
@@ -13,14 +7,15 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
-    @type = @data.dig("report","report-header","release")
     @report_id = report.url
     @gzip=""
 
     if compressed_report?
-      puts "compressed"
       @encoded_report = @data.dig("report").fetch("gzip","")
       @checksum  = @data.dig("report").fetch("checksum","")
+      @items =parse_report_datasets
+    else
+      @items = @data.dig("report","report-datasets")
     end
 
   end
@@ -34,29 +29,28 @@ class Report < Base
     decompress_report
   end
 
-  def parse_data 
-    return @errors if @data.nil?
-    if compressed_report?
-      json = decode_report
-      options= {symbolize_keys:false}
-      parser = Yajl::Parser.new(options)
-
-      json =  type == "rd1" ? json : json.gsub('\"', '"')[1..-2]
-
-      parser.on_parse_complete = method(:parse_report_datasets)
-      pp = parser.parse_chunk(json) 
-    else
-      json = @data.dig("report")
-      parse_report_datasets(json)
+  def parse_report_datasets
+    unless correct_checksum?
+      @errors = [{"errors": "checksum does not match"}]
+      return []
     end
+    json = decode_report
+    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    parser = Yajl::Parser.new
+    pp= parser.parse(json)
+    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    elapsed = ending - starting
+    puts elapsed # => 9.183449000120163 seconds
+    pp.fetch("report-datasets",[])
   end
 
+  def parse_data options={}
+    return @errors if @data.nil?
+    return @errors if @errors
 
-  def parse_report_datasets report, options={}
-    Array.wrap(report["report-datasets"]).reduce([]) do |x, item|
-      next unless item.respond_to?("dig")
-      next unless item.fetch("dataset-id",nil)
-      puts item
+    # items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
+
+    Array.wrap(@items).reduce([]) do |x, item|
       data = { 
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
@@ -67,27 +61,26 @@ class Report < Base
       instances = item.dig("performance", 0, "instance")
 
       return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{@report_id}. There can only be 4" })] if instances.size > 8
-
+   
       x += Array.wrap(instances).reduce([]) do |ssum, instance|
         data[:count] = instance.dig("count")
         event_type = "#{instance.dig("metric-type")}-#{instance.dig("access-method")}"
-        event = UsageUpdate.format_event(event_type, data, options)
-        options.merge(
-          report_meta:{
-            report_id: @report_id, 
-            created_by: @header.fetch("created-by"), 
-            reporting_period: @header.fetch("reporting-period")})
-        UsageUpdateExportJob.perform_later(event.to_json, options) unless Rails.env.test?
         ssum << UsageUpdate.format_event(event_type, data, options)
         ssum
       end
-    end   
+    end    
   end
 
   def compressed_report?
     return nil unless @data.dig("report","report-header","exceptions").present?
     return nil unless @data.dig("report","report-header","exceptions").any?
-    @data.dig("report","report-header","exceptions").include?(COMPRESSED_HASH_MESSAGE)
+    exceptions = @data.dig("report","report-header","exceptions") 
+    code = exceptions.first.fetch("code","")
+    if code == 69
+      true
+    else
+      nil
+    end
   end
 
   def correct_checksum?

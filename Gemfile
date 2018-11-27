@@ -35,7 +35,6 @@ gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 gem 'aws-sdk-sqs', '~> 1.3'
 gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 gem 'yajl-ruby', require: 'yajl'
-gem 'ffi-yajl'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
