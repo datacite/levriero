@@ -1,4 +1,6 @@
 class Report < Base
+  attr_reader :data, :header, :release, :report_id, :type, :errors, :datasets, :subsets
+  include Parserable
 
   COMPRESSED_HASH_MESSAGE = {"code"=>69, "severity"=>"warning", "message"=>"Report is compressed using gzip", "help-url"=>"https://github.com/datacite/sashimi", "data"=>"usage data needs to be uncompressed"}
 
@@ -9,50 +11,86 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
-    @type = @data.dig("report","report-header","release")
+    @release = @data.dig("report","report-header","release")
+    @datasets = @data.dig("report","report-datasets")
+    @subsets = @data.dig("report","report-subsets")
     @report_id = report.url
-    @gzip=""
+    # @gzip=""
+    @type = get_type
 
     
-    if compressed_report?
-      @encoded_report = @data.dig("report").fetch("gzip","")
-      @checksum  = @data.dig("report").fetch("checksum","")
-      @items = parse_report_datasets
-    else
-      @items = @data.dig("report","report-datasets")
+    # if compressed_report?
+    #   # @encoded_report = @data.dig("report").fetch("gzip","")
+    #   # @checksum  = @data.dig("report").fetch("checksum","")
+    #   # @items = build_report_datasets
+    # else
+    #   # @items = @data.dig("report","report-datasets")
+    # end
+  end
+
+  # def decompress_report 
+  #   ActiveSupport::Gzip.decompress(@gzip)
+  # end
+
+  # def decode_report 
+  #   @gzip = Base64.decode64(@encoded_report)
+  #   decompress_report
+  # end
+
+  # def build_report_datasets
+  #   unless correct_checksum?
+  #     @errors = [{"errors": "checksum does not match"}]
+  #     return []
+  #   end
+
+  #   json = decode_report
+  #   parser = Yajl::Parser.new
+  #   json =  @release == "rd1" ? json : json.gsub('\"', '"')[1..-2]
+  #   json =  @release == "rd1" ? json : json.gsub('\n', '')
+  #   pp= parser.parse(json)
+  #   pp.fetch("report-datasets",[])
+  # end
+
+  def self.parse_multi_subset_report report
+    subsets = report.subsets
+    subsets.map do |subset|
+      puts subset["checksum"]
+      compressed = decode_report subset["gzip"]
+      json = decompress_report compressed
+      # unless correct_checksum? subset["gzip"], subset["checksum"]
+      #   @errors = [{"errors": "checksum does not match"}]
+      #   json = []
+      # end
+      dataset_array = parse_subset json
+      # print "1"
+      UsageUpdateParseJob.perform_later(report.report_id, dataset_array)
+      dataset_array
     end
   end
+  
 
-  def decompress_report 
-    ActiveSupport::Gzip.decompress(@gzip)
+  # def parse_compressed_report
+  #   unless correct_checksum?
+  #     @errors = [{"errors": "checksum does not match"}]
+  #     return []
+  #   end
+
+  #   json = decode_report
+  #   parse_subset json
+  # end
+
+  def self.parse_normal_report report
+    json = report.data.dig("report","report-datasets")
+    # hsh = parse_subset json
+    UsageUpdateParseJob.perform_later(report.report_id, json)
+    json
   end
 
-  def decode_report 
-    @gzip = Base64.decode64(@encoded_report)
-    decompress_report
-  end
-
-  def parse_report_datasets
-    unless correct_checksum?
-      @errors = [{"errors": "checksum does not match"}]
-      return []
-    end
-
-    json = decode_report
-    parser = Yajl::Parser.new
-    json =  @type == "rd1" ? json : json.gsub('\"', '"')[1..-2]
-    json =  @type == "rd1" ? json : json.gsub('\n', '')
-    pp= parser.parse(json)
-    pp.fetch("report-datasets",[])
-  end
-
-  def parse_data options={}
+  def translate_datasets items, options={}
     return @errors if @data.nil?
     return @errors if @errors
 
-    # items = @data.fetch("report",{}).key?("gzip") ? parse_report_datasets : @data.dig("report","report-datasets")
-
-    Array.wrap(@items).reduce([]) do |x, item|
+    Array.wrap(items).reduce([]) do |x, item|
       data = { 
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
@@ -73,6 +111,11 @@ class Report < Base
     end    
   end
 
+  def get_type
+    return "compressed" if compressed_report?
+    "normal"
+  end
+
   def compressed_report?
     puts @data.dig("report","report-header","exceptions")
     return nil unless @data.dig("report","report-header","exceptions").present?
@@ -88,12 +131,12 @@ class Report < Base
 
   end
 
-  def correct_checksum?
-    # Digest::SHA256.hexdigest(decode_report(report))
-    puts @checksum
-    puts Digest::SHA256.hexdigest(Base64.decode64(@encoded_report))
-    return nil if Digest::SHA256.hexdigest(Base64.decode64(@encoded_report)) != @checksum
-    true
-  end
+  # def correct_checksum?
+  #   # Digest::SHA256.hexdigest(decode_report(report))
+  #   puts @checksum
+  #   puts Digest::SHA256.hexdigest(Base64.decode64(@encoded_report))
+  #   return nil if Digest::SHA256.hexdigest(Base64.decode64(@encoded_report)) != @checksum
+  #   true
+  # end
 
 end
