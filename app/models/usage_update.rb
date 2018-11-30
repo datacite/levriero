@@ -36,9 +36,9 @@ class UsageUpdate < Base
     report
   end
 
-  def self.parse_record sqs_msg: nil, data: nil
+  def self.grab_record sqs_msg: nil, data: nil
     report_id = data.fetch("report_id", "")
-    UsageUpdateParseJob.perform_later(report_id)
+    ReportImportJob.perform_later(report_id)
   end
 
   def sqs
@@ -74,7 +74,7 @@ class UsageUpdate < Base
     }
   end
 
-  def self.push_data items, options={}
+  def self.push_datasets items, options={}
     if items.empty?
       LOGGER.info  "No works found in the Queue."
     else

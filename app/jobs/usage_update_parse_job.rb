@@ -4,25 +4,21 @@ class UsageUpdateParseJob < ActiveJob::Base
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
 
-  def perform(item, options={})
-    logger = Logger.new(STDOUT)
-    response = UsageUpdate.get_data(item, options)
-    if response.status != 200
-      logger.info "[Usage Report Parsing] Report #{item} not found"
-      return {}
-    else
-      # data = UsageUpdate.parse_data(response, options)
-      data = Report.new(response, options).parse_data
-      send_message(data,item,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
-      # message  = data.respond_to?("each") ? "[Usage Report Parsing] Successfully parsed Report #{item} with #{data.length} instances"  : "[Usage Report Parsing] Error parsing Report #{item}"
-      
-      options.merge(
-        report_meta:{
-          report_id: item, 
-          created_by: response.body.dig("data","report","report-header","created-by"), 
-          reporting_period:response.body.dig("data","report","report-header","reporting-period")})
-      UsageUpdate.push_data(data, options) unless Rails.env.test?
-    end
+  def perform(report_id, hsh, options={})
+    response = UsageUpdate.get_data(report_id, options)
+    report = Report.new(response, options)
+    data = report.translate_datasets hsh
+    # data = Report.new(response, options).parse_data
+    send_message(data,report.report_id,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
+    puts report.header
+    options.merge(
+      report_meta:{
+        report_id: report.report_id, 
+        created_by: report.header.dig("created-by"),
+        reporting_period: report.header.dig("reporting-period")})
+
+    UsageUpdate.push_datasets(data, options) unless Rails.env.test?
+    
   end
 
   def send_message data, item, options={}
