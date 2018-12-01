@@ -52,20 +52,27 @@ class Report < Base
   # end
 
   def self.parse_multi_subset_report report
-    subsets = report.subsets
-    subsets.map do |subset|
+    subset = report.subsets.last
+    # maybe just parse the last subset as th other ones owuld have been parsed already
+    # subsets.map do |subset|
+    #   puts subset["checksum"]
+    #   compressed = decode_report subset["gzip"]
+    #   json = decompress_report compressed
+    #   # unless correct_checksum? subset["gzip"], subset["checksum"]
+    #   #   @errors = [{"errors": "checksum does not match"}]
+    #   #   json = []
+    #   # end
+    #   dataset_array = parse_subset json
+    #   # print "1"
+    #   UsageUpdateParseJob.perform_later(report.report_id, dataset_array)
+    #   dataset_array
+    # end
       puts subset["checksum"]
       compressed = decode_report subset["gzip"]
       json = decompress_report compressed
-      # unless correct_checksum? subset["gzip"], subset["checksum"]
-      #   @errors = [{"errors": "checksum does not match"}]
-      #   json = []
-      # end
       dataset_array = parse_subset json
-      # print "1"
       UsageUpdateParseJob.perform_later(report.report_id, dataset_array)
       dataset_array
-    end
   end
   
 
@@ -87,7 +94,7 @@ class Report < Base
   end
 
   def translate_datasets items, options={}
-    return @errors if @data.nil?
+    return @errors if items.empty?
     return @errors if @errors
 
     Array.wrap(items).reduce([]) do |x, item|
