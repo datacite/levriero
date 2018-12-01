@@ -11,7 +11,7 @@ class UsageUpdateParseJob < ActiveJob::Base
     report = Report.new(response, options)
     data = report.translate_datasets dataset
     # data = Report.new(response, options).parse_data
-    send_message(data,report.report_id,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
+    send_message(data,report.report_url,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
     puts report.header
     options.merge(
       report_meta:{
@@ -59,16 +59,16 @@ class UsageUpdateParseJob < ActiveJob::Base
 
     logger.info text
 
-    if options[:slack_webhook_url].present?
-      attachment = {
-        title: options[:title] || "Report",
-        text: text,
-        color: options[:level] || "good"
-      }
-      notifier = Slack::Notifier.new options[:slack_webhook_url],
-                                      username: "Event Data Agent",
-                                      icon_url: ICON_URL
-      notifier.post attachments: [attachment]
-    end
+    # if options[:slack_webhook_url].present?
+    #   attachment = {
+    #     title: options[:title] || "Report",
+    #     text: text,
+    #     color: options[:level] || "good"
+    #   }
+    #   notifier = Slack::Notifier.new options[:slack_webhook_url],
+    #                                   username: "Event Data Agent",
+    #                                   icon_url: ICON_URL
+    #   notifier.post attachments: [attachment]
+    # end
   end
 end
