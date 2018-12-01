@@ -4,8 +4,8 @@ class UsageUpdateParseJob < ActiveJob::Base
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
 
-  def perform(report_id, hsh, options={})
-    response = UsageUpdate.get_data(report_id, options)
+  def perform(report_url, hsh, options={})
+    response = UsageUpdate.get_data(report_url, options)
     report = Report.new(response, options)
     data = report.translate_datasets hsh
     # data = Report.new(response, options).parse_data

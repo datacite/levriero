@@ -29,16 +29,16 @@ class UsageUpdate < Base
     usage_update.queue_jobs 
   end
 
-  def self.get_data report_id, _options={}
-    return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_id.blank?
-    host = URI.parse(report_id).host.downcase
-    report = Maremma.get(report_id, timeout: 120, host: host)
+  def self.get_data report_url, _options={}
+    return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_url.blank?
+    host = URI.parse(report_url).host.downcase
+    report = Maremma.get(report_url, timeout: 120, host: host)
     report
   end
 
   def self.grab_record sqs_msg: nil, data: nil
-    report_id = data.fetch("report_id", "")
-    ReportImportJob.perform_later(report_id)
+    report_url = data.fetch("report_id", "")
+    ReportImportJob.perform_later(report_url)
   end
 
   def sqs
@@ -48,8 +48,8 @@ class UsageUpdate < Base
 
 
   def self.format_event type, data, options={}
-    fail "Not type given. Report #{data[:report_id]} not proccessed" if type.blank?
-    fail "Report_id is missing" if data[:report_id].blank?
+    fail "Not type given. Report #{data[:report_url]} not proccessed" if type.blank?
+    fail "Report_id is missing" if data[:report_url].blank?
 
     if USAGE_RELATIONS.include?(type.downcase)
       source_id = "datacite-usage"
@@ -59,9 +59,9 @@ class UsageUpdate < Base
       source_token = ENV['DATACITE_RESOLUTION_SOURCE_TOKEN']
     end
     { "message-action" => "create",
-      "subj-id" => data[:report_id],
+      "subj-id" => data[:report_url],
       "subj"=> {
-        "id"=> data[:report_id],
+        "id"=> data[:report_url],
         "issued"=> data[:created]
       },
       "total"=> data[:count],

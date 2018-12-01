@@ -1,5 +1,5 @@
 class Report < Base
-  attr_reader :data, :header, :release, :report_id, :type, :errors, :datasets, :subsets
+  attr_reader :data, :header, :release, :report_id, :type, :errors, :datasets, :subsets, :report_url
   include Parserable
 
   COMPRESSED_HASH_MESSAGE = {"code"=>69, "severity"=>"warning", "message"=>"Report is compressed using gzip", "help-url"=>"https://github.com/datacite/sashimi", "data"=>"usage data needs to be uncompressed"}
@@ -14,7 +14,8 @@ class Report < Base
     @release = @data.dig("report","report-header","release")
     @datasets = @data.dig("report","report-datasets")
     @subsets = @data.dig("report","report-subsets")
-    @report_id = report.url
+    @report_id = @data.dig("report","id")
+    @report_url = report.url
     # @gzip=""
     @type = get_type
 
@@ -71,7 +72,7 @@ class Report < Base
       compressed = decode_report subset["gzip"]
       json = decompress_report compressed
       dataset_array = parse_subset json
-      UsageUpdateParseJob.perform_later(report.report_id, dataset_array)
+      UsageUpdateParseJob.perform_later(report.report_url, dataset_array)
       dataset_array
   end
   
@@ -89,7 +90,7 @@ class Report < Base
   def self.parse_normal_report report
     json = report.data.dig("report","report-datasets")
     # hsh = parse_subset json
-    UsageUpdateParseJob.perform_later(report.report_id, json)
+    UsageUpdateParseJob.perform_later(report.report_url, json)
     json
   end
 
@@ -103,12 +104,12 @@ class Report < Base
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
         created: @header.fetch("created"), 
-        report_id: @report_id,
+        report_url: @report_url,
         created_at: @header.fetch("created")
       }
       instances = item.dig("performance", 0, "instance")
 
-      return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{@report_id}. There can only be 4" })] if instances.size > 8
+      return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{@report_url}. There can only be 4" })] if instances.size > 8
    
       x += Array.wrap(instances).reduce([]) do |ssum, instance|
         data[:count] = instance.dig("count")
