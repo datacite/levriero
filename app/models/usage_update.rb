@@ -31,7 +31,7 @@ class UsageUpdate < Base
 
   def self.redirect response, options={}
     report = Report.new(response, options)
-    text = "[Usage Report] Started to parse #{item}."
+    text = "[Usage Report] Started to parse #{report.url}."
     logger.info text
     case report.get_type
       when "normal" then Report.parse_normal_report report
