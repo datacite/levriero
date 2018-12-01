@@ -94,7 +94,8 @@ class Report < Base
   end
 
   def translate_datasets items, options={}
-    return @errors if items.empty?
+    return @errors if @data.nil?
+    return @errors if items.nil?
     return @errors if @errors
 
     Array.wrap(items).reduce([]) do |x, item|
