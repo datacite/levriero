@@ -1,13 +1,15 @@
 class UsageUpdateParseJob < ActiveJob::Base
   queue_as :levriero
 
+
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
 
-  def perform(report_url, hsh, options={})
+  def perform(report_url, dataset, options={})
+
     response = UsageUpdate.get_data(report_url, options)
     report = Report.new(response, options)
-    data = report.translate_datasets hsh
+    data = report.translate_datasets dataset
     # data = Report.new(response, options).parse_data
     send_message(data,report.report_id,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
     puts report.header
@@ -18,8 +20,25 @@ class UsageUpdateParseJob < ActiveJob::Base
         reporting_period: report.header.dig("reporting-period")})
 
     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
-    
   end
+
+
+  # def perform(report_url, hsh, options={})
+
+  #     response = UsageUpdate.get_data(report_url, options)
+  #     report = Report.new(response, options)
+  #     data = report.translate_datasets hsh
+  #     # data = Report.new(response, options).parse_data
+  #     send_message(data,report.report_id,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
+  #     puts report.header
+  #     options.merge(
+  #       report_meta:{
+  #         report_id: report.report_id, 
+  #         created_by: report.header.dig("created-by"),
+  #         reporting_period: report.header.dig("reporting-period")})
+
+  #     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
+  # end
 
   def send_message data, item, options={}
     logger = Logger.new(STDOUT)

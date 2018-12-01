@@ -29,6 +29,16 @@ class UsageUpdate < Base
     usage_update.queue_jobs 
   end
 
+  def redirect response, options={}
+    report = Report.new(response, options)
+    text = "[Usage Report] Started to parse #{item}."
+    logger.info text
+    case report.get_type
+      when "normal" then Report.parse_normal_report report
+      when "compressed" then Report.parse_multi_subset_report report
+    end
+  end
+
   def self.get_data report_url, _options={}
     return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_url.blank?
     host = URI.parse(report_url).host.downcase

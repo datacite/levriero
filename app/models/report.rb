@@ -72,7 +72,9 @@ class Report < Base
       compressed = decode_report subset["gzip"]
       json = decompress_report compressed
       dataset_array = parse_subset json
-      UsageUpdateParseJob.perform_later(report.report_url, dataset_array)
+      dataset_array.map do |dataset|
+        UsageUpdateParseJob.perform_later(report.report_url, dataset)
+      end
       dataset_array
   end
   
@@ -90,13 +92,15 @@ class Report < Base
   def self.parse_normal_report report
     json = report.data.dig("report","report-datasets")
     # hsh = parse_subset json
-    UsageUpdateParseJob.perform_later(report.report_url, json)
+    json.map do |dataset|
+      UsageUpdateParseJob.perform_later(report.report_url, dataset)
+    end
+    # UsageUpdateParseJob.perform_async(report.report_url, json)
     json
   end
 
   def translate_datasets items, options={}
     return @errors if @data.nil?
-    return @errors if items.nil?
     return @errors if @errors
 
     Array.wrap(items).reduce([]) do |x, item|

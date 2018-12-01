@@ -11,13 +11,14 @@ class ReportImportJob < ActiveJob::Base
       logger.info "[Usage Report Parsing] Report #{item} not found"
       return {}
     else
-      report = Report.new(response, options)
+      # report = Report.new(response, options)
       text = "[Usage Report] Started to parse #{item}."
       logger.info text
-      case report.get_type
-        when "normal" then Report.parse_normal_report report
-        when "compressed" then Report.parse_multi_subset_report report
-      end
+      UsageUpdate.redirect(response)
+      # case report.get_type
+      #   when "normal" then Report.parse_normal_report report
+      #   when "compressed" then Report.parse_multi_subset_report report
+      # end
     end
   end
 end
