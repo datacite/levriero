@@ -29,7 +29,7 @@ class UsageUpdate < Base
     usage_update.queue_jobs 
   end
 
-  def redirect response, options={}
+  def self.redirect response, options={}
     report = Report.new(response, options)
     text = "[Usage Report] Started to parse #{item}."
     logger.info text
