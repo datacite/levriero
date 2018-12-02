@@ -26,7 +26,7 @@ gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
 gem "facets", require: false
-gem 'bolognese', '~> 0.9', '>= 0.10'
+gem 'bolognese', '~> 1.0'
 gem 'shoryuken', '~> 3.2', '>= 3.2.2'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
 gem 'rack-utf8_sanitizer', '~> 1.6'
@@ -59,5 +59,4 @@ group :test do
   gem 'faker'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'elasticsearch-extensions'
-  gem 'yajl-ruby', require: 'yajl'
 end

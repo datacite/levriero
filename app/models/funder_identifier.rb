@@ -136,8 +136,8 @@ class FunderIdentifier < Base
       "id" => id,
       "type" => "funder",
       "name" => message["name"],
-      "alternate_name" => message["alt-names"],
+      "alternateName" => message["alt-names"],
       "location" => location,
-      "date_modified" => "2018-07-11T00:00:00Z" }.compact
+      "dateModified" => "2018-07-11T00:00:00Z" }.compact
   end
 end

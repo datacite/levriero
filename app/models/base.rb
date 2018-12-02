@@ -162,6 +162,57 @@ class Base
     end
   end
 
+  def self.parse_attributes(element, options={})
+    content = options[:content] || "__content__"
+
+    if element.is_a?(String)
+      element
+    elsif element.is_a?(Hash)
+      element.fetch(content, nil)
+    elsif element.is_a?(Array)
+      a = element.map { |e| e.is_a?(Hash) ? e.fetch(content, nil) : e }.uniq
+      a = options[:first] ? a.first : a.unwrap
+    else
+      nil
+    end
+  end
+
+  def self.to_schema_org(element)
+    mapping = { "type" => "@type", "id" => "@id", "title" => "name" }
+
+    map_hash_keys(element: element, mapping: mapping)
+  end
+
+  def self.to_schema_org_funder(funding_references)
+    return nil unless funding_references.present?
+
+    Array.wrap(funding_references).map do |fr|
+      {
+        "@id" => fr["funderIdentifier"],
+        "@type" => "Organization",
+        "name" => fr["funderName"] }.compact
+    end.unwrap
+  end
+
+  def self.map_hash_keys(element: nil, mapping: nil)
+    Array.wrap(element).map do |a|
+      a.map {|k, v| [mapping.fetch(k, k), v] }.reduce({}) do |hsh, (k, v)|
+        if v.is_a?(Hash)
+          hsh[k] = to_schema_org(v)
+          hsh
+        else
+          hsh[k] = v
+          hsh
+        end
+      end
+    end.unwrap
+  end
+
+  def self.get_date(dates, date_type)
+    dd = Array.wrap(dates).find { |d| d["dateType"] == date_type } || {}
+    dd.fetch("date", nil)
+  end
+
   def self.get_datacite_xml(id)
     logger = Logger.new(STDOUT)
 
@@ -194,28 +245,25 @@ class Base
     
     attributes = response.body.dig("data", "attributes")
     relationships = response.body.dig("data", "relationships")
-
-    resource_type = response.body.dig("data", "relationships")
-    resource_type_general = relationships.dig("resource-type", "data", "id")
-    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[resource_type.to_s.underscore.camelcase] || Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.underscore.camelcase(first_letter = :upper)] || "CreativeWork"
-    author = Array.wrap(attributes["author"]).map do |a| 
-      {
-        "given_name" => a["givenName"],
-        "family_name" => a["familyName"],
-        "name" => a["familyName"].present? ? nil : a["name"] }.compact
-    end
+    
     client_id = relationships.dig("client", "data", "id")
+    publisher = attributes["publisher"].present? ? { "@type" => "Organization", "name" => attributes["publisher"] } : nil
+    proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select { |ri| ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"]) }. map do |ri|
+      ri["relatedIdentifier"]
+    end
 
     {
       "id" => id,
-      "type" => type.underscore.dasherize,
-      "name" => attributes["title"],
-      "author" => author,
-      "publisher" => attributes["publisher"],
+      "type" => attributes.dig("types", "schemaOrg"),
+      "name" => parse_attributes(attributes["titles"], content: "title", first: true),
+      "author" => Array.wrap(to_schema_org(attributes["creators"])),
+      "publisher" => publisher,
       "version" => attributes["version"],
-      "date_published" => attributes["published"],
-      "date_modified" => attributes["updated"],
-      "registrant_id" => "datacite.#{client_id}" }.compact
+      "datePublished" => get_date(attributes["dates"], "Issued"),
+      "dateModified" => attributes["updated"],
+      "funder" => to_schema_org_funder(attributes["fundingReferences"]),
+      "proxyIdentifiers" => proxy_identifiers,
+      "registrantId" => "datacite.#{client_id}" }.compact
   end
 
   def self.get_crossref_metadata(id)
@@ -232,8 +280,8 @@ class Base
     type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "creative-work"
     author = Array.wrap(message["author"]).map do |a| 
       {
-        "given_name" => a["given"],
-        "family_name" => a["family"],
+        "givenName" => a["given"],
+        "familyName" => a["family"],
         "name" => a["name"] }.compact
     end
 
@@ -243,14 +291,14 @@ class Base
       "name" => Array.wrap(message["title"]).first,
       "author" => author,
       "periodical" => Array.wrap(message["container-title"]).first,
-      "volume_number" => message["volume"],
-      "issue_number" => message["issue"],
+      "volumeNumber" => message["volume"],
+      "issueNumber" => message["issue"],
       "pagination" => message["page"],
       "publisher" => message["publisher"],
       "issn" => message["ISSN"],
-      "date_published" => Base.new.get_date_from_date_parts(message["issued"]),
-      "date_modified" => message.dig("indexed", "date-time"),
-      "registrant_id" => "crossref.#{message["member"]}" }.compact
+      "datePublished" => Base.new.get_date_from_date_parts(message["issued"]),
+      "dateModified" => message.dig("indexed", "date-time"),
+      "registrantId" => "crossref.#{message["member"]}" }.compact
   end
 
   def self.get_orcid_metadata(id)
