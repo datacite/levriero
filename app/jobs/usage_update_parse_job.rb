@@ -5,40 +5,24 @@ class UsageUpdateParseJob < ActiveJob::Base
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
 
-  def perform(report_url, dataset, options={})
+  def perform(dataset, options)
 
-    response = UsageUpdate.get_data(report_url, options)
-    report = Report.new(response, options)
-    data = report.translate_datasets dataset
+    # response = UsageUpdate.get_data(report_url, options)
+    # report = Report.new(report_header, options)
+    data = Report.translate_datasets dataset, options
     # data = Report.new(response, options).parse_data
-    send_message(data,report.report_url,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
-    puts report.header
+    send_message(data,options[:url],{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
+    puts options[:header]
     options.merge(
       report_meta:{
-        report_id: report.report_id, 
-        created_by: report.header.dig("created-by"),
-        reporting_period: report.header.dig("reporting-period")})
+        report_id: options[:header].dig("report-id"), 
+        created_by: options[:header].dig("created-by"),
+        reporting_period: options[:header].dig("reporting-period")})
 
     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
   end
 
 
-  # def perform(report_url, hsh, options={})
-
-  #     response = UsageUpdate.get_data(report_url, options)
-  #     report = Report.new(response, options)
-  #     data = report.translate_datasets hsh
-  #     # data = Report.new(response, options).parse_data
-  #     send_message(data,report.report_id,{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
-  #     puts report.header
-  #     options.merge(
-  #       report_meta:{
-  #         report_id: report.report_id, 
-  #         created_by: report.header.dig("created-by"),
-  #         reporting_period: report.header.dig("reporting-period")})
-
-  #     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
-  # end
 
   def send_message data, item, options={}
     logger = Logger.new(STDOUT)
@@ -59,16 +43,5 @@ class UsageUpdateParseJob < ActiveJob::Base
 
     logger.info text
 
-    # if options[:slack_webhook_url].present?
-    #   attachment = {
-    #     title: options[:title] || "Report",
-    #     text: text,
-    #     color: options[:level] || "good"
-    #   }
-    #   notifier = Slack::Notifier.new options[:slack_webhook_url],
-    #                                   username: "Event Data Agent",
-    #                                   icon_url: ICON_URL
-    #   notifier.post attachments: [attachment]
-    # end
   end
 end

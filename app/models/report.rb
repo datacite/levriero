@@ -11,109 +11,59 @@ class Report < Base
 
     @data = report.body.fetch("data", {})
     @header = @data.dig("report","report-header")
-    @release = @data.dig("report","report-header","release")
+    @release = @header.dig("release")
     @datasets = @data.dig("report","report-datasets")
     @subsets = @data.dig("report","report-subsets")
     @report_id = @data.dig("report","id")
     @report_url = report.url
-    # @gzip=""
     @type = get_type
 
     
-    # if compressed_report?
-    #   # @encoded_report = @data.dig("report").fetch("gzip","")
-    #   # @checksum  = @data.dig("report").fetch("checksum","")
-    #   # @items = build_report_datasets
-    # else
-    #   # @items = @data.dig("report","report-datasets")
-    # end
   end
 
-  # def decompress_report 
-  #   ActiveSupport::Gzip.decompress(@gzip)
-  # end
-
-  # def decode_report 
-  #   @gzip = Base64.decode64(@encoded_report)
-  #   decompress_report
-  # end
-
-  # def build_report_datasets
-  #   unless correct_checksum?
-  #     @errors = [{"errors": "checksum does not match"}]
-  #     return []
-  #   end
-
-  #   json = decode_report
-  #   parser = Yajl::Parser.new
-  #   json =  @release == "rd1" ? json : json.gsub('\"', '"')[1..-2]
-  #   json =  @release == "rd1" ? json : json.gsub('\n', '')
-  #   pp= parser.parse(json)
-  #   pp.fetch("report-datasets",[])
-  # end
 
   def self.parse_multi_subset_report report
     subset = report.subsets.last
-    # maybe just parse the last subset as th other ones owuld have been parsed already
-    # subsets.map do |subset|
-    #   puts subset["checksum"]
-    #   compressed = decode_report subset["gzip"]
-    #   json = decompress_report compressed
-    #   # unless correct_checksum? subset["gzip"], subset["checksum"]
-    #   #   @errors = [{"errors": "checksum does not match"}]
-    #   #   json = []
-    #   # end
-    #   dataset_array = parse_subset json
-    #   # print "1"
-    #   UsageUpdateParseJob.perform_later(report.report_id, dataset_array)
-    #   dataset_array
-    # end
+    
       puts subset["checksum"]
       compressed = decode_report subset["gzip"]
       json = decompress_report compressed
       dataset_array = parse_subset json
       dataset_array.map do |dataset|
-        UsageUpdateParseJob.perform_later(report.report_url, dataset)
+        args = {header: report.header, url: report.report_url}
+        UsageUpdateParseJob.perform_later(dataset, args)
       end
       dataset_array
   end
   
 
-  # def parse_compressed_report
-  #   unless correct_checksum?
-  #     @errors = [{"errors": "checksum does not match"}]
-  #     return []
-  #   end
-
-  #   json = decode_report
-  #   parse_subset json
-  # end
-
   def self.parse_normal_report report
     json = report.data.dig("report","report-datasets")
     # hsh = parse_subset json
     json.map do |dataset|
-      UsageUpdateParseJob.perform_later(report.report_url, dataset)
+      args = {header: report.header, url: report.report_url}
+      UsageUpdateParseJob.perform_later(dataset, args)
     end
     # UsageUpdateParseJob.perform_async(report.report_url, json)
     json
   end
 
-  def translate_datasets items, options={}
-    return @errors if @data.nil?
-    return @errors if @errors
+  def self.translate_datasets items, options
+    return [] if items.nil?
+    # return @errors if @data.nil?
+    # return @errors if @errors
 
     Array.wrap(items).reduce([]) do |x, item|
       data = { 
         doi: item.dig("dataset-id").first.dig("value"), 
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
-        created: @header.fetch("created"), 
-        report_url: @report_url,
-        created_at: @header.fetch("created")
+        created: options[:header].fetch("created"), 
+        report_url: options[:url],
+        created_at: options[:header].fetch("created")
       }
       instances = item.dig("performance", 0, "instance")
 
-      return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{@report_url}. There can only be 4" })] if instances.size > 8
+      return x += [OpenStruct.new(body: { "errors" => "There are too many instances in #{data[:doi]} for report #{options[:url]}. There can only be 4" })] if instances.size > 8
    
       x += Array.wrap(instances).reduce([]) do |ssum, instance|
         data[:count] = instance.dig("count")

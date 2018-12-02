@@ -45,9 +45,12 @@ describe UsageUpdate, type: :model, vcr: true do
         body = File.read(fixture_path + 'usage_update_nil.json')
         result = OpenStruct.new(body:  JSON.parse(body) )
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         expect(response).to be_a(Array)
-        expect(response).to eq([{"status"=>"404", "title"=>"The resource you are looking for doesn't exist."}])
+        expect(response).to be_empty
+
+        # expect(response).to eq([{"status"=>"404", "title"=>"The resource you are looking for doesn't exist."}])
       end
     end
 
@@ -64,10 +67,12 @@ describe UsageUpdate, type: :model, vcr: true do
         body = File.read(fixture_path + 'usage_update_nil.json')
         result = OpenStruct.new(body:  JSON.parse(body) )
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response).to be_a(Array)
-        expect(response).to eq([{"status"=>"404", "title"=>"The resource you are looking for doesn't exist."}])
+        expect(response).to be_empty
+        # expect(response).to eq([{"status"=>"404", "title"=>"The resource you are looking for doesn't exist."}])
       end
     end
 
@@ -77,7 +82,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
    
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
       
         expect(response.length).to eq(2)
         expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'])
@@ -88,7 +94,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response.length).to eq(136)
         puts response.last
@@ -101,7 +108,8 @@ describe UsageUpdate, type: :model, vcr: true do
         # result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response.length).to eq(1642)
         doi_instances =response.select {|instance| instance.dig("obj-id") == "https://doi.org/10.7272/q6qn64nk" }
@@ -114,7 +122,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/f0e06846-7af1-4e43-a32b-8d299e99bd21"  )
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response.last.fetch("obj-id")).to eq("https://doi.org/10.5063/aa/bowdish.122.10")
         # expect(doi_instances.first.dig("total")).to eq(1083)
@@ -125,7 +134,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         expect(response.length).to eq(5)
         expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
       end
@@ -135,7 +145,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         
         expect(response.length).to eq(4)
         expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
@@ -146,7 +157,8 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
-        response = report.translate_datasets result.body.dig("data","report","report-datasets")
+        args = {header: report.header, url:report.report_url}
+        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         
         expect(response.length).to eq(1)
         expect(response).to be_a(Array)

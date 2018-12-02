@@ -56,7 +56,8 @@ end
         report = Report.new(live_results)
   
         arrays = Report.parse_multi_subset_report report
-        events = report.translate_datasets (arrays)
+        args = {header: report.header, url:report.report_url}
+        events = Report.translate_datasets(arrays, args)
 
 
         expect(events.size).to eq(1243)

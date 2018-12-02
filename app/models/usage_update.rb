@@ -31,11 +31,12 @@ class UsageUpdate < Base
 
   def self.redirect response, options={}
     report = Report.new(response, options)
-    text = "[Usage Report] Started to parse #{report.url}."
+    text = "[Usage Report] Started to parse #{report.report_url}."
     LOGGER.info text
+    args = {header: report.header, url: report.report_url}
     case report.get_type
-      when "normal" then Report.parse_normal_report report
-      when "compressed" then Report.parse_multi_subset_report report
+      when "normal" then Report.parse_normal_report(report, args)
+      when "compressed" then Report.parse_multi_subset_report(report, args)
     end
   end
 
