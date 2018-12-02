@@ -83,10 +83,11 @@ describe UsageUpdate, type: :model, vcr: true do
    
         report = Report.new(result)
         args = {header: report.header, url:report.report_url}
+        puts args
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
       
         expect(response.length).to eq(2)
-        expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2128-04-09", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'])
+        expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"},"total"=>3,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.7291/d1q94r", "relation-type-id"=>"unique-dataset-investigations-regular", "source-id"=>"datacite-usage", "occurred-at"=>"2013-11-02", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_USAGE_SOURCE_TOKEN'])
       end
 
       it "should parsed it correctly resolution" do
@@ -95,11 +96,12 @@ describe UsageUpdate, type: :model, vcr: true do
         # response = UsageUpdate.parse_data(result)
         report = Report.new(result)
         args = {header: report.header, url:report.report_url}
+ 
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response.length).to eq(136)
         puts response.last
-        expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"},"total"=>37,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.6084/m9.figshare.6158567.v1", "relation-type-id"=>"total-resolutions-machine", "source-id"=>"datacite-resolution", "occurred-at"=>"2018-10-28", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_RESOLUTION_SOURCE_TOKEN'])
+        expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"},"total"=>37,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.6084/m9.figshare.6158567.v1", "relation-type-id"=>"total-resolutions-machine", "source-id"=>"datacite-resolution", "occurred-at"=>"2019-05-01", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_RESOLUTION_SOURCE_TOKEN'])
       end
 
       it "should parsed it correctly from call" do
@@ -137,7 +139,7 @@ describe UsageUpdate, type: :model, vcr: true do
         args = {header: report.header, url:report.report_url}
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         expect(response.length).to eq(5)
-        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
+        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2013-11-02", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
       end
 
       it "should parsed it correctly when it has two metrics per DOI " do
@@ -149,7 +151,7 @@ describe UsageUpdate, type: :model, vcr: true do
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
         
         expect(response.length).to eq(4)
-        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2128-04-09", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
+        expect(response.last.except("uuid")).to eq("message-action"=>"create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2128-04-09"}, "total"=>208, "obj-id"=>"https://doi.org/10.6071/z7wc73", "relation-type-id"=>"Unique-Dataset-Requests-Machine", "source-id"=>"datacite-usage", "source-token"=>ENV['DATACITE_USAGE_SOURCE_TOKEN'], "occurred-at"=>"2013-11-02", "license"=>"https://creativecommons.org/publicdomain/zero/1.0/")
       end
 
       it "should send a warning if there are more than 4 metrics" do
