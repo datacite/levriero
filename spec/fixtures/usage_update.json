@@ -10,16 +10,10 @@
      "created-by": "dash",
      "report-attributes": [],
      "report-filters": [],
-     "reporting-period": [
-        {
-         "name": "begin-date",
-         "value": "2018-03-01"
-       },
-       {
-         "name": "end-date",
-         "value": "2018-03-31"
-       }
-     ],
+     "reporting-period": {
+      "begin-date": "2013-11-02",
+      "end-date": "2013-11-30"
+    },
      "exceptions": [
        {
          "code": 3040,
