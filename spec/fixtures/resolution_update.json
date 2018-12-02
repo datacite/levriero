@@ -1,0 +1,2870 @@
+{"data":
+  {
+	"report": {
+		"report-header": {
+			"report-name": "resolution report",
+			"report-id": "66d142ed-186f-471c-ae8b-9e435ee865c6",
+			"release": "pid1",
+			"created-by": "datacite",
+			"created": "2018-10-28",
+			"reporting-period": {
+				"end-date": "2019-05-30",
+				"begin-date": "2019-05-01"
+			},
+			"report-filters": [],
+			"report-attributes": [],
+			"exceptions": []
+		},
+		"report-datasets": [
+			{
+				"dataset-title": "Quaternary Faults Web Application",
+				"yop": "2017",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "U.S. Geological Survey",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "usgs.prod"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2017"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 551
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 519
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Robert G Schmitt"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5066/f7s75fjm"
+					}
+				]
+			},
+			{
+				"dataset-title": "Stable isotope data from the Ferrigno ice core (F10), Bryan Coast, West Antarctica",
+				"yop": "2016",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Polar Data Centre; British Antarctic Survey, Natural Environment Research Council; Cambridge, CB3 0ET, UK.",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "bl.nerc"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2016"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 192
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 470
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Elizabeth Thomas"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5285/6ffa3d36-a521-44f7-9e12-213458dafce3"
+					}
+				]
+			},
+			{
+				"dataset-title": "ParlGov 2018 Release",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Harvard Dataverse",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "gdcc.harvard-dv"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 454
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 356
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 1
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 1
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Döring, Holger (University Of Bremen, Germany); Manow, Philip (University Of Bremen, Germany)"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7910/dvn/f0ygnc"
+					}
+				]
+			},
+			{
+				"dataset-title": "Data from: Climate change impacts on marine biodiversity, fisheries and society in the Arabian Gulf",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Dryad Digital Repository",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "dryad.dryad"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 1
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 1
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 166
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 352
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Daniel Pauly"
+					},
+					{
+						"type": "name",
+						"value": "Myriam Khalfallah"
+					},
+					{
+						"type": "name",
+						"value": "Dalal Al-Abdulrazzak"
+					},
+					{
+						"type": "name",
+						"value": "Lydia C. L. Teh"
+					},
+					{
+						"type": "name",
+						"value": "Gabriel Reygondeau"
+					},
+					{
+						"type": "name",
+						"value": "Colette C. C. Wabnitz"
+					},
+					{
+						"type": "name",
+						"value": "Maria L. Deng Palomares"
+					},
+					{
+						"type": "name",
+						"value": "Dirk Zeller"
+					},
+					{
+						"type": "name",
+						"value": "William W. L. Cheung"
+					},
+					{
+						"type": "name",
+						"value": "Vicky W. Y. Lam"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5061/dryad.mt588k1"
+					}
+				]
+			},
+			{
+				"dataset-title": "GBIF Backbone Taxonomy",
+				"yop": "2017",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "GBIF Secretariat",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "dk.gbif"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2017"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 157
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 146
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Registry-Migration.Gbif.Org"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.15468/39omei"
+					}
+				]
+			},
+			{
+				"dataset-title": "2000 Pilot Environmental Sustainability Index (ESI)",
+				"yop": "2000",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Palisades, NY: NASA Socioeconomic Data and Applications Center (SEDAC)",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "cdl.ciesin"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2000"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 2
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 2
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 31
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 119
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "World Economic Forum-WEF-Global Leaders For Tomorrow Environment Task Force; Yale Center For Environmental Law And Policy-YCELP-Yale University; Center For International Earth Science Information Network-CIESIN-Columbia University"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7927/h4nk3bzj"
+					}
+				]
+			},
+			{
+				"dataset-title": "ASTER Global Digital Elevation Model",
+				"yop": "2009",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "NASA EOSDIS Land Processes DAAC",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "esdis.eosdis"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2009"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 113
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 106
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": ""
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5067/aster/astgtm.002"
+					}
+				]
+			},
+			{
+				"dataset-title": "ASTER Level 1 Precision Terrain Corrected Registered At-Sensor Radiance V003",
+				"yop": "2015",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "NASA EOSDIS Land Processes DAAC",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "esdis.eosdis"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2015"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 102
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 97
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 3
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 5
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "NASA LP DAAC"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5067/aster/ast_l1t.003"
+					}
+				]
+			},
+			{
+				"dataset-title": "Project: Fostering Transparent and Responsible Conduct of Research: What can Journals do?",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Mendeley",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "bl.mendeley"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 83
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 80
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 1
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 1
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Mario Malicki"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.17632/53cskwwpdn.1"
+					}
+				]
+			},
+			{
+				"dataset-title": "Jean-Claude Bradley Open Melting Point Dataset",
+				"yop": "2014",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2014"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 79
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 57
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Jean-Claude Bradley"
+					},
+					{
+						"type": "name",
+						"value": "Antony Williams"
+					},
+					{
+						"type": "name",
+						"value": "Andrew Lang"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.1031637"
+					}
+				]
+			},
+			{
+				"dataset-title": "Image collection 10.18116/C6H02X",
+				"yop": "2016",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "UMass/CANDI Image Attributation Framework",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "umass.candi"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2016"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 66
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 70
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "JL Breeze"
+					},
+					{
+						"type": "name",
+						"value": "D Caplan"
+					},
+					{
+						"type": "name",
+						"value": "VS Caviness"
+					},
+					{
+						"type": "name",
+						"value": "JA Frazier"
+					},
+					{
+						"type": "name",
+						"value": "AJ Giuliano"
+					},
+					{
+						"type": "name",
+						"value": "C Haselgrove"
+					},
+					{
+						"type": "name",
+						"value": "SM Hodge"
+					},
+					{
+						"type": "name",
+						"value": "DN Kennedy"
+					},
+					{
+						"type": "name",
+						"value": "DN Kennedy"
+					},
+					{
+						"type": "name",
+						"value": "MP Lopez-Larson"
+					},
+					{
+						"type": "name",
+						"value": "N Makris"
+					},
+					{
+						"type": "name",
+						"value": "CM Moore"
+					},
+					{
+						"type": "name",
+						"value": "LJ Seidman"
+					},
+					{
+						"type": "name",
+						"value": "JE Terry"
+					},
+					{
+						"type": "name",
+						"value": "AJ Worth"
+					},
+					{
+						"type": "name",
+						"value": "B Zablotsky"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.18116/c6h02x"
+					}
+				]
+			},
+			{
+				"dataset-title": "Radiology Data from the Clinical Proteomic Tumor Analysis Consortium Clear Cell Renal Cell Carcinoma [CPTAC-CCRCC] collection",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Cancer Imaging Archive",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "sml.tcia"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 69
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 63
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "National Cancer Institute Clinical Proteomic Tumor Analysis Consortium (CPTAC)"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7937/k9/tcia.2018.oblamn27"
+					}
+				]
+			},
+			{
+				"dataset-title": "SPIE-AAPM-NCI Lung Nodule Classification Challenge Dataset",
+				"yop": "2015",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Cancer Imaging Archive",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "sml.tcia"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2015"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 35
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 32
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Armato III, Samuel G.; Hadjiiski, Lubomir; Tourassi, Georgia D.; Drukker, Karen; Giger, Maryellen L.; Li, Feng; Redmond, George; Farahani, Keyvan; Kirby, Justin S.; Clarke, Laurence P."
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7937/k9/tcia.2015.uzlsu3fl"
+					}
+				]
+			},
+			{
+				"dataset-title": "NASA Shuttle Radar Topography Mission Global 1 arc second",
+				"yop": "2013",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "NASA EOSDIS Land Processes DAAC",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "esdis.eosdis"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2013"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 59
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 53
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "NASA JPL"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5067/measures/srtm/srtmgl1.003"
+					}
+				]
+			},
+			{
+				"dataset-title": "Catalogue of Life",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Catalogue of Life Partnership",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "dk.gbif"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 50
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 49
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Registry-Migration.Gbif.Org"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.15468/rffz4x"
+					}
+				]
+			},
+			{
+				"dataset-title": "The khmer software package: enabling efficient sequence analysis",
+				"yop": "2014",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2014"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 35
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 50
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "C. Titus Brown"
+					},
+					{
+						"type": "name",
+						"value": "Michael R. Crusoe"
+					},
+					{
+						"type": "name",
+						"value": "Greg Edvenson"
+					},
+					{
+						"type": "name",
+						"value": "Jordan Fish"
+					},
+					{
+						"type": "name",
+						"value": "Adina Howe"
+					},
+					{
+						"type": "name",
+						"value": "Eric McDonald"
+					},
+					{
+						"type": "name",
+						"value": "Joshua Nahum"
+					},
+					{
+						"type": "name",
+						"value": "Kaben Nanlohy"
+					},
+					{
+						"type": "name",
+						"value": "Humberto Ortiz-Zuazaga"
+					},
+					{
+						"type": "name",
+						"value": "Jason Pell"
+					},
+					{
+						"type": "name",
+						"value": "Jared Simpson"
+					},
+					{
+						"type": "name",
+						"value": "Camille Scott"
+					},
+					{
+						"type": "name",
+						"value": "Ramakrishnan Rajaram Srinivasan"
+					},
+					{
+						"type": "name",
+						"value": "Qingpeng Zhang"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.979190"
+					}
+				]
+			},
+			{
+				"dataset-title": "Data From LIDC-IDRI",
+				"yop": "2015",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Cancer Imaging Archive",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "sml.tcia"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2015"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 46
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 44
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": ""
+					},
+					{
+						"type": "name",
+						"value": "Geoffrey McLennan"
+					},
+					{
+						"type": "name",
+						"value": "Luc Bidaut"
+					},
+					{
+						"type": "name",
+						"value": "Michael F. McNitt-Gray"
+					},
+					{
+						"type": "name",
+						"value": "Charles R. Meyer"
+					},
+					{
+						"type": "name",
+						"value": "Anthony P. Reeves"
+					},
+					{
+						"type": "name",
+						"value": "Binsheng Zhao"
+					},
+					{
+						"type": "name",
+						"value": "Denise R. Aberle"
+					},
+					{
+						"type": "name",
+						"value": "Claudia I. Henschke"
+					},
+					{
+						"type": "name",
+						"value": "Eric A. Hoffman"
+					},
+					{
+						"type": "name",
+						"value": "Ella A. Kazerooni"
+					},
+					{
+						"type": "name",
+						"value": "Heber MacMahon"
+					},
+					{
+						"type": "name",
+						"value": "Edwin J.R. Van Beek"
+					},
+					{
+						"type": "name",
+						"value": "David Yankelevitz"
+					},
+					{
+						"type": "name",
+						"value": "Alberto M. Biancardi"
+					},
+					{
+						"type": "name",
+						"value": "Peyton H. Bland"
+					},
+					{
+						"type": "name",
+						"value": "Matthew S. Brown"
+					},
+					{
+						"type": "name",
+						"value": "Roger M. Engelmann"
+					},
+					{
+						"type": "name",
+						"value": "Gary E. Laderach"
+					},
+					{
+						"type": "name",
+						"value": "Daniel Max"
+					},
+					{
+						"type": "name",
+						"value": "Richard C. Pais"
+					},
+					{
+						"type": "name",
+						"value": "David P.Y. Qing"
+					},
+					{
+						"type": "name",
+						"value": "Rachael Y. Roberts"
+					},
+					{
+						"type": "name",
+						"value": "Amanda R. Smith"
+					},
+					{
+						"type": "name",
+						"value": "Adam Starkey"
+					},
+					{
+						"type": "name",
+						"value": "Poonam Batra"
+					},
+					{
+						"type": "name",
+						"value": "Philip Caligiuri"
+					},
+					{
+						"type": "name",
+						"value": "Ali Farooqi"
+					},
+					{
+						"type": "name",
+						"value": "Gregory W. Gladish"
+					},
+					{
+						"type": "name",
+						"value": "C. Matilda Jude"
+					},
+					{
+						"type": "name",
+						"value": "Reginald F. Munden"
+					},
+					{
+						"type": "name",
+						"value": "Iva Petkovska"
+					},
+					{
+						"type": "name",
+						"value": "Leslie E. Quint"
+					},
+					{
+						"type": "name",
+						"value": "Lawrence H. Schwartz"
+					},
+					{
+						"type": "name",
+						"value": "Baskaran Sundaram"
+					},
+					{
+						"type": "name",
+						"value": "Lori E. Dodd"
+					},
+					{
+						"type": "name",
+						"value": "Charles Fenimore"
+					},
+					{
+						"type": "name",
+						"value": "David Gur"
+					},
+					{
+						"type": "name",
+						"value": "Nicholas Petrick"
+					},
+					{
+						"type": "name",
+						"value": "John Freymann"
+					},
+					{
+						"type": "name",
+						"value": "Justin Kirby"
+					},
+					{
+						"type": "name",
+						"value": "Brian Hughes"
+					},
+					{
+						"type": "name",
+						"value": "Alessi Vande Casteele"
+					},
+					{
+						"type": "name",
+						"value": "Sangeeta Gupte"
+					},
+					{
+						"type": "name",
+						"value": "Maha Sallam"
+					},
+					{
+						"type": "name",
+						"value": "Michael D. Heath"
+					},
+					{
+						"type": "name",
+						"value": "Michael H. Kuhn"
+					},
+					{
+						"type": "name",
+						"value": "Ekta Dharaiya"
+					},
+					{
+						"type": "name",
+						"value": "Richard Burns"
+					},
+					{
+						"type": "name",
+						"value": "David S. Fryd"
+					},
+					{
+						"type": "name",
+						"value": "Marcos Salganicoff"
+					},
+					{
+						"type": "name",
+						"value": "Vikram Anand"
+					},
+					{
+						"type": "name",
+						"value": "Uri Shreter"
+					},
+					{
+						"type": "name",
+						"value": "Stephen Vastagh"
+					},
+					{
+						"type": "name",
+						"value": "Barbara Y. Croft"
+					},
+					{
+						"type": "name",
+						"value": "Laurence P. Clarke"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7937/k9/tcia.2015.lo9ql9sx"
+					}
+				]
+			},
+			{
+				"dataset-title": "Radiology Data from the Clinical Proteomic Tumor Analysis Consortium Glioblastoma Multiforme [CPTAC-GBM] collection",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Cancer Imaging Archive",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "sml.tcia"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 45
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 44
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "National Cancer Institute Clinical Proteomic Tumor Analysis Consortium (CPTAC)"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7937/k9/tcia.2018.3rje41q1"
+					}
+				]
+			},
+			{
+				"dataset-title": "Population Assessment of Tobacco and Health (PATH) Study [United States] Public-Use Files",
+				"yop": "2016",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "ICPSR - Interuniversity Consortium for Political and Social Research",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "gesis.icpsr"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2016"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 41
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 41
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "United States Department Of Health And Human Services. National Institutes Of Health. National Institute On Drug Abuse"
+					},
+					{
+						"type": "name",
+						"value": "United States Department Of Health And Human Services. Food And Drug Administration. Center For Tobacco Products"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.3886/icpsr36498"
+					}
+				]
+			},
+			{
+				"dataset-title": "Prospect- and Mine-Related Features from U.S. Geological Survey 7.5- and 15-Minute Topographic Quadrangle Maps of the United States",
+				"yop": "2017",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "U.S. Geological Survey",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "usgs.prod"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2017"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 43
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 38
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "John D. Horton"
+					},
+					{
+						"type": "name",
+						"value": "Carma A. San Juan"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5066/f78w3chg"
+					}
+				]
+			},
+			{
+				"dataset-title": "Additional file 3: of Investigation of the influence of high glucose on molecular and genetic responses: an in vitro study using a human intestine model",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 34
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 43
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Tugce Boztepe"
+					},
+					{
+						"type": "name",
+						"value": "Sukru Gulec"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6204047"
+					}
+				]
+			},
+			{
+				"dataset-title": "Mortality data for Japanese oak wilt disease and surrounding forest compositions",
+				"yop": "2015",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Mendeley",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "bl.mendeley"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2015"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 37
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 36
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 1
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 2
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Michio Oguro"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.17632/xwj98nb39r.1"
+					}
+				]
+			},
+			{
+				"dataset-title": "Data from: Using mobile phones as acoustic sensors for high-throughput mosquito surveillance",
+				"yop": "2017",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Dryad Digital Repository",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "dryad.dryad"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2017"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 39
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 36
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Haripriya Mukundarajan"
+					},
+					{
+						"type": "name",
+						"value": "Felix Jan Hein Hol"
+					},
+					{
+						"type": "name",
+						"value": "Erica Araceli Castillo"
+					},
+					{
+						"type": "name",
+						"value": "Cooper Newby"
+					},
+					{
+						"type": "name",
+						"value": "Manu Prakash"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.5061/dryad.98d7s"
+					}
+				]
+			},
+			{
+				"dataset-title": "Additional file 6: of Genomics analysis of Aphanomyces spp. identifies a new class of oomycete effector associated with host adaptation",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 35
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 39
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Elodie Gaulin"
+					},
+					{
+						"type": "name",
+						"value": "Michiel Pel"
+					},
+					{
+						"type": "name",
+						"value": "Laurent Camborde"
+					},
+					{
+						"type": "name",
+						"value": "Hélène San-Clemente"
+					},
+					{
+						"type": "name",
+						"value": "Sarah Courbier"
+					},
+					{
+						"type": "name",
+						"value": "Marie-Alexane Dupouy"
+					},
+					{
+						"type": "name",
+						"value": "Juliette Lengellé"
+					},
+					{
+						"type": "name",
+						"value": "Marine Veyssiere"
+					},
+					{
+						"type": "name",
+						"value": "Aurélie Le Ru"
+					},
+					{
+						"type": "name",
+						"value": "Frédéric Grandjean"
+					},
+					{
+						"type": "name",
+						"value": "Richard Cordaux"
+					},
+					{
+						"type": "name",
+						"value": "Bouziane Moumen"
+					},
+					{
+						"type": "name",
+						"value": "Clément Gilbert"
+					},
+					{
+						"type": "name",
+						"value": "Liliana Cano"
+					},
+					{
+						"type": "name",
+						"value": "Jean-Marc Aury"
+					},
+					{
+						"type": "name",
+						"value": "Julie Guy"
+					},
+					{
+						"type": "name",
+						"value": "Patrick Wincker"
+					},
+					{
+						"type": "name",
+						"value": "Olivier Bouchez"
+					},
+					{
+						"type": "name",
+						"value": "Christophe Klopp"
+					},
+					{
+						"type": "name",
+						"value": "Bernard Dumas"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6158657.v1"
+					}
+				]
+			},
+			{
+				"dataset-title": "A continental-scale assessment of fuel loads and consumption by wildfire",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 33
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 39
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "David Bowman"
+					},
+					{
+						"type": "name",
+						"value": "Lynda Prior"
+					},
+					{
+						"type": "name",
+						"value": "Mark Cochrane"
+					},
+					{
+						"type": "name",
+						"value": "Brett Murphy"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6203993.v1"
+					}
+				]
+			},
+			{
+				"dataset-title": "Additional file 2: of Green monomeric photosensitizing fluorescent protein for photo-inducible protein inactivation and cell ablation",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 33
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 39
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Yemima Riani"
+					},
+					{
+						"type": "name",
+						"value": "Tomoki Matsuda"
+					},
+					{
+						"type": "name",
+						"value": "Kiwamu Takemoto"
+					},
+					{
+						"type": "name",
+						"value": "Takeharu Nagai"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6204137"
+					}
+				]
+			},
+			{
+				"dataset-title": "Source codes and data files from Application of low-order potential solutions to higher-order vertical traction boundary problems in an elastic half-space",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 35
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 39
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Adam G. Taylor"
+					},
+					{
+						"type": "name",
+						"value": "Jae H. Chung"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6204881"
+					}
+				]
+			},
+			{
+				"dataset-title": "A rapid method to identify <i>Salmonella enterica</i> serovar Gallinarum biovar Pullorum using a specific target gene <i>ipaJ</i>",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 32
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 38
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Lijuan Xu"
+					},
+					{
+						"type": "name",
+						"value": "Zijian Liu"
+					},
+					{
+						"type": "name",
+						"value": "Yang Li"
+					},
+					{
+						"type": "name",
+						"value": "Chao Yin"
+					},
+					{
+						"type": "name",
+						"value": "Yachen Hu"
+					},
+					{
+						"type": "name",
+						"value": "Xiaolei Xie"
+					},
+					{
+						"type": "name",
+						"value": "Qiuchun Li"
+					},
+					{
+						"type": "name",
+						"value": "Xinan Jiao"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.5902345"
+					}
+				]
+			},
+			{
+				"dataset-title": "Additional file 1: of Genomics analysis of Aphanomyces spp. identifies a new class of oomycete effector associated with host adaptation",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 34
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 38
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Elodie Gaulin"
+					},
+					{
+						"type": "name",
+						"value": "Michiel Pel"
+					},
+					{
+						"type": "name",
+						"value": "Laurent Camborde"
+					},
+					{
+						"type": "name",
+						"value": "Hélène San-Clemente"
+					},
+					{
+						"type": "name",
+						"value": "Sarah Courbier"
+					},
+					{
+						"type": "name",
+						"value": "Marie-Alexane Dupouy"
+					},
+					{
+						"type": "name",
+						"value": "Juliette Lengellé"
+					},
+					{
+						"type": "name",
+						"value": "Marine Veyssiere"
+					},
+					{
+						"type": "name",
+						"value": "Aurélie Le Ru"
+					},
+					{
+						"type": "name",
+						"value": "Frédéric Grandjean"
+					},
+					{
+						"type": "name",
+						"value": "Richard Cordaux"
+					},
+					{
+						"type": "name",
+						"value": "Bouziane Moumen"
+					},
+					{
+						"type": "name",
+						"value": "Clément Gilbert"
+					},
+					{
+						"type": "name",
+						"value": "Liliana Cano"
+					},
+					{
+						"type": "name",
+						"value": "Jean-Marc Aury"
+					},
+					{
+						"type": "name",
+						"value": "Julie Guy"
+					},
+					{
+						"type": "name",
+						"value": "Patrick Wincker"
+					},
+					{
+						"type": "name",
+						"value": "Olivier Bouchez"
+					},
+					{
+						"type": "name",
+						"value": "Christophe Klopp"
+					},
+					{
+						"type": "name",
+						"value": "Bernard Dumas"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6158567"
+					}
+				]
+			},
+			{
+				"dataset-title": "Crystallographic data in CIF from Investigation on the hydrolytic mechanism of cucurbit[6]uril in alkaline solution",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 31
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 38
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Chao Zhu"
+					},
+					{
+						"type": "name",
+						"value": "Zihui Meng"
+					},
+					{
+						"type": "name",
+						"value": "Wenjin Liu"
+					},
+					{
+						"type": "name",
+						"value": "Hongwei Ma"
+					},
+					{
+						"type": "name",
+						"value": "Jiarong Li"
+					},
+					{
+						"type": "name",
+						"value": "Tongtong Yang"
+					},
+					{
+						"type": "name",
+						"value": "Yang Liu"
+					},
+					{
+						"type": "name",
+						"value": "Ni Liu"
+					},
+					{
+						"type": "name",
+						"value": "Zhibin Xu"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6204863"
+					}
+				]
+			},
+			{
+				"dataset-title": "Curated Breast Imaging Subset of DDSM",
+				"yop": "2016",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "The Cancer Imaging Archive",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "sml.tcia"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2016"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 38
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 35
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Rebecca Sawyer-Lee"
+					},
+					{
+						"type": "name",
+						"value": "Francisco Gimenez"
+					},
+					{
+						"type": "name",
+						"value": "Assaf Hoogi"
+					},
+					{
+						"type": "name",
+						"value": "Daniel Rubin"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.7937/k9/tcia.2016.7o02s9cy"
+					}
+				]
+			},
+			{
+				"dataset-title": "Evaluation of a Multi-Faceted, U.S. Community-Based, Muslim-Led Countering Violent Extremism (CVE) Program, Montgomery County, MD 2014-2015",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Inter-University Consortium for Political and Social Research",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "gesis.icpsr"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 37
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 32
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 0
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "John Horgan"
+					},
+					{
+						"type": "name",
+						"value": "William Evans"
+					},
+					{
+						"type": "name",
+						"value": "Michael Williams"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.3886/icpsr36642.v1"
+					}
+				]
+			},
+			{
+				"dataset-title": "Hulian Earthquake data at NEEWS stations.7z",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 31
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 37
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Ting Yu Hsu"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6038057"
+					}
+				]
+			},
+			{
+				"dataset-title": "Additional file 1: of Genomics analysis of Aphanomyces spp. identifies a new class of oomycete effector associated with host adaptation",
+				"yop": "2018",
+				"uri": null,
+				"platform": "datacite",
+				"data-type": "dataset",
+				"publisher": "Figshare",
+				"publisher-id": [
+					{
+						"type": "client-id",
+						"value": "figshare.ars"
+					}
+				],
+				"dataset-dates": [
+					{
+						"type": "pub-date",
+						"value": "2018"
+					}
+				],
+				"performance": [
+					{
+						"period": {
+							"end-date": "",
+							"begin-date": ""
+						},
+						"instance": [
+							{
+								"access-method": "regular",
+								"metric-type": "total-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "regular",
+								"metric-type": "unique-resolutions",
+								"count": 0
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "unique-resolutions",
+								"count": 31
+							},
+							{
+								"access-method": "machine",
+								"metric-type": "total-resolutions",
+								"count": 37
+							}
+						]
+					}
+				],
+				"dataset-contributors": [
+					{
+						"type": "name",
+						"value": "Elodie Gaulin"
+					},
+					{
+						"type": "name",
+						"value": "Michiel Pel"
+					},
+					{
+						"type": "name",
+						"value": "Laurent Camborde"
+					},
+					{
+						"type": "name",
+						"value": "Hélène San-Clemente"
+					},
+					{
+						"type": "name",
+						"value": "Sarah Courbier"
+					},
+					{
+						"type": "name",
+						"value": "Marie-Alexane Dupouy"
+					},
+					{
+						"type": "name",
+						"value": "Juliette Lengellé"
+					},
+					{
+						"type": "name",
+						"value": "Marine Veyssiere"
+					},
+					{
+						"type": "name",
+						"value": "Aurélie Le Ru"
+					},
+					{
+						"type": "name",
+						"value": "Frédéric Grandjean"
+					},
+					{
+						"type": "name",
+						"value": "Richard Cordaux"
+					},
+					{
+						"type": "name",
+						"value": "Bouziane Moumen"
+					},
+					{
+						"type": "name",
+						"value": "Clément Gilbert"
+					},
+					{
+						"type": "name",
+						"value": "Liliana Cano"
+					},
+					{
+						"type": "name",
+						"value": "Jean-Marc Aury"
+					},
+					{
+						"type": "name",
+						"value": "Julie Guy"
+					},
+					{
+						"type": "name",
+						"value": "Patrick Wincker"
+					},
+					{
+						"type": "name",
+						"value": "Olivier Bouchez"
+					},
+					{
+						"type": "name",
+						"value": "Christophe Klopp"
+					},
+					{
+						"type": "name",
+						"value": "Bernard Dumas"
+					}
+				],
+				"dataset-id": [
+					{
+						"type": "doi",
+						"value": "10.6084/m9.figshare.6158567.v1"
+					}
+				]
+			}
+		]
+	}
+}
+}

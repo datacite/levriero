@@ -1,0 +1,106 @@
+{"data":
+  {"report":
+{
+  "report-header": {
+    "report-name": "Dataset Master Report",
+    "report-id": "dsr",
+    "release": "rd1",
+    "reporting-period": {
+      "begin-date": "2013-11-02",
+      "end-date": "2013-11-30"
+    },
+    "created": "2018-11-19",
+    "created-by": "urn:node:mnUNM1",
+    "report-filters": [],
+    "report-attributes": [],
+    "exceptions": []
+  },
+  "report-datasets": [
+    {
+      "dataset-title": "Symmetrical web of Carpinteria Salt Marsh",
+      "publisher": "KNB Data Repository",
+      "publisher-id": [
+        {
+          "type": "urn",
+          "value": "urn:node:KNB"
+        }
+      ],
+      "platform": "DataONE",
+      "dataset-contributors": [
+        {
+          "type": "name",
+          "value": "Kevin D. Lafferty"
+        },
+        {
+          "type": "name",
+          "value": "National Center for Ecological Analysis and Synthesis"
+        },
+        {
+          "type": "name",
+          "value": "NCEAS 5600: Vazquez: Null models for specialization and asymmetry in plant-pollinator systems"
+        }
+      ],
+      "dataset-dates": [
+        {
+          "type": "pub-date",
+          "value": "2006-03-16"
+        }
+      ],
+      "dataset-id": [
+        {
+          "type": "doi",
+          "value": "doi:10.5063/AA/bowdish.122.10"
+        }
+      ],
+      "yop": "2006",
+      "uri": "https://cn.dataone.org/cn/v2/resolve/doi%3A10.5063%2FAA%2Fbowdish.122.10",
+      "data-type": "dataset",
+      "performance": [
+        {
+          "period": {
+            "begin-date": "2013-11-02",
+            "end-date": "2013-11-30"
+          },
+          "instance": [
+            {
+              "count": 8,
+              "metric-type": "total-dataset-investigations",
+              "access-method": "regular",
+              "country-counts": {
+                "us": 6,
+                "nl": 2
+              }
+            },
+            {
+              "count": 8,
+              "metric-type": "unique-dataset-investigations",
+              "access-method": "regular",
+              "country-counts": {
+                "us": 6,
+                "nl": 2
+              }
+            },
+            {
+              "count": 7,
+              "metric-type": "total-dataset-requests",
+              "access-method": "regular",
+              "country-counts": {
+                "us": 5,
+                "nl": 2
+              }
+            },
+            {
+              "count": 7,
+              "metric-type": "unique-dataset-requests",
+              "access-method": "regular",
+              "country-counts": {
+                "us": 5,
+                "nl": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}}}
