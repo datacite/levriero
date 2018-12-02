@@ -59,7 +59,7 @@ class Report < Base
         id: normalize_doi(item.dig("dataset-id").first.dig("value")),
         created: options[:header].fetch("created"), 
         report_url: options[:url],
-        created_at: options[:header].fetch("created")
+        created_at: options[:header].dig.("reporting-period","begin-date")
       }
       instances = item.dig("performance", 0, "instance")
 
