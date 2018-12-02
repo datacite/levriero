@@ -166,7 +166,8 @@ module Importable
         item = {
           "doi" => data["id"],
           "nameIdentifier" => name_identifiers.map { |n| "#{n.dig("nameIdentifier", "nameIdentifierScheme")}:#{n.dig("nameIdentifier", "__content__")}" },
-          "updated" => data.dig("attributes", "updated")
+          "updated" => data.dig("attributes", "updated"),
+          "sourceId" => "datacite_orcid_auto_update"
         }
         NameIdentifier.push_item(item)
       end

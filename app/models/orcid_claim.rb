@@ -1,4 +1,4 @@
-class NameIdentifier < Base
+class OrcidClaim < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
 
   def self.import_by_month(options={})
@@ -7,26 +7,22 @@ class NameIdentifier < Base
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      NameIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+      OrcidClaimImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for DOIs created from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
+    "Queued import for claims created from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
   end
 
   def self.import(options={})
     from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
 
-    name_identifier = NameIdentifier.new
-    name_identifier.queue_jobs(name_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
+    orcid_claim = OrcidClaim.new
+    orcid_claim.queue_jobs(orcid_claim.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
   end
 
   def source_id
-    "datacite_orcid_auto_update"
-  end
-
-  def query
-    "nameIdentifier:ORCID\\:*"
+    "datacite_orcid_search_link"
   end
 
   def push_data(result, options={})
@@ -115,33 +111,6 @@ class NameIdentifier < Base
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
         elsif response.body["errors"].present?
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
-        end
-      end
-
-      # send to Profiles service, which then pushes to ORCID
-      if ENV['VOLPINO_TOKEN'].present?
-        push_url = ENV['VOLPINO_URL'] + "/claims"
-        doi = doi_from_url(iiitem["subj_id"])
-        orcid = orcid_from_url(iiitem["obj_id"])
-        source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
-
-        data = { 
-          "claim" => {
-            "doi" => doi,
-            "orcid" => orcid,
-            "source_id" => source_id,
-            "claim_action"=> "create" }}
-
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV['VOLPINO_TOKEN'],
-                                          content_type: 'application/json')
-                                        
-        if response.status == 202
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
-        elsif response.status == 409
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
-        elsif response.body["errors"].present?
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors'].first['title']}"
         end
       end
     end

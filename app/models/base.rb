@@ -23,18 +23,18 @@ class Base
   def delete_message message
     logger = Logger.new(STDOUT)
 
-    reponse = sqs.delete_message({
+    response = sqs.delete_message({
       queue_url: queue_url,
       receipt_handle: message[:receipt_handle]    
     })
-    if reponse.successful?
+    if response.successful?
       logger.info "Message #{message[:receipt_handle]} deleted"
     else
       logger.info "Could NOT delete Message #{message[:receipt_handle]}"
     end
   end
 
-  def queue_url options={}
+  def queue_url(options={})
     options[:queue_name] ||= "#{ENV['ENVIRONMENT']}_usage" 
     queue_name = options[:queue_name] 
     # puts "Using  #{sqs.get_queue_url(queue_name: queue_name).queue_url} queue"
