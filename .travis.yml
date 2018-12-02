@@ -70,12 +70,13 @@ after_success:
       
       if [ "${TRAVIS_TAG?}" ]; then
         git add prod-eu-west/services/levriero/_levriero.auto.tfvars;
+        git commit -m "Adding levriero git variables for for commit tagged ${TRAVIS_TAG?}";
+        git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git" master;
       else
         git add stage/services/levriero/_levriero.auto.tfvars;
+        git commit -m "Adding levriero git variables for latest commit";
+        git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git" master;
       fi
-
-      git commit -m "Adding levriero git variables for latest commit";
-      git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
     fi
 
 notifications:
