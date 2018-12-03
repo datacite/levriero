@@ -72,6 +72,7 @@ describe Base, type: :model, vcr: true do
       expect(response["author"].length).to eq(3)
       expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0002-9300-5278", "@type"=>"Person", "familyName"=>"Cruse", "givenName"=>"Patricia", "name"=>"Cruse, Patricia")
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"DataCite")
+      expect(response["periodical"]).to eq("@id"=>"https://doi.org/10.5438/0000-00ss", "@type"=>"Periodical", "name"=>"DataCite Blog")
       expect(response["registrantId"]).to eq("datacite.datacite.datacite")
       expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
       expect(response["datePublished"]).to eq("2017-08-04")
@@ -85,14 +86,14 @@ describe Base, type: :model, vcr: true do
       id = "https://doi.org/10.1055/s-0030-1259729"
       response = Base.get_crossref_metadata(id)
       expect(response["id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
-      expect(response["type"]).to eq("scholarly-article")
+      expect(response["type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Copper-Catalyzed Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents")
       expect(response["periodical"]).to eq("Synlett")
       expect(response["issn"]).to eq(["0936-5214", "1437-2096"])
       expect(response["publisher"]).to eq("Georg Thieme Verlag KG")
       expect(response["registrantId"]).to eq("crossref.194")
       expect(response["datePublished"]).to eq("2011-03-10")
-      expect(response["dateModified"]).to eq("2018-05-04T00:15:33Z")
+      expect(response["dateModified"]).to eq("2018-11-27T15:42:54Z")
     end
   end
 

@@ -258,6 +258,7 @@ class Base
       "name" => parse_attributes(attributes["titles"], content: "title", first: true),
       "author" => Array.wrap(to_schema_org(attributes["creators"])),
       "publisher" => publisher,
+      "periodical" => to_schema_org(attributes["periodical"]),
       "version" => attributes["version"],
       "datePublished" => get_date(attributes["dates"], "Issued"),
       "dateModified" => attributes["updated"],
@@ -280,6 +281,7 @@ class Base
     type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "creative-work"
     author = Array.wrap(message["author"]).map do |a| 
       {
+        "id" => a["ORCID"],
         "givenName" => a["given"],
         "familyName" => a["family"],
         "name" => a["name"] }.compact
@@ -287,9 +289,9 @@ class Base
 
     {
       "id" => id,
-      "type" => type.underscore.dasherize,
+      "type" => type,
       "name" => Array.wrap(message["title"]).first,
-      "author" => author,
+      "author" => Array.wrap(to_schema_org(author)),
       "periodical" => Array.wrap(message["container-title"]).first,
       "volumeNumber" => message["volume"],
       "issueNumber" => message["issue"],
