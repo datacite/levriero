@@ -286,18 +286,19 @@ class Base
         "familyName" => a["family"],
         "name" => a["name"] }.compact
     end
+    publisher = message["publisher"].present? ? { "@type" => "Organization", "name" => message["publisher"] } : nil
+    periodical = message["container-title"] ? { "@type" => "Periodical", "name" => Array.wrap(message["container-title"]).first, "issn" => Array.wrap(message["ISSN"]).first }.compact : nil
 
     {
       "id" => id,
       "type" => type,
       "name" => Array.wrap(message["title"]).first,
       "author" => Array.wrap(to_schema_org(author)),
-      "periodical" => Array.wrap(message["container-title"]).first,
+      "periodical" => periodical,
       "volumeNumber" => message["volume"],
       "issueNumber" => message["issue"],
       "pagination" => message["page"],
-      "publisher" => message["publisher"],
-      "issn" => message["ISSN"],
+      "publisher" => publisher,
       "datePublished" => Base.new.get_date_from_date_parts(message["issued"]),
       "dateModified" => message.dig("indexed", "date-time"),
       "registrantId" => "crossref.#{message["member"]}" }.compact
