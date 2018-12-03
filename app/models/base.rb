@@ -316,7 +316,7 @@ class Base
 
     {
       "id" => id,
-      "type" => "person",
+      "type" => "Person",
       "givenName" => data.dig("name", "given-names", "value"),
       "familyName" => data.dig("name", "family-name", "value"),
       "name" => data.dig("name", "credit-name", "value") }.compact

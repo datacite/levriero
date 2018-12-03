@@ -101,7 +101,7 @@ describe Base, type: :model, vcr: true do
       id = "https://orcid.org/0000-0003-1419-2405"
       response = Base.get_orcid_metadata(id)
       expect(response["id"]).to eq("https://orcid.org/0000-0003-1419-2405")
-      expect(response["type"]).to eq("person")
+      expect(response["type"]).to eq("Person")
       expect(response["givenName"]).to eq("Martin")
       expect(response["familyName"]).to eq("Fenner")
       expect(response["name"]).to eq("Martin Fenner")
