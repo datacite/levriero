@@ -20,7 +20,7 @@ describe FunderIdentifier, type: :model, vcr: true do
       id = "https://doi.org/10.13039/100011326"
       response = FunderIdentifier.get_funder_metadata(id)
       expect(response["id"]).to eq("https://doi.org/10.13039/100011326")
-      expect(response["type"]).to eq("funder")
+      expect(response["type"]).to eq("Funder")
       expect(response["name"]).to eq("London School of Economics and Political Science")
       expect(response["alternateName"]).to eq(["London School of Economics & Political Science", "LSE"])
       expect(response["location"]).to eq("addressCountry"=>"United Kingdom", "type"=>"postalAddress")

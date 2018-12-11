@@ -135,7 +135,7 @@ class FunderIdentifier < Base
     
     {
       "id" => id,
-      "type" => "funder",
+      "type" => "Funder",
       "name" => message["name"],
       "alternateName" => message["alt-names"],
       "location" => location,
