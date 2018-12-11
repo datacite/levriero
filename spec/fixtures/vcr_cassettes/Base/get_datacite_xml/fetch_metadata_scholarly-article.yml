@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 02 Dec 2018 23:51:11 GMT
+      - Tue, 11 Dec 2018 21:41:24 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,21 +30,21 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"838e4642e1df071f4beb96726e519152"
-      X-Runtime:
-      - '0.019540'
       X-Request-Id:
-      - 64d03ce8-22bd-47de-a911-c0929acff2c5
+      - 42033b94-1963-45d7-9aff-624ad5a5295d
+      Etag:
+      - W/"a3a9d3f644a5b74fc1098538e0372984"
+      X-Runtime:
+      - '0.017554'
       X-Powered-By:
       - Phusion Passenger 6.0.0
       Server:
       - nginx/1.15.7 + Phusion Passenger 6.0.0
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.5438/4k3m-nyvgx","type":"dois","attributes":{"doi":"10.5438/4k3m-nyvgx","prefix":"10.5438","suffix":"4k3m-nyvgx","identifier":"https://handle.test.datacite.org/10.5438/4k3m-nyvgx","creators":[{"id":"https://orcid.org/0000-0003-1419-2405","name":"Fenner,
-        Martin","type":"Person","givenName":"Martin","familyName":"Fenner"}],"titles":[{"title":"Eating
-        your own Dog Food"}],"publisher":"DataCite","periodical":{"id":"https://doi.org/10.5438/0000-00ss","type":"Periodical"},"publicationYear":2016,"subjects":[{"subject":"datacite"},{"subject":"doi"},{"subject":"metadata"},{"subject":"featured"}],"contributors":[],"dates":[{"date":"2016-12-20","dateType":"Created"},{"date":"2016-12-20","dateType":"Issued"},{"date":"2016-12-20","dateType":"Updated"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"BlogPosting","resourceTypeGeneral":"Text"},"alternateIdentifiers":[{"alternateIdentifierType":""}],"relatedIdentifiers":[{"relationType":"IsPartOf","relatedIdentifier":"10.5438/0000-00ss","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/0012","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/55e5-t5c0","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":"1.0","rightsList":[{"rights":"https://creativecommons.org/licenses/by/4.0/","rightsUri":"https://creativecommons.org/licenses/by/4.0"}],"descriptions":[{"description":"Eating
+      string: '{"data":{"id":"10.5438/4k3m-nyvgx","type":"dois","attributes":{"doi":"10.5438/4k3m-nyvgx","prefix":"10.5438","suffix":"4k3m-nyvgx","identifiers":[{"identifier":"https://handle.test.datacite.org/10.5438/4k3m-nyvgx","identifierType":"DOI"},{"identifierType":""}],"creators":[{"name":"Fenner,
+        Martin","nameType":"Personal","givenName":"Martin","familyName":"Fenner","nameIdentifiers":[{"nameIdentifier":"https://orcid.org/0000-0003-1419-2405","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"Eating
+        your own Dog Food"}],"publisher":"DataCite","container":{"type":"Series","identifier":"10.5438/0000-00ss","identifierType":"DOI"},"publicationYear":2016,"subjects":[{"subject":"datacite"},{"subject":"doi"},{"subject":"metadata"},{"subject":"featured"}],"contributors":[],"dates":[{"date":"2016-12-20","dateType":"Created"},{"date":"2016-12-20","dateType":"Issued"},{"date":"2016-12-20","dateType":"Updated"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"BlogPosting","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"IsPartOf","relatedIdentifier":"10.5438/0000-00ss","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/0012","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/55e5-t5c0","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[{"rights":"https://creativecommons.org/licenses/by/4.0/","rightsUri":"https://creativecommons.org/licenses/by/4.0"}],"descriptions":[{"description":"Eating
         your own dog food is a slang term to describe that an organization should
         itself use the products and services it provides. For DataCite this means
         that we should use DOIs with appropriate metadata and strategies for long-term
@@ -52,5 +52,5 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contactName":"DataCite
         Support","contactEmail":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 23:51:11 GMT
+  recorded_at: Tue, 11 Dec 2018 21:41:24 GMT
 recorded_with: VCR 3.0.3

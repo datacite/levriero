@@ -183,6 +183,25 @@ class Base
     map_hash_keys(element: element, mapping: mapping)
   end
 
+  def self.to_schema_org_creators(element)
+    element = Array.wrap(element).map do |c|
+      c["affiliation"] = { "@type" => "Organization", "name" => c["affiliation"] } if c["affiliation"].present?
+      c["@type"] = c["nameType"].present? ? c["nameType"][0..-3] : nil
+      c["@id"] = Array.wrap(c["nameIdentifiers"]).first.to_h.fetch("nameIdentifier", nil)
+      c["name"] = c["familyName"].present? ? [c["givenName"], c["familyName"]].join(" ") : c["name"]
+      c.except("nameIdentifiers", "nameType").compact
+    end.unwrap
+  end
+
+  def self.to_schema_org_container(element, options={})
+    return nil unless (element.is_a?(Hash) || (element.nil? && options[:container_title].present?))
+
+    { 
+      "@id" => normalize_doi(element["identifier"]) || element["identifier"],
+      "@type" => (options[:type] == "Dataset") ? "DataCatalog" : "Periodical",
+      "name" => element["title"] || options[:container_title] }.compact
+  end
+
   def self.to_schema_org_funder(funding_references)
     return nil unless funding_references.present?
 
@@ -232,7 +251,7 @@ class Base
     
     xml = response.body.dig("data", "attributes", "xml")
     xml = Base64.decode64(xml) if xml.present?
-    Maremma.from_xml(xml).fetch("resource", {})
+    Maremma.from_xml(xml).to_h.fetch("resource", {})
   end
 
   def self.get_datacite_metadata(id)
@@ -251,21 +270,23 @@ class Base
     proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select { |ri| ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"]) }. map do |ri|
       ri["relatedIdentifier"]
     end
+    type = attributes.dig("types", "schemaOrg")
 
     {
       "id" => id,
-      "type" => attributes.dig("types", "schemaOrg"),
+      "type" => type,
       "name" => parse_attributes(attributes["titles"], content: "title", first: true),
-      "author" => Array.wrap(to_schema_org(attributes["creators"])),
+      "author" => Array.wrap(to_schema_org_creators(attributes["creators"])),
       "publisher" => publisher,
-      "periodical" => to_schema_org(attributes["periodical"]),
+      "periodical" => (type != "Dataset") && attributes["container"] ? to_schema_org_container(attributes["container"]) : nil,
+      "includedInDataCatalog" => (type == "Dataset") && attributes["container"] ? to_schema_org_container(attributes["container"], type: "Dataset") : nil,
       "version" => attributes["version"],
       "datePublished" => get_date(attributes["dates"], "Issued"),
       "dateModified" => attributes["updated"],
       "funder" => to_schema_org_funder(attributes["fundingReferences"]),
       "proxyIdentifiers" => proxy_identifiers,
       "registrantId" => "datacite.#{client_id}" }.compact
-  end
+  end          
 
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)

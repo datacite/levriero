@@ -134,7 +134,8 @@ class Crossref < Base
       elsif response.status == 409
         logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
       elsif response.body["errors"].present?
-        logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors'].first['title']}"
+        logger.error "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors'].first['title']}"
+        logger.error data.inspect
       end
     end
   end

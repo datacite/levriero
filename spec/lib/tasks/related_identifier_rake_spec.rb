@@ -29,7 +29,7 @@ describe "related_identifier:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 5068 DOIs created from 2018-01-04 - 2018-08-05.\n" }
+  let(:output) { "Queued import for 5067 DOIs created from 2018-01-04 - 2018-08-05.\n" }
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")
@@ -42,7 +42,7 @@ describe "related_identifier:import", vcr: true do
   it "should enqueue an RelatedIdentifierImportJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(5068)
+    }.to change(enqueued_jobs, :size).by(5067)
     expect(enqueued_jobs.last[:job]).to be(RelatedIdentifierImportJob)
   end
 end

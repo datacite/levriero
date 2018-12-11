@@ -58,17 +58,23 @@ class RelatedIdentifier < Base
       prefix = validate_prefix(related_identifier)
       registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
 
-      if registration_agencies[prefix] == "DataCite"
+      if registration_agencies[prefix].is_a?(Array)
+        logger.info "No DOI registration agency for prefix #{prefix} found."
+        obj = {}
+      elsif registration_agencies[prefix] == "DataCite"
         source_id = "datacite_related"
         source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
+        puts "DR" + source_token.inspect
         obj = cached_datacite_response(obj_id)
       elsif registration_agencies[prefix] == "Crossref"
         source_id = "datacite_crossref"
         source_token = ENV['DATACITE_CROSSREF_SOURCE_TOKEN']
+        puts "DC" + source_token.inspect
         obj = cached_crossref_response(obj_id)
       elsif registration_agencies[prefix].present?
         source_id = "datacite_#{registration_agencies[prefix].downcase}"
         source_token = ENV['DATACITE_OTHER_SOURCE_TOKEN']
+        puts "DO" + source_token.inspect
         obj = {}
       end
 
@@ -122,7 +128,8 @@ class RelatedIdentifier < Base
         elsif response.status == 409
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
         elsif response.body["errors"].present?
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+          logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+          logger.error data.inspect
         end
       end
       

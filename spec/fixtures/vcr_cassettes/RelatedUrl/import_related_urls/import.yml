@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 02 Dec 2018 23:51:18 GMT
+      - Tue, 11 Dec 2018 21:41:31 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
@@ -40,7 +40,7 @@ http_interactions:
 
 '
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 23:51:18 GMT
+  recorded_at: Tue, 11 Dec 2018 21:41:31 GMT
 - request:
     method: get
     uri: https://solr.test.datacite.org/api?fl=doi,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated&fq=updated:%5B2018-01-04T00:00:00Z%20TO%202018-01-31T23:59:59Z%5D%20AND%20has_metadata:true%20AND%20is_active:true&q=relatedIdentifier:URL%5C:*&rows=1000&start=0&wt=json
@@ -60,7 +60,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 02 Dec 2018 23:51:18 GMT
+      - Tue, 11 Dec 2018 21:41:31 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
@@ -93,5 +93,5 @@ http_interactions:
 
 '
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 23:51:18 GMT
+  recorded_at: Tue, 11 Dec 2018 21:41:31 GMT
 recorded_with: VCR 3.0.3

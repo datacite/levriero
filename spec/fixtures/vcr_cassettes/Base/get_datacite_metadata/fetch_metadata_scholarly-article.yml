@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 02 Dec 2018 23:51:12 GMT
+      - Tue, 11 Dec 2018 21:41:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,21 +31,21 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 5530ec23-91ca-4b61-9ae7-e0e99ccd961b
+      - b832cd0a-fc2b-4915-a704-1a1443b934df
       Etag:
-      - W/"6fa259358faa7ab92689e49c02661fde"
+      - W/"65fdaeaa8f6197af26c483042b2fadc6"
       X-Runtime:
-      - '0.019223'
+      - '0.023216'
       X-Powered-By:
       - Phusion Passenger 6.0.0
       Server:
       - nginx/1.15.7 + Phusion Passenger 6.0.0
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.5438/4k3m-nyvg","type":"dois","attributes":{"doi":"10.5438/4k3m-nyvg","prefix":"10.5438","suffix":"4k3m-nyvg","identifier":"https://handle.test.datacite.org/10.5438/4k3m-nyvg","creators":[{"name":"Fenner,
-        Martin","type":"Person","givenName":"Martin","familyName":"Fenner"}],"titles":[{"title":"Eating
-        your own Dog Food"}],"publisher":"DataCite","periodical":null,"publicationYear":2016,"subjects":[{"subject":"Phylogeny"},{"subject":"Malaria"},{"subject":"Parasites"},{"subject":"Taxonomy"},{"subject":"Mitochondrial
-        genome"},{"subject":"Africa"},{"subject":"Plasmodium"}],"contributors":[],"dates":[{"date":"2016-12-20","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"BlogPosting","resourceTypeGeneral":"Text"},"alternateIdentifiers":[],"relatedIdentifiers":[],"sizes":[],"formats":[],"version":null,"rightsList":[],"descriptions":[{"description":"Eating
+      string: '{"data":{"id":"10.5438/4k3m-nyvg","type":"dois","attributes":{"doi":"10.5438/4k3m-nyvg","prefix":"10.5438","suffix":"4k3m-nyvg","identifiers":[{"identifier":"https://handle.test.datacite.org/10.5438/4k3m-nyvg","identifierType":"DOI"}],"creators":[{"name":"Fenner,
+        Martin","nameType":"Personal","givenName":"Martin","familyName":"Fenner"}],"titles":[{"title":"Eating
+        your own Dog Food"}],"publisher":"DataCite","container":{},"publicationYear":2016,"subjects":[{"subject":"Phylogeny"},{"subject":"Malaria"},{"subject":"Parasites"},{"subject":"Taxonomy"},{"subject":"Mitochondrial
+        genome"},{"subject":"Africa"},{"subject":"Plasmodium"}],"contributors":[],"dates":[{"date":"2016-12-20","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"BlogPosting","resourceTypeGeneral":"Text"},"relatedIdentifiers":[],"sizes":[],"formats":[],"version":null,"rightsList":[],"descriptions":[{"description":"Eating
         your own dog food is a slang term to describe that an organization should
         itself use the products and services it provides. For DataCite this means
         that we should use DOIs with appropriate metadata and strategies for long-term
@@ -53,5 +53,5 @@ http_interactions:
         Staff Demo Client","symbol":"DEMO.DATACITE","year":2018,"contactName":"DataCite
         Support","contactEmail":"support@datacite.org","domains":"*","url":null,"created":"2018-04-08T09:31:38.000Z","updated":"2018-08-26T01:31:12.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"demo","type":"providers"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"},{"id":"10.70043","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 23:51:12 GMT
+  recorded_at: Tue, 11 Dec 2018 21:41:25 GMT
 recorded_with: VCR 3.0.3
