@@ -17,11 +17,11 @@ describe Base, type: :model, vcr: true do
   end
 
   context "get_datacite_metadata" do
-    it "fetch metadata scholarly-article" do
+    it "fetch metadata ScholarlyArticle" do
       id = "https://doi.org/10.5438/4k3m-nyvg"
       response = Base.get_datacite_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.5438/4k3m-nyvg")
-      expect(response["type"]).to eq("ScholarlyArticle")
+      expect(response["@id"]).to eq("https://doi.org/10.5438/4k3m-nyvg")
+      expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Eating your own Dog Food")
       expect(response["author"].length).to eq(1)
       expect(response["author"].first).to eq("@type"=>"Person", "familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner")
@@ -32,11 +32,11 @@ describe Base, type: :model, vcr: true do
       expect(response["dateModified"]).to eq("2018-08-01T22:04:55.000Z")
     end
 
-    it "fetch metadata dataset" do
+    it "fetch metadata Dataset" do
       id = "https://doi.org/10.4124/ccvcn4z"
       response = Base.get_datacite_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.4124/ccvcn4z")
-      expect(response["type"]).to eq("Dataset")
+      expect(response["@id"]).to eq("https://doi.org/10.4124/ccvcn4z")
+      expect(response["@type"]).to eq("Dataset")
       expect(response["name"]).to eq("CCDC 785761: Experimental Crystal Structure Determination")
       expect(response["author"].length).to eq(5)
       expect(response["author"].first).to eq("@type"=>"Person", "familyName"=>"Phillips", "givenName"=>"A.E.", "name"=>"A.E. Phillips")
@@ -50,8 +50,8 @@ describe Base, type: :model, vcr: true do
     it "fetch metadata with funding information" do
       id = "https://doi.org/10.70048/m6at-x929"
       response = Base.get_datacite_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.70048/m6at-x929")
-      expect(response["type"]).to eq("SoftwareSourceCode")
+      expect(response["@id"]).to eq("https://doi.org/10.70048/m6at-x929")
+      expect(response["@type"]).to eq("SoftwareSourceCode")
       expect(response["name"]).to eq("DataCite DOI Test Example")
       expect(response["author"].length).to eq(2)
       expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0002-7352-517X", "@type"=>"Person", "familyName"=>"Hallett", "givenName"=>"Richard", "name"=>"Richard Hallett", "affiliation" => {"@type"=>"Organization", "name"=>"DataCite"})
@@ -66,8 +66,8 @@ describe Base, type: :model, vcr: true do
     it "fetch metadata with author information" do
       id = "https://doi.org/10.5438/0x88-gvge"
       response = Base.get_datacite_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.5438/0x88-gvge")
-      expect(response["type"]).to eq("ScholarlyArticle")
+      expect(response["@id"]).to eq("https://doi.org/10.5438/0x88-gvge")
+      expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("EZID DOI Service is Evolving")
       expect(response["author"].length).to eq(3)
       expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0002-9300-5278", "@type"=>"Person", "familyName"=>"Cruse", "givenName"=>"Patricia", "name"=>"Patricia Cruse")
@@ -85,8 +85,8 @@ describe Base, type: :model, vcr: true do
     it "fetch crossref metadata" do
       id = "https://doi.org/10.1055/s-0030-1259729"
       response = Base.get_crossref_metadata(id)
-      expect(response["id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
-      expect(response["type"]).to eq("ScholarlyArticle")
+      expect(response["@id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
+      expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Copper-Catalyzed Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents")
       expect(response["periodical"]).to eq("@type"=>"Periodical", "issn"=>"0936-5214", "name"=>"Synlett")
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"Georg Thieme Verlag KG")
@@ -100,8 +100,8 @@ describe Base, type: :model, vcr: true do
     it "fetch orcid metadata" do
       id = "https://orcid.org/0000-0003-1419-2405"
       response = Base.get_orcid_metadata(id)
-      expect(response["id"]).to eq("https://orcid.org/0000-0003-1419-2405")
-      expect(response["type"]).to eq("Person")
+      expect(response["@id"]).to eq("https://orcid.org/0000-0003-1419-2405")
+      expect(response["@type"]).to eq("Person")
       expect(response["givenName"]).to eq("Martin")
       expect(response["familyName"]).to eq("Fenner")
       expect(response["name"]).to eq("Martin Fenner")

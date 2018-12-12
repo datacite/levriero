@@ -273,8 +273,8 @@ class Base
     type = attributes.dig("types", "schemaOrg")
 
     {
-      "id" => id,
-      "type" => type,
+      "@id" => id,
+      "@type" => type,
       "name" => parse_attributes(attributes["titles"], content: "title", first: true),
       "author" => Array.wrap(to_schema_org_creators(attributes["creators"])),
       "publisher" => publisher,
@@ -299,10 +299,11 @@ class Base
     
     message = response.body.dig("data", "message")
 
-    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "creative-work"
+    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "CreativeWork"
     author = Array.wrap(message["author"]).map do |a| 
       {
-        "id" => a["ORCID"],
+        "@id" => a["ORCID"],
+        "@type" => "Person",
         "givenName" => a["given"],
         "familyName" => a["family"],
         "name" => a["name"] }.compact
@@ -311,8 +312,8 @@ class Base
     periodical = message["container-title"] ? { "@type" => "Periodical", "name" => Array.wrap(message["container-title"]).first, "issn" => Array.wrap(message["ISSN"]).first }.compact : nil
 
     {
-      "id" => id,
-      "type" => type,
+      "@id" => id,
+      "@type" => type,
       "name" => Array.wrap(message["title"]).first,
       "author" => Array.wrap(to_schema_org(author)),
       "periodical" => periodical,
@@ -336,8 +337,8 @@ class Base
     data = response.body.fetch("data", {})
 
     {
-      "id" => id,
-      "type" => "Person",
+      "@id" => id,
+      "@type" => "Person",
       "givenName" => data.dig("name", "given-names", "value"),
       "familyName" => data.dig("name", "family-name", "value"),
       "name" => data.dig("name", "credit-name", "value") }.compact
