@@ -60,21 +60,20 @@ class RelatedIdentifier < Base
 
       if registration_agencies[prefix].is_a?(Array)
         logger.info "No DOI registration agency for prefix #{prefix} found."
+        source_id = "datacite_related"
+        source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
         obj = {}
       elsif registration_agencies[prefix] == "DataCite"
         source_id = "datacite_related"
         source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
-        puts "DR" + source_token.inspect
         obj = cached_datacite_response(obj_id)
       elsif registration_agencies[prefix] == "Crossref"
         source_id = "datacite_crossref"
         source_token = ENV['DATACITE_CROSSREF_SOURCE_TOKEN']
-        puts "DC" + source_token.inspect
         obj = cached_crossref_response(obj_id)
       elsif registration_agencies[prefix].present?
         source_id = "datacite_#{registration_agencies[prefix].downcase}"
         source_token = ENV['DATACITE_OTHER_SOURCE_TOKEN']
-        puts "DO" + source_token.inspect
         obj = {}
       end
 

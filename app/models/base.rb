@@ -194,7 +194,7 @@ class Base
   end
 
   def self.to_schema_org_container(element, options={})
-    return nil unless (element.is_a?(Hash) || (element.nil? && options[:container_title].present?))
+    return nil unless element.is_a?(Hash) && (element["title"] || options[:container_title]).present?
 
     { 
       "@id" => normalize_doi(element["identifier"]) || element["identifier"],
@@ -303,7 +303,7 @@ class Base
     author = Array.wrap(message["author"]).map do |a| 
       {
         "@id" => a["ORCID"],
-        "@type" => "Person",
+        "@type" => a["family"].present? ? "Person" : nil,
         "givenName" => a["given"],
         "familyName" => a["family"],
         "name" => a["name"] }.compact
