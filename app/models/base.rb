@@ -42,43 +42,41 @@ class Base
   end
   
   def get_query_url(options={})
+    options[:number] ||= 1
+    options[:size] ||= 1000
     updated = "updated:[#{options[:from_date]}T00:00:00Z TO #{options[:until_date]}T23:59:59Z]"
-    fq = "#{updated} AND has_metadata:true AND is_active:true"
 
-    if options[:doi].present?
-      q = "doi:#{options[:doi]}"
-    elsif options[:orcid].present?
-      q = "nameIdentifier:ORCID\\:#{options[:orcid]}"
-    elsif options[:related_identifier].present?
-      q = "relatedIdentifier:DOI\\:#{options[:related_identifier]}"
-    elsif options[:query].present?
-      q = options[:query]
-    else
-      q = query
-    end
+    # if options[:doi].present?
+    #   query = "doi:#{options[:doi]}"
+    # elsif options[:orcid].present?
+    #   query = "nameIdentifiers.nameIdentifier\\:#{options[:orcid]}"
+    # elsif options[:related_identifier].present?
+    #   query = "relatedIdentifiers.relatedIdentifier\\:#{options[:related_identifier]}"
+    # elsif options[:query].present?
+    #   query = options[:query]
+    # else
+    #   query = query
+    # end
 
     params = { 
-      q: q,
-      start: options[:offset],
-      rows: options[:rows],
-      fl: "doi,relatedIdentifier,nameIdentifier,funderIdentifier,minted,updated",
-      fq: fq,
-      wt: "json" }
+      query: query + " AND " + updated,
+      "page[number]" => options[:number],
+      "page[size]" => options[:size] }
 
     url +  URI.encode_www_form(params)
   end
 
   def get_total(options={})
-    query_url = get_query_url(options.merge(rows: 0))
+    query_url = get_query_url(options.merge(size: 0))
     result = Maremma.get(query_url, options)
-    result.body.fetch("data", {}).fetch("response", {}).fetch("numFound", 0)
+    result.body.dig("meta", "total").to_i
   end
 
   def queue_jobs(options={})
     logger = Logger.new(STDOUT)
 
-    options[:offset] = options[:offset].to_i || 0
-    options[:rows] = options[:rows].presence || job_batch_size
+    options[:number] = options[:number].to_i || 1
+    options[:size] = options[:size].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
     options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
     options[:content_type] = 'json'
@@ -91,7 +89,7 @@ class Base
       error_total = 0
 
       (0...total_pages).each do |page|
-        options[:offset] = page * job_batch_size
+        options[:number] = page
         options[:total] = total
         process_data(options)
       end
@@ -113,7 +111,7 @@ class Base
     options[:title] = "Report for #{source_id}"
     send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
 
-    # return number of works queued
+    # return number of dois queued
     total
   end
 
@@ -128,7 +126,7 @@ class Base
   end
 
   def url
-    ENV['SOLR_URL'] + "/api?"
+    ENV['API_URL'] + "/dois?"
   end
 
   def timeout
@@ -252,6 +250,26 @@ class Base
     xml = response.body.dig("data", "attributes", "xml")
     xml = Base64.decode64(xml) if xml.present?
     Maremma.from_xml(xml).to_h.fetch("resource", {})
+  end
+
+  def self.get_datacite_json(id)
+    logger = Logger.new(STDOUT)
+
+    doi = doi_from_url(id)
+    unless doi.present?
+      logger.info "#{id} is not a valid DOI"
+      return {}
+    end
+
+    url = ENV['API_URL'] + "/dois/#{doi}"
+    response = Maremma.get(url)
+
+    if response.status != 200
+      logger.info "DOI #{doi} not found"
+      return {}
+    end
+    
+    (response.body.dig("data", "attributes") || {}).except("xml")
   end
 
   def self.get_datacite_metadata(id)

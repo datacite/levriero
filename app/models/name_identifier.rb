@@ -26,14 +26,14 @@ class NameIdentifier < Base
   end
 
   def query
-    "nameIdentifier:ORCID\\:*"
+    "creators.nameIdentifiers.nameIdentifierScheme:ORCID"
   end
 
   def push_data(result, options={})
     logger = Logger.new(STDOUT)
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
-    items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
+    items = result.body.fetch("data", [])
 
     Array.wrap(items).map do |item|
       NameIdentifierImportJob.perform_later(item)
@@ -45,25 +45,25 @@ class NameIdentifier < Base
   def self.push_item(item)
     logger = Logger.new(STDOUT)
 
-    doi = item.fetch("doi")
+    attributes = item.fetch("attributes", {})
+    doi = attributes.fetch("doi")
     pid = normalize_doi(doi)
-    related_identifiers = item.fetch("relatedIdentifier", [])
+    related_identifiers = attributes.fetch("relatedIdentifiers", [])
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier.split(':', 3).first)
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end
-    name_identifiers = item.fetch("nameIdentifier", [])
-    return nil if name_identifiers.blank? || skip_doi
+    creators = attributes.fetch("creators", []).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
+    return nil if creators.blank? || skip_doi
 
     source_id = item.fetch("sourceId", "datacite_orcid_auto_update")
     relation_type_id = "is_authored_by"
     source_token = ENV['DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN']
     
-    push_items = Array.wrap(name_identifiers).reduce([]) do |ssum, iitem|
-      name_identifier_scheme, name_identifier = iitem.split(':', 2)
-      name_identifier = name_identifier.strip
-      obj_id = normalize_orcid(name_identifier)
+    push_items = Array.wrap(creators).reduce([]) do |ssum, iitem|
+      name_identifier = Array.wrap(iitem.fetch("nameIdentifiers", nil)).find { |n| n["nameIdentifierScheme"] == "ORCID" }
+      obj_id = normalize_orcid(name_identifier["nameIdentifier"]) if name_identifier.present?
 
-      if obj_id.present?
+      if name_identifier.present? && obj_id.present?
         subj = cached_datacite_response(pid)
         obj = cached_orcid_response(obj_id)
 
@@ -73,7 +73,7 @@ class NameIdentifier < Base
                   "relation_type_id" => relation_type_id,
                   "source_id" => source_id,
                   "source_token" => source_token,
-                  "occurred_at" => item.fetch("updated"),
+                  "occurred_at" => attributes.fetch("updated"),
                   "timestamp" => Time.zone.now.iso8601,
                   "license" => LICENSE,
                   "subj" => subj,
@@ -107,7 +107,8 @@ class NameIdentifier < Base
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
-                                          content_type: 'application/vnd.api+json')
+                                          content_type: 'application/vnd.api+json',
+                                          accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."

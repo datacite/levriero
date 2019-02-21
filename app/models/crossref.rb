@@ -127,7 +127,8 @@ class Crossref < Base
 
       response = Maremma.put(push_url, data: data.to_json,
                                        bearer: ENV['LAGOTTINO_TOKEN'],
-                                       content_type: 'application/vnd.api+json')
+                                       content_type: 'application/vnd.api+json',
+                                       accept: 'application/vnd.api+json; version=2')
 
       if [200, 201].include?(response.status)
         logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."

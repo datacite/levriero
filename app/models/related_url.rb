@@ -26,13 +26,13 @@ class RelatedUrl < Base
   end
 
   def query
-    "relatedIdentifier:URL\\:*"
+    "relatedIdentifiers.relatedIdentifierType:URL"
   end
 
   def push_data(result, options={})
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
-    items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
+    items = result.body.fetch("data", [])
     # Rails.logger.info "Extracting related urls for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
@@ -101,7 +101,8 @@ class RelatedUrl < Base
 
         response = Maremma.post(push_url, data: data.to_json,
                                          bearer: ENV['LAGOTTINO_TOKEN'],
-                                         content_type: 'application/vnd.api+json')
+                                         content_type: 'application/vnd.api+json',
+                                         accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."

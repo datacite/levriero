@@ -25,15 +25,15 @@ class Report < Base
   def self.parse_multi_subset_report report
     subset = report.subsets.last
     
-      puts subset["checksum"]
-      compressed = decode_report subset["gzip"]
-      json = decompress_report compressed
-      dataset_array = parse_subset json
-      dataset_array.map do |dataset|
-        args = {header: report.header, url: report.report_url}
-        UsageUpdateParseJob.perform_later(dataset, args)
-      end
-      dataset_array
+    #puts subset["checksum"]
+    compressed = decode_report subset["gzip"]
+    json = decompress_report compressed
+    dataset_array = parse_subset json
+    dataset_array.map do |dataset|
+      args = {header: report.header, url: report.report_url}
+      UsageUpdateParseJob.perform_later(dataset, args)
+    end
+    dataset_array
   end
   
 
@@ -80,7 +80,7 @@ class Report < Base
   end
 
   def compressed_report?
-    puts @data.dig("report","report-header","exceptions")
+    # puts @data.dig("report","report-header","exceptions")
     return nil unless @data.dig("report","report-header","exceptions").present?
     return nil unless @data.dig("report","report-header","exceptions").any?
     # @data.dig("report","report-header","exceptions").include?(COMPRESSED_HASH_MESSAGE)

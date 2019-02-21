@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Base, type: :model, vcr: true do
   context "get_datacite_xml" do
     it "fetch metadata scholarly-article" do
-      id = "https://doi.org/10.5438/4k3m-nyvgx"
+      id = "https://doi.org/10.5438/mk65-3m12"
       response = Base.get_datacite_xml(id)
       expect(response.dig("relatedIdentifiers", "relatedIdentifier").length).to eq(3)
       expect(response.dig("relatedIdentifiers", "relatedIdentifier").last).to eq("__content__"=>"10.5438/55e5-t5c0", "relatedIdentifierType"=>"DOI", "relationType"=>"References")
@@ -16,20 +16,35 @@ describe Base, type: :model, vcr: true do
     end
   end
 
+  context "get_datacite_json" do
+    it "fetch metadata scholarly-article" do
+      id = "https://doi.org/10.5438/mk65-3m12"
+      response = Base.get_datacite_json(id)
+      expect(response.fetch("relatedIdentifiers", []).length).to eq(3)
+      expect(response.fetch("relatedIdentifiers", []).last).to eq("relatedIdentifier"=>"10.5438/55e5-t5c0", "relatedIdentifierType"=>"DOI", "relationType"=>"References")
+    end
+
+    it "fetch metadata dataset" do
+      id = "https://doi.org/10.4124/ccvcn4z"
+      response = Base.get_datacite_json(id)
+      expect(response.fetch("relatedIdentifiers", [])).to eq([{"relatedIdentifier"=>"10.1021/ja906895j", "relatedIdentifierType"=>"DOI", "relationType"=>"IsSupplementTo"}])
+    end
+  end
+
   context "get_datacite_metadata" do
     it "fetch metadata ScholarlyArticle" do
-      id = "https://doi.org/10.5438/4k3m-nyvg"
+      id = "https://doi.org/10.5438/mk65-3m12"
       response = Base.get_datacite_metadata(id)
-      expect(response["@id"]).to eq("https://doi.org/10.5438/4k3m-nyvg")
+      expect(response["@id"]).to eq("https://doi.org/10.5438/mk65-3m12")
       expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Eating your own Dog Food")
       expect(response["author"].length).to eq(1)
-      expect(response["author"].first).to eq("@type"=>"Person", "familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner")
+      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0001-6528-2027", "@type"=>"Person", "familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner")
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"DataCite")
-      expect(response["registrantId"]).to eq("datacite.demo.datacite")
-      expect(response["proxyIdentifiers"]).to be_empty
+      expect(response["registrantId"]).to eq("datacite.datacite.datacite")
+      expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
       expect(response["datePublished"]).to eq("2016-12-20")
-      expect(response["dateModified"]).to eq("2018-08-01T22:04:55.000Z")
+      expect(response["dateModified"]).to eq("2019-02-19T22:01:37.000Z")
     end
 
     it "fetch metadata Dataset" do
@@ -48,35 +63,36 @@ describe Base, type: :model, vcr: true do
     end
 
     it "fetch metadata with funding information" do
-      id = "https://doi.org/10.70048/m6at-x929"
+      id = "https://doi.org/10.21953/lse.6pv8ey9vxc10"
       response = Base.get_datacite_metadata(id)
-      expect(response["@id"]).to eq("https://doi.org/10.70048/m6at-x929")
-      expect(response["@type"]).to eq("SoftwareSourceCode")
-      expect(response["name"]).to eq("DataCite DOI Test Example")
-      expect(response["author"].length).to eq(2)
-      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0002-7352-517X", "@type"=>"Person", "familyName"=>"Hallett", "givenName"=>"Richard", "name"=>"Richard Hallett", "affiliation" => {"@type"=>"Organization", "name"=>"DataCite"})
-      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"DataCite")
-      expect(response["funder"]).to eq("@id"=>"https://doi.org/10.13039/100000001", "@type"=>"Organization", "name"=>"National Science Foundation")
-      expect(response["registrantId"]).to eq("datacite.datacite.rph")
-      expect(response["proxyIdentifiers"]).to be_empty
+      expect(response["@id"]).to eq("https://doi.org/10.21953/lse.6pv8ey9vxc10")
+      expect(response["@type"]).to eq("ScholarlyArticle")
+      expect(response["name"]).to eq("Politics of sexuality in neoliberal(ized) times and\n spaces: LGBT movements and reparative therapy in\n contemporary Poland")
+      expect(response["author"].length).to eq(1)
+      expect(response["author"].first).to eq("@type"=>"Person", "affiliation" => {"@type"=>"Organization", "name"=>"London School of Economics and Political Science (LSE)"},
+        "familyName" => "Mikulak",
+        "givenName" => "Magdalena",
+        "name" => "Magdalena Mikulak")
+      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"London School of Economics and Political Science (LSE)")
+      expect(response["funder"]).to eq("@id"=>"https://doi.org/10.13039/100011326", "@type"=>"Organization", "name"=>"London School of Economics and Political Science (LSE)")
+      expect(response["registrantId"]).to eq("datacite.bl.lse")
+      expect(response["proxyIdentifiers"]).to eq(["http://etheses.lse.ac.uk/view/sets/LSE-GI.html"])
       expect(response["datePublished"]).to eq("2017")
-      expect(response["dateModified"]).to eq("2018-11-13T09:46:57.000Z")
+      expect(response["dateModified"]).to eq("2018-01-10T12:47:33.000Z")
     end
 
     it "fetch metadata with author information" do
-      id = "https://doi.org/10.5438/0x88-gvge"
+      id = "https://doi.org/10.17863/cam.10441"
       response = Base.get_datacite_metadata(id)
-      expect(response["@id"]).to eq("https://doi.org/10.5438/0x88-gvge")
+      expect(response["@id"]).to eq("https://doi.org/10.17863/cam.10441")
       expect(response["@type"]).to eq("ScholarlyArticle")
-      expect(response["name"]).to eq("EZID DOI Service is Evolving")
-      expect(response["author"].length).to eq(3)
-      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0002-9300-5278", "@type"=>"Person", "familyName"=>"Cruse", "givenName"=>"Patricia", "name"=>"Patricia Cruse")
-      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"DataCite")
-      expect(response["periodical"]).to eq("@id"=>"https://doi.org/10.5438/0000-00ss", "@type"=>"Periodical", "name"=>"DataCite Blog")
-      expect(response["registrantId"]).to eq("datacite.datacite.datacite")
-      expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
-      expect(response["datePublished"]).to eq("2017-08-04")
-      expect(response["dateModified"]).to eq("2018-11-10T02:00:51.000Z")
+      expect(response["name"]).to eq("Comparison of ventricular drain location and infusion test in hydrocephalus")
+      expect(response["author"].length).to eq(10)
+      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0001-6459-4141", "@type"=>"Person", "familyName"=>"Sinha", "givenName"=>"Rohitashwa", "name"=>"Rohitashwa Sinha")
+      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"Apollo - University of Cambridge Repository (staging)")
+      expect(response["registrantId"]).to eq("datacite.bl.cam")
+      expect(response["datePublished"]).to eq("2017-03")
+      expect(response["dateModified"]).to eq("2019-01-26T07:45:13.000Z")
     end
   end
 

@@ -26,13 +26,13 @@ class FunderIdentifier < Base
   end
 
   def query
-    "funderIdentifier:*"
+    "fundingReferences.funderIdentifierType:\"Crossref Funder ID\""
   end
 
   def push_data(result, options={})
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
-    items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
+    items = result.body.fetch("data", [])
     # Rails.logger.info "Extracting funder identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
@@ -45,19 +45,20 @@ class FunderIdentifier < Base
   def self.push_item(item)
     logger = Logger.new(STDOUT)
 
-    doi = item.fetch("doi")
+    attributes = item.fetch("attributes", {})
+    doi = attributes.fetch("doi")
     pid = normalize_doi(doi)
-    funder_identifiers = item.fetch('funderIdentifier', []).select { |id| id =~ /Crossref Funder ID:.+/ }
+    funder_identifiers = attributes.fetch('fundindingReferences', []).select { |id| id.funderIdentifierType == "Crossref Funder ID" }
 
     push_items = Array.wrap(funder_identifiers).reduce([]) do |ssum, iitem|
-      _funder_identifier_type, funder_identifier = iitem.split(':', 2)
-      funder_identifier = funder_identifier.strip.downcase
+      funder_identifier = iitem.fetch("funderIdentifier", nil).to_s.strip.downcase
+      obj_id = normalize_doi(funder_identifier)
+      
       relation_type_id = "is_funded_by"
       source_id = "datacite_funder"
       source_token = ENV['DATACITE_FUNDER_SOURCE_TOKEN']
-      obj_id = normalize_doi(funder_identifier)
 
-      if obj_id.present?
+      if funder_identifier.present? && obj_id.present?
         subj = cached_datacite_response(pid)
         obj = cached_funder_response(obj_id)
 
@@ -67,7 +68,7 @@ class FunderIdentifier < Base
                   "relation_type_id" => relation_type_id,
                   "source_id" => source_id,
                   "source_token" => source_token,
-                  "occurred_at" => item.fetch("updated"),
+                  "occurred_at" => attributes.fetch("updated"),
                   "timestamp" => Time.zone.now.iso8601,
                   "license" => LICENSE,
                   "subj" => subj,
@@ -101,7 +102,8 @@ class FunderIdentifier < Base
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
-                                          content_type: 'application/vnd.api+json')
+                                          content_type: 'application/vnd.api+json',
+                                          accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."

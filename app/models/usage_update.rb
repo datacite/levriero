@@ -112,9 +112,9 @@ class UsageUpdate < Base
   
     response = Maremma.post(push_url, data: data.to_json,
                                       bearer: ENV['LAGOTTINO_TOKEN'],
-                                      content_type: 'application/vnd.api+json')
+                                      content_type: 'application/vnd.api+json',
+                                      accept: 'application/vnd.api+json; version=2')
   end
-
 
   def self.wrap_event item, options={}
     obj = cached_datacite_response(item["obj-id"])

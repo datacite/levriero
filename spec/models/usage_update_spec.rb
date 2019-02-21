@@ -82,8 +82,7 @@ describe UsageUpdate, type: :model, vcr: true do
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
    
         report = Report.new(result)
-        args = {header: report.header, url:report.report_url}
-        puts args
+        args = { header: report.header, url: report.report_url }
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
       
         expect(response.length).to eq(2)
@@ -93,31 +92,26 @@ describe UsageUpdate, type: :model, vcr: true do
       it "should parsed it correctly resolution" do
         body = File.read(fixture_path + 'resolution_update.json')
         result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
-        # response = UsageUpdate.parse_data(result)
+
         report = Report.new(result)
-        args = {header: report.header, url:report.report_url}
- 
+        args = { header: report.header, url: report.report_url }
         response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
         expect(response.length).to eq(136)
-        puts response.last
         expect(response.last.except("uuid")).to eq("subj"=>{"id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "issued"=>"2018-10-28"},"total"=>37,"message-action" => "create", "subj-id"=>"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad", "obj-id"=>"https://doi.org/10.6084/m9.figshare.6158567.v1", "relation-type-id"=>"total-resolutions-machine", "source-id"=>"datacite-resolution", "occurred-at"=>"2019-05-01", "license" => "https://creativecommons.org/publicdomain/zero/1.0/", "source-token" => ENV['DATACITE_RESOLUTION_SOURCE_TOKEN'])
       end
 
-      it "should parsed it correctly from call" do
-        # https://api.test.datacite.org/reports/9e5461d8-0713-4abd-8e87-e4533a76ab3d
-        result = Maremma.get("https://api.test.datacite.org/reports/02b739dc-5ec6-41a1-a72c-74e852f04c8a", host: "https://api.test.datacite.org/")
-        # result = OpenStruct.new(body: JSON.parse(body), url:"https://api.test.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad"  )
-        # response = UsageUpdate.parse_data(result)
-        report = Report.new(result)
-        args = {header: report.header, url:report.report_url}
-        response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
+      # it "should parsed it correctly from call" do
+      #   result = Maremma.get("https://api.test.datacite.org/reports/1ca6c11f-dcc8-47ed-be45-53499687f0d1", host: "https://api.test.datacite.org/")
+      #   report = Report.new(result)
+      #   args = { header: report.header, url: report.report_url }
+      #   response = Report.translate_datasets(result.body.dig("data","report","report-datasets"), args)
 
-        expect(response.length).to eq(1642)
-        doi_instances =response.select {|instance| instance.dig("obj-id") == "https://doi.org/10.7272/q6qn64nk" }
-        total_requests_regular = doi_instances.select {|instance| instance.dig("relation-type-id") == "total-dataset-requests-regular"}
-        expect(total_requests_regular.first.dig("total")).to eq(1083)
-      end
+      #   expect(response.length).to eq(1642)
+      #   doi_instances =response.select {|instance| instance.dig("obj-id") == "https://doi.org/10.7272/q6qn64nk" }
+      #   total_requests_regular = doi_instances.select {|instance| instance.dig("relation-type-id") == "total-dataset-requests-regular"}
+      #   expect(total_requests_regular.first.dig("total")).to eq(1083)
+      # end
 
       it "should parsed it correctly from dataone with strange doi names" do
         body = File.read(fixture_path + 'dataone.json')

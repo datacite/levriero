@@ -103,7 +103,8 @@ class OrcidClaim < Base
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['LAGOTTINO_TOKEN'],
-                                          content_type: 'application/vnd.api+json')
+                                          content_type: 'application/vnd.api+json',
+                                          accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."

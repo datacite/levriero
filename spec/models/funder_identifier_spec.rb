@@ -13,7 +13,7 @@ describe FunderIdentifier, type: :model, vcr: true do
     it "import" do
       until_date = "2018-01-31"
       response = FunderIdentifier.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(30)
+      expect(response).to eq(21)
     end
 
     it "fetch funder metadata" do
@@ -23,7 +23,6 @@ describe FunderIdentifier, type: :model, vcr: true do
       expect(response["@type"]).to eq("Funder")
       expect(response["name"]).to eq("London School of Economics and Political Science")
       expect(response["alternateName"]).to eq(["London School of Economics & Political Science", "LSE"])
-      expect(response["location"]).to eq("addressCountry"=>"United Kingdom", "type"=>"postalAddress")
       expect(response["dateModified"]).to eq("2018-07-11T00:00:00Z")
     end
   end

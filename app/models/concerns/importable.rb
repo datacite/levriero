@@ -100,7 +100,7 @@ module Importable
       # paginate through API results
       while page_number <= total_pages
         params = { "page[number]" => page_number, "page[size]" => 100 }.compact
-        url = ENV['APP_URL'] + "/#{route}?" + URI.encode_www_form(params)
+        url = ENV['API_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
         logger.warn response.body["errors"].inspect if response.body.fetch("errors", nil).present?
@@ -130,44 +130,43 @@ module Importable
       logger = Logger.new(STDOUT)
 
       id = "https://doi.org/#{data["id"]}"
-      response = get_datacite_xml(id)
-      related_identifiers = Array.wrap(response.dig("relatedIdentifiers", "relatedIdentifier")).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
+      response = get_datacite_json(id)
+      related_identifiers = Array.wrap(response.fetch("relatedIdentifiers", nil)).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
        
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
         item = {
-          "doi" => data["id"],
-          "relatedIdentifier" => related_identifiers.map { |r| "#{r["relationType"]}:#{r["relatedIdentifierType"]}:#{r["__content__"]}" },
-          "updated" => data.dig("attributes", "updated")
+          "id" => data["id"],
+          "type" => "dois",
+          "attributes" => response
         }
         RelatedIdentifier.push_item(item)
       end
 
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "URL" }
         item = {
-          "doi" => data["id"],
-          "relatedIdentifier" => related_identifiers.map { |r| "#{r["relationType"]}:#{r["relatedIdentifierType"]}:#{r["__content__"]}" },
-          "updated" => data.dig("attributes", "updated")
+          "id" => data["id"],
+          "type" => "dois",
+          "attributes" => response
         }
         RelatedUrl.push_item(item)
       end
 
-      funding_references = Array.wrap(response.dig("fundingReferences", "fundingReference")).select { |f| f.dig("funderIdentifier","funderIdentifierType") == "Crossref Funder ID" }
+      funding_references = Array.wrap(response.fetch("fundingReferences", nil)).select { |f| f.fetch("funderIdentifierType", nil) == "Crossref Funder ID" }
       if funding_references.present?
         item = {
           "doi" => data["id"],
-          "funderIdentifier" => funding_references.map { |f| "#{f.dig("funderIdentifier","funderIdentifierType")}:#{f.dig("funderIdentifier","__content__")}" },
-          "updated" => data.dig("attributes", "updated")
+          "type" => "dois",
+          "attributes" => response
         }
         FunderIdentifier.push_item(item)
       end 
 
-      name_identifiers = Array.wrap(response.dig("creators", "creator")).select { |n| n.dig("nameIdentifier", "nameIdentifierScheme") == "ORCID" }
+      name_identifiers = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
       if name_identifiers.present?
         item = {
           "doi" => data["id"],
-          "nameIdentifier" => name_identifiers.map { |n| "#{n.dig("nameIdentifier", "nameIdentifierScheme")}:#{n.dig("nameIdentifier", "__content__")}" },
-          "updated" => data.dig("attributes", "updated"),
-          "sourceId" => "datacite_orcid_auto_update"
+          "type" => "dois",
+          "attributes" => response
         }
         NameIdentifier.push_item(item)
       end
