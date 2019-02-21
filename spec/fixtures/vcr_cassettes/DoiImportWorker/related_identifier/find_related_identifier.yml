@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 Feb 2019 08:46:11 GMT
+      - Thu, 21 Feb 2019 09:19:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 7f76fe5b-2f7f-447f-8707-0e0f5b239815
+      - 9d3c7b28-ad33-4d8e-9cda-ad5ea4a7bad8
       Etag:
       - W/"7f68ec37fbb2659fbc104902b54cce41"
       X-Runtime:
-      - '0.032141'
+      - '0.035635'
       X-Powered-By:
       - Phusion Passenger 6.0.1
       Server:
@@ -53,13 +53,165 @@ http_interactions:
         his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIFN1cmUtdGhpbmcgUHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxjb250cmlidXRvcnM+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJEYXRhTWFuYWdlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJIb3N0aW5nSW5zdGl0dXRpb24iPgogICAgICA8Y29udHJpYnV0b3JOYW1lPkFwb2xsbyAtIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlIFJlcG9zaXRvcnkgKHN0YWdpbmcpPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTctMDctMjE8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiPkFydGljbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzU3VwcGxlbWVudGVkQnkiPjEwLjEwMTYvai5lY29ubGV0LjIwMTcuMDcuMDI3PC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRoaXMgcGFwZXIgb2ZmZXJzIGEgZmluZSBhbmFseXNpcyBvZiBkaWZmZXJlbnQgdmVyc2lvbnMgb2YgdGhlIHdlbGwga25vd24gc3VyZS10aGluZyBwcmluY2lwbGUuIFdlIHNob3cgdGhhdCBTYXZhZ2UncyBmb3JtYWwgZm9ybXVsYXRpb24gb2YgdGhlIHByaW5jaXBsZSwgaS5lLiwgaGlzIHNlY29uZCBwb3N0dWxhdGUgKFAyKSwgaXMgc3RyaWN0bHkgc3Ryb25nZXIgdGhhbiB3aGF0IGlzIGludGVuZGVkIG9yaWdpbmFsbHkuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4=","url":null,"contentUrl":null,"metadataVersion":19,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"updated":"2019-01-22T09:58:37.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
         of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Thu, 21 Feb 2019 08:46:11 GMT
+  recorded_at: Thu, 21 Feb 2019 09:19:36 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Feb 2019 09:19:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 2aad4bb3-9327-4cb1-87c0-be8f75f9018b
+      Etag:
+      - W/"7f68ec37fbb2659fbc104902b54cce41"
+      X-Runtime:
+      - '0.024616'
+      X-Powered-By:
+      - Phusion Passenger 6.0.1
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.1
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"10.17863/cam.12119","type":"dois","attributes":{"doi":"10.17863/cam.12119","prefix":"10.17863","suffix":"cam.12119","identifiers":[{"identifier":"https://handle.test.datacite.org/10.17863/cam.12119","identifierType":"DOI"}],"creators":[{"name":"Liu,
+        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"The
+        Sure-thing Principle and P2"}],"publisher":"Apollo - University of Cambridge
+        Repository (staging)","container":{},"publicationYear":2017,"subjects":[],"contributors":[{"name":"Apollo-University
+        Of Cambridge Repository (Staging)"},{"name":"Apollo-University Of Cambridge
+        Repository (Staging)"}],"dates":[{"date":"2017-07-21","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"IsSupplementedBy","relatedIdentifier":"10.1016/j.econlet.2017.07.027","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[],"descriptions":[{"description":"This
+        paper offers a fine analysis of different versions of the well known sure-thing
+        principle. We show that Savage''s formal formulation of the principle, i.e.,
+        his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIFN1cmUtdGhpbmcgUHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxjb250cmlidXRvcnM+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJEYXRhTWFuYWdlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJIb3N0aW5nSW5zdGl0dXRpb24iPgogICAgICA8Y29udHJpYnV0b3JOYW1lPkFwb2xsbyAtIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlIFJlcG9zaXRvcnkgKHN0YWdpbmcpPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTctMDctMjE8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiPkFydGljbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzU3VwcGxlbWVudGVkQnkiPjEwLjEwMTYvai5lY29ubGV0LjIwMTcuMDcuMDI3PC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRoaXMgcGFwZXIgb2ZmZXJzIGEgZmluZSBhbmFseXNpcyBvZiBkaWZmZXJlbnQgdmVyc2lvbnMgb2YgdGhlIHdlbGwga25vd24gc3VyZS10aGluZyBwcmluY2lwbGUuIFdlIHNob3cgdGhhdCBTYXZhZ2UncyBmb3JtYWwgZm9ybXVsYXRpb24gb2YgdGhlIHByaW5jaXBsZSwgaS5lLiwgaGlzIHNlY29uZCBwb3N0dWxhdGUgKFAyKSwgaXMgc3RyaWN0bHkgc3Ryb25nZXIgdGhhbiB3aGF0IGlzIGludGVuZGVkIG9yaWdpbmFsbHkuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4=","url":null,"contentUrl":null,"metadataVersion":19,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"updated":"2019-01-22T09:58:37.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
+        of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
+    http_version: 
+  recorded_at: Thu, 21 Feb 2019 09:19:36 GMT
+- request:
+    method: get
+    uri: https://pub.orcid.org/v2.1/0000-0001-8865-4647/person
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.orcid+json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/vnd.orcid+json; qs=4;charset=UTF-8
+      Date:
+      - Thu, 21 Feb 2019 09:19:37 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=AC7FD72D56BC49A75A07C0057E9FFEE4; path=/
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "last-modified-date" : null,
+          "name" : {
+            "created-date" : {
+              "value" : 1460755770538
+            },
+            "last-modified-date" : {
+              "value" : 1460755770538
+            },
+            "given-names" : {
+              "value" : "Yang"
+            },
+            "family-name" : {
+              "value" : "Liu"
+            },
+            "credit-name" : null,
+            "source" : null,
+            "visibility" : "PUBLIC",
+            "path" : "0000-0001-8865-4647"
+          },
+          "other-names" : {
+            "last-modified-date" : null,
+            "other-name" : [ ],
+            "path" : "/0000-0001-8865-4647/other-names"
+          },
+          "biography" : null,
+          "researcher-urls" : {
+            "last-modified-date" : null,
+            "researcher-url" : [ ],
+            "path" : "/0000-0001-8865-4647/researcher-urls"
+          },
+          "emails" : {
+            "last-modified-date" : null,
+            "email" : [ ],
+            "path" : "/0000-0001-8865-4647/email"
+          },
+          "addresses" : {
+            "last-modified-date" : null,
+            "address" : [ ],
+            "path" : "/0000-0001-8865-4647/address"
+          },
+          "keywords" : {
+            "last-modified-date" : null,
+            "keyword" : [ ],
+            "path" : "/0000-0001-8865-4647/keywords"
+          },
+          "external-identifiers" : {
+            "last-modified-date" : null,
+            "external-identifier" : [ ],
+            "path" : "/0000-0001-8865-4647/external-identifiers"
+          },
+          "path" : "/0000-0001-8865-4647/person"
+        }
+    http_version: 
+  recorded_at: Thu, 21 Feb 2019 09:19:37 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-02-21T08:46:11Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-02-21T09:19:37Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
         Sure-thing Principle and P2","author":[{"name":"Yang Liu","givenName":"Yang","familyName":"Liu","@type":"Person","@id":"https://orcid.org/0000-0001-8865-4647"}],"publisher":{"@type":"Organization","name":"Apollo
         - University of Cambridge Repository (staging)"},"datePublished":"2017-07-21","dateModified":"2019-01-22T09:58:37.000Z","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"http://orcid.org/0000-0001-8865-4647","@type":"Person","givenName":"Yang","familyName":"Liu"}}}}'
     headers:
@@ -77,7 +229,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 Feb 2019 08:46:12 GMT
+      - Thu, 21 Feb 2019 09:19:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -88,14 +240,14 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - 3ade4e6d-a3b0-4de3-b9d1-965558c590eb
       Etag:
       - W/"ff9957a3bbcf7cb8f0272f27f5f266f6"
       X-Runtime:
-      - '0.663238'
+      - '0.967206'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
+      X-Request-Id:
+      - f9003f1b-50f4-43ff-90b3-74184a37806d
       X-Powered-By:
       - Phusion Passenger 6.0.1
       Server:
@@ -104,7 +256,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"9b3ea1cc-3f46-4bad-914f-bd64ac53d3d8","type":"events","attributes":{"subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","sourceId":"datacite-orcid-auto-update","relationTypeId":"is-authored-by","total":1,"messageAction":"create","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-01-22T09:59:01.496Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.17863/cam.12119","type":"objects"}},"obj":{"data":{"id":"http://orcid.org/0000-0001-8865-4647","type":"objects"}}}}}'
     http_version: 
-  recorded_at: Thu, 21 Feb 2019 08:46:12 GMT
+  recorded_at: Thu, 21 Feb 2019 09:19:38 GMT
 - request:
     method: post
     uri: https://profiles.test.datacite.org/api/claims
@@ -126,7 +278,7 @@ http_interactions:
       message: Accepted
     headers:
       Date:
-      - Thu, 21 Feb 2019 08:46:12 GMT
+      - Thu, 21 Feb 2019 09:19:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -142,9 +294,9 @@ http_interactions:
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - 12d5b280-f93f-4d1b-b91a-7d28cb893850
+      - a1c43519-80cb-4336-b0d8-bd82253072c6
       X-Runtime:
-      - '0.017853'
+      - '0.028717'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -155,7 +307,7 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"9cf413fc-7da3-42a3-9355-fd1c4e2c8108","type":"claims","attributes":{"orcid":"0000-0001-8865-4647","doi":"10.17863/cam.12119","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":null,"put-code":null,"claimed":null,"created":"2018-11-03T08:06:10Z","updated":"2019-02-21T08:46:12Z"}}}'
+      string: '{"data":{"id":"9cf413fc-7da3-42a3-9355-fd1c4e2c8108","type":"claims","attributes":{"orcid":"0000-0001-8865-4647","doi":"10.17863/cam.12119","source-id":"orcid_update","state":"waiting","claim-action":"create","error-messages":null,"put-code":null,"claimed":null,"created":"2018-11-03T08:06:10Z","updated":"2019-02-21T09:19:38Z"}}}'
     http_version: 
-  recorded_at: Thu, 21 Feb 2019 08:46:12 GMT
+  recorded_at: Thu, 21 Feb 2019 09:19:39 GMT
 recorded_with: VCR 3.0.3
