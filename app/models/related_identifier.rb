@@ -36,7 +36,12 @@ class RelatedIdentifier < Base
     # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs created from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
-      RelatedIdentifierImportJob.perform_later(item)
+      begin
+        RelatedIdentifierImportJob.perform_later(item)
+      rescue Aws::SQS::Errors::InvalidParameterValue => error
+        logger = Logger.new(STDOUT)
+        logger.error error.message
+      end
     end
 
     items.length

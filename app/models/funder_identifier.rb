@@ -36,7 +36,12 @@ class FunderIdentifier < Base
     # Rails.logger.info "Extracting funder identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
-      FunderIdentifierImportJob.perform_later(item)
+      begin
+        FunderIdentifierImportJob.perform_later(item)
+      rescue Aws::SQS::Errors::InvalidParameterValue => error
+        logger = Logger.new(STDOUT)
+        logger.error error.message
+      end
     end
 
     items.length

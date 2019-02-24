@@ -29,10 +29,15 @@ class OrcidClaim < Base
     logger = Logger.new(STDOUT)
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
-    items = result.body.fetch("data", {}).fetch('response', {}).fetch('docs', nil)
+    items = result.body.dig("data", "response", "docs")
 
     Array.wrap(items).map do |item|
-      NameIdentifierImportJob.perform_later(item)
+      begin
+        NameIdentifierImportJob.perform_later(item)
+      rescue Aws::SQS::Errors::InvalidParameterValue => error
+        logger = Logger.new(STDOUT)
+        logger.error error.message
+      end
     end
 
     items.length

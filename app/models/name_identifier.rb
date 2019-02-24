@@ -36,7 +36,12 @@ class NameIdentifier < Base
     items = result.body.fetch("data", [])
 
     Array.wrap(items).map do |item|
-      NameIdentifierImportJob.perform_later(item)
+      begin
+        NameIdentifierImportJob.perform_later(item)
+      rescue Aws::SQS::Errors::InvalidParameterValue => error
+        logger = Logger.new(STDOUT)
+        logger.error error.message
+      end
     end
 
     items.length
@@ -48,7 +53,7 @@ class NameIdentifier < Base
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi")
     pid = normalize_doi(doi)
-    related_identifiers = attributes.fetch("relatedIdentifiers", [])
+    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end

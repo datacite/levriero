@@ -33,10 +33,14 @@ class RelatedUrl < Base
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.fetch("data", [])
-    # Rails.logger.info "Extracting related urls for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
-
+    
     Array.wrap(items).map do |item|
-      RelatedUrlImportJob.perform_later(item)
+      begin
+        RelatedUrlImportJob.perform_later(item)
+      rescue Aws::SQS::Errors::InvalidParameterValue => error
+        logger = Logger.new(STDOUT)
+        logger.error error.message
+      end
     end
 
     items.length
