@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://doi.org/ra/10.5061
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sun, 24 Feb 2019 21:06:02 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '54'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc3743974aab6b3a60e75afc28e8c38671551042362; expires=Mon, 24-Feb-20
+        21:06:02 GMT; path=/; domain=.doi.org; HttpOnly
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4ae4e4ce3ae996d0-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [
+          {
+            "DOI": "10.5061",
+            "RA": "DataCite"
+          }
+        ]
+    http_version: 
+  recorded_at: Sun, 24 Feb 2019 21:06:02 GMT
+recorded_with: VCR 3.0.3

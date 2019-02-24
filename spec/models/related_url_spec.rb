@@ -32,5 +32,12 @@ describe RelatedUrl, type: :model, vcr: true do
       response = RelatedUrl.import(from_date: from_date, until_date: until_date)
       expect(response).to eq(14)
     end
+
+    it "push_item" do
+      doi = "10.22002/d1.646"
+      attributes = RelatedUrl.get_datacite_json(doi)
+      response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+      expect(response).to eq(1)
+    end
   end
 end

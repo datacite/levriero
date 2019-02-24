@@ -28,12 +28,12 @@ module Importable
     def get_doi_ra(prefix)
       return nil if prefix.blank?
   
-      url = ENV['API_URL'] + "/prefixes/#{prefix}"
+      url = "https://doi.org/ra/#{prefix}"
       result = Maremma.get(url)
   
       return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
   
-      result.body.dig('data', 'attributes', 'registration-agency')
+      result.body.dig('data', 0, 'RA')
     end
   
     def validate_doi(doi)

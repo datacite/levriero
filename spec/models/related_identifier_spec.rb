@@ -15,5 +15,12 @@ describe RelatedIdentifier, type: :model, vcr: true do
       response = RelatedIdentifier.import(from_date: from_date, until_date: until_date)
       expect(response).to eq(98)
     end
+
+    it "push_item" do
+      doi = "10.5061/dryad.j86rt6b"
+      attributes = RelatedIdentifier.get_datacite_json(doi)
+      response = RelatedIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+      expect(response).to eq(8)
+    end
   end
 end

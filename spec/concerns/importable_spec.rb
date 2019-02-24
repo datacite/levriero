@@ -160,4 +160,21 @@ describe "Importable", vcr: true do
       expect(Doi.normalize_url(url)).to be_nil
     end
   end
+
+  describe "get_doi_ra" do
+    it "DataCite" do
+      prefix = "10.5061"
+      expect(Doi.get_doi_ra(prefix)).to eq("DataCite")
+    end
+
+    it "Crossref" do
+      prefix = "10.1371"
+      expect(Doi.get_doi_ra(prefix)).to eq("Crossref")
+    end
+
+    it "unknown prefix" do
+      prefix = "10.9999"
+      expect(Doi.get_doi_ra(prefix)).to be_nil
+    end
+  end
 end

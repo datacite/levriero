@@ -46,20 +46,20 @@ class RelatedIdentifier < Base
     logger = Logger.new(STDOUT)
 
     attributes = item.fetch("attributes", {})
-    doi = attributes.fetch("doi")
+    doi = attributes.fetch("doi", nil)
+    return nil unless doi.present?
+
     pid = normalize_doi(doi)
-    related_doi_identifiers = item.fetch('relatedIdentifier', []).select { |id| id =~ /:DOI:.+/ }
+    related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select { |r| r["relatedIdentifierType"] == "DOI" }
     registration_agencies = {}
 
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
-      raw_relation_type, _related_identifier_type, related_identifier = iitem.split(':', 3)
-      related_identifier = related_identifier.strip.downcase
+      related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
-
       prefix = validate_prefix(related_identifier)
       registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
 
-      if registration_agencies[prefix].is_a?(Array)
+      if registration_agencies[prefix].nil?
         logger.info "No DOI registration agency for prefix #{prefix} found."
         source_id = "datacite_related"
         source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
@@ -84,10 +84,10 @@ class RelatedIdentifier < Base
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
                   "obj_id" => obj_id,
-                  "relation_type_id" => raw_relation_type.underscore,
+                  "relation_type_id" => iitem["relationType"].to_s.underscore,
                   "source_id" => source_id,
                   "source_token" => source_token,
-                  "occurred_at" => item.fetch("updated"),
+                  "occurred_at" => attributes.fetch("updated"),
                   "timestamp" => Time.zone.now.iso8601,
                   "license" => LICENSE,
                   "subj" => subj,
@@ -155,5 +155,7 @@ class RelatedIdentifier < Base
       #   1
       # end
     end
+
+    push_items.length
   end
 end

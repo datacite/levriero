@@ -45,14 +45,14 @@ class RelatedUrl < Base
   def self.push_item(item)
     logger = Logger.new(STDOUT)
 
-    doi = item.fetch("doi")
+    attributes = item.fetch("attributes", {})
+    doi = attributes.fetch("doi", nil)
+    return nil unless doi.present?
+
     pid = normalize_doi(doi)
-    related_urls = item.fetch('relatedIdentifier', []).select { |id| id =~ /:URL:.+/ }
-
+    related_urls = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select { |r| r["relatedIdentifierType"] == "URL" }
     push_items = Array.wrap(related_urls).reduce([]) do |ssum, iitem|
-      raw_relation_type, _related_identifier_type, related_url = iitem.split(':', 3)
-      related_url = related_url.strip.downcase
-
+      related_url = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_url(related_url)
       source_id = "datacite_url"
       source_token = ENV['DATACITE_URL_SOURCE_TOKEN']
@@ -64,10 +64,10 @@ class RelatedUrl < Base
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
                   "obj_id" => obj_id,
-                  "relation_type_id" => raw_relation_type.underscore,
+                  "relation_type_id" => iitem["relationType"].to_s.underscore,
                   "source_id" => source_id,
                   "source_token" => source_token,
-                  "occurred_at" => item.fetch("updated"),
+                  "occurred_at" => attributes.fetch("updated"),
                   "timestamp" => Time.zone.now.iso8601,
                   "license" => LICENSE,
                   "subj" => subj,
@@ -113,5 +113,7 @@ class RelatedUrl < Base
         end
       end
     end
+
+    push_items.length
   end
 end

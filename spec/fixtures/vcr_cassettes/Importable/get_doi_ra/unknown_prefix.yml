@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://doi.org/ra/10.9999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sun, 24 Feb 2019 21:08:15 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbb82388abb44e788d3fcfcd87aa7619f1551042495; expires=Mon, 24-Feb-20
+        21:08:15 GMT; path=/; domain=.doi.org; HttpOnly
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4ae4e80a6c22c2a1-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [
+          {
+            "DOI": "10.9999",
+            "status": "DOI does not exist"
+          }
+        ]
+    http_version: 
+  recorded_at: Sun, 24 Feb 2019 21:08:15 GMT
+recorded_with: VCR 3.0.3
