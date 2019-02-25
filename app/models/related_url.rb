@@ -37,7 +37,7 @@ class RelatedUrl < Base
     Array.wrap(items).map do |item|
       begin
         RelatedUrlImportJob.perform_later(item)
-      rescue Aws::SQS::Errors::InvalidParameterValue => error
+      rescue Aws::SQS::Errors::InvalidParameterValue, Seahorse::Client::NetworkingError => error
         logger = Logger.new(STDOUT)
         logger.error error.message
       end
