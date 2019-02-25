@@ -38,7 +38,7 @@ class FunderIdentifier < Base
     Array.wrap(items).map do |item|
       begin
         FunderIdentifierImportJob.perform_later(item)
-      rescue Aws::SQS::Errors::InvalidParameterValue, Seahorse::Client::NetworkingError => error
+      rescue Aws::SQS::Errors::InvalidParameterValue, Aws::SQS::Errors::RequestEntityTooLarge, Seahorse::Client::NetworkingError => error
         logger = Logger.new(STDOUT)
         logger.error error.message
       end
