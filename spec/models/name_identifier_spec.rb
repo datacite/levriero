@@ -15,5 +15,12 @@ describe NameIdentifier, type: :model, vcr: true do
       response = NameIdentifier.import(from_date: from_date, until_date: until_date)
       expect(response).to eq(28)
     end
+
+    it "push_item" do
+      doi = "10.4224/crm.2010f.moos-2"
+      attributes = NameIdentifier.get_datacite_json(doi)
+      response = NameIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+      expect(response).to eq(5)
+    end
   end
 end

@@ -51,7 +51,9 @@ class NameIdentifier < Base
     logger = Logger.new(STDOUT)
 
     attributes = item.fetch("attributes", {})
-    doi = attributes.fetch("doi")
+    doi = attributes.fetch("doi", nil)
+    return nil unless doi.present?
+
     pid = normalize_doi(doi)
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
@@ -152,5 +154,7 @@ class NameIdentifier < Base
         end
       end
     end
+
+    push_items.length
   end
 end

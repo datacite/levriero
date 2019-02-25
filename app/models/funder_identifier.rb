@@ -51,9 +51,11 @@ class FunderIdentifier < Base
     logger = Logger.new(STDOUT)
 
     attributes = item.fetch("attributes", {})
-    doi = attributes.fetch("doi")
+    doi = attributes.fetch("doi", nil)
+    return nil unless doi.present?
+
     pid = normalize_doi(doi)
-    funder_identifiers = attributes.fetch('fundindingReferences', []).select { |id| id.funderIdentifierType == "Crossref Funder ID" }
+    funder_identifiers = Array.wrap(attributes.fetch('fundingReferences', nil)).select { |f| f["funderIdentifierType"] == "Crossref Funder ID" }
 
     push_items = Array.wrap(funder_identifiers).reduce([]) do |ssum, iitem|
       funder_identifier = iitem.fetch("funderIdentifier", nil).to_s.strip.downcase
@@ -120,6 +122,8 @@ class FunderIdentifier < Base
         end
       end
     end
+
+    push_items.length
   end
 
   def self.get_funder_metadata(id)
