@@ -8,6 +8,7 @@ services:
     image: datacite/levriero
     ports:
       - "8040:80"
+      - "2240:22"
     volumes:
       - ./app:/home/app/webapp/app
       - ./config:/home/app/webapp/config
