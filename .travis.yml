@@ -78,11 +78,11 @@ after_success:
       fi
 
       if [ "${TRAVIS_TAG?}" ]; then
-        sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero
-        sentry-cli releases deploys levriero:${GIT_TAG} new -e production
+        sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero;
+        sentry-cli releases deploys levriero:${GIT_TAG} new -e production;
       fi
 
-      sentry-cli releases set-commits --auto levriero:${GIT_TAG}
+      sentry-cli releases set-commits --auto levriero:${GIT_TAG};
     fi
 
 notifications:
