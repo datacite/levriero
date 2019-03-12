@@ -58,9 +58,10 @@ after_success:
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
       ./dockerize -template vendor/docker/_levriero.auto.tfvars.tmpl:mastino/stage/services/levriero/_levriero.auto.tfvars;
       
+      sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero;
+
       if [ "${TRAVIS_TAG?}" ]; then
         ./dockerize -template vendor/docker/_levriero.auto.tfvars.tmpl:mastino/prod-eu-west/services/levriero/_levriero.auto.tfvars;
-        sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero;
         sentry-cli releases deploys levriero:${GIT_TAG} new -e production;
       else
         sentry-cli releases deploys levriero:${GIT_TAG} new -e stage;
