@@ -15,7 +15,7 @@ gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.10.0'
 gem 'logstash-event', '~> 1.2', '>= 1.2.02'
 gem 'logstash-logger', '~> 0.26.1'
-gem 'bugsnag', '~> 6.1', '>= 6.1.1'
+gem 'sentry-raven', '~> 2.9'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
@@ -35,6 +35,7 @@ gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 gem 'aws-sdk-sqs', '~> 1.3'
 gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 gem 'yajl-ruby', require: 'yajl'
+gem 'git', '~> 1.5'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
