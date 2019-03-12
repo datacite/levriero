@@ -14,7 +14,7 @@ addons:
 install:
   - travis_retry bundle install
   - curl -sL https://sentry.io/get-cli/ | bash
-  - ./sentry-cli --help
+  - sentry-cli --help
 
 before_script:
   - memcached -p 11211 &
@@ -60,11 +60,11 @@ after_success:
       ./dockerize -template vendor/docker/_levriero.auto.tfvars.tmpl:mastino/stage/services/levriero/_levriero.auto.tfvars;
       
       if [ "${TRAVIS_TAG?}" ]; then
-        ./sentry-cli releases new $GIT_TAG --project levriero
+        sentry-cli releases new $GIT_TAG --project levriero
         ./dockerize -template vendor/docker/_levriero.auto.tfvars.tmpl:mastino/prod-eu-west/services/levriero/_levriero.auto.tfvars;
       fi
 
-      ./sentry-cli releases set-commits --auto $GIT_REVISION
+      sentry-cli releases set-commits --auto $GIT_REVISION
 
       cd mastino;
       git remote;
