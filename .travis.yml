@@ -53,7 +53,6 @@ after_success:
       tar -xzvf dockerize-linux-amd64-v0.6.0.tar.gz;
       rm dockerize-linux-amd64-v0.6.0.tar.gz;
       export GIT_SHA=$(git rev-parse --short HEAD);
-      export GIT_REVISION=$(git rev-parse HEAD);
       export GIT_TAG=$(git describe --tags $(git rev-list --tags --max-count=1));
 
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
