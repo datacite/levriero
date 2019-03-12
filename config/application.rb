@@ -42,6 +42,7 @@ ENV['CROSSREF_QUERY_URL'] ||= "https://api.eventdata.crossref.org"
 ENV['TRUSTED_IP'] ||= "10.0.40.1"
 ENV['SASHIMI_QUERY_URL'] ||= "https://api.test.datacite.org"
 ENV['SLACK_WEBHOOK_URL'] ||= ""
+ENV['USER_AGENT'] ||= "Mozilla/5.0 (compatible; Maremma/#{Maremma::VERSION}; mailto:info@datacite.org)"
 
 module Levriero
   class Application < Rails::Application
