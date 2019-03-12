@@ -13,13 +13,13 @@ addons:
 
 install:
   - travis_retry bundle install
+  - curl -sL https://sentry.io/get-cli/ | bash
 
 before_script:
   - memcached -p 11211 &
   - cp .env.travis .env
   - mkdir -p tmp/pids
   - mkdir -p log
-  - curl -sL https://sentry.io/get-cli/ | bash
 
 script:
   - bundle exec rspec spec
