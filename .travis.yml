@@ -60,7 +60,13 @@ after_success:
       
       if [ "${TRAVIS_TAG?}" ]; then
         ./dockerize -template vendor/docker/_levriero.auto.tfvars.tmpl:mastino/prod-eu-west/services/levriero/_levriero.auto.tfvars;
+        sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero;
+        sentry-cli releases deploys levriero:${GIT_TAG} new -e production;
+      else
+        sentry-cli releases deploys levriero:${GIT_TAG} new -e stage;
       fi
+
+      sentry-cli releases set-commits --auto levriero:${GIT_TAG};
 
       cd mastino;
       git remote;
@@ -76,15 +82,6 @@ after_success:
         git commit -m "Adding levriero git variables for latest commit";
         git push "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git" master;
       fi
-
-      if [ "${TRAVIS_TAG?}" ]; then
-        sentry-cli releases new levriero:${GIT_TAG} --finalize --project levriero;
-        sentry-cli releases deploys levriero:${GIT_TAG} new -e production;
-      else
-        sentry-cli releases deploys levriero:${GIT_TAG} new -e stage;
-      fi
-
-      sentry-cli releases set-commits --auto levriero:${GIT_TAG};
     fi
 
 notifications:
