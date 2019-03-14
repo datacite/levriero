@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org//dois/10.17863/cam.12119
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 14 Mar 2019 12:53:46 GMT
+      - Thu, 14 Mar 2019 15:32:43 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 80942ee1-8338-4b97-b641-ade0d4c12cba
+      - 68058eea-fc98-42db-a4f5-7ed8a5dd4132
       Etag:
       - W/"7f68ec37fbb2659fbc104902b54cce41"
       X-Runtime:
-      - '0.039692'
+      - '0.062849'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -53,7 +53,7 @@ http_interactions:
         his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIFN1cmUtdGhpbmcgUHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxjb250cmlidXRvcnM+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJEYXRhTWFuYWdlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJIb3N0aW5nSW5zdGl0dXRpb24iPgogICAgICA8Y29udHJpYnV0b3JOYW1lPkFwb2xsbyAtIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlIFJlcG9zaXRvcnkgKHN0YWdpbmcpPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTctMDctMjE8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiPkFydGljbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzU3VwcGxlbWVudGVkQnkiPjEwLjEwMTYvai5lY29ubGV0LjIwMTcuMDcuMDI3PC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRoaXMgcGFwZXIgb2ZmZXJzIGEgZmluZSBhbmFseXNpcyBvZiBkaWZmZXJlbnQgdmVyc2lvbnMgb2YgdGhlIHdlbGwga25vd24gc3VyZS10aGluZyBwcmluY2lwbGUuIFdlIHNob3cgdGhhdCBTYXZhZ2UncyBmb3JtYWwgZm9ybXVsYXRpb24gb2YgdGhlIHByaW5jaXBsZSwgaS5lLiwgaGlzIHNlY29uZCBwb3N0dWxhdGUgKFAyKSwgaXMgc3RyaWN0bHkgc3Ryb25nZXIgdGhhbiB3aGF0IGlzIGludGVuZGVkIG9yaWdpbmFsbHkuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4=","url":null,"contentUrl":null,"metadataVersion":19,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"updated":"2019-01-22T09:58:37.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
         of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:53:47 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:43 GMT
 - request:
     method: get
     uri: https://doi.org/ra/10.1016
@@ -71,7 +71,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Thu, 14 Mar 2019 12:53:47 GMT
+      - Thu, 14 Mar 2019 15:32:44 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -79,14 +79,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dd8a809d73095b8858f40b816c14a305e1552568027; expires=Fri, 13-Mar-20
-        12:53:47 GMT; path=/; domain=.doi.org; HttpOnly
+      - __cfduid=d4c950386941f8609e97c3c61203d11c61552577563; expires=Fri, 13-Mar-20
+        15:32:43 GMT; path=/; domain=.doi.org; HttpOnly
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4b766479292c2d3b-TXL
+      - 4b774d4e6eb72d41-TXL
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -97,13 +97,117 @@ http_interactions:
           }
         ]
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:53:47 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:44 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1016/j.econlet.2017.07.027
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '2502'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 15:32:44 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2019,2,18]],"date-time":"2019-02-18T08:23:36Z","timestamp":1550478216798},"reference-count":3,"publisher":"Elsevier
+        BV","license":[{"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/","start":{"date-parts":[[2017,10,1]],"date-time":"2017-10-01T00:00:00Z","timestamp":1506816000000},"delay-in-days":0,"content-version":"tdm"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"short-container-title":["Economics
+        Letters"],"published-print":{"date-parts":[[2017,10]]},"DOI":"10.1016\/j.econlet.2017.07.027","type":"journal-article","created":{"date-parts":[[2017,7,27]],"date-time":"2017-07-27T20:35:10Z","timestamp":1501187710000},"page":"221-223","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":0,"title":["The
+        sure-thing principle and P2"],"prefix":"10.1016","volume":"159","author":[{"given":"Yang","family":"Liu","sequence":"first","affiliation":[]}],"member":"78","container-title":["Economics
+        Letters"],"original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0165176517303154?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0165176517303154?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,6,28]],"date-time":"2018-06-28T02:45:17Z","timestamp":1530153917000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2017,10]]},"references-count":3,"alternative-id":["S0165176517303154"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.econlet.2017.07.027","relation":{},"ISSN":["0165-1765"],"issn-type":[{"value":"0165-1765","type":"print"}],"assertion":[{"value":"Elsevier","name":"publisher","label":"This
+        article is maintained by"},{"value":"The sure-thing principle and P2","name":"articletitle","label":"Article
+        Title"},{"value":"Economics Letters","name":"journaltitle","label":"Journal
+        Title"},{"value":"https:\/\/doi.org\/10.1016\/j.econlet.2017.07.027","name":"articlelink","label":"CrossRef
+        DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content
+        Type"},{"value":"\u00a9 2017 Elsevier B.V. All rights reserved.","name":"copyright","label":"Copyright"}]}}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 15:32:44 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Mar 2019 15:32:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - b0bda5ee-db57-461f-91a1-2888a24112e9
+      Etag:
+      - W/"7f68ec37fbb2659fbc104902b54cce41"
+      X-Runtime:
+      - '0.202219'
+      X-Powered-By:
+      - Phusion Passenger 6.0.2
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"10.17863/cam.12119","type":"dois","attributes":{"doi":"10.17863/cam.12119","prefix":"10.17863","suffix":"cam.12119","identifiers":[{"identifier":"https://handle.test.datacite.org/10.17863/cam.12119","identifierType":"DOI"}],"creators":[{"name":"Liu,
+        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"The
+        Sure-thing Principle and P2"}],"publisher":"Apollo - University of Cambridge
+        Repository (staging)","container":{},"publicationYear":2017,"subjects":[],"contributors":[{"name":"Apollo-University
+        Of Cambridge Repository (Staging)"},{"name":"Apollo-University Of Cambridge
+        Repository (Staging)"}],"dates":[{"date":"2017-07-21","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"IsSupplementedBy","relatedIdentifier":"10.1016/j.econlet.2017.07.027","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[],"descriptions":[{"description":"This
+        paper offers a fine analysis of different versions of the well known sure-thing
+        principle. We show that Savage''s formal formulation of the principle, i.e.,
+        his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIFN1cmUtdGhpbmcgUHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxjb250cmlidXRvcnM+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJEYXRhTWFuYWdlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgICA8Y29udHJpYnV0b3IgY29udHJpYnV0b3JUeXBlPSJIb3N0aW5nSW5zdGl0dXRpb24iPgogICAgICA8Y29udHJpYnV0b3JOYW1lPkFwb2xsbyAtIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlIFJlcG9zaXRvcnkgKHN0YWdpbmcpPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTctMDctMjE8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiPkFydGljbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzU3VwcGxlbWVudGVkQnkiPjEwLjEwMTYvai5lY29ubGV0LjIwMTcuMDcuMDI3PC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRoaXMgcGFwZXIgb2ZmZXJzIGEgZmluZSBhbmFseXNpcyBvZiBkaWZmZXJlbnQgdmVyc2lvbnMgb2YgdGhlIHdlbGwga25vd24gc3VyZS10aGluZyBwcmluY2lwbGUuIFdlIHNob3cgdGhhdCBTYXZhZ2UncyBmb3JtYWwgZm9ybXVsYXRpb24gb2YgdGhlIHByaW5jaXBsZSwgaS5lLiwgaGlzIHNlY29uZCBwb3N0dWxhdGUgKFAyKSwgaXMgc3RyaWN0bHkgc3Ryb25nZXIgdGhhbiB3aGF0IGlzIGludGVuZGVkIG9yaWdpbmFsbHkuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4=","url":null,"contentUrl":null,"metadataVersion":19,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"updated":"2019-01-22T09:58:37.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
+        of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.5072","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 15:32:45 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"https://doi.org/10.1016/j.econlet.2017.07.027","relationTypeId":"is-supplemented-by","sourceId":"datacite-crossref","sourceToken":null,"occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T12:53:47Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"https://doi.org/10.1016/j.econlet.2017.07.027","relationTypeId":"is-supplemented-by","sourceId":"datacite-crossref","sourceToken":null,"occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T15:32:45Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
         Sure-thing Principle and P2","author":[{"name":"Yang Liu","givenName":"Yang","familyName":"Liu","@type":"Person","@id":"https://orcid.org/0000-0001-8865-4647"}],"publisher":{"@type":"Organization","name":"Apollo
         - University of Cambridge Repository (staging)"},"datePublished":"2017-07-21","dateModified":"2019-01-22T09:58:37.000Z","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://doi.org/10.1016/j.econlet.2017.07.027","@type":"ScholarlyArticle","name":"The
         sure-thing principle and P2","author":[{"@type":"Person","givenName":"Yang","familyName":"Liu"}],"periodical":{"@type":"Periodical","name":"Economics
@@ -124,7 +228,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Thu, 14 Mar 2019 12:53:47 GMT
+      - Thu, 14 Mar 2019 15:32:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -136,9 +240,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - b8011fb6-17b0-4b28-ba3a-e6e16182b686
+      - a6293bc6-f68e-4005-8da6-953901a66fd3
       X-Runtime:
-      - '0.025379'
+      - '0.104620'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -148,13 +252,13 @@ http_interactions:
       string: '{"errors":[{"status":"401","title":"You are not authorized to access
         this resource."}]}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:53:47 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:45 GMT
 - request:
     method: post
     uri: https://bus-staging.eventdata.crossref.org/events
     body:
       encoding: UTF-8
-      string: '{"message_action":"create","subj_id":"https://doi.org/10.17863/cam.12119","obj_id":"https://doi.org/10.1016/j.econlet.2017.07.027","relation_type_id":"is_supplemented_by","source_id":"datacite_crossref","source_token":null,"occurred_at":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T12:53:47Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.17863/cam.12119","obj_id":"https://doi.org/10.1016/j.econlet.2017.07.027","relation_type_id":"is_supplemented_by","source_id":"datacite_crossref","source_token":null,"occurred_at":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T15:32:45Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
         Sure-thing Principle and P2","author":[{"name":"Yang Liu","givenName":"Yang","familyName":"Liu","@type":"Person","@id":"https://orcid.org/0000-0001-8865-4647"}],"publisher":{"@type":"Organization","name":"Apollo
         - University of Cambridge Repository (staging)"},"datePublished":"2017-07-21","dateModified":"2019-01-22T09:58:37.000Z","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://doi.org/10.1016/j.econlet.2017.07.027","@type":"ScholarlyArticle","name":"The
         sure-thing principle and P2","author":[{"@type":"Person","givenName":"Yang","familyName":"Liu"}],"periodical":{"@type":"Periodical","name":"Economics
@@ -181,19 +285,117 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 14 Mar 2019 12:53:47 GMT
+      - Thu, 14 Mar 2019 15:32:45 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
         has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:53:47 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:45 GMT
+- request:
+    method: get
+    uri: https://pub.orcid.org/v2.1/0000-0001-8865-4647/person
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.orcid+json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/vnd.orcid+json; qs=4;charset=UTF-8
+      Date:
+      - Thu, 14 Mar 2019 15:32:46 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=FAC9A421C8E47CC7F8C08879007190C1; path=/
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "last-modified-date" : null,
+          "name" : {
+            "created-date" : {
+              "value" : 1460755770538
+            },
+            "last-modified-date" : {
+              "value" : 1460755770538
+            },
+            "given-names" : {
+              "value" : "Yang"
+            },
+            "family-name" : {
+              "value" : "Liu"
+            },
+            "credit-name" : null,
+            "source" : null,
+            "visibility" : "PUBLIC",
+            "path" : "0000-0001-8865-4647"
+          },
+          "other-names" : {
+            "last-modified-date" : null,
+            "other-name" : [ ],
+            "path" : "/0000-0001-8865-4647/other-names"
+          },
+          "biography" : null,
+          "researcher-urls" : {
+            "last-modified-date" : null,
+            "researcher-url" : [ ],
+            "path" : "/0000-0001-8865-4647/researcher-urls"
+          },
+          "emails" : {
+            "last-modified-date" : null,
+            "email" : [ ],
+            "path" : "/0000-0001-8865-4647/email"
+          },
+          "addresses" : {
+            "last-modified-date" : null,
+            "address" : [ ],
+            "path" : "/0000-0001-8865-4647/address"
+          },
+          "keywords" : {
+            "last-modified-date" : null,
+            "keyword" : [ ],
+            "path" : "/0000-0001-8865-4647/keywords"
+          },
+          "external-identifiers" : {
+            "last-modified-date" : null,
+            "external-identifier" : [ ],
+            "path" : "/0000-0001-8865-4647/external-identifiers"
+          },
+          "path" : "/0000-0001-8865-4647/person"
+        }
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 15:32:46 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":null,"occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T12:53:47Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":null,"occurredAt":"2019-01-22T09:58:37.000Z","timestamp":"2019-03-14T15:32:46Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","name":"The
         Sure-thing Principle and P2","author":[{"name":"Yang Liu","givenName":"Yang","familyName":"Liu","@type":"Person","@id":"https://orcid.org/0000-0001-8865-4647"}],"publisher":{"@type":"Organization","name":"Apollo
         - University of Cambridge Repository (staging)"},"datePublished":"2017-07-21","dateModified":"2019-01-22T09:58:37.000Z","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"http://orcid.org/0000-0001-8865-4647","@type":"Person","givenName":"Yang","familyName":"Liu"}}}}'
     headers:
@@ -211,7 +413,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Thu, 14 Mar 2019 12:53:48 GMT
+      - Thu, 14 Mar 2019 15:32:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -223,9 +425,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 7b966a57-9f1c-4377-b422-cf280f617cef
+      - d5337cfd-7315-4c32-afff-88142639edb5
       X-Runtime:
-      - '0.037019'
+      - '0.054602'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -235,5 +437,5 @@ http_interactions:
       string: '{"errors":[{"status":"401","title":"You are not authorized to access
         this resource."}]}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:53:48 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:46 GMT
 recorded_with: VCR 3.0.3

@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 14 Mar 2019 12:29:32 GMT
+      - Thu, 14 Mar 2019 15:32:12 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -45,5 +45,5 @@ http_interactions:
         of Economics and Political Science","descendants":["100012731"],"descendant-work-count":95,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
         School of Economics & Political Science","LSE"],"location":null}}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 12:29:32 GMT
+  recorded_at: Thu, 14 Mar 2019 15:32:13 GMT
 recorded_with: VCR 3.0.3
