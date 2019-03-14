@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 21 Feb 2019 06:11:20 GMT
+      - Thu, 14 Mar 2019 12:29:32 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -41,9 +41,9 @@ http_interactions:
       string: '{"status":"ok","message-type":"funder","message-version":"1.0.0","message":{"hierarchy-names":{"100012731":"Grantham
         Research Institute on Climate Change and the Environment, London School of
         Economics and Political Science","100011326":"London School of Economics and
-        Political Science"},"replaced-by":[],"work-count":89,"name":"London School
-        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":92,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
+        Political Science"},"replaced-by":[],"work-count":92,"name":"London School
+        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":95,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
         School of Economics & Political Science","LSE"],"location":null}}'
     http_version: 
-  recorded_at: Thu, 21 Feb 2019 06:11:21 GMT
+  recorded_at: Thu, 14 Mar 2019 12:29:32 GMT
 recorded_with: VCR 3.0.3

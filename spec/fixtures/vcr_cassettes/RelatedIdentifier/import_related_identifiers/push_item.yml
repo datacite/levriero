@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b
+    uri: https://api.test.datacite.org//dois/10.5061/dryad.j86rt6b
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:11 GMT
+      - Thu, 14 Mar 2019 12:53:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,15 +31,15 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 811ac84f-05a4-47ab-9a92-c7c68847d49f
+      - 93549123-f8ec-4229-ae25-4e38231767cf
       Etag:
       - W/"4ceac5ca580e5d8fce59516033accd03"
       X-Runtime:
-      - '0.033739'
+      - '0.035529'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"10.5061/dryad.j86rt6b","type":"dois","attributes":{"doi":"10.5061/dryad.j86rt6b","prefix":"10.5061","suffix":"dryad.j86rt6b","identifiers":[{"identifier":"https://handle.test.datacite.org/10.5061/dryad.j86rt6b","identifierType":"DOI"},{"identifier":"Smith
@@ -56,7 +56,7 @@ http_interactions:
         marina"},{"subject":"Crassostrea gigas"}],"contributors":[],"dates":[{"date":"2018","dateType":"Issued"}],"language":null,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"DataPackage","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/1","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/2","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/3","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/4","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/5","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/6","relatedIdentifierType":"DOI"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"},{"relationType":"IsSupplementTo","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[{"rightsUri":"http://creativecommons.org/publicdomain/zero/1.0"}],"descriptions":[],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczpkc3BhY2U9Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkaW09Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5KODZSVDZCPC9pZGVudGlmaWVyPgogIDx2ZXJzaW9uPjE8L3ZlcnNpb24+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5TbWl0aCwgQ2FydGVyIFMuPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+SXRvLCBNaW5ha288L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5OYW1iYSwgTWl6dWhvPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TmFrYW9rYSwgTWFzYWhpcm88L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5EYXRhIGZyb206IE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkRyeWFkIERpZ2l0YWwgUmVwb3NpdG9yeTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxODwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0Pk95c3RlciBhcXVhY3VsdHVyZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlNlYWdyYXNzPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+SmFwYW48L3N1YmplY3Q+CiAgICA8c3ViamVjdD5ab3N0ZXJhIG1hcmluYTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkNyYXNzb3N0cmVhIGdpZ2FzPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5EYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJjaXRhdGlvbiI+U21pdGggQ1MsIEl0byBNLCBOYW1iYSBNLCBOYWthb2thIE0gKDIwMTgpIE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuLiBQTE9TIE9ORSAxMyg1KTogZTAxOTc3NTMuPC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvMTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzI8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi8zPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzU8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi82PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1JlZmVyZW5jZWRCeSI+MTAuMTM3MS9KT1VSTkFMLlBPTkUuMDE5Nzc1MzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNTdXBwbGVtZW50VG8iPjEwLjEzNzEvSk9VUk5BTC5QT05FLjAxOTc3NTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHNMaXN0PgogICAgPHJpZ2h0cyByaWdodHNVUkk9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC8iLz4KICA8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+","url":"https://datadryad.org/resource/doi:10.5061/dryad.j86rt6b","contentUrl":null,"metadataVersion":1,"schemaVersion":"http://datacite.org/schema/kernel-4","source":null,"isActive":true,"state":"findable","reason":null,"created":"2018-05-30T23:01:09.000Z","registered":"2019-02-03T08:31:45.000Z","updated":"2019-02-03T08:31:45.000Z"},"relationships":{"client":{"data":{"id":"dryad.dryad","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"dryad.dryad","type":"clients","attributes":{"name":"DRYAD","symbol":"DRYAD.DRYAD","year":2018,"contactName":"Dryad
         Administrator","contactEmail":"admin@datadryad.org","description":null,"domains":"*","url":"https://datadryad.org","created":"2018-04-24T17:32:32.000Z","updated":"2018-11-24T14:48:28.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"dryad","type":"providers"}},"repository":{"data":{"id":"10.17616/R34S33","type":"repositories"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:11 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:33 GMT
 - request:
     method: get
     uri: https://doi.org/ra/10.5061
@@ -65,7 +65,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -74,7 +74,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:12 GMT
+      - Thu, 14 Mar 2019 12:53:33 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -82,14 +82,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=deb8d15ea444ad1c61779b912051ddc211551042732; expires=Mon, 24-Feb-20
-        21:12:12 GMT; path=/; domain=.doi.org; HttpOnly
+      - __cfduid=dece5f276adf87b738b6e4f527f21baaf1552568013; expires=Fri, 13-Mar-20
+        12:53:33 GMT; path=/; domain=.doi.org; HttpOnly
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4ae4edd4eb9c975c-FRA
+      - 4b7664255c562d65-TXL
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -100,316 +100,7 @@ http_interactions:
           }
         ]
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:12 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:12 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 6daf5189-5814-4c64-bf0b-3f004d5296c6
-      X-Runtime:
-      - '0.007198'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:12 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:12 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 0e7671f9-1180-4828-b391-d2e8feb742d5
-      Etag:
-      - W/"4ceac5ca580e5d8fce59516033accd03"
-      X-Runtime:
-      - '0.024516'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.5061/dryad.j86rt6b","type":"dois","attributes":{"doi":"10.5061/dryad.j86rt6b","prefix":"10.5061","suffix":"dryad.j86rt6b","identifiers":[{"identifier":"https://handle.test.datacite.org/10.5061/dryad.j86rt6b","identifierType":"DOI"},{"identifier":"Smith
-        CS, Ito M, Namba M, Nakaoka M (2018) Oyster aquaculture impacts Zostera marina
-        epibiont community composition in Akkeshi-ko estuary, Japan. PLOS ONE 13(5):
-        e0197753.","identifierType":"citation"}],"creators":[{"name":"Smith, Carter
-        S.","nameType":"Personal","givenName":"Carter S.","familyName":"Smith"},{"name":"Ito,
-        Minako","nameType":"Personal","givenName":"Minako","familyName":"Ito"},{"name":"Namba,
-        Mizuho","nameType":"Personal","givenName":"Mizuho","familyName":"Namba"},{"name":"Nakaoka,
-        Masahiro","nameType":"Personal","givenName":"Masahiro","familyName":"Nakaoka"}],"titles":[{"title":"Data
-        from: Oyster aquaculture impacts Zostera marina epibiont community composition
-        in Akkeshi-ko estuary, Japan"}],"publisher":"Dryad Digital Repository","container":{},"publicationYear":2018,"subjects":[{"subject":"Oyster
-        aquaculture"},{"subject":"Seagrass"},{"subject":"Japan"},{"subject":"Zostera
-        marina"},{"subject":"Crassostrea gigas"}],"contributors":[],"dates":[{"date":"2018","dateType":"Issued"}],"language":null,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"DataPackage","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/1","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/2","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/3","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/4","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/5","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/6","relatedIdentifierType":"DOI"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"},{"relationType":"IsSupplementTo","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[{"rightsUri":"http://creativecommons.org/publicdomain/zero/1.0"}],"descriptions":[],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczpkc3BhY2U9Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkaW09Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5KODZSVDZCPC9pZGVudGlmaWVyPgogIDx2ZXJzaW9uPjE8L3ZlcnNpb24+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5TbWl0aCwgQ2FydGVyIFMuPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+SXRvLCBNaW5ha288L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5OYW1iYSwgTWl6dWhvPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TmFrYW9rYSwgTWFzYWhpcm88L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5EYXRhIGZyb206IE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkRyeWFkIERpZ2l0YWwgUmVwb3NpdG9yeTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxODwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0Pk95c3RlciBhcXVhY3VsdHVyZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlNlYWdyYXNzPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+SmFwYW48L3N1YmplY3Q+CiAgICA8c3ViamVjdD5ab3N0ZXJhIG1hcmluYTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkNyYXNzb3N0cmVhIGdpZ2FzPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5EYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJjaXRhdGlvbiI+U21pdGggQ1MsIEl0byBNLCBOYW1iYSBNLCBOYWthb2thIE0gKDIwMTgpIE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuLiBQTE9TIE9ORSAxMyg1KTogZTAxOTc3NTMuPC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvMTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzI8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi8zPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzU8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi82PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1JlZmVyZW5jZWRCeSI+MTAuMTM3MS9KT1VSTkFMLlBPTkUuMDE5Nzc1MzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNTdXBwbGVtZW50VG8iPjEwLjEzNzEvSk9VUk5BTC5QT05FLjAxOTc3NTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHNMaXN0PgogICAgPHJpZ2h0cyByaWdodHNVUkk9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC8iLz4KICA8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+","url":"https://datadryad.org/resource/doi:10.5061/dryad.j86rt6b","contentUrl":null,"metadataVersion":1,"schemaVersion":"http://datacite.org/schema/kernel-4","source":null,"isActive":true,"state":"findable","reason":null,"created":"2018-05-30T23:01:09.000Z","registered":"2019-02-03T08:31:45.000Z","updated":"2019-02-03T08:31:45.000Z"},"relationships":{"client":{"data":{"id":"dryad.dryad","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"dryad.dryad","type":"clients","attributes":{"name":"DRYAD","symbol":"DRYAD.DRYAD","year":2018,"contactName":"Dryad
-        Administrator","contactEmail":"admin@datadryad.org","description":null,"domains":"*","url":"https://datadryad.org","created":"2018-04-24T17:32:32.000Z","updated":"2018-11-24T14:48:28.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"dryad","type":"providers"}},"repository":{"data":{"id":"10.17616/R34S33","type":"repositories"}},"prefixes":{"data":[{"id":"10.5072","type":"prefixes"}]}}}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:12 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:12 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 02db8501-f2b3-4649-a9b1-674a9195b2e0
-      X-Runtime:
-      - '0.006218'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 699223f9-5dd1-472b-92f3-21398a111047
-      X-Runtime:
-      - '0.005536'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/4
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 9f4b0c5c-778f-448a-8770-e5d173eadbd4
-      X-Runtime:
-      - '0.017132'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/5
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - 2a9b6966-5259-446a-981f-434de459954b
-      X-Runtime:
-      - '0.005674'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/6
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Request-Id:
-      - d112c40c-af1c-4d1f-8c3f-b96c30969826
-      X-Runtime:
-      - '0.005767'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:33 GMT
 - request:
     method: get
     uri: https://doi.org/ra/10.1371
@@ -418,7 +109,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -427,7 +118,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:13 GMT
+      - Thu, 14 Mar 2019 12:53:33 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -435,14 +126,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d372b70af3dec302a982dc8ce7f6626661551042733; expires=Mon, 24-Feb-20
-        21:12:13 GMT; path=/; domain=.doi.org; HttpOnly
+      - __cfduid=d8ba4e55d4486dd26be0a7a444085b8eb1552568013; expires=Fri, 13-Mar-20
+        12:53:33 GMT; path=/; domain=.doi.org; HttpOnly
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4ae4eddefa299756-FRA
+      - 4b766426ba7e2d7d-TXL
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -453,212 +144,105 @@ http_interactions:
           }
         ]
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:13 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:33 GMT
 - request:
-    method: get
-    uri: https://api.crossref.org/works/10.1371/journal.pone.0197753
+    method: post
+    uri: https://api.test.datacite.org/events
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/1","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json; version=2
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 14 Mar 2019 12:53:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 789f630f-f5b8-453e-b481-90afdb8aea20
+      X-Runtime:
+      - '0.059050'
+      X-Powered-By:
+      - Phusion Passenger 6.0.2
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:34 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/1","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Content-Type:
-      - application/json;charset=UTF-8
-      Vary:
-      - Accept
+      - text/plain;charset=UTF-8
       Access-Control-Allow-Origin:
       - "*"
-      Access-Control-Allow-Headers:
-      - X-Requested-With
       Content-Length:
-      - '19359'
+      - '329'
       Server:
       - http-kit
       Date:
-      - Sun, 24 Feb 2019 21:12:14 GMT
-      X-Rate-Limit-Limit:
-      - '50'
-      X-Rate-Limit-Interval:
-      - 1s
-      Connection:
-      - close
+      - Thu, 14 Mar 2019 12:53:37 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2018,12,10]],"date-time":"2018-12-10T19:43:02Z","timestamp":1544470982192},"reference-count":61,"publisher":"Public
-        Library of Science (PLoS)","issue":"5","license":[{"URL":"http:\/\/creativecommons.org\/licenses\/by\/4.0\/","start":{"date-parts":[[2018,5,24]],"date-time":"2018-05-24T00:00:00Z","timestamp":1527120000000},"delay-in-days":0,"content-version":"vor"}],"funder":[{"DOI":"10.13039\/100000001","name":"National
-        Science Foundation","doi-asserted-by":"publisher","award":["OISE-1613161"]},{"DOI":"10.13039\/501100001691","name":"Japan
-        Society for the Promotion of Science","doi-asserted-by":"publisher","award":["OISE-1613161"]},{"name":"Environmental
-        Research and Technology Development Fund (S-15 Predicting and Assessing Natural
-        Capital and Ecosystem Services [PANCES]) of the Ministry of the Environment,
-        Japan","award":[]}],"content-domain":{"domain":["www.plosone.org"],"crossmark-restriction":false},"short-container-title":["PLoS
-        ONE"],"DOI":"10.1371\/journal.pone.0197753","type":"journal-article","created":{"date-parts":[[2018,5,24]],"date-time":"2018-05-24T17:58:51Z","timestamp":1527184731000},"page":"e0197753","update-policy":"http:\/\/dx.doi.org\/10.1371\/journal.pone.corrections_policy","source":"Crossref","is-referenced-by-count":1,"title":["Oyster
-        aquaculture impacts Zostera marina epibiont community composition in Akkeshi-ko
-        estuary, Japan"],"prefix":"10.1371","volume":"13","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-6652-3010","authenticated-orcid":true,"given":"Carter
-        S.","family":"Smith","sequence":"first","affiliation":[]},{"given":"Minako","family":"Ito","sequence":"additional","affiliation":[]},{"given":"Mizuho","family":"Namba","sequence":"additional","affiliation":[]},{"given":"Masahiro","family":"Nakaoka","sequence":"additional","affiliation":[]}],"member":"340","published-online":{"date-parts":[[2018,5,24]]},"reference":[{"key":"ref1","doi-asserted-by":"crossref","first-page":"629","DOI":"10.1126\/science.1059199","article-title":"Historical
-        overfishing and the recent collapse of coastal ecosystems","volume":"293","author":"JB
-        Jackson","year":"2001","journal-title":"Science"},{"key":"ref2","doi-asserted-by":"crossref","first-page":"578","DOI":"10.1126\/science.1173146","article-title":"Rebuilding
-        global fisheries","volume":"325","author":"B Worm","year":"2009","journal-title":"Science"},{"key":"ref3","doi-asserted-by":"crossref","first-page":"2","DOI":"10.2307\/1352278","article-title":"Aquaculture
-        in estuaries: Feast or famine?","volume":"18","author":"PL deFur","year":"1995","journal-title":"Estuaries"},{"key":"ref4","year":"2016"},{"key":"ref5","doi-asserted-by":"crossref","first-page":"1806","DOI":"10.1126\/science.1128035","article-title":"Depletion,
-        degradation, and recovery potential of estuaries and coastal seas","volume":"312","author":"HK
-        Lotze","year":"2006","journal-title":"Science"},{"key":"ref6","doi-asserted-by":"crossref","first-page":"1017","DOI":"10.1038\/35016500","article-title":"Effect
-        of aquaculture on world fish supplies","volume":"405","author":"RL Naylor","year":"2000","journal-title":"Nature"},{"key":"ref7","doi-asserted-by":"crossref","first-page":"91","DOI":"10.1016\/S0921-8009(00)00170-1","article-title":"Development
-        and conservation of Philippine mangroves: institutional issues","volume":"35","author":"JH
-        Primavera","year":"2000","journal-title":"Ecol Econ"},{"key":"ref8","doi-asserted-by":"crossref","first-page":"807","DOI":"10.1641\/0006-3568(2001)051[0807:MFOOTW]2.0.CO;2","article-title":"Mangrove
-        forests: One of the world&apos;s threatened major tropical environments","volume":"51","author":"I
-        Valiela","year":"2001","journal-title":"Bioscience"},{"key":"ref9","author":"R
-        Goldburg","year":"1997"},{"key":"ref10","doi-asserted-by":"crossref","first-page":"199","DOI":"10.1016\/j.aquaculture.2003.11.020","article-title":"Effects
-        of fish farming waste to sedimentary and particulate organic matter in a southern
-        Mediterranean area (Gulf of Castellammare, Sicily): a multiple stable isotope
-        study (\u03b4 13 C and \u03b4 15 N)","volume":"234","author":"G Sar\u00e0","year":"2004","journal-title":"Aquaculture"},{"key":"ref11","doi-asserted-by":"crossref","first-page":"1454","DOI":"10.1006\/jmsc.2000.0904","article-title":"Fish-farming
-        effects on benthic community structure in coastal sediments: analysis of meiofaunal
-        recovery","volume":"57","author":"A Mazzola","year":"2007","journal-title":"ICES
-        J Mar Sci"},{"key":"ref12","doi-asserted-by":"crossref","first-page":"165","DOI":"10.1016\/S0044-8486(03)00475-7","article-title":"Organic
-        enrichment of sediments from salmon farming in Norway: environmental factors,
-        management practices, and monitoring techniques","volume":"226","author":"ML
-        Carroll","year":"2003","journal-title":"Aquaculture"},{"key":"ref13","doi-asserted-by":"crossref","first-page":"94","DOI":"10.1080\/10641260903325680","article-title":"Responsible
-        aquaculture and trophic level implications to global fish supply","volume":"18","author":"AG
-        Tacon","year":"2009","journal-title":"Rev Fish Sci"},{"key":"ref14","first-page":"8","article-title":"Shellfish
-        aquaculture\u2013in praise of sustainable economies and environments","volume":"34","author":"SE
-        Shumway","year":"2003","journal-title":"World Aquaculture"},{"key":"ref15","first-page":"51","article-title":"Ecosystem
-        influences of natural and cultivated populations of suspension-feeding bivalve
-        molluscs: a review","volume":"23","author":"RI Newell","year":"2004","journal-title":"J
-        Shellfish Res"},{"key":"ref16","doi-asserted-by":"crossref","first-page":"303","DOI":"10.3354\/meps341303","article-title":"Ecosystem
-        services related to oyster restoration","volume":"341","author":"LD Coen","year":"2007","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref17","unstructured":"Food and Agricultural Organization
-        of the United Nations. Cultured Aquatic Species Information Program: Crassostrea
-        gigas (Thunberg, 1793); 2017. Available from: <ext-link xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"
-        ext-link-type=\"uri\" xlink:href=\"http:\/\/www.fao.org\/fishery\/culturedspecies\/Crassostrea_gigas\/en\"
-        xlink:type=\"simple\">http:\/\/www.fao.org\/fishery\/culturedspecies\/Crassostrea_gigas\/en<\/ext-link>
-        (accessed 1 Sep 2017)"},{"key":"ref18","doi-asserted-by":"crossref","first-page":"762","DOI":"10.1016\/j.marpol.2008.03.021","article-title":"The
-        importance of marine spatial planning in advancing ecosystem-based sea use
-        management","volume":"32","author":"F Douvere","year":"2008","journal-title":"Mar
-        Policy"},{"key":"ref19","doi-asserted-by":"crossref","first-page":"633","DOI":"10.1641\/0006-3568(2001)051[0633:TICAMO]2.0.CO;2","article-title":"The
-        identification, conservation, and management of estuarine and marine nurseries
-        for fish and invertebrates","volume":"51","author":"MW Beck","year":"2001","journal-title":"Bioscience"},{"key":"ref20","doi-asserted-by":"crossref","first-page":"169","DOI":"10.1890\/10-1510.1","article-title":"The
-        value of estuarine and coastal ecosystem services","volume":"81","author":"EB
-        Barbier","year":"2011","journal-title":"Ecol monogr"},{"key":"ref21","doi-asserted-by":"crossref","first-page":"12377","DOI":"10.1073\/pnas.0905620106","article-title":"Accelerating
-        loss of seagrasses across the globe threatens coastal ecosystems","volume":"106","author":"M
-        Waycott","year":"2009","journal-title":"Proc Natl Acad Sci USA"},{"key":"ref22","doi-asserted-by":"crossref","first-page":"143","DOI":"10.3354\/meps213143","article-title":"Positive
-        interactions between suspension-feeding bivalves and seagrass\u2014a facultative
-        mutualism","volume":"213","author":"BJ Peterson","year":"2001","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref23","doi-asserted-by":"crossref","first-page":"165","DOI":"10.3354\/meps07289","article-title":"Facilitation
-        of seagrass Zostera marina productivity by suspension-feeding bivalves","volume":"357","author":"C
-        Wall","year":"2008","journal-title":"Mar Ecol Prog Ser"},{"key":"ref24","author":"CH
-        Peterson","year":"2010"},{"key":"ref25","doi-asserted-by":"crossref","first-page":"149","DOI":"10.3354\/meps09952","article-title":"Density-dependent
-        effects of an introduced oyster, <italic>Crassostrea gigas<\/italic>, on a
-        native intertidal seagrass, <italic>Zostera marina<\/italic>","volume":"468","author":"E
-        Wagner","year":"2012","journal-title":"Mar Ecol Prog Ser"},{"key":"ref26","doi-asserted-by":"crossref","first-page":"205","DOI":"10.3354\/meps125205","article-title":"Effect
-        of oyster mariculture on submerged aquatic vegetation: an experimental test
-        in a Pacific Northwest estuary","volume":"125","author":"RA Everett","year":"1995","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref27","doi-asserted-by":"crossref","first-page":"71","DOI":"10.3354\/meps06942","article-title":"Importance
-        of eelgrass early life history stages in response to oyster aquaculture disturbance","volume":"344","author":"LM
-        Wisehart","year":"2007","journal-title":"Mar Ecol Prog Ser"},{"key":"ref28","doi-asserted-by":"crossref","first-page":"251","DOI":"10.2983\/035.028.0207","article-title":"Oysters
-        and aquaculture practices affect eelgrass density and productivity in a Pacific
-        Northwest estuary","volume":"28","author":"HM Tallis","year":"2009","journal-title":"J
-        Shellfish Res"},{"key":"ref29","doi-asserted-by":"crossref","first-page":"169","DOI":"10.1016\/j.jembe.2014.05.012","article-title":"Experimental
-        determination of the effects of light limitation from suspended bag oyster
-        (<italic>Crassostrea virginica<\/italic>) aquaculture on the structure and
-        photosynthesis of eelgrass (<italic>Zostera marina<\/italic>)","volume":"459","author":"MA
-        Skinner","year":"2014","journal-title":"J Exp Mar Biol Ecol"},{"key":"ref30","doi-asserted-by":"crossref","first-page":"29","DOI":"10.3354\/aei00131","article-title":"Effect
-        of oyster aquaculture on seagrass <italic>Zostera marina<\/italic> at the
-        estuarine landscape scale in Willapa Bay, Washington (USA)","volume":"7","author":"BR
-        Dumbauld","year":"2015","journal-title":"Aquacult Environ Interact"},{"key":"ref31","author":"CL
-        Delgado","year":"2003"},{"key":"ref32","doi-asserted-by":"crossref","first-page":"1366","DOI":"10.1016\/j.marpol.2010.06.011","article-title":"Sourcing
-        seafood for the three major markets: The EU, Japan and the USA","volume":"34","author":"W
-        Swartz","year":"2010","journal-title":"Mar Policy"},{"key":"ref33","author":"D
-        Hinrichsen","volume":"22","first-page":"27","year":"1999","article-title":"Trends
-        and Future Challenges for US National Ocean and Coastal Policy: Proceedings
-        of a Workshop"},{"key":"ref34","doi-asserted-by":"crossref","first-page":"345","DOI":"10.1007\/s10750-007-0767-6","article-title":"Temporal
-        and spatial macrofaunal community changes along a salinity gradient in seagrass
-        meadows of Akkeshi-ko estuary and Akkeshi Bay, northern Japan","volume":"592","author":"K
-        Yamada","year":"2007","journal-title":"Hydrobiologia"},{"key":"ref35","doi-asserted-by":"crossref","first-page":"464","DOI":"10.1007\/BF01609922","article-title":"Oyster
-        farming in Japan","volume":"20","author":"M Fujiya","year":"1970","journal-title":"Helgoland
-        Wiss Meer"},{"key":"ref36","doi-asserted-by":"crossref","first-page":"171","DOI":"10.1016\/S0044-8486(02)00030-3","article-title":"Stocking
-        density and growth of the Pacific oyster (<italic>Crassostrea gigas<\/italic>)
-        and the Sydney rock oyster (<italic>Saccostrea glomerata<\/italic>) in Port
-        Stephens, Australia","volume":"213","author":"PJC Honkoop","year":"2002","journal-title":"Aquaculture"},{"key":"ref37","unstructured":"Hokkaido
-        Research Organization. Fisheries Research Department, Marine Net Hokkaido;
-        2017. Available from: <ext-link xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"
-        ext-link-type=\"uri\" xlink:href=\"http:\/\/www.hro.or.jp\/list\/fisheries\/marine\/h3mfcd0000000ge0.html\"
-        xlink:type=\"simple\">http:\/\/www.hro.or.jp\/list\/fisheries\/marine\/h3mfcd0000000ge0.html<\/ext-link>"},{"key":"ref38","doi-asserted-by":"crossref","first-page":"124","DOI":"10.2307\/1352288","article-title":"A
-        multidisciplinary approach to evaluating impacts of shellfish aquaculture
-        on benthic communities","volume":"18","author":"J Grant","year":"1995","journal-title":"Estuaries
-        Coast"},{"key":"ref39","doi-asserted-by":"crossref","first-page":"362","DOI":"10.1016\/j.aquaculture.2005.11.054","article-title":"Impact
-        of suspended and off-bottom Eastern oyster culture on the benthic environment
-        in eastern Canada","volume":"255","author":"AL Mallet","year":"2006","journal-title":"Aquaculture"},{"key":"ref40","doi-asserted-by":"crossref","first-page":"578","DOI":"10.1002\/aqc.2722","article-title":"Experimental
-        test of oyster restoration within eelgrass","volume":"27","author":"S Valdez","year":"2017","journal-title":"Aquat.
-        Conserv. Mar. Freshw. Ecosyst"},{"key":"ref41","doi-asserted-by":"crossref","first-page":"1985","DOI":"10.4319\/lo.1994.39.8.1985","article-title":"Fluorometric
-        analysis of chlorophyll a in the presence of chlorophyll b and pheopigments","volume":"39","author":"NA
-        Welschmeyer","year":"1994","journal-title":"Limnol Oceanogr"},{"key":"ref42","first-page":"190","article-title":"An
-        improved method for the determination of phytoplankton chlorophyll using N,
-        N-dimethylformamide","volume":"46","author":"R Suzuki","year":"1990","journal-title":"J
-        Oceanogr"},{"key":"ref43","author":"JT Greiner","article-title":"Seagrass
-        restoration enhances \u201cblue carbon\u201d sequestration in coastal waters","journal-title":"PLoS
-        One"},{"key":"ref44","unstructured":"Oksanen J, Blanchet FG, Friendly M, Kindt
-        R, Legendre P, McGlinn D, et al. Vegan: Community Ecology Package. R package
-        version 2.4\u20133; 2017. Available from: <ext-link xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"
-        ext-link-type=\"uri\" xlink:href=\"https:\/\/CRAN.R-project.org\/package=vegan\"
-        xlink:type=\"simple\">https:\/\/CRAN.R-project.org\/package=vegan<\/ext-link>"},{"key":"ref45","author":"GA
-        Fox","year":"2015"},{"key":"ref46","year":"2016"},{"key":"ref47","doi-asserted-by":"crossref","first-page":"1","DOI":"10.1016\/j.aquaculture.2009.09.032","article-title":"Bivalve
-        aquaculture in estuaries: review and synthesis of oyster cultivation effects","volume":"298","author":"BM
-        Forrest","year":"2009","journal-title":"Aquaculture"},{"key":"ref48","doi-asserted-by":"crossref","first-page":"105","DOI":"10.3354\/meps10345","article-title":"Reductions
-        in distribution, photosynthesis, and productivity of eelgrass <italic>Zostera
-        marina<\/italic> associated with oyster <italic>Crassostrea virginica<\/italic>
-        aquaculture","volume":"486","author":"MA Skinner","year":"2013","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref49","doi-asserted-by":"crossref","first-page":"285","DOI":"10.3354\/aei00046","article-title":"Hanging
-        basket oyster farming: assessing effects on seagrass using aerial photography","volume":"2","author":"R
-        Bulmer","year":"2012","journal-title":"Aquacult Environ Interact"},{"key":"ref50","doi-asserted-by":"crossref","first-page":"175","DOI":"10.3354\/meps058175","article-title":"Marine
-        epibiosis. I. Fouling and antifouling: some basic aspects","volume":"58","author":"M
-        Wahl","year":"1989","journal-title":"Mar Ecol Prog Ser"},{"key":"ref51","doi-asserted-by":"crossref","first-page":"29","DOI":"10.3354\/meps09678","article-title":"Trophic
-        cascades in seagrass meadows depend on mesograzer variation in feeding rates,
-        predation susceptibility, and abundance","volume":"456","author":"RJ Best","year":"2012","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref52","doi-asserted-by":"crossref","first-page":"267","DOI":"10.1007\/s10872-006-0051-9","article-title":"Contribution
-        of benthic and epiphytic diatoms to clam and oyster production in the Akkeshi-ko
-        estuary","volume":"62","author":"M Kasim","year":"2006","journal-title":"J
-        Oceanogr"},{"key":"ref53","doi-asserted-by":"crossref","first-page":"104","DOI":"10.3800\/pbr.4.104","article-title":"Food
-        sources of the oyster (<italic>Crassostrea gigas<\/italic>) and the clam (<italic>Ruditapes
-        philippinarum<\/italic>) in the Akkeshi-ko estuary","volume":"4","author":"M
-        Kasim","year":"2009","journal-title":"Plank Benth Res"},{"key":"ref54","doi-asserted-by":"crossref","first-page":"109","DOI":"10.1016\/0304-3770(92)90002-Z","article-title":"Effects
-        of fish farming on growth, epiphytes and nutrient content of <italic>Fucus
-        vesiculosus<\/italic> L. in the \u00c5land archipelago, northern Baltic Sea","volume":"42","author":"O
-        R\u00f6nnberg","year":"1992","journal-title":"Aquat Bot"},{"key":"ref55","doi-asserted-by":"crossref","first-page":"765","DOI":"10.1017\/S002531540002169X","article-title":"Preferential
-        settlement of a bryozoan and serpulid larvae on the younger parts of Laminaria
-        fronds","volume":"52","author":"ARD Stebbing","year":"1972","journal-title":"J
-        Mar Biol Assoc UK"},{"key":"ref56","doi-asserted-by":"crossref","first-page":"89","DOI":"10.1016\/0022-0981(90)90084-P","article-title":"Benthic
-        determinants of settlement for planktonic larvae: availability of settlement
-        sites for the tube-building polychaete <italic>Spirorbis spirillum<\/italic>
-        (Linnaeus) settling onto seagrass blades","volume":"140","author":"JM Dirnberger","year":"1990","journal-title":"J
-        Exp Mar Biol Ecol"},{"key":"ref57","doi-asserted-by":"crossref","first-page":"21","DOI":"10.1016\/S0022-0981(99)00092-1","article-title":"Macrofaunal
-        associations with seagrass epiphytes: Relative importance of trophic and structural
-        characteristics","volume":"242","author":"PAX Bologna","year":"1999","journal-title":"J
-        Exp Mar Biol Ecol"},{"key":"ref58","doi-asserted-by":"crossref","first-page":"93","DOI":"10.3354\/meps215093","article-title":"Trophic
-        importance of epiphytic algae in subtropical seagrass beds: evidence from
-        multiple stable isotope analyses","volume":"215","author":"CA Moncreiff","year":"2001","journal-title":"Mar
-        Ecol Prog Ser"},{"key":"ref59","doi-asserted-by":"crossref","first-page":"e2952","DOI":"10.7717\/peerj.2952","article-title":"Influence
-        of different types of sessile epibionts on the community structure of mobile
-        invertebrates in an eelgrass bed","volume":"5","author":"K Momota","year":"2017","journal-title":"PeerJ"},{"key":"ref60","author":"M
-        Nakaoka","year":"2012"},{"key":"ref61","first-page":"1","article-title":"A
-        limnological study of Akkeshi Lake with special reference to the propagation
-        of the oyster","volume":"40","author":"T Inukai","year":"1937","journal-title":"Journal
-        of the Faculty of Agriculture, Hokkaido Imperial University"}],"container-title":["PLOS
-        ONE"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/dx.plos.org\/10.1371\/journal.pone.0197753","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,5,24]],"date-time":"2018-05-24T17:59:19Z","timestamp":1527184759000},"score":1.0,"subtitle":[],"editor":[{"given":"Jos\u00e9
-        A.","family":"Fern\u00e1ndez Robledo","sequence":"first","affiliation":[]}],"short-title":[],"issued":{"date-parts":[[2018,5,24]]},"references-count":61,"journal-issue":{"published-online":{"date-parts":[[2018,5,24]]},"issue":"5"},"URL":"http:\/\/dx.doi.org\/10.1371\/journal.pone.0197753","relation":{"cites":[]},"ISSN":["1932-6203"],"issn-type":[{"value":"1932-6203","type":"electronic"}]}}'
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:14 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:37 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/1","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:12Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/2","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -667,53 +251,90 @@ http_interactions:
         Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:15 GMT
+      - Thu, 14 Mar 2019 12:53:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"c1b753ace93ce3e20bb111b78cf81944"
-      X-Runtime:
-      - '0.148702'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - e4202607-ce69-44d8-9628-d91e4d1daba1
+      - de292dc6-1867-4b96-9114-409781f5b65f
+      X-Runtime:
+      - '0.044246'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"35e956c1-09f9-473f-b0a8-ff548a4ee682","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/1","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:14.956Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/1","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:15 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:38 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/2","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:38 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/2","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/3","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -722,53 +343,90 @@ http_interactions:
         Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:15 GMT
+      - Thu, 14 Mar 2019 12:53:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - a2017580-ff4f-473a-9f0c-0b979b1abfa9
-      Etag:
-      - W/"cb586cafad33469de4439c66f5c9ec90"
+      - 94fa2ba0-2b53-470d-9b1b-2981f351c498
       X-Runtime:
-      - '0.027890'
+      - '0.034978'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"b1e4c1c6-ea35-4f42-a319-b02ea6264a67","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/2","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:15.578Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/2","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:15 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:38 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/3","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:39 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/3","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/4","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -777,53 +435,90 @@ http_interactions:
         Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:15 GMT
+      - Thu, 14 Mar 2019 12:53:39 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 8095da6a-cf71-44a2-a6e6-68f017fa6562
-      Etag:
-      - W/"666bc7ba3039c2762e33f2c9f7267df6"
+      - 43d67626-4e37-472a-ab9d-061db1170eda
       X-Runtime:
-      - '0.044683'
+      - '0.023101'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"f324ea58-c448-4fad-b1bc-86bec1342729","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/3","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:15.817Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/3","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:15 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:39 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/4","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:39 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/4","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/5","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -832,53 +527,90 @@ http_interactions:
         Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:16 GMT
+      - Thu, 14 Mar 2019 12:53:39 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"a0d22bae10878f7752752e71329b37db"
-      X-Runtime:
-      - '0.029055'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - fca437ea-5405-4d47-8b0e-c4255a4e5751
+      - ae6cba91-7324-4695-81ea-ab1c27bac336
+      X-Runtime:
+      - '0.042782'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"25818a5b-8c36-4fc5-9593-e7526709b2a8","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/4","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:16.504Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/4","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:16 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:39 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/5","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:40 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/5","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/6","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -887,108 +619,90 @@ http_interactions:
         Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:16 GMT
+      - Thu, 14 Mar 2019 12:53:40 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"9fb3af509ca1460117238b2d68168a7b"
-      X-Runtime:
-      - '0.037535'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 4003f12d-0a54-4afb-a9ba-97e63be5f93d
+      - 92625bfe-1f6e-4b36-bc4c-2749dedfe4b0
+      X-Runtime:
+      - '0.044772'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"d6b9ccc9-73f4-4c49-88ea-e94afdb927e8","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/5","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:16.704Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/5","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:16 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:40 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://bus-staging.eventdata.crossref.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/6","relationTypeId":"has-part","sourceId":"datacite-related","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:13Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.5061/dryad.j86rt6b/6","relation_type_id":"has_part","source_id":"datacite_related","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
         Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
         Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
-        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}}}'
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
-      - application/vnd.api+json
+      - application/json;charset=UTF-8
       Accept:
-      - application/vnd.api+json; version=2
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 201
-      message: Created
+      code: 400
+      message: Bad Request
     headers:
-      Date:
-      - Sun, 24 Feb 2019 21:12:16 GMT
       Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 201 Created
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      X-Credential-Username:
-      - 0000-0002-8599-0773
-      X-Request-Id:
-      - c332c0bd-ef3d-4804-bd03-0067484e7a7f
-      Etag:
-      - W/"5bdd6c2f70ddb77f42e1b5016b26cd07"
-      X-Runtime:
-      - '0.030500'
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:40 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"7f9c9b39-c5a4-47c2-9c03-7ea8bd3df5ae","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.5061/dryad.j86rt6b/6","sourceId":"datacite-related","relationTypeId":"has-part","total":1,"messageAction":"create","sourceToken":"29a9a478-518f-4cbd-a133-a0dcef63d547","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:16.913Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b/6","type":"objects"}}}}}'
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:16 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:40 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","relationTypeId":"is-referenced-by","sourceId":"datacite-crossref","sourceToken":"28276d12-b320-41ba-9272-bb0adc3466ff","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:14Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","relationTypeId":"is-referenced-by","sourceId":"datacite-crossref","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -999,56 +713,53 @@ http_interactions:
         estuary, Japan","author":[{"@id":"http://orcid.org/0000-0002-6652-3010","@type":"Person","givenName":"Carter
         S.","familyName":"Smith"},{"@type":"Person","givenName":"Minako","familyName":"Ito"},{"@type":"Person","givenName":"Mizuho","familyName":"Namba"},{"@type":"Person","givenName":"Masahiro","familyName":"Nakaoka"}],"periodical":{"@type":"Periodical","name":"PLOS
         ONE","issn":"1932-6203"},"volumeNumber":"13","issueNumber":"5","pagination":"e0197753","publisher":{"@type":"Organization","name":"Public
-        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2018-12-10T19:43:02Z","registrantId":"crossref.340"}}}}'
+        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2019-02-18T06:03:10Z","registrantId":"crossref.340"}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:17 GMT
+      - Thu, 14 Mar 2019 12:53:40 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - c21bc7ac-9889-483f-8f9c-f04006881ed4
-      Etag:
-      - W/"6725f62846c042e1e4850a8581e27b41"
+      - 84421142-6a86-4602-91e0-76f8e8041203
       X-Runtime:
-      - '0.039555'
+      - '0.034310'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"7c85b0cc-7cac-4440-8bf9-bc4702b3c59d","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","sourceId":"datacite-crossref","relationTypeId":"is-referenced-by","total":1,"messageAction":"create","sourceToken":"28276d12-b320-41ba-9272-bb0adc3466ff","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:17.106Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.1371/journal.pone.0197753","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:17 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:40 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://bus-staging.eventdata.crossref.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","relationTypeId":"is-supplement-to","sourceId":"datacite-crossref","sourceToken":"28276d12-b320-41ba-9272-bb0adc3466ff","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:14Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.1371/journal.pone.0197753","relation_type_id":"is_referenced_by","source_id":"datacite_crossref","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
         from: Oyster aquaculture impacts Zostera marina epibiont community composition
         in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
         S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
@@ -1059,48 +770,135 @@ http_interactions:
         estuary, Japan","author":[{"@id":"http://orcid.org/0000-0002-6652-3010","@type":"Person","givenName":"Carter
         S.","familyName":"Smith"},{"@type":"Person","givenName":"Minako","familyName":"Ito"},{"@type":"Person","givenName":"Mizuho","familyName":"Namba"},{"@type":"Person","givenName":"Masahiro","familyName":"Nakaoka"}],"periodical":{"@type":"Periodical","name":"PLOS
         ONE","issn":"1932-6203"},"volumeNumber":"13","issueNumber":"5","pagination":"e0197753","publisher":{"@type":"Organization","name":"Public
-        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2018-12-10T19:43:02Z","registrantId":"crossref.340"}}}}'
+        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2019-02-18T06:03:10Z","registrantId":"crossref.340"}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:41 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:41 GMT
+- request:
+    method: post
+    uri: https://api.test.datacite.org/events
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","relationTypeId":"is-supplement-to","sourceId":"datacite-crossref","sourceToken":null,"occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{"@id":"https://doi.org/10.1371/journal.pone.0197753","@type":"ScholarlyArticle","name":"Oyster
+        aquaculture impacts Zostera marina epibiont community composition in Akkeshi-ko
+        estuary, Japan","author":[{"@id":"http://orcid.org/0000-0002-6652-3010","@type":"Person","givenName":"Carter
+        S.","familyName":"Smith"},{"@type":"Person","givenName":"Minako","familyName":"Ito"},{"@type":"Person","givenName":"Mizuho","familyName":"Namba"},{"@type":"Person","givenName":"Masahiro","familyName":"Nakaoka"}],"periodical":{"@type":"Periodical","name":"PLOS
+        ONE","issn":"1932-6203"},"volumeNumber":"13","issueNumber":"5","pagination":"e0197753","publisher":{"@type":"Organization","name":"Public
+        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2019-02-18T06:03:10Z","registrantId":"crossref.340"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Content-Type:
       - application/vnd.api+json
       Accept:
       - application/vnd.api+json; version=2
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhY2l0ZSJ9.u9el_FpmfaQq6REwi2ULhNGAfVE_0xjGMZEttcq8rlw
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sun, 24 Feb 2019 21:12:17 GMT
+      - Thu, 14 Mar 2019 12:53:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"16d26678d46a404e93032b030d7f6475"
-      X-Runtime:
-      - '0.033579'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 48d0ed65-7d1d-4840-93c6-2488fdd16e16
+      - 86127ff8-2c7d-4cc0-969a-1d400e96b2b4
+      X-Runtime:
+      - '0.022905'
       X-Powered-By:
-      - Phusion Passenger 6.0.1
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"f1006e7c-4efd-4103-a747-4496999dbc0b","type":"events","attributes":{"subjId":"https://doi.org/10.5061/dryad.j86rt6b","objId":"https://doi.org/10.1371/journal.pone.0197753","sourceId":"datacite-crossref","relationTypeId":"is-supplement-to","total":1,"messageAction":"create","sourceToken":"28276d12-b320-41ba-9272-bb0adc3466ff","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-02-03T08:31:45.000Z","timestamp":"2019-02-24T21:12:17.326Z"},"relationships":{"subj":{"data":{"id":"https://doi.org/10.5061/dryad.j86rt6b","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.1371/journal.pone.0197753","type":"objects"}}}}}'
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this resource."}]}'
     http_version: 
-  recorded_at: Sun, 24 Feb 2019 21:12:17 GMT
+  recorded_at: Thu, 14 Mar 2019 12:53:41 GMT
+- request:
+    method: post
+    uri: https://bus-staging.eventdata.crossref.org/events
+    body:
+      encoding: UTF-8
+      string: '{"message_action":"create","subj_id":"https://doi.org/10.5061/dryad.j86rt6b","obj_id":"https://doi.org/10.1371/journal.pone.0197753","relation_type_id":"is_supplement_to","source_id":"datacite_crossref","source_token":null,"occurred_at":"2019-02-03T08:31:45.000Z","timestamp":"2019-03-14T12:53:33Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.5061/dryad.j86rt6b","@type":"Dataset","name":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan","author":[{"name":"Carter S. Smith","givenName":"Carter
+        S.","familyName":"Smith","@type":"Person"},{"name":"Minako Ito","givenName":"Minako","familyName":"Ito","@type":"Person"},{"name":"Mizuho
+        Namba","givenName":"Mizuho","familyName":"Namba","@type":"Person"},{"name":"Masahiro
+        Nakaoka","givenName":"Masahiro","familyName":"Nakaoka","@type":"Person"}],"publisher":{"@type":"Organization","name":"Dryad
+        Digital Repository"},"datePublished":"2018","dateModified":"2019-02-03T08:31:45.000Z","proxyIdentifiers":["10.1371/journal.pone.0197753"],"registrantId":"datacite.dryad.dryad"},"obj":{"@id":"https://doi.org/10.1371/journal.pone.0197753","@type":"ScholarlyArticle","name":"Oyster
+        aquaculture impacts Zostera marina epibiont community composition in Akkeshi-ko
+        estuary, Japan","author":[{"@id":"http://orcid.org/0000-0002-6652-3010","@type":"Person","givenName":"Carter
+        S.","familyName":"Smith"},{"@type":"Person","givenName":"Minako","familyName":"Ito"},{"@type":"Person","givenName":"Mizuho","familyName":"Namba"},{"@type":"Person","givenName":"Masahiro","familyName":"Nakaoka"}],"periodical":{"@type":"Periodical","name":"PLOS
+        ONE","issn":"1932-6203"},"volumeNumber":"13","issueNumber":"5","pagination":"e0197753","publisher":{"@type":"Organization","name":"Public
+        Library of Science (PLoS)"},"datePublished":"2018-05-24","dateModified":"2019-02-18T06:03:10Z","registrantId":"crossref.340"}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '329'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 14 Mar 2019 12:53:41 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Malformed","schema-errors":[{"level":"error","schema":{"loadingURI":"#","pointer":""},"instance":{"pointer":""},"domain":"validation","keyword":"required","message":"object
+        has missing required properties ([\"id\"])","required":["id","obj_id","occurred_at","relation_type_id","source_id","subj_id"],"missing":["id"]}]}'
+    http_version: 
+  recorded_at: Thu, 14 Mar 2019 12:53:42 GMT
 recorded_with: VCR 3.0.3
