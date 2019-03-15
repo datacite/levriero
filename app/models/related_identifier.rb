@@ -140,7 +140,8 @@ class RelatedIdentifier < Base
       end
       
       # send to Event Data Bus
-      if ENV['EVENTDATA_URL'].present?
+      if ENV['EVENTDATA_TOKEN'].present?
+        iiitem["id"] = SecureRandom.uuid
         host = ENV['EVENTDATA_URL']
         push_url = host + "/events"
         response = Maremma.post(push_url, data: iiitem.to_json,
