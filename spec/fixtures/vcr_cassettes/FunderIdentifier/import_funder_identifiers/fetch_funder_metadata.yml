@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 14 Mar 2019 15:32:12 GMT
+      - Fri, 15 Mar 2019 15:26:58 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -41,9 +41,9 @@ http_interactions:
       string: '{"status":"ok","message-type":"funder","message-version":"1.0.0","message":{"hierarchy-names":{"100012731":"Grantham
         Research Institute on Climate Change and the Environment, London School of
         Economics and Political Science","100011326":"London School of Economics and
-        Political Science"},"replaced-by":[],"work-count":92,"name":"London School
-        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":95,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
+        Political Science"},"replaced-by":[],"work-count":93,"name":"London School
+        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":96,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
         School of Economics & Political Science","LSE"],"location":null}}'
     http_version: 
-  recorded_at: Thu, 14 Mar 2019 15:32:13 GMT
+  recorded_at: Fri, 15 Mar 2019 15:26:58 GMT
 recorded_with: VCR 3.0.3
