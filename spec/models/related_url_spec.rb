@@ -14,7 +14,7 @@ describe RelatedUrl, type: :model, vcr: true do
 
     it "get_total" do
       response = subject.get_total(from_date: from_date, until_date: until_date)
-      expect(response).to eq(122)
+      expect(response).to eq(109)
     end
   end
 

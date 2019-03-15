@@ -140,27 +140,30 @@ class RelatedIdentifier < Base
       end
       
       # send to Event Data Bus
-      # host = ENV['EVENTDATA_URL']
-      # push_url = host + "/events"
-      # response = Maremma.post(push_url, data: item.to_json,
-      #                                   bearer: ENV['EVENTDATA_TOKEN'],
-      #                                   content_type: 'json',
-      #                                   host: host)
+      if ENV['EVENTDATA_TOKEN'].present?
+        iiitem["id"] = SecureRandom.uuid
+        iiitem["source_id"] = "datacite"
 
-      # return 0 if successful, 1 if error
-      # if response.status == 201
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
-      #   0
-      # elsif response.status == 409
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
-      #   0
-      # elsif response.body["errors"].present?
-      #   puts "#{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error:"
-      #   puts "#{response.body['errors'].first['title']}"
-      #   1
-      # end
+        host = ENV['EVENTDATA_URL']
+        push_url = host + "/events"
+        response = Maremma.post(push_url, data: iiitem.to_json,
+                                          bearer: ENV['EVENTDATA_TOKEN'],
+                                          content_type: 'json',
+                                          host: host)
+
+        # return 0 if successful, 1 if error
+          if response.status == 201
+            logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+          elsif response.status == 409
+            logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+          elsif response.body["errors"].present?
+            logger.error "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error:"
+            logger.error "[Event Data Bus] #{response.body['errors'].first['title']}"
+          end
+      else
+        logger.warn "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} was not sent to Event Data Bus."
+      end
     end
-
     push_items.length
   end
 end

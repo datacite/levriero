@@ -39,12 +39,12 @@ describe Base, type: :model, vcr: true do
       expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Eating your own Dog Food")
       expect(response["author"].length).to eq(1)
-      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0001-6528-2027", "@type"=>"Person", "familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner")
+      expect(response["author"].first).to eq("@id"=>"https://orcid.org/0000-0003-1419-2405", "@type"=>"Person", "familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner")
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"DataCite")
       expect(response["registrantId"]).to eq("datacite.datacite.datacite")
       expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
       expect(response["datePublished"]).to eq("2016-12-20")
-      expect(response["dateModified"]).to eq("2019-02-19T22:01:37.000Z")
+      expect(response["dateModified"]).to eq("2019-03-12T21:03:47.000Z")
     end
 
     it "fetch metadata Dataset" do
@@ -108,7 +108,7 @@ describe Base, type: :model, vcr: true do
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"Georg Thieme Verlag KG")
       expect(response["registrantId"]).to eq("crossref.194")
       expect(response["datePublished"]).to eq("2011-03-10")
-      expect(response["dateModified"]).to eq("2018-11-27T15:42:54Z")
+      expect(response["dateModified"]).to eq("2019-02-16T09:30:49Z")
     end
   end
 
