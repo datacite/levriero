@@ -47,7 +47,7 @@ VCR.configure do |config|
   config.ignore_localhost = true
   config.ignore_hosts "codeclimate.com", "elasticsearch"
   config.configure_rspec_metadata!
-  config.default_cassette_options = { :match_requests_on => [:method, :path] }
+  # config.default_cassette_options = { :match_requests_on => [:method, :path] }
 end
 
 def capture_stdout(&block)
