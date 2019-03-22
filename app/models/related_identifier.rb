@@ -1,6 +1,8 @@
 class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
 
+  include Helpable
+
   def self.import_by_month(options={})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
@@ -128,7 +130,7 @@ class RelatedIdentifier < Base
                                           bearer: ENV['LAGOTTINO_TOKEN'],
                                           content_type: 'application/vnd.api+json',
                                           accept: 'application/vnd.api+json; version=2')
-
+                                
         if [200, 201].include?(response.status)
           logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
         elsif response.status == 409
@@ -141,9 +143,8 @@ class RelatedIdentifier < Base
       
       # send to Event Data Bus
       if ENV['EVENTDATA_TOKEN'].present?
-        iiitem["id"] = SecureRandom.uuid
-        iiitem["source_id"] = "datacite"
-
+        iiitem = set_event_for_bus iiitem, response.body.dig("data","id")
+       
         host = ENV['EVENTDATA_URL']
         push_url = host + "/events"
         response = Maremma.post(push_url, data: iiitem.to_json,
