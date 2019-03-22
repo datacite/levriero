@@ -3,8 +3,8 @@ module Helpable
 
   module ClassMethods
 
-    def set_event_for_bus event, id
-      event["id"] = id
+    def set_event_for_bus event
+      event["id"] = SecureRandom.uuid
       event["source_id"] = "datacite"
       event["subj"] = format_for_bus event["subj"]
       event["obj"] = format_for_bus event["obj"]

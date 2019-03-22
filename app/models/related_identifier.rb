@@ -143,7 +143,7 @@ class RelatedIdentifier < Base
       
       # send to Event Data Bus
       if ENV['EVENTDATA_TOKEN'].present?
-        iiitem = set_event_for_bus iiitem, response.body.dig("data","id")
+        iiitem = set_event_for_bus iiitem
        
         host = ENV['EVENTDATA_URL']
         push_url = host + "/events"
