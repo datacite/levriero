@@ -13,7 +13,7 @@ module Helpable
   
     def format_for_bus metadata
       { "pid" => metadata["@id"],
-        "type" => metadata["@type"] }.compact
+        "work_type_id" => metadata["@type"] }.compact
     end
   
   end
