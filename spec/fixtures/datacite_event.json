@@ -1,0 +1,57 @@
+{
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "obj_id": "https://doi.org/10.15468/xgoxap",
+  "source_token": "29a9a478-518f-4cbd-a133-a0dcef63d547",
+  "occurred_at": "2018-01-29T18:49:21.000Z",
+  "subj_id": "https://doi.org/10.15468/dl.hy9tqg",
+  "subj": {
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Global Biodiversity Information Facility"
+    },
+    "name": "GBIF Occurrence Download",
+    "datePublished": "2018",
+    "registrantId": "datacite.gbif.gbif",
+    "author": [
+      {
+        "name": "Occdownload Gbif.Org"
+      },
+      {
+        "name": "Occdownload Gbif.Org"
+      }
+    ],
+    "dateModified": "2018-01-29T18:49:21.000Z",
+    "@id": "https://doi.org/10.15468/dl.hy9tqg",
+    "proxyIdentifiers": [],
+    "@type": "Dataset"
+  },
+  "message_action": "create",
+  "source_id": "datacite",
+  "obj": {
+    "publisher": {
+      "@type": "Organization",
+      "name": "MNHN - Museum national d'Histoire naturelle"
+    },
+    "name": "The molluscs collection (IM) of the Muséum national d'Histoire naturelle (MNHN - Paris)",
+    "datePublished": "2019",
+    "registrantId": "datacite.gbif.gbif",
+    "author": [
+      {
+        "name": "MNHN"
+      },
+      {
+        "name": "MNHN"
+      }
+    ],
+    "dateModified": "2019-03-13T10:40:11.000Z",
+    "@id": "https://doi.org/10.15468/xgoxap",
+    "proxyIdentifiers": [],
+    "@type": "Dataset"
+  },
+  "timestamp": "2019-03-17T14:57:54Z",
+  "relation_type_id": "references"
+}
+
+
+
+
