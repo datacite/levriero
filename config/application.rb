@@ -63,6 +63,12 @@ module Levriero
     # secret_key_base is not used by Rails API, as there are no sessions
     config.secret_key_base = 'blipblapblup'
 
+    # Write all logs to STDOUT instead of file
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_level = ENV['LOG_LEVEL'].to_sym
+
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
 
