@@ -6,6 +6,7 @@ require "active_model/railtie"
 require "active_job/railtie"
 require "action_controller/railtie"
 require "rails/test_unit/railtie"
+require "active_job/logging"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -68,6 +69,8 @@ module Levriero
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
     config.log_level = ENV['LOG_LEVEL'].to_sym
+
+    config.active_job.logger = config.logger
 
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
