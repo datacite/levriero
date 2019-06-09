@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 Feb 2019 06:11:30 GMT
+      - Sun, 09 Jun 2019 16:29:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,23 +30,23 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"85a658dd53cf4c942b43b14893b54e42"
-      X-Runtime:
-      - '0.018318'
       X-Request-Id:
-      - 3b3fbc78-2f4a-4670-bad4-39f3f9b01c9e
+      - 4be88a58-f132-4ae4-bbb9-be16460f1dd1
+      Etag:
+      - W/"d2a2b77d968c6768c988b79c45416805"
+      X-Runtime:
+      - '0.015910'
       X-Powered-By:
-      - Phusion Passenger 6.0.0
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.7 + Phusion Passenger 6.0.0
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
       string: '{"report":{"id":"5cac6ca0-9391-4e1d-95cf-ba2f475cbfad","report-header":{"report-name":"Dataset
-        Master Report","report-id":"SDR","release":"RD1","created-by":"test9","created":"2018-05-22","reporting-period":{"end-date":"2063-02-30T00:00:00","begin-date":"2063-02-01T00:00:00"},"report-filters":[],"report-attributes":[],"exceptions":null},"report-datasets":[{"uri":"https://search.DataONE.org/index.html#view/https://pasta.lternet.edu/package/metadata/eml/knb-lter-luq/88/559501","yop":"2010","platform":"DataONE","data-type":"dataset","publisher":"LTER
+        Master Report","report-id":"SDR","client-id":"datacite.datacite","year":"2063","month":"2","release":"RD1","created-by":"test9","created":"2018-05-22","reporting-period":{"end-date":"2063-02-30T00:00:00","begin-date":"2063-02-01T00:00:00"},"report-filters":[],"report-attributes":[],"exceptions":null},"report-datasets":[{"uri":"https://search.DataONE.org/index.html#view/https://pasta.lternet.edu/package/metadata/eml/knb-lter-luq/88/559501","yop":"2010","platform":"DataONE","data-type":"dataset","publisher":"LTER
         Network","dataset-id":[{"type":"DOI","value":"10.6073/pasta/aec48ca27decb1fd2c2f454f1c5f88e4"}],"performance":[{"period":{"end-date":"2018-03-31","begin-date":"2018-03-01"},"instance":[{"count":349,"metric-type":"total-dataset-requests","access-method":"regular","country-counts":{"au":9,"ca":4,"de":4,"dk":2,"ie":2,"ru":2,"us":9}},{"count":27,"metric-type":"unique-dataset-requests","access-method":"regular","country-counts":{"au":9,"ca":4,"de":4,"dk":2,"ie":2,"ru":2,"us":9}},{"count":8,"metric-type":"total-dataset-investigations","access-method":"regular","country-counts":{"de":4,"ie":2,"ru":2}},{"count":8,"metric-type":"unique-dataset-investigations","access-method":"regular","country-counts":{"de":4,"ie":2,"ru":2}}]}],"publisher-id":[{"type":"orcid","value":"205975.c"}],"dataset-title":"Phenologies
         of the Tabonuco Forest trees and shrubs.","dataset-contributors":[{"type":"name","value":"Jess
         Zimmerman"}]}],"report-subsets":[]}}'
     http_version: 
-  recorded_at: Thu, 21 Feb 2019 06:11:30 GMT
+  recorded_at: Sun, 09 Jun 2019 16:29:28 GMT
 recorded_with: VCR 3.0.3

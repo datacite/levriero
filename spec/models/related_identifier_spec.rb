@@ -13,7 +13,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
     it "import" do
       until_date = "2018-01-31"
       response = RelatedIdentifier.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(98)
+      expect(response).to eq(97)
     end
 
     it "push_item" do

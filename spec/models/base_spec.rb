@@ -44,7 +44,7 @@ describe Base, type: :model, vcr: true do
       expect(response["registrantId"]).to eq("datacite.datacite.datacite")
       expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
       expect(response["datePublished"]).to eq("2016-12-20")
-      expect(response["dateModified"]).to eq("2019-03-12T21:03:47.000Z")
+      expect(response["dateModified"]).to eq("2019-06-05T09:31:21.000Z")
     end
 
     it "fetch metadata Dataset" do
@@ -96,7 +96,6 @@ describe Base, type: :model, vcr: true do
     end
   end
 
-
   context "get_crossref_metadata" do
     it "fetch crossref metadata" do
       id = "https://doi.org/10.1055/s-0030-1259729"
@@ -104,11 +103,11 @@ describe Base, type: :model, vcr: true do
       expect(response["@id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
       expect(response["@type"]).to eq("ScholarlyArticle")
       expect(response["name"]).to eq("Copper-Catalyzed Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents")
-      expect(response["periodical"]).to eq("@type"=>"Periodical", "issn"=>"0936-5214", "name"=>"Synlett")
-      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"Georg Thieme Verlag KG")
-      expect(response["registrantId"]).to eq("crossref.194")
+      expect(response["periodical"]).to eq("@id"=>"0936-5214", "@type"=>"Periodical", "name"=>"Synlett")
+      expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"(:unav)")
+      expect(response["registrantId"]).to eq("datacite.crossref.citations")
       expect(response["datePublished"]).to eq("2011-03-10")
-      expect(response["dateModified"]).to eq("2019-02-16T09:30:49Z")
+      expect(response["dateModified"]).to eq("2019-06-09T12:45:26.000-04:00")
     end
   end
 

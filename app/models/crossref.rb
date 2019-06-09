@@ -38,8 +38,8 @@ class Crossref < Base
   def get_total(options={})
     query_url = get_query_url(options.merge(rows: 0))
     result = Maremma.get(query_url, options)
-    message = result.body.dig("data", "message")
-    [message["total-results"], message["next-cursor"]]
+    message = result.body.dig("data", "message").to_h
+    [message["total-results"].to_i, message["next-cursor"]]
   end
 
   def queue_jobs(options={})
