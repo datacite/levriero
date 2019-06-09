@@ -279,7 +279,52 @@ class Base
     url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
     return {} if response.status != 200
-    
+
+    parse_datacite_metadata(id: id, response: response)
+  end          
+
+  def self.get_crossref_metadata(id)
+    doi = doi_from_url(id)
+    return {} unless doi.present?
+
+    # use metadata stored with DataCite if they exist
+    response = get_datacite_metadata(id)
+    return response if response.present?
+
+    # otherwise store Crossref metadata with DataCite 
+    # using client crossref.citations and DataCite XML
+    xml = Base64.strict_encode64(id)
+    attributes = {
+      "xml" => xml,
+      "source" => "levriero",
+      "event" => "publish" }.compact
+
+    data = {
+      "data" => {
+        "type" => "dois",
+        "attributes" => attributes,
+        "relationships" => {
+          "client" =>  {
+            "data" => {
+              "type" => "clients",
+              "id" => "crossref.citations"
+            }
+          }
+        }
+      }
+    }
+
+    url = ENV['API_URL'] + "/dois/#{doi}"
+    response = Maremma.put(url, accept: 'application/vnd.api+json', 
+                                content_type: 'application/vnd.api+json',
+                                data: data.to_json, 
+                                bearer: ENV["LAGOTTINO_TOKEN"])
+
+    return {} unless [200, 201].include?(response.status)
+    parse_datacite_metadata(id: id, response: response)
+  end
+
+  def self.parse_datacite_metadata(id: nil, response: nil)
     attributes = response.body.dig("data", "attributes")
     relationships = response.body.dig("data", "relationships")
     
@@ -304,44 +349,6 @@ class Base
       "funder" => to_schema_org_funder(attributes["fundingReferences"]),
       "proxyIdentifiers" => proxy_identifiers,
       "registrantId" => "datacite.#{client_id}" }.compact
-  end          
-
-  def self.get_crossref_metadata(id)
-    doi = doi_from_url(id)
-    return {} unless doi.present?
-
-    url = "https://api.crossref.org/works/#{doi}"
-    response = Maremma.get(url, host: true)
-
-    return {} if response.status != 200
-    
-    message = response.body.dig("data", "message")
-
-    type = Bolognese::Utils::CR_TO_SO_TRANSLATIONS[message["type"].underscore.camelize] || "CreativeWork"
-    author = Array.wrap(message["author"]).map do |a| 
-      {
-        "@id" => a["ORCID"],
-        "@type" => a["family"].present? ? "Person" : nil,
-        "givenName" => a["given"],
-        "familyName" => a["family"],
-        "name" => a["name"] }.compact
-    end
-    publisher = message["publisher"].present? ? { "@type" => "Organization", "name" => message["publisher"] } : nil
-    periodical = message["container-title"] ? { "@type" => "Periodical", "name" => Array.wrap(message["container-title"]).first, "issn" => Array.wrap(message["ISSN"]).first }.compact : nil
-
-    {
-      "@id" => id,
-      "@type" => type,
-      "name" => Array.wrap(message["title"]).first,
-      "author" => Array.wrap(to_schema_org(author)),
-      "periodical" => periodical,
-      "volumeNumber" => message["volume"],
-      "issueNumber" => message["issue"],
-      "pagination" => message["page"],
-      "publisher" => publisher,
-      "datePublished" => Base.new.get_date_from_date_parts(message["issued"]),
-      "dateModified" => message.dig("indexed", "date-time"),
-      "registrantId" => "crossref.#{message["member"]}" }.compact
   end
 
   def self.get_orcid_metadata(id)
