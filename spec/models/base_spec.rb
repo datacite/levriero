@@ -44,7 +44,7 @@ describe Base, type: :model, vcr: true do
       expect(response["registrantId"]).to eq("datacite.datacite.datacite")
       expect(response["proxyIdentifiers"]).to eq(["10.5438/0000-00ss"])
       expect(response["datePublished"]).to eq("2016-12-20")
-      expect(response["dateModified"]).to eq("2019-06-05T09:31:21.000Z")
+      expect(Time.parse(response["dateModified"]).utc.iso8601).to eq("2019-06-05T09:31:21Z")
     end
 
     it "fetch metadata Dataset" do
@@ -59,7 +59,7 @@ describe Base, type: :model, vcr: true do
       expect(response["registrantId"]).to eq("datacite.bl.ccdc")
       expect(response["proxyIdentifiers"]).to eq(["10.1021/ja906895j"])
       expect(response["datePublished"]).to eq("2010")
-      expect(response["dateModified"]).to eq("2018-02-05T09:53:27.000Z")
+      expect(Time.parse(response["dateModified"]).utc.iso8601).to eq("2018-02-05T09:53:27Z")
     end
 
     it "fetch metadata with funding information" do
@@ -78,7 +78,7 @@ describe Base, type: :model, vcr: true do
       expect(response["registrantId"]).to eq("datacite.bl.lse")
       expect(response["proxyIdentifiers"]).to eq(["http://etheses.lse.ac.uk/view/sets/LSE-GI.html"])
       expect(response["datePublished"]).to eq("2017")
-      expect(response["dateModified"]).to eq("2018-01-10T12:47:33.000Z")
+      expect(Time.parse(response["dateModified"]).utc.iso8601).to eq("2018-01-10T12:47:33Z")
     end
 
     it "fetch metadata with author information" do
@@ -92,7 +92,7 @@ describe Base, type: :model, vcr: true do
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"Apollo - University of Cambridge Repository (staging)")
       expect(response["registrantId"]).to eq("datacite.bl.cam")
       expect(response["datePublished"]).to eq("2017-03")
-      expect(response["dateModified"]).to eq("2019-01-26T07:45:13.000Z")
+      expect(Time.parse(response["dateModified"]).utc.iso8601).to eq("2019-01-26T07:45:13Z")
     end
   end
 
@@ -107,7 +107,7 @@ describe Base, type: :model, vcr: true do
       expect(response["publisher"]).to eq("@type"=>"Organization", "name"=>"(:unav)")
       expect(response["registrantId"]).to eq("datacite.crossref.citations")
       expect(response["datePublished"]).to eq("2011-03-10")
-      expect(response["dateModified"]).to eq("2019-06-09T12:45:26.000-04:00")
+      expect(Time.parse(response["dateModified"]).utc.iso8601).to eq("2019-06-09T16:45:26Z")
     end
   end
 
