@@ -89,6 +89,7 @@ class RelatedIdentifier < Base
         subj = cached_datacite_response(pid)
 
         ssum << { "message_action" => "create",
+                  "id" => SecureRandom.uuid,
                   "subj_id" => pid,
                   "obj_id" => obj_id,
                   "relation_type_id" => iitem["relationType"].to_s.underscore,
@@ -113,6 +114,7 @@ class RelatedIdentifier < Base
         data = { 
           "data" => {
             "type" => "events",
+            "id" => iiitem["id"],
             "attributes" => {
               "messageAction" => iiitem["message_action"],
               "subjId" => iiitem["subj_id"],
@@ -143,7 +145,7 @@ class RelatedIdentifier < Base
       
       # send to Event Data Bus
       if ENV['EVENTDATA_TOKEN'].present?
-        iiitem = set_event_for_bus iiitem
+        iiitem = set_event_for_bus(iiitem)
        
         host = ENV['EVENTDATA_URL']
         push_url = host + "/events"
