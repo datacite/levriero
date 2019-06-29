@@ -92,7 +92,7 @@ class NameIdentifier < Base
 
     # there can be one or more name_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Datas API
+      # send to DataCite Event Data API
       if ENV['LAGOTTINO_TOKEN'].present?
         push_url = ENV['LAGOTTINO_URL'] + "/events"
 

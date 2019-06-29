@@ -313,7 +313,23 @@ class Base
       "registrantId" => "datacite.#{client_id}" }.compact
   end
 
+  def self.get_researcher_metadata(id)
+    orcid = orcid_from_url(id)
+    return {} unless orcid.present?
+
+    url = ENV['API_URL'] + "/researchers/#{orcid}"
+    response = Maremma.get(url)
+    return {} if response.status != 200
+
+    parse_researcher_metadata(id: id, response: response)
+  end
+
   def self.get_orcid_metadata(id)
+    # use metadata stored with DataCite if they exist
+    response = get_researcher_metadata(id)
+    return response if response.present?
+
+    # otherwise store ORCID metadata with DataCite
     orcid = orcid_from_url(id)
     return {} unless orcid.present?
 
@@ -321,14 +337,43 @@ class Base
     response = Maremma.get(url, accept: "application/vnd.orcid+json")
     return {} if response.status != 200
 
-    data = response.body.fetch("data", {})
+    message = response.body.fetch("data", {})
+    attributes = parse_message(message: message)
+    data = {
+      "data" => {
+        "type" => "researchers",
+        "attributes" => attributes
+      }
+    }
+    url = ENV["API_URL"] + "/researchers/#{orcid}"
+    response = Maremma.put(url, accept: 'application/vnd.api+json', 
+                                content_type: 'application/vnd.api+json',
+                                data: data.to_json,
+                                bearer: ENV["LAGOTTINO_TOKEN"])
+    
+    return {} unless [200, 201].include?(response.status)
+
 
     {
-      "@id" => id,
-      "@type" => "Person",
-      "givenName" => data.dig("name", "given-names", "value"),
-      "familyName" => data.dig("name", "family-name", "value"),
-      "name" => data.dig("name", "credit-name", "value") }.compact
+      "@id" => "https://orcid.org/#{orcid}",
+      "@type" => "Person" }.compact
+  end
+
+  def self.parse_message(message: nil)
+    given_names = message.dig("name", "given-names", "value")
+    family_name = message.dig("name", "family-name", "value")
+    if message.dig("name", "credit-name", "value").present?
+      name = message.dig("name", "credit-name", "value")
+    elsif given_names.present? || family_name.present?
+      name = [given_names, family_name].join(" ")
+    else
+      name = nil
+    end
+
+    {
+      "name" => name,
+      "givenNames" => given_names,
+      "familyName" => family_name }.compact
   end
 
   def unfreeze(hsh)
