@@ -89,6 +89,18 @@ module Importable
       "http://orcid.org/" + Addressable::URI.encode(orcid)
     end
 
+    def validate_ror(ror_id)
+      Array(/\A(https:\/\/)?(ror\.org\/0\w{6}\d{2})\z/.match(ror_id)).last
+    end
+
+    def normalize_ror(ror_id)
+      ror_id = validate_ror(ror_id)
+      return nil unless ror_id.present?
+
+      # turn ROR ID into URL
+      "https://ror.org/" + Addressable::URI.encode(ror_id)
+    end
+
     def import_from_api
       logger = Logger.new(STDOUT)
 
