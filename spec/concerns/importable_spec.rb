@@ -161,6 +161,45 @@ describe "Importable", vcr: true do
     end
   end
 
+  describe "normalize_orcid" do
+    it "https url" do
+      orcid = "https://orcid.org/0000-0003-1419-2405"
+      expect(Doi.normalize_orcid(orcid)).to eq(orcid)
+    end
+
+    it "http url" do
+      orcid = "http://orcid.org/0000-0003-1419-2405"
+      expect(Doi.normalize_orcid(orcid)).to eq("https://orcid.org/0000-0003-1419-2405")
+    end
+
+    it "as string" do
+      orcid = "0000-0003-1419-2405"
+      expect(Doi.normalize_orcid(orcid)).to eq("https://orcid.org/0000-0003-1419-2405")
+    end
+
+    it "no hyphens" do
+      orcid = "https://orcid.org/0000 0003 1419 2405"
+      expect(Doi.normalize_orcid(orcid)).to eq("https://orcid.org/0000-0003-1419-2405")
+    end
+  end
+
+  describe "normalize_ror" do
+    it "https url" do
+      ror_id = "https://ror.org/02catss52"
+      expect(Doi.normalize_ror(ror_id)).to eq(ror_id)
+    end
+
+    it "http url" do
+      ror_id = "http://ror.org/02catss52"
+      expect(Doi.normalize_ror(ror_id)).to eq("https://ror.org/02catss52")
+    end
+
+    it "as string" do
+      ror_id = "ror.org/02catss52"
+      expect(Doi.normalize_ror(ror_id)).to eq("https://ror.org/02catss52")
+    end
+  end
+
   describe "get_doi_ra" do
     it "DataCite" do
       prefix = "10.5061"

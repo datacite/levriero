@@ -73,7 +73,7 @@ module Importable
     end
   
     def orcid_as_url(orcid)
-      "http://orcid.org/#{orcid}" if orcid.present?
+      "https://orcid.org/#{orcid}" if orcid.present?
     end
   
     def validate_orcid(orcid)
@@ -86,11 +86,11 @@ module Importable
       return nil unless orcid.present?
 
       # turn ORCID ID into URL
-      "http://orcid.org/" + Addressable::URI.encode(orcid)
+      "https://orcid.org/" + Addressable::URI.encode(orcid)
     end
 
     def validate_ror(ror_id)
-      Array(/\A(https:\/\/)?(ror\.org\/0\w{6}\d{2})\z/.match(ror_id)).last
+      Array(/\A(?:(http|https):\/\/)?(ror\.org\/0\w{6}\d{2})\z/.match(ror_id)).last
     end
 
     def normalize_ror(ror_id)
@@ -98,7 +98,7 @@ module Importable
       return nil unless ror_id.present?
 
       # turn ROR ID into URL
-      "https://ror.org/" + Addressable::URI.encode(ror_id)
+      "https://" + Addressable::URI.encode(ror_id)
     end
 
     def import_from_api

@@ -61,7 +61,8 @@ class Base
     params = { 
       query: query + " AND " + updated,
       "page[number]" => options[:number],
-      "page[size]" => options[:size] }
+      "page[size]" => options[:size],
+      affiliation: true }
 
     url +  URI.encode_www_form(params)
   end
@@ -231,7 +232,7 @@ class Base
       return {}
     end
 
-    url = ENV['API_URL'] + "/dois/#{doi}"
+    url = ENV['API_URL'] + "/dois/#{doi}?affiliation=true"
     response = Maremma.get(url)
 
     if response.status != 200

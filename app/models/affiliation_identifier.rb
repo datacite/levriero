@@ -57,21 +57,29 @@ class AffiliationIdentifier < Base
     pid = normalize_doi(doi)
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier["relatedIdentifierType"])
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end
-    creators = attributes.fetch("creators", []).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
-    return nil if creators.blank? || skip_doi
 
+    affiliation_identifiers = attributes.fetch("creators", []).reduce([]) do |sum, c| 
+      Array.wrap(c["affiliation"]).each do |a|
+        sum << a["affiliationIdentifier"] if a["affiliationIdentifierScheme"] == "ROR"
+      end
+
+      sum
+    end
+
+    return nil if affiliation_identifiers.blank? || skip_doi
     source_id = item.fetch("sourceId", "datacite_affiliation")
     relation_type_id = "is_authored_at"
     source_token = ENV['DATACITE_AFFILIATION_SOURCE_TOKEN']
     
-    push_items = Array.wrap(creators).select { |c| c.dig("affiliation", "affiliationIdentifierScheme") == "ROR" }.map do |iitem|
-      obj_id = normalize_ror(iitem.dig("affiliation", "affiliationIdentifier"))
+    push_items = Array.wrap(affiliation_identifiers).reduce([]) do |ssum, iitem|
+      puts iitem
+      obj_id = normalize_ror(iitem)
 
       if obj_id.present?
         subj = cached_datacite_response(pid)
-        obj = cached_orcid_response(obj_id)
+        obj = cached_ror_response(obj_id)
 
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
@@ -89,7 +97,7 @@ class AffiliationIdentifier < Base
       ssum
     end
 
-    # there can be one or more name_identifier per DOI
+    # there can be one or more affiliation_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data API
       if ENV['LAGOTTINO_TOKEN'].present?
@@ -125,35 +133,29 @@ class AffiliationIdentifier < Base
           logger.error data.inspect
         end
       end
-
-      # send to Profiles service, which then pushes to ORCID
-      if ENV['VOLPINO_TOKEN'].present?
-        push_url = ENV['VOLPINO_URL'] + "/claims"
-        doi = doi_from_url(iiitem["subj_id"])
-        orcid = orcid_from_url(iiitem["obj_id"])
-        source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
-
-        data = { 
-          "claim" => {
-            "doi" => doi,
-            "orcid" => orcid,
-            "source_id" => source_id,
-            "claim_action"=> "create" }}
-
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV['VOLPINO_TOKEN'],
-                                          content_type: 'application/json')
-                                        
-        if response.status == 202
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
-        elsif response.status == 409
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
-        elsif response.body["errors"].present?
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors'].first['title']}"
-        end
-      end
     end
 
     push_items.length
+  end
+
+  def self.get_ror_metadata(id)
+    return {} unless id.present?
+
+    url = "https://api.ror.org/organizations/" + id[8..-1]
+    response = Maremma.get(url, host: true)
+    return {} if response.status != 200
+
+    message = response.body.fetch("data", {})
+    
+    location = { 
+      "type" => "postalAddress",
+      "addressCountry" => message.dig("country", "country_name")
+    }
+    
+    {
+      "@id" => id,
+      "@type" => "Organization",
+      "name" => message["name"],
+      "location" => location }.compact
   end
 end

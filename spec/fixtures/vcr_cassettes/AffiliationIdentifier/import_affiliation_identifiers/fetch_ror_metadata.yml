@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ror.org/organizations/ror.org/02catss52
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '559'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 19 Jul 2019 12:47:11 GMT
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - SAMEORIGIN
+      Allow:
+      - GET, HEAD, OPTIONS
+      X-Powered-By:
+      - Phusion Passenger 6.0.2
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      Vary:
+      - Cookie,Origin
+      Age:
+      - '11099'
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 9568a708c8ab21597698ebe7dce6c42e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - FRA2-C1
+      X-Amz-Cf-Id:
+      - AA7IMAhxjNKfy8Sx5w3dGkGc9e0ctDQNet2dePITcvujQSNnOvcmGg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"https://ror.org/02catss52","name":"European Bioinformatics Institute","types":["Facility"],"links":["http://www.ebi.ac.uk/"],"aliases":[],"acronyms":["EBI","EMBL-EBI"],"wikipedia_url":"http://en.wikipedia.org/wiki/European_Bioinformatics_Institute","labels":[],"country":{"country_name":"United
+        Kingdom","country_code":"GB"},"external_ids":{"ISNI":{"preferred":null,"all":["0000
+        0000 9709 7726"]},"OrgRef":{"preferred":null,"all":["2056296"]},"Wikidata":{"preferred":null,"all":["Q1341845"]},"GRID":{"preferred":"grid.225360.0","all":"grid.225360.0"}}}'
+    http_version: 
+  recorded_at: Fri, 19 Jul 2019 15:52:10 GMT
+recorded_with: VCR 3.0.3

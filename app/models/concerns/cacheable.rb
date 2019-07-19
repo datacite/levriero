@@ -25,5 +25,11 @@ module Cacheable
         Base.get_orcid_metadata(id)
       end
     end
+
+    def cached_ror_response(id)
+      Rails.cache.fetch("ror/#{id}", expires_in: 1.day) do
+        AffiliationIdentifier.get_ror_metadata(id)
+      end
+    end
   end
 end

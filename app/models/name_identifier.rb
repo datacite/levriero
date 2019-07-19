@@ -57,7 +57,7 @@ class NameIdentifier < Base
     pid = normalize_doi(doi)
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf"].include?(related_identifier["relatedIdentifierType"])
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end
     creators = attributes.fetch("creators", []).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
     return nil if creators.blank? || skip_doi

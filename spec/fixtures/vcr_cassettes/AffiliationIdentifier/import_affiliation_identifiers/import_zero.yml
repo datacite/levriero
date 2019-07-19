@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois?page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-01T00:00:00Z%20TO%202019-07-01T23:59:59Z%5D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Content-Type:
+      - application/json;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 19 Jul 2019 15:54:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"55c0ed7b2824c70531eb47da8e1f70d8"
+      X-Runtime:
+      - '0.032610'
+      X-Request-Id:
+      - 9b42f295-220d-4f7b-b1bb-c90de15fb08e
+      X-Powered-By:
+      - Phusion Passenger 6.0.2
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme%3AROR+AND+updated%3A%5B2019-07-01T00%3A00%3A00Z+TO+2019-07-01T23%3A59%3A59Z%5D"}}'
+    http_version: 
+  recorded_at: Fri, 19 Jul 2019 15:54:16 GMT
+recorded_with: VCR 3.0.3
