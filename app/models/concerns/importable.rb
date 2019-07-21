@@ -183,10 +183,21 @@ module Importable
         NameIdentifier.push_item(item)
       end
 
+      affiliation_identifiers = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("affiliation", nil)).any? { |n| n["affiliationIdentifierScheme"] == "ROR" } }
+      if affiliation_identifiers.present?
+        item = {
+          "doi" => data["id"],
+          "type" => "dois",
+          "attributes" => response
+        }
+        AffiliationIdentifier.push_item(item)
+      end
+
       logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
       logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data["id"]}" if name_identifiers.present?
+      logger.info "[Event Data] #{affiliation_identifiers.length} affiliation identifiers found for DOI #{data["id"]}" if affiliation_identifiers.present?
       logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
-      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank?
+      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
 
       related_identifiers + name_identifiers + funding_references
     end

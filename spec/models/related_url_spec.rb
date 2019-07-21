@@ -14,7 +14,7 @@ describe RelatedUrl, type: :model, vcr: true do
 
     it "get_total" do
       response = subject.get_total(from_date: from_date, until_date: until_date)
-      expect(response).to eq(35)
+      expect(response).to eq(13)
     end
   end
 
@@ -28,13 +28,13 @@ describe RelatedUrl, type: :model, vcr: true do
     end
 
     it "import" do
-      until_date = "2018-01-31"
+      until_date = "2018-12-31"
       response = RelatedUrl.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(8)
+      expect(response).to eq(13)
     end
 
     it "push_item" do
-      doi = "10.22002/d1.646"
+      doi = "10.4224/crm.2010f.selm-1"
       attributes = RelatedUrl.get_datacite_json(doi)
       response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
       expect(response).to eq(1)

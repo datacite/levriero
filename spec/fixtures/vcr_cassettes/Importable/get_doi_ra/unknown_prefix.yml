@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sun, 09 Jun 2019 16:26:09 GMT
+      - Sat, 20 Jul 2019 14:45:40 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -25,14 +25,16 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d9fadaa61f4a8a0f808fd5c3973cd56c91560097569; expires=Mon, 08-Jun-20
-        16:26:09 GMT; path=/; domain=.doi.org; HttpOnly
+      - __cfduid=d3e0a3e716df8023c961d6b5c0ad7105d1563633940; expires=Sun, 19-Jul-20
+        14:45:40 GMT; path=/; domain=.doi.org; HttpOnly
+      Strict-Transport-Security:
+      - max-age=3600; includeSubDomains
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Server:
       - cloudflare
       Cf-Ray:
-      - 4e4477333d7fc4cc-DUS
+      - 4f95b860895763dd-FRA
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -43,5 +45,5 @@ http_interactions:
           }
         ]
     http_version: 
-  recorded_at: Sun, 09 Jun 2019 16:26:09 GMT
+  recorded_at: Sat, 20 Jul 2019 14:45:40 GMT
 recorded_with: VCR 3.0.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 29 Jun 2019 15:41:51 GMT
+      - Sun, 21 Jul 2019 00:03:06 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,12 +30,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"fef3ac2500458bff3dab0686cd09a409"
-      X-Runtime:
-      - '0.021055'
       X-Request-Id:
-      - 9ad14821-1951-4028-846d-558709fbea34
+      - 4576f37e-8e1b-4b58-9a2c-59321db94954
+      Etag:
+      - W/"75196bbc9a17ff8b69157047f802b978"
+      X-Runtime:
+      - '0.035437'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -43,19 +43,19 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"10.17863/cam.12119","type":"dois","attributes":{"doi":"10.17863/cam.12119","prefix":"10.17863","suffix":"cam.12119","identifiers":[{"identifier":"https://handle.test.datacite.org/10.17863/cam.12119","identifierType":"DOI"},{"identifier":"0165-1765","identifierType":"ISSN"},{"identifier":"https://www.repository.cam.ac.uk/handle/1810/269957","identifierType":"uri"},{"identifier":"1873-7374","identifierType":"EISSN"}],"creators":[{"name":"Liu,
-        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"The
+        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}],"affiliation":[]}],"titles":[{"title":"The
         sure-thing principle and P2"}],"publisher":"Apollo - University of Cambridge
         Repository (staging)","container":null,"publicationYear":2017,"subjects":[{"subject":"Bayesian
         decision theory"},{"subject":"The sure-thing principle"},{"subject":"Dominance
         principle"},{"subject":"Conditional preference"}],"contributors":[{"name":"Apollo-University
-        Of Cambridge Repository (Staging)"},{"name":"Apollo-University Of Cambridge
-        Repository (Staging)"}],"dates":[{"date":"2017-12-05","dateType":"Issued"},{"date":"2017-12-05","dateType":"Available"},{"date":"2017-10","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":null,"descriptions":[{"description":"This
+        Of Cambridge Repository (Staging)","affiliation":[]},{"name":"Apollo-University
+        Of Cambridge Repository (Staging)","affiliation":[]}],"dates":[{"date":"2017-12-05","dateType":"Issued"},{"date":"2017-12-05","dateType":"Available"},{"date":"2017-10","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":[{"description":"This
         paper offers a fine analysis of different versions of the well known sure-thing
         principle. We show that Savage''s formal formulation of the principle, i.e.,
         his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIHN1cmUtdGhpbmcgcHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PkJheWVzaWFuIGRlY2lzaW9uIHRoZW9yeTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlRoZSBzdXJlLXRoaW5nIHByaW5jaXBsZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkRvbWluYW5jZSBwcmluY2lwbGU8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5Db25kaXRpb25hbCBwcmVmZXJlbmNlPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGNvbnRyaWJ1dG9ycz4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IkRhdGFNYW5hZ2VyIj4KICAgICAgPGNvbnRyaWJ1dG9yTmFtZT5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvY29udHJpYnV0b3JOYW1lPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9Ikhvc3RpbmdJbnN0aXR1dGlvbiI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgPC9jb250cmlidXRvcnM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxNy0xMi0wNTwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJBdmFpbGFibGUiPjIwMTctMTItMDU8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iSXNzdWVkIj4yMDE3LTEwPC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5BcnRpY2xlPC9yZXNvdXJjZVR5cGU+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9Imlzc24iPjAxNjUtMTc2NTwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJ1cmkiPmh0dHBzOi8vd3d3LnJlcG9zaXRvcnkuY2FtLmFjLnVrL2hhbmRsZS8xODEwLzI2OTk1NzwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJlaXNzbiI+MTg3My03Mzc0PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5UaGlzIHBhcGVyIG9mZmVycyBhIGZpbmUgYW5hbHlzaXMgb2YgZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSB3ZWxsIGtub3duIHN1cmUtdGhpbmcgcHJpbmNpcGxlLiBXZSBzaG93IHRoYXQgU2F2YWdlJ3MgZm9ybWFsIGZvcm11bGF0aW9uIG9mIHRoZSBwcmluY2lwbGUsIGkuZS4sIGhpcyBzZWNvbmQgcG9zdHVsYXRlIChQMiksIGlzIHN0cmljdGx5IHN0cm9uZ2VyIHRoYW4gd2hhdCBpcyBpbnRlbmRlZCBvcmlnaW5hbGx5LjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+","url":null,"contentUrl":null,"metadataVersion":20,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"published":"2017","updated":"2019-04-25T12:46:22.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
         of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:51 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:06 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.17863/cam.12119
@@ -73,7 +73,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 29 Jun 2019 15:41:52 GMT
+      - Sun, 21 Jul 2019 00:03:07 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -86,12 +86,12 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"fef3ac2500458bff3dab0686cd09a409"
-      X-Runtime:
-      - '0.026418'
       X-Request-Id:
-      - 02a13b47-a94c-4333-871a-a1102c4e3141
+      - ad283fe7-699b-41d0-a6a7-211cb5662864
+      Etag:
+      - W/"75196bbc9a17ff8b69157047f802b978"
+      X-Runtime:
+      - '0.055461'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -99,19 +99,19 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"10.17863/cam.12119","type":"dois","attributes":{"doi":"10.17863/cam.12119","prefix":"10.17863","suffix":"cam.12119","identifiers":[{"identifier":"https://handle.test.datacite.org/10.17863/cam.12119","identifierType":"DOI"},{"identifier":"0165-1765","identifierType":"ISSN"},{"identifier":"https://www.repository.cam.ac.uk/handle/1810/269957","identifierType":"uri"},{"identifier":"1873-7374","identifierType":"EISSN"}],"creators":[{"name":"Liu,
-        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"The
+        Yang","nameType":"Personal","givenName":"Yang","familyName":"Liu","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8865-4647","nameIdentifierScheme":"ORCID"}],"affiliation":[]}],"titles":[{"title":"The
         sure-thing principle and P2"}],"publisher":"Apollo - University of Cambridge
         Repository (staging)","container":null,"publicationYear":2017,"subjects":[{"subject":"Bayesian
         decision theory"},{"subject":"The sure-thing principle"},{"subject":"Dominance
         principle"},{"subject":"Conditional preference"}],"contributors":[{"name":"Apollo-University
-        Of Cambridge Repository (Staging)"},{"name":"Apollo-University Of Cambridge
-        Repository (Staging)"}],"dates":[{"date":"2017-12-05","dateType":"Issued"},{"date":"2017-12-05","dateType":"Available"},{"date":"2017-10","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":null,"descriptions":[{"description":"This
+        Of Cambridge Repository (Staging)","affiliation":[]},{"name":"Apollo-University
+        Of Cambridge Repository (Staging)","affiliation":[]}],"dates":[{"date":"2017-12-05","dateType":"Issued"},{"date":"2017-12-05","dateType":"Available"},{"date":"2017-10","dateType":"Issued"}],"language":null,"types":{"ris":"RPRT","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"Article","resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":[{"description":"This
         paper offers a fine analysis of different versions of the well known sure-thing
         principle. We show that Savage''s formal formulation of the principle, i.e.,
         his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIHN1cmUtdGhpbmcgcHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PkJheWVzaWFuIGRlY2lzaW9uIHRoZW9yeTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlRoZSBzdXJlLXRoaW5nIHByaW5jaXBsZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkRvbWluYW5jZSBwcmluY2lwbGU8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5Db25kaXRpb25hbCBwcmVmZXJlbmNlPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGNvbnRyaWJ1dG9ycz4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IkRhdGFNYW5hZ2VyIj4KICAgICAgPGNvbnRyaWJ1dG9yTmFtZT5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvY29udHJpYnV0b3JOYW1lPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9Ikhvc3RpbmdJbnN0aXR1dGlvbiI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgPC9jb250cmlidXRvcnM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxNy0xMi0wNTwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJBdmFpbGFibGUiPjIwMTctMTItMDU8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iSXNzdWVkIj4yMDE3LTEwPC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5BcnRpY2xlPC9yZXNvdXJjZVR5cGU+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9Imlzc24iPjAxNjUtMTc2NTwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJ1cmkiPmh0dHBzOi8vd3d3LnJlcG9zaXRvcnkuY2FtLmFjLnVrL2hhbmRsZS8xODEwLzI2OTk1NzwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJlaXNzbiI+MTg3My03Mzc0PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5UaGlzIHBhcGVyIG9mZmVycyBhIGZpbmUgYW5hbHlzaXMgb2YgZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSB3ZWxsIGtub3duIHN1cmUtdGhpbmcgcHJpbmNpcGxlLiBXZSBzaG93IHRoYXQgU2F2YWdlJ3MgZm9ybWFsIGZvcm11bGF0aW9uIG9mIHRoZSBwcmluY2lwbGUsIGkuZS4sIGhpcyBzZWNvbmQgcG9zdHVsYXRlIChQMiksIGlzIHN0cmljdGx5IHN0cm9uZ2VyIHRoYW4gd2hhdCBpcyBpbnRlbmRlZCBvcmlnaW5hbGx5LjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+","url":null,"contentUrl":null,"metadataVersion":20,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"published":"2017","updated":"2019-04-25T12:46:22.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
         of Cambridge","symbol":"BL.CAM","year":2015,"contactName":"Danny Kingsley","contactEmail":"dak45@cam.ac.uk","description":null,"domains":"cam.ac.uk","url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2018-08-26T01:30:47.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:52 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:07 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/researchers/0000-0001-8865-4647
@@ -129,7 +129,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sat, 29 Jun 2019 15:41:52 GMT
+      - Sun, 21 Jul 2019 00:03:07 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -140,10 +140,10 @@ http_interactions:
       - no-cache
       Vary:
       - Accept-Encoding, Origin
-      X-Runtime:
-      - '0.010661'
       X-Request-Id:
-      - bc437343-16b3-4278-945e-2e8bbc3c72f2
+      - d421643c-6a68-4abe-be73-2ab59484f17b
+      X-Runtime:
+      - '0.010247'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -152,7 +152,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:52 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:07 GMT
 - request:
     method: get
     uri: https://pub.orcid.org/v2.1/0000-0001-8865-4647/person
@@ -176,7 +176,7 @@ http_interactions:
       Content-Type:
       - application/vnd.orcid+json; qs=4;charset=UTF-8
       Date:
-      - Sat, 29 Jun 2019 15:41:52 GMT
+      - Sun, 21 Jul 2019 00:03:07 GMT
       Expires:
       - '0'
       Pragma:
@@ -190,7 +190,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=26484D0F5DA32D2D6AF64AA1C9DBBA16; path=/
+      - X-Mapping-fjhppofk=1F5FD8D0B8B1A8DD0F8680D854A2C10B; path=/
       X-Frame-Options:
       - DENY
     body:
@@ -250,7 +250,7 @@ http_interactions:
           "path" : "/0000-0001-8865-4647/person"
         }
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:52 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:08 GMT
 - request:
     method: put
     uri: https://api.test.datacite.org/researchers/0000-0001-8865-4647
@@ -272,7 +272,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 29 Jun 2019 15:41:53 GMT
+      - Sun, 21 Jul 2019 00:03:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -283,14 +283,14 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"ccfc7010d27dda0b8c81b91fd288a12b"
-      X-Runtime:
-      - '0.053131'
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - ca95f9ca-e238-4ea0-b3df-5fbc78f136c2
+      - dfb2004c-35f6-433b-9cc6-8c28591a5bc3
+      Etag:
+      - W/"ccfc7010d27dda0b8c81b91fd288a12b"
+      X-Runtime:
+      - '0.029358'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
@@ -300,13 +300,13 @@ http_interactions:
       string: '{"data":{"id":"0000-0001-8865-4647","type":"researchers","attributes":{"name":"Yang
         Liu","givenNames":"Yang","familyName":"Liu","createdAt":"2019-06-29T15:30:19.814Z","updatedAt":"2019-06-29T15:30:19.814Z"}}}'
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:53 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:08 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-06-29T15:41:53Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","datePublished":"2017-12-05","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://orcid.org/0000-0001-8865-4647","@type":"Person"}}}}'
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"https://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-07-21T00:03:08Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","datePublished":"2017-12-05","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://orcid.org/0000-0001-8865-4647","@type":"Person"}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
@@ -322,7 +322,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 29 Jun 2019 15:41:53 GMT
+      - Sun, 21 Jul 2019 00:03:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -333,23 +333,23 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"12f7598529db1af92c3e84a2e769fc0f"
-      X-Runtime:
-      - '0.061442'
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - 0e891af4-4096-414a-be4e-a8b301570783
+      - 3827bf3a-cd3e-4974-9f4a-edc8d5397037
+      Etag:
+      - W/"738bb5322a453cda44047d40026ae013"
+      X-Runtime:
+      - '0.042702'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
       - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"9b3ea1cc-3f46-4bad-914f-bd64ac53d3d8","type":"events","attributes":{"subjId":"https://doi.org/10.17863/cam.12119","objId":"http://orcid.org/0000-0001-8865-4647","sourceId":"datacite-orcid-auto-update","relationTypeId":"is-authored-by","total":1,"messageAction":"create","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-06-29T15:41:53.327Z"},"relationships":{"dois":{"data":[{"id":"10.17863/cam.12119","type":"dois"}]}}}}'
+      string: '{"data":{"id":"2cbe805d-07a2-489c-9a39-6953ca0734d8","type":"events","attributes":{"subjId":"https://doi.org/10.17863/cam.12119","objId":"https://orcid.org/0000-0001-8865-4647","sourceId":"datacite-orcid-auto-update","relationTypeId":"is-authored-by","total":1,"messageAction":"create","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-07-21T00:03:08.341Z"},"relationships":{"dois":{"data":[{"id":"10.17863/cam.12119","type":"dois"}]}}}}'
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:53 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:08 GMT
 - request:
     method: post
     uri: https://profiles.test.datacite.org/api/claims
@@ -367,23 +367,23 @@ http_interactions:
       - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 502
-      message: Bad Gateway
+      code: 503
+      message: Service Temporarily Unavailable
     headers:
       Server:
       - awselb/2.0
       Date:
-      - Sat, 29 Jun 2019 15:41:55 GMT
+      - Sun, 21 Jul 2019 00:03:08 GMT
       Content-Type:
       - text/html
       Content-Length:
-      - '138'
+      - '178'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502
-        Bad Gateway</h1></center>\r\n</body>\r\n</html>\r\n"
+      string: "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Sat, 29 Jun 2019 15:41:55 GMT
+  recorded_at: Sun, 21 Jul 2019 00:03:08 GMT
 recorded_with: VCR 3.0.3

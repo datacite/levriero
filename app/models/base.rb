@@ -304,7 +304,8 @@ class Base
     proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select { |ri| ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"]) }. map do |ri|
       ri["relatedIdentifier"]
     end
-    type = attributes.dig("types", "schemaOrg")
+    resource_type_general = attributes.dig("types", "resourceTypeGeneral")
+    type = Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.dasherize] # || attributes.dig("types", "schemaOrg")
 
     {
       "@id" => id,

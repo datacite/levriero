@@ -11,7 +11,8 @@ describe DoiImportWorker do
     it 'find related_identifier' do
       related_identifiers = subject.perform(sqs_msg, data)
       expect(related_identifiers.length).to eq(1)
-      expect(related_identifiers.first).to eq("familyName" => "Liu",
+      expect(related_identifiers.first).to eq("affiliation" => [], 
+        "familyName" => "Liu",
         "givenName" => "Yang",
         "name" => "Liu, Yang",
         "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-8865-4647", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],
@@ -29,7 +30,7 @@ describe DoiImportWorker do
     it 'find name_identifier' do
       name_identifiers = subject.perform(sqs_msg, data)
       expect(name_identifiers.length).to eq(2)
-      expect(name_identifiers.first).to eq("familyName" => "Coxon",
+      expect(name_identifiers.first).to eq("affiliation" => [], "familyName" => "Coxon",
         "givenName" => "Paul",
         "name" => "Coxon, Paul",
         "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-9258-8259", "nameIdentifierScheme"=>"ORCID"}],
@@ -38,21 +39,21 @@ describe DoiImportWorker do
   end
 
   context "funder_identifier", vcr: true do
-    let(:doi) { "10.0133/32096" }
+    let(:doi) { "10.4224/crm.2010f.selm-1" }
     let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json }
     let(:sqs_msg) { double message_id: 'fc754df7-9cc2-4c41-96ca-5996a44b771e', body: data, delete: nil }
   
     subject { DoiImportWorker.new }
 
     it 'find funder_identifier' do
-      funder_identifiers = subject.perform(sqs_msg, data)
-      expect(funder_identifiers.length).to eq(2)
-      expect(funder_identifiers.last).to eq("awardNumber" => "BE 1042/7-1",
-        "awardTitle" => "RADAR Research Data Repositorium",
-        "awardUri" => "http://gepris.dfg.de/gepris/projekt/237143194",
-        "funderIdentifier" => "https://doi.org/10.13039/501100001659",
-        "funderIdentifierType" => "Crossref Funder ID",
-        "funderName" => "DFG")
+      identifiers = subject.perform(sqs_msg, data)
+      expect(identifiers.length).to eq(17)
+      expect(identifiers.last).to eq("affiliation" => [],
+        "familyName" => "Yang",
+        "givenName" => "Lu",
+        "name" => "Yang, Lu",
+        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-4351-2503", "nameIdentifierScheme"=>"ORCID"}],
+        "nameType" => "Personal")
     end
   end
 end

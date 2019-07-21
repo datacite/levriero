@@ -53,13 +53,13 @@ describe Base, type: :model, vcr: true do
     end
 
     it "fetch metadata with funding information" do
-      id = "https://doi.org/10.21953/lse.6pv8ey9vxc10"
+      id = "https://doi.org/10.70112/d7svvt"
       response = Base.get_datacite_metadata(id)
-      expect(response["@id"]).to eq("https://doi.org/10.21953/lse.6pv8ey9vxc10")
-      expect(response["@type"]).to eq("ScholarlyArticle")
-       expect(response["registrantId"]).to eq("datacite.bl.lse")
-      expect(response["proxyIdentifiers"]).to eq(["http://etheses.lse.ac.uk/view/sets/LSE-GI.html"])
-      expect(response["datePublished"]).to eq("2017")
+      expect(response["@id"]).to eq("https://doi.org/10.70112/d7svvt")
+      expect(response["@type"]).to eq("Dataset")
+       expect(response["registrantId"]).to eq("datacite.inist.inra")
+      expect(response["proxyIdentifiers"]).to be_empty
+      expect(response["datePublished"]).to eq("2016")
     end
 
     it "fetch metadata with author information" do
