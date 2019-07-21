@@ -74,7 +74,6 @@ class AffiliationIdentifier < Base
     source_token = ENV['DATACITE_AFFILIATION_SOURCE_TOKEN']
     
     push_items = Array.wrap(affiliation_identifiers).reduce([]) do |ssum, iitem|
-      puts iitem
       obj_id = normalize_ror(iitem)
 
       if obj_id.present?
