@@ -83,6 +83,15 @@ describe Base, type: :model, vcr: true do
     end
   end
 
+  context "get_crossref_member_id" do
+    it "fetch crossref member_id" do
+      id = "10.1055/s-0030-1259729"
+      options ={}
+      response = Base.get_crossref_member_id(id, options)
+      expect(response).to eq("crossref.194")
+    end
+  end
+
   context "get_orcid_metadata" do
     it "fetch orcid metadata" do
       id = "https://orcid.org/0000-0003-1419-2405"
