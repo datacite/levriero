@@ -78,7 +78,7 @@ describe Base, type: :model, vcr: true do
       response = Base.get_crossref_metadata(id)
       expect(response["@id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
       expect(response["@type"]).to eq("ScholarlyArticle")
-      expect(response["registrantId"]).to eq("datacite.crossref.citations")
+      expect(response["registrantId"]).to eq("crossref.194")
       expect(response["datePublished"]).to eq("2011-03-10")
     end
   end
