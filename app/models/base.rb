@@ -340,7 +340,10 @@ class Base
     response = Maremma.get(url)
     return {} if response.status != 200
 
-    parse_researcher_metadata(id: id, response: response)
+    # parse_researcher_metadata(id: id, response: response)
+    {
+      "@id" => "https://orcid.org/#{response.dig("data","id")}",
+      "@type" => "Person" }.compact
   end
 
   def self.get_orcid_metadata(id)
