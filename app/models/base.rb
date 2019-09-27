@@ -320,11 +320,11 @@ class Base
 
   def self.get_crossref_member_id(id, options={})
     doi = doi_from_url(id)
-    return "crossref.citations" unless doi.present?
+    # return "crossref.citations" unless doi.present?
   
     url = "https://api.crossref.org/works/#{doi}"	
-    # dependency injection
-    response = options[:response] || Maremma.get(url, host: true)	
+    
+    response =  Maremma.get(url, host: true)	
     return "crossref.citations" if response.status != 200	
 
     message = response.body.dig("data", "message")	
