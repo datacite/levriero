@@ -13,89 +13,86 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sun, 09 Jun 2019 16:45:26 GMT
+      - Mon, 02 Sep 2019 12:58:07 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      X-Runtime:
-      - '0.005722'
-      X-Request-Id:
-      - eaaa7eb7-8a73-4095-85da-cd2ffb64ac90
-      X-Powered-By:
-      - Phusion Passenger 6.0.2
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sun, 09 Jun 2019 16:45:26 GMT
-- request:
-    method: put
-    uri: https://api.test.datacite.org/dois/10.1055/s-0030-1259729
-    body:
-      encoding: UTF-8
-      string: '{"data":{"type":"dois","attributes":{"xml":"aHR0cHM6Ly9kb2kub3JnLzEwLjEwNTUvcy0wMDMwLTEyNTk3Mjk=","source":"levriero","event":"publish"},"relationships":{"client":{"data":{"type":"clients","id":"crossref.citations"}}}}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
-      Accept:
-      - application/vnd.api+json
-      Content-Type:
-      - application/vnd.api+json
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sun, 09 Jun 2019 16:45:26 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 201 Created
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"19bbd04dc20c2f09216e6f3dbdb82092"
-      X-Runtime:
-      - '0.445688'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 68e54e2c-7ded-4cf2-82e9-7df19f011be3
+      - 71e7f78b-1a7d-4f3f-8b22-8a613a5844e3
+      Etag:
+      - W/"7d1ff60d712f949d375a2b95c823932f"
+      X-Runtime:
+      - '0.019716'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
       - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.1055/s-0030-1259729","type":"dois","attributes":{"doi":"10.1055/s-0030-1259729","prefix":"10.1055","suffix":"s-0030-1259729","identifiers":[{"identifierType":"DOI","identifier":"https://doi.org/10.1055/s-0030-1259729"},{"identifier":"s-0030-1259729","identifierType":"Publisher
-        ID"}],"creators":[{"nameType":"Personal","name":"Lu, Yongzhong","givenName":"Yongzhong","familyName":"Lu"},{"nameType":"Personal","name":"Wang,
-        Ruiping","givenName":"Ruiping","familyName":"Wang"},{"nameType":"Personal","name":"Qiao,
-        Xixue","givenName":"Xixue","familyName":"Qiao"},{"nameType":"Personal","name":"Shen,
-        Zengming","givenName":"Zengming","familyName":"Shen"}],"titles":[{"title":"Copper-Catalyzed
-        Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"}],"publisher":"(:unav)","container":{"type":"Journal","identifier":"0936-5214","identifierType":"ISSN","title":"Synlett","volume":"2011","issue":"07","firstPage":"1038","lastPage":"1042"},"publicationYear":2011,"subjects":null,"contributors":null,"dates":[{"date":"2011-03-10","dateType":"Issued"},{"date":"2017-05-22T21:42:06Z","dateType":"Updated"}],"language":null,"types":{"resourceTypeGeneral":"Text","resourceType":"JournalArticle","schemaOrg":"ScholarlyArticle","citeproc":"article-journal","bibtex":"article","ris":"JOUR"},"relatedIdentifiers":[{"relatedIdentifier":"0936-5214","relationType":"IsPartOf","relatedIdentifierType":"ISSN","resourceTypeGeneral":"Collection"}],"sizes":null,"formats":null,"version":null,"rightsList":null,"descriptions":null,"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTA1NS9TLTAwMzAtMTI1OTcyOTwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+THUsIFlvbmd6aG9uZzwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WW9uZ3pob25nPC9naXZlbk5hbWU+CiAgICAgIDxmYW1pbHlOYW1lPkx1PC9mYW1pbHlOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPldhbmcsIFJ1aXBpbmc8L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPlJ1aXBpbmc8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+V2FuZzwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5RaWFvLCBYaXh1ZTwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WGl4dWU8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+UWlhbzwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5TaGVuLCBaZW5nbWluZzwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WmVuZ21pbmc8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+U2hlbjwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+Q29wcGVyLUNhdGFseXplZCBBcm9tYXRpYyBDLUggQm9uZCBIYWxvZ2VuYXRpb24gVXNpbmcgTGl0aGl1bSBIYWxpZGVzIGFzIEhhbG9nZW5hdGluZyBSZWFnZW50czwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj4oOnVuYXYpPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDExPC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5Kb3VybmFsQXJ0aWNsZTwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJQdWJsaXNoZXIgSUQiPnMtMDAzMC0xMjU5NzI5PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxMS0wMy0xMDwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJVcGRhdGVkIj4yMDE3LTA1LTIyVDIxOjQyOjA2WjwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJU1NOIiByZWxhdGlvblR5cGU9IklzUGFydE9mIiByZXNvdXJjZVR5cGVHZW5lcmFsPSJDb2xsZWN0aW9uIj4wOTM2LTUyMTQ8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDx2ZXJzaW9uLz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iU2VyaWVzSW5mb3JtYXRpb24iPlN5bmxldHQsIDIwMTEoMDcpLCAxMDM4LTEwNDI8L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPgo=","url":"http://www.thieme-connect.de/DOI/DOI?10.1055/s-0030-1259729","contentUrl":null,"metadataVersion":0,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"levriero","isActive":true,"state":"findable","reason":null,"landingPage":null,"created":"2019-06-09T12:45:26.000-04:00","registered":null,"published":"2011","updated":"2019-06-09T12:45:26.000-04:00"},"relationships":{"client":{"data":{"id":"crossref.citations","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"crossref.citations","type":"clients","attributes":{"name":"Crossref
-        Citations","symbol":"CROSSREF.CITATIONS","year":2019,"contactName":"DataCite
-        Info","contactEmail":"info@datacite.org","description":null,"domains":"*","url":null,"created":"2019-06-09T09:07:47.000-04:00","updated":"2019-06-09T09:07:47.000-04:00","isActive":true,"hasPassword":false},"relationships":{"provider":{"data":{"id":"crossref","type":"providers"}},"prefixes":{"data":[]}}}]}'
+      string: '{"data":{"id":"10.1055/s-0030-1259729","type":"dois","attributes":{"doi":"10.1055/s-0030-1259729","prefix":"10.1055","suffix":"s-0030-1259729","identifiers":[{"identifier":"https://doi.org/10.1055/s-0030-1259729","identifierType":"DOI"},{"identifier":"s-0030-1259729","identifierType":"Publisher
+        ID"}],"creators":[{"name":"Lu, Yongzhong","nameType":"Personal","givenName":"Yongzhong","familyName":"Lu","affiliation":[]},{"name":"Wang,
+        Ruiping","nameType":"Personal","givenName":"Ruiping","familyName":"Wang","affiliation":[]},{"name":"Qiao,
+        Xixue","nameType":"Personal","givenName":"Xixue","familyName":"Qiao","affiliation":[]},{"name":"Shen,
+        Zengming","nameType":"Personal","givenName":"Zengming","familyName":"Shen","affiliation":[]}],"titles":[{"title":"Copper-Catalyzed
+        Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"}],"publisher":"(:unav)","container":{"type":"Journal","issue":"07","title":"Synlett","volume":"2011","lastPage":"1042","firstPage":"1038","identifier":"0936-5214","identifierType":"ISSN"},"publicationYear":2011,"subjects":null,"contributors":[],"dates":[{"date":"2011-03-10","dateType":"Issued"},{"date":"2017-05-22T21:42:06Z","dateType":"Updated"}],"language":null,"types":{"ris":"JOUR","bibtex":"article","citeproc":"article-journal","schemaOrg":"ScholarlyArticle","resourceType":"JournalArticle","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"IsPartOf","relatedIdentifier":"0936-5214","resourceTypeGeneral":"Collection","relatedIdentifierType":"ISSN"}],"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":null,"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTA1NS9TLTAwMzAtMTI1OTcyOTwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+THUsIFlvbmd6aG9uZzwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WW9uZ3pob25nPC9naXZlbk5hbWU+CiAgICAgIDxmYW1pbHlOYW1lPkx1PC9mYW1pbHlOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPldhbmcsIFJ1aXBpbmc8L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPlJ1aXBpbmc8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+V2FuZzwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5RaWFvLCBYaXh1ZTwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WGl4dWU8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+UWlhbzwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5TaGVuLCBaZW5nbWluZzwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+WmVuZ21pbmc8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+U2hlbjwvZmFtaWx5TmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+Q29wcGVyLUNhdGFseXplZCBBcm9tYXRpYyBDLUggQm9uZCBIYWxvZ2VuYXRpb24gVXNpbmcgTGl0aGl1bSBIYWxpZGVzIGFzIEhhbG9nZW5hdGluZyBSZWFnZW50czwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj4oOnVuYXYpPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDExPC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5Kb3VybmFsQXJ0aWNsZTwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJQdWJsaXNoZXIgSUQiPnMtMDAzMC0xMjU5NzI5PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxMS0wMy0xMDwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJVcGRhdGVkIj4yMDE3LTA1LTIyVDIxOjQyOjA2WjwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJU1NOIiByZWxhdGlvblR5cGU9IklzUGFydE9mIiByZXNvdXJjZVR5cGVHZW5lcmFsPSJDb2xsZWN0aW9uIj4wOTM2LTUyMTQ8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDx2ZXJzaW9uLz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iU2VyaWVzSW5mb3JtYXRpb24iPlN5bmxldHQsIDIwMTEoMDcpLCAxMDM4LTEwNDI8L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPgo=","url":"http://www.thieme-connect.de/DOI/DOI?10.1055/s-0030-1259729","contentUrl":null,"metadataVersion":0,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"levriero","isActive":true,"state":"findable","reason":null,"created":"2019-06-09T16:45:26.000Z","registered":null,"published":"2011","updated":"2019-08-02T04:50:21.000Z"},"relationships":{"client":{"data":{"id":"crossref.citations","type":"clients"}},"media":{"data":{"id":"10.1055/s-0030-1259729","type":"media"}}}},"included":[{"id":"crossref.citations","type":"clients","attributes":{"name":"Crossref
+        Citations","symbol":"CROSSREF.CITATIONS","year":2019,"contactEmail":"info@datacite.org","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","issn":null,"url":null,"created":"2019-06-09T13:07:47.000Z","updated":"2019-06-09T13:07:47.000Z","isActive":true,"hasPassword":false},"relationships":{"provider":{"data":{"id":"crossref","type":"providers"}},"prefixes":{"data":[]}}}]}'
     http_version: 
-  recorded_at: Sun, 09 Jun 2019 16:45:26 GMT
+  recorded_at: Mon, 02 Sep 2019 12:58:07 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1055/s-0030-1259729
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '1899'
+      Server:
+      - http-kit
+      Date:
+      - Mon, 02 Sep 2019 12:58:07 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2019,7,8]],"date-time":"2019-07-08T15:05:32Z","timestamp":1562598332925},"reference-count":0,"publisher":"Georg
+        Thieme Verlag KG","issue":"07","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Synlett"],"published-print":{"date-parts":[[2011,4]]},"DOI":"10.1055\/s-0030-1259729","type":"journal-article","created":{"date-parts":[[2011,3,11]],"date-time":"2011-03-11T02:10:34Z","timestamp":1299809434000},"page":"1038-1042","source":"Crossref","is-referenced-by-count":9,"title":["Copper-Catalyzed
+        Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"],"prefix":"10.1055","volume":"2011","author":[{"given":"Zengming","family":"Shen","sequence":"first","affiliation":[]},{"given":"Yongzhong","family":"Lu","sequence":"additional","affiliation":[]},{"given":"Ruiping","family":"Wang","sequence":"additional","affiliation":[]},{"given":"Xixue","family":"Qiao","sequence":"additional","affiliation":[]}],"member":"194","published-online":{"date-parts":[[2011,3,10]]},"container-title":["Synlett"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/www.thieme-connect.de\/products\/ejournals\/pdf\/10.1055\/s-0030-1259729.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2017,5,22]],"date-time":"2017-05-22T21:42:06Z","timestamp":1495489326000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2011,3,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2011,4]]},"issue":"07"},"URL":"http:\/\/dx.doi.org\/10.1055\/s-0030-1259729","relation":{},"ISSN":["0936-5214","1437-2096"],"issn-type":[{"value":"0936-5214","type":"print"},{"value":"1437-2096","type":"electronic"}],"subject":["Organic
+        Chemistry"]}}'
+    http_version: 
+  recorded_at: Mon, 02 Sep 2019 12:58:07 GMT
 recorded_with: VCR 3.0.3

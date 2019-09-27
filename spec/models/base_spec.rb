@@ -78,16 +78,25 @@ describe Base, type: :model, vcr: true do
       response = Base.get_crossref_metadata(id)
       expect(response["@id"]).to eq("https://doi.org/10.1055/s-0030-1259729")
       expect(response["@type"]).to eq("ScholarlyArticle")
-      expect(response["registrantId"]).to eq("datacite.crossref.citations")
+      expect(response["registrantId"]).to eq("crossref.194")
       expect(response["datePublished"]).to eq("2011-03-10")
+    end
+  end
+
+  context "get_crossref_member_id" do
+    it "fetch crossref member_id" do
+      id = "10.1055/s-0030-1259729"
+      options ={}
+      response = Base.get_crossref_member_id(id, options)
+      expect(response).to eq("crossref.194")
     end
   end
 
   context "get_orcid_metadata" do
     it "fetch orcid metadata" do
-      id = "https://orcid.org/0000-0003-1419-2405"
+      id = "https://orcid.org/0000-0002-2203-2076"
       response = Base.get_orcid_metadata(id)
-      expect(response["@id"]).to eq("https://orcid.org/0000-0003-1419-2405")
+      expect(response["@id"]).to eq("https://orcid.org/0000-0002-2203-2076")
       expect(response["@type"]).to eq("Person")
     end
   end

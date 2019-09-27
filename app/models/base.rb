@@ -307,12 +307,29 @@ class Base
     resource_type_general = attributes.dig("types", "resourceTypeGeneral")
     type = Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.dasherize] # || attributes.dig("types", "schemaOrg")
 
+    registrant_id = client_id == "crossref.citations" ? get_crossref_member_id(id) : "datacite.#{client_id}"
+
     {
       "@id" => id,
       "@type" => type,
       "datePublished" => get_date(attributes["dates"], "Issued"),
       "proxyIdentifiers" => proxy_identifiers,
-      "registrantId" => "datacite.#{client_id}" }.compact
+      "registrantId" => registrant_id }.compact
+  end
+
+
+  def self.get_crossref_member_id(id, options={})
+    doi = doi_from_url(id)
+    # return "crossref.citations" unless doi.present?
+  
+    url = "https://api.crossref.org/works/#{doi}"	
+    
+    response =  Maremma.get(url, host: true)	
+    return "crossref.citations" if response.status != 200	
+
+    message = response.body.dig("data", "message")	
+
+    "crossref.#{message["member"]}"
   end
 
   def self.get_researcher_metadata(id)
@@ -323,7 +340,10 @@ class Base
     response = Maremma.get(url)
     return {} if response.status != 200
 
-    parse_researcher_metadata(id: id, response: response)
+    # parse_researcher_metadata(id: id, response: response)
+    {
+      "@id" => "https://orcid.org/#{response.body.dig("data","id")}",
+      "@type" => "Person" }.compact
   end
 
   def self.get_orcid_metadata(id)
