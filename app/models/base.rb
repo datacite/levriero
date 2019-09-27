@@ -342,7 +342,7 @@ class Base
 
     # parse_researcher_metadata(id: id, response: response)
     {
-      "@id" => "https://orcid.org/#{response.dig("data","id")}",
+      "@id" => "https://orcid.org/#{response.body.dig("data","id")}",
       "@type" => "Person" }.compact
   end
 

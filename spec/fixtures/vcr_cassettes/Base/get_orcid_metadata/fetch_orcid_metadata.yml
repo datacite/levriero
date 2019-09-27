@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/researchers/0000-0003-1419-2405
+    uri: https://api.test.datacite.org/researchers/0000-0002-2203-2076
     body:
       encoding: US-ASCII
       string: ''
@@ -13,37 +13,267 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Mon, 02 Sep 2019 13:09:24 GMT
+      - Fri, 27 Sep 2019 05:09:21 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 29ed6a1a-194b-4d18-9e37-ee82a4885ab6
+      X-Runtime:
+      - '0.004504'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
+    http_version: 
+  recorded_at: Fri, 27 Sep 2019 05:09:21 GMT
+- request:
+    method: get
+    uri: https://pub.orcid.org/v2.1/0000-0002-2203-2076/person
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.orcid+json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.0
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/vnd.orcid+json; qs=4;charset=UTF-8
+      Date:
+      - Fri, 27 Sep 2019 05:09:22 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=EDEB8B375DA428655747278237992826; path=/
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "last-modified-date" : {
+            "value" : 1568284477970
+          },
+          "name" : {
+            "created-date" : {
+              "value" : 1460757856211
+            },
+            "last-modified-date" : {
+              "value" : 1460757856211
+            },
+            "given-names" : {
+              "value" : "Claudia "
+            },
+            "family-name" : {
+              "value" : "Baider"
+            },
+            "credit-name" : {
+              "value" : "Claudia Baider"
+            },
+            "source" : null,
+            "visibility" : "PUBLIC",
+            "path" : "0000-0002-2203-2076"
+          },
+          "other-names" : {
+            "last-modified-date" : null,
+            "other-name" : [ ],
+            "path" : "/0000-0002-2203-2076/other-names"
+          },
+          "biography" : {
+            "created-date" : {
+              "value" : 1460757856214
+            },
+            "last-modified-date" : {
+              "value" : 1460757856214
+            },
+            "content" : "Brazilian born ecologist interested in patterns of vegetation distribution and dynamics, conservation biology and invasive alien species",
+            "visibility" : "PUBLIC",
+            "path" : "/0000-0002-2203-2076/biography"
+          },
+          "researcher-urls" : {
+            "last-modified-date" : null,
+            "researcher-url" : [ ],
+            "path" : "/0000-0002-2203-2076/researcher-urls"
+          },
+          "emails" : {
+            "last-modified-date" : {
+              "value" : 1568284477970
+            },
+            "email" : [ {
+              "created-date" : {
+                "value" : 1371096776711
+              },
+              "last-modified-date" : {
+                "value" : 1568284477970
+              },
+              "source" : null,
+              "email" : "clbaider@gmail.com",
+              "path" : null,
+              "visibility" : "PUBLIC",
+              "verified" : true,
+              "primary" : true,
+              "put-code" : null
+            } ],
+            "path" : "/0000-0002-2203-2076/email"
+          },
+          "addresses" : {
+            "last-modified-date" : null,
+            "address" : [ ],
+            "path" : "/0000-0002-2203-2076/address"
+          },
+          "keywords" : {
+            "last-modified-date" : {
+              "value" : 1371096776713
+            },
+            "keyword" : [ {
+              "created-date" : {
+                "value" : 1371096776713
+              },
+              "last-modified-date" : {
+                "value" : 1371096776713
+              },
+              "source" : {
+                "source-orcid" : {
+                  "uri" : "https://orcid.org/0000-0002-2203-2076",
+                  "path" : "0000-0002-2203-2076",
+                  "host" : "orcid.org"
+                },
+                "source-client-id" : null,
+                "source-name" : {
+                  "value" : "Claudia Baider"
+                }
+              },
+              "content" : "Amazon, Brazil nut, Mauritius, invasive alien species, conservation biology",
+              "visibility" : "PUBLIC",
+              "path" : "/0000-0002-2203-2076/keywords/15279",
+              "put-code" : 15279,
+              "display-index" : 0
+            } ],
+            "path" : "/0000-0002-2203-2076/keywords"
+          },
+          "external-identifiers" : {
+            "last-modified-date" : {
+              "value" : 1471776967146
+            },
+            "external-identifier" : [ {
+              "created-date" : {
+                "value" : 1471776967146
+              },
+              "last-modified-date" : {
+                "value" : 1471776967146
+              },
+              "source" : {
+                "source-orcid" : null,
+                "source-client-id" : {
+                  "uri" : "https://orcid.org/client/0000-0002-5982-8983",
+                  "path" : "0000-0002-5982-8983",
+                  "host" : "orcid.org"
+                },
+                "source-name" : {
+                  "value" : "Scopus - Elsevier"
+                }
+              },
+              "external-id-type" : "Scopus Author ID",
+              "external-id-value" : "55886786000",
+              "external-id-url" : {
+                "value" : "http://www.scopus.com/inward/authorDetails.url?authorID=55886786000&partnerID=MN8TOARS"
+              },
+              "external-id-relationship" : "SELF",
+              "visibility" : "PUBLIC",
+              "path" : "/0000-0002-2203-2076/external-identifiers/531371",
+              "put-code" : 531371,
+              "display-index" : 0
+            } ],
+            "path" : "/0000-0002-2203-2076/external-identifiers"
+          },
+          "path" : "/0000-0002-2203-2076/person"
+        }
+    http_version: 
+  recorded_at: Fri, 27 Sep 2019 05:09:22 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/researchers/0000-0002-2203-2076
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"researchers","attributes":{"name":"Claudia Baider","givenNames":"Claudia
+        ","familyName":"Baider"}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.api+json
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU1MzI0OTg4NCwiZXhwIjozMjU2MzI2NTMyNjUzMjU2NTMyNjU3NjIzNTIzNTYyMzU2MjM2NTcyMzY3MzA5NDg1NTA3fQ.dyKeuTqDdqfn0I8KEPAH4N-UD2Y13YtNYXXfgHXorfPZhVLPoHAGs87GDCjtsk2r4VUNDHvNEwGjURYGKvcaCQwz4ukS5vIqCIRio2ZpeptsOuOB_D0n4lvANyWDUbgNGgJt_ddxRo0Th7Wm6oug8lv63E98zFJJLn6Yfd7PKjnKyUXmywNW_RMYdhy-NcvVnCpFxyedx9TbMCPiQU-HYtSerSVIxuW_bqDHj9DvxwiP6lvK64BRyQIU0l3ykPzMIZ7pKYS3KwAIPpCMAtBw99ysRIB-TCV6MP4cMRP7J50mluaDDGy0OBSATPiTbg_uN3MZ2wK26te9PzF6Zjmn4g
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 27 Sep 2019 05:09:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      X-Credential-Username:
+      - 0000-0001-5489-3594
       X-Request-Id:
-      - e4aa1741-a462-4809-a468-3ec8dbe7b0b7
+      - 8c72734d-1a8d-4137-9743-bb624a748ac3
       Etag:
-      - W/"8398ad8cf7616a29caa927843fe52091"
+      - W/"aff5f333f2a6d02c159ceabbde9c3cc2"
       X-Runtime:
-      - '0.050869'
+      - '0.043601'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0003-1419-2405","type":"researchers","attributes":{"name":"Martin
-        Fenner","givenNames":null,"familyName":null,"createdAt":"2019-08-23T06:03:49.918Z","updatedAt":"2019-08-23T06:03:49.918Z"}},"meta":{"dois":[{"id":"2018","title":"2018","count":2},{"id":"2019","title":"2019","count":55}],"resourceTypes":[{"id":"text","title":"Text","count":26},{"id":"software","title":"Software","count":21},{"id":"dataset","title":"Dataset","count":7},{"id":"event","title":"Event","count":1},{"id":"interactive-resource","title":"InteractiveResource","count":1},{"id":"model","title":"Model","count":1}]}}'
+      string: '{"data":{"id":"0000-0002-2203-2076","type":"researchers","attributes":{"name":"Claudia
+        Baider","givenNames":"Claudia ","familyName":"Baider","createdAt":"2019-09-27T05:09:22.676Z","updatedAt":"2019-09-27T05:09:22.676Z"}}}'
     http_version: 
-  recorded_at: Mon, 02 Sep 2019 13:09:24 GMT
+  recorded_at: Fri, 27 Sep 2019 05:09:22 GMT
 recorded_with: VCR 3.0.3

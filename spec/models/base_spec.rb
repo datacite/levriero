@@ -94,9 +94,9 @@ describe Base, type: :model, vcr: true do
 
   context "get_orcid_metadata" do
     it "fetch orcid metadata" do
-      id = "https://orcid.org/0000-0003-1419-2405"
+      id = "https://orcid.org/0000-0002-2203-2076"
       response = Base.get_orcid_metadata(id)
-      expect(response["@id"]).to eq("https://orcid.org/0000-0003-1419-2405")
+      expect(response["@id"]).to eq("https://orcid.org/0000-0002-2203-2076")
       expect(response["@type"]).to eq("Person")
     end
   end
