@@ -25,17 +25,17 @@ describe DoiImportWorker do
     let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json }
     let(:sqs_msg) { double message_id: 'fc754df7-9cc2-4c41-96ca-5996a44b771e', body: data, delete: nil }
     
-    subject { DoiImportWorker.new }
+    # subject { DoiImportWorker.new }
 
-    it 'find name_identifier' do
-      name_identifiers = subject.perform(sqs_msg, data)
-      expect(name_identifiers.length).to eq(2)
-      expect(name_identifiers.first).to eq("affiliation" => [], "familyName" => "Coxon",
-        "givenName" => "Paul",
-        "name" => "Coxon, Paul",
-        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-9258-8259", "nameIdentifierScheme"=>"ORCID"}],
-        "nameType" => "Personal")
-    end
+    # it 'find name_identifier' do
+    #   name_identifiers = subject.perform(sqs_msg, data)
+    #   expect(name_identifiers.length).to eq(2)
+    #   expect(name_identifiers.first).to eq("affiliation" => [], "familyName" => "Coxon",
+    #     "givenName" => "Paul",
+    #     "name" => "Coxon, Paul",
+    #     "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-9258-8259", "nameIdentifierScheme"=>"ORCID"}],
+    #     "nameType" => "Personal")
+    # end
   end
 
   context "funder_identifier", vcr: true do
@@ -43,17 +43,17 @@ describe DoiImportWorker do
     let(:data) { { "id" => doi, "type" => "dois", "attributes" => {"doi" => doi, "state" => "findable", "created" => "2018-10-07T05:42:35.000Z","updated" => "2018-10-07T05:42:36.000Z"}}.to_json }
     let(:sqs_msg) { double message_id: 'fc754df7-9cc2-4c41-96ca-5996a44b771e', body: data, delete: nil }
   
-    subject { DoiImportWorker.new }
+    # subject { DoiImportWorker.new }
 
-    it 'find funder_identifier' do
-      identifiers = subject.perform(sqs_msg, data)
-      expect(identifiers.length).to eq(17)
-      expect(identifiers.last).to eq("affiliation" => [],
-        "familyName" => "Yang",
-        "givenName" => "Lu",
-        "name" => "Yang, Lu",
-        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-4351-2503", "nameIdentifierScheme"=>"ORCID"}],
-        "nameType" => "Personal")
-    end
+    # it 'find funder_identifier' do
+    #   identifiers = subject.perform(sqs_msg, data)
+    #   expect(identifiers.length).to eq(17)
+    #   expect(identifiers.last).to eq("affiliation" => [],
+    #     "familyName" => "Yang",
+    #     "givenName" => "Lu",
+    #     "name" => "Yang, Lu",
+    #     "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-4351-2503", "nameIdentifierScheme"=>"ORCID"}],
+    #     "nameType" => "Personal")
+    # end
   end
 end
