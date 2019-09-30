@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 30 Sep 2019 10:06:01 GMT
+      - Mon, 30 Sep 2019 11:28:42 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 143bcdae-9470-4840-9c70-85f25eb1c4bb
+      - 8b34fe75-5f75-4815-9a98-1a01f09b33ea
       Etag:
       - W/"d11a58f3a4326219b68985f1291c6ab0"
       X-Runtime:
-      - '0.158703'
+      - '0.297894'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -55,13 +55,13 @@ http_interactions:
         his second postulate (P2), is strictly stronger than what is intended originally.","descriptionType":"Abstract"}],"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTc4NjMvQ0FNLjEyMTE5PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TGl1LCBZYW5nPC9jcmVhdG9yTmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIHNjaGVtZVVSST0iaHR0cDovL29yY2lkLm9yZyIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtODg2NS00NjQ3PC9uYW1lSWRlbnRpZmllcj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIHN1cmUtdGhpbmcgcHJpbmNpcGxlIGFuZCBQMjwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxNzwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PkJheWVzaWFuIGRlY2lzaW9uIHRoZW9yeTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlRoZSBzdXJlLXRoaW5nIHByaW5jaXBsZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkRvbWluYW5jZSBwcmluY2lwbGU8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5Db25kaXRpb25hbCBwcmVmZXJlbmNlPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGNvbnRyaWJ1dG9ycz4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IkRhdGFNYW5hZ2VyIj4KICAgICAgPGNvbnRyaWJ1dG9yTmFtZT5BcG9sbG8gLSBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSBSZXBvc2l0b3J5IChzdGFnaW5nKTwvY29udHJpYnV0b3JOYW1lPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9Ikhvc3RpbmdJbnN0aXR1dGlvbiI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QXBvbGxvIC0gVW5pdmVyc2l0eSBvZiBDYW1icmlkZ2UgUmVwb3NpdG9yeSAoc3RhZ2luZyk8L2NvbnRyaWJ1dG9yTmFtZT4KICAgIDwvY29udHJpYnV0b3I+CiAgPC9jb250cmlidXRvcnM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MjAxNy0xMi0wNTwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJBdmFpbGFibGUiPjIwMTctMTItMDU8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iSXNzdWVkIj4yMDE3LTEwPC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5BcnRpY2xlPC9yZXNvdXJjZVR5cGU+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9Imlzc24iPjAxNjUtMTc2NTwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJ1cmkiPmh0dHBzOi8vd3d3LnJlcG9zaXRvcnkuY2FtLmFjLnVrL2hhbmRsZS8xODEwLzI2OTk1NzwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJlaXNzbiI+MTg3My03Mzc0PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5UaGlzIHBhcGVyIG9mZmVycyBhIGZpbmUgYW5hbHlzaXMgb2YgZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSB3ZWxsIGtub3duIHN1cmUtdGhpbmcgcHJpbmNpcGxlLiBXZSBzaG93IHRoYXQgU2F2YWdlJ3MgZm9ybWFsIGZvcm11bGF0aW9uIG9mIHRoZSBwcmluY2lwbGUsIGkuZS4sIGhpcyBzZWNvbmQgcG9zdHVsYXRlIChQMiksIGlzIHN0cmljdGx5IHN0cm9uZ2VyIHRoYW4gd2hhdCBpcyBpbnRlbmRlZCBvcmlnaW5hbGx5LjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+","url":null,"contentUrl":null,"metadataVersion":20,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"mds","isActive":true,"state":"findable","reason":null,"created":"2017-10-06T17:01:28.000Z","registered":null,"published":"2017","updated":"2019-04-25T12:46:22.000Z"},"relationships":{"client":{"data":{"id":"bl.cam","type":"clients"}},"media":{"data":{"id":"10.17863/cam.12119","type":"media"}}}},"included":[{"id":"bl.cam","type":"clients","attributes":{"name":"University
         of Cambridge","symbol":"BL.CAM","year":2015,"contactEmail":"dak45@cam.ac.uk","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"cam.ac.uk","issn":{},"url":null,"created":"2015-06-19T08:22:33.000Z","updated":"2019-08-13T16:57:50.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.17863","type":"prefixes"},{"id":"10.22025","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Mon, 30 Sep 2019 10:06:01 GMT
+  recorded_at: Mon, 30 Sep 2019 11:28:42 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"https://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":null,"occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-09-30T10:06:01Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","datePublished":"2017-12-05","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://orcid.org/0000-0001-8865-4647","@type":"Person"}}}}'
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.17863/cam.12119","objId":"https://orcid.org/0000-0001-8865-4647","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":null,"occurredAt":"2019-04-25T12:46:22.000Z","timestamp":"2019-09-30T11:28:42Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.17863/cam.12119","@type":"ScholarlyArticle","datePublished":"2017-12-05","proxyIdentifiers":[],"registrantId":"datacite.bl.cam"},"obj":{"@id":"https://orcid.org/0000-0001-8865-4647","@type":"Person"}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
@@ -77,7 +77,7 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Mon, 30 Sep 2019 10:06:03 GMT
+      - Mon, 30 Sep 2019 11:28:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -91,9 +91,9 @@ http_interactions:
       X-Credential-Username:
       - 0000-0001-5489-3594
       X-Request-Id:
-      - d64adf62-5665-4143-a908-4e50e07d4fb2
+      - 266db080-a97e-45e6-9556-44288b7bc080
       X-Runtime:
-      - '0.122902'
+      - '0.133217'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -102,7 +102,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":422,"title":"Source token can''t be blank"}]}'
     http_version: 
-  recorded_at: Mon, 30 Sep 2019 10:06:04 GMT
+  recorded_at: Mon, 30 Sep 2019 11:28:46 GMT
 - request:
     method: post
     uri: https://profiles.test.datacite.org/api/claims
@@ -124,7 +124,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Mon, 30 Sep 2019 10:06:22 GMT
+      - Mon, 30 Sep 2019 11:28:48 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
@@ -136,9 +136,9 @@ http_interactions:
       Vary:
       - Origin
       X-Request-Id:
-      - f218ea34-5185-42ee-b61a-b414779cca93
+      - 1aca5a7e-a22e-4d88-932f-5622b4a00e31
       X-Runtime:
-      - '0.004018'
+      - '0.004068'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -147,5 +147,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":404,"error":"Not Found"}'
     http_version: 
-  recorded_at: Mon, 30 Sep 2019 10:06:22 GMT
+  recorded_at: Mon, 30 Sep 2019 11:28:48 GMT
 recorded_with: VCR 3.0.3
