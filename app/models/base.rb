@@ -319,12 +319,14 @@ class Base
 
 
   def self.get_crossref_member_id(id, options={})
+    logger = Logger.new(STDOUT)
     doi = doi_from_url(id)
     # return "crossref.citations" unless doi.present?
   
-    url = "https://api.crossref.org/works/#{doi}"	
+    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=support@datacite.org"	
     
     response =  Maremma.get(url, host: true)	
+    logger.info "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
     return "crossref.citations" if response.status != 200	
 
     message = response.body.dig("data", "message")	
