@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.17863/cam.12119?affiliation=true
+    uri: https://api.test.datacite.org/dois/10.17863/cam.12119
     body:
       encoding: US-ASCII
       string: ''

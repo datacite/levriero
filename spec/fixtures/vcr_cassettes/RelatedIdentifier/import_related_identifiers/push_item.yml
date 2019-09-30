@@ -58,6 +58,62 @@ http_interactions:
   recorded_at: Mon, 30 Sep 2019 10:05:16 GMT
 - request:
     method: get
+    uri: https://api.test.datacite.org/dois/10.5061/dryad.j86rt6b/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 30 Sep 2019 10:05:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 1ddc1d50-e801-49b2-910c-48490b707070
+      Etag:
+      - W/"862753415d129aa8687fff14613a7b2b"
+      X-Runtime:
+      - '0.201845'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"10.5061/dryad.j86rt6b","type":"dois","attributes":{"doi":"10.5061/dryad.j86rt6b","prefix":"10.5061","suffix":"dryad.j86rt6b","identifiers":[{"identifier":"https://handle.test.datacite.org/10.5061/dryad.j86rt6b","identifierType":"DOI"},{"identifier":"Smith
+        CS, Ito M, Namba M, Nakaoka M (2018) Oyster aquaculture impacts Zostera marina
+        epibiont community composition in Akkeshi-ko estuary, Japan. PLOS ONE 13(5):
+        e0197753.","identifierType":"citation"}],"creators":[{"name":"Smith, Carter
+        S.","nameType":"Personal","givenName":"Carter S.","familyName":"Smith","affiliation":[]},{"name":"Ito,
+        Minako","nameType":"Personal","givenName":"Minako","familyName":"Ito","affiliation":[]},{"name":"Namba,
+        Mizuho","nameType":"Personal","givenName":"Mizuho","familyName":"Namba","affiliation":[]},{"name":"Nakaoka,
+        Masahiro","nameType":"Personal","givenName":"Masahiro","familyName":"Nakaoka","affiliation":[]}],"titles":[{"title":"Data
+        from: Oyster aquaculture impacts Zostera marina epibiont community composition
+        in Akkeshi-ko estuary, Japan"}],"publisher":"Dryad Digital Repository","container":{},"publicationYear":2018,"subjects":[{"subject":"Oyster
+        aquaculture"},{"subject":"Seagrass"},{"subject":"Japan"},{"subject":"Zostera
+        marina"},{"subject":"Crassostrea gigas"}],"contributors":[],"dates":[{"date":"2018","dateType":"Issued"}],"language":null,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"DataPackage","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/1","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/2","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/3","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/4","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/5","relatedIdentifierType":"DOI"},{"relationType":"HasPart","relatedIdentifier":"10.5061/dryad.j86rt6b/6","relatedIdentifierType":"DOI"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"},{"relationType":"IsSupplementTo","relatedIdentifier":"10.1371/journal.pone.0197753","relatedIdentifierType":"DOI"}],"sizes":[],"formats":[],"version":null,"rightsList":[{"rightsUri":"http://creativecommons.org/publicdomain/zero/1.0"}],"descriptions":[],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczpkc3BhY2U9Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkaW09Imh0dHA6Ly93d3cuZHNwYWNlLm9yZy94bWxucy9kc3BhY2UvZGltIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5KODZSVDZCPC9pZGVudGlmaWVyPgogIDx2ZXJzaW9uPjE8L3ZlcnNpb24+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5TbWl0aCwgQ2FydGVyIFMuPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+SXRvLCBNaW5ha288L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5OYW1iYSwgTWl6dWhvPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+TmFrYW9rYSwgTWFzYWhpcm88L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5EYXRhIGZyb206IE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkRyeWFkIERpZ2l0YWwgUmVwb3NpdG9yeTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxODwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0Pk95c3RlciBhcXVhY3VsdHVyZTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PlNlYWdyYXNzPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+SmFwYW48L3N1YmplY3Q+CiAgICA8c3ViamVjdD5ab3N0ZXJhIG1hcmluYTwvc3ViamVjdD4KICAgIDxzdWJqZWN0PkNyYXNzb3N0cmVhIGdpZ2FzPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5EYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJjaXRhdGlvbiI+U21pdGggQ1MsIEl0byBNLCBOYW1iYSBNLCBOYWthb2thIE0gKDIwMTgpIE95c3RlciBhcXVhY3VsdHVyZSBpbXBhY3RzIFpvc3RlcmEgbWFyaW5hIGVwaWJpb250IGNvbW11bml0eSBjb21wb3NpdGlvbiBpbiBBa2tlc2hpLWtvIGVzdHVhcnksIEphcGFuLiBQTE9TIE9ORSAxMyg1KTogZTAxOTc3NTMuPC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvMTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzI8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi8zPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij4xMC41MDYxL0RSWUFELko4NlJUNkIvNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSGFzUGFydCI+MTAuNTA2MS9EUllBRC5KODZSVDZCLzU8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPjEwLjUwNjEvRFJZQUQuSjg2UlQ2Qi82PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1JlZmVyZW5jZWRCeSI+MTAuMTM3MS9KT1VSTkFMLlBPTkUuMDE5Nzc1MzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNTdXBwbGVtZW50VG8iPjEwLjEzNzEvSk9VUk5BTC5QT05FLjAxOTc3NTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHNMaXN0PgogICAgPHJpZ2h0cyByaWdodHNVUkk9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC8iLz4KICA8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+","url":"https://datadryad.org/resource/doi:10.5061/dryad.j86rt6b","contentUrl":null,"metadataVersion":1,"schemaVersion":null,"source":null,"isActive":true,"state":"findable","reason":null,"created":"2018-05-30T23:01:09.000Z","registered":"2019-02-03T08:31:45.000Z","published":"2018","updated":"2019-09-29T22:01:09.000Z"},"relationships":{"client":{"data":{"id":"dryad.dryad","type":"clients"}},"media":{"data":{"id":"10.5061/dryad.j86rt6b","type":"media"}}}},"included":[{"id":"dryad.dryad","type":"clients","attributes":{"name":"DRYAD","symbol":"DRYAD.DRYAD","year":2018,"contactEmail":"admin@datadryad.org","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","issn":null,"url":"https://datadryad.org","created":"2018-04-24T17:32:32.000Z","updated":"2018-11-24T14:48:28.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"dryad","type":"providers"}},"prefixes":{"data":[{"id":"10.7959","type":"prefixes"}]}}}]}'
+    http_version: 
+  recorded_at: Mon, 30 Sep 2019 10:05:16 GMT
+- request:
+    method: get
     uri: https://doi.org/ra/10.5061
     body:
       encoding: US-ASCII
