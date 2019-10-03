@@ -45,6 +45,7 @@ class Base
     options[:number] ||= 1
     options[:size] ||= 1000
     updated = "updated:[#{options[:from_date]}T00:00:00Z TO #{options[:until_date]}T23:59:59Z]"
+    options[:exclude_registration_agencies] ||= true
 
     # if options[:doi].present?
     #   query = "doi:#{options[:doi]}"
@@ -62,6 +63,7 @@ class Base
       query: query + " AND " + updated,
       "page[number]" => options[:number],
       "page[size]" => options[:size],
+      "exclude_registration_agencies]" => options[:exclude_registration_agencies],
       affiliation: true }
 
     url +  URI.encode_www_form(params)
