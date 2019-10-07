@@ -31,5 +31,17 @@ module Cacheable
         AffiliationIdentifier.get_ror_metadata(id)
       end
     end
+
+    def cached_doi_ra(doi)
+      Rails.cache.fetch("ras/#{doi}", expires_in: 1.day) do
+        Base.get_doi_ra(doi)
+      end
+    end
+  
+    def cached_crossref_member_id(doi)
+      Rails.cache.fetch("member_ids/#{doi}", expires_in: 1.day) do
+        Base.get_crossref_member_id(doi)
+      end
+    end
   end
 end

@@ -309,7 +309,7 @@ class Base
     resource_type_general = attributes.dig("types", "resourceTypeGeneral")
     type = Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.dasherize] # || attributes.dig("types", "schemaOrg")
 
-    registrant_id = client_id == "crossref.citations" ? get_crossref_member_id(id) : "datacite.#{client_id}"
+    registrant_id = client_id == "crossref.citations" ? cached_crossref_member_id(id) : "datacite.#{client_id}"
 
     {
       "@id" => id,

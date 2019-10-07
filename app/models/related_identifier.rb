@@ -2,6 +2,8 @@ class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
 
   include Helpable
+  include Cacheable
+
 
   def self.import_by_month(options={})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
@@ -56,7 +58,7 @@ class RelatedIdentifier < Base
     doi = attributes.fetch("doi", nil)
     return nil unless doi.present?
     prefix = validate_prefix(doi)
-    return nil unless get_doi_ra(prefix) == "DataCite"
+    return nil unless cached_doi_ra(prefix) == "DataCite"
 
     pid = normalize_doi(doi)
     related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select { |r| r["relatedIdentifierType"] == "DOI" }
@@ -66,7 +68,7 @@ class RelatedIdentifier < Base
       related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
       prefix = validate_prefix(related_identifier)
-      registration_agencies[prefix] = get_doi_ra(prefix) unless registration_agencies[prefix]
+      registration_agencies[prefix] = cached_doi_ra(prefix) unless registration_agencies[prefix]
 
       if registration_agencies[prefix].nil?
         logger.info "No DOI registration agency for prefix #{prefix} found."
