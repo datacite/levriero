@@ -3,8 +3,9 @@ namespace :related_identifier do
   task :import_by_month => :environment do
     from_date = ENV['FROM_DATE'] || Date.current.beginning_of_month.strftime("%F")
     until_date = ENV['UNTIL_DATE'] || Date.current.end_of_month.strftime("%F")
+    resource_type_id = ENV['RESOURCE_TYPES'] || ""
 
-    response = RelatedIdentifier.import_by_month(from_date: from_date, until_date: until_date)
+    response = RelatedIdentifier.import_by_month(from_date: from_date, until_date: until_date, resource_type_id: resource_type_id)
     puts response
   end
 

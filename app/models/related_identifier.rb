@@ -8,10 +8,11 @@ class RelatedIdentifier < Base
   def self.import_by_month(options={})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+    resource_type_id = options[:resource_type_id].present? || ""
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      RelatedIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+      RelatedIdentifierImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"), resource_type_id: resource_type_id)
     end
 
     "Queued import for DOIs created from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
@@ -20,9 +21,10 @@ class RelatedIdentifier < Base
   def self.import(options={})
     from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
+    resource_type_id = options[:resource_type_id].present? || ""
 
     related_identifier = RelatedIdentifier.new
-    related_identifier.queue_jobs(related_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
+    related_identifier.queue_jobs(related_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F"), resource_type_id: resource_type_id))
   end
 
   def source_id
