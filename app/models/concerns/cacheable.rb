@@ -34,7 +34,8 @@ module Cacheable
 
     def cached_doi_ra(doi)
       Rails.cache.fetch("ras/#{doi}", expires_in: 1.day) do
-        Base.get_doi_ra(doi)
+        prefix = Base.validate_prefix(doi)
+        Base.get_doi_ra(prefix)
       end
     end
   
