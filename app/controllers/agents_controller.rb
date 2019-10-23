@@ -5,6 +5,6 @@ class AgentsController < ApplicationController
     authorize! :import, Crossref
     total = Crossref.import
 
-    render json: { message: "Queued import for #{total} DOIs." }.to_json, status: :ok
+    render json: { message: "[Crossref Agent] Queued import for #{total} DOIs." }.to_json, status: :ok
   end
 end
