@@ -150,7 +150,7 @@ class NameIdentifier < Base
         elsif response.status == 409
           logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
         elsif response.body["errors"].present?
-          logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors'].first['title']}"
+          logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors'].first['title']}"
         end
       end
     end

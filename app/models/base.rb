@@ -342,7 +342,7 @@ class Base
     orcid = orcid_from_url(id)
     return {} unless orcid.present?
 
-    url = ENV['API_URL'] + "/researchers/#{orcid}"
+    url = ENV['API_URL'] + "/users/#{orcid}"
     response = Maremma.get(url)
     return {} if response.status != 200
 
@@ -369,11 +369,11 @@ class Base
     attributes = parse_message(message: message)
     data = {
       "data" => {
-        "type" => "researchers",
+        "type" => "users",
         "attributes" => attributes
       }
     }
-    url = ENV["API_URL"] + "/researchers/#{orcid}"
+    url = ENV["API_URL"] + "/users/#{orcid}"
     response = Maremma.put(url, accept: 'application/vnd.api+json', 
                                 content_type: 'application/vnd.api+json',
                                 data: data.to_json,
