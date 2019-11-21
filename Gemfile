@@ -28,7 +28,7 @@ gem 'countries', '~> 2.1', '>= 2.1.2'
 gem "facets", require: false
 gem 'bolognese', '~> 1.0'
 gem 'shoryuken', '~> 4.0'
-gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
+gem 'rack-cors', '~> 1.0', :require => 'rack/cors'
 gem 'rack-utf8_sanitizer', '~> 1.6'
 gem 'oj_mimic_json', '~> 1.0', '>= 1.0.1'
 gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
