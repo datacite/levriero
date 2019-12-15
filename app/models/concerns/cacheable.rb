@@ -39,9 +39,9 @@ module Cacheable
       end
     end
   
-    def cached_crossref_member_id(doi)
-      Rails.cache.fetch("member_ids/#{doi}", expires_in: 1.day) do
-        Base.get_crossref_member_id(doi)
+    def cached_crossref_member_id(id)
+      Rails.cache.fetch("member_ids/#{id}", expires_in: 1.day) do
+        Base.get_crossref_member_id(id)
       end
     end
   end

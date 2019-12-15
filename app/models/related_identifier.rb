@@ -58,8 +58,7 @@ class RelatedIdentifier < Base
 
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
-    return nil unless doi.present?
-    return nil unless cached_doi_ra(doi) == "DataCite"
+    return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
     related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select { |r| r["relatedIdentifierType"] == "DOI" }
