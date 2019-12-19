@@ -23,55 +23,55 @@ module Importable
   module ClassMethods
     def get_doi_ra(prefix)
       return nil if prefix.blank?
-  
+
       url = "https://doi.org/ra/#{prefix}"
       result = Maremma.get(url)
-  
+
       return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
-  
-      result.body.dig('data', 0, 'RA')
+
+      result.body.dig("data", 0, "RA")
     end
-  
+
     def validate_doi(doi)
       Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
     end
-  
+
     def validate_prefix(doi)
       Array(/\A(?:(http|https):\/\/(dx\.)?doi.org\/)?(doi:)?(10\.\d{4,5})\/.+\z/.match(doi)).last
     end
-  
+
     def normalize_doi(doi)
       doi = validate_doi(doi)
-      return nil unless doi.present?
-  
+      return nil if doi.blank?
+
       # remove non-printing whitespace and downcase
       doi = doi.delete("\u200B").downcase
-  
+
       # turn DOI into URL, escape unsafe characters
       "https://doi.org/" + Addressable::URI.encode(doi)
     end
 
     def normalize_url(id)
-      return nil unless id.present?
+      return nil if id.blank?
 
       # check for valid protocol. We support AWS S3 and Google Cloud Storage
       uri = Addressable::URI.parse(id)
-      return nil unless uri && uri.host && %w(http https ftp s3 gs).include?(uri.scheme)
+      return nil unless uri&.host && %w(http https ftp s3 gs).include?(uri.scheme)
 
       # clean up URL
-      uri = PostRank::URI.clean(id)
+      PostRank::URI.clean(id)
     rescue Addressable::URI::InvalidURIError
       nil
     end
-  
+
     def orcid_from_url(url)
       Array(/\A(http|https):\/\/orcid\.org\/(.+)/.match(url)).last
     end
-  
+
     def orcid_as_url(orcid)
       "https://orcid.org/#{orcid}" if orcid.present?
     end
-  
+
     def validate_orcid(orcid)
       orcid = Array(/\A(?:(http|https):\/\/(www\.)?orcid\.org\/)?(\d{4}[[:space:]-]\d{4}[[:space:]-]\d{4}[[:space:]-]\d{3}[0-9X]+)\z/.match(orcid)).last
       orcid.gsub(/[[:space:]]/, "-") if orcid.present?
@@ -79,7 +79,7 @@ module Importable
 
     def normalize_orcid(orcid)
       orcid = validate_orcid(orcid)
-      return nil unless orcid.present?
+      return nil if orcid.blank?
 
       # turn ORCID ID into URL
       "https://orcid.org/" + Addressable::URI.encode(orcid)
@@ -91,7 +91,7 @@ module Importable
 
     def normalize_ror(ror_id)
       ror_id = validate_ror(ror_id)
-      return nil unless ror_id.present?
+      return nil if ror_id.blank?
 
       # turn ROR ID into URL
       "https://" + Addressable::URI.encode(ror_id)
@@ -106,9 +106,9 @@ module Importable
       # paginate through API results
       while page_number <= total_pages
         params = { "page[number]" => page_number, "page[size]" => 100 }.compact
-        url = ENV['API_URL'] + "/#{route}?" + URI.encode_www_form(params)
+        url = ENV["API_URL"] + "/#{route}?" + URI.encode_www_form(params)
 
-        response = Maremma.get(url, content_type: 'application/vnd.api+json')
+        response = Maremma.get(url, content_type: "application/vnd.api+json")
         Rails.logger.error response.body["errors"].inspect if response.body.fetch("errors", nil).present?
 
         records = response.body.fetch("data", [])
@@ -133,15 +133,15 @@ module Importable
     end
 
     def parse_record(sqs_msg: nil, data: nil)
-      id = "https://doi.org/#{data["id"]}"
+      id = "https://doi.org/#{data['id']}"
       response = get_datacite_json(id)
       related_identifiers = Array.wrap(response.fetch("relatedIdentifiers", nil)).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
-       
+
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
         item = {
           "id" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         RelatedIdentifier.push_item(item)
       end
@@ -150,7 +150,7 @@ module Importable
         item = {
           "id" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         RelatedUrl.push_item(item)
       end
@@ -160,17 +160,17 @@ module Importable
         item = {
           "doi" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         FunderIdentifier.push_item(item)
-      end 
+      end
 
       name_identifiers = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
       if name_identifiers.present?
         item = {
           "doi" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         NameIdentifier.push_item(item)
       end
@@ -180,7 +180,7 @@ module Importable
         item = {
           "doi" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         AffiliationIdentifier.push_item(item)
       end
@@ -190,17 +190,17 @@ module Importable
         item = {
           "doi" => data["id"],
           "type" => "dois",
-          "attributes" => response
+          "attributes" => response,
         }
         OrcidAffiliation.push_item(item)
       end
 
-      Rails.logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
-      Rails.logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data["id"]}" if name_identifiers.present?
-      Rails.logger.info "[Event Data] #{affiliation_identifiers.length} affiliation_identifiers found for DOI #{data["id"]}" if affiliation_identifiers.present?
-      Rails.logger.info "[Event Data] #{orcid_affiliation.length} orcid_affiliations found for DOI #{data["id"]}" if affiliation_identifiers.present?
-      Rails.logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
-      Rails.logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
+      Rails.logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data['id']}" if related_identifiers.present?
+      Rails.logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data['id']}" if name_identifiers.present?
+      Rails.logger.info "[Event Data] #{affiliation_identifiers.length} affiliation_identifiers found for DOI #{data['id']}" if affiliation_identifiers.present?
+      Rails.logger.info "[Event Data] #{orcid_affiliation.length} orcid_affiliations found for DOI #{data['id']}" if affiliation_identifiers.present?
+      Rails.logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data['id']}" if funding_references.present?
+      Rails.logger.info "No events found for DOI #{data['id']}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
 
       related_identifiers + name_identifiers + funding_references + affiliation_identifiers + orcid_affiliation
     end

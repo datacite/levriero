@@ -64,7 +64,7 @@ class RelatedIdentifier < Base
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
       related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
-      # prefix = validate_prefix(related_identifier)
+      prefix = validate_prefix(related_identifier)
       registration_agencies[prefix] = cached_doi_ra(related_identifier) unless registration_agencies[prefix]
 
       if registration_agencies[prefix].nil?

@@ -1,17 +1,17 @@
 class Crossref < Base
-  def self.import_by_month(options={})
+  def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
 
     # get first day of every month between from_date and until_date
-    (from_date..until_date).select {|d| d.day == 1}.each do |m|
+    (from_date..until_date).select { |d| d.day == 1 }.each do |m|
       CrossrefImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for DOIs updated from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
+    "Queued import for DOIs updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
   end
 
-  def self.import(options={})
+  def self.import(options = {})
     from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
 
@@ -23,8 +23,8 @@ class Crossref < Base
     "crossref"
   end
 
-  def get_query_url(options={})
-    params = { 
+  def get_query_url(options = {})
+    params = {
       source: "crossref",
       "from-collected-date" => options[:from_date],
       "until-collected-date" => options[:until_date],
@@ -32,17 +32,17 @@ class Crossref < Base
       rows: options[:rows],
       cursor: options[:cursor] }.compact
 
-    ENV['CROSSREF_QUERY_URL'] + "/v1/events?" + URI.encode_www_form(params)
+    ENV["CROSSREF_QUERY_URL"] + "/v1/events?" + URI.encode_www_form(params)
   end
 
-  def get_total(options={})
+  def get_total(options = {})
     query_url = get_query_url(options.merge(rows: 0))
     result = Maremma.get(query_url, options)
     message = result.body.dig("data", "message").to_h
     [message["total-results"].to_i, message["next-cursor"]]
   end
 
-  def queue_jobs(options={})
+  def queue_jobs(options = {})
     options[:offset] = options[:offset].to_i || 0
     options[:rows] = options[:rows].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
@@ -101,10 +101,10 @@ class Crossref < Base
     subj = cached_crossref_response(item["subj_id"])
     obj = cached_datacite_response(item["obj_id"])
 
-    if ENV['LAGOTTINO_TOKEN'].present?
-      push_url = ENV['LAGOTTINO_URL'] + "/events/#{item["id"]}"
+    if ENV["LAGOTTINO_TOKEN"].present?
+      push_url = ENV["LAGOTTINO_URL"] + "/events/#{item['id']}"
 
-      data = { 
+      data = {
         "data" => {
           "id" => item["id"],
           "type" => "events",
@@ -122,9 +122,9 @@ class Crossref < Base
             "obj" => obj } }}
 
       response = Maremma.put(push_url, data: data.to_json,
-                                       bearer: ENV['LAGOTTINO_TOKEN'],
-                                       content_type: 'application/vnd.api+json',
-                                       accept: 'application/vnd.api+json; version=2')
+                                       bearer: ENV["LAGOTTINO_TOKEN"],
+                                       content_type: "application/vnd.api+json",
+                                       accept: "application/vnd.api+json; version=2")
 
       if [200, 201].include?(response.status)
         Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
