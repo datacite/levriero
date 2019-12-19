@@ -130,17 +130,19 @@ class NameIdentifier < Base
         orcid = orcid_from_url(iiitem["obj_id"])
         source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
-        data = { 
+        data = {
           "claim" => {
             "doi" => doi,
             "orcid" => orcid,
             "source_id" => source_id,
-            "claim_action"=> "create" }}
+            "claim_action"=> "create",
+          }
+        }
 
         response = Maremma.post(push_url, data: data.to_json,
                                           bearer: ENV['VOLPINO_TOKEN'],
                                           content_type: 'application/json')
-                                        
+
         if response.status == 202
           Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
         elsif response.status == 409
