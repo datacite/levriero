@@ -4,22 +4,18 @@ module Importable
   included do
     # strong_parameters throws an error, using attributes hash
     def update_record(attributes)
-      logger = Logger.new(STDOUT)
-
       if update_attributes(attributes)
-        logger.debug self.class.name + " " + id + " updated."
+        Rails.logger.debug self.class.name + " " + id + " updated."
       else
-        logger.info self.class.name + " " + id + " not updated: " + errors.to_a.inspect
+        Rails.logger.error self.class.name + " " + id + " not updated: " + errors.to_a.inspect
       end
     end
 
     def delete_record
-      logger = Logger.new(STDOUT)
-
       if destroy(refresh: true)
-        logger.debug self.class.name + " record deleted."
+        Rails.logger.debug self.class.name + " record deleted."
       else
-        logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
+        Rails.logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
       end
     end
   end
@@ -102,8 +98,6 @@ module Importable
     end
 
     def import_from_api
-      logger = Logger.new(STDOUT)
-
       route = self.name.downcase + "s"
       page_number = 1
       total_pages = 1
@@ -115,7 +109,7 @@ module Importable
         url = ENV['API_URL'] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: 'application/vnd.api+json')
-        logger.warn response.body["errors"].inspect if response.body.fetch("errors", nil).present?
+        Rails.logger.error response.body["errors"].inspect if response.body.fetch("errors", nil).present?
 
         records = response.body.fetch("data", [])
         records.each do |data|
@@ -128,7 +122,7 @@ module Importable
         end
 
         processed = (page_number - 1) * 100 + records.size
-        logger.info "#{processed} " + self.name.downcase + "s processed."
+        Rails.logger.info "#{processed} " + self.name.downcase + "s processed."
 
         page_number = response.body.dig("meta", "page").to_i + 1
         total = response.body.dig("meta", "total") || total
@@ -139,8 +133,6 @@ module Importable
     end
 
     def parse_record(sqs_msg: nil, data: nil)
-      logger = Logger.new(STDOUT)
-
       id = "https://doi.org/#{data["id"]}"
       response = get_datacite_json(id)
       related_identifiers = Array.wrap(response.fetch("relatedIdentifiers", nil)).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
@@ -203,12 +195,12 @@ module Importable
         OrcidAffiliation.push_item(item)
       end
 
-      logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
-      logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data["id"]}" if name_identifiers.present?
-      logger.info "[Event Data] #{affiliation_identifiers.length} affiliation_identifiers found for DOI #{data["id"]}" if affiliation_identifiers.present?
-      logger.info "[Event Data] #{orcid_affiliation.length} orcid_affiliations found for DOI #{data["id"]}" if affiliation_identifiers.present?
-      logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
-      logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
+      Rails.logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data["id"]}" if related_identifiers.present?
+      Rails.logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data["id"]}" if name_identifiers.present?
+      Rails.logger.info "[Event Data] #{affiliation_identifiers.length} affiliation_identifiers found for DOI #{data["id"]}" if affiliation_identifiers.present?
+      Rails.logger.info "[Event Data] #{orcid_affiliation.length} orcid_affiliations found for DOI #{data["id"]}" if affiliation_identifiers.present?
+      Rails.logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data["id"]}" if funding_references.present?
+      Rails.logger.info "No events found for DOI #{data["id"]}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
 
       related_identifiers + name_identifiers + funding_references + affiliation_identifiers + orcid_affiliation
     end

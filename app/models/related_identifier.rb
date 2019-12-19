@@ -45,8 +45,7 @@ class RelatedIdentifier < Base
       begin
         RelatedIdentifierImportJob.perform_later(item)
       rescue Aws::SQS::Errors::InvalidParameterValue, Aws::SQS::Errors::RequestEntityTooLarge, Seahorse::Client::NetworkingError => error
-        logger = Logger.new(STDOUT)
-        logger.error error.message
+        Rails.logger.error error.message
       end
     end
 
@@ -54,8 +53,6 @@ class RelatedIdentifier < Base
   end
 
   def self.push_item(item)
-    logger = Logger.new(STDOUT)
-
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
     return nil unless doi.present?
@@ -73,7 +70,7 @@ class RelatedIdentifier < Base
       registration_agencies[prefix] = cached_doi_ra(prefix) unless registration_agencies[prefix]
 
       if registration_agencies[prefix].nil?
-        logger.info "No DOI registration agency for prefix #{prefix} found."
+        Rails.logger.error "No DOI registration agency for prefix #{prefix} found."
         source_id = "datacite_related"
         source_token = ENV['DATACITE_RELATED_SOURCE_TOKEN']
         obj = {}
@@ -140,12 +137,12 @@ class RelatedIdentifier < Base
                                           accept: 'application/vnd.api+json; version=2')
                                 
         if [200, 201].include?(response.status)
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
         elsif response.status == 409
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
         elsif response.body["errors"].present?
-          logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
-          logger.error data.inspect
+          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+          Rails.logger.error data.inspect
         end
       end
       
@@ -162,15 +159,15 @@ class RelatedIdentifier < Base
 
         # return 0 if successful, 1 if error
           if response.status == 201
-            logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+            Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
           elsif response.status == 409
-            logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+            Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
           elsif response.body["errors"].present?
-            logger.error "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error:"
-            logger.error "[Event Data Bus] #{response.body['errors'].first['title']}"
+            Rails.logger.error "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error:"
+            Rails.logger.error "[Event Data Bus] #{response.body['errors'].first['title']}"
           end
       else
-        logger.warn "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} was not sent to Event Data Bus."
+        Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} was not sent to Event Data Bus."
       end
     end
     push_items.length

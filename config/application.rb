@@ -64,14 +64,6 @@ module Levriero
     # secret_key_base is not used by Rails API, as there are no sessions
     config.secret_key_base = 'blipblapblup'
 
-    # Write all logs to STDOUT instead of file
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-    config.log_level = ENV['LOG_LEVEL'].to_sym
-
-    config.active_job.logger = config.logger
-
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
 
@@ -82,7 +74,7 @@ module Levriero
     config.middleware.insert 0, Rack::UTF8Sanitizer, additional_content_types: ['application/vnd.api+json', 'application/xml']
 
     # set Active Job queueing backend
-    if ENV['AWS_REGION']
+    if ENV["AWS_REGION"]
       config.active_job.queue_adapter = :shoryuken
     else
       config.active_job.queue_adapter = :inline

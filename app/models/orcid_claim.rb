@@ -26,7 +26,6 @@ class OrcidClaim < Base
   end
 
   def push_data(result, options={})
-    logger = Logger.new(STDOUT)
     return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
     items = result.body.dig("data", "response", "docs")
@@ -35,8 +34,7 @@ class OrcidClaim < Base
       begin
         NameIdentifierImportJob.perform_later(item)
       rescue Aws::SQS::Errors::InvalidParameterValue, Aws::SQS::Errors::RequestEntityTooLarge, Seahorse::Client::NetworkingError => error
-        logger = Logger.new(STDOUT)
-        logger.error error.message
+        Rails.logger.error error.message
       end
     end
 
@@ -44,8 +42,6 @@ class OrcidClaim < Base
   end
 
   def self.push_item(item)
-    logger = Logger.new(STDOUT)
-
     doi = item.fetch("doi")
     pid = normalize_doi(doi)
     related_identifiers = item.fetch("relatedIdentifier", [])
@@ -112,12 +108,12 @@ class OrcidClaim < Base
                                           accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
         elsif response.status == 409
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
         elsif response.body["errors"].present?
-          logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
-          logger.error data.inspect
+          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+          Rails.logger.error data.inspect
         end
       end
     end

@@ -7,20 +7,16 @@ module Authenticable
   included do
     # encode JWT token using SHA-256 hash algorithm
     def encode_token(payload)
-      logger = Logger.new(STDOUT)
-
       # replace newline characters with actual newlines
       private_key = OpenSSL::PKey::RSA.new(ENV['JWT_PRIVATE_KEY'].to_s.gsub('\n', "\n"))
       JWT.encode(payload, private_key, 'RS256')
     rescue JSON::GeneratorError => error
-      logger.error "JSON::GeneratorError: " + error.message + " for " + payload
+      Rails.logger.error "JSON::GeneratorError: " + error.message + " for " + payload
       return nil
     end
 
     # decode JWT token using SHA-256 hash algorithm
     def decode_token(token)
-      logger = Logger.new(STDOUT)
-
       public_key = OpenSSL::PKey::RSA.new(ENV['JWT_PUBLIC_KEY'].to_s.gsub('\n', "\n"))
       payload = (JWT.decode token, public_key, true, { :algorithm => 'RS256' }).first
 
@@ -29,11 +25,11 @@ module Authenticable
 
       payload
     rescue JWT::DecodeError => error
-      logger.error "JWT::DecodeError: " + error.message + " for " + token
+      Rails.logger.error "JWT::DecodeError: " + error.message + " for " + token
       return {}
     rescue OpenSSL::PKey::RSAError => error
       public_key = ENV['JWT_PUBLIC_KEY'].presence || "nil"
-      logger.error "OpenSSL::PKey::RSAError: " + error.message + " for " + public_key
+      Rails.logger.error "OpenSSL::PKey::RSAError: " + error.message + " for " + public_key
       return {}
     end
 
@@ -65,23 +61,23 @@ module Authenticable
       roles = {
         "ROLE_ADMIN" => "staff_admin",
         "ROLE_ALLOCATOR" => "provider_admin",
-        "ROLE_DATACENTRE" => "client_admin"
+        "ROLE_DATACENTRE" => "client_admin",
       }
       payload = {
         "uid" => uid,
         "role_id" => roles.fetch(user.role_name, "user"),
         "name" => user.name,
-        "email" => user.contact_email
+        "email" => user.contact_email,
       }
 
       if uid.include? "."
         payload.merge!({
           "provider_id" => uid.split(".", 2).first,
-          "client_id" => uid
+          "client_id" => uid,
         })
       elsif uid != "admin"
         payload.merge!({
-          "provider_id" => uid
+          "provider_id" => uid,
         })
       end
 
@@ -103,13 +99,11 @@ module Authenticable
   module ClassMethods
     # encode token using SHA-256 hash algorithm
     def encode_token(payload)
-      logger = Logger.new(STDOUT)
-
       # replace newline characters with actual newlines
       private_key = OpenSSL::PKey::RSA.new(ENV['JWT_PRIVATE_KEY'].to_s.gsub('\n', "\n"))
       JWT.encode(payload, private_key, 'RS256')
     rescue OpenSSL::PKey::RSAError => e
-      logger.error e.inspect
+      Rails.logger.error e.inspect
 
       nil
     end
@@ -141,13 +135,13 @@ module Authenticable
       roles = {
         "ROLE_ADMIN" => "staff_admin",
         "ROLE_ALLOCATOR" => "provider_admin",
-        "ROLE_DATACENTRE" => "client_admin"
+        "ROLE_DATACENTRE" => "client_admin",
       }
       payload = {
         "uid" => uid,
         "role_id" => roles.fetch(user.role_name, "user"),
         "name" => user.name,
-        "email" => user.contact_email
+        "email" => user.contact_email,
       }
 
       if uid.include? "."

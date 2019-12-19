@@ -1,12 +1,9 @@
 class UsageUpdateParseJob < ActiveJob::Base
   queue_as :levriero
 
-
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
-
   def perform(dataset, options)
-
     # response = UsageUpdate.get_data(report_url, options)
     # report = Report.new(report_header, options)
     data = Report.translate_datasets dataset, options
@@ -22,12 +19,9 @@ class UsageUpdateParseJob < ActiveJob::Base
     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
   end
 
-
-
   def send_message data, item, options={}
-    logger = Logger.new(STDOUT)
     errors = data.select {|hsh| hsh.fetch("errors",nil) }
-    if data.length == 0
+    if data.length.zero?
       options[:level] = "warning"
       text = "[Usage Report Parsing] Error parsing Report #{item}. Report is empty"
     elsif !errors.empty?
@@ -38,10 +32,9 @@ class UsageUpdateParseJob < ActiveJob::Base
       text = "[Usage Report Parsing] Something went wrong with #{item}."
     else
       options[:level] = "good"
-      text ="[Usage Report Parsing] Successfully parsed Report #{item} with #{data.length} instances"
+      text = "[Usage Report Parsing] Successfully parsed Report #{item} with #{data.length} instances"
     end
 
-    logger.info text
-
+    Rails.logger.info text
   end
 end

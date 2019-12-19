@@ -8,29 +8,26 @@ class Base
   # icon for Slack messages
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
-  def queue options={}
-    logger = Logger.new(STDOUT)
-    logger.info "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?
-    logger.info "AWS_REGION has not been specified" unless ENV['AWS_REGION'].present?
+  def queue(options={})
+    Rails.logger.error "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?
+    Rails.logger.error "AWS_REGION has not been specified" unless ENV['AWS_REGION'].present?
     region = ENV['AWS_REGION'] ||= 'eu-west-1'
     Aws::SQS::Client.new(region: region.to_s, stub_responses: false)
   end
 
-  def get_message options={}
+  def get_message(options={})
     sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
   end
 
-  def delete_message message
-    logger = Logger.new(STDOUT)
-
+  def delete_message(message)
     response = sqs.delete_message({
       queue_url: queue_url,
       receipt_handle: message[:receipt_handle]    
     })
     if response.successful?
-      logger.info "Message #{message[:receipt_handle]} deleted"
+      Rails.logger.info "Message #{message[:receipt_handle]} deleted"
     else
-      logger.info "Could NOT delete Message #{message[:receipt_handle]}"
+      Rails.logger.error "Could not delete Message #{message[:receipt_handle]}"
     end
   end
 
@@ -78,8 +75,6 @@ class Base
   end
 
   def queue_jobs(options={})
-    logger = Logger.new(STDOUT)
-
     options[:number] = options[:number].to_i || 1
     options[:size] = options[:size].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
@@ -103,7 +98,7 @@ class Base
       text = "[Event Data] No DOIs updated #{options[:from_date]} - #{options[:until_date]} for #{source_id}."
     end
 
-    logger.info text
+    Rails.logger.info text
 
     # send slack notification
     if total == 0
@@ -191,11 +186,11 @@ class Base
       a.map {|k, v| [mapping.fetch(k, k), v] }.reduce({}) do |hsh, (k, v)|
         if v.is_a?(Hash)
           hsh[k] = to_schema_org(v)
-          hsh
         else
           hsh[k] = v
-          hsh
         end
+
+        hsh
       end
     end.unwrap
   end
@@ -206,11 +201,9 @@ class Base
   end
 
   def self.get_datacite_xml(id)
-    logger = Logger.new(STDOUT)
-
     doi = doi_from_url(id)
-    unless doi.present?
-      logger.info "#{id} is not a valid DOI"
+    if doi.blank?
+      Rails.logger.info "#{id} is not a valid DOI"
       return {}
     end
 
@@ -218,7 +211,7 @@ class Base
     response = Maremma.get(url)
 
     if response.status != 200
-      logger.info "DOI #{doi} not found"
+      Rails.logger.info "DOI #{doi} not found"
       return {}
     end
     
@@ -228,11 +221,9 @@ class Base
   end
 
   def self.get_datacite_json(id)
-    logger = Logger.new(STDOUT)
-
     doi = doi_from_url(id)
-    unless doi.present?
-      logger.info "#{id} is not a valid DOI"
+    if doi.blank?
+      Rails.logger.error "#{id} is not a valid DOI"
       return {}
     end
 
@@ -240,7 +231,7 @@ class Base
     response = Maremma.get(url)
 
     if response.status != 200
-      logger.info "DOI #{doi} not found"
+      Rails.logger.info "DOI #{doi} not found"
       return {}
     end
     
@@ -249,18 +240,18 @@ class Base
 
   def self.get_datacite_metadata(id)
     doi = doi_from_url(id)
-    return {} unless doi.present?
+    return {} if doi.blank?
 
     url = ENV['API_URL'] + "/dois/#{doi}"
     response = Maremma.get(url)
     return {} if response.status != 200
 
     parse_datacite_metadata(id: id, response: response)
-  end          
+  end
 
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)
-    return {} unless doi.present?
+    return {} if doi.blank?
 
     # use metadata stored with DataCite if they exist
     response = get_datacite_metadata(id)
@@ -321,16 +312,14 @@ class Base
       "registrantId" => registrant_id }.compact
   end
 
-
   def self.get_crossref_member_id(id, options={})
-    logger = Logger.new(STDOUT)
     doi = doi_from_url(id)
     # return "crossref.citations" unless doi.present?
   
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
     sleep(0.24) # to avoid crossref rate limitting
     response =  Maremma.get(url, host: true)	
-    logger.info "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
+    Rails.logger.info "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
     return "crossref.citations" if response.status != 200	
 
     message = response.body.dig("data", "message")	
@@ -380,7 +369,6 @@ class Base
                                 bearer: ENV["LAGOTTINO_TOKEN"])
     
     return {} unless [200, 201].include?(response.status)
-
 
     {
       "@id" => "https://orcid.org/#{orcid}",
