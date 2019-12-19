@@ -41,6 +41,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem "better_errors"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rubocop', '~> 0.77.0'
+  gem 'rubocop-performance', '~> 1.5', '>= 1.5.1'
+  gem 'rubocop-rails', '~> 2.4'
 end
 
 group :development do
@@ -59,5 +62,4 @@ group :test do
   gem 'rubocop-rspec', '~> 1.28'
   gem 'faker'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
-  gem 'elasticsearch-extensions'
 end

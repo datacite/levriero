@@ -1,7 +1,6 @@
 require 'yajl'
 require 'digest'
 
-
 class UsageUpdate < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
   LOGGER = Logger.new(STDOUT)
@@ -56,7 +55,6 @@ class UsageUpdate < Base
     sqs = Aws::SQS::Client.new(region: ENV["AWS_REGION"])
     sqs
   end
-
 
   def self.format_event type, data, options={}
     fail "Not type given. Report #{data[:report_url]} not proccessed" if type.blank?
@@ -137,4 +135,3 @@ class UsageUpdate < Base
           "obj" => obj } }}
   end
 end
-

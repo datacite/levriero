@@ -1,9 +1,7 @@
 module Delegatable
-extend ActiveSupport::Concern
-require 'json'
+  extend ActiveSupport::Concern
 
   included do
-
     def dois_count(uid, **options)
       Rails.cache.fetch("dois_count/#{uid}", expires_in: 6.hours, force: options[:force]) do
         if self.is_a?(ClientsController)
@@ -14,7 +12,6 @@ require 'json'
         response.body.to_h.dig("meta", "dois")
       end
     end
-
 
     # def prefixes_count uid
     #   if self.is_a?(ClientsController)

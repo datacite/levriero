@@ -17,10 +17,7 @@ class Report < Base
     @report_id = @data.dig("report","id")
     @report_url = report.url
     @type = get_type
-
-    
   end
-
 
   def self.parse_multi_subset_report report
     subset = report.subsets.last
@@ -37,7 +34,6 @@ class Report < Base
     dataset_array
   end
   
-
   def self.parse_normal_report report
     json = report.data.dig("report","report-datasets")
     # hsh = parse_subset json
@@ -92,7 +88,6 @@ class Report < Base
     else
       nil
     end
-
   end
 
   # def correct_checksum?
@@ -102,5 +97,4 @@ class Report < Base
   #   return nil if Digest::SHA256.hexdigest(Base64.decode64(@encoded_report)) != @checksum
   #   true
   # end
-
 end
