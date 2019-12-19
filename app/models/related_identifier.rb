@@ -55,9 +55,7 @@ class RelatedIdentifier < Base
   def self.push_item(item)
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
-    return nil unless doi.present?
-    prefix = validate_prefix(doi)
-    return nil unless cached_doi_ra(prefix) == "DataCite"
+    return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
     related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select { |r| r["relatedIdentifierType"] == "DOI" }
@@ -66,8 +64,8 @@ class RelatedIdentifier < Base
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
       related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
-      prefix = validate_prefix(related_identifier)
-      registration_agencies[prefix] = cached_doi_ra(prefix) unless registration_agencies[prefix]
+      # prefix = validate_prefix(related_identifier)
+      registration_agencies[prefix] = cached_doi_ra(related_identifier) unless registration_agencies[prefix]
 
       if registration_agencies[prefix].nil?
         Rails.logger.error "No DOI registration agency for prefix #{prefix} found."
