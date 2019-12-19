@@ -1,4 +1,3 @@
-require 'yajl'
 require 'digest'
 
 class UsageUpdate < Base
@@ -85,7 +84,7 @@ class UsageUpdate < Base
 
   def self.push_datasets items, options={}
     if items.empty?
-      LOGGER.info  "No works found in the Queue."
+      Rails.logger.info  "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
         UsageUpdateExportJob.perform_later(item.to_json, options)

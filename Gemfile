@@ -33,6 +33,7 @@ gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 gem 'aws-sdk-sqs', '~> 1.3'
 gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 gem 'git', '~> 1.5'
+gem "sprockets", "~> 3.7", ">= 3.7.2"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'

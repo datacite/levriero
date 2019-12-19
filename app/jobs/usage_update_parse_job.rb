@@ -9,12 +9,12 @@ class UsageUpdateParseJob < ActiveJob::Base
     data = Report.translate_datasets dataset, options
     # data = Report.new(response, options).parse_data
     send_message(data,options[:url],{slack_webhook_url: ENV['SLACK_WEBHOOK_URL']})
-    puts options[:header]
     options.merge(
-      report_meta:{
+      report_meta: {
         report_id: options[:header].dig("report-id"), 
         created_by: options[:header].dig("created-by"),
-        reporting_period: options[:header].dig("reporting-period")})
+        reporting_period: options[:header].dig("reporting-period"),
+      })
 
     UsageUpdate.push_datasets(data, options) unless Rails.env.test?
   end

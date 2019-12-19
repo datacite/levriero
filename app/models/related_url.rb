@@ -47,8 +47,6 @@ class RelatedUrl < Base
   end
 
   def self.push_item(item)
-    logger = Logger.new(STDOUT)
-
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
     return nil unless doi.present?
@@ -109,11 +107,11 @@ class RelatedUrl < Base
                                          accept: 'application/vnd.api+json; version=2')
 
         if [200, 201].include?(response.status)
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
         elsif response.status == 409
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
         elsif response.body["errors"].present?
-          logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
+          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors'].first['title']}"
         end
       end
     end
