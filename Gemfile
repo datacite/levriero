@@ -9,7 +9,6 @@ gem 'equivalent-xml', '~> 0.6.0'
 gem 'nokogiri', '~> 1.10.4'
 gem 'iso8601', '~> 0.9.0'
 gem 'maremma', '~> 4.1'
-gem 'patron', '~> 0.12.1', require: false
 gem "dalli", "~> 2.7.6"
 gem "lograge", "~> 0.11.2"
 gem "logstash-event", "~> 1.2", ">= 1.2.02"

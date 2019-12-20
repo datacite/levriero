@@ -53,7 +53,7 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.258.0)
+    aws-partitions (1.259.0)
     aws-sdk-core (3.86.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -267,7 +267,6 @@ GEM
     parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
-    patron (0.12.1)
     postrank-uri (1.0.24)
       addressable (>= 2.4.0)
       nokogiri (>= 1.8.0)
@@ -453,7 +452,6 @@ DEPENDENCIES
   nokogiri (~> 1.10.4)
   oj (>= 2.8.3)
   oj_mimic_json (~> 1.0, >= 1.0.1)
-  patron (~> 0.12.1)
   rack-cors (~> 1.0)
   rack-utf8_sanitizer (~> 1.6)
   rails (~> 5.2.0)
@@ -475,4 +473,4 @@ DEPENDENCIES
   webmock (~> 3.1)
 
 BUNDLED WITH
-   2.0.2
+   2.1.2

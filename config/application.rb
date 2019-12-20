@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -62,7 +62,7 @@ module Levriero
     config.api_only = true
 
     # secret_key_base is not used by Rails API, as there are no sessions
-    config.secret_key_base = 'blipblapblup'
+    config.secret_key_base = "blipblapblup"
 
     # raise error with unpermitted parameters
     config.action_controller.action_on_unpermitted_parameters = :raise
