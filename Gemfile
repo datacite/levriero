@@ -56,7 +56,7 @@ group :test do
   gem 'vcr', '~> 3.0.3'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'simplecov'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'rubocop-rspec', '~> 1.28'
   gem 'faker'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
