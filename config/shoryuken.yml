@@ -1,7 +1,12 @@
-concurrency: 25
-delay: 30
+concurrency: 20
+delay: 2
 pidfile: tmp/pids/shoryuken.pid
 queues:
   - doi
   - levriero
-  - usage
+
+groups:
+  usage:
+    concurrency: 5
+    queues:
+      - usage
