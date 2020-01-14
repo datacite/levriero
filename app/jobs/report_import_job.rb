@@ -6,8 +6,8 @@ class ReportImportJob < ActiveJob::Base
   def perform(item, options={})
     response = UsageUpdate.get_data(item, options)
     if response.status != 200
-      Rails.logger.info "[Usage Report Parsing] Report #{item} not found"
-      return {}
+      Rails.logger.error "[Usage Report Parsing] Report #{item} not found"
+      {}
     else
       # report = Report.new(response, options)
       Rails.logger.info "[Usage Report] Started to parse #{item}."

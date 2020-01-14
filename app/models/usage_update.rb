@@ -1,7 +1,7 @@
-require 'digest'
+require "digest"
 
 class UsageUpdate < Base
-  LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
+  LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
   USAGE_RELATIONS = [
     "total-dataset-investigations-regular",
@@ -11,34 +11,35 @@ class UsageUpdate < Base
     "unique-dataset-investigations-regular",
     "unique-dataset-investigations-machine",
     "unique-dataset-requests-machine",
-    "unique-dataset-requests-regular"
-  ]
+    "unique-dataset-requests-regular",
+  ].freeze
 
   RESOLUTION_RELATIONS = [
     "total-resolutions-regular",
     "total-resolutions-machine",
     "unique-resolutions-machine",
-    "unique-resolutions-regular"
-  ]
+    "unique-resolutions-regular",
+  ].freeze
 
-  def self.import(_options={})
+  def self.import(_options = {})
     usage_update = UsageUpdate.new
-    usage_update.queue_jobs 
+    usage_update.queue_jobs
   end
 
-  def self.redirect(response, options={})
+  def self.redirect(response, options = {})
     report = Report.new(response, options)
     text = "[Usage Report] Started to parse #{report.report_url}."
     Rails.logger.info text
     # args = {header: report.header, url: report.report_url}
     case report.get_type
-      when "normal" then Report.parse_normal_report(report)
-      when "compressed" then Report.parse_multi_subset_report(report)
+    when "normal" then Report.parse_normal_report(report)
+    when "compressed" then Report.parse_multi_subset_report(report)
     end
   end
 
-  def self.get_data(report_url, _options={})
-    return OpenStruct.new(body: { "errors" => "No Report given given"}) if report_url.blank?
+  def self.get_data(report_url, _options = {})
+    return OpenStruct.new(body: { "errors" => "No Report given given" }) if report_url.blank?
+
     host = URI.parse(report_url).host.downcase
     report = Maremma.get(report_url, timeout: 120, host: host)
     report
@@ -53,38 +54,37 @@ class UsageUpdate < Base
     Aws::SQS::Client.new(region: ENV["AWS_REGION"])
   end
 
-  def self.format_event(type, data, options={})
+  def self.format_event(type, data, _options = {})
     # TODO: error class for fail and proper error handling
     fail "Not type given. Report #{data[:report_url]} not proccessed" if type.blank?
     fail "Report_id is missing" if data[:report_url].blank?
 
     if USAGE_RELATIONS.include?(type.downcase)
       source_id = "datacite-usage"
-      source_token = ENV['DATACITE_USAGE_SOURCE_TOKEN']
+      source_token = ENV["DATACITE_USAGE_SOURCE_TOKEN"]
     elsif RESOLUTION_RELATIONS.include?(type.downcase)
       source_id = "datacite-resolution"
-      source_token = ENV['DATACITE_RESOLUTION_SOURCE_TOKEN']
+      source_token = ENV["DATACITE_RESOLUTION_SOURCE_TOKEN"]
     end
 
     { "message-action" => "create",
       "subj-id" => data[:report_url],
-      "subj"=> {
-        "id"=> data[:report_url],
-        "issued"=> data[:created]
+      "subj" => {
+        "id" => data[:report_url],
+        "issued" => data[:created],
       },
-      "total"=> data[:count],
+      "total" => data[:count],
       "obj-id" => data[:id],
       "relation-type-id" => type,
       "source-id" => source_id,
       "source-token" => source_token,
       "occurred-at" => data[:created_at],
-      "license" => LICENSE 
-    }
+      "license" => LICENSE }
   end
 
-  def self.push_datasets items, options={}
+  def self.push_datasets(items, options = {})
     if items.empty?
-      Rails.logger.info  "No works found in the Queue."
+      Rails.logger.warn "No works found in the Queue."
     else
       Array.wrap(items).map do |item|
         UsageUpdateExportJob.perform_later(item.to_json, options)
@@ -92,33 +92,33 @@ class UsageUpdate < Base
     end
   end
 
-  def self.push_item(item, options={})
+  def self.push_item(item, options = {})
     item = JSON.parse(item)
 
     if item["subj-id"].blank?
-      Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "There is no Subject" }] })
+      Rails.logger.error OpenStruct.new(body: { "errors" => [{ "title" => "There is no Subject" }] })
       return
-    elsif ENV['LAGOTTINO_TOKEN'].blank?
-      Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "Access token missing." }] })
+    elsif ENV["LAGOTTINO_TOKEN"].blank?
+      Rails.logger.error OpenStruct.new(body: { "errors" => [{ "title" => "Access token missing." }] })
       return
     elsif item["errors"].present?
-      Rails.logger.info OpenStruct.new(body: { "errors" => [{ "title" => "#{item["errors"]["title"]}" }] })
+      Rails.logger.error OpenStruct.new(body: { "errors" => [{ "title" => (item["errors"]["title"]).to_s }] })
       return
     end
 
     data = wrap_event item, options
-    push_url = ENV['LAGOTTINO_URL']  + "/events"
+    push_url = ENV["LAGOTTINO_URL"] + "/events"
 
     response = Maremma.post(push_url, data: data.to_json,
-                                      bearer: ENV['LAGOTTINO_TOKEN'],
-                                      content_type: 'application/vnd.api+json',
-                                      accept: 'application/vnd.api+json; version=2')
+                                      bearer: ENV["LAGOTTINO_TOKEN"],
+                                      content_type: "application/vnd.api+json",
+                                      accept: "application/vnd.api+json; version=2")
   end
 
-  def self.wrap_event(item, options={})
+  def self.wrap_event(item, options = {})
     obj = cached_datacite_response(item["obj-id"])
     subj = options[:report_meta]
-    { 
+    {
       "data" => {
         "type" => "events",
         "attributes" => {
@@ -133,6 +133,9 @@ class UsageUpdate < Base
           "timestamp" => item["timestamp"],
           "license" => item["license"],
           "subj" => subj,
-          "obj" => obj } }}
+          "obj" => obj,
+        },
+      },
+    }
   end
 end
