@@ -1,5 +1,5 @@
 class UsageUpdateExportJob < ActiveJob::Base
-  queue_as :levriero
+  queue_as :levriero_usage
 
   def perform(item, options={})
     response = UsageUpdate.push_item(item, options)

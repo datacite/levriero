@@ -1,5 +1,5 @@
 class UsageUpdateParseJob < ActiveJob::Base
-  queue_as :levriero
+  queue_as :levriero_usage
 
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png".freeze
 
