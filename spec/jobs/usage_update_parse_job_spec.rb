@@ -13,7 +13,7 @@ describe UsageUpdateParseJob, type: :job, vcr: true do
 
     it 'queues the job' do
       expect { job }.to have_enqueued_job(UsageUpdateParseJob)
-        .on_queue("test_levriero")
+        .on_queue("test_levriero_usage")
     end
 
     it 'execute further call' do
@@ -34,7 +34,7 @@ describe UsageUpdateParseJob, type: :job, vcr: true do
 
     it 'queues the job' do
       expect { job }.to have_enqueued_job(UsageUpdateParseJob)
-        .on_queue("test_levriero")
+        .on_queue("test_levriero_usage")
     end
 
     it 'execute further call' do

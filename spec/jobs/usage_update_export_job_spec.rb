@@ -10,7 +10,7 @@ describe UsageUpdateExportJob, type: :job, vcr: true do
 
     it 'queues the job' do
       expect { job }.to have_enqueued_job(UsageUpdateExportJob)
-        .on_queue("test_levriero")
+        .on_queue("test_levriero_usage")
     end
 
     # it 'performs' do
