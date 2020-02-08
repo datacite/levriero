@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.test.datacite.org/events
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1039/c5ee02393a","objId":"https://orcid.org/0000-0001-5423-6818","relationTypeId":"is-authored-by","sourceId":"crossref-orcid-auto-update","sourceToken":"873fc485-d5bb-430b-8d3b-1716ed5d322d","occurredAt":"2015-10-05T10:01:19Z","timestamp":"2020-02-08T12:15:18Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1039/c5ee02393a","@type":"ScholarlyArticle","datePublished":"2016","proxyIdentifiers":["1754-5706"],"registrantId":"crossref.292"},"obj":{}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.api+json; version=2
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 08 Feb 2020 12:15:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"2a9763f6f598d1a45f91447911a75424"
+      X-Runtime:
+      - '0.045563'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
+      X-Request-Id:
+      - 16882a0c-1da8-450d-ac63-1eea492013ed
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"dd636891-c30b-4c5c-ab73-7c45090e485c","type":"events","attributes":{"subjId":"https://doi.org/10.1039/c5ee02393a","objId":"https://orcid.org/0000-0001-5423-6818","sourceId":"crossref-orcid-auto-update","relationTypeId":"is-authored-by","total":1,"messageAction":"create","sourceToken":"873fc485-d5bb-430b-8d3b-1716ed5d322d","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2015-10-05T10:01:19.000Z","timestamp":"2020-02-08T10:59:12.818Z"}}}'
+    http_version: 
+  recorded_at: Sat, 08 Feb 2020 12:15:18 GMT
+recorded_with: VCR 3.0.3

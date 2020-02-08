@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  root :to => 'index#index'
+  root to: 'index#index'
 
   resources :heartbeat, only: [:index]
   resources :index, path: '/', only: [:index]
 
   # trigger agents
-  post 'agents/crossref', :to => 'agents#crossref'
+  post 'agents/crossref', to: 'agents#crossref'
+  post 'agents/crossref-orcid', to: 'agents#crossref_orcid'
 
   # rescue routing errors
   # match "*path", to: "index#routing_error", via: :all

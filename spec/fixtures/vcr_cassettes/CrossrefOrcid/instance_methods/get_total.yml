@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works?cursor=*&filter=has-orcid:true,from-created-date:2018-01-04,until-created-date:2018-01-04&mailto=info@datacite.org&rows=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '207'
+      Server:
+      - http-kit
+      Date:
+      - Sat, 08 Feb 2020 10:15:38 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2795,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+    http_version: 
+  recorded_at: Sat, 08 Feb 2020 10:15:38 GMT
+recorded_with: VCR 3.0.3
