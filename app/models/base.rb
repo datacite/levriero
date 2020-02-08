@@ -362,8 +362,8 @@ class Base
         "attributes" => attributes
       }
     }
-    url = ENV["API_URL"] + "/users/#{orcid}"
-    response = Maremma.put(url, accept: 'application/vnd.api+json', 
+    url = ENV["API_URL"] + "/users"
+    response = Maremma.post(url, accept: 'application/vnd.api+json', 
                                 content_type: 'application/vnd.api+json',
                                 data: data.to_json,
                                 bearer: ENV["LAGOTTINO_TOKEN"])
@@ -376,8 +376,10 @@ class Base
   end
 
   def self.parse_message(message: nil)
+    uid = message.dig("name", "path")
     given_names = message.dig("name", "given-names", "value")
     family_name = message.dig("name", "family-name", "value")
+
     if message.dig("name", "credit-name", "value").present?
       name = message.dig("name", "credit-name", "value")
     elsif given_names.present? || family_name.present?
@@ -387,6 +389,7 @@ class Base
     end
 
     {
+      "uid" => uid,
       "name" => name,
       "givenNames" => given_names,
       "familyName" => family_name }.compact

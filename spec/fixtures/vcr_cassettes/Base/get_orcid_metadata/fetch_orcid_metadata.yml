@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sun, 06 Oct 2019 13:02:47 GMT
+      - Sat, 08 Feb 2020 21:56:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -35,11 +35,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d7fc92ac-5503-4277-9ad5-838e31db85a3
+      - 944d7939-998b-4e1a-ae5e-b97645a01491
       X-Download-Options:
       - noopen
       X-Runtime:
-      - '0.635189'
+      - '0.004120'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -47,13 +47,13 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 13:02:47 GMT
+  recorded_at: Sat, 08 Feb 2020 21:56:38 GMT
 - request:
     method: get
     uri: https://pub.orcid.org/v2.1/0000-0002-2203-2076/person
@@ -62,7 +62,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
       Accept:
       - application/vnd.orcid+json
   response:
@@ -71,13 +71,13 @@ http_interactions:
       message: OK
     headers:
       Server:
-      - nginx/1.10.0
+      - nginx/1.16.1
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
       Content-Type:
       - application/vnd.orcid+json; qs=4;charset=UTF-8
       Date:
-      - Sun, 06 Oct 2019 13:02:48 GMT
+      - Sat, 08 Feb 2020 21:56:38 GMT
       Expires:
       - '0'
       Pragma:
@@ -91,7 +91,7 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=EDEB8B375DA428655747278237992826; path=/
+      - X-Mapping-fjhppofk=26484D0F5DA32D2D6AF64AA1C9DBBA16; path=/
       X-Frame-Options:
       - DENY
     body:
@@ -131,9 +131,9 @@ http_interactions:
               "value" : 1460757856214
             },
             "last-modified-date" : {
-              "value" : 1460757856214
+              "value" : 1580886553950
             },
-            "content" : "Brazilian born ecologist interested in patterns of vegetation distribution and dynamics, conservation biology and invasive alien species",
+            "content" : "Brazilian-born ecologist interested in patterns of vegetation distribution and dynamics, conservation biology, invasive alien species and taxonomy of Mascarene flowering plants",
             "visibility" : "PUBLIC",
             "path" : "/0000-0002-2203-2076/biography"
           },
@@ -236,17 +236,17 @@ http_interactions:
           "path" : "/0000-0002-2203-2076/person"
         }
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 13:02:48 GMT
+  recorded_at: Sat, 08 Feb 2020 21:56:38 GMT
 - request:
-    method: put
-    uri: https://api.test.datacite.org/users/0000-0002-2203-2076
+    method: post
+    uri: https://api.test.datacite.org/users
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"users","attributes":{"name":"Claudia Baider","givenNames":"Claudia
-        ","familyName":"Baider"}}}'
+      string: '{"data":{"type":"users","attributes":{"uid":"0000-0002-2203-2076","name":"Claudia
+        Baider","givenNames":"Claudia ","familyName":"Baider"}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
       Accept:
       - application/vnd.api+json
       Content-Type:
@@ -255,19 +255,19 @@ http_interactions:
       - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 201
+      message: Created
     headers:
       Date:
-      - Sun, 06 Oct 2019 13:02:49 GMT
+      - Sat, 08 Feb 2020 21:56:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 404 Not Found
+      - 201 Created
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
       Referrer-Policy:
@@ -276,24 +276,28 @@ http_interactions:
       - none
       X-Xss-Protection:
       - 1; mode=block
+      X-Credential-Username:
+      - 0000-0002-8599-0773
       X-Request-Id:
-      - 03202c41-96f9-4d3c-b797-d634d568beba
+      - c153358e-5590-4cda-a247-af73fb600892
       X-Download-Options:
       - noopen
-      X-Runtime:
-      - '0.560592'
+      Etag:
+      - W/"acec57b15c66eba29d3fbf63edc6a37d"
       X-Frame-Options:
       - SAMEORIGIN
+      X-Runtime:
+      - '0.111094'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
+      string: '{"data":{"id":"0000-0002-2203-2076","type":"users","attributes":{"givenNames":"Claudia
+        ","familyName":"Baider","name":"Claudia Baider","orcid":"https://orcid.org/0000-0002-2203-2076","github":null,"roleId":"user","isActive":false,"created":"2020-02-08T21:56:38.000Z","updated":"2020-02-08T21:56:38.000Z"},"relationships":{}}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 13:02:49 GMT
+  recorded_at: Sat, 08 Feb 2020 21:56:39 GMT
 recorded_with: VCR 3.0.3
