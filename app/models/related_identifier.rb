@@ -4,7 +4,6 @@ class RelatedIdentifier < Base
   include Helpable
   include Cacheable
 
-
   def self.import_by_month(options={})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month

@@ -1,0 +1,280 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://doi.org/ra/10.2307
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sun, 09 Feb 2020 06:45:49 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d7c1d636144fe05a3e1e61c1ae782c7061581230749; expires=Tue, 10-Mar-20
+        06:45:49 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5623e1f5af7b9aaa-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [
+          {
+            "DOI": "10.2307",
+            "RA": "Crossref"
+          }
+        ]
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:49 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.2307/1847110
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 09 Feb 2020 06:45:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 6744a372-57f7-44c0-86db-fd95c85e8be5
+      X-Runtime:
+      - '0.012192'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:49 GMT
+- request:
+    method: put
+    uri: https://api.test.datacite.org/dois/10.2307/1847110
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"dois","attributes":{"xml":"aHR0cHM6Ly9kb2kub3JnLzEwLjIzMDcvMTg0NzExMA==","source":"levriero","event":"publish"},"relationships":{"client":{"data":{"type":"clients","id":"crossref.citations"}}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.api+json
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 09 Feb 2020 06:45:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Credential-Username:
+      - 0000-0002-8599-0773
+      X-Request-Id:
+      - 8db3f0e7-b4de-4c35-95a1-7c6d464cf668
+      Etag:
+      - W/"8a2930eb464ab4b222c8242b1ce23f3e"
+      X-Runtime:
+      - '0.661461'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"10.2307/1847110","type":"dois","attributes":{"doi":"10.2307/1847110","prefix":"10.2307","suffix":"1847110","identifiers":[{"identifierType":"DOI","identifier":"https://doi.org/10.2307/1847110"}],"creators":[{"nameType":"Personal","name":"Davis,
+        David Brion","givenName":"David Brion","familyName":"Davis","affiliation":[]}],"titles":[{"title":"The
+        Movement to Abolish Capital Punishment in America, 1787-1861"}],"publisher":"JSTOR","container":{"type":"Journal","identifier":"0002-8762","identifierType":"ISSN","title":"The
+        American Historical Review","volume":"63","issue":"1","firstPage":"23"},"publicationYear":1957,"subjects":null,"contributors":[],"dates":[{"date":"1957-10","dateType":"Issued"},{"date":"2018-04-18T19:34:06Z","dateType":"Updated"}],"language":null,"types":{"resourceTypeGeneral":"Text","resourceType":"JournalArticle","schemaOrg":"ScholarlyArticle","citeproc":"article-journal","bibtex":"article","ris":"JOUR"},"relatedIdentifiers":[{"relatedIdentifier":"0002-8762","relationType":"IsPartOf","relatedIdentifierType":"ISSN","resourceTypeGeneral":"Collection"}],"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":[],"geoLocations":null,"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMjMwNy8xODQ3MTEwPC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5EYXZpcywgRGF2aWQgQnJpb248L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkRhdmlkIEJyaW9uPC9naXZlbk5hbWU+CiAgICAgIDxmYW1pbHlOYW1lPkRhdmlzPC9mYW1pbHlOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5UaGUgTW92ZW1lbnQgdG8gQWJvbGlzaCBDYXBpdGFsIFB1bmlzaG1lbnQgaW4gQW1lcmljYSwgMTc4Ny0xODYxPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkpTVE9SPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTU3PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5Kb3VybmFsQXJ0aWNsZTwvcmVzb3VyY2VUeXBlPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjE5NTctMTA8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iVXBkYXRlZCI+MjAxOC0wNC0xOFQxOTozNDowNlo8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iSVNTTiIgcmVsYXRpb25UeXBlPSJJc1BhcnRPZiIgcmVzb3VyY2VUeXBlR2VuZXJhbD0iQ29sbGVjdGlvbiI+MDAwMi04NzYyPC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8dmVyc2lvbi8+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IlNlcmllc0luZm9ybWF0aW9uIj5UaGUgQW1lcmljYW4gSGlzdG9yaWNhbCBSZXZpZXcsIDYzKDEpLCAyMzwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+Cg==","url":"https://www.jstor.org/stable/10.2307/1847110?origin=crossref","contentUrl":null,"metadataVersion":0,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"levriero","isActive":true,"state":"findable","reason":null,"landingPage":null,"viewCount":0,"downloadCount":0,"referenceCount":0,"citationCount":0,"partCount":0,"partOfCount":0,"versionCount":0,"versionOfCount":0,"viewsOverTime":[],"downloadsOverTime":[],"created":"2020-02-09T06:45:50.000Z","registered":null,"published":"1957","updated":"2020-02-09T06:45:50.000Z"},"relationships":{"client":{"data":{"id":"crossref.citations","type":"clients"}},"media":{"data":{"id":"10.2307/1847110","type":"media"}},"references":{"data":[]},"citations":{"data":[]},"parts":{"data":[]},"versions":{"data":[]}}},"included":[{"id":"crossref.citations","type":"clients","attributes":{"name":"Crossref
+        Citations","symbol":"CROSSREF.CITATIONS","year":2019,"contactEmail":"info@datacite.org","globusUuid":null,"alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","re3data":null,"opendoar":null,"issn":null,"url":null,"salesforceId":null,"created":"2019-06-09T13:07:47.000Z","updated":"2019-06-09T13:07:47.000Z","isActive":true,"hasPassword":false},"relationships":{"provider":{"data":{"id":"crossref","type":"providers"}},"prefixes":{"data":[]}}}]}'
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:50 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.2307/1847110?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '1299'
+      Server:
+      - http-kit
+      Date:
+      - Sun, 09 Feb 2020 06:45:51 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2019,11,19]],"date-time":"2019-11-19T19:46:45Z","timestamp":1574192805101},"reference-count":0,"publisher":"JSTOR","issue":"1","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["The
+        American Historical Review"],"published-print":{"date-parts":[[1957,10]]},"DOI":"10.2307\/1847110","type":"journal-article","created":{"date-parts":[[2006,4,19]],"date-time":"2006-04-19T22:06:06Z","timestamp":1145484366000},"page":"23","source":"Crossref","is-referenced-by-count":13,"title":["The
+        Movement to Abolish Capital Punishment in America, 1787-1861"],"prefix":"10.2307","volume":"63","author":[{"given":"David
+        Brion","family":"Davis","sequence":"first","affiliation":[]}],"member":"1121","container-title":["The
+        American Historical Review"],"original-title":[],"deposited":{"date-parts":[[2018,4,18]],"date-time":"2018-04-18T19:34:06Z","timestamp":1524080046000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[1957,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[1957,10]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.2307\/1847110","relation":{},"ISSN":["0002-8762"],"issn-type":[{"value":"0002-8762","type":"print"}]}}'
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:51 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.1016/s0191-6599(01)00017-1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 09 Feb 2020 06:45:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 30f0feaf-a01f-4f5a-b8ca-ab243986e76e
+      X-Runtime:
+      - '0.012116'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:51 GMT
+- request:
+    method: post
+    uri: https://api.test.datacite.org/events
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"events","id":"67bb79e8-1b3f-4bb9-aeaf-193c71db7276","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2020-02-09T06:45:51Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","proxyIdentifiers":["0002-8762"],"registrantId":"crossref.1121"}}}}'
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.api+json; version=2
+      Content-Type:
+      - application/vnd.api+json
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 09 Feb 2020 06:45:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 201 Created
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Etag:
+      - W/"e7908298b287829663677dee3adf6213"
+      X-Runtime:
+      - '0.038821'
+      X-Credential-Username:
+      - 0000-0002-8599-0773
+      X-Request-Id:
+      - 758fb884-968a-48c2-a72d-c187da0ac0da
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"67bb79e8-1b3f-4bb9-aeaf-193c71db7276","type":"events","attributes":{"subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","sourceId":"crossref-related","relationTypeId":"cites","total":1,"messageAction":"create","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2002-07-25T17:19:59.000Z","timestamp":"2020-02-09T06:45:51.581Z"}}}'
+    http_version: 
+  recorded_at: Sun, 09 Feb 2020 06:45:51 GMT
+recorded_with: VCR 3.0.3

@@ -14,4 +14,11 @@ class AgentsController < ApplicationController
 
     render json: { message: "[Crossref-ORCID Agent] Queued import for #{total} DOIs." }.to_json, status: :ok
   end
+
+  def crossref_related
+    authorize! :import, CrossrefRelated
+    total = CrossrefRelated.import
+
+    render json: { message: "[Crossref-Related Agent] Queued import for #{total} DOIs." }.to_json, status: :ok
+  end
 end
