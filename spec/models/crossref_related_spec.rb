@@ -39,7 +39,7 @@ describe CrossrefRelated, type: :model, vcr: true do
 
     it "import" do
       response = CrossrefRelated.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(2795)
+      expect(response).to eq(5333)
     end
 
     it "push_item" do 
