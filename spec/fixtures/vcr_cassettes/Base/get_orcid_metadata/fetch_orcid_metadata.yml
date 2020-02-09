@@ -13,259 +13,19 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sat, 08 Feb 2020 21:56:38 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - 944d7939-998b-4e1a-ae5e-b97645a01491
-      X-Download-Options:
-      - noopen
-      X-Runtime:
-      - '0.004120'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      X-Powered-By:
-      - Phusion Passenger 6.0.4
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
-    http_version: 
-  recorded_at: Sat, 08 Feb 2020 21:56:38 GMT
-- request:
-    method: get
-    uri: https://pub.orcid.org/v2.1/0000-0002-2203-2076/person
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
-      Accept:
-      - application/vnd.orcid+json
-  response:
-    status:
       code: 200
       message: OK
     headers:
-      Server:
-      - nginx/1.16.1
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Content-Type:
-      - application/vnd.orcid+json; qs=4;charset=UTF-8
       Date:
-      - Sat, 08 Feb 2020 21:56:38 GMT
-      Expires:
-      - '0'
-      Pragma:
-      - no-cache
-      X-Xss-Protection:
-      - 1; mode=block
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Content-Type-Options:
-      - nosniff
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - X-Mapping-fjhppofk=26484D0F5DA32D2D6AF64AA1C9DBBA16; path=/
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "last-modified-date" : {
-            "value" : 1568284477970
-          },
-          "name" : {
-            "created-date" : {
-              "value" : 1460757856211
-            },
-            "last-modified-date" : {
-              "value" : 1460757856211
-            },
-            "given-names" : {
-              "value" : "Claudia "
-            },
-            "family-name" : {
-              "value" : "Baider"
-            },
-            "credit-name" : {
-              "value" : "Claudia Baider"
-            },
-            "source" : null,
-            "visibility" : "PUBLIC",
-            "path" : "0000-0002-2203-2076"
-          },
-          "other-names" : {
-            "last-modified-date" : null,
-            "other-name" : [ ],
-            "path" : "/0000-0002-2203-2076/other-names"
-          },
-          "biography" : {
-            "created-date" : {
-              "value" : 1460757856214
-            },
-            "last-modified-date" : {
-              "value" : 1580886553950
-            },
-            "content" : "Brazilian-born ecologist interested in patterns of vegetation distribution and dynamics, conservation biology, invasive alien species and taxonomy of Mascarene flowering plants",
-            "visibility" : "PUBLIC",
-            "path" : "/0000-0002-2203-2076/biography"
-          },
-          "researcher-urls" : {
-            "last-modified-date" : null,
-            "researcher-url" : [ ],
-            "path" : "/0000-0002-2203-2076/researcher-urls"
-          },
-          "emails" : {
-            "last-modified-date" : {
-              "value" : 1568284477970
-            },
-            "email" : [ {
-              "created-date" : {
-                "value" : 1371096776711
-              },
-              "last-modified-date" : {
-                "value" : 1568284477970
-              },
-              "source" : null,
-              "email" : "clbaider@gmail.com",
-              "path" : null,
-              "visibility" : "PUBLIC",
-              "verified" : true,
-              "primary" : true,
-              "put-code" : null
-            } ],
-            "path" : "/0000-0002-2203-2076/email"
-          },
-          "addresses" : {
-            "last-modified-date" : null,
-            "address" : [ ],
-            "path" : "/0000-0002-2203-2076/address"
-          },
-          "keywords" : {
-            "last-modified-date" : {
-              "value" : 1371096776713
-            },
-            "keyword" : [ {
-              "created-date" : {
-                "value" : 1371096776713
-              },
-              "last-modified-date" : {
-                "value" : 1371096776713
-              },
-              "source" : {
-                "source-orcid" : {
-                  "uri" : "https://orcid.org/0000-0002-2203-2076",
-                  "path" : "0000-0002-2203-2076",
-                  "host" : "orcid.org"
-                },
-                "source-client-id" : null,
-                "source-name" : {
-                  "value" : "Claudia Baider"
-                }
-              },
-              "content" : "Amazon, Brazil nut, Mauritius, invasive alien species, conservation biology",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-2203-2076/keywords/15279",
-              "put-code" : 15279,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-2203-2076/keywords"
-          },
-          "external-identifiers" : {
-            "last-modified-date" : {
-              "value" : 1471776967146
-            },
-            "external-identifier" : [ {
-              "created-date" : {
-                "value" : 1471776967146
-              },
-              "last-modified-date" : {
-                "value" : 1471776967146
-              },
-              "source" : {
-                "source-orcid" : null,
-                "source-client-id" : {
-                  "uri" : "https://orcid.org/client/0000-0002-5982-8983",
-                  "path" : "0000-0002-5982-8983",
-                  "host" : "orcid.org"
-                },
-                "source-name" : {
-                  "value" : "Scopus - Elsevier"
-                }
-              },
-              "external-id-type" : "Scopus Author ID",
-              "external-id-value" : "55886786000",
-              "external-id-url" : {
-                "value" : "http://www.scopus.com/inward/authorDetails.url?authorID=55886786000&partnerID=MN8TOARS"
-              },
-              "external-id-relationship" : "SELF",
-              "visibility" : "PUBLIC",
-              "path" : "/0000-0002-2203-2076/external-identifiers/531371",
-              "put-code" : 531371,
-              "display-index" : 0
-            } ],
-            "path" : "/0000-0002-2203-2076/external-identifiers"
-          },
-          "path" : "/0000-0002-2203-2076/person"
-        }
-    http_version: 
-  recorded_at: Sat, 08 Feb 2020 21:56:38 GMT
-- request:
-    method: post
-    uri: https://api.test.datacite.org/users
-    body:
-      encoding: UTF-8
-      string: '{"data":{"type":"users","attributes":{"uid":"0000-0002-2203-2076","name":"Claudia
-        Baider","givenNames":"Claudia ","familyName":"Baider"}}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
-      Accept:
-      - application/vnd.api+json
-      Content-Type:
-      - application/vnd.api+json
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 08 Feb 2020 21:56:38 GMT
+      - Sun, 09 Feb 2020 16:05:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
@@ -276,18 +36,16 @@ http_interactions:
       - none
       X-Xss-Protection:
       - 1; mode=block
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - c153358e-5590-4cda-a247-af73fb600892
+      - 176d7241-fd01-4da8-9984-6bab6ec4ed70
       X-Download-Options:
       - noopen
       Etag:
-      - W/"acec57b15c66eba29d3fbf63edc6a37d"
+      - W/"0bc5a9945df706646561abf3eabfc457"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.111094'
+      - '0.056824'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -297,7 +55,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"0000-0002-2203-2076","type":"users","attributes":{"givenNames":"Claudia
-        ","familyName":"Baider","name":"Claudia Baider","orcid":"https://orcid.org/0000-0002-2203-2076","github":null,"roleId":"user","isActive":false,"created":"2020-02-08T21:56:38.000Z","updated":"2020-02-08T21:56:38.000Z"},"relationships":{}}}'
+        ","familyName":"Baider","name":"Claudia Baider","orcid":"https://orcid.org/0000-0002-2203-2076","github":null,"roleId":"user","isActive":false,"created":"2020-02-08T21:56:38.000Z","updated":"2020-02-08T21:56:38.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
     http_version: 
-  recorded_at: Sat, 08 Feb 2020 21:56:39 GMT
+  recorded_at: Sun, 09 Feb 2020 16:05:31 GMT
 recorded_with: VCR 3.0.3
