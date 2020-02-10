@@ -10,7 +10,7 @@ class ReportImportJob < ActiveJob::Base
       {}
     else
       # report = Report.new(response, options)
-      Rails.logger.info "[Usage Report] Started to parse #{item}."
+      Rails.logger.debug "[Usage Report] Started to parse #{item}."
       UsageUpdate.redirect(response)
       # case report.get_type
       #   when "normal" then Report.parse_normal_report report

@@ -15,7 +15,7 @@ module Importable
       if destroy(refresh: true)
         Rails.logger.debug self.class.name + " record deleted."
       else
-        Rails.logger.info self.class.name + " record not deleted: " + errors.to_a.inspect
+        Rails.logger.error self.class.name + " record not deleted: " + errors.to_a.inspect
       end
     end
   end

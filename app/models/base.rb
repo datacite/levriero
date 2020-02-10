@@ -203,7 +203,7 @@ class Base
   def self.get_datacite_xml(id)
     doi = doi_from_url(id)
     if doi.blank?
-      Rails.logger.info "#{id} is not a valid DOI"
+      Rails.logger.error "#{id} is not a valid DOI"
       return {}
     end
 
@@ -319,7 +319,7 @@ class Base
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
     sleep(0.24) # to avoid crossref rate limitting
     response =  Maremma.get(url, host: true)	
-    Rails.logger.info "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
+    Rails.logger.debug "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
     return "crossref.citations" if response.status != 200	
 
     message = response.body.dig("data", "message")	
@@ -368,6 +368,15 @@ class Base
                                 data: data.to_json,
                                 bearer: ENV["LAGOTTINO_TOKEN"])
     
+    if [200, 201].include?(response.status)
+      Rails.logger.info "[Event Data] User #{orcid} created in Profiles service."
+    elsif response.status == 409
+      Rails.logger.info "[Event Data] User #{orcid} already existed in Profiles service."
+    elsif response.body["errors"].present?
+      Rails.logger.error "[Event Data] Creating user #{orcid} had an error: #{response.body['errors'].first['title']}"
+      Rails.logger.error data.inspect
+    end
+
     return {} unless [200, 201].include?(response.status)
 
     {
