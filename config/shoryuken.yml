@@ -1,5 +1,5 @@
-concurrency: 12
-delay: 2
+concurrency: 15
+delay: 0
 pidfile: tmp/pids/shoryuken.pid
 queues:
   - doi
