@@ -362,7 +362,7 @@ class Base
         "attributes" => attributes
       }
     }
-    url = ENV["API_URL"] + "/users/#{orcid}"
+    url = ENV["VOLPINO_URL"] + "/users/#{orcid}"
     response = Maremma.put(url, accept: 'application/vnd.api+json', 
                                 content_type: 'application/vnd.api+json',
                                 data: data.to_json,
