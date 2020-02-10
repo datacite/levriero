@@ -374,7 +374,6 @@ class Base
       Rails.logger.info "[Event Data] User #{orcid} already existed in Profiles service."
     elsif response.body["errors"].present?
       Rails.logger.error "[Event Data] Creating user #{orcid} had an error: #{response.body['errors'].first['title']}"
-      Rails.logger.error data.inspect
     end
 
     return {} unless [200, 201].include?(response.status)
