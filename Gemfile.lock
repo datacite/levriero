@@ -259,7 +259,7 @@ GEM
     multipart-post (2.1.1)
     namae (1.0.1)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     oj (3.10.0)
     oj_mimic_json (1.0.1)
@@ -368,7 +368,7 @@ GEM
     safe_yaml (1.0.5)
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
-    shoryuken (4.0.3)
+    shoryuken (3.3.1)
       aws-sdk-core (>= 2)
       concurrent-ruby
       thor
@@ -449,7 +449,7 @@ DEPENDENCIES
   logstash-event (~> 1.2, >= 1.2.02)
   logstash-logger (~> 0.26.1)
   maremma (~> 4.1)
-  nokogiri (~> 1.10.4)
+  nokogiri (~> 1.10.8)
   oj (>= 2.8.3)
   oj_mimic_json (~> 1.0, >= 1.0.1)
   rack-cors (~> 1.0)
@@ -461,7 +461,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.4)
   rubocop-rspec (~> 1.28)
   sentry-raven (~> 2.9)
-  shoryuken (~> 4.0)
+  shoryuken (~> 3.2, >= 3.2.2)
   shoulda-matchers (~> 4.1, >= 4.1.2)
   simple_command
   simplecov
