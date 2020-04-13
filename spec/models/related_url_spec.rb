@@ -14,7 +14,7 @@ describe RelatedUrl, type: :model, vcr: true do
 
     it "get_total" do
       response = subject.get_total(from_date: from_date, until_date: until_date)
-      expect(response).to eq(13)
+      expect(response).to eq(19)
     end
   end
 
@@ -30,7 +30,7 @@ describe RelatedUrl, type: :model, vcr: true do
     it "import" do
       until_date = "2018-12-31"
       response = RelatedUrl.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(13)
+      expect(response).to eq(19)
     end
 
     it "push_item" do

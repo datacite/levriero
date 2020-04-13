@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D
+    uri: https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.7; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 19:39:01 GMT
+      - Mon, 13 Apr 2020 08:35:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,18 +33,18 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 12c4d45f-bccb-4fcf-a09c-577f38a35ceb
+      - ae307444-1666-4921-99ae-123838a54196
       Etag:
-      - W/"8007b06f5d4b005e9fa89f7dec7d0c9b"
+      - W/"f5c2aab2bf590c40f7a9f6f6fa55867a"
       X-Runtime:
-      - '0.043385'
+      - '0.080282'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme%3AROR+AND+updated%3A%5B2018-01-04T00%3A00%3A00Z+TO+2018-12-31T23%3A59%3A59Z%5D"}}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 19:39:01 GMT
-recorded_with: VCR 3.0.3
+      string: '{"data":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme%3AROR+AND+updated%3A%5B2018-01-04T00%3A00%3A00Z+TO+2018-12-31T23%3A59%3A59Z%5D&resource-type-id="}}'
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 08:35:47 GMT
+recorded_with: VCR 5.1.0

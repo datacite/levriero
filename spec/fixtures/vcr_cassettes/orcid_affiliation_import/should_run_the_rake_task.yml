@@ -2,24 +2,26 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%2Bcreators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D
+    uri: https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%2Bcreators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sun, 21 Jul 2019 22:02:55 GMT
+      - Mon, 13 Apr 2020 14:48:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,19 +34,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"a49d28a33db320e738ff44c5b8b6200e"
-      X-Runtime:
-      - '0.034262'
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - e4db75b4-f4ca-46bc-80ed-19d342b50bdb
+      - de50a546-70ff-431d-a6c9-b30f7e887534
+      Etag:
+      - W/"a481f2f66e9ebbcbd158d5441db90d60"
+      X-Runtime:
+      - '0.362806'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme%3AORCID+%2Bcreators.affiliation.affiliationIdentifierScheme%3AROR+AND+updated%3A%5B2018-01-04T00%3A00%3A00Z+TO+2018-12-31T23%3A59%3A59Z%5D"}}'
-    http_version: 
-  recorded_at: Sun, 21 Jul 2019 22:02:55 GMT
-recorded_with: VCR 3.0.3
+      string: !binary |-
+        H4sIALx7lF4AA2yP206DQBCG32UTesNpAUmUhJhWbnojBnvVxjQrDHQiJ3eHxNrw7i6gponeTP755vDPXFghSLDo8GKxBiZ1YdSRqFnErUU9iQrUnPZascgbLVZj+6amXgV1ySJ2IupV5LqiR4dAkTNtzZHA6WTlFh2qe1GWWKMg7NqY5AAr+MjroYCjhAoVybly1A5tjqCWlsnQCDft0LyCNMIk5j9I4Scs4H0AeY5zCYI6qZxWNLAtoCUsEf7kz/kJGjCCdZo9bBPT8De/g1f3Xet/ZrM0M9ePiTn0+ksoNNEH+dy7tbln85sd5xp9h725S8255vl24O38QOPwbg57/cBKguoGmYNN5x5sLGI2jl8AAAD//wMAloBOTZUBAAA=
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 14:48:29 GMT
+recorded_with: VCR 5.1.0

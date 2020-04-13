@@ -29,7 +29,7 @@ describe "funder_identifier:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 0 DOIs created from 2018-01-04 - 2018-12-31.\n" }
+  let(:output) { "Queued import for 30 DOIs created from 2018-01-04 - 2018-12-31.\n" }
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")
@@ -42,7 +42,7 @@ describe "funder_identifier:import", vcr: true do
   it "should enqueue an FunderIdentifierImportJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(0)
-    expect(enqueued_jobs.last[:job]).to be(FunderIdentifierImportByMonthJob)
+    }.to change(enqueued_jobs, :size).by(30)
+    expect(enqueued_jobs.last[:job]).to be(FunderIdentifierImportJob)
   end
 end

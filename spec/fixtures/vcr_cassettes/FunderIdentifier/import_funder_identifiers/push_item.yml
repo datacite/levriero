@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 23:13:56 GMT
+      - Mon, 13 Apr 2020 16:03:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,51 +32,24 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 9369f786-dff8-430e-80a3-283a3ac2b8c6
+      - 9936f20f-ccab-4ba4-acf0-b3f43af10f23
       Etag:
-      - W/"4eb4d947759d3a39da2ab7ec35004114"
+      - W/"a67e200aeba5b84e99e11eac7df2acad"
       X-Runtime:
-      - '0.035042'
+      - '0.101870'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.15125/bath-00708","type":"dois","attributes":{"doi":"10.15125/bath-00708","prefix":"10.15125","suffix":"bath-00708","identifiers":[{"identifier":"https://handle.test.datacite.org/10.15125/bath-00708","identifierType":"DOI"},{"identifier":"https://researchdata-test.bath.ac.uk/708/","identifierType":"URL"}],"creators":[{"name":"Ball,
-        Alex","nameType":"Personal","givenName":"Alex","familyName":"Ball","affiliation":[{"name":"University
-        of Bath"}],"nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-3148-9107","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"Yet
-        another test deposit"},{"title":"Alternative title","titleType":"AlternativeTitle"}],"publisher":"University
-        of Bath","container":null,"publicationYear":2017,"subjects":[{"subject":"Information
-        Science &amp; Retrieval","schemeUri":"http://www.rcuk.ac.uk/research/efficiency/researchadmin/harmonisation/","subjectScheme":"RCUK
-        Research Classifications"}],"contributors":[{"name":"Pink, Catherine","nameType":"Personal","givenName":"Catherine","familyName":"Pink","affiliation":[{"name":"University
-        of Bath"}],"contributorType":"Supervisor","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-9752-6388","nameIdentifierScheme":"ORCID"}]},{"name":"Ball,
-        Alex","nameType":"Personal","givenName":"Alex","familyName":"Ball","affiliation":[{"name":"University
-        of Bath"}],"contributorType":"DataCollector","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-3148-9107","nameIdentifierScheme":"ORCID"}]},{"name":"Nightingale,
-        Alison","nameType":"Personal","givenName":"Alison","familyName":"Nightingale","affiliation":[{"name":"University
-        of Bath"}],"contributorType":"Editor","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8611-2940","nameIdentifierScheme":"ORCID"}]},{"name":"University
-        Of Bath","affiliation":[]}],"dates":[{"date":"2018-02-01/2018-02-08","dateType":"Collected"},{"date":"2017","dateType":"Issued"}],"language":"en","types":{"ris":"COMP","bibtex":"misc","citeproc":"article","schemaOrg":"SoftwareSourceCode","resourceTypeGeneral":"Software"},"relatedIdentifiers":[{"relationType":"HasPart","relatedIdentifier":"https://researchdata-test.bath.ac.uk/708/3/2017-05_Metadata_Map.xlsx","relatedIdentifierType":"URL"},{"relationType":"HasPart","relatedIdentifier":"https://researchdata-test.bath.ac.uk/708/4/Edward%20Fraenkel%20in%20conversation%20with%20John%20Ball_%20Part%201%20Early%20years%20at%20school%20and%20in%20aeronautics.mp4","relatedIdentifierType":"URL"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.2218/ijdc.v12i1.494","relatedIdentifierType":"DOI"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.4337/9781788111010","relatedIdentifierType":"DOI"}],"sizes":["2017-05_Metadata_Map.xlsx
-        - 15kB","Edward Fraenkel in conversation with John Ball_ Part 1 Early years
-        at school and in aeronautics.mp4 - 2B"],"formats":["2017-05_Metadata_Map.xlsx
-        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","Edward
-        Fraenkel in conversation with John Ball_ Part 1 Early years at school and
-        in aeronautics.mp4 - video/mp4"],"version":"1","rightsList":[{"rights":"2017-05_Metadata_Map.xlsx
-        is licensed under the Creative Commons Attribution 4.0 License","rightsUri":"http://creativecommons.org/licenses/by/4.0"},{"rights":"Edward
-        Fraenkel in conversation with John Ball_ Part 1 Early years at school and
-        in aeronautics.mp4 has no associated licence. Please contact the archive for
-        advice."}],"descriptions":[{"description":"This test looks at whether deposited
-        files are copied to the Arkivum appliance &amp; whether ampersands cause errors
-        when sending metadata to DataCite. It also ensures the log files gives sensible
-        messages.","descriptionType":"Abstract"},{"description":"My method.","descriptionType":"Methods"},{"description":"How
-        I prepared and processed my data.","descriptionType":"Methods"},{"description":"What
-        you need in order to read them.","descriptionType":"TechnicalInfo"},{"description":"How
-        I organised my data into files.","descriptionType":"Other"}],"geoLocations":[{"geoLocationPoint":{"pointLatitude":"57.0135","pointLongitude":"9.98934"}},{"geoLocationBox":{"eastBoundLongitude":"-71.032","northBoundLatitude":"41.09","southBoundLatitude":"42.893","westBoundLongitude":"-68.211"}},{"geoLocationPlace":"Neverland"}],"fundingReferences":[{"awardTitle":"Research
-        Data Service","funderName":"University of Bath","funderIdentifier":"https://doi.org/10.13039/501100000835","funderIdentifierType":"Crossref
-        Funder ID"}],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTUxMjUvQkFUSC0wMDcwODwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkJhbGwsIEFsZXg8L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsZXg8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+QmFsbDwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAyLTMxNDgtOTEwNzwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5ZZXQgYW5vdGhlciB0ZXN0IGRlcG9zaXQ8L3RpdGxlPgogICAgPHRpdGxlIHRpdGxlVHlwZT0iQWx0ZXJuYXRpdmVUaXRsZSI+QWx0ZXJuYXRpdmUgdGl0bGU8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+VW5pdmVyc2l0eSBvZiBCYXRoPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE3PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJTb2Z0d2FyZSIvPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9IlJDVUsgUmVzZWFyY2ggQ2xhc3NpZmljYXRpb25zIiBzY2hlbWVVUkk9Imh0dHA6Ly93d3cucmN1ay5hYy51ay9yZXNlYXJjaC9lZmZpY2llbmN5L3Jlc2VhcmNoYWRtaW4vaGFybW9uaXNhdGlvbi8iPkluZm9ybWF0aW9uIFNjaWVuY2UgJmFtcDsgUmV0cmlldmFsPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGNvbnRyaWJ1dG9ycz4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IlN1cGVydmlzb3IiPgogICAgICA8Y29udHJpYnV0b3JOYW1lPlBpbmssIENhdGhlcmluZTwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkNhdGhlcmluZTwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5QaW5rPC9mYW1pbHlOYW1lPgogICAgICA8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIiBzY2hlbWVVUkk9Imh0dHA6Ly9vcmNpZC5vcmcvIj4wMDAwLTAwMDItOTc1Mi02Mzg4PC9uYW1lSWRlbnRpZmllcj4KICAgICAgPGFmZmlsaWF0aW9uPlVuaXZlcnNpdHkgb2YgQmF0aDwvYWZmaWxpYXRpb24+CiAgICA8L2NvbnRyaWJ1dG9yPgogICAgPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0iRGF0YUNvbGxlY3RvciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QmFsbCwgQWxleDwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsZXg8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+QmFsbDwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAyLTMxNDgtOTEwNzwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IkVkaXRvciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+TmlnaHRpbmdhbGUsIEFsaXNvbjwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsaXNvbjwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5OaWdodGluZ2FsZTwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAxLTg2MTEtMjk0MDwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IlJpZ2h0c0hvbGRlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+VW5pdmVyc2l0eSBvZiBCYXRoPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJDb2xsZWN0ZWQiPjIwMTgtMDItMDEvMjAxOC0wMi0wODwvZGF0ZT4KICA8L2RhdGVzPgogIDxsYW5ndWFnZT5lbjwvbGFuZ3VhZ2U+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9IlVSTCI+aHR0cHM6Ly9yZXNlYXJjaGRhdGEtdGVzdC5iYXRoLmFjLnVrLzcwOC88L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iVVJMIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPmh0dHBzOi8vcmVzZWFyY2hkYXRhLXRlc3QuYmF0aC5hYy51ay83MDgvMy8yMDE3LTA1X01ldGFkYXRhX01hcC54bHN4PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij5odHRwczovL3Jlc2VhcmNoZGF0YS10ZXN0LmJhdGguYWMudWsvNzA4LzQvRWR3YXJkJTIwRnJhZW5rZWwlMjBpbiUyMGNvbnZlcnNhdGlvbiUyMHdpdGglMjBKb2huJTIwQmFsbF8lMjBQYXJ0JTIwMSUyMEVhcmx5JTIweWVhcnMlMjBhdCUyMHNjaG9vbCUyMGFuZCUyMGluJTIwYWVyb25hdXRpY3MubXA0PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1JlZmVyZW5jZWRCeSI+MTAuMjIxOC9pamRjLnYxMmkxLjQ5NDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNSZWZlcmVuY2VkQnkiPjEwLjQzMzcvOTc4MTc4ODExMTAxMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHNpemVzPgogICAgPHNpemU+MjAxNy0wNV9NZXRhZGF0YV9NYXAueGxzeCAtIDE1a0I8L3NpemU+CiAgICA8c2l6ZT5FZHdhcmQgRnJhZW5rZWwgaW4gY29udmVyc2F0aW9uIHdpdGggSm9obiBCYWxsXyBQYXJ0IDEgRWFybHkgeWVhcnMgYXQgc2Nob29sIGFuZCBpbiBhZXJvbmF1dGljcy5tcDQgLSAyQjwvc2l6ZT4KICA8L3NpemVzPgogIDxmb3JtYXRzPgogICAgPGZvcm1hdD4yMDE3LTA1X01ldGFkYXRhX01hcC54bHN4IC0gYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnNwcmVhZHNoZWV0bWwuc2hlZXQ8L2Zvcm1hdD4KICAgIDxmb3JtYXQ+RWR3YXJkIEZyYWVua2VsIGluIGNvbnZlcnNhdGlvbiB3aXRoIEpvaG4gQmFsbF8gUGFydCAxIEVhcmx5IHllYXJzIGF0IHNjaG9vbCBhbmQgaW4gYWVyb25hdXRpY3MubXA0IC0gdmlkZW8vbXA0PC9mb3JtYXQ+CiAgPC9mb3JtYXRzPgogIDx2ZXJzaW9uPjE8L3ZlcnNpb24+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wLyI+MjAxNy0wNV9NZXRhZGF0YV9NYXAueGxzeCBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQ3JlYXRpdmUgQ29tbW9ucyBBdHRyaWJ1dGlvbiA0LjAgTGljZW5zZTwvcmlnaHRzPgogICAgPHJpZ2h0cz5FZHdhcmQgRnJhZW5rZWwgaW4gY29udmVyc2F0aW9uIHdpdGggSm9obiBCYWxsXyBQYXJ0IDEgRWFybHkgeWVhcnMgYXQgc2Nob29sIGFuZCBpbiBhZXJvbmF1dGljcy5tcDQgaGFzIG5vIGFzc29jaWF0ZWQgbGljZW5jZS4gUGxlYXNlIGNvbnRhY3QgdGhlIGFyY2hpdmUgZm9yIGFkdmljZS48L3JpZ2h0cz4KICA8L3JpZ2h0c0xpc3Q+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5UaGlzIHRlc3QgbG9va3MgYXQgd2hldGhlciBkZXBvc2l0ZWQgZmlsZXMgYXJlIGNvcGllZCB0byB0aGUgQXJraXZ1bSBhcHBsaWFuY2UgJmFtcDsgd2hldGhlciBhbXBlcnNhbmRzIGNhdXNlIGVycm9ycyB3aGVuIHNlbmRpbmcgbWV0YWRhdGEgdG8gRGF0YUNpdGUuIEl0IGFsc28gZW5zdXJlcyB0aGUgbG9nIGZpbGVzIGdpdmVzIHNlbnNpYmxlIG1lc3NhZ2VzLjwvZGVzY3JpcHRpb24+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJNZXRob2RzIj5NeSBtZXRob2QuPC9kZXNjcmlwdGlvbj4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik1ldGhvZHMiPkhvdyBJIHByZXBhcmVkIGFuZCBwcm9jZXNzZWQgbXkgZGF0YS48L2Rlc2NyaXB0aW9uPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iVGVjaG5pY2FsSW5mbyI+V2hhdCB5b3UgbmVlZCBpbiBvcmRlciB0byByZWFkIHRoZW0uPC9kZXNjcmlwdGlvbj4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik90aGVyIj5Ib3cgSSBvcmdhbmlzZWQgbXkgZGF0YSBpbnRvIGZpbGVzLjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CiAgPGdlb0xvY2F0aW9ucz4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPjkuOTg5MzQ8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPjU3LjAxMzU8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvbkJveD4KICAgICAgICA8d2VzdEJvdW5kTG9uZ2l0dWRlPi02OC4yMTE8L3dlc3RCb3VuZExvbmdpdHVkZT4KICAgICAgICA8ZWFzdEJvdW5kTG9uZ2l0dWRlPi03MS4wMzI8L2Vhc3RCb3VuZExvbmdpdHVkZT4KICAgICAgICA8c291dGhCb3VuZExhdGl0dWRlPjQyLjg5Mzwvc291dGhCb3VuZExhdGl0dWRlPgogICAgICAgIDxub3J0aEJvdW5kTGF0aXR1ZGU+NDEuMDk8L25vcnRoQm91bmRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvbkJveD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBsYWNlPk5ldmVybGFuZDwvZ2VvTG9jYXRpb25QbGFjZT4KICAgIDwvZ2VvTG9jYXRpb24+CiAgPC9nZW9Mb2NhdGlvbnM+CiAgPGZ1bmRpbmdSZWZlcmVuY2VzPgogICAgPGZ1bmRpbmdSZWZlcmVuY2U+CiAgICAgIDxmdW5kZXJOYW1lPlVuaXZlcnNpdHkgb2YgQmF0aDwvZnVuZGVyTmFtZT4KICAgICAgPGZ1bmRlcklkZW50aWZpZXIgZnVuZGVySWRlbnRpZmllclR5cGU9IkNyb3NzcmVmIEZ1bmRlciBJRCI+aHR0cHM6Ly9kb2kub3JnLzEwLjEzMDM5LzUwMTEwMDAwMDgzNTwvZnVuZGVySWRlbnRpZmllcj4KICAgICAgPGF3YXJkVGl0bGU+UmVzZWFyY2ggRGF0YSBTZXJ2aWNlPC9hd2FyZFRpdGxlPgogICAgPC9mdW5kaW5nUmVmZXJlbmNlPgogIDwvZnVuZGluZ1JlZmVyZW5jZXM+CjwvcmVzb3VyY2U+","url":"https://researchdata-test.bath.ac.uk/id/eprint/708","contentUrl":null,"metadataVersion":1,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"created":"2019-05-11T21:57:45.000Z","registered":"2019-05-11T21:57:46.000Z","published":"2017","updated":"2019-07-20T22:31:46.000Z"},"relationships":{"client":{"data":{"id":"bl.bath","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.bath","type":"clients","attributes":{"name":"University
-        of Bath","symbol":"BL.BATH","year":2014,"contactName":"Catherine Pink","contactEmail":"c.j.pink@bath.ac.uk","description":null,"domains":"bath.ac.uk","url":null,"created":"2014-04-02T09:33:09.000Z","updated":"2018-08-26T01:30:38.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.15125","type":"prefixes"}]}}}]}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 23:13:56 GMT
+      string: !binary |-
+        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
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:03:11 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.15125/bath-00708
@@ -83,16 +58,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 23:13:56 GMT
+      - Mon, 13 Apr 2020 16:03:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -105,51 +82,24 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 1a2a4f5f-6f0f-4af7-924a-c93e25c6d192
+      - cef4b056-b483-45fe-8a9c-af28c996715d
       Etag:
-      - W/"a6265c45e870e15a56d37099bd782320"
+      - W/"26394b612482380d3a1280b8fe74724e"
       X-Runtime:
-      - '0.052348'
+      - '0.130981'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.15125/bath-00708","type":"dois","attributes":{"doi":"10.15125/bath-00708","prefix":"10.15125","suffix":"bath-00708","identifiers":[{"identifier":"https://handle.test.datacite.org/10.15125/bath-00708","identifierType":"DOI"},{"identifier":"https://researchdata-test.bath.ac.uk/708/","identifierType":"URL"}],"creators":[{"name":"Ball,
-        Alex","nameType":"Personal","givenName":"Alex","familyName":"Ball","affiliation":["University
-        of Bath"],"nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-3148-9107","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"Yet
-        another test deposit"},{"title":"Alternative title","titleType":"AlternativeTitle"}],"publisher":"University
-        of Bath","container":null,"publicationYear":2017,"subjects":[{"subject":"Information
-        Science &amp; Retrieval","schemeUri":"http://www.rcuk.ac.uk/research/efficiency/researchadmin/harmonisation/","subjectScheme":"RCUK
-        Research Classifications"}],"contributors":[{"name":"Pink, Catherine","nameType":"Personal","givenName":"Catherine","familyName":"Pink","affiliation":["University
-        of Bath"],"contributorType":"Supervisor","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-9752-6388","nameIdentifierScheme":"ORCID"}]},{"name":"Ball,
-        Alex","nameType":"Personal","givenName":"Alex","familyName":"Ball","affiliation":["University
-        of Bath"],"contributorType":"DataCollector","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0002-3148-9107","nameIdentifierScheme":"ORCID"}]},{"name":"Nightingale,
-        Alison","nameType":"Personal","givenName":"Alison","familyName":"Nightingale","affiliation":["University
-        of Bath"],"contributorType":"Editor","nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0001-8611-2940","nameIdentifierScheme":"ORCID"}]},{"name":"University
-        Of Bath","affiliation":[]}],"dates":[{"date":"2018-02-01/2018-02-08","dateType":"Collected"},{"date":"2017","dateType":"Issued"}],"language":"en","types":{"ris":"COMP","bibtex":"misc","citeproc":"article","schemaOrg":"SoftwareSourceCode","resourceTypeGeneral":"Software"},"relatedIdentifiers":[{"relationType":"HasPart","relatedIdentifier":"https://researchdata-test.bath.ac.uk/708/3/2017-05_Metadata_Map.xlsx","relatedIdentifierType":"URL"},{"relationType":"HasPart","relatedIdentifier":"https://researchdata-test.bath.ac.uk/708/4/Edward%20Fraenkel%20in%20conversation%20with%20John%20Ball_%20Part%201%20Early%20years%20at%20school%20and%20in%20aeronautics.mp4","relatedIdentifierType":"URL"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.2218/ijdc.v12i1.494","relatedIdentifierType":"DOI"},{"relationType":"IsReferencedBy","relatedIdentifier":"10.4337/9781788111010","relatedIdentifierType":"DOI"}],"sizes":["2017-05_Metadata_Map.xlsx
-        - 15kB","Edward Fraenkel in conversation with John Ball_ Part 1 Early years
-        at school and in aeronautics.mp4 - 2B"],"formats":["2017-05_Metadata_Map.xlsx
-        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","Edward
-        Fraenkel in conversation with John Ball_ Part 1 Early years at school and
-        in aeronautics.mp4 - video/mp4"],"version":"1","rightsList":[{"rights":"2017-05_Metadata_Map.xlsx
-        is licensed under the Creative Commons Attribution 4.0 License","rightsUri":"http://creativecommons.org/licenses/by/4.0"},{"rights":"Edward
-        Fraenkel in conversation with John Ball_ Part 1 Early years at school and
-        in aeronautics.mp4 has no associated licence. Please contact the archive for
-        advice."}],"descriptions":[{"description":"This test looks at whether deposited
-        files are copied to the Arkivum appliance &amp; whether ampersands cause errors
-        when sending metadata to DataCite. It also ensures the log files gives sensible
-        messages.","descriptionType":"Abstract"},{"description":"My method.","descriptionType":"Methods"},{"description":"How
-        I prepared and processed my data.","descriptionType":"Methods"},{"description":"What
-        you need in order to read them.","descriptionType":"TechnicalInfo"},{"description":"How
-        I organised my data into files.","descriptionType":"Other"}],"geoLocations":[{"geoLocationPoint":{"pointLatitude":"57.0135","pointLongitude":"9.98934"}},{"geoLocationBox":{"eastBoundLongitude":"-71.032","northBoundLatitude":"41.09","southBoundLatitude":"42.893","westBoundLongitude":"-68.211"}},{"geoLocationPlace":"Neverland"}],"fundingReferences":[{"awardTitle":"Research
-        Data Service","funderName":"University of Bath","funderIdentifier":"https://doi.org/10.13039/501100000835","funderIdentifierType":"Crossref
-        Funder ID"}],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTUxMjUvQkFUSC0wMDcwODwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkJhbGwsIEFsZXg8L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsZXg8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+QmFsbDwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAyLTMxNDgtOTEwNzwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5ZZXQgYW5vdGhlciB0ZXN0IGRlcG9zaXQ8L3RpdGxlPgogICAgPHRpdGxlIHRpdGxlVHlwZT0iQWx0ZXJuYXRpdmVUaXRsZSI+QWx0ZXJuYXRpdmUgdGl0bGU8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+VW5pdmVyc2l0eSBvZiBCYXRoPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE3PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJTb2Z0d2FyZSIvPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9IlJDVUsgUmVzZWFyY2ggQ2xhc3NpZmljYXRpb25zIiBzY2hlbWVVUkk9Imh0dHA6Ly93d3cucmN1ay5hYy51ay9yZXNlYXJjaC9lZmZpY2llbmN5L3Jlc2VhcmNoYWRtaW4vaGFybW9uaXNhdGlvbi8iPkluZm9ybWF0aW9uIFNjaWVuY2UgJmFtcDsgUmV0cmlldmFsPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGNvbnRyaWJ1dG9ycz4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IlN1cGVydmlzb3IiPgogICAgICA8Y29udHJpYnV0b3JOYW1lPlBpbmssIENhdGhlcmluZTwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkNhdGhlcmluZTwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5QaW5rPC9mYW1pbHlOYW1lPgogICAgICA8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIiBzY2hlbWVVUkk9Imh0dHA6Ly9vcmNpZC5vcmcvIj4wMDAwLTAwMDItOTc1Mi02Mzg4PC9uYW1lSWRlbnRpZmllcj4KICAgICAgPGFmZmlsaWF0aW9uPlVuaXZlcnNpdHkgb2YgQmF0aDwvYWZmaWxpYXRpb24+CiAgICA8L2NvbnRyaWJ1dG9yPgogICAgPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0iRGF0YUNvbGxlY3RvciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+QmFsbCwgQWxleDwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsZXg8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+QmFsbDwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAyLTMxNDgtOTEwNzwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IkVkaXRvciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+TmlnaHRpbmdhbGUsIEFsaXNvbjwvY29udHJpYnV0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkFsaXNvbjwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5OaWdodGluZ2FsZTwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCIgc2NoZW1lVVJJPSJodHRwOi8vb3JjaWQub3JnLyI+MDAwMC0wMDAxLTg2MTEtMjk0MDwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDxhZmZpbGlhdGlvbj5Vbml2ZXJzaXR5IG9mIEJhdGg8L2FmZmlsaWF0aW9uPgogICAgPC9jb250cmlidXRvcj4KICAgIDxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9IlJpZ2h0c0hvbGRlciI+CiAgICAgIDxjb250cmlidXRvck5hbWU+VW5pdmVyc2l0eSBvZiBCYXRoPC9jb250cmlidXRvck5hbWU+CiAgICA8L2NvbnRyaWJ1dG9yPgogIDwvY29udHJpYnV0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJDb2xsZWN0ZWQiPjIwMTgtMDItMDEvMjAxOC0wMi0wODwvZGF0ZT4KICA8L2RhdGVzPgogIDxsYW5ndWFnZT5lbjwvbGFuZ3VhZ2U+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9IlVSTCI+aHR0cHM6Ly9yZXNlYXJjaGRhdGEtdGVzdC5iYXRoLmFjLnVrLzcwOC88L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iVVJMIiByZWxhdGlvblR5cGU9Ikhhc1BhcnQiPmh0dHBzOi8vcmVzZWFyY2hkYXRhLXRlc3QuYmF0aC5hYy51ay83MDgvMy8yMDE3LTA1X01ldGFkYXRhX01hcC54bHN4PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0Ij5odHRwczovL3Jlc2VhcmNoZGF0YS10ZXN0LmJhdGguYWMudWsvNzA4LzQvRWR3YXJkJTIwRnJhZW5rZWwlMjBpbiUyMGNvbnZlcnNhdGlvbiUyMHdpdGglMjBKb2huJTIwQmFsbF8lMjBQYXJ0JTIwMSUyMEVhcmx5JTIweWVhcnMlMjBhdCUyMHNjaG9vbCUyMGFuZCUyMGluJTIwYWVyb25hdXRpY3MubXA0PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1JlZmVyZW5jZWRCeSI+MTAuMjIxOC9pamRjLnYxMmkxLjQ5NDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNSZWZlcmVuY2VkQnkiPjEwLjQzMzcvOTc4MTc4ODExMTAxMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHNpemVzPgogICAgPHNpemU+MjAxNy0wNV9NZXRhZGF0YV9NYXAueGxzeCAtIDE1a0I8L3NpemU+CiAgICA8c2l6ZT5FZHdhcmQgRnJhZW5rZWwgaW4gY29udmVyc2F0aW9uIHdpdGggSm9obiBCYWxsXyBQYXJ0IDEgRWFybHkgeWVhcnMgYXQgc2Nob29sIGFuZCBpbiBhZXJvbmF1dGljcy5tcDQgLSAyQjwvc2l6ZT4KICA8L3NpemVzPgogIDxmb3JtYXRzPgogICAgPGZvcm1hdD4yMDE3LTA1X01ldGFkYXRhX01hcC54bHN4IC0gYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnNwcmVhZHNoZWV0bWwuc2hlZXQ8L2Zvcm1hdD4KICAgIDxmb3JtYXQ+RWR3YXJkIEZyYWVua2VsIGluIGNvbnZlcnNhdGlvbiB3aXRoIEpvaG4gQmFsbF8gUGFydCAxIEVhcmx5IHllYXJzIGF0IHNjaG9vbCBhbmQgaW4gYWVyb25hdXRpY3MubXA0IC0gdmlkZW8vbXA0PC9mb3JtYXQ+CiAgPC9mb3JtYXRzPgogIDx2ZXJzaW9uPjE8L3ZlcnNpb24+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wLyI+MjAxNy0wNV9NZXRhZGF0YV9NYXAueGxzeCBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQ3JlYXRpdmUgQ29tbW9ucyBBdHRyaWJ1dGlvbiA0LjAgTGljZW5zZTwvcmlnaHRzPgogICAgPHJpZ2h0cz5FZHdhcmQgRnJhZW5rZWwgaW4gY29udmVyc2F0aW9uIHdpdGggSm9obiBCYWxsXyBQYXJ0IDEgRWFybHkgeWVhcnMgYXQgc2Nob29sIGFuZCBpbiBhZXJvbmF1dGljcy5tcDQgaGFzIG5vIGFzc29jaWF0ZWQgbGljZW5jZS4gUGxlYXNlIGNvbnRhY3QgdGhlIGFyY2hpdmUgZm9yIGFkdmljZS48L3JpZ2h0cz4KICA8L3JpZ2h0c0xpc3Q+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5UaGlzIHRlc3QgbG9va3MgYXQgd2hldGhlciBkZXBvc2l0ZWQgZmlsZXMgYXJlIGNvcGllZCB0byB0aGUgQXJraXZ1bSBhcHBsaWFuY2UgJmFtcDsgd2hldGhlciBhbXBlcnNhbmRzIGNhdXNlIGVycm9ycyB3aGVuIHNlbmRpbmcgbWV0YWRhdGEgdG8gRGF0YUNpdGUuIEl0IGFsc28gZW5zdXJlcyB0aGUgbG9nIGZpbGVzIGdpdmVzIHNlbnNpYmxlIG1lc3NhZ2VzLjwvZGVzY3JpcHRpb24+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJNZXRob2RzIj5NeSBtZXRob2QuPC9kZXNjcmlwdGlvbj4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik1ldGhvZHMiPkhvdyBJIHByZXBhcmVkIGFuZCBwcm9jZXNzZWQgbXkgZGF0YS48L2Rlc2NyaXB0aW9uPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iVGVjaG5pY2FsSW5mbyI+V2hhdCB5b3UgbmVlZCBpbiBvcmRlciB0byByZWFkIHRoZW0uPC9kZXNjcmlwdGlvbj4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik90aGVyIj5Ib3cgSSBvcmdhbmlzZWQgbXkgZGF0YSBpbnRvIGZpbGVzLjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CiAgPGdlb0xvY2F0aW9ucz4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPjkuOTg5MzQ8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPjU3LjAxMzU8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvbkJveD4KICAgICAgICA8d2VzdEJvdW5kTG9uZ2l0dWRlPi02OC4yMTE8L3dlc3RCb3VuZExvbmdpdHVkZT4KICAgICAgICA8ZWFzdEJvdW5kTG9uZ2l0dWRlPi03MS4wMzI8L2Vhc3RCb3VuZExvbmdpdHVkZT4KICAgICAgICA8c291dGhCb3VuZExhdGl0dWRlPjQyLjg5Mzwvc291dGhCb3VuZExhdGl0dWRlPgogICAgICAgIDxub3J0aEJvdW5kTGF0aXR1ZGU+NDEuMDk8L25vcnRoQm91bmRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvbkJveD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBsYWNlPk5ldmVybGFuZDwvZ2VvTG9jYXRpb25QbGFjZT4KICAgIDwvZ2VvTG9jYXRpb24+CiAgPC9nZW9Mb2NhdGlvbnM+CiAgPGZ1bmRpbmdSZWZlcmVuY2VzPgogICAgPGZ1bmRpbmdSZWZlcmVuY2U+CiAgICAgIDxmdW5kZXJOYW1lPlVuaXZlcnNpdHkgb2YgQmF0aDwvZnVuZGVyTmFtZT4KICAgICAgPGZ1bmRlcklkZW50aWZpZXIgZnVuZGVySWRlbnRpZmllclR5cGU9IkNyb3NzcmVmIEZ1bmRlciBJRCI+aHR0cHM6Ly9kb2kub3JnLzEwLjEzMDM5LzUwMTEwMDAwMDgzNTwvZnVuZGVySWRlbnRpZmllcj4KICAgICAgPGF3YXJkVGl0bGU+UmVzZWFyY2ggRGF0YSBTZXJ2aWNlPC9hd2FyZFRpdGxlPgogICAgPC9mdW5kaW5nUmVmZXJlbmNlPgogIDwvZnVuZGluZ1JlZmVyZW5jZXM+CjwvcmVzb3VyY2U+","url":"https://researchdata-test.bath.ac.uk/id/eprint/708","contentUrl":null,"metadataVersion":1,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"created":"2019-05-11T21:57:45.000Z","registered":"2019-05-11T21:57:46.000Z","published":"2017","updated":"2019-07-20T22:31:46.000Z"},"relationships":{"client":{"data":{"id":"bl.bath","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"bl.bath","type":"clients","attributes":{"name":"University
-        of Bath","symbol":"BL.BATH","year":2014,"contactName":"Catherine Pink","contactEmail":"c.j.pink@bath.ac.uk","description":null,"domains":"bath.ac.uk","url":null,"created":"2014-04-02T09:33:09.000Z","updated":"2018-08-26T01:30:38.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"bl","type":"providers"}},"prefixes":{"data":[{"id":"10.4124","type":"prefixes"},{"id":"10.15125","type":"prefixes"}]}}}]}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 23:13:56 GMT
+      string: !binary |-
+        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
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:03:11 GMT
 - request:
     method: get
     uri: https://api.crossref.org/funders/10.13039/501100000835
@@ -158,9 +108,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
@@ -179,7 +131,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 20 Jul 2019 23:13:56 GMT
+      - Mon, 13 Apr 2020 16:03:15 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -189,34 +141,36 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"funder","message-version":"1.0.0","message":{"hierarchy-names":{"501100000835":"University
-        of Bath"},"replaced-by":[],"work-count":329,"name":"University of Bath","descendants":[],"descendant-work-count":329,"id":"501100000835","tokens":["university","of","bath"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/501100000835","hierarchy":{"501100000835":{}},"alt-names":[],"location":"United
+        of Bath"},"replaced-by":[],"work-count":414,"name":"University of Bath","descendants":[],"descendant-work-count":414,"id":"501100000835","tokens":["university","of","bath"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/501100000835","hierarchy":{"501100000835":{}},"alt-names":[],"location":"United
         Kingdom"}}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 23:13:56 GMT
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:03:15 GMT
 - request:
     method: post
     uri: https://api.test.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.15125/bath-00708","objId":"https://doi.org/10.13039/501100000835","relationTypeId":"is-funded-by","sourceId":"datacite-funder","sourceToken":"6be0ac24-f58c-4a9f-968a-5c69a1ec0e68","occurredAt":"2019-07-20T22:31:46.000Z","timestamp":"2019-07-20T23:13:56Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.15125/bath-00708","@type":"SoftwareSourceCode","datePublished":"2017","proxyIdentifiers":[],"registrantId":"datacite.bl.bath"},"obj":{"@id":"https://doi.org/10.13039/501100000835","@type":"Funder","name":"University
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.15125/bath-00708","objId":"https://doi.org/10.13039/501100000835","relationTypeId":"is-funded-by","sourceId":"datacite-funder","sourceToken":"6be0ac24-f58c-4a9f-968a-5c69a1ec0e68","occurredAt":"2020-04-13T12:02:47.000Z","timestamp":"2020-04-13T16:03:15Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.15125/bath-00708","@type":"SoftwareSourceCode","datePublished":"2017","proxyIdentifiers":[],"registrantId":"datacite.bl.bath"},"obj":{"@id":"https://doi.org/10.13039/501100000835","@type":"Funder","name":"University
         of Bath","alternateName":[],"location":{"type":"postalAddress","addressCountry":"United
         Kingdom"},"dateModified":"2018-07-11T00:00:00Z"}}}}'
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - application/vnd.api+json; version=2
       Content-Type:
       - application/vnd.api+json
       Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDItODU5OS0wNzczIiwibmFtZSI6IlJpY2hhcmQgSGFsbGV0dCIsImVtYWlsIjoicmhhbGxldHRAZGF0YWNpdGUub3JnIiwicm9sZV9pZCI6InN0YWZmX2FkbWluIiwiYmV0YV90ZXN0ZXIiOmZhbHNlLCJmZWF0dXJlcyI6eyJkZWxldGUtZG9pIjpmYWxzZX0sImlhdCI6MTUzMzkwMjM0NiwiZXhwIjoyMTY1MDU0MzQ2fQ.eEMiYeYHPP7EXVF2DCWhBXX0hwDfwL4zvNifpLPLyF0jsITVPIPGTRzbe1ql1XIxcw4QjBb4DOWfnZ1IkR-lTCMxWcnfBEzL67e1E9B0RE2GeXkcYUOMu7XJ4pCQf1hAHcb_b4OjCz0Z-qRDRA9U6z1pWDjRPLAchZJlLsIGXbuqqCeBusIz5Uv4DsyjCTtc3ldQwpD76mHhvq3AmO4bKB4Ttv8ak-oAllZMUm3sqJLxh5KrsCpHWDs0i9olK6qxHnlsrnsxTFS_Xn2T_0egRB9Ilxe_qBwsHeguZNqcd_Ls-JkVmc4nNJL0ZkhvwojR66t5rKkNMH0H-HJCpntFKA
+      - Bearer <VOLPINO_TOKEN>
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 23:13:57 GMT
+      - Mon, 13 Apr 2020 16:03:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -227,21 +181,24 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - e168d8fc-d7af-4191-a5fb-3b592f1ad120
+      - 30c51bd5-a660-4b09-8976-d4fd12fec5e1
       Etag:
-      - W/"2ddfd9691b2b31e2ac58e63d284c80d5"
+      - W/"4e5a7bef3fd3f3c861fc76593a98b99a"
       X-Runtime:
-      - '0.061059'
+      - '0.072586'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"fa95db13-dc2a-4a1d-88f1-1b32bb1f29f5","type":"events","attributes":{"subjId":"https://doi.org/10.15125/bath-00708","objId":"https://doi.org/10.13039/501100000835","sourceId":"datacite-funder","relationTypeId":"is-funded-by","total":1,"messageAction":"create","sourceToken":"6be0ac24-f58c-4a9f-968a-5c69a1ec0e68","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurredAt":"2019-07-20T22:31:46.000Z","timestamp":"2019-07-20T22:32:01.759Z"},"relationships":{"dois":{"data":[{"id":"10.15125/bath-00708","type":"dois"}]}}}}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 23:13:57 GMT
-recorded_with: VCR 3.0.3
+      string: !binary |-
+        H4sIAESNlF4AA3yQwW7DIBBE/4VzsAHHDvYtUi+9VjnltsA6obVNBDhSGuXfC45kVVVbbrAzs8O7EwMRSHcn1pCO9NDWRvGKGi2AboEbKmXPKVeVUIr3ou1rsiHxdsGkxitOMaQ7xOitmiOGnBRm9f6a084xXkJXlsbZwvlTyVnBay7qUkE8U8Z2TCaz+0ddsaota8Y5y0dWeXlws9e4WHJ3bSPSfp4M+twM/Anji7Okm+Zh2BCPA0TrpkOqvHhseKoNVbc17e2H6ul9hv0xcxEG0vENGTEEOOFeZ1FaoD1CxDX64D4wPzcKGWixpX0tdULb9rRtJNBaNy1w1AybTGOwGqeA33gsefaK2o2jm8LC5jKrJDRuBDuVn+hdyQtWZphaz96j2ceUIJhglG0prw5cdEx0212RMB4zJ5tqRxgvv8pk0Uh5XL+w4nw8Hl8AAAD//wMAZAh8GzECAAA=
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:03:16 GMT
+recorded_with: VCR 5.1.0

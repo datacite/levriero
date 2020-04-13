@@ -13,7 +13,7 @@ describe Crossref, type: :model, vcr: true do
     it "import" do
       until_date = "2018-01-31"
       response = Crossref.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(439)
+      expect(response).to eq(0)
     end
   end
 end

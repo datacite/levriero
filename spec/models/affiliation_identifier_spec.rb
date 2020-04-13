@@ -20,7 +20,7 @@ describe AffiliationIdentifier, type: :model, vcr: true do
     it "import" do
       until_date = "2019-07-19"
       response = AffiliationIdentifier.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(6)
+      expect(response).to eq(0)
     end
 
     it "fetch ror metadata" do

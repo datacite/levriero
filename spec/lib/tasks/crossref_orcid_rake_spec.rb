@@ -29,7 +29,7 @@ describe "crossref_orcid:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 2795 DOIs created from 2018-01-04" }
+  let(:output) { "Queued import for 986235 DOIs created from 2018-01-04" }
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")
@@ -42,7 +42,7 @@ describe "crossref_orcid:import", vcr: true do
   it "should enqueue an CrossrefOrcidImportJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(2795)
+    }.to change(enqueued_jobs, :size).by(25)
     expect(enqueued_jobs.last[:job]).to be(CrossrefOrcidImportJob)
   end
 end

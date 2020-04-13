@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sun, 09 Feb 2020 16:05:31 GMT
+      - Mon, 13 Apr 2020 16:00:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,6 +32,8 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Permitted-Cross-Domain-Policies:
@@ -37,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 176d7241-fd01-4da8-9984-6bab6ec4ed70
+      - '001619f1-b485-4155-9b18-e640f29573cb'
       X-Download-Options:
       - noopen
       Etag:
-      - W/"0bc5a9945df706646561abf3eabfc457"
+      - W/"85686fbbe082692b6052c66455e8e5e7"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.056824'
+      - '0.088760'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,8 +58,8 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0002-2203-2076","type":"users","attributes":{"givenNames":"Claudia
-        ","familyName":"Baider","name":"Claudia Baider","orcid":"https://orcid.org/0000-0002-2203-2076","github":null,"roleId":"user","isActive":false,"created":"2020-02-08T21:56:38.000Z","updated":"2020-02-08T21:56:38.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
-    http_version: 
-  recorded_at: Sun, 09 Feb 2020 16:05:31 GMT
-recorded_with: VCR 3.0.3
+      string: !binary |-
+        H4sIAImMlF4AA4RQwWrDMAz9laFz0mYu64pv3U677NTTxg5qrDYCJw623FJK/n1yGwaDwQwGv6enp2ddwaEg2CuwAwuNnlqvqY1pVrVpntdQgVxG0mJOFJNCFIm8z0Kp9B35RMM79kXx6jE7RtUcsGd/mekXZEdR2eGX7OGHD7G9je9ExmSXyxtehHhc/h3oyNLlPdghe19BDJ7e3BxQq5y2rWgqsAf0iSpoI6FQUZjGqJ2pm83OPNqntV1tFur+oV15dP+JJp1FHoXDkDoey/cn5Xq6b9AFVurzq4Ix7z2nrrgVGCmFHFva6R5nxYnpPD9dOA8+oJthy3KfUOA0fQMAAP//AwAf080SoQEAAA==
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:00:09 GMT
+recorded_with: VCR 5.1.0

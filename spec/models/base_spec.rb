@@ -47,7 +47,7 @@ describe Base, type: :model, vcr: true do
       response = Base.get_datacite_metadata(id)
       expect(response["@id"]).to eq("https://doi.org/10.4124/ccvcn4z")
       expect(response["@type"]).to eq("Dataset")
-      expect(response["registrantId"]).to eq("datacite.bl.ccdc")
+      expect(response["registrantId"]).to eq("datacite.ccdc.ccdc")
       expect(response["proxyIdentifiers"]).to eq(["10.1021/ja906895j"])
       expect(response["datePublished"]).to eq("2010")
     end
@@ -59,7 +59,7 @@ describe Base, type: :model, vcr: true do
       expect(response["@type"]).to eq("Dataset")
        expect(response["registrantId"]).to eq("datacite.inist.inra")
       expect(response["proxyIdentifiers"]).to be_empty
-      expect(response["datePublished"]).to eq("2016")
+      expect(response["datePublished"]).to eq("2018")
     end
 
     it "fetch metadata with author information" do

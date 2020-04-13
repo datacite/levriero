@@ -8,7 +8,7 @@ gem "oj_mimic_json", "~> 1.0", ">= 1.0.1"
 gem 'equivalent-xml', '~> 0.6.0'
 gem 'nokogiri', '~> 1.10.4'
 gem 'iso8601', '~> 0.9.0'
-gem 'maremma', '~> 4.1'
+gem 'maremma', '~> 4.6.1'
 gem "dalli", "~> 2.7.6"
 gem "lograge", "~> 0.11.2"
 gem "logstash-event", "~> 1.2", ">= 1.2.02"
@@ -24,8 +24,8 @@ gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
 gem "facets", require: false
-gem 'bolognese', '~> 1.0'
-gem 'shoryuken', '~> 3.2', '>= 3.2.2'
+gem "bolognese", "~> 1.5"
+gem "shoryuken", "~> 4.0"
 gem 'rack-cors', '~> 1.0', :require => 'rack/cors'
 gem 'rack-utf8_sanitizer', '~> 1.6'
 gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
@@ -52,7 +52,7 @@ end
 group :test do
   gem 'capybara'
   gem 'webmock', '~> 3.1'
-  gem 'vcr', '~> 3.0.3'
+  gem 'vcr', '~> 5.1'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'

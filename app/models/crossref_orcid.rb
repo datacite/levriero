@@ -51,8 +51,8 @@ class CrossrefOrcid < Base
     total = get_total(options)
 
     if total > 0
-      # walk through results paginated via cursor
-      total_pages = (total.to_f / job_batch_size).ceil
+      # walk through results paginated via cursor, unless test environment
+      total_pages = Rails.env.test? ? 1 : (total.to_f / job_batch_size).ceil
       error_total = 0
       cursor = "*"
 

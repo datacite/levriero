@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 20 Jul 2019 14:43:07 GMT
+      - Mon, 13 Apr 2020 16:00:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,26 +32,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 98b177f6-737c-42eb-8c48-9068b8bb8888
+      - edbde263-77a7-4bff-ba5b-a728a43eb535
       Etag:
-      - W/"43f138a5d7200d72a94290b0891978b9"
+      - W/"f667c869d4bf40c5c8afdc65834dcb59"
       X-Runtime:
-      - '0.035435'
+      - '0.104852'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.5438/mk65-3m12","type":"dois","attributes":{"doi":"10.5438/mk65-3m12","prefix":"10.5438","suffix":"mk65-3m12","identifiers":[{"identifier":"https://doi.org/10.5438/mk65-3m12","identifierType":"DOI"}],"creators":[{"name":"Fenner,
-        Martin","nameType":"Personal","givenName":"Martin","familyName":"Fenner","affiliation":[{"name":"DataCite","affiliationIdentifier":"https://ror.org/04wxnsj81","affiliationIdentifierScheme":"ROR"}],"nameIdentifiers":[{"schemeUri":"https://orcid.org","nameIdentifier":"https://orcid.org/0000-0003-1419-2405","nameIdentifierScheme":"ORCID"}]}],"titles":[{"title":"Eating
-        your own Dog Food"}],"publisher":"DataCite","container":null,"publicationYear":2016,"subjects":[{"subject":"datacite"},{"subject":"doi"},{"subject":"metadata"},{"subject":"featured"}],"contributors":[],"dates":[{"date":"2016-12-20","dateType":"Issued"},{"date":"2016-12-20","dateType":"Created"},{"date":"2016-12-20","dateType":"Updated"}],"language":null,"types":{"ris":"GEN","bibtex":"article","citeproc":"post-weblog","schemaOrg":"BlogPosting","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"IsPartOf","relatedIdentifier":"10.5438/0000-00ss","resourceTypeGeneral":"Text","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/0012","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5438/55e5-t5c0","relatedIdentifierType":"DOI"}],"sizes":null,"formats":null,"version":"1.0","rightsList":[{"rights":null,"rightsUri":null}],"descriptions":[{"lang":null,"description":"Eating
-        your own dog food is a slang term to describe that an organization should
-        itself use the products and services it provides. For DataCite this means
-        that we should use DOIs with appropriate metadata and strategies for long-term
-        preservation for...","descriptionType":"Abstract"}],"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTQzOC9NSzY1LTNNMTI8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkZlbm5lciwgTWFydGluPC9jcmVhdG9yTmFtZT4KICAgICAgPGdpdmVuTmFtZT5NYXJ0aW48L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+RmVubmVyPC9mYW1pbHlOYW1lPgogICAgICA8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIiBzY2hlbWVVUkk9Imh0dHBzOi8vb3JjaWQub3JnIj5odHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDMtMTQxOS0yNDA1PC9uYW1lSWRlbnRpZmllcj4KICAgICAgPGFmZmlsaWF0aW9uIGFmZmlsaWF0aW9uSWRlbnRpZmllcj0iaHR0cHM6Ly9yb3Iub3JnLzA0d3huc2o4MSIgYWZmaWxpYXRpb25JZGVudGlmaWVyU2NoZW1lPSJST1IiPkRhdGFDaXRlPC9hZmZpbGlhdGlvbj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+RWF0aW5nIHlvdXIgb3duIERvZyBGb29kPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkRhdGFDaXRlPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE2PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ij5CbG9nUG9zdGluZzwvcmVzb3VyY2VUeXBlPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PmRhdGFjaXRlPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+ZG9pPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+bWV0YWRhdGE8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5mZWF0dXJlZDwvc3ViamVjdD4KICA8L3N1YmplY3RzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJJc3N1ZWQiPjIwMTYtMTItMjA8L2RhdGU+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iQ3JlYXRlZCI+MjAxNi0xMi0yMDwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJVcGRhdGVkIj4yMDE2LTEyLTIwPC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc1BhcnRPZiIgcmVzb3VyY2VUeXBlR2VuZXJhbD0iVGV4dCI+MTAuNTQzOC8wMDAwLTAwc3M8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjU0MzgvMDAxMjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuNTQzOC81NWU1LXQ1YzA8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDx2ZXJzaW9uPjEuMDwvdmVyc2lvbj4KICA8cmlnaHRzTGlzdD4KICAgIDxyaWdodHMvPgogIDwvcmlnaHRzTGlzdD4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPkVhdGluZyB5b3VyIG93biBkb2cgZm9vZCBpcyBhIHNsYW5nIHRlcm0gdG8gZGVzY3JpYmUgdGhhdCBhbiBvcmdhbml6YXRpb24gc2hvdWxkIGl0c2VsZiB1c2UgdGhlIHByb2R1Y3RzIGFuZCBzZXJ2aWNlcyBpdCBwcm92aWRlcy4gRm9yIERhdGFDaXRlIHRoaXMgbWVhbnMgdGhhdCB3ZSBzaG91bGQgdXNlIERPSXMgd2l0aCBhcHByb3ByaWF0ZSBtZXRhZGF0YSBhbmQgc3RyYXRlZ2llcyBmb3IgbG9uZy10ZXJtIHByZXNlcnZhdGlvbiBmb3IuLi48L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPgo=","url":"https://blog.datacite.org/eating-your-own-dog-food/","contentUrl":null,"metadataVersion":4,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"fabricaForm","isActive":true,"state":"findable","reason":null,"created":"2018-12-30T16:40:29.000Z","registered":"2018-12-30T16:40:30.000Z","published":"2016","updated":"2019-07-19T11:44:13.000Z"},"relationships":{"client":{"data":{"id":"datacite.datacite","type":"clients"}},"media":{"data":[]}}},"included":[{"id":"datacite.datacite","type":"clients","attributes":{"name":"DataCite","symbol":"DATACITE.DATACITE","year":2011,"contactName":"Martin
-        Fenner","contactEmail":"support@datacite.org","description":null,"domains":"datacite.org","url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2019-02-19T21:46:18.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"}]}}}]}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 14:43:07 GMT
-recorded_with: VCR 3.0.3
+      string: !binary |-
+        H4sIAISMlF4AA7RY2XLiyBL9FYLXbtySgB7LEffBLAYxgDGbQBPzoM1S4dJytQCiw/9+T5UkEDbdfedhHOGwKyszK5eTWcr6Ubf0RK8//KgTq/5QF4W7dqt5/817+95uND1Rqn+tJ1loY8sKSIyVniQRMdLEjpkQiD+RCiP7lRwvmyDF6WtOqvIRy/YT8krsCAr/+lFZg9FNkjB++PYNx9wFkfPt1kEXgWVuaO9Zqb///bVuRraeBIVaX/fY3pPt+3b0tTbRo4T4kGb0Qm4GEwJfp6A6ZG/701zkzPqqe4Rm06oiFg/4RImekMCvHtRDVLsksa85lFvORUHEnRNah6Mf7+7Fn8ksTNfmyufPc+4hO0v5EL+YM60iUjkhiExisTPqH2VuMX0T8NPAb7MhtkS5IbWE9ifBsy3P867SgzXMnoQk1M7N4P9iuw8ffKeWBWlUCw5+rRc4tacgsLj9YWpQErvcjErAzMBPdMLC+/DjveAyeSy2tg6iJIjfGZqMnW0mhdf5gsEUekym5/3rFRlAvaZ4dqJz7F+TXwGaNLJzA5klHO05jECBROEh+w/8zJiGKDUkoZ7vFmhS4jhlWr7+lrPLcPr/sa5CK2eFJVT3nVR3QPZTSvMy5TUZoU4f6oP+FLIGMRKblRwDsUl5dBGcMApMEMMgThoH26ABQwZHjv4MlDzUOyDNsIvcYSeyY+TP5FYMbCQGRfJQX9rHBEZjlzKjPgKRk5GzczxmsOH5tX5DoNJCCuzF8a+PvaGkWv1fPx0/t1/tyPZNO/6tAbyr/Fvq22273UjapvC7M5DhmJxYRvP0vgaRpyfn5R5h5i2nLt5xXcRxk3hM4iQPPl+WzPmK9wRGYLotOzYjEjIX8nQxOJX8lc0bJWyhhF9RwjUS1/RazARriR15tSSo5ZKGXUtcPanpfg39RPfJiceqFrtBSiGXxDZ9raUxY7NrAKOVopDBbtViO9oThBFMbGOP7h7foWNEtbJBQAYHe7bux/kpB7tUzDQieHHtQBK3podQEEboonatLPb8jCQCzSE4BVGt0cB3GtwB3Fns/NxYbN3d3dWvolEk6NFgKtAuWCQdOxgHeXu6JCv1LcSsgopi4+gxCM96cstQD47lrTNTontjJ5DJonVQSIca3nSvDWiqnQSyXs8H46VDZqfWn7PhiJqSLJrelCpDNzEG7dOz7570pUD04Vwwe8F+3LSaVtZuTrL23vTM/WT3eJgs5O1ydVxuJZcaaj/R1fbJGjylW2lFSj2zxSiwhvPDM7nH2U/CVp2G1mCVGs2RP25Od/pgnWwXcqRtRqmmHpJpV3Hs4TR89ou91XG/lZ4EXZXTf66rc+Y3pWmgqaI79uYubNzpmzkde3KmZXKibebuWEqo6bWp0RWEsSRS8LxtGR1x0LrKly55dGYD+qapbdiihdpGcXR1Tg1/HmoepSadt83BSlbe5rPFQvkyWT6m0+XL6bkrTxenrTheTqeTpXI/lq50FHqnmaY+CfDjNHMCR+lWaTkPoym948701rBfzpbeU6ItOulWFel6SA8acrUasJzLoB3I7E1DvtvUJAdnqT5lFvI+68rX8svWn1wvP88KgZk0p7en280INrZgb5Ve5ddcQ6WxvWrj7+rLHDwGMIczPNgUGkP6zGwr/cHvvcF0rK5j+Jk2KvDEYikvXgTaB3ZPOW29Xr29yYrnCtawc2J5Rcx2uvrCMaDs2jzf5gl4leRsi1jnOb4/THqPh/ESmO1Nksny5fi8ELJp71GEvTyGi2oud1U/nzzQYl3NMah8WF/LFfUynHwfZ3KG3OXYPD0KVtNNTSloTRaKs1U1T1ePIfAVGlJ7pA3WKfID2jpb5TilwPpiKSrII8drj+EVtrqap4XGgILGaruws3fYb5sjCn37wnbk7QOmekcBOmJtMynxdA8dgjFA7rgvbV8Z0r3FctK0UqU/32tZZ2BI8hvOzWWXhe7mHHV3pOYpX5vDNYFNJ9Rf9sHeg6WOYn0Dn0qsDzvi1oPvRU2r6tqFzdmk15fO/Oo0949S+FTKXXoUx/uik2mbKewd7bQ1q731EBhCDT/FiN1K27gC8NA1BrK/Gsgni/e9A3rX+mQ018DGemVvOrSIzQnn/ldTp0Lh0xVtVukZsPFCL2t1OIVPId02X75oAzn8HQ9wjN7FdPYRywu9zIvZXBPdW++sXttjOYSPVEOOL/QyD6XsvMwx61m04gNfKwN2VuHvYjQyIaepL2S2Uw6T5Rb1oCTo58AM41ud7WA9FnHmOsoe85LjjLKeCJnjlAjHCRGQvwPvyececfvstZmv35Qi5+NlPxsvlQNixvlzPwpdBVZZ7g22VudXtVLxE1g/cr1X9Ug6t+nXvdoBJuKiFi8xEjuu6c9nGuH7V5iZS+sUfco1erhHB+uW1a32+0uvMZsT5Oi27Rdc3N5XfkIv8zDvyyPl7B+rlcInCqygD6MWdogfctw/jHcrYXJy9rDrONnxGoh5Dvuf7yKOv9v7zm36qIxZfym8kdJuVtvne8lbe+Bj3x/UzK5iJU7VlTjevIjb0+OvY9X7md3n/iax//l3wq6fMjxevoGKPuVRH/35tESvKmqIY0dXLdwbk/3lnE98qIX1CT02NIccJ5V7GvWGXqtvOsX9cL0+1406OlnDkYs6R09ndzD6UdZpM1wpA7lpkM6bIZmO5sl7rdsJzazjKsNpvOV9GTo9wbEG905px9ZbYe26VrfjQhY2W67h0e85jluOKbl7Sz2+KejxprSONdIRTYnL4BuvkxnSXGR9A/dZivNOiJ2Evov8dELoPJieLLHvGzNrOXPcobgPzn0d9gT6ZuKgj7mGPyntaKJX4A6QRWPw4lgbfEv2UV/gsyQq6LDTZOc2Oxm7O8HLv7v4d9wCPngvjtmcZzy/EmV2eLg/HfRvxElELxglzG70fGr6Wo55wnnSMWHfKddxv/SRT3njOCvvEqz/gw/xNKKV9wo2td6V0z5/t7D5oNJgg0oDg0oDg0qDDSrfijcFjFkrpiL/FC9HgnU5SbXKEfhMyRnzIZQ9DehGREwdw4jH3p3iRzMhe2wkUWqDLcln91fiW7rBR20M9vFFz57Yh26Q+pjQhHwVP2OMWxL2jsLfFmA0DXTrwlRSPjBG5VxRcEp8qucjyEW2pHyQDTGFX5hCPpMXa/E8VlbMzAlnHqF4V7Ot/Jninj1TNIWl+P2hJTxI8h3md4277mAWtaPbfE2h5CufgAq27yzNxSMHI0hCQ2g2hD+WgvwgiA/NP3K58tWBueeSkD97mJTYzMIf1y+aZ4ScH4bOL5q5RFx/f2dosIj+SfgXz6G5wPt7JRvxRf6vDwqKV4XqUyp7RbjiqT4NXDH+/V7JZuUMRmcJvEV7fv2VMZc3lk8HFQn/qPOMgys6fv4HAAD//wMAotiKuEEWAAA=
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:00:04 GMT
+recorded_with: VCR 5.1.0

@@ -2,24 +2,26 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-01T00:00:00Z%20TO%202019-07-01T23:59:59Z%5D
+    uri: https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-01T00:00:00Z%20TO%202019-07-01T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sun, 21 Jul 2019 00:04:42 GMT
+      - Mon, 13 Apr 2020 15:56:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,19 +34,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - d2257e5a-66ae-408a-99b1-2b2cf5d977ab
+      - aa5208f3-92ae-45e4-926f-e92d0440c4c9
       Etag:
-      - W/"bc28169c53c108e502ab9683540bdd65"
+      - W/"1a92780ae771625de0dd804ac36b1c5d"
       X-Runtime:
-      - '0.068572'
+      - '0.054540'
       X-Powered-By:
-      - Phusion Passenger 6.0.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.2
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?affiliation=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme%3AROR+AND+updated%3A%5B2019-07-01T00%3A00%3A00Z+TO+2019-07-01T23%3A59%3A59Z%5D"}}'
-    http_version: 
-  recorded_at: Sun, 21 Jul 2019 00:04:42 GMT
-recorded_with: VCR 3.0.3
+      string: !binary |-
+        H4sIAL+LlF4AA0yOzWrDMBCE30XgXPwnJ5gSgykpufTSlDSnlBJUae0stS1XWkHT4Hev7DTgyzL77TCzV6YECVa8f0SshVFdGWkSDSt4dFOvogY7rb1XrMiGiDXYfdnRa6GpWMHORL0t0lT0mBBYSsZUiQSJNnWqNNpHUVXYoCDUXUnGwQJ+ZOMUnAzUaMlMl5Nv6CSCvVnGwiB/6lz7CSbItyW/I4u/cAPfDsyllAYEaWOTWc1cPyvoCCsE8ybP0EKw2ux3+3Dzsg1d758F5YnPXfJsHfOHmGcHzj36H8fwsAtnt+XK43w9jaP/Y2HAamckxHTpIUZVsmH4AwAA//8DAIfBKDVcAQAA
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 15:56:47 GMT
+recorded_with: VCR 5.1.0

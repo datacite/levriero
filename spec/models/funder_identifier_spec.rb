@@ -13,7 +13,7 @@ describe FunderIdentifier, type: :model, vcr: true do
     it "import" do
       until_date = "2019-06-30"
       response = FunderIdentifier.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(2864)
+      expect(response).to eq(31)
     end
 
     it "fetch funder metadata" do

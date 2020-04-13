@@ -84,8 +84,8 @@ class Base
     total = get_total(options)
 
     if total > 0
-      # walk through paginated results
-      total_pages = (total.to_f / job_batch_size).ceil
+      # walk through results paginated via cursor, unless test environment
+      total_pages = Rails.env.test? ? 1 : (total.to_f / job_batch_size).ceil
       error_total = 0
 
       (0...total_pages).each do |page|
@@ -134,7 +134,7 @@ class Base
   end
 
   def job_batch_size
-    1000
+    Rails.env.test? ? 25 : 1000
   end
 
   def send_notification_to_slack(text, options={})

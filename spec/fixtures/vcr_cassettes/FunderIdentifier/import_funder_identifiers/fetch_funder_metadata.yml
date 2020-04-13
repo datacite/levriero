@@ -8,9 +8,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
@@ -29,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 20 Jul 2019 23:08:20 GMT
+      - Mon, 13 Apr 2020 16:03:10 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -41,9 +43,9 @@ http_interactions:
       string: '{"status":"ok","message-type":"funder","message-version":"1.0.0","message":{"hierarchy-names":{"100012731":"Grantham
         Research Institute on Climate Change and the Environment, London School of
         Economics and Political Science","100011326":"London School of Economics and
-        Political Science"},"replaced-by":[],"work-count":107,"name":"London School
-        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":109,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
+        Political Science"},"replaced-by":[],"work-count":126,"name":"London School
+        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":132,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
         School of Economics & Political Science","LSE"],"location":"United Kingdom"}}'
-    http_version: 
-  recorded_at: Sat, 20 Jul 2019 23:08:20 GMT
-recorded_with: VCR 3.0.3
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:03:10 GMT
+recorded_with: VCR 5.1.0
