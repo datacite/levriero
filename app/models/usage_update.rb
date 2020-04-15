@@ -26,6 +26,22 @@ class UsageUpdate < Base
     usage_update.queue_jobs
   end
 
+  def self.import_by_year(options = {})
+    from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).year
+    until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).year
+
+    # get first day of every month between from_date and until_date
+    (from_date..until_date).each do |year|
+      meta = Maremma.get(get_query_url("year" => year, size: 25))
+      total_pages = meta.body.dig("data","meta", "total-pages")
+      (1..total_pages).each do |m|
+        UsageUpdateImportByYearJob.perform_later(number: m)
+      end
+    end
+
+    "Queued import for usage reported from #{from_date} until #{until_date}."
+  end
+
   def self.redirect(response, options = {})
     report = Report.new(response, options)
     text = "[Usage Report] Started to parse #{report.report_url}."
@@ -43,6 +59,32 @@ class UsageUpdate < Base
     host = URI.parse(report_url).host.downcase
     report = Maremma.get(report_url, timeout: 120, host: host)
     report
+  end
+
+  def self.get_reports(options = {})
+    reports = Maremma.get(get_query_url(options))
+    reports.body.dig("data").fetch("reports",[]).each do |report|
+      puts "HERERERERE"
+      puts report
+      ReportImportJob.perform_later(url + "/" + report.fetch("id", nil))
+    end
+  end
+
+  def self.get_query_url(options = {})
+    options[:number] ||= 1
+    options[:size] ||= 25
+    options[:year] ||= Date.current.year
+
+    params = {
+      "page[number]" => options[:number],
+      "page[size]" => options[:size],
+      "year" => options[:year],
+    }
+    url + "?" + URI.encode_www_form(params)
+  end
+
+  def self.url
+    ENV["SASHIMI_QUERY_URL"] + "/reports"
   end
 
   def self.grab_record(sqs_msg: nil, data: nil)

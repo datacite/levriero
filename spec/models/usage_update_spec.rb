@@ -173,6 +173,14 @@ describe UsageUpdate, type: :model, vcr: true do
       end
     end
 
+    describe "get_query_url" do
+      context "when is ok" do
+        it "should return url" do
+          expect(UsageUpdate.new.get_query_url(number: 4)).to eq("https://api.test.datacite.org/reports?page%5Bnumber%5D=4&page%5Bsize%5D=25")
+        end
+      end
+    end
+
     # describe "parse_data compressed 2" do
     #   context "when the usage event is ok" do
     #     it "should return report parsed" do
