@@ -61,11 +61,9 @@ class UsageUpdate < Base
     report
   end
 
-  def self.get_reports(options = {})
+  def self.import_reports(options = {})
     reports = Maremma.get(get_query_url(options))
     reports.body.dig("data").fetch("reports",[]).each do |report|
-      puts "HERERERERE"
-      puts report
       ReportImportJob.perform_later(url + "/" + report.fetch("id", nil))
     end
   end
