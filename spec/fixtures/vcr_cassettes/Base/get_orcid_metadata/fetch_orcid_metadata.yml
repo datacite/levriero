@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-2203-2076
+    uri: https://api.stage.datacite.org/users/0000-0002-2203-2076
     body:
       encoding: US-ASCII
       string: ''

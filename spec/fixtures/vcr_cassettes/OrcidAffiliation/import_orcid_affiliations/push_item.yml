@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.14454/cne7-ar31?affiliation=true
+    uri: https://api.stage.datacite.org/dois/10.14454/cne7-ar31?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:18 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-4695-7874
+    uri: https://api.stage.datacite.org/users/0000-0002-4695-7874
     body:
       encoding: US-ASCII
       string: ''
@@ -114,7 +114,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:18 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-4695-7874","objId":"https://ror.org/04wxnsj81","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-04-11T16:01:09.000Z","timestamp":"2020-04-13T16:03:18Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-4695-7874","@type":"Person"},"obj":{"@id":"https://ror.org/04wxnsj81","@type":"Organization","name":"DataCite","location":{"type":"postalAddress","addressCountry":"Germany"}}}}}'
@@ -168,7 +168,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:18 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-8963-3415
+    uri: https://api.stage.datacite.org/users/0000-0002-8963-3415
     body:
       encoding: US-ASCII
       string: ''
@@ -230,7 +230,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:19 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-8963-3415","objId":"https://ror.org/02e2c7k09","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-04-11T16:01:09.000Z","timestamp":"2020-04-13T16:03:19Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-8963-3415","@type":"Person"},"obj":{"@id":"https://ror.org/02e2c7k09","@type":"Organization","name":"Delft
