@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.15125/bath-00708?affiliation=true
+    uri: https://api.stage.datacite.org/dois/10.15125/bath-00708?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:11 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.15125/bath-00708
+    uri: https://api.stage.datacite.org/dois/10.15125/bath-00708
     body:
       encoding: US-ASCII
       string: ''
@@ -147,7 +147,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:15 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.15125/bath-00708","objId":"https://doi.org/10.13039/501100000835","relationTypeId":"is-funded-by","sourceId":"datacite-funder","sourceToken":"6be0ac24-f58c-4a9f-968a-5c69a1ec0e68","occurredAt":"2020-04-13T12:02:47.000Z","timestamp":"2020-04-13T16:03:15Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.15125/bath-00708","@type":"SoftwareSourceCode","datePublished":"2017","proxyIdentifiers":[],"registrantId":"datacite.bl.bath"},"obj":{"@id":"https://doi.org/10.13039/501100000835","@type":"Funder","name":"University

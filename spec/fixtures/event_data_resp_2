@@ -1,4 +1,4 @@
-https://api.test.datacite.org/reports/2018-3-Dash total-dataset-investigations-regular https://doi.org/10.7291/d1q94r had an error:\nthe server responded with status 500/\n
-https://api.test.datacite.org/reports/2018-3-Dash unique-dataset-investigations-regular https://doi.org/10.7291/d1q94r had an error:\nthe server responded with status 500/\n
-https://api.test.datacite.org/reports/2018-3-Dash Total-Dataset-Requests-Machine https://doi.org/10.6071/z7wc73 had an error:\nthe server responded with status 500/\n
-https://api.test.datacite.org/reports/2018-3-Dash Unique-Dataset-Requests-Machine https://doi.org/10.6071/z7wc73 had an error:\nthe server responded with status 500/\n
+https://api.stage.datacite.org/reports/2018-3-Dash total-dataset-investigations-regular https://doi.org/10.7291/d1q94r had an error:\nthe server responded with status 500/\n
+https://api.stage.datacite.org/reports/2018-3-Dash unique-dataset-investigations-regular https://doi.org/10.7291/d1q94r had an error:\nthe server responded with status 500/\n
+https://api.stage.datacite.org/reports/2018-3-Dash Total-Dataset-Requests-Machine https://doi.org/10.6071/z7wc73 had an error:\nthe server responded with status 500/\n
+https://api.stage.datacite.org/reports/2018-3-Dash Unique-Dataset-Requests-Machine https://doi.org/10.6071/z7wc73 had an error:\nthe server responded with status 500/\n

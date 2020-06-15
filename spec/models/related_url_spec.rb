@@ -9,7 +9,7 @@ describe RelatedUrl, type: :model, vcr: true do
 
     it "get_query_url" do
       response = subject.get_query_url(from_date: from_date, until_date: until_date)
-      expect(response).to eq("https://api.test.datacite.org/dois?query=relatedIdentifiers.relatedIdentifierType%3AURL+AND+updated%3A%5B2018-01-04T00%3A00%3A00Z+TO+2018-08-05T23%3A59%3A59Z%5D&resource-type-id=&page%5Bnumber%5D=1&page%5Bsize%5D=1000&exclude_registration_agencies=true&affiliation=true")
+      expect(response).to eq("https://api.stage.datacite.org/dois?query=relatedIdentifiers.relatedIdentifierType%3AURL+AND+updated%3A%5B2018-01-04T00%3A00%3A00Z+TO+2018-08-05T23%3A59%3A59Z%5D&resource-type-id=&page%5Bnumber%5D=1&page%5Bsize%5D=1000&exclude_registration_agencies=true&affiliation=true")
     end
 
     it "get_total" do

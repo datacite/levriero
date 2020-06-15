@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.14454/cne7-ar31?affiliation=true
+    uri: https://api.stage.datacite.org/dois/10.14454/cne7-ar31?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:56:48 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.14454/cne7-ar31
+    uri: https://api.stage.datacite.org/dois/10.14454/cne7-ar31
     body:
       encoding: US-ASCII
       string: ''
@@ -207,7 +207,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:56:49 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.14454/cne7-ar31","objId":"https://ror.org/04wxnsj81","relationTypeId":"is-authored-at","sourceId":"datacite-affiliation","sourceToken":"847ec89c-1f0e-4e37-9319-bd8b11b16edd","occurredAt":"2020-04-11T16:01:09.000Z","timestamp":"2020-04-13T15:56:49Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.14454/cne7-ar31","@type":"ScholarlyArticle","datePublished":"2019-03-20T07:17:52.792Z","proxyIdentifiers":["10.5438/0000-00ss"],"registrantId":"datacite.datacite.datacite"},"obj":{"@id":"https://ror.org/04wxnsj81","@type":"Organization","name":"DataCite","location":{"type":"postalAddress","addressCountry":"Germany"}}}}}'
@@ -261,7 +261,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:56:49 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.14454/cne7-ar31","objId":"https://ror.org/02e2c7k09","relationTypeId":"is-authored-at","sourceId":"datacite-affiliation","sourceToken":"847ec89c-1f0e-4e37-9319-bd8b11b16edd","occurredAt":"2020-04-11T16:01:09.000Z","timestamp":"2020-04-13T15:56:49Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.14454/cne7-ar31","@type":"ScholarlyArticle","datePublished":"2019-03-20T07:17:52.792Z","proxyIdentifiers":["10.5438/0000-00ss"],"registrantId":"datacite.datacite.datacite"},"obj":{"@id":"https://ror.org/02e2c7k09","@type":"Organization","name":"Delft

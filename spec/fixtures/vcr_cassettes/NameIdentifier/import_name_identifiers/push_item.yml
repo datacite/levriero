@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.4224/crm.2010f.moos-2?affiliation=true
+    uri: https://api.stage.datacite.org/dois/10.4224/crm.2010f.moos-2?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:39 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.4224/crm.2010f.moos-2
+    uri: https://api.stage.datacite.org/dois/10.4224/crm.2010f.moos-2
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:39 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-3376-0722
+    uri: https://api.stage.datacite.org/users/0000-0002-3376-0722
     body:
       encoding: US-ASCII
       string: ''
@@ -164,7 +164,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:40 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-0083-0528
+    uri: https://api.stage.datacite.org/users/0000-0002-0083-0528
     body:
       encoding: US-ASCII
       string: ''
@@ -226,7 +226,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:40 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-3349-5535
+    uri: https://api.stage.datacite.org/users/0000-0002-3349-5535
     body:
       encoding: US-ASCII
       string: ''
@@ -288,7 +288,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:41 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-2377-2615
+    uri: https://api.stage.datacite.org/users/0000-0002-2377-2615
     body:
       encoding: US-ASCII
       string: ''
@@ -350,7 +350,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:41 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/users/0000-0002-4351-2503
+    uri: https://api.stage.datacite.org/users/0000-0002-4351-2503
     body:
       encoding: US-ASCII
       string: ''
@@ -412,7 +412,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:41 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.4224/crm.2010f.moos-2","objId":"https://orcid.org/0000-0002-3376-0722","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2020-03-26T16:38:05.000Z","timestamp":"2020-04-13T15:55:40Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.4224/crm.2010f.moos-2","@type":"ScholarlyArticle","datePublished":"2010-11-01","proxyIdentifiers":["2292-9339"],"registrantId":"datacite.nrc.ir"},"obj":{"@id":"https://orcid.org/0000-0002-3376-0722","@type":"Person"}}}}'
@@ -466,7 +466,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:41 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/claims
+    uri: https://api.stage.datacite.org/claims
     body:
       encoding: UTF-8
       string: '{"claim":{"doi":"10.4224/crm.2010f.moos-2","orcid":"0000-0002-3376-0722","source_id":"orcid_update","claim_action":"create"}}'
@@ -530,7 +530,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:42 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.4224/crm.2010f.moos-2","objId":"https://orcid.org/0000-0002-0083-0528","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2020-03-26T16:38:05.000Z","timestamp":"2020-04-13T15:55:40Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.4224/crm.2010f.moos-2","@type":"ScholarlyArticle","datePublished":"2010-11-01","proxyIdentifiers":["2292-9339"],"registrantId":"datacite.nrc.ir"},"obj":{"@id":"https://orcid.org/0000-0002-0083-0528","@type":"Person"}}}}'
@@ -584,7 +584,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:42 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/claims
+    uri: https://api.stage.datacite.org/claims
     body:
       encoding: UTF-8
       string: '{"claim":{"doi":"10.4224/crm.2010f.moos-2","orcid":"0000-0002-0083-0528","source_id":"orcid_update","claim_action":"create"}}'
@@ -648,7 +648,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:42 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.4224/crm.2010f.moos-2","objId":"https://orcid.org/0000-0002-3349-5535","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2020-03-26T16:38:05.000Z","timestamp":"2020-04-13T15:55:41Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.4224/crm.2010f.moos-2","@type":"ScholarlyArticle","datePublished":"2010-11-01","proxyIdentifiers":["2292-9339"],"registrantId":"datacite.nrc.ir"},"obj":{"@id":"https://orcid.org/0000-0002-3349-5535","@type":"Person"}}}}'
@@ -702,7 +702,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:43 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/claims
+    uri: https://api.stage.datacite.org/claims
     body:
       encoding: UTF-8
       string: '{"claim":{"doi":"10.4224/crm.2010f.moos-2","orcid":"0000-0002-3349-5535","source_id":"orcid_update","claim_action":"create"}}'
@@ -766,7 +766,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:44 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.4224/crm.2010f.moos-2","objId":"https://orcid.org/0000-0002-2377-2615","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2020-03-26T16:38:05.000Z","timestamp":"2020-04-13T15:55:41Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.4224/crm.2010f.moos-2","@type":"ScholarlyArticle","datePublished":"2010-11-01","proxyIdentifiers":["2292-9339"],"registrantId":"datacite.nrc.ir"},"obj":{"@id":"https://orcid.org/0000-0002-2377-2615","@type":"Person"}}}}'
@@ -820,7 +820,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:44 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/claims
+    uri: https://api.stage.datacite.org/claims
     body:
       encoding: UTF-8
       string: '{"claim":{"doi":"10.4224/crm.2010f.moos-2","orcid":"0000-0002-2377-2615","source_id":"orcid_update","claim_action":"create"}}'
@@ -884,7 +884,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:44 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.4224/crm.2010f.moos-2","objId":"https://orcid.org/0000-0002-4351-2503","relationTypeId":"is-authored-by","sourceId":"datacite-orcid-auto-update","sourceToken":"7b09eda9-0024-4e26-9f01-6d8d5a1028d7","occurredAt":"2020-03-26T16:38:05.000Z","timestamp":"2020-04-13T15:55:41Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.4224/crm.2010f.moos-2","@type":"ScholarlyArticle","datePublished":"2010-11-01","proxyIdentifiers":["2292-9339"],"registrantId":"datacite.nrc.ir"},"obj":{"@id":"https://orcid.org/0000-0002-4351-2503","@type":"Person"}}}}'
@@ -938,7 +938,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 15:55:44 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/claims
+    uri: https://api.stage.datacite.org/claims
     body:
       encoding: UTF-8
       string: '{"claim":{"doi":"10.4224/crm.2010f.moos-2","orcid":"0000-0002-4351-2503","source_id":"orcid_update","claim_action":"create"}}'

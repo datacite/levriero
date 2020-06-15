@@ -47,7 +47,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:03 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.2307/1847110
+    uri: https://api.stage.datacite.org/dois/10.2307/1847110
     body:
       encoding: US-ASCII
       string: ''
@@ -144,7 +144,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:05 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.1016/s0191-6599(01)00017-1
+    uri: https://api.stage.datacite.org/dois/10.1016/s0191-6599(01)00017-1
     body:
       encoding: US-ASCII
       string: ''
@@ -190,7 +190,7 @@ http_interactions:
   recorded_at: Mon, 13 Apr 2020 16:03:05 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
       string: '{"data":{"type":"events","id":"909caaa9-ecf5-4255-91e9-16bc6e0ba83e","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2020-04-13T16:03:05Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","proxyIdentifiers":["0002-8762"],"registrantId":"crossref.1121"}}}}'
