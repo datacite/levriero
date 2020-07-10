@@ -265,7 +265,7 @@ GEM
       nokogiri (>= 1.8.0)
       public_suffix (>= 2.0.0, < 2.1)
     public_suffix (2.0.5)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (1.1.0)
