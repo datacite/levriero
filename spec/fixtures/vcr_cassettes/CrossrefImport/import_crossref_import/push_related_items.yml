@@ -19,20 +19,33 @@ http_interactions:
       message: ''
     headers:
       Date:
+<<<<<<< HEAD
       - Sat, 01 Aug 2020 11:56:54 GMT
+=======
+      - Thu, 28 May 2020 10:41:16 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
       - keep-alive
       Set-Cookie:
+<<<<<<< HEAD
       - __cfduid=d2f4580570de5db45b674a1bfe23f2adb1596283014; expires=Mon, 31-Aug-20
         11:56:54 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
+=======
+      - __cfduid=d382126601f4ff6d1843de801182fc1231590662476; expires=Sat, 27-Jun-20
+        10:41:16 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
       Content-Encoding:
       - gzip
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
+<<<<<<< HEAD
       - 044b7ae6280000145a3c178200000001
+=======
+      - 02fc784b0100007ec2a6bf5200000001
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Strict-Transport-Security:
@@ -40,13 +53,71 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
+<<<<<<< HEAD
       - 5bbf60e9dc65145a-FRA
+=======
+      - 59a75cbe6e1a7ec2-BUD
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9I2MDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAbPP7SDYAAAA=
     http_version: null
+<<<<<<< HEAD
   recorded_at: Sat, 01 Aug 2020 11:56:54 GMT
+=======
+  recorded_at: Thu, 28 May 2020 10:41:16 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.2307/1847110
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 May 2020 10:41:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      X-Request-Id:
+      - 2ae0306f-5f45-4d71-9097-9c352f6d5b11
+      Etag:
+      - W/"dd99aec2c507cf37a2563ccec0437767"
+      X-Runtime:
+      - '0.071137'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: null
+  recorded_at: Thu, 28 May 2020 10:41:17 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
 - request:
     method: get
     uri: https://api.crossref.org/works/10.2307/1847110?mailto=info@datacite.org
@@ -78,7 +149,11 @@ http_interactions:
       Server:
       - http-kit
       Date:
+<<<<<<< HEAD
       - Sat, 01 Aug 2020 11:56:55 GMT
+=======
+      - Thu, 28 May 2020 10:41:18 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -87,13 +162,22 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
+<<<<<<< HEAD
       string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,7,17]],"date-time":"2020-07-17T12:29:06Z","timestamp":1594988946576},"reference-count":0,"publisher":"JSTOR","issue":"1","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["The
         American Historical Review"],"published-print":{"date-parts":[[1957,10]]},"DOI":"10.2307\/1847110","type":"journal-article","created":{"date-parts":[[2006,4,19]],"date-time":"2006-04-19T22:06:06Z","timestamp":1145484366000},"page":"23","source":"Crossref","is-referenced-by-count":14,"title":["The
+=======
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,4,10]],"date-time":"2020-04-10T03:39:08Z","timestamp":1586489948796},"reference-count":0,"publisher":"JSTOR","issue":"1","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["The
+        American Historical Review"],"published-print":{"date-parts":[[1957,10]]},"DOI":"10.2307\/1847110","type":"journal-article","created":{"date-parts":[[2006,4,19]],"date-time":"2006-04-19T22:06:06Z","timestamp":1145484366000},"page":"23","source":"Crossref","is-referenced-by-count":13,"title":["The
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
         Movement to Abolish Capital Punishment in America, 1787-1861"],"prefix":"10.2307","volume":"63","author":[{"given":"David
         Brion","family":"Davis","sequence":"first","affiliation":[]}],"member":"1121","container-title":["The
         American Historical Review"],"original-title":[],"deposited":{"date-parts":[[2018,4,18]],"date-time":"2018-04-18T19:34:06Z","timestamp":1524080046000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[1957,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[1957,10]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.2307\/1847110","relation":{},"ISSN":["0002-8762"],"issn-type":[{"value":"0002-8762","type":"print"}],"subject":["Archaeology","Museology","History"]}}'
     http_version: null
+<<<<<<< HEAD
   recorded_at: Sat, 01 Aug 2020 11:56:55 GMT
+=======
+  recorded_at: Thu, 28 May 2020 10:41:18 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
 - request:
     method: get
     uri: https://api.stage.datacite.org/dois/10.1016/s0191-6599(01)00017-1
@@ -113,7 +197,11 @@ http_interactions:
       message: Not Found
     headers:
       Date:
+<<<<<<< HEAD
       - Sat, 01 Aug 2020 11:56:55 GMT
+=======
+      - Thu, 28 May 2020 10:41:18 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -126,6 +214,7 @@ http_interactions:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
+<<<<<<< HEAD
       X-Request-Id:
       - 5dfdf30d-9cec-4895-8842-87150f0edc60
       X-Runtime:
@@ -140,4 +229,20 @@ http_interactions:
         H4sIAIdYJV8AAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
     http_version: null
   recorded_at: Sat, 01 Aug 2020 11:56:55 GMT
+=======
+      X-Runtime:
+      - '0.018821'
+      X-Request-Id:
+      - 7693373f-af75-4b6c-b81e-46854492153a
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAE6Vz14AAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
+    http_version: null
+  recorded_at: Thu, 28 May 2020 10:41:18 GMT
+>>>>>>> 4e61e9cd32e87c79dd9b47c1bff43c3f4ec67d44
 recorded_with: VCR 5.1.0

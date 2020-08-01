@@ -26,11 +26,11 @@ describe UsageUpdateParseJob, type: :job, vcr: true do
 
   context "not existing report" do
     let(:item) { "https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1-95cf-ba2f475cbfad" }
-    let(:body) { File.read(fixture_path + 'usage_update_3.json') }
-    let(:result) { OpenStruct.new(body: JSON.parse(body), url:"https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1-95cf-ba2f475cbfad") }
-    let(:report) { Report.new(result) }
-    let(:args) {{ header: report.header, url:report.report_url }}
-    subject(:job) { UsageUpdateParseJob.perform_later(report.datasets, args) }
+    let(:body)   {File.read(fixture_path + 'usage_update_3.json')}
+    let(:result) {OpenStruct.new(body: JSON.parse(body), url:"https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1-95cf-ba2f475cbfad"  )}
+    let(:report) {Report.new(result)}
+    let(:args) {{header: report.header, url:report.report_url}}
+    subject(:job) { UsageUpdateParseJob.perform_later(report.datasets,args) }
 
     it 'queues the job' do
       expect { job }.to have_enqueued_job(UsageUpdateParseJob)
@@ -45,6 +45,3 @@ describe UsageUpdateParseJob, type: :job, vcr: true do
     end
   end
 end
-
-
-

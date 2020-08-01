@@ -21,12 +21,18 @@ class Report < Base
 
   def self.parse_multi_subset_report report
     subset = report.subsets.last
-    
-    #puts subset["checksum"]
+
     compressed = decode_report subset["gzip"]
     json = decompress_report compressed
     dataset_array = parse_subset json
-    url = Rails.env.production? ? "https://api.datacite.org/reports/#{report.report_id}" : "https://api.stage.datacite.org/reports/#{report.report_id}"
+    url = case true
+          when Rails.env.production?
+            "https://api.datacite.org/reports/#{report.report_id}"
+          when ENV["API_URL"].include?("test")
+            "https://api.test.datacite.org/reports/#{report.report_id}"
+          else
+            "https://api.stage.datacite.org/reports/#{report.report_id}"
+          end
     dataset_array.map do |dataset|
       args = {header: report.header, url: url}
       UsageUpdateParseJob.perform_later(dataset, args)

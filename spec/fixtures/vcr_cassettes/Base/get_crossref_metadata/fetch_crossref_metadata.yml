@@ -2,6 +2,56 @@
 http_interactions:
 - request:
     method: get
+    uri: https://api.stage.datacite.org/dois/10.1055/s-0030-1259729
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 13 Apr 2020 16:00:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      X-Request-Id:
+      - 6e638bdf-35b1-49e0-8cf5-357bd74cb209
+      Etag:
+      - W/"84fb55cec159f455e41c7fe7f495e498"
+      X-Runtime:
+      - '0.091346'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: null
+  recorded_at: Mon, 13 Apr 2020 16:00:07 GMT
+- request:
+    method: get
     uri: https://api.crossref.org/works/10.1055/s-0030-1259729?mailto=info@datacite.org
     body:
       encoding: US-ASCII
@@ -27,11 +77,11 @@ http_interactions:
       Access-Control-Allow-Headers:
       - X-Requested-With
       Content-Length:
-      - '1900'
+      - '1869'
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:55:30 GMT
+      - Mon, 13 Apr 2020 16:00:08 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -40,10 +90,9 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,4,16]],"date-time":"2020-04-16T03:02:21Z","timestamp":1587006141151},"reference-count":0,"publisher":"Georg
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2019,11,23]],"date-time":"2019-11-23T08:56:38Z","timestamp":1574499398135},"reference-count":0,"publisher":"Georg
         Thieme Verlag KG","issue":"07","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Synlett"],"published-print":{"date-parts":[[2011,4]]},"DOI":"10.1055\/s-0030-1259729","type":"journal-article","created":{"date-parts":[[2011,3,11]],"date-time":"2011-03-11T02:10:34Z","timestamp":1299809434000},"page":"1038-1042","source":"Crossref","is-referenced-by-count":9,"title":["Copper-Catalyzed
-        Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"],"prefix":"10.1055","volume":"2011","author":[{"given":"Zengming","family":"Shen","sequence":"first","affiliation":[]},{"given":"Yongzhong","family":"Lu","sequence":"additional","affiliation":[]},{"given":"Ruiping","family":"Wang","sequence":"additional","affiliation":[]},{"given":"Xixue","family":"Qiao","sequence":"additional","affiliation":[]}],"member":"194","published-online":{"date-parts":[[2011,3,10]]},"container-title":["Synlett"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/www.thieme-connect.de\/products\/ejournals\/pdf\/10.1055\/s-0030-1259729.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2017,5,22]],"date-time":"2017-05-22T21:42:06Z","timestamp":1495489326000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2011,3,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2011,4]]},"issue":"07"},"URL":"http:\/\/dx.doi.org\/10.1055\/s-0030-1259729","relation":{},"ISSN":["0936-5214","1437-2096"],"issn-type":[{"value":"0936-5214","type":"print"},{"value":"1437-2096","type":"electronic"}],"subject":["Organic
-        Chemistry"]}}'
+        Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"],"prefix":"10.1055","volume":"2011","author":[{"given":"Zengming","family":"Shen","sequence":"first","affiliation":[]},{"given":"Yongzhong","family":"Lu","sequence":"additional","affiliation":[]},{"given":"Ruiping","family":"Wang","sequence":"additional","affiliation":[]},{"given":"Xixue","family":"Qiao","sequence":"additional","affiliation":[]}],"member":"194","published-online":{"date-parts":[[2011,3,10]]},"container-title":["Synlett"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/www.thieme-connect.de\/products\/ejournals\/pdf\/10.1055\/s-0030-1259729.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2017,5,22]],"date-time":"2017-05-22T21:42:06Z","timestamp":1495489326000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2011,3,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2011,4]]},"issue":"07"},"URL":"http:\/\/dx.doi.org\/10.1055\/s-0030-1259729","relation":{},"ISSN":["0936-5214","1437-2096"],"issn-type":[{"value":"0936-5214","type":"print"},{"value":"1437-2096","type":"electronic"}]}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:55:31 GMT
+  recorded_at: Mon, 13 Apr 2020 16:00:08 GMT
 recorded_with: VCR 5.1.0
