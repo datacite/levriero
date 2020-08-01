@@ -1,0 +1,190 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1039/c5ee02393a?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '16404'
+      Server:
+      - http-kit
+      Date:
+      - Sat, 01 Aug 2020 11:56:56 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,7,31]],"date-time":"2020-07-31T06:03:41Z","timestamp":1596175421227},"reference-count":50,"publisher":"Royal
+        Society of Chemistry (RSC)","issue":"1","content-domain":{"domain":["rsc.org"],"crossmark-restriction":true},"short-container-title":["Energy
+        Environ. Sci."],"abstract":"<p>Bias-free solar water splitting is demonstrated
+        using thin film silicon based triple and quadruple junction solar cells with
+        solar-to-hydrogen efficiencies up to 9.5%.<\/p>","DOI":"10.1039\/c5ee02393a","type":"journal-article","created":{"date-parts":[[2015,10,5]],"date-time":"2015-10-05T10:01:19Z","timestamp":1444039279000},"page":"145-154","update-policy":"http:\/\/dx.doi.org\/10.1039\/rsc_crossmark_policy","source":"Crossref","is-referenced-by-count":77,"title":["Multijunction
+        Si photocathodes with tunable photovoltages from 2.0 V to 2.8 V for light
+        induced water splitting"],"prefix":"10.1039","volume":"9","author":[{"ORCID":"http:\/\/orcid.org\/0000-0001-5423-6818","authenticated-orcid":false,"given":"F\u00e9lix","family":"Urbain","sequence":"first","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"given":"Vladimir","family":"Smirnov","sequence":"additional","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"given":"Jan-Philipp","family":"Becker","sequence":"additional","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"given":"Andreas","family":"Lambertz","sequence":"additional","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"given":"Florent","family":"Yang","sequence":"additional","affiliation":[{"name":"Institute
+        of Materials Science"},{"name":"TU Darmstadt"},{"name":"Darmstadt"},{"name":"Germany"}]},{"given":"J\u00fcrgen","family":"Ziegler","sequence":"additional","affiliation":[{"name":"Institute
+        of Materials Science"},{"name":"TU Darmstadt"},{"name":"Darmstadt"},{"name":"Germany"}]},{"given":"Bernhard","family":"Kaiser","sequence":"additional","affiliation":[{"name":"Institute
+        of Materials Science"},{"name":"TU Darmstadt"},{"name":"Darmstadt"},{"name":"Germany"}]},{"given":"Wolfram","family":"Jaegermann","sequence":"additional","affiliation":[{"name":"Institute
+        of Materials Science"},{"name":"TU Darmstadt"},{"name":"Darmstadt"},{"name":"Germany"}]},{"given":"Uwe","family":"Rau","sequence":"additional","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"given":"Friedhelm","family":"Finger","sequence":"additional","affiliation":[{"name":"IEK-5
+        Photovoltaik"},{"name":"Forschungszentrum J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]}],"member":"292","published-online":{"date-parts":[[2016]]},"reference":[{"key":"C5EE02393A-(cit1)\/*[position()=1]","author":"Cook","volume":"110","first-page":"6474","year":"2010","journal-title":"Chem.
+        Rev.","DOI":"10.1021\/cr100246c","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit2)\/*[position()=1]","author":"Grimes","year":"2008","unstructured":"C.
+        A.\n            Grimes\n          , O. K.Varghese and S.Ranjan, Light, water,
+        hydrogen: the solar generation of hydrogen by water photoelectrolysis, Springer,
+        New York, 2008","volume-title":"Light, water, hydrogen: the solar generation
+        of hydrogen by water photoelectrolysis","DOI":"10.1007\/978-0-387-68238-9","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit3)\/*[position()=1]","author":"Nozik","volume":"100","first-page":"13061","year":"1996","journal-title":"J.
+        Phys. Chem.","DOI":"10.1021\/jp953720e","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit4)\/*[position()=1]","author":"Miller","year":"2013","unstructured":"E.\n            Miller\n          ,
+        White Papers on Materials for Photoelectrochemical Water Splitting, DOE PEC
+        Working Group, 2013","volume-title":"White Papers on Materials for Photoelectrochemical
+        Water Splitting"},{"key":"C5EE02393A-(cit5)\/*[position()=1]","author":"Li","volume":"6","first-page":"347","year":"2013","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C2EE22618A","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit6)\/*[position()=1]","author":"Memming","year":"2002","unstructured":"R.\n            Memming\n          ,
+        Semiconductor Electrochemistry, Wiley VCH, 2002","volume-title":"Semiconductor
+        Electrochemistry"},{"key":"C5EE02393A-(cit7)\/*[position()=1]","author":"Nielander","volume":"8","first-page":"16","year":"2015","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C4EE02251C","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit8)\/*[position()=1]","author":"Parkinson","volume":"17","first-page":"431","year":"1984","journal-title":"Acc.
+        Chem. Res.","DOI":"10.1021\/ar00108a004","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit9)\/*[position()=1]","author":"Urbain","volume":"2014","first-page":"249317","year":"2014","journal-title":"Int.
+        J. Photoenergy","DOI":"10.1155\/2014\/249317","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit10)\/*[position()=1]","author":"Abdi","volume":"4","first-page":"2195","year":"2013","journal-title":"Nat.
+        Commun.","DOI":"10.1038\/ncomms3195","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit11)\/*[position()=1]","author":"Ager","volume":"8","first-page":"2811","year":"2015","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C5EE00457H","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit12)\/*[position()=1]","author":"Urbain","volume":"140","first-page":"275","year":"2015","journal-title":"Sol.
+        Energy Mater. Sol. Cells","DOI":"10.1016\/j.solmat.2015.04.013","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit13)\/*[position()=1]","author":"Mills","volume":"112","first-page":"148304","year":"2014","journal-title":"Phys.
+        Rev. Lett.","DOI":"10.1103\/PhysRevLett.112.148304","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit14)\/*[position()=1]","author":"Huang","volume":"39","first-page":"16220","year":"2014","journal-title":"Int.
+        J. Hydrogen Energy","DOI":"10.1016\/j.ijhydene.2013.12.162","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit15)\/*[position()=1]","author":"Delahoy","volume":"10","first-page":"113","year":"1985","journal-title":"Int.
+        J. Hydrogen Energy","DOI":"10.1016\/0360-3199(85)90043-6","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit16)\/*[position()=1]","author":"Reece","volume":"334","first-page":"645","year":"2003","journal-title":"Science","DOI":"10.1126\/science.1209816","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit17)\/*[position()=1]","author":"Cristino","volume":"15","first-page":"13083","year":"2013","journal-title":"Phys.
+        Chem. Chem. Phys.","DOI":"10.1039\/c3cp52237g","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit18)\/*[position()=1]","author":"Han","volume":"3","first-page":"4155","year":"2015","journal-title":"J.
+        Mater. Chem. A","DOI":"10.1039\/C4TA05523C","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit19)\/*[position()=1]","author":"Rocheleau","volume":"12","first-page":"3","year":"1998","journal-title":"Energy
+        Fuels","DOI":"10.1021\/ef9701347","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit20)\/*[position()=1]","author":"Khaselev","volume":"26","first-page":"127","year":"2001","journal-title":"Int.
+        J. Hydrogen Energy","DOI":"10.1016\/S0360-3199(00)00039-2","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit21)\/*[position()=1]","author":"Fujii","volume":"38","first-page":"14424","year":"2013","journal-title":"Int.
+        J. Hydrogen Energy","DOI":"10.1016\/j.ijhydene.2013.07.010","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit22)\/*[position()=1]","author":"Jacobsson","volume":"6","first-page":"3676","year":"2013","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/c3ee42519c","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit23)\/*[position()=1]","author":"Cox","volume":"111","first-page":"14057","year":"2014","journal-title":"Proc.
+        Natl. Acad. Sci. U. S. A.","DOI":"10.1073\/pnas.1414290111","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit24)\/*[position()=1]","author":"Luo","volume":"345","first-page":"1593","year":"2014","journal-title":"Science","DOI":"10.1126\/science.1258307","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit25)\/*[position()=1]","author":"Finger","volume":"150","first-page":"300","year":"2003","journal-title":"IEE
+        Proc., Part I: Solid-State Electron Devices"},{"key":"C5EE02393A-(cit26)\/*[position()=1]","author":"Urbain","volume":"29","first-page":"2605","year":"2014","journal-title":"J.
+        Mater. Res.","DOI":"10.1557\/jmr.2014.308","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit27)\/*[position()=1]","author":"Lambertz","volume":"119","first-page":"134","year":"2013","journal-title":"Sol.
+        Energy Mater. Sol. Cells","DOI":"10.1016\/j.solmat.2013.05.053","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit28)\/*[position()=1]","author":"Hu","volume":"344","first-page":"1005","year":"2014","journal-title":"Science","DOI":"10.1126\/science.1251428","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit29)\/*[position()=1]","author":"Kenney","volume":"342","first-page":"836","year":"2014","journal-title":"Science","DOI":"10.1126\/science.1241327","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit30)\/*[position()=1]","author":"Mei","volume":"5","first-page":"1948","year":"2014","journal-title":"J.
+        Phys. Chem. Lett.","DOI":"10.1021\/jz500865g","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit31)\/*[position()=1]","author":"Kelly","volume":"31","first-page":"1658","year":"2006","journal-title":"Int.
+        J. Hydrogen Energy","DOI":"10.1016\/j.ijhydene.2005.12.014","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit32)\/*[position()=1]","author":"B\u00f6ttler","volume":"209","first-page":"1144","year":"2012","journal-title":"Phys.
+        Status Solidi A","DOI":"10.1002\/pssa.201127676","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit33)\/*[position()=1]","author":"Ulbrich","volume":"21","first-page":"1672","year":"2013","journal-title":"Prog.
+        Photovoltaics","DOI":"10.1002\/pip.2249","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit34)\/*[position()=1]","author":"Hodes","volume":"3","first-page":"1208","year":"2012","journal-title":"J.
+        Phys. Chem. Lett.","DOI":"10.1021\/jz300220b","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit35)\/*[position()=1]","author":"Smirnov","volume":"92","first-page":"932","year":"2014","journal-title":"Can.
+        J. Phys.","DOI":"10.1139\/cjp-2013-0640","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit36)\/*[position()=1]","author":"Kirner","volume":"9","first-page":"2145","year":"2012","journal-title":"Phys.
+        Status Solidi C","DOI":"10.1002\/pssc.201200243","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit37)\/*[position()=1]","author":"H\u00e4nni","volume":"212","first-page":"840","year":"2015","journal-title":"Phys.
+        Status Solidi A","DOI":"10.1002\/pssa.201431708","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit38)\/*[position()=1]","author":"Seitz","volume":"7","first-page":"1372","year":"2014","journal-title":"ChemSusChem","DOI":"10.1002\/cssc.201301030","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit39)\/*[position()=1]","author":"McCrory","volume":"135","first-page":"16977","year":"2013","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja407115p","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit40)\/*[position()=1]","author":"Sch\u00fcttauf","volume":"133","first-page":"163","year":"2015","journal-title":"Sol.
+        Energy Mater. Sol. Cells","DOI":"10.1016\/j.solmat.2014.11.006","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit41)\/*[position()=1]","author":"Si","volume":"105","first-page":"063902","year":"2014","journal-title":"Appl.
+        Phys. Lett.","DOI":"10.1063\/1.4892890","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit42)\/*[position()=1]","author":"Kirner","volume":"54","first-page":"08KB03","year":"2015","journal-title":"Jpn.
+        J. Appl. Phys.","DOI":"10.7567\/JJAP.54.08KB03","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit43)\/*[position()=1]","author":"Green","volume":"23","first-page":"1","year":"2015","journal-title":"Prog.
+        Photovoltaics","DOI":"10.1002\/pip.2573","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit44)\/*[position()=1]","author":"Chen","volume":"25","first-page":"3","year":"2010","journal-title":"J.
+        Mater. Res.","DOI":"10.1557\/JMR.2010.0020","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit45)\/*[position()=1]","author":"Walter","volume":"110","first-page":"6446","year":"2010","journal-title":"Chem.
+        Rev.","DOI":"10.1021\/cr1002326","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit46)\/*[position()=1]","author":"Chen","year":"2013","unstructured":"Z.\n            Chen\n          ,
+        H. N.Dinh and E.Miller, Photoelectrochemical Water Splitting, Springer, New
+        York, 2013","volume-title":"Photoelectrochemical Water Splitting","DOI":"10.1007\/978-1-4614-8298-7","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit47)\/*[position()=1]","author":"Coridan","volume":"8","first-page":"2886","year":"2015","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C5EE00777A","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit48)\/*[position()=1]","author":"McKone","volume":"4","first-page":"3573","year":"2011","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/c1ee01488a","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit49)\/*[position()=1]","author":"Maeda","volume":"1","first-page":"2655","year":"2010","journal-title":"J.
+        Phys. Chem. Lett.","DOI":"10.1021\/jz1007966","doi-asserted-by":"crossref"},{"key":"C5EE02393A-(cit50)\/*[position()=1]","author":"Seger","volume":"7","first-page":"2397","year":"2014","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C4EE01335B","doi-asserted-by":"crossref"}],"container-title":["Energy
+        & Environmental Science"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/pubs.rsc.org\/en\/content\/articlepdf\/2016\/EE\/C5EE02393A","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2017,11,18]],"date-time":"2017-11-18T22:33:13Z","timestamp":1511044393000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016]]},"references-count":50,"journal-issue":{"published-print":{"date-parts":[[2016]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.1039\/c5ee02393a","relation":{"cites":[]},"ISSN":["1754-5692","1754-5706"],"issn-type":[{"value":"1754-5692","type":"print"},{"value":"1754-5706","type":"electronic"}],"assertion":[{"value":"This
+        document is Similarity Check deposited","name":"similarity_check","explanation":{"URL":"https:\/\/www.crossref.org\/services\/similarity-check\/"},"group":{"name":"similarity_check","label":"SIMILARITY
+        CHECK"}},{"value":"Supplementary Information","URL":"https:\/\/doi.org\/10.1039\/C5EE02393A","name":"related_data","group":{"name":"related_data","label":"RELATED
+        DATA"}},{"value":"F\u00e9lix Urbain (ORCID)","URL":"http:\/\/orcid.org\/0000-0001-5423-6818","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Jan-Philipp
+        Becker (ResearcherID)","URL":"http:\/\/www.researcherid.com\/rid\/K-1581-2014","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"The
+        Royal Society of Chemistry has an exclusive publication licence for this journal","name":"copyright_licence","group":{"name":"copyright_licensing","label":"COPYRIGHT
+        AND LICENSING"}},{"value":"This article is freely available. This article
+        is licensed under a Creative Commons Attribution Non Commercial 3.0 Unported
+        Licence (CC BY-NC 3.0)","URL":"http:\/\/creativecommons.org\/licenses\/by-nc\/3.0\/","name":"copyright_licence","label":"OPEN
+        ACCESS","group":{"name":"copyright_licensing","label":"COPYRIGHT AND LICENSING"}},{"value":"Single-blind","order":2,"name":"peer_review_method","group":{"name":"peer_review_method","label":"PEER
+        REVIEW METHOD"}},{"value":"Received 4 August 2015; Accepted 5 October 2015;  Accepted
+        Manuscript published 5 October 2015;  Advance Article published 12 October
+        2015;  Version of Record published 6 January 2016","order":1,"name":"history","group":{"name":"publication_history","label":"PUBLICATION
+        HISTORY"}}]}}'
+    http_version: null
+  recorded_at: Sat, 01 Aug 2020 11:56:57 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/users/0000-0001-5423-6818
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 01 Aug 2020 11:56:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - d2b16e6e-71c7-42fd-8fe9-1542f5077b56
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"b05ee0a773f353d368e34e61c6a99668"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.053742'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 6.0.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.5
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAIlYJV8AA4RQQU7DMBD8CvI5aRJTUOQbFyQunMoFxMGJt8lKjh3Z65aqyoN4Bx9j3UaIAxKWLHlmZ2fHexZGkxbqLNAIJWo+Jd+mvNvK2/K+bVpRCDrNwMUUIUSGmihglwhi7hvwAO5ZT1nx+PVp8YMlez2hPa3sS+g0Ombdb9XND+1Dfxk+Es1RVdUFb3wYqr/jDEhj6oRyydpCBG/hyazxuIrxoSfOJNRe2wiF6ANogqyQtWQ7WdbtTkrVSLVtNuz+yl1pNv+JFp4FVhN6F0ec8+cX5ia47s94ZOrtvRBz6izGMbtlGCD6FHrY8RZXxQHhuD6NPzrrtVlhj3SdkOGyfAMAAP//AwDvYSB0nwEAAA==
+    http_version: null
+  recorded_at: Sat, 01 Aug 2020 11:56:57 GMT
+recorded_with: VCR 5.1.0

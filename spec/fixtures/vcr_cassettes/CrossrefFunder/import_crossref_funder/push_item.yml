@@ -2,56 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.1039/c8cc06410e
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Mon, 13 Apr 2020 15:46:20 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      X-Request-Id:
-      - 552d8962-d3b6-4809-ad28-5e6570e9e3be
-      Etag:
-      - W/"f06cbf2d6eea80378fd56c7032934e56"
-      X-Runtime:
-      - '0.067100'
-      X-Powered-By:
-      - Phusion Passenger 6.0.4
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        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
-    http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:46:20 GMT
-- request:
-    method: get
     uri: https://api.crossref.org/works/10.1039/c8cc06410e?mailto=info@datacite.org
     body:
       encoding: US-ASCII
@@ -81,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Mon, 13 Apr 2020 15:46:20 GMT
+      - Sat, 01 Aug 2020 11:56:31 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -177,10 +127,10 @@ http_interactions:
         21 December 2018; Version of Record published 15 January 2019","order":1,"name":"history","group":{"name":"publication_history","label":"PUBLICATION
         HISTORY"}}]}}'
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:46:21 GMT
+  recorded_at: Sat, 01 Aug 2020 11:56:31 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.13039/501100001659
+    uri: https://api.crossref.org/works/10.13039/501100001659?mailto=info@datacite.org
     body:
       encoding: US-ASCII
       string: ''
@@ -196,90 +146,35 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Date:
-      - Mon, 13 Apr 2020 15:46:21 GMT
       Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      X-Request-Id:
-      - 3a60ebc6-7628-4730-8ff8-c4af3bda9cbc
-      X-Runtime:
-      - '0.024938'
-      X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - text/plain
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '19'
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
+      - http-kit
+      Date:
+      - Sat, 01 Aug 2020 11:56:32 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Connection:
+      - close
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAE2JlF4AAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
+      string: Resource not found.
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:46:21 GMT
-- request:
-    method: put
-    uri: https://api.test.datacite.org/dois/10.13039/501100001659
-    body:
-      encoding: UTF-8
-      string: '{"data":{"type":"dois","attributes":{"xml":"aHR0cHM6Ly9kb2kub3JnLzEwLjEzMDM5LzUwMTEwMDAwMTY1OQ==","source":"levriero","event":"publish"},"relationships":{"client":{"data":{"type":"clients","id":"crossref.citations"}}}}}'
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
-      Accept:
-      - application/vnd.api+json
-      Content-Type:
-      - application/vnd.api+json
-      Authorization:
-      - Bearer <VOLPINO_TOKEN>
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Mon, 13 Apr 2020 15:46:22 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Cache-Control:
-      - no-cache
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      X-Request-Id:
-      - '069180d2-03df-4904-86e3-d54a86bd6f8f'
-      X-Runtime:
-      - '0.562674'
-      X-Powered-By:
-      - Phusion Passenger 6.0.4
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAE6JlF4AAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
-    http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:46:22 GMT
+  recorded_at: Sat, 01 Aug 2020 11:56:32 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1039/c8cc06410e","objId":"https://doi.org/10.13039/501100001659","relationTypeId":"is-funded-by","sourceId":"crossref-funder","sourceToken":"736c91da-ae6a-474d-b08c-c2570a5532b7","occurredAt":"2015-10-05T10:01:19Z","timestamp":"2020-04-13T15:46:22Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1039/c8cc06410e","@type":"ScholarlyArticle","datePublished":"2019","proxyIdentifiers":["1364-548X"],"registrantId":"crossref.292"},"obj":{}}}}'
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1039/c8cc06410e","objId":"https://doi.org/10.13039/501100001659","relationTypeId":"is-funded-by","sourceId":"crossref-funder","sourceToken":"736c91da-ae6a-474d-b08c-c2570a5532b7","occurredAt":"2015-10-05T10:01:19Z","timestamp":"2020-08-01T11:56:32Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1039/c8cc06410e","@type":"ScholarlyArticle","datePublished":"2019","registrantId":"crossref.292"},"obj":{}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
@@ -297,7 +192,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 13 Apr 2020 15:46:22 GMT
+      - Sat, 01 Aug 2020 11:56:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -310,22 +205,22 @@ http_interactions:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
+      Etag:
+      - W/"c5440b3383f2f56207e9014b66352791"
+      X-Runtime:
+      - '0.119522'
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - 1db3e212-3e9d-42fd-ace1-309ff5a076b2
-      Etag:
-      - W/"9a8a1298696a81854992b770f83b2dc9"
-      X-Runtime:
-      - '0.058571'
+      - 131e2f08-ccd8-41b2-af8a-647261d42679
       X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - Phusion Passenger 6.0.6
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.6
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAE6JlF4AA3yQsW6DMBRF/8VzDO8BBsdbpC5dq0zZjHmkbgFHtomURvn3GiKhqlLrzebco8u9s05HzdSd2Y4pJhEaNCi5rmXNqwKAa+qR942oTHoyhazYjsXbhRJNV5piSHcdo7ftHCkspjC3H6+L7T3GS1B53jmbOX/OETKEcp8baQzUFQKlrPsHLhdaACKkg7XYJz642RtaI8a7EDz1vJ+njvxSTPszxRdnmZrmYdgxT4OO1k3H1HjN2PCkO97eNtvbL+qZfcr++OaiHpjCHRspBH2mg1mgtRTpSJv66D5peW7K2uyx02nPWvOqqVIBkIabQjSghSiLtkmhwRqaAv3YY/XZKxk3jm4K6zaXuU1g50Ztp/yLvMsxg3wZ05jZe+oOMRkKQMEROIgjggJUuM/SjqdlJ5tqRz1eVqxITMWxPIJUhVRCZrWoTtsvbHM+Ho9vAAAA//8DAB4ToaQwAgAA
+        H4sIAHFYJV8AA3yQPW+DMBRF/4vnGN4DzIe3SF26VkzZjHlJ3QJGtomURvnvNURCVaXWm825R5d7Z70Kisk7Mz2TrEaoUGPNVVmXvMgAuKIz8nMlCh2fdFYX7MDCbaZI05Wm4ONdheBMtwTyq8kv3cfransPYfYyTXtrEusuKUKCkDeprrWGskCgmLX/wPlKC0CEeLAUTeS9XZymLaKd9d7RmZ+XqSe3FlPuQuHFGianZRgOzNGggrFTGxtvGeOfdM+72257+0U9s0/ZH99sUAOTeGAjea8udNQrtJUiFWhXt/aT1ucqL3WDvYp7looXVRELQK25zkQFSog866oYGoymydOPPTafuZK242gnv20zL10EezsqM6Vf5GyKCaTrmFovzlF/DNGQAQqOwEG0CBJQYpPEHU/rTibWDmqcNyyLTM0BW0QpSplnSVPhaf+Ffc7H4/ENAAD//wMAD1wwcDACAAA=
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:46:22 GMT
+  recorded_at: Sat, 01 Aug 2020 11:56:33 GMT
 recorded_with: VCR 5.1.0

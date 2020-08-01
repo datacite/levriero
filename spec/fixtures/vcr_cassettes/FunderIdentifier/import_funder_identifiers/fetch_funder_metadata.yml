@@ -27,11 +27,11 @@ http_interactions:
       Access-Control-Allow-Headers:
       - X-Requested-With
       Content-Length:
-      - '805'
+      - '929'
       Server:
       - http-kit
       Date:
-      - Mon, 13 Apr 2020 16:03:10 GMT
+      - Sat, 01 Aug 2020 11:58:57 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -43,9 +43,10 @@ http_interactions:
       string: '{"status":"ok","message-type":"funder","message-version":"1.0.0","message":{"hierarchy-names":{"100012731":"Grantham
         Research Institute on Climate Change and the Environment, London School of
         Economics and Political Science","100011326":"London School of Economics and
-        Political Science"},"replaced-by":[],"work-count":126,"name":"London School
-        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":132,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
-        School of Economics & Political Science","LSE"],"location":"United Kingdom"}}'
+        Political Science"},"replaced-by":[],"work-count":155,"name":"London School
+        of Economics and Political Science","descendants":["100012731"],"descendant-work-count":165,"id":"100011326","tokens":["london","school","of","economics","and","political","science","london","school","of","economics","&","and","political","science","the","london","school","of","economics","and","political","science","lse"],"replaces":[],"uri":"http:\/\/dx.doi.org\/10.13039\/100011326","hierarchy":{"100011326":{"100012731":{}}},"alt-names":["London
+        School of Economics & Political Science","The London School of Economics and
+        Political Science","LSE"],"location":"United Kingdom"}}'
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 16:03:10 GMT
+  recorded_at: Sat, 01 Aug 2020 11:58:57 GMT
 recorded_with: VCR 5.1.0

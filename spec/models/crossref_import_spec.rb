@@ -19,12 +19,12 @@ describe CrossrefImport, type: :model, vcr: true do
 
     it "get_total" do
       response = subject.get_total(from_date: from_date, until_date: until_date)
-      expect(response).to eq(17926)
+      expect(response).to eq(17905)
     end
 
     it "get_total in 2013" do
       response = subject.get_total(from_date: "2013-10-01", until_date: "2013-10-31")
-      expect(response).to eq(663221)
+      expect(response).to eq(663513)
     end
   end
   
@@ -39,7 +39,7 @@ describe CrossrefImport, type: :model, vcr: true do
 
     it "import" do
       response = CrossrefImport.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(17926)
+      expect(response).to eq(17905)
     end
 
     it "push_item" do 

@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Mon, 13 Apr 2020 15:56:48 GMT
+      - Sat, 01 Aug 2020 05:33:23 GMT
       Status:
       - 200 OK
       X-Frame-Options:
@@ -33,24 +33,26 @@ http_interactions:
       Allow:
       - GET, HEAD, OPTIONS
       X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - Phusion Passenger 6.0.5
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.18.0 + Phusion Passenger 6.0.5
       Vary:
       - Cookie,Origin
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 cfe78f21e6a560afb18f3b92eb4e9605.cloudfront.net (CloudFront)
+      - 1.1 962c9e2b0aa7dee39ccec2b38fda120f.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DUS51-C1
       X-Amz-Cf-Id:
-      - F14QMsJdHnUMymeIttsg0ogcyV-gjERR1yt2gCn2UqcPEPtaru4Cpg==
+      - 0IbFgo0jNz28yYLisRaNVZNzI9jk2uHjeHFLEBrJkbkiORFEha6qvQ==
+      Age:
+      - '22923'
     body:
       encoding: ASCII-8BIT
       string: '{"id":"https://ror.org/02catss52","name":"European Bioinformatics Institute","types":["Facility"],"links":["http://www.ebi.ac.uk/"],"aliases":[],"acronyms":["EBI","EMBL-EBI"],"status":"active","wikipedia_url":"http://en.wikipedia.org/wiki/European_Bioinformatics_Institute","labels":[],"country":{"country_name":"United
         Kingdom","country_code":"GB"},"external_ids":{"ISNI":{"preferred":null,"all":["0000
         0000 9709 7726"]},"OrgRef":{"preferred":null,"all":["2056296"]},"Wikidata":{"preferred":null,"all":["Q1341845"]},"GRID":{"preferred":"grid.225360.0","all":"grid.225360.0"}}}'
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:56:48 GMT
+  recorded_at: Sat, 01 Aug 2020 11:55:26 GMT
 recorded_with: VCR 5.1.0

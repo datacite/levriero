@@ -200,6 +200,16 @@ class Base
     dd.fetch("date", nil)
   end
 
+  def self.get_date_from_date_parts(date_as_parts)
+    date_parts = date_as_parts.fetch("date-parts", []).first
+    year, month, day = date_parts[0], date_parts[1], date_parts[2]
+    get_date_from_parts(year, month, day)
+  end
+
+  def self.get_date_from_parts(year, month = nil, day = nil)
+    [year.to_s.rjust(4, '0'), month.to_s.rjust(2, '0'), day.to_s.rjust(2, '0')].reject { |part| part == "00" }.join("-")
+  end
+
   def self.get_datacite_xml(id)
     doi = doi_from_url(id)
     if doi.blank?
@@ -253,41 +263,41 @@ class Base
     doi = doi_from_url(id)
     return {} if doi.blank?
 
-    # use metadata stored with DataCite if they exist
-    response = get_datacite_metadata(id)
-    return response if response.present?
+    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
+    sleep(0.24) # to avoid crossref rate limitting
+    response =  Maremma.get(url, host: true)	
+    Rails.logger.debug "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
+    return {} if response.status != 200	
 
-    # otherwise store Crossref metadata with DataCite 
-    # using client crossref.citations and DataCite XML
-    xml = Base64.strict_encode64(id)
-    attributes = {
-      "xml" => xml,
-      "source" => "levriero",
-      "event" => "publish" }.compact
+    meta = response.body.dig("data", "message")
 
-    data = {
-      "data" => {
-        "type" => "dois",
-        "attributes" => attributes,
-        "relationships" => {
-          "client" =>  {
-            "data" => {
-              "type" => "clients",
-              "id" => "crossref.citations"
-            }
-          }
-        }
-      }
-    }
+    case meta.fetch("type", nil)
+    when "dataset"
+      type = "Dataset"
+    when "other"
+    when "peer-review"
+    when "journal"
+    when "journal-volume"
+      type = "Other"
+    else
+      type = "ScholarlyArticle"
+    end
 
-    url = ENV['API_URL'] + "/dois/#{doi}"
-    response = Maremma.put(url, accept: 'application/vnd.api+json', 
-                                content_type: 'application/vnd.api+json',
-                                data: data.to_json, 
-                                bearer: ENV["LAGOTTINO_TOKEN"])
+    if meta.dig("issued", "date-parts")
+      date_published = get_date_from_date_parts(meta["issued"])
+    # elsif
 
-    return {} unless [200, 201].include?(response.status)
-    parse_datacite_metadata(id: id, response: response)
+    else
+      date_published = nil
+    end
+
+    hsh = {
+      "@id" => id,
+      "@type" => type,
+      "datePublished" => date_published,
+      "registrantId" => "crossref." + meta["member"] }.compact
+    Rails.logger.info hsh.inspect
+    hsh
   end
 
   def self.parse_datacite_metadata(id: nil, response: nil)

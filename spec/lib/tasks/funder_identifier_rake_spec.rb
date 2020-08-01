@@ -42,7 +42,7 @@ describe "funder_identifier:import", vcr: true do
   it "should enqueue an FunderIdentifierImportJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(30)
+    }.to change(enqueued_jobs, :size).by(25)
     expect(enqueued_jobs.last[:job]).to be(FunderIdentifierImportJob)
   end
 end

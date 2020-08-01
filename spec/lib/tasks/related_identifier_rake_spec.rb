@@ -42,7 +42,7 @@ describe "related_identifier:import", vcr: true do
   it "should enqueue an RelatedIdentifierImportJob" do
     expect {
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(1000)
+    }.to change(enqueued_jobs, :size).by(25)
     expect(enqueued_jobs.last[:job]).to be(RelatedIdentifierImportJob)
   end
 end

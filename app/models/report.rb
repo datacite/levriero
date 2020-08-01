@@ -26,7 +26,7 @@ class Report < Base
     compressed = decode_report subset["gzip"]
     json = decompress_report compressed
     dataset_array = parse_subset json
-    url = Rails.env.production? ? "https://api.datacite.org/reports/#{report.report_id}" : "https://api.test.datacite.org/reports/#{report.report_id}"
+    url = Rails.env.production? ? "https://api.datacite.org/reports/#{report.report_id}" : "https://api.stage.datacite.org/reports/#{report.report_id}"
     dataset_array.map do |dataset|
       args = {header: report.header, url: url}
       UsageUpdateParseJob.perform_later(dataset, args)

@@ -2,56 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.1021/jp036075h
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Mon, 13 Apr 2020 16:34:39 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      X-Request-Id:
-      - f06d364a-1b09-4fd8-978c-b8dbe483ba95
-      Etag:
-      - W/"a56fb68dd9693253ac9e9a14f8e41bec"
-      X-Runtime:
-      - '0.097146'
-      X-Powered-By:
-      - Phusion Passenger 6.0.4
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        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
-    http_version: null
-  recorded_at: Mon, 13 Apr 2020 16:34:39 GMT
-- request:
-    method: get
     uri: https://api.crossref.org/works/10.1021/jp036075h?mailto=info@datacite.org
     body:
       encoding: US-ASCII
@@ -77,11 +27,11 @@ http_interactions:
       Access-Control-Allow-Headers:
       - X-Requested-With
       Content-Length:
-      - '2105'
+      - '2206'
       Server:
       - http-kit
       Date:
-      - Mon, 13 Apr 2020 16:34:40 GMT
+      - Sat, 01 Aug 2020 11:56:54 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -90,22 +40,23 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2019,11,18]],"date-time":"2019-11-18T20:57:00Z","timestamp":1574110620164},"reference-count":0,"publisher":"American
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,4,24]],"date-time":"2020-04-24T13:30:38Z","timestamp":1587735038397},"reference-count":0,"publisher":"American
         Chemical Society (ACS)","issue":"4","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["J.
-        Phys. Chem. B"],"published-print":{"date-parts":[[2004,1]]},"DOI":"10.1021\/jp036075h","type":"journal-article","created":{"date-parts":[[2004,1,22]],"date-time":"2004-01-22T06:05:22Z","timestamp":1074751522000},"page":"1497-1506","source":"Crossref","is-referenced-by-count":9,"title":["Theoretical
+        Phys. Chem. B"],"published-print":{"date-parts":[[2004,1]]},"DOI":"10.1021\/jp036075h","type":"journal-article","created":{"date-parts":[[2004,1,22]],"date-time":"2004-01-22T01:05:22Z","timestamp":1074733522000},"page":"1497-1506","source":"Crossref","is-referenced-by-count":9,"title":["Theoretical
         Investigation of Small Alkali Cation\u2212Molecule Clusters:\u00a0 A Model
         Potential Approach"],"prefix":"10.1021","volume":"108","author":[{"given":"C.","family":"C\u00e9zard","sequence":"first","affiliation":[]},{"given":"B.","family":"Bouvier","sequence":"additional","affiliation":[]},{"given":"V.","family":"Brenner","sequence":"additional","affiliation":[]},{"given":"M.","family":"Defranceschi","sequence":"additional","affiliation":[]},{"given":"Ph.","family":"Milli\u00e9","sequence":"additional","affiliation":[]},{"given":"J.
         M.","family":"Soudan","sequence":"additional","affiliation":[]},{"given":"J.
         P.","family":"Dognon","sequence":"additional","affiliation":[]}],"member":"316","container-title":["The
-        Journal of Physical Chemistry B"],"original-title":[],"language":"en","link":[{"URL":"https:\/\/pubs.acs.org\/doi\/pdf\/10.1021\/jp036075h","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,9,28]],"date-time":"2019-09-28T21:51:04Z","timestamp":1569707464000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2004,1]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2004,1]]},"issue":"4"},"alternative-id":["10.1021\/jp036075h"],"URL":"http:\/\/dx.doi.org\/10.1021\/jp036075h","relation":{},"ISSN":["1520-6106","1520-5207"],"issn-type":[{"value":"1520-6106","type":"print"},{"value":"1520-5207","type":"electronic"}]}}'
+        Journal of Physical Chemistry B"],"original-title":[],"language":"en","link":[{"URL":"https:\/\/pubs.acs.org\/doi\/pdf\/10.1021\/jp036075h","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,9,28]],"date-time":"2019-09-28T17:51:04Z","timestamp":1569693064000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2004,1]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2004,1]]},"issue":"4"},"alternative-id":["10.1021\/jp036075h"],"URL":"http:\/\/dx.doi.org\/10.1021\/jp036075h","relation":{},"ISSN":["1520-6106","1520-5207"],"issn-type":[{"value":"1520-6106","type":"print"},{"value":"1520-5207","type":"electronic"}],"subject":["Physical
+        and Theoretical Chemistry","Materials Chemistry","Surfaces, Coatings and Films"]}}'
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 16:34:40 GMT
+  recorded_at: Sat, 01 Aug 2020 11:56:54 GMT
 - request:
     method: post
-    uri: https://api.test.datacite.org/events
+    uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","id":"35ec67ae-fe3a-4eb7-b4fd-9c8c6be54aca","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1021/jp036075h","objId":null,"relationTypeId":"","sourceId":"crossref-import","sourceToken":"652dd75f-d3de-4371-b545-f505c7a29511","occurredAt":"2015-10-05T10:01:19Z","timestamp":"2020-04-13T16:34:40Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1021/jp036075h","@type":"ScholarlyArticle","datePublished":"2004-01","proxyIdentifiers":["1520-5207"],"registrantId":"crossref.316"},"obj":{}}}}'
+      string: '{"data":{"type":"events","id":"be053215-e023-4ca9-8352-c34931393f24","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1021/jp036075h","objId":null,"relationTypeId":"","sourceId":"crossref-import","sourceToken":"652dd75f-d3de-4371-b545-f505c7a29511","occurredAt":"2015-10-05T10:01:19Z","timestamp":"2020-08-01T11:56:54Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1021/jp036075h","@type":"ScholarlyArticle","datePublished":"2004-01","registrantId":"crossref.316"},"obj":{}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
@@ -123,7 +74,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 13 Apr 2020 16:34:40 GMT
+      - Sat, 01 Aug 2020 11:56:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -139,19 +90,19 @@ http_interactions:
       X-Credential-Username:
       - 0000-0002-8599-0773
       X-Request-Id:
-      - c8b64213-902e-43a0-94bd-34c1d4a96948
+      - 87d910ad-ca1f-436e-a189-b71129f10769
       Etag:
-      - W/"e7502952626ed84023aadc999cade9ae"
+      - W/"b4e11a7f5d1838bfdbd2f4371341be1b"
       X-Runtime:
-      - '0.112336'
+      - '0.074964'
       X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - Phusion Passenger 6.0.6
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.6
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKCUlF4AA3yRMW/DIBSE/wtzsMEGO2aL1KVr5SkbhueE1DYW4EhtlP9eIGpUKVJHHt/dO44b0jJIJG7IaCRQzUE1rQQ8Qi0xg6HFAxs17tReNQNwJpVEOxS+Vog0XGEJPp5lCM4MWwCfnPw2XN6T2zmE1Yuy1NYU1p1KSgpKKlpeVlI3pOXnKLUPdtmmaYe83ZyCrFXOeu9gxGZerQtpqXQnCG/W/NIOJhmMXfqYJmsiDg4WBSnTw+vjX+Zh+cIoE/IgIzbICQm6QzN4L09wUOkqJwQZ4Lmpt5+Qxg2vtG75iHWtAbO6pXjgjOORE65aWXWc0iiajILFw5+Wsp+5grLzHHfnxtZtiKC2szRL+Q3OlrQgZapNqc050IcQHSpCOaYEE95TIggVtCsIIccU38TYQc5rxqrIMEzrnjaiZoKRYs+64/MJuVv0+kv3+/0HAAD//wMAF6xHFSgCAAA=
+        H4sIAIZYJV8AA3SRsW7DIBRF/4U52O+BSWJvkbp0rTJ1w/CSkNrGAhypjfLvxbYaVZU6AuceHpc7szpp1tyZs6xhLYGSAhUnEJJXRtd8L5XgRla1RFnLk6jYhqXPkTJNNxpSzGudUnDtlCjOpji119fZdklpjE1ZWu8KH84lQoEgsLyOILewU5cc9Ss7TF23YdFPwdCSNcHHGOjEXT/6kOZLdThTevHuhw7U6eT8cMzTLJmMU6DB0DzT6nr7w6zJVfXPmU+6Yw1uWE8x6jMdzAwtI5FO9FQf/QfN21slrN2pE7fSEq/kDnmrKsVPCpTZaVErxBzqnKEh0q9aFp+7kfF974e4VDRObQat77Ubyi8KvsQCyrknY6YQyB5SNgjIX4TAQR0RGsAG6wIA3ueWXB476X5cMJGZPQc8IjZq26iqqPYLtj7hWebj8fgGAAD//wMAbCNTVgoCAAA=
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 16:34:41 GMT
+  recorded_at: Sat, 01 Aug 2020 11:56:54 GMT
 recorded_with: VCR 5.1.0

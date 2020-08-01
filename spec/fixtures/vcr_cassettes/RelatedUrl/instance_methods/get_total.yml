@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=1&page%5Bsize%5D=0&query=relatedIdentifiers.relatedIdentifierType:URL%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-08-05T23:59:59Z%5D&resource-type-id=
+    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=1&page%5Bsize%5D=0&query=relatedIdentifiers.relatedIdentifierType:URL%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-08-05T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 13 Apr 2020 15:58:46 GMT
+      - Sat, 01 Aug 2020 11:59:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -35,19 +35,19 @@ http_interactions:
       Content-Encoding:
       - gzip
       X-Request-Id:
-      - d95cf62d-f0c2-4fd5-8a49-bae43d80c9a3
+      - 6d3b521a-fbe7-402a-bd27-dae8abf1a181
       Etag:
-      - W/"7fa7577908f709fc6c6f89728781e082"
+      - W/"ee01c4ae84a0066f8c783aa2ffd28263"
       X-Runtime:
-      - '0.113643'
+      - '0.027390'
       X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - Phusion Passenger 6.0.6
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.6
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 15:58:46 GMT
+  recorded_at: Sat, 01 Aug 2020 11:59:11 GMT
 recorded_with: VCR 5.1.0

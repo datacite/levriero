@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%2Bcreators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-01T00:00:00Z%20TO%202019-07-01T23:59:59Z%5D&resource-type-id=
+    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%2Bcreators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-01T00:00:00Z%20TO%202019-07-01T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 13 Apr 2020 16:03:17 GMT
+      - Sat, 01 Aug 2020 11:59:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,19 +37,19 @@ http_interactions:
       Content-Encoding:
       - gzip
       X-Request-Id:
-      - d3442bf9-8906-41aa-8aaa-4ea6033cea98
+      - 721dfd2c-4527-41af-a9d5-b6f2c8de92c3
       Etag:
-      - W/"0b1ef79872567749e8da978c8420f3ce"
+      - W/"83b0fd4834826c7d596672f0de785d83"
       X-Runtime:
-      - '0.238323'
+      - '0.024531'
       X-Powered-By:
-      - Phusion Passenger 6.0.4
+      - Phusion Passenger 6.0.6
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.6
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAEWNlF4AA2yP22qDQBCG32XB3HhaDVIiSEnqTW5qsblKCWGroxnqqbsjNA2+e1dti9DeDP98c/hnbiwXJFj4crJYDaO6MWpJVCzk1qyeRAlqSjutWOgNFquweVNjr4KqYCG7EHUqdF3RoUOgyBm3ZkjgtLJ08xbVvSgKrFAQtk1EsocVfGRVn8NZQomK5FQ5a4cmQ1Bzy2hoBLumr19BGkEc8R+k8BNm8N6DvEaZBEGtVE4jatjn0BAWCH/y5+wCNRjrbZI+7GPT8He/g4v7lvqf2TRJze1jbPad/hJyTfRBPvc2Nr+zuXfgXKPvcDQPibmo+WuNg80UjvqBlQTV9jIDm64d2JhHbBi+AAAA//8DAPLHB+WVAQAA
+        H4sIAAxZJV8AA2yPW2uDQBCF/8uCefG2GqREkJLUl7zUYvOUEsJWRzPUW3dHaBr87121LUL7Mpz55pzdmRvLBQkWvpwsVsOoboxaEhULuTWrJ1GCmtpOKxZ6g8UqbN7U6FVQFSxkF6JOha4rOnQUaZszPpshgdPK0s1bVPeiKLBCQdg2EckeVvCRVX0OZwklKpLT5KyzTYagZsv4oxHsmr5+BWkEccR/kMJPmMF7D/IaZRIEtVI5jahhn0NDWCD86Z+zC9RgrLdJ+rCPTcPf/QYX+y31P9k0Sc3tY2z2nb4Sck30Qj73Nja/s7l34Fyj73I0D4m5mPlrjYPNVI76gJUE1fYyA5uuHdiYR2wYvgAAAP//AwDXv4aQlgEAAA==
     http_version: null
-  recorded_at: Mon, 13 Apr 2020 16:03:17 GMT
+  recorded_at: Sat, 01 Aug 2020 11:59:08 GMT
 recorded_with: VCR 5.1.0
