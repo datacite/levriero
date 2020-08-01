@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:57:09 GMT
+      - Sat, 01 Aug 2020 13:34:54 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -42,7 +42,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2793,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:57:09 GMT
+  recorded_at: Sat, 01 Aug 2020 13:34:54 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=has-orcid:true,from-created-date:2018-01-04,until-created-date:2018-01-04&mailto=info@datacite.org&rows=25
@@ -74,7 +74,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:57:10 GMT
+      - Sat, 01 Aug 2020 13:34:55 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -1832,5 +1832,5 @@ http_interactions:
         Review of Psychology"}],"container-title":["Clinical Psychology & Psychotherapy"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.1002%2Fcpp.2173","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/onlinelibrary.wiley.com\/doi\/full\/10.1002\/cpp.2173","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,8,6]],"date-time":"2018-08-06T03:01:18Z","timestamp":1533524478000},"score":1.0,"issued":{"date-parts":[[2018,1,4]]},"references-count":56,"journal-issue":{"published-print":{"date-parts":[[2018,5]]},"issue":"3"},"URL":"http:\/\/dx.doi.org\/10.1002\/cpp.2173","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1063-3995"],"issn-type":[{"value":"1063-3995","type":"print"}],"subject":["Clinical
         Psychology"]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:57:10 GMT
+  recorded_at: Sat, 01 Aug 2020 13:34:56 GMT
 recorded_with: VCR 5.1.0

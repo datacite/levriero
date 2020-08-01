@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:55:04 GMT
+      - Sat, 01 Aug 2020 13:32:58 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -40,9 +40,9 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2047709,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2047716,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:55:04 GMT
+  recorded_at: Sat, 01 Aug 2020 13:32:58 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=reference-visibility:open,has-references:true,from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -74,7 +74,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:55:08 GMT
+      - Sat, 01 Aug 2020 13:33:17 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -83,7 +83,7 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ\/08jB1+4CPwtodHRwOi8vZHguZG9pLm9yZy8xMC4xMTc3LzA5Njc3NzIwMTg3ODM1OTI=","total-results":2047709,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T17:07:32Z","timestamp":1574874452282},"reference-count":32,"publisher":"SAGE
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ\/08jB1+4CPwtodHRwOi8vZHguZG9pLm9yZy8xMC4xMTc3LzA5Njc3NzIwMTg3ODM1OTI=","total-results":2047716,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T17:07:32Z","timestamp":1574874452282},"reference-count":32,"publisher":"SAGE
         Publications","issue":"1","license":[{"URL":"http:\/\/journals.sagepub.com\/page\/policies\/text-and-data-mining-license","start":{"date-parts":[[2002,1,1]],"date-time":"2002-01-01T00:00:00Z","timestamp":1009843200000},"delay-in-days":0,"content-version":"tdm"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Cellular
         Polymers"],"published-print":{"date-parts":[[2002,1]]},"DOI":"10.1177\/026248930202100103","type":"journal-article","created":{"date-parts":[[2018,9,5]],"date-time":"2018-09-05T05:39:43Z","timestamp":1536125983000},"page":"35-68","source":"Crossref","is-referenced-by-count":1,"title":["Rheological
         Behavior of Ethylene-Octene Copolymer Vulcanizates: Effect of Blowing Agent
@@ -730,5 +730,5 @@ http_interactions:
         M. History\u2019s people. Personalities and the past, London: Profile Books,
         2017, pp. xiii, 4\u20135."}],"container-title":["Journal of Medical Biography"],"language":"en","link":[{"URL":"http:\/\/journals.sagepub.com\/doi\/pdf\/10.1177\/0967772018783592","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/journals.sagepub.com\/doi\/full-xml\/10.1177\/0967772018783592","content-type":"application\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/journals.sagepub.com\/doi\/pdf\/10.1177\/0967772018783592","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:23:27Z","timestamp":1541006607000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":3,"journal-issue":{"published-online":{"date-parts":[[2018,10,18]]},"published-print":{"date-parts":[[2018,11]]},"issue":"4"},"alternative-id":["10.1177\/0967772018783592"],"URL":"http:\/\/dx.doi.org\/10.1177\/0967772018783592","relation":{"cites":[]},"ISSN":["0967-7720","1758-1087"],"issn-type":[{"value":"0967-7720","type":"print"},{"value":"1758-1087","type":"electronic"}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:55:09 GMT
+  recorded_at: Sat, 01 Aug 2020 13:33:17 GMT
 recorded_with: VCR 5.1.0

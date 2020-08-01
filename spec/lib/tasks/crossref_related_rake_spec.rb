@@ -29,7 +29,7 @@ describe "crossref_related:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 2047709 DOIs created from 2018-01-04" }
+  let(:output) { "Queued import for 2047716 DOIs created from 2018-01-04" }
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")

@@ -24,7 +24,7 @@ describe CrossrefRelated, type: :model, vcr: true do
 
     it "get_total in 2013" do
       response = subject.get_total(from_date: "2013-10-01", until_date: "2013-10-31")
-      expect(response).to eq(164964)
+      expect(response).to eq(164968)
     end
   end
   

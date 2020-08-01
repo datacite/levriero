@@ -19,20 +19,20 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sat, 01 Aug 2020 11:45:45 GMT
+      - Sat, 01 Aug 2020 13:31:00 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=db61e3a407c8ebf2ce2ce952df689a19a1596282345; expires=Mon, 31-Aug-20
-        11:45:45 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
+      - __cfduid=dbf4d0988be879dea4c2fdb4ac9b33a951596288660; expires=Mon, 31-Aug-20
+        13:31:00 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
       Content-Encoding:
       - gzip
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 044b70b18f0000646d45a69200000001
+      - 044bd10bdb0000e0031c9ff200000001
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Strict-Transport-Security:
@@ -40,11 +40,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 5bbf5095ba9a646d-FRA
+      - 5bbfeabfc83ee003-FRA
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q2NzQyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAfpIZsjYAAAA=
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:45:45 GMT
+  recorded_at: Sat, 01 Aug 2020 13:31:00 GMT
 recorded_with: VCR 5.1.0

@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:58:22 GMT
+      - Sat, 01 Aug 2020 13:35:33 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -42,7 +42,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":5346,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:58:22 GMT
+  recorded_at: Sat, 01 Aug 2020 13:35:33 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=reference-visibility:open,has-references:true,from-created-date:2018-01-04,until-created-date:2018-01-04&mailto=info@datacite.org&rows=25
@@ -74,7 +74,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 11:58:49 GMT
+      - Sat, 01 Aug 2020 13:35:37 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -1764,5 +1764,5 @@ http_interactions:
         Biochemistry, Genetics and Molecular Biology","General Agricultural and Biological
         Sciences","General Medicine"]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 11:58:50 GMT
+  recorded_at: Sat, 01 Aug 2020 13:35:37 GMT
 recorded_with: VCR 5.1.0
