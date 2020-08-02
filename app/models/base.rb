@@ -266,7 +266,6 @@ class Base
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
     sleep(0.24) # to avoid crossref rate limitting
     response =  Maremma.get(url, host: true)	
-    Rails.logger.debug "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
     return {} if response.status != 200	
 
     meta = response.body.dig("data", "message")
@@ -291,13 +290,11 @@ class Base
       date_published = nil
     end
 
-    hsh = {
+    {
       "@id" => id,
       "@type" => type,
       "datePublished" => date_published,
       "registrantId" => "crossref." + meta["member"] }.compact
-    Rails.logger.info hsh.inspect
-    hsh
   end
 
   def self.parse_datacite_metadata(id: nil, response: nil)
