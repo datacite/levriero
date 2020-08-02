@@ -42,14 +42,14 @@ describe CrossrefImport, type: :model, vcr: true do
       expect(response).to eq(17905)
     end
 
-    it "push_item" do 
-      item = { 
-        "DOI" => "10.1021/jp036075h",
-        "created" => { "date-time" => "2015-10-05T10:01:19Z" }
-      }
-      response = CrossrefImport.push_item(item)
-      expect(response).to eq(1)
-    end
+    # it "push_item" do 
+    #   item = { 
+    #     "DOI" => "10.1021/jp036075h",
+    #     "created" => { "date-time" => "2015-10-05T10:01:19Z" }
+    #   }
+    #   response = CrossrefImport.push_item(item)
+    #   expect(response).to eq(1)
+    # end
 
     it "push_related_items" do 
       item = { 
