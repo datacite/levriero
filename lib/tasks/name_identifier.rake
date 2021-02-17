@@ -16,4 +16,14 @@ namespace :name_identifier do
     response = NameIdentifier.import(from_date: from_date, until_date: until_date)
     puts "Queued import for #{response} DOIs created from #{from_date} - #{until_date}."
   end
+
+  task :import_one => :environment do
+    if ENV["DOI"].nil?
+      puts "ENV['DOI'] is required."
+      exit
+    end
+
+    response = NameIdentifier.import_one(doi: ENV['DOI'])
+    puts "Import for #{response} DOI #{ENV['DOI']}"
+  end
 end
