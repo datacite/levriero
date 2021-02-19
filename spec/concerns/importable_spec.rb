@@ -213,6 +213,11 @@ describe "Importable", vcr: true do
       expect(Doi.normalize_pmid(pmid)).to eq("https://identifiers.org/pubmed:19956380")
     end
 
+    it "pmid with prefix" do
+      pmid = "pmid:19956380"
+      expect(Doi.normalize_pmid(pmid)).to eq("https://identifiers.org/pubmed:19956380")
+    end
+
     it "pmid" do
       pmid = "19956380"
       expect(Doi.normalize_pmid(pmid)).to eq("https://identifiers.org/pubmed:19956380")

@@ -126,6 +126,9 @@ module Importable
 
       id = id.downcase
 
+      # strip pmid prefix
+      id = id[5..-1] if id.start_with?("pmid:")
+      
       # turn handle into a URL if needed
       id = "https://identifiers.org/pubmed:" + id unless id.start_with?("http")
 
