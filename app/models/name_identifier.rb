@@ -21,6 +21,19 @@ class NameIdentifier < Base
     name_identifier.queue_jobs(name_identifier.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F")))
   end
 
+  def self.import_one(options={})
+      doi = options[:doi]
+
+      if doi.blank?
+        message = "Error DOI #{doi}: not provided"
+        Rails.logger.error message
+        return message
+      end
+
+      attributes = get_datacite_json(doi)
+      response = push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+  end
+
   def source_id
     "datacite_orcid_auto_update"
   end
@@ -61,7 +74,7 @@ class NameIdentifier < Base
     source_id = item.fetch("sourceId", "datacite_orcid_auto_update")
     relation_type_id = "is_authored_by"
     source_token = ENV['DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN']
-    
+
     push_items = Array.wrap(creators).reduce([]) do |ssum, iitem|
       name_identifier = Array.wrap(iitem.fetch("nameIdentifiers", nil)).find { |n| n["nameIdentifierScheme"] == "ORCID" }
       obj_id = normalize_orcid(name_identifier["nameIdentifier"]) if name_identifier.present?
@@ -82,7 +95,7 @@ class NameIdentifier < Base
                   "subj" => subj,
                   "obj" => obj }
       end
-      
+
       ssum
     end
 
@@ -92,7 +105,7 @@ class NameIdentifier < Base
       if ENV['LAGOTTINO_TOKEN'].present?
         push_url = ENV['LAGOTTINO_URL'] + "/events"
 
-        data = { 
+        data = {
           "data" => {
             "type" => "events",
             "attributes" => {
