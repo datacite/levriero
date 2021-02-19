@@ -7,7 +7,7 @@ class RelatedArxiv < Base
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select {|d| d.day == 1}.each do |m|
-      RelatedUrlImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+      RelatedArxivImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
     "Queued import for DOIs updated from #{from_date.strftime("%F")} until #{until_date.strftime("%F")}."
@@ -60,7 +60,7 @@ class RelatedArxiv < Base
       source_id = "datacite_arxiv"
       source_token = ENV['DATACITE_ARXIV_SOURCE_TOKEN']
 
-      # only create event if valid http/https/ftp URL
+      # only create event if valid arXiv ID
       if obj_id.present?
         subj = cached_datacite_response(pid)
 
