@@ -67,10 +67,12 @@ module Importable
     def normalize_arxiv(id)
       return nil if id.blank?
 
-      # turn arXiv into a URL if needed
-      id = "https://arxiv.org/abs/" + id[6..-1] if id.downcase.start_with?("arxiv:")
+      id = id.downcase
 
-      # check for valid protocol. We support AWS S3 and Google Cloud Storage
+      # turn arXiv into a URL if needed
+      id = "https://arxiv.org/abs/" + id[6..-1] if id.start_with?("arxiv:")
+
+      # check for valid protocol.
       uri = Addressable::URI.parse(id)
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
@@ -80,6 +82,62 @@ module Importable
       nil
     end
 
+    def normalize_igsn(id)
+      return nil if id.blank?
+
+      id = id.downcase
+
+      # turn igsn into a URL if needed
+      id = "https://hdl.handle.net/10273/" + id unless id.start_with?("http")
+
+      # check for valid protocol.
+      uri = Addressable::URI.parse(id)
+      return nil unless uri&.host && %w(http https).include?(uri.scheme)
+
+      # don't use IGSN resolver as no support for ssl
+      id = "https://hdl.handle.net/10273/" + id[15..-1] if id.start_with?("http://igsn.org")
+
+      # clean up URL
+      PostRank::URI.clean(id.downcase)
+    rescue Addressable::URI::InvalidURIError
+      nil
+    end
+
+    def normalize_handle(id)
+      return nil if id.blank?
+
+      id = id.downcase
+
+      # turn handle into a URL if needed
+      id = "https://hdl.handle.net/" + id unless id.start_with?("http")
+
+      # check for valid protocol.
+      uri = Addressable::URI.parse(id)
+      return nil unless uri&.host && %w(http https).include?(uri.scheme)
+
+      # clean up URL
+      PostRank::URI.clean(id.downcase)
+    rescue Addressable::URI::InvalidURIError
+      nil
+    end
+
+    def normalize_pmid(id)
+      return nil if id.blank?
+
+      id = id.downcase
+
+      # turn handle into a URL if needed
+      id = "https://identifiers.org/pubmed:" + id unless id.start_with?("http")
+
+      # check for valid protocol.
+      uri = Addressable::URI.parse(id)
+      return nil unless uri&.host && %w(http https).include?(uri.scheme)
+
+      # clean up URL
+      PostRank::URI.clean(id.downcase)
+    rescue Addressable::URI::InvalidURIError
+      nil
+    end
 
     def orcid_from_url(url)
       Array(/\A(http|https):\/\/orcid\.org\/(.+)/.match(url)).last

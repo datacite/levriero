@@ -178,6 +178,47 @@ describe "Importable", vcr: true do
     end
   end
 
+  describe "normalize_igsn" do
+    it "handle.net url" do
+      igsn = "https://hdl.handle.net/10723/EDYSAN001"
+      expect(Doi.normalize_igsn(igsn)).to eq("https://hdl.handle.net/10723/edysan001")
+    end
+
+    it "igsn url" do
+      igsn = "http://igsn.org/EDYSAN001"
+      expect(Doi.normalize_igsn(igsn)).to eq("https://hdl.handle.net/10273/edysan001")
+    end
+
+    it "igsn" do
+      igsn = "EDYSAN001"
+      expect(Doi.normalize_igsn(igsn)).to eq("https://hdl.handle.net/10273/edysan001")
+    end
+  end
+
+  describe "normalize_handle" do
+    it "handle.net url" do
+      handle = "https://hdl.handle.net/10013/epic.45340.d001"
+      expect(Doi.normalize_handle(handle)).to eq("https://hdl.handle.net/10013/epic.45340.d001")
+    end
+
+    it "handle" do
+      handle = "10013/epic.45340.d001"
+      expect(Doi.normalize_handle(handle)).to eq("https://hdl.handle.net/10013/epic.45340.d001")
+    end
+  end
+
+  describe "normalize_pmid" do
+    it "identifiers.org url" do
+      pmid = "https://identifiers.org/pubmed:19956380"
+      expect(Doi.normalize_pmid(pmid)).to eq("https://identifiers.org/pubmed:19956380")
+    end
+
+    it "pmid" do
+      pmid = "19956380"
+      expect(Doi.normalize_pmid(pmid)).to eq("https://identifiers.org/pubmed:19956380")
+    end
+  end
+
   describe "normalize_orcid" do
     it "https url" do
       orcid = "https://orcid.org/0000-0003-1419-2405"

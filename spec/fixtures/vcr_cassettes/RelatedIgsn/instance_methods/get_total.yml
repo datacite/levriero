@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=1&page%5Bsize%5D=0&query=relatedIdentifiers.relatedIdentifierType:IGSN%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-08-05T23:59:59Z%5D&resource-type-id=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 19 Feb 2021 06:56:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      X-Request-Id:
+      - bdeb621b-5256-4b41-9366-28f344577cc6
+      Etag:
+      - W/"a3a5aa0e9da507f9a22cc44e2b7dda07"
+      X-Runtime:
+      - '0.120867'
+      X-Rack-Cors:
+      - miss; no-origin
+      X-Powered-By:
+      - Phusion Passenger 6.0.7
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 6.0.7
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIABRhL2AAA5RTXW8aMRD8K5al8MLXkQSpQUJVGlIUCUElaB8SVZHP3uO2MfbV9pFQxH/vHgfFoU+RTj577Jkde3e3XIkg+ODpZ4uvoJptebBBaD7oterZN7EEzwdJixc02+M+iFBhT1uOig94hkaJVAMnCgb6D/jXEyRtaQLxdhTDgbelk7DYFLFAZcJDiPijf0hMlw4osjoRL5Pep4h1WMaUokw1+vxjJAdL9AHcB0M5u0YFLrpYwDTijMGthGFTEdAaodkEUyfchtmMzSWCkcCEUWwBMjdW2+Xm/PqaDoX38h2twEYxJqP7GWuziVhZE9ojm4MLG3YvXMjZLPXg1iJYt2mxO6vLVYqCfTe4JtMYzsOJLEONe7O+LpHCQYZvceZ6SafXv7mODJyQd9bJBmYoD4VDiEYJxh9XXuawEj8qH3W0g36sPN+fYefSGs3LXQ7yxc+pLsujYJn+Ahk/1ljblAo7SscRiNUyBK38LDskpBaTGOJnWCO8HqbKvhpthdovd7UZX3WRB51RjDyEwg+6XVFgh9pmCZ2q1kkPOtYtu8qi/xy98zC4EhrwJnWp4LkuQ7ffeSauIU++PlL14kX/i6EUgrvoj4a9I+TxD1RA0vhdgtsMHeiqZx4UlQ5lgF648x9UtePF1e3DeD5t3k5HzbJQ1QGCSLCq9HbSayfXiyQh6DA8NhezZr1HX39xeUVw/2Y/PJKBxrHX24HU26iGfLf7CwAA//8DABXxIKlwBAAA
+    http_version: null
+  recorded_at: Fri, 19 Feb 2021 06:56:20 GMT
+recorded_with: VCR 5.1.0
