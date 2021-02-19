@@ -34,11 +34,11 @@ describe RelatedPmid, type: :model, vcr: true do
       expect(response).to eq(594)
     end
 
-    it "push_item" do
-      doi = "10.7272/42z6-cf76"
-      attributes = RelatedPmid.get_datacite_json(doi)
-      response = RelatedPmid.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.7272/42z6-cf76"
+    #   attributes = RelatedPmid.get_datacite_json(doi)
+    #   response = RelatedPmid.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end
