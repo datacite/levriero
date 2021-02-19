@@ -64,6 +64,23 @@ module Importable
       nil
     end
 
+    def normalize_arxiv(id)
+      return nil if id.blank?
+
+      # turn arXiv into a URL if needed
+      id = "https://arxiv.org/abs/" + id[6..-1] if id.downcase.start_with?("arxiv:")
+
+      # check for valid protocol. We support AWS S3 and Google Cloud Storage
+      uri = Addressable::URI.parse(id)
+      return nil unless uri&.host && %w(http https).include?(uri.scheme)
+
+      # clean up URL
+      PostRank::URI.clean(id)
+    rescue Addressable::URI::InvalidURIError
+      nil
+    end
+
+
     def orcid_from_url(url)
       Array(/\A(http|https):\/\/orcid\.org\/(.+)/.match(url)).last
     end

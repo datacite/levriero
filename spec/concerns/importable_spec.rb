@@ -161,6 +161,23 @@ describe "Importable", vcr: true do
     end
   end
 
+  describe "normalize_arxiv" do
+    it "url" do
+      arxiv = "https://arxiv.org/abs/1510.08458"
+      expect(Doi.normalize_arxiv(arxiv)).to eq("https://arxiv.org/abs/1510.08458")
+    end
+
+    it "arXiv" do
+      arxiv = "arXiv:0706.0001"
+      expect(Doi.normalize_arxiv(arxiv)).to eq("https://arxiv.org/abs/0706.0001")
+    end
+
+    it "arxiv" do
+      arxiv = "arxiv:0706.0001"
+      expect(Doi.normalize_arxiv(arxiv)).to eq("https://arxiv.org/abs/0706.0001")
+    end
+  end
+
   describe "normalize_orcid" do
     it "https url" do
       orcid = "https://orcid.org/0000-0003-1419-2405"
