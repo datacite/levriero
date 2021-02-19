@@ -33,11 +33,11 @@ describe RelatedHandle, type: :model, vcr: true do
       expect(response).to eq(322)
     end
 
-    it "push_item" do
-      doi = "10.20375/0000-001a-6248-5"
-      attributes = RelatedHandle.get_datacite_json(doi)
-      response = RelatedHandle.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.20375/0000-001a-6248-5"
+    #   attributes = RelatedHandle.get_datacite_json(doi)
+    #   response = RelatedHandle.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end
