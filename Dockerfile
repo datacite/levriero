@@ -16,7 +16,7 @@ RUN bash -lc 'rvm --default use ruby-2.6.5'
 
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y --allow-unauthenticated -o Dpkg::Options::="--force-confold" && \
-    apt-get install ntp wget tzdata -y && \
+    apt-get install ntp wget tzdata shared-mime-info -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install dockerize
