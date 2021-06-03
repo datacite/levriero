@@ -1,13 +1,13 @@
-ENV['RAILS_ENV'] = 'test'
-ENV['AWS_REGION'] = 'eu-west-1'
+ENV["RAILS_ENV"] = "test"
+ENV["AWS_REGION"] = "eu-west-1"
 
 # set up Code Climate
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-require File.expand_path('../config/environment', __dir__)
+require File.expand_path("../config/environment", __dir__)
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 require "rspec/rails"
 require "shoulda-matchers"
@@ -18,8 +18,8 @@ require "colorize"
 WebMock.allow_net_connect!
 
 WebMock.disable_net_connect!(
-  allow: ['codeclimate.com:443', 'eleasticsearch:9201'],
-  allow_localhost: true
+  allow: ["codeclimate.com:443", "eleasticsearch:9201"],
+  allow_localhost: true,
 )
 
 # configure shoulda matchers to use rspec as the test framework and full matcher libraries for rails
@@ -31,7 +31,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 def fixture_path
-  File.expand_path("../fixtures", __FILE__) + '/'
+  File.expand_path("fixtures", __dir__) + "/"
 end
 
 RSpec.configure do |config|
@@ -41,9 +41,9 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |c|
-  vcr_mode = ENV['VCR_MODE'] =~ /rec/i ? :all : :once
+  vcr_mode = /rec/i.match?(ENV["VCR_MODE"]) ? :all : :once
 
-  sqs_host = "sqs.#{ENV['AWS_REGION'].to_s}.amazonaws.com"
+  sqs_host = "sqs.#{ENV['AWS_REGION']}.amazonaws.com"
 
   c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   c.hook_into :webmock
@@ -52,10 +52,10 @@ VCR.configure do |c|
   c.filter_sensitive_data("<VOLPINO_TOKEN>") { ENV["VOLPINO_TOKEN"] }
   c.filter_sensitive_data("<SLACK_WEBHOOK_URL>") { ENV["SLACK_WEBHOOK_URL"] }
   c.configure_rspec_metadata!
-  c.default_cassette_options = { :match_requests_on => %i[method path] }
+  c.default_cassette_options = { match_requests_on: %i[method uri] }
 end
 
-def capture_stdout(&block)
+def capture_stdout
   original_stdout = $stdout
   $stdout = fake = StringIO.new
   begin
@@ -65,5 +65,3 @@ def capture_stdout(&block)
   end
   fake.string
 end
-
-
