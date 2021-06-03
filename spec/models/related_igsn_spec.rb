@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe RelatedIgsn, type: :model, vcr: true do
   context "instance methods" do
@@ -33,11 +33,11 @@ describe RelatedIgsn, type: :model, vcr: true do
       expect(response).to eq(1)
     end
 
-    it "push_item" do
-      doi = "10.23705/d9evittp"
-      attributes = RelatedIgsn.get_datacite_json(doi)
-      response = RelatedIgsn.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.23705/d9evittp"
+    #   attributes = RelatedIgsn.get_datacite_json(doi)
+    #   response = RelatedIgsn.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end

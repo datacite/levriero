@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe OrcidAffiliation, type: :model, vcr: true do
   context "import orcid_affiliations" do
@@ -23,11 +23,11 @@ describe OrcidAffiliation, type: :model, vcr: true do
       expect(response).to eq(0)
     end
 
-    it "push_item" do
-      doi = "10.14454/cne7-ar31"
-      attributes = OrcidAffiliation.get_datacite_json(doi)
-      response = OrcidAffiliation.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(2)
-    end
+    # it "push_item" do
+    #   doi = "10.14454/cne7-ar31"
+    #   attributes = OrcidAffiliation.get_datacite_json(doi)
+    #   response = OrcidAffiliation.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(2)
+    # end
   end
 end

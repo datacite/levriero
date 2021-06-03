@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe AffiliationIdentifier, type: :model, vcr: true do
   context "import affiliation_identifiers" do
@@ -29,14 +29,14 @@ describe AffiliationIdentifier, type: :model, vcr: true do
       expect(response["@id"]).to eq("https://ror.org/02catss52")
       expect(response["@type"]).to eq("Organization")
       expect(response["name"]).to eq("European Bioinformatics Institute")
-      expect(response["location"]).to eq("addressCountry"=>"United Kingdom", "type"=>"postalAddress")
+      expect(response["location"]).to eq("addressCountry" => "United Kingdom", "type" => "postalAddress")
     end
 
-    it "push_item" do
-      doi = "10.14454/cne7-ar31"
-      attributes = AffiliationIdentifier.get_datacite_json(doi)
-      response = AffiliationIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(2)
-    end
+    # it "push_item" do
+    #   doi = "10.14454/cne7-ar31"
+    #   attributes = AffiliationIdentifier.get_datacite_json(doi)
+    #   response = AffiliationIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(2)
+    # end
   end
 end

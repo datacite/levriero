@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe RelatedUrl, type: :model, vcr: true do
   context "instance methods" do
@@ -33,11 +33,11 @@ describe RelatedUrl, type: :model, vcr: true do
       expect(response).to eq(19)
     end
 
-    it "push_item" do
-      doi = "10.4224/crm.2010f.selm-1"
-      attributes = RelatedUrl.get_datacite_json(doi)
-      response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.4224/crm.2010f.selm-1"
+    #   attributes = RelatedUrl.get_datacite_json(doi)
+    #   response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end

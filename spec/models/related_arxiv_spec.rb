@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe RelatedArxiv, type: :model, vcr: true do
   context "instance methods" do
@@ -33,11 +33,11 @@ describe RelatedArxiv, type: :model, vcr: true do
       expect(response).to eq(2)
     end
 
-    it "push_item" do
-      doi = "10.21373/1563194933866"
-      attributes = RelatedArxiv.get_datacite_json(doi)
-      response = RelatedArxiv.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.21373/1563194933866"
+    #   attributes = RelatedArxiv.get_datacite_json(doi)
+    #   response = RelatedArxiv.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end

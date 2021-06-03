@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe NameIdentifier, type: :model, vcr: true do
   context "import name_identifiers" do
@@ -16,11 +16,11 @@ describe NameIdentifier, type: :model, vcr: true do
       expect(response).to eq(22)
     end
 
-    it "push_item" do
-      doi = "10.4224/crm.2010f.moos-2"
-      attributes = NameIdentifier.get_datacite_json(doi)
-      response = NameIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(5)
-    end
+    # it "push_item" do
+    #   doi = "10.4224/crm.2010f.moos-2"
+    #   attributes = NameIdentifier.get_datacite_json(doi)
+    #   response = NameIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(5)
+    # end
   end
 end

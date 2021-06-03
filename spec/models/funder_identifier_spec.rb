@@ -27,11 +27,11 @@ describe FunderIdentifier, type: :model, vcr: true do
       expect(response["dateModified"]).to eq("2018-07-11T00:00:00Z")
     end
 
-    it "push_item" do
-      doi = "10.15125/bath-00708"
-      attributes = FunderIdentifier.get_datacite_json(doi)
-      response = FunderIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-      expect(response).to eq(1)
-    end
+    # it "push_item" do
+    #   doi = "10.15125/bath-00708"
+    #   attributes = FunderIdentifier.get_datacite_json(doi)
+    #   response = FunderIdentifier.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    #   expect(response).to eq(1)
+    # end
   end
 end
