@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 01 Aug 2020 16:03:29 GMT
+      - Thu, 03 Jun 2021 08:58:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -35,89 +35,29 @@ http_interactions:
       Content-Encoding:
       - gzip
       X-Request-Id:
-      - 348a9da1-656c-4ec9-aa58-7699bb3e9f9b
+      - 060ad018-0c2d-4764-814b-246cf0e3ec5a
       Etag:
-      - W/"81b16f103ae0ae73c872d358f262f8e5"
+      - W/"8d5c4a4c6e235cfca08c299d42c01f01"
       X-Runtime:
-      - '0.081082'
+      - '0.081941'
+      X-Rack-Cors:
+      - miss; no-origin
       X-Powered-By:
-      - Phusion Passenger 6.0.6
+      - Phusion Passenger(R) 6.0.8
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.6
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 16:03:29 GMT
-- request:
-    method: get
-    uri: https://api.stage.datacite.org/users/0000-0002-4695-7874
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 01 Aug 2020 16:03:29 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - 5aaf4fba-9fe5-4acb-b689-ff604c037a77
-      X-Download-Options:
-      - noopen
-      Etag:
-      - W/"cb4f2ef69eb9b5f8a503244a14764aa0"
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Runtime:
-      - '0.042787'
-      X-Content-Type-Options:
-      - nosniff
-      X-Powered-By:
-      - Phusion Passenger 6.0.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.5
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAFGSJV8AA6yRMW+DMBCF/0rkGZJASVK8VeqSpUPE1KqqDFyCJWMj+5w0ivjvPUOaULVjEUh+5+/unR4XVgsUjF+YrBlnS3pi+tI4W+erePO4yVjE8NwBXXoH1pEUiFaWHsGFvoM8gn4RbSB2ppSaiL1opTpfi8/CKbBU1RNodqsaWw3WDWLn+GIx6Lmxh8XfyxwkNr5kXHulImaNgm1odyj2+w9Rt8MC0j1VSIsxjtZDxCoLAiFw6TLJ44TmZkXywJOc3jl5vFKT7+oblBKxitO8WK55suLZeoR6cgQlUBrtGtmFAHqqtTBmWBtJpbdrmGFKSE+igrusjNfIeNJHNyzJf2CDvGHvEet8qaRrwmr/PtuCM95WUNA/nuwuNYIVQ4bxNzIZtL1fz3b361/+CJ84aStGOfU/SjgFXzrW5qSVEfVVVhLHoIPs+y8AAAD//wMAOPVp5KoCAAA=
-    http_version: null
-  recorded_at: Sat, 01 Aug 2020 16:03:29 GMT
+  recorded_at: Thu, 03 Jun 2021 08:58:19 GMT
 - request:
     method: post
     uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-4695-7874","objId":"https://ror.org/04wxnsj81","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-05-27T05:31:34.000Z","timestamp":"2020-08-01T16:03:29Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-4695-7874","@type":"Person"},"obj":{"@id":"https://ror.org/04wxnsj81","@type":"Organization","name":"DataCite","location":{"type":"postalAddress","addressCountry":"Germany"}}}}}'
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-4695-7874","objId":"https://ror.org/04wxnsj81","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-05-27T05:31:34.000Z","timestamp":"2021-06-03T08:58:19Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-4695-7874","@type":"Person"},"obj":{"@id":"https://ror.org/04wxnsj81","@type":"Organization","name":"DataCite","location":{"type":"postalAddress","addressCountry":"Germany"}}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
@@ -131,109 +71,45 @@ http_interactions:
       - gzip,deflate
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sat, 01 Aug 2020 16:03:30 GMT
+      - Thu, 03 Jun 2021 08:58:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
-      Etag:
-      - W/"c6dc1b0229a240718eff4ae5337c1d35"
-      X-Runtime:
-      - '0.074873'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - a86341ce-cd5a-4b04-acd7-a43a593b3a5f
+      - fd0b108c-9bf1-40d8-8228-8dd94c4c053b
+      X-Runtime:
+      - '0.021539'
+      X-Rack-Cors:
+      - miss; no-origin
       X-Powered-By:
-      - Phusion Passenger 6.0.6
+      - Phusion Passenger(R) 6.0.8
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.6
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAFKSJV8AA3SQy27DIBRE/4V18AODbdhF6qbbyqvseNykpLaxACdto/x7sSNZUaQisYA7cxjmhoyMEokbsgYJZBquKKtrbKCkmHJNcdtyhRnnFbTakMJItEPxZ4KkhguMMaSzjNFbNUcICynM6vy+0D5jnILIc+e1NZnzp7xIC6dNMK05w03b0GR3L3rv/ENNr99jOLdl0gQ3ew2rbMVheTza3spo3bgkkv4E8c1ZJMa573fIQ7/OuhR1ddmwWcDgq42fG/XjRfsgPJD/zFyUPRLlDg0QgjzBXq9BBNIe0gMbunNfsFxXSstWHwtMVF1gqgjDrSYcc35kqjHKMEWSqbcaxgBPXaw8ewHthsGNYe1lmlUSGjdIO+a/4F1eZkW+FKn17D2YfUwEUpDUNcOk6QomqlJUNEvVH5a2bIod5TA9y3hX1IJwUZKsLulh+8JW6v1+/wMAAP//AwC6pTd5LwIAAA==
+        H4sIAKyZuGAAA6pWSi0qyi8qVrKKrlYqLkksKQUylUwMDJV0lEoyS3JSgTynxBSF5KLUlNS8kszEnGI9pdrYWgAAAAD//wMAnbPDfTgAAAA=
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 16:03:30 GMT
-- request:
-    method: get
-    uri: https://api.stage.datacite.org/users/0000-0002-8963-3415
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 01 Aug 2020 16:03:30 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - 40cfb0ce-c5e6-46ec-8117-4decab941359
-      X-Download-Options:
-      - noopen
-      Etag:
-      - W/"68ac20454d14701521058105844179e1"
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Runtime:
-      - '0.036681'
-      X-Content-Type-Options:
-      - nosniff
-      X-Powered-By:
-      - Phusion Passenger 6.0.5
-      Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.5
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAFKSJV8AA4xRy27DIBD8lYizndhxntx67KG9NKdWVUXMJl4JgwVL0ijyv3eJI9VqeygSErMzwyzLVWhFSsirQC2kKHjlvOf5Zruq8mpRLkUm6NIBkzGADwwVkcd9JAjJd8QT2GfVJsWT0mAALbDqoFo0lzuhYfLSKuaYsD+0kzHpfH1rpCHqgpzNbnjq/HH2d2tHpCbuhbTRmEx4Z+Ax2TvvTqjBfyjdomUdhoeauFMhD8oEyETtQREk7bwo13lZ5PNiV2xktZbVYso5r+yKnf4tKleyXMplNYh6TgWjCJ0NDXZpJD3XWhimqh1y6e0+Xr5lm+aJZOAb1i5aErLs3zPRxb3B0KTM/5s8BBd9DTv+p1EawSeNjLsBjo0nhHMy8FG7szVO6TuskYY3Jdj3XwAAAP//AwCuxgo4JwIAAA==
-    http_version: null
-  recorded_at: Sat, 01 Aug 2020 16:03:30 GMT
+  recorded_at: Thu, 03 Jun 2021 08:58:19 GMT
 - request:
     method: post
     uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-8963-3415","objId":"https://ror.org/02e2c7k09","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-05-27T05:31:34.000Z","timestamp":"2020-08-01T16:03:30Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-8963-3415","@type":"Person"},"obj":{"@id":"https://ror.org/02e2c7k09","@type":"Organization","name":"Delft
+      string: '{"data":{"type":"events","attributes":{"messageAction":"create","subjId":"https://orcid.org/0000-0002-8963-3415","objId":"https://ror.org/02e2c7k09","relationTypeId":"is-affiliated-with","sourceId":"orcid-affiliation","sourceToken":"3bca8cf0-2b60-4b25-8c29-99f5b7dbd5b2","occurredAt":"2020-05-27T05:31:34.000Z","timestamp":"2021-06-03T08:58:19Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://orcid.org/0000-0002-8963-3415","@type":"Person"},"obj":{"@id":"https://ror.org/02e2c7k09","@type":"Organization","name":"Delft
         University of Technology","location":{"type":"postalAddress","addressCountry":"Netherlands"}}}}}'
     headers:
       User-Agent:
@@ -248,39 +124,37 @@ http_interactions:
       - gzip,deflate
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sat, 01 Aug 2020 16:03:30 GMT
+      - Thu, 03 Jun 2021 08:58:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 756416a1-ea1d-4306-8d5b-be05e272a285
-      Etag:
-      - W/"a2578188705cce3e2a44bd971679125e"
+      - 2fe00ff7-9796-47d3-a326-567e9dba8342
       X-Runtime:
-      - '0.039544'
+      - '0.013115'
+      X-Rack-Cors:
+      - miss; no-origin
       X-Powered-By:
-      - Phusion Passenger 6.0.6
+      - Phusion Passenger(R) 6.0.8
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.6
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAFKSJV8AA3SQzY6DIBRG34V1UUSpwq7JbGY7cTU7fq4tUxUD2MlM03cf1MQ0TYaEBdxzD5fvjoyMEok7sgYJVJmi5HVNsa4ahisNDZaKU1wY1ikFFWtogw4o/kyQaLjBGEM6yxi9VXOEsJjCrL7eF9slximIPHdeW5M5f85JWjhtiht+LHFZFSy1uxfeO7/RFKiur4QnJrjZa1ixVYdl19neymjduEwk/Rnim7NIjHPfH5CHfq21adS1y4a9BQz+tvGyWz9e2M2wKf+puSh7JIoDGiAEeYaTXgcRSHtID+zq1l1huS6Vlo3uCKbqSHClKMONphxz3jFVG2WYoqmptxrGAE9ZrD57A+2GwY1hzWWaVQKNG6Qd81/wLi8yki9Baj17D+YUk4ESmrJmmNYtYaIsRFllKfrPJS2bxo5ymJ4x3pKjoFwUNKuLFdu+sIf6eDz+AAAA//8DAFzJDSEvAgAA
+        H4sIAKyZuGAAA6pWSi0qyi8qVrKKrlYqLkksKQUylUwMDJV0lEoyS3JSgTynxBSF5KLUlNS8kszEnGI9pdrYWgAAAAD//wMAnbPDfTgAAAA=
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 16:03:30 GMT
+  recorded_at: Thu, 03 Jun 2021 08:58:20 GMT
 recorded_with: VCR 5.1.0

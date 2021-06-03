@@ -27,22 +27,24 @@ http_interactions:
       Access-Control-Allow-Headers:
       - X-Requested-With
       Content-Length:
-      - '209'
+      - '210'
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 13:32:29 GMT
+      - Thu, 03 Jun 2021 11:37:12 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
       - 1s
+      Permissions-Policy:
+      - interest-cohort=()
       Connection:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":996056,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":1001048,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 13:32:29 GMT
+  recorded_at: Thu, 03 Jun 2021 11:37:12 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=has-orcid:true,from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -70,20 +72,22 @@ http_interactions:
       Access-Control-Allow-Headers:
       - X-Requested-With
       Content-Length:
-      - '173969'
+      - '174440'
       Server:
       - http-kit
       Date:
-      - Sat, 01 Aug 2020 13:32:30 GMT
+      - Thu, 03 Jun 2021 11:37:17 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
       - 1s
+      Permissions-Policy:
+      - interest-cohort=()
       Connection:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ3q8nB1+4CPwdodHRwOi8vZHguZG9pLm9yZy8xMC4xMDAyL2FqbWcuYS40MDY1OQ==","total-results":996056,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453800},"posted":{"date-parts":[[2018,10,31]]},"group-title":"PaleorXiv","reference-count":0,"publisher":"Center
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJyks7w4u4CPwxodHRwOi8vZHguZG9pLm9yZy8xMC4xMDA3L3MxMzE5My0wMTgtMDc0Ni02","total-results":1001048,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453800},"posted":{"date-parts":[[2018,10,31]]},"group-title":"PaleorXiv","reference-count":0,"publisher":"Center
         for Open Science","license":[{"URL":"https:\/\/creativecommons.org\/licenses\/by\/4.0\/legalcode","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"unspecified"}],"content-domain":{"domain":[],"crossmark-restriction":false},"abstract":"<p>Highly
         resolved paleontological records can address a key question about our current
         climate crisis: How long until the biosphere rebounds from our actions? There
@@ -105,55 +109,7 @@ http_interactions:
         space. The recovery of diversity was paced by the construction of new morphospace,
         implying a fundamental speed limit on diversification after an extinction
         event.<\/p>","DOI":"10.31233\/osf.io\/wn8g6","type":"posted-content","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:14:43Z","timestamp":1541006083000},"source":"Crossref","is-referenced-by-count":0,"title":["Morphospace
-        expansion paces taxonomic diversification after end Cretaceous mass extinction"],"prefix":"10.31233","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-0101-4397","authenticated-orcid":true,"given":"Christopher","family":"Lowery","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-2007-3616","authenticated-orcid":true,"given":"Andy","family":"Fraass","sequence":"additional","affiliation":[]}],"member":"15934","deposited":{"date-parts":[[2019,8,15]],"date-time":"2019-08-15T16:13:40Z","timestamp":1565885620000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":0,"URL":"http:\/\/dx.doi.org\/10.31233\/osf.io\/wn8g6","relation":{"is-preprint-of":[{"id-type":"doi","id":"10.1038\/s41559-019-0835-0","asserted-by":"subject"}]},"subtype":"preprint"},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453849},"reference-count":0,"publisher":"Society
-        for Neuroscience","issue":"5","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["eNeuro"],"published-print":{"date-parts":[[2018,9]]},"DOI":"10.1523\/eneuro.0290-18.2018","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:15:37Z","timestamp":1541006137000},"page":"ENEURO.0290-18.2018","source":"Crossref","is-referenced-by-count":0,"title":["Motor
-        Responses to Noxious Stimuli Shape Pain Perception in Chronic Pain Patients"],"prefix":"10.1523","volume":"5","author":[{"ORCID":"http:\/\/orcid.org\/0000-0001-8002-0199","authenticated-orcid":false,"given":"Henrik","family":"Heitmann","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-8558-6447","authenticated-orcid":false,"given":"Elisabeth
-        S.","family":"May","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-5261-5459","authenticated-orcid":false,"given":"Laura","family":"Tiemann","sequence":"additional","affiliation":[]},{"given":"Paul","family":"Schmidt","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0001-6614-243X","authenticated-orcid":false,"given":"Moritz
-        M.","family":"Nickel","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-7214-9555","authenticated-orcid":false,"given":"Son","family":"Ta
-        Dinh","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0001-6248-2250","authenticated-orcid":false,"given":"Vanessa
-        D.","family":"Hohn","sequence":"additional","affiliation":[]},{"given":"Thomas
-        R.","family":"T\u00f6lle","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-7767-7170","authenticated-orcid":false,"given":"Markus","family":"Ploner","sequence":"additional","affiliation":[]}],"member":"393","published-online":{"date-parts":[[2018,10,31]]},"container-title":["eneuro"],"language":"en","link":[{"URL":"https:\/\/syndication.highwire.org\/content\/doi\/10.1523\/ENEURO.0290-18.2018","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,7,29]],"date-time":"2019-07-29T21:08:18Z","timestamp":1564434498000},"score":1.0,"issued":{"date-parts":[[2018,9]]},"references-count":0,"journal-issue":{"published-online":{"date-parts":[[2018,9,11]]},"published-print":{"date-parts":[[2018,9]]},"issue":"5"},"alternative-id":["10.1523\/ENEURO.0290-18.2018"],"URL":"http:\/\/dx.doi.org\/10.1523\/eneuro.0290-18.2018","ISSN":["2373-2822"],"issn-type":[{"value":"2373-2822","type":"electronic"}]},{"institution":{"name":"bioRxiv","place":["-"],"acronym":["-"]},"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453853},"posted":{"date-parts":[[2018,10,31]]},"group-title":"Developmental
-        Biology","reference-count":32,"publisher":"Cold Spring Harbor Laboratory","content-domain":{"domain":[],"crossmark-restriction":false},"accepted":{"date-parts":[[2018,10,31]]},"abstract":"<jats:title>Abstract<\/jats:title><jats:sec><jats:title>Summary
-        Statement<\/jats:title><jats:p>The present study is the first report for reproducing
-        human disease by utilizing blastocyst complementation method and would lead
-        to the development of novel therapy for human disease.<\/jats:p><jats:p>The
-        application of pluripotent stem cell is expected to contribute to the elucidation
-        of the unknown mechanism of human diseases. However, in vitro induction of
-        cells in several organs, such as the pancreas and liver, remains difficult;
-        therefore, reproduction of those diseases in a model has not been feasible.
-        To reproduce human hereditary pancreatitis (HP), which is most frequently
-        caused by the mutations in the <jats:italic>PRSS1<\/jats:italic> gene, we
-        performed the blastocyst complementation (BC) method. In the BC method, mouse
-        embryonic stem (ES) cells harboring CRISPR\/CAS9-mediated mutations in the
-        <jats:italic>Prss1<\/jats:italic> were injected into the blastocysts of deficient
-        <jats:italic>Pdx1<\/jats:italic> gene mice, which is a critical transcription
-        factor in the pancreas. The results showed that the blastocysts injected into
-        the <jats:italic>Prss1<\/jats:italic>-mutant ES cells induced trypsin activation.
-        This implied that the mouse phenotype mimics that of human HP and that the
-        BC method was useful for the reproduction and study of pancreatic disorders.
-        The present study opens the possibility of investigating uncharacterized human
-        diseases by utilizing the BC method.<\/jats:p><\/jats:sec>","DOI":"10.1101\/457978","type":"posted-content","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:15:25Z","timestamp":1541006125000},"source":"Crossref","is-referenced-by-count":0,"title":["Hereditary
-        Pancreatitis Model by Blastocyst Complementation in Mouse"],"prefix":"10.1101","author":[{"given":"Ayumu","family":"Asai","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0001-6960-2315","authenticated-orcid":false,"given":"Masamitsu","family":"Konno","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-6473-4076","authenticated-orcid":false,"given":"Jun","family":"Koseki","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0003-1435-4996","authenticated-orcid":false,"given":"Koichi","family":"Kawamoto","sequence":"additional","affiliation":[]},{"given":"Takahiro","family":"Arai","sequence":"additional","affiliation":[]},{"given":"Taroh","family":"Satoh","sequence":"additional","affiliation":[]},{"given":"Hidetoshi","family":"Eguchi","sequence":"additional","affiliation":[]},{"given":"Masaki","family":"Mori","sequence":"additional","affiliation":[]},{"given":"Yuichiro","family":"Doki","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-7191-6943","authenticated-orcid":false,"given":"Hideshi","family":"Ishii","sequence":"additional","affiliation":[]}],"member":"246","reference":[{"key":"2019072210402840000_457978v1.1","DOI":"10.1038\/nrm3448","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.2","DOI":"10.1073\/pnas.0906894106","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.3","volume":"5","first-page":"12831","year":"2015","article-title":"Early
-        pathogenesis of Duchenne muscular dystrophy modelled in patient-derived human
-        induced pluripotent stem cells","journal-title":"Scientific Reports","DOI":"10.1038\/srep12831","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.4","DOI":"10.1186\/1750-1172-8-190","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.5","DOI":"10.1016\/j.ceb.2009.08.006","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.6","DOI":"10.1097\/MOT.0000000000000170","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.7","volume":"23","first-page":"1974","year":"2017","article-title":"Clinical
-        translation of bioartificial liver support systems with human pluripotent
-        stem cell-derived hepatic cells","journal-title":"World J. Gastroenterol","DOI":"10.3748\/wjg.v23.i11.1974","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.8","volume":"122","first-page":"983","year":"1996","article-title":"PDX-1
-        is required for pancreatic outgrowth and differentiation of the rostral duodenum","journal-title":"Development"},{"key":"2019072210402840000_457978v1.9","DOI":"10.1016\/j.cell.2010.07.039","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.10","DOI":"10.1159\/000055844","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.11","DOI":"10.1016\/S1542-3565(04)00013-8","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.12","DOI":"10.1136\/gut.2008.149179","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.13","DOI":"10.1038\/ng1096-141","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.14","DOI":"10.1038\/76088","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.15","DOI":"10.1016\/j.dld.2011.08.003","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.16","DOI":"10.1053\/gast.2001.29673","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.17","DOI":"10.1136\/pgmj.2006.050591","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.18","DOI":"10.1053\/gast.1997.v113.pm9322498","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.19","volume":"9","first-page":"197","year":"2016","article-title":"Hereditary
-        pancreatitis: current perspectives","journal-title":"Clin. Exp. Gastroenterol","DOI":"10.2147\/CEG.S84358","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.20","volume":"21","first-page":"54","year":"1952","article-title":"Pedigree
-        of a family with hereditary chronic relapsing pancreatitis","journal-title":"Gastroenterology","DOI":"10.1016\/S0016-5085(52)80120-9","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.21","volume":"45","first-page":"1365","year":"2016","article-title":"Chronic
-        Pancreatitis in the 21st Century -Research Challenges and Opportunities: Summary
-        of a National Institute of Diabetes and Digestive and Kidney Diseases Workshop","journal-title":"Pancreas","DOI":"10.1097\/MPA.0000000000000713","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.22","DOI":"10.1152\/ajpcell.1995.269.5.C1295","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.23","DOI":"10.1006\/bbrc.1998.8519","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.24","DOI":"10.1074\/jbc.M511276200","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.25","DOI":"10.1038\/cddis.2014.120","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.26","volume":"8","first-page":"1078","year":"2017","article-title":"Modelling
-        Torsade de Pointes arrhythmias in vitro in 3D human iPS cell-engineered heart
-        tissue","journal-title":"Nat. Commun","DOI":"10.1038\/s41467-017-01125-y","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.27","volume":"162","first-page":"391","year":"2017","article-title":"A
-        simplified and sensitive method to identify Alzheimer\u2019s disease biomarker
-        candidates using patient-derived induced pluripotent stem cells (iPSCs)","journal-title":"J.
-        Biochem","DOI":"10.1093\/jb\/mvx058","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.28","volume":"26","first-page":"133","year":"2017","article-title":"Biomarker
-        Discovery by Modeling Beh\u00e7et\u2019s Disease with Patient-Specific Human
-        Induced Pluripotent Stem Cells","journal-title":"Stem Cells Dev","DOI":"10.1089\/scd.2016.0181","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.29","volume":"173","first-page":"2307","year":"2017","article-title":"Drug
-        discovery and development for rare genetic disorders","journal-title":"Am.
-        J. Med. Genet. A","DOI":"10.1002\/ajmg.a.38326","doi-asserted-by":"crossref"},{"key":"2019072210402840000_457978v1.30","DOI":"10.1073\/pnas.1222902110","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.31","DOI":"10.1038\/nature21070","doi-asserted-by":"publisher"},{"key":"2019072210402840000_457978v1.32","volume":"24","first-page":"182","year":"2015","article-title":"Targeted
-        organ generation using Mixl1-inducible mouse pluripotent stem cells in blastocyst
-        complementation","journal-title":"Stem Cells Dev","DOI":"10.1089\/scd.2014.0270","doi-asserted-by":"crossref"}],"link":[{"URL":"https:\/\/syndication.highwire.org\/content\/doi\/10.1101\/457978","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,7,22]],"date-time":"2019-07-22T17:40:38Z","timestamp":1563817238000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":32,"URL":"http:\/\/dx.doi.org\/10.1101\/457978","relation":{"cites":[]},"subtype":"preprint"},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453876},"reference-count":12,"publisher":"Wiley","issue":"1","license":[{"URL":"http:\/\/doi.wiley.com\/10.1002\/tdm_license_1.1","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"tdm"},{"URL":"http:\/\/onlinelibrary.wiley.com\/termsAndConditions#vor","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Heat
+        expansion paces taxonomic diversification after end Cretaceous mass extinction"],"prefix":"10.31233","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-0101-4397","authenticated-orcid":true,"given":"Christopher","family":"Lowery","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-2007-3616","authenticated-orcid":true,"given":"Andy","family":"Fraass","sequence":"additional","affiliation":[]}],"member":"15934","deposited":{"date-parts":[[2019,8,15]],"date-time":"2019-08-15T16:13:40Z","timestamp":1565885620000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":0,"URL":"http:\/\/dx.doi.org\/10.31233\/osf.io\/wn8g6","relation":{"is-preprint-of":[{"id-type":"doi","id":"10.1038\/s41559-019-0835-0","asserted-by":"subject"}]},"subtype":"preprint"},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453876},"reference-count":12,"publisher":"Wiley","issue":"1","license":[{"URL":"http:\/\/doi.wiley.com\/10.1002\/tdm_license_1.1","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"tdm"},{"URL":"http:\/\/onlinelibrary.wiley.com\/termsAndConditions#vor","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Heat
         Transfer-Asian Res"],"published-print":{"date-parts":[[2019,1]]},"DOI":"10.1002\/htj.21378","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:16:12Z","timestamp":1541006172000},"page":"182-215","source":"Crossref","is-referenced-by-count":0,"title":["Improved
         velocity and temperature profiles for integral solution in the laminar boundary
         layer flow on a semi-infinite flat plate"],"prefix":"10.1002","volume":"48","author":[{"ORCID":"http:\/\/orcid.org\/0000-0001-9490-7954","authenticated-orcid":false,"given":"S.
@@ -178,35 +134,7 @@ http_interactions:
         IV J Leinhard V J 2006"},{"key":"10.1002\/htj.21378-BIB0011|htj21378-cit-0011","unstructured":"Adkins
         W Davidson MG 2012"},{"key":"10.1002\/htj.21378-BIB0012|htj21378-cit-0012","unstructured":"Kays
         WM Crawford ME 1993"}],"container-title":["Heat Transfer-Asian Research"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.1002%2Fhtj.21378","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/onlinelibrary.wiley.com\/wol1\/doi\/10.1002\/htj.21378\/fullpdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,10,30]],"date-time":"2019-10-30T06:17:47Z","timestamp":1572416267000},"score":1.0,"subtitle":["SEYYEDIet
-        al."],"issued":{"date-parts":[[2018,10,31]]},"references-count":12,"journal-issue":{"published-print":{"date-parts":[[2019,1]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.1002\/htj.21378","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1099-2871"],"issn-type":[{"value":"1099-2871","type":"print"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453889},"reference-count":11,"publisher":"Wiley","issue":"1","license":[{"URL":"http:\/\/doi.wiley.com\/10.1002\/tdm_license_1.1","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"tdm"},{"URL":"http:\/\/onlinelibrary.wiley.com\/termsAndConditions#vor","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["J.
-        Combin. Designs"],"published-print":{"date-parts":[[2019,1]]},"DOI":"10.1002\/jcd.21638","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:16:18Z","timestamp":1541006178000},"page":"42-52","source":"Crossref","is-referenced-by-count":0,"title":["A
-        tripling construction for mutually orthogonal symmetric hamiltonian double
-        Latin squares"],"prefix":"10.1002","volume":"27","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-7303-9120","authenticated-orcid":false,"given":"Justin
-        Z.","family":"Schroeder","sequence":"first","affiliation":[{"name":"Mosaic
-        Center Radstock; Gostivar Macedonia"}]}],"member":"311","published-online":{"date-parts":[[2018,10,31]]},"reference":[{"key":"10.1002\/jcd.21638-BIB0001|jcd21638-cit-0001","doi-asserted-by":"crossref","first-page":"39","DOI":"10.1002\/jcd.10066","article-title":"Symmetric
-        hamilton cycle decompositions of the complete graph","volume":"12","author":"Akiyama","year":"2004","journal-title":"J.
-        Combin. Des"},{"key":"10.1002\/jcd.21638-BIB0002|jcd21638-cit-0002","first-page":"7","article-title":"The
-        wonderful Walecki construction","volume":"52","author":"Alspach","year":"2008","journal-title":"Bull.
-        Inst. Combin. Appl"},{"key":"10.1002\/jcd.21638-BIB0003|jcd21638-cit-0003","doi-asserted-by":"crossref","first-page":"608","DOI":"10.1016\/j.jcta.2005.05.003","article-title":"New
-        families of atomic Latin squares and perfect 1-factorisations","volume":"113","author":"Bryant","year":"2006","journal-title":"J.
-        Combin. Theory, Ser. A"},{"key":"10.1002\/jcd.21638-BIB0004|jcd21638-cit-0004","doi-asserted-by":"crossref","first-page":"1083","DOI":"10.9717\/kmms.2015.18.9.1083","article-title":"Application
-        of the Hamiltonian circuit Latin square to a parallel routing algorithm on
-        generalized recursive circulant networks","volume":"18","author":"Choi","year":"2015","journal-title":"J.
-        Korea Multimedia Soc."},{"key":"10.1002\/jcd.21638-BIB0005|jcd21638-cit-0005","year":"2007","volume-title":"The
-        handbook of combinatorial designs"},{"key":"10.1002\/jcd.21638-BIB0006|jcd21638-cit-0006","doi-asserted-by":"crossref","first-page":"71","DOI":"10.1002\/jcd.21375","article-title":"Orientable
-        Hamilton cycle embeddings of complete tripartite graphs I: Latin square constructions","volume":"22","author":"Ellingham","year":"2014","journal-title":"J.
-        Combin. Des."},{"key":"10.1002\/jcd.21638-BIB0007|jcd21638-cit-0007","doi-asserted-by":"crossref","first-page":"637","DOI":"10.1016\/j.jctb.2007.10.002","article-title":"A
-        lower bound for the number of triangular embeddings of some complete graphs
-        and complete regular tripartite graphs","volume":"98","author":"Grannell","year":"2008","journal-title":"J.
-        Combin. Theory, Ser. B"},{"key":"10.1002\/jcd.21638-BIB0008|jcd21638-cit-0008","doi-asserted-by":"crossref","first-page":"216","DOI":"10.1016\/j.jctb.2009.08.001","article-title":"A
-        lower bound for the number of orientable triangular embeddings of some complete
-        graphs","volume":"100","author":"Grannell","year":"2010","journal-title":"J.
-        Combin. Theory, Ser. B"},{"key":"10.1002\/jcd.21638-BIB0009|jcd21638-cit-0009","doi-asserted-by":"crossref","first-page":"81","DOI":"10.1016\/S0095-8956(02)00029-1","article-title":"Hamiltonian
-        double latin squares","volume":"87","author":"Hilton","year":"2003","journal-title":"J.
-        Combin. Theory, Ser. B"},{"key":"10.1002\/jcd.21638-BIB0010|jcd21638-cit-0010","author":"Lucas","first-page":"1882","year":"2010","volume-title":"R\u00e9cr\u00e9ations
-        math\u00e9matiques"},{"key":"10.1002\/jcd.21638-BIB0011|jcd21638-cit-0011","first-page":"#R9","article-title":"Perfect
-        factorisations of bipartite graphs and Latin squares without proper subrectangles","volume":"6","author":"Wanless","year":"1999","journal-title":"Electron.
-        J. Combin."}],"container-title":["Journal of Combinatorial Designs"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.1002%2Fjcd.21638","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/onlinelibrary.wiley.com\/wol1\/doi\/10.1002\/jcd.21638\/fullpdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,11,16]],"date-time":"2018-11-16T19:17:50Z","timestamp":1542395870000},"score":1.0,"subtitle":["SCHROEDER"],"issued":{"date-parts":[[2018,10,31]]},"references-count":11,"journal-issue":{"published-print":{"date-parts":[[2019,1]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.1002\/jcd.21638","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1063-8539"],"issn-type":[{"value":"1063-8539","type":"print"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453981},"reference-count":0,"publisher":"Conselho
+        al."],"issued":{"date-parts":[[2018,10,31]]},"references-count":12,"journal-issue":{"published-print":{"date-parts":[[2019,1]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.1002\/htj.21378","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1099-2871"],"issn-type":[{"value":"1099-2871","type":"print"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453981},"reference-count":0,"publisher":"Conselho
         Federal de Enfermagem - Cofen","issue":"1","license":[{"URL":"https:\/\/creativecommons.org\/licenses\/by\/4.0","start":{"date-parts":[[2018,10,8]],"date-time":"2018-10-08T00:00:00Z","timestamp":1538956800000},"delay-in-days":0,"content-version":"unspecified"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["revenf"],"abstract":"<jats:p>Objetivo:
         analisar a assist\u00eancia oferecida por enfermeiras obstetras durante o
         trabalho de parto e parto sob a \u00f3tica da pu\u00e9rpera. Metodologia:
@@ -393,126 +321,7 @@ http_interactions:
         Soares","family":"Teixeira","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0001-9472-1551","authenticated-orcid":false,"given":"Valdelize
         Elvas","family":"Pinheiro","sequence":"additional","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0002-0846-0533","authenticated-orcid":false,"given":"Iracema
         Da Silva","family":"Nogueira","sequence":"additional","affiliation":[]}],"member":"9124","published-online":{"date-parts":[[2018,10,8]]},"container-title":["Enfermagem
-        em Foco"],"link":[{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/1101\/431","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/1101\/431","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:23:10Z","timestamp":1541006590000},"score":1.0,"issued":{"date-parts":[[2018,10,8]]},"references-count":0,"journal-issue":{"published-online":{"date-parts":[[2018,7,25]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.21675\/2357-707x.2018.v9.n1.1101","ISSN":["2357-707X","2177-4285"],"issn-type":[{"value":"2177-4285","type":"print"},{"value":"2357-707X","type":"electronic"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:54Z","timestamp":1574894454017},"reference-count":72,"publisher":"University
-        of Westminster Press","issue":"2","license":[{"URL":"http:\/\/creativecommons.org\/licenses\/by\/4.0","start":{"date-parts":[[2018,1,1]],"date-time":"2018-01-01T00:00:00Z","timestamp":1514764800000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"published-print":{"date-parts":[[2018,10,31]]},"DOI":"10.16997\/wpcc.290","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:17:48Z","timestamp":1541006268000},"page":"14-30","source":"Crossref","is-referenced-by-count":0,"title":["New
-        Visualities of Space and Place: Mapping Theories, Concepts and Methodology
-        of Visual Communication Research on Locative Media and Geomedia"],"prefix":"10.16997","volume":"13","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-8504-5691","authenticated-orcid":false,"given":"Cornelia","family":"Brantner","sequence":"first","affiliation":[]}],"member":"6588","reference":[{"issue":"3","key":"key20181031131740_B1","doi-asserted-by":"crossref","first-page":"299","DOI":"10.1111\/j.1468-2885.2012.01406.x","article-title":"Communication
-        geography: A bridge between disciplines","volume":"22","year":"2012","journal-title":"Communication
-        Theory"},{"issue":"1","key":"key20181031131740_B2","doi-asserted-by":"crossref","first-page":"25","DOI":"10.1177\/0309132516664800","article-title":"Digital
-        turn, digital geographies?","volume":"42","year":"2018","journal-title":"Progress
-        in Human Geography"},{"issue":"8","key":"key20181031131740_B3","first-page":"1","article-title":"Modelling
-        human mobility patterns using photographic data shared online","volume":"2","year":"2015","journal-title":"Royal
-        Society Open Science"},{"key":"key20181031131740_B4","unstructured":"Bonnington,
-        C. (2012, August 16). Instagram 3.0\u2019s new maps feature: A privacy wake-up
-        call? Wired. https:\/\/www.wired.com\/2012\/08\/instagram-3-0-update-maps\/."},{"issue":"1","key":"key20181031131740_B5","doi-asserted-by":"crossref","first-page":"14","DOI":"10.2307\/202060","article-title":"Social
-        space and symbolic power","volume":"7","year":"1989","journal-title":"Sociological
-        Theory"},{"key":"key20181031131740_B6","first-page":"1","year":"2018","volume-title":"Handbuch
-        Visuelle Kommunikationsforschung [Handbook of Visual Communication Research]"},{"key":"key20181031131740_B7","year":"2016","article-title":"Inter-\/transnationalization
-        of the climate change discourse on Twitter"},{"key":"key20181031131740_B8","volume":"10","first-page":"299","year":"2016","article-title":"New
-        \u2018danger zone\u2019 in Europe: Representations of place in social media\u2013supported
-        protests","journal-title":"International Journal of Communication"},{"key":"key20181031131740_B9","first-page":"373","year":"2014","volume-title":"Twitter
-        and Society"},{"key":"key20181031131740_B10","first-page":"474","year":"2011","volume-title":"The
-        Sage Handbook of Visual Research Methods","DOI":"10.4135\/9781446268278.n25","doi-asserted-by":"crossref"},{"key":"key20181031131740_B11","unstructured":"Cornell,
-        L., & Varnelis, K. (2011). Down the line. Frieze, 141. Retrieved from: http:\/\/www.frieze.com\/issue\/article\/down-the-line\/."},{"key":"key20181031131740_B12","first-page":"1","year":"2004","volume-title":"Mediaspace:
-        Place, Scale and Culture in a Media Age"},{"issue":"2","key":"key20181031131740_B13","doi-asserted-by":"crossref","first-page":"235","DOI":"10.1191\/030913201678580494","article-title":"Maps
-        as social constructions: Power, communication and visualization","volume":"25","year":"2001","journal-title":"Progress
-        in Human Geography"},{"key":"key20181031131740_B14","first-page":"58","year":"2012","article-title":"The
-        livehoods project: Utilizing social media to understand the dynamics of a
-        city"},{"issue":"4","key":"key20181031131740_B15","doi-asserted-by":"crossref","first-page":"485","DOI":"10.1080\/17450101.2010.510332","article-title":"Locative
-        mobile social networks: Mapping communication and location in urban spaces","volume":"5","year":"2010","journal-title":"Mobilities"},{"issue":"1","key":"key20181031131740_B16","doi-asserted-by":"crossref","first-page":"23","DOI":"10.1111\/j.1468-2885.2010.01374.x","article-title":"Theorizing
-        locative technologies through philosophies of the virtual","volume":"21","year":"2011","journal-title":"Communication
-        Theory"},{"key":"key20181031131740_B17","first-page":"289","year":"2014","volume-title":"Approaches
-        to Human Geography: Philosophies, Theories, People and Practices"},{"key":"key20181031131740_B18","first-page":"9","year":"2009","volume-title":"Mediengeographie:
-        Theorie \u2013 Analyse \u2013 Diskussion"},{"key":"key20181031131740_B19","year":"2011","volume-title":"Divining
-        a Digital Future: Mess and Mythology in Ubiquitous Computing"},{"issue":"4","key":"key20181031131740_B20","doi-asserted-by":"crossref","first-page":"544","DOI":"10.1111\/j.1475-5661.2012.00543.x","article-title":"New
-        spatial media, new knowledge politics","volume":"38","year":"2013","journal-title":"Transactions
-        of the Institute of British Geographers"},{"key":"key20181031131740_B21","year":"2012","volume-title":"The
-        Mobile Interface of Everyday Life: Embodied Space and Locative Media"},{"issue":"4","key":"key20181031131740_B22","doi-asserted-by":"crossref","first-page":"536","DOI":"10.1177\/0163443717698871","article-title":"Invisibility
-        through the interface: The social consequences of spatial search","volume":"39","year":"2017","journal-title":"Media,
-        Culture & Society"},{"issue":"1","key":"key20181031131740_B23","doi-asserted-by":"crossref","first-page":"43","DOI":"10.1177\/1206331215595730","article-title":"Here,
-        I used to be: Mobile media and practices of place-based digital memory","volume":"19","year":"2016","journal-title":"Space
-        and Culture"},{"issue":"2","key":"key20181031131740_B24","doi-asserted-by":"crossref","first-page":"82","DOI":"10.1080\/17489720902950374","article-title":"NeoGeography
-        and the nature of geographic expertise","volume":"3","year":"2009","journal-title":"Journal
-        of Location Based Services"},{"key":"key20181031131740_B25","year":"2011","volume-title":"Net
-        Locality: Why Location Matters in a Networked World"},{"issue":"3","key":"key20181031131740_B26","doi-asserted-by":"crossref","first-page":"464","DOI":"10.1111\/j.1475-5661.2012.00539.x","article-title":"Augmented
-        reality in urban places: Contested content and the duplicity of code","volume":"38","year":"2013","journal-title":"Transactions
-        of the Institute of British Geographers"},{"issue":"3","key":"key20181031131740_B27","doi-asserted-by":"crossref","first-page":"269","DOI":"10.1177\/1354856514546094","article-title":"Persistent
-        traces, potential memories: Smartphones and the negotiation of visual, locative,
-        and textual data in personal life","volume":"22","year":"2016","journal-title":"Convergence"},{"key":"key20181031131740_B28","year":"2014","volume-title":"Mediatized
-        Worlds"},{"issue":"1","key":"key20181031131740_B29","doi-asserted-by":"crossref","first-page":"40","DOI":"10.1177\/2050157913505257","article-title":"New
-        visualities and the digital wayfarer: Reconceptualizing camera phone photography
-        and locative media","volume":"2","year":"2014","journal-title":"Mobile Media
-        & Communication"},{"key":"key20181031131740_B30","volume":"18","issue":"7","year":"2013","article-title":"Zooming
-        into an Instagram city: Reading the local through social media","journal-title":"First
-        Monday"},{"issue":"3","key":"key20181031131740_B31","doi-asserted-by":"crossref","first-page":"371","DOI":"10.1177\/1470357216642638","article-title":"Brave
-        new city: The image in the urban data-space","volume":"15","year":"2016","journal-title":"Visual
-        Communication"},{"key":"key20181031131740_B32","first-page":"79","year":"2006","volume-title":"Mobile
-        Communication in Everyday Life: An Ethnographic View"},{"issue":"2","key":"key20181031131740_B33","doi-asserted-by":"crossref","first-page":"185","DOI":"10.1177\/1367549407075904","article-title":"Texture:
-        A key concept for communication geography","volume":"10","year":"2007","journal-title":"European
-        Journal of Cultural Studies"},{"issue":"5\u20136","key":"key20181031131740_B34","first-page":"484","article-title":"Ideology,
-        obsolescence and preservation in digital mapping and locative art","volume":"75","year":"2013","journal-title":"International
-        Communication Gazette"},{"key":"key20181031131740_B35","unstructured":"Kalnins,
-        K. (2002). White paper: Geographiti at the Banff New Media Institute. Retrieved
-        from: http:\/\/web.archive.org\/web\/20040303213812\/http:\/\/www.gpster.net\/whitepaper.html."},{"key":"key20181031131740_B36","first-page":"131","year":"2012","volume-title":"Advances
-        in Visual Methodology","DOI":"10.4135\/9781446250921.n8","doi-asserted-by":"crossref"},{"issue":"1","key":"key20181031131740_B37","doi-asserted-by":"crossref","first-page":"14","DOI":"10.1080\/1472586X.2011.548485","article-title":"Geomedia:
-        On location-based media, the changing status of collective image production
-        and the emergence of social navigation systems","volume":"26","year":"2011","journal-title":"Visual
-        Studies"},{"key":"key20181031131740_B38","year":"1991","volume-title":"The
-        Production of Space"},{"issue":"9","key":"key20181031131740_B39","doi-asserted-by":"crossref","first-page":"1418","DOI":"10.1177\/1461444814527734","article-title":"Layar-ed
-        places: Using mobile augmented reality to tactically reengage, reproduce,
-        and reappropriate public space","volume":"17","year":"2015","journal-title":"New
-        Media & Society"},{"issue":"2","key":"key20181031131740_B40","doi-asserted-by":"crossref","first-page":"166","DOI":"10.1179\/0008704113Z.00000000083","article-title":"Cartography
-        as an academic field: A lost opportunity or a new beginning?","volume":"50","year":"2013","journal-title":"The
-        Cartographic Journal"},{"key":"key20181031131740_B41","first-page":"18","year":"2015","article-title":"Population
-        bias in geotagged tweets"},{"key":"key20181031131740_B42","first-page":"452","year":"2011","volume-title":"The
-        Sage Handbook of Visual Research Methods","DOI":"10.4135\/9781446268278.n24","doi-asserted-by":"crossref"},{"key":"key20181031131740_B43","year":"1995","volume-title":"Picture
-        Theory"},{"key":"key20181031131740_B44","first-page":"86","year":"2002","edition":"2nd
-        Edition","volume-title":"The Visual Culture Reader"},{"issue":"18","key":"key20181031131740_B45","first-page":"287","article-title":"Images
-        of the city in the making: Participatory mapping, dynamic data processing
-        and collective knowledge","volume":"4","year":"2013","journal-title":"Przegl\u0105d
-        Kulturoznawczy"},{"issue":"1","key":"key20181031131740_B46","doi-asserted-by":"crossref","first-page":"337","DOI":"10.3390\/ijgi4010337","article-title":"Geovisual
-        analytics approach to exploring public political discourse on Twitter","volume":"4","year":"2015","journal-title":"ISPRS
-        International Journal of Geo-Information"},{"key":"key20181031131740_B47","first-page":"101","year":"2015","volume-title":"Mobility
-        and Locative Media. Mobile Communication in Hybrid Spaces"},{"key":"key20181031131740_B48","volume":"10","first-page":"1932","year":"2016","article-title":"Visually
-        researching and communicating the city: A systematic assessment of methods
-        and resources","journal-title":"International Journal of Communication"},{"issue":"2","key":"key20181031131740_B49","doi-asserted-by":"crossref","first-page":"92","DOI":"10.1080\/1472586X.2011.571884","article-title":"Amateur
-        photographic practice, collective representation and the constitution of place","volume":"26","year":"2011","journal-title":"Visual
-        Studies"},{"issue":"3","key":"key20181031131740_B50","doi-asserted-by":"crossref","first-page":"375","DOI":"10.1177\/1474474016684127","article-title":"Being
-        in a mediated world: Self-tracking and the mind\u2013body\u2013 environment","volume":"24","year":"2017","journal-title":"Cultural
-        Geographies"},{"issue":"1","key":"key20181031131740_B51","doi-asserted-by":"crossref","first-page":"145","DOI":"10.1177\/1329878X1214500116","article-title":"Emplaced
-        cartographies: Reconceptualising camera phone practices in an age of locative
-        media","volume":"145","year":"2012","journal-title":"Media International Australia"},{"key":"key20181031131740_B52","first-page":"248","year":"2016","volume-title":"Key
-        Methods in Geography"},{"issue":"6","key":"key20181031131740_B53","doi-asserted-by":"crossref","first-page":"1027","DOI":"10.1177\/1461444814552098","article-title":"Space
-        and place matters: A tool for the analysis of geolocated and mapped protests","volume":"18","year":"2016","journal-title":"New
-        Media & Society"},{"key":"key20181031131740_B54","year":"2016","edition":"5th
-        Edition","volume-title":"Visual Methodologies: An Introduction to Researching
-        with Visual Materials"},{"key":"key20181031131740_B55","first-page":"33","year":"2013","volume-title":"On
-        the Verge of Photography: Imaging beyond Representation"},{"key":"key20181031131740_B56","first-page":"22","year":"2013","volume-title":"The
-        Photographic Image in Digital Culture"},{"key":"key20181031131740_B57","unstructured":"Russell,
-        B. (1999). Headmap Manifesto: Know Your place (Location-aware Devices). Retrieved
-        from: http:\/\/digital.typepad.com\/headmapmanifesto.pdf."},{"key":"key20181031131740_B58","first-page":"215","year":"2013","volume-title":"geo@web.
-        Medium, R\u00e4umlichkeit und geographische Bildung"},{"key":"key20181031131740_B59","first-page":"85","year":"2015","volume-title":"Mobility
-        and Locative Media. Mobile Communication in Hybrid Spaces"},{"issue":"10","key":"key20181031131740_B60","doi-asserted-by":"crossref","first-page":"1643","DOI":"10.1177\/1461444814531364","article-title":"The
-        spatial self: Location-based identity performance on social media","volume":"17","year":"2015","journal-title":"New
-        Media & Society"},{"key":"key20181031131740_B61","first-page":"52","year":"2015","volume-title":"Locative
-        Media"},{"key":"key20181031131740_B62","first-page":"1","year":"2017","article-title":"From
-        spatial turn to mobilities turn","journal-title":"Current Sociology"},{"issue":"2","key":"key20181031131740_B63","doi-asserted-by":"crossref","first-page":"319","DOI":"10.1007\/s10708-011-9438-2","article-title":"Harvesting
-        ambient geospatial information from social media feeds","volume":"78","year":"2013","journal-title":"GeoJournal"},{"issue":"1","key":"key20181031131740_B64","first-page":"1","article-title":"Locative
-        media and mediated localities","volume":"5","year":"2010","journal-title":"Aether:
-        The Journal of Media Geography"},{"issue":"1","key":"key20181031131740_B65","doi-asserted-by":"crossref","first-page":"25","DOI":"10.1080\/1472586X.2011.548486","article-title":"The
-        algorithmic turn: Photosynth, augmented reality and the changing implications
-        of the image","volume":"26","year":"2011","journal-title":"Visual Studies"},{"key":"key20181031131740_B66","year":"2007","volume-title":"Mobilities"},{"key":"key20181031131740_B67","first-page":"107","year":"2016","volume-title":"Digital
-        Photography and Everyday Life: Empirical Studies on Material Visual Practices"},{"key":"key20181031131740_B68","unstructured":"Weiser,
-        P., & Abdalla, A. (2013). Surveillance in the Context of Security and Profit
-        \u2013 the Case of \u2018Non-Volunteered\u2019 Geographic Information. In:
-        18. Fortbildungsseminar Geoinformationssysteme Muenchen, 199\u2013206. M\u00fcnchen.
-        Retrieved from: https:\/\/publik.tuwien.ac.at\/files\/PubDat_217672.pdf."},{"issue":"7","key":"key20181031131740_B69","doi-asserted-by":"crossref","first-page":"1087","DOI":"10.1177\/1461444814543997","article-title":"Places
-        nearby: Facebook as a location-based social media platform","volume":"16","year":"2014","journal-title":"New
-        Media & Society"},{"key":"key20181031131740_B70","first-page":"155","year":"2014","volume-title":"Twitter
-        and Society"},{"key":"key20181031131740_B71","year":"2015","volume-title":"Locative
-        Media"},{"issue":"3","key":"key20181031131740_B72","doi-asserted-by":"crossref","first-page":"249","DOI":"10.1177\/1354856512441148","article-title":"A
-        location of one\u2019s own: A genealogy of locative media","volume":"18","year":"2012","journal-title":"Convergence"}],"container-title":["Westminster
-        Papers in Communication and Culture"],"language":"en","deposited":{"date-parts":[[2019,6,13]],"date-time":"2019-06-13T14:07:40Z","timestamp":1560434860000},"score":1.0,"issued":{"date-parts":[[2018]]},"references-count":72,"journal-issue":{"published-print":{"date-parts":[[2018,10,31]]},"issue":"2"},"alternative-id":["10.16997\/wpcc.290"],"URL":"http:\/\/dx.doi.org\/10.16997\/wpcc.290","relation":{"cites":[]},"ISSN":["1744-6716"],"issn-type":[{"value":"1744-6716","type":"electronic"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:54Z","timestamp":1574894454047},"reference-count":0,"publisher":"Conselho
+        em Foco"],"link":[{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/1101\/431","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/1101\/431","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:23:10Z","timestamp":1541006590000},"score":1.0,"issued":{"date-parts":[[2018,10,8]]},"references-count":0,"journal-issue":{"published-online":{"date-parts":[[2018,7,25]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.21675\/2357-707x.2018.v9.n1.1101","ISSN":["2357-707X","2177-4285"],"issn-type":[{"value":"2177-4285","type":"print"},{"value":"2357-707X","type":"electronic"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:54Z","timestamp":1574894454047},"reference-count":0,"publisher":"Conselho
         Federal de Enfermagem - Cofen","issue":"1","license":[{"URL":"http:\/\/creativecommons.org\/licenses\/by\/4.0","start":{"date-parts":[[2018,8,6]],"date-time":"2018-08-06T00:00:00Z","timestamp":1533513600000},"delay-in-days":0,"content-version":"unspecified"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["revenf"],"abstract":"<jats:p>Objetivo:
         compreender e estabelecer rela\u00e7\u00e3o de sentido entre os conceitos
         fundamentais de Pierre Bourdieu e o campo da Enfermagem. Metodologia: estudo
@@ -1169,8 +978,16 @@ http_interactions:
         Technology, Dalian 116024, China"}]},{"ORCID":"http:\/\/orcid.org\/0000-0003-2280-6737","authenticated-orcid":true,"given":"Yi","family":"Zhang","sequence":"additional","affiliation":[{"name":"Key
         Laboratory of Ocean Energy Utilization and Energy Conservation of Ministry
         of Education, School of Energy and Power Engineering, Dalian University of
-        Technology, Dalian 116024, China"}]}],"member":"316","published-online":{"date-parts":[[2018,10,31]]},"container-title":["Journal
-        of Chemical & Engineering Data"],"language":"en","link":[{"URL":"https:\/\/pubs.acs.org\/doi\/pdf\/10.1021\/acs.jced.8b00433","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,9,30]],"date-time":"2019-09-30T22:19:24Z","timestamp":1569881964000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":59,"alternative-id":["10.1021\/acs.jced.8b00433"],"URL":"http:\/\/dx.doi.org\/10.1021\/acs.jced.8b00433","ISSN":["0021-9568","1520-5134"],"issn-type":[{"value":"0021-9568","type":"print"},{"value":"1520-5134","type":"electronic"}],"article-number":"acs.jced.8b00433"},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:55Z","timestamp":1574894455239},"update-to":[{"updated":{"date-parts":[[2018,11,1]],"date-time":"2018-11-01T00:00:00Z","timestamp":1541030400000},"DOI":"10.1038\/s41598-018-30571-x","type":"correction","label":"Correction"}],"reference-count":0,"publisher":"Springer
+        Technology, Dalian 116024, China"}]}],"member":"316","published-online":{"date-parts":[[2018,10,31]]},"reference":[{"key":"ref1\/cit1","DOI":"10.1016\/j.jngse.2014.10.013","doi-asserted-by":"publisher"},{"key":"ref2\/cit2","DOI":"10.1016\/j.egypro.2014.11.618","doi-asserted-by":"publisher"},{"key":"ref3\/cit3","DOI":"10.1016\/0196-8904(92)90062-2","doi-asserted-by":"publisher"},{"key":"ref4\/cit4","DOI":"10.1016\/j.energy.2004.03.075","doi-asserted-by":"publisher"},{"key":"ref5\/cit5","DOI":"10.1007\/s11440-013-0277-9","doi-asserted-by":"publisher"},{"key":"ref6\/cit6","DOI":"10.1016\/S0196-8904(96)00272-5","doi-asserted-by":"publisher"},{"key":"ref7\/cit7","DOI":"10.1038\/nature02135","doi-asserted-by":"publisher"},{"key":"ref8\/cit8","DOI":"10.1016\/j.apenergy.2015.02.040","doi-asserted-by":"publisher"},{"key":"ref9\/cit9","DOI":"10.1016\/j.ijheatmasstransfer.2014.05.034","doi-asserted-by":"publisher"},{"key":"ref10\/cit10","DOI":"10.1016\/j.energy.2013.01.066","doi-asserted-by":"publisher"},{"key":"ref11\/cit11","DOI":"10.1016\/j.fluid.2017.12.033","doi-asserted-by":"publisher"},{"key":"ref12\/cit12","author":"Edenhofer
+        O.","year":"2011","volume-title":"IPCC Special Report on Renewable Energy
+        Sources and Climate Change Mitigation","DOI":"10.1017\/CBO9781139151153","doi-asserted-by":"crossref"},{"key":"ref13\/cit13","DOI":"10.1016\/0196-8904(92)90064-4","doi-asserted-by":"publisher"},{"key":"ref14\/cit14","DOI":"10.1016\/0196-8904(93)90069-M","doi-asserted-by":"publisher"},{"key":"ref15\/cit15","DOI":"10.1021\/ie1013019","doi-asserted-by":"publisher"},{"key":"ref16\/cit16","DOI":"10.1016\/j.apenergy.2011.03.052","doi-asserted-by":"publisher"},{"key":"ref17\/cit17","DOI":"10.1016\/j.ijggc.2016.12.008","doi-asserted-by":"publisher"},{"key":"ref18\/cit18","DOI":"10.1021\/ef400257a","doi-asserted-by":"publisher"},{"key":"ref19\/cit19","DOI":"10.1016\/j.fluid.2017.02.018","doi-asserted-by":"publisher"},{"key":"ref20\/cit20","DOI":"10.1021\/ie50409a019","doi-asserted-by":"publisher"},{"key":"ref21\/cit21","DOI":"10.1002\/cjce.5450470119","doi-asserted-by":"publisher"},{"key":"ref22\/cit22","DOI":"10.1252\/jcej.4.113","doi-asserted-by":"publisher"},{"key":"ref23\/cit23","author":"Tong
+        J.","volume":"5","first-page":"119","year":"1984","journal-title":"J. Eng.
+        Thermophys."},{"key":"ref24\/cit24","DOI":"10.1007\/BF00503153","doi-asserted-by":"publisher"},{"key":"ref25\/cit25","DOI":"10.1016\/0378-3812(89)80004-4","doi-asserted-by":"publisher"},{"key":"ref26\/cit26","DOI":"10.1016\/0378-4371(89)90131-3","doi-asserted-by":"publisher"},{"key":"ref27\/cit27","DOI":"10.1016\/0021-9614(89)90117-1","doi-asserted-by":"publisher"},{"key":"ref28\/cit28","DOI":"10.1016\/0021-9614(90)90189-W","doi-asserted-by":"publisher"},{"key":"ref29\/cit29","DOI":"10.1016\/0016-7037(94)90572-X","doi-asserted-by":"publisher"},{"key":"ref30\/cit30","DOI":"10.1006\/jcht.1996.0107","doi-asserted-by":"publisher"},{"key":"ref31\/cit31","DOI":"10.1006\/jcht.1996.0049","doi-asserted-by":"publisher"},{"key":"ref32\/cit32","DOI":"10.1021\/je970042b","doi-asserted-by":"publisher"},{"key":"ref33\/cit33","DOI":"10.1021\/es3037737","doi-asserted-by":"publisher"},{"key":"ref34\/cit34","DOI":"10.1021\/je300665n","doi-asserted-by":"publisher"},{"key":"ref35\/cit35","DOI":"10.1016\/j.ijggc.2013.07.019","doi-asserted-by":"publisher"},{"key":"ref36\/cit36","DOI":"10.1016\/j.fluid.2015.08.029","doi-asserted-by":"publisher"},{"key":"ref37\/cit37","DOI":"10.1016\/j.jct.2016.11.009","doi-asserted-by":"publisher"},{"key":"ref38\/cit38","DOI":"10.2118\/5052-PA","doi-asserted-by":"publisher"},{"key":"ref39\/cit39","DOI":"10.1016\/j.gca.2017.09.025","doi-asserted-by":"publisher"},{"key":"ref40\/cit40","DOI":"10.1007\/s11431-015-5785-4","doi-asserted-by":"publisher"},{"key":"ref41\/cit41","DOI":"10.1021\/ef200387p","doi-asserted-by":"publisher"},{"key":"ref42\/cit42","DOI":"10.1021\/ie303248q","doi-asserted-by":"publisher"},{"key":"ref43\/cit43","DOI":"10.1016\/j.cherd.2013.06.017","doi-asserted-by":"publisher"},{"key":"ref44\/cit44","DOI":"10.1021\/ie201952n","doi-asserted-by":"publisher"},{"key":"ref45\/cit45","DOI":"10.1016\/j.fluid.2011.09.032","doi-asserted-by":"publisher"},{"key":"ref46\/cit46","DOI":"10.1016\/j.fluid.2013.05.004","doi-asserted-by":"publisher"},{"key":"ref47\/cit47","DOI":"10.1016\/j.fluid.2013.01.006","doi-asserted-by":"publisher"},{"key":"ref48\/cit48","unstructured":"Kunz,
+        O.; Klimeck, R.; Wagner, W.; Jaeschke, M. The GERG-2004 wide-range equation
+        of state for natural gases and other mixtures; GERG TM15, 2007; Fortschr.Ber.
+        VDI, Reihe 6, Nr. 557, VDI Verlag: D\u00fcsseldorf, 2007. Also available as
+        GERG Technical Monograph 15, 2007."},{"key":"ref49\/cit49","DOI":"10.1021\/je300655b","doi-asserted-by":"publisher"},{"key":"ref50\/cit50","DOI":"10.1021\/je500120v","doi-asserted-by":"publisher"},{"key":"ref51\/cit51","DOI":"10.1021\/je300388b","doi-asserted-by":"publisher"},{"key":"ref52\/cit52","DOI":"10.1021\/je101214e","doi-asserted-by":"publisher"},{"key":"ref53\/cit53","DOI":"10.1016\/0378-3812(89)80308-5","doi-asserted-by":"publisher"},{"key":"ref54\/cit54","DOI":"10.1021\/ie00104a021","doi-asserted-by":"publisher"},{"key":"ref55\/cit55","DOI":"10.1021\/ie00107a014","doi-asserted-by":"publisher"},{"key":"ref56\/cit56","DOI":"10.1021\/ie0003887","doi-asserted-by":"publisher"},{"key":"ref57\/cit57","DOI":"10.1016\/j.jct.2014.03.020","doi-asserted-by":"publisher"},{"key":"ref58\/cit58","DOI":"10.1016\/j.jct.2017.03.036","doi-asserted-by":"publisher"},{"key":"ref59\/cit59","DOI":"10.1063\/1.555991","doi-asserted-by":"publisher"}],"container-title":["Journal
+        of Chemical & Engineering Data"],"language":"en","link":[{"URL":"https:\/\/pubs.acs.org\/doi\/pdf\/10.1021\/acs.jced.8b00433","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,9,30]],"date-time":"2019-09-30T22:19:24Z","timestamp":1569881964000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":59,"alternative-id":["10.1021\/acs.jced.8b00433"],"URL":"http:\/\/dx.doi.org\/10.1021\/acs.jced.8b00433","relation":{"cites":[]},"ISSN":["0021-9568","1520-5134"],"issn-type":[{"value":"0021-9568","type":"print"},{"value":"1520-5134","type":"electronic"}],"article-number":"acs.jced.8b00433"},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:55Z","timestamp":1574894455239},"update-to":[{"updated":{"date-parts":[[2018,11,1]],"date-time":"2018-11-01T00:00:00Z","timestamp":1541030400000},"DOI":"10.1038\/s41598-018-30571-x","type":"correction","label":"Correction"}],"reference-count":0,"publisher":"Springer
         Science and Business Media LLC","issue":"1","license":[{"URL":"https:\/\/creativecommons.org\/licenses\/by\/4.0","start":{"date-parts":[[2018,11,1]],"date-time":"2018-11-01T00:00:00Z","timestamp":1541030400000},"delay-in-days":0,"content-version":"tdm"}],"content-domain":{"domain":["link.springer.com"],"crossmark-restriction":false},"short-container-title":["Sci
         Rep"],"published-print":{"date-parts":[[2018,12]]},"DOI":"10.1038\/s41598-018-34498-1","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:14:02Z","timestamp":1541006042000},"update-policy":"http:\/\/dx.doi.org\/10.1007\/springer_crossmark_policy","source":"Crossref","is-referenced-by-count":0,"title":["Author
         Correction: Assessing animal affect: an automated and self-initiated judgement
@@ -1357,7 +1174,221 @@ http_interactions:
         Lancet"},{"key":"10.1002\/ajmg.a.40659-BIB0071|ajmga40659-cit-0071","doi-asserted-by":"crossref","first-page":"368","DOI":"10.1016\/j.jpeds.2003.11.032","article-title":"Genotype-phenotype
         correlations in Noonan syndrome","volume":"144","author":"Zenker","year":"2004","journal-title":"The
         Journal of Pediatrics"}],"container-title":["American Journal of Medical Genetics
-        Part A"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.1002%2Fajmg.a.40659","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/onlinelibrary.wiley.com\/wol1\/doi\/10.1002\/ajmg.a.40659\/fullpdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,2,12]],"date-time":"2019-02-12T08:21:36Z","timestamp":1549959696000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":71,"journal-issue":{"published-print":{"date-parts":[[2018,12]]},"issue":"12"},"URL":"http:\/\/dx.doi.org\/10.1002\/ajmg.a.40659","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1552-4825"],"issn-type":[{"value":"1552-4825","type":"print"}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
+        Part A"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.1002%2Fajmg.a.40659","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/onlinelibrary.wiley.com\/wol1\/doi\/10.1002\/ajmg.a.40659\/fullpdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,2,12]],"date-time":"2019-02-12T08:21:36Z","timestamp":1549959696000},"score":1.0,"issued":{"date-parts":[[2018,10,31]]},"references-count":71,"journal-issue":{"published-print":{"date-parts":[[2018,12]]},"issue":"12"},"URL":"http:\/\/dx.doi.org\/10.1002\/ajmg.a.40659","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1552-4825"],"issn-type":[{"value":"1552-4825","type":"print"}]},{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T23:06:15Z","timestamp":1574895975377},"reference-count":16,"publisher":"Springer
+        Science and Business Media LLC","issue":"1","license":[{"URL":"https:\/\/creativecommons.org\/licenses\/by\/4.0","start":{"date-parts":[[2018,11,6]],"date-time":"2018-11-06T00:00:00Z","timestamp":1541462400000},"delay-in-days":0,"content-version":"tdm"}],"content-domain":{"domain":["link.springer.com"],"crossmark-restriction":false},"short-container-title":["J
+        Wireless Com Network"],"published-print":{"date-parts":[[2018,12]]},"DOI":"10.1186\/s13638-018-1278-z","type":"journal-article","created":{"date-parts":[[2018,11,6]],"date-time":"2018-11-06T08:57:43Z","timestamp":1541494663000},"update-policy":"http:\/\/dx.doi.org\/10.1007\/springer_crossmark_policy","source":"Crossref","is-referenced-by-count":0,"title":["Research
+        on sensor network optimization based on improved Apriori algorithm"],"prefix":"10.1186","volume":"2018","author":[{"ORCID":"http:\/\/orcid.org\/0000-0002-8745-371X","authenticated-orcid":false,"given":"Qiang","family":"Ji","sequence":"first","affiliation":[]},{"given":"Shifeng","family":"Zhang","sequence":"additional","affiliation":[]}],"member":"297","published-online":{"date-parts":[[2018,11,6]]},"reference":[{"issue":"3","key":"1278_CR1","doi-asserted-by":"publisher","first-page":"882","DOI":"10.1109\/JSEN.2013.2290433","volume":"14","author":"J
+        Yang","year":"2014","unstructured":"J. Yang, H. Zhang, Y. Ling, et al., Task
+        allocation for wireless sensor network using modified binary particle swarm
+        optimization [J]. IEEE Sensors J. 14(3), 882\u2013892 (2014)","journal-title":"IEEE
+        Sensors J."},{"issue":"7","key":"1278_CR2","doi-asserted-by":"publisher","first-page":"17572","DOI":"10.3390\/s150717572","volume":"15","author":"M
+        Iqbal","year":"2015","unstructured":"M. Iqbal, M. Naeem, A. Anpalagan, et
+        al., Wireless sensor network optimization: multi-objective paradigm [J]. Sensors
+        15(7), 17572\u201317620 (2015)","journal-title":"Sensors"},{"issue":"12","key":"1278_CR3","doi-asserted-by":"publisher","first-page":"3569","DOI":"10.1109\/TC.2015.2401017","volume":"64","author":"J
+        Li","year":"2015","unstructured":"J. Li, X. Chen, X. Huang, et al., Secure
+        distributed deduplication systems with improved reliability. IEEE Trans. Comput.
+        64(12), 3569\u20133579 (2015)","journal-title":"IEEE Trans. Comput."},{"issue":"5","key":"1278_CR4","doi-asserted-by":"publisher","first-page":"1265","DOI":"10.1016\/j.future.2012.08.002","volume":"29","author":"G
+        Sun","year":"2013","unstructured":"G. Sun, H. Yu, V. Anand, et al., A cost
+        efficient framework and algorithm for embedding dynamic virtual network requests.
+        Futur. Gener. Comput. Syst. 29(5), 1265\u20131277 (2013)","journal-title":"Futur.
+        Gener. Comput. Syst."},{"issue":"3","key":"1278_CR5","doi-asserted-by":"publisher","first-page":"1376","DOI":"10.1016\/j.eswa.2014.08.058","volume":"42","author":"R
+        Mijumbi","year":"2015","unstructured":"R. Mijumbi, J.L. Gorricho, J. Serrat,
+        et al., A neuro-fuzzy approach to self-management of virtual network resources.
+        Expert Syst. Appl. 42(3), 1376\u20131390 (2015)","journal-title":"Expert Syst.
+        Appl."},{"issue":"1","key":"1278_CR6","doi-asserted-by":"publisher","first-page":"92","DOI":"10.1080\/13658816.2014.948446","volume":"29","author":"Y
+        Ge","year":"2015","unstructured":"Y. Ge, J.H. Wang, G.B.M. Heuvelink, et al.,
+        Sampling design optimization of a wireless sensor network for monitoring ecohydrological
+        processes in the Babao River basin, China [J]. Int. J. Geogr. Inf. Sci. 29(1),
+        92\u2013110 (2015)","journal-title":"Int. J. Geogr. Inf. Sci."},{"issue":"5","key":"1278_CR7","doi-asserted-by":"publisher","first-page":"2814","DOI":"10.1109\/TWC.2015.2394799","volume":"14","author":"W
+        Xu","year":"2015","unstructured":"W. Xu, Y. Zhang, Q. Shi, et al., Energy
+        management and cross layer optimization for wireless sensor network powered
+        by heterogeneous energy sources [J]. IEEE Trans. Wirel. Commun. 14(5), 2814\u20132826
+        (2015)","journal-title":"IEEE Trans. Wirel. Commun."},{"issue":"5","key":"1278_CR8","doi-asserted-by":"publisher","first-page":"381","DOI":"10.4103\/0256-4602.85968","volume":"28","author":"G
+        Sun","year":"2011","unstructured":"G. Sun, H. Yu, L. Li, et al., The framework
+        and algorithms for the survivable mapping of virtual network onto a substrate
+        network. IETE Tech. Rev. 28(5), 381\u2013391 (2011)","journal-title":"IETE
+        Tech. Rev."},{"issue":"1","key":"1278_CR9","doi-asserted-by":"publisher","first-page":"159","DOI":"10.1007\/s10846-015-0175-5","volume":"78","author":"DT
+        Ho","year":"2015","unstructured":"D.T. Ho, P.B. Sujit, T.A. Johansen, Optimization
+        of wireless sensor network and UAV data acquisition [J]. J. Intell. Robot.
+        Syst. 78(1), 159\u2013179 (2015)","journal-title":"J. Intell. Robot. Syst."},{"issue":"3","key":"1278_CR10","doi-asserted-by":"publisher","first-page":"1676","DOI":"10.1109\/TVT.2015.2409319","volume":"65","author":"D
+        Qiao","year":"2016","unstructured":"D. Qiao, G.K.H. Pang, A modified differential
+        evolution with heuristic algorithm for nonconvex optimization on sensor network
+        localization [J]. IEEE Trans. Veh. Technol. 65(3), 1676\u20131689 (2016)","journal-title":"IEEE
+        Trans. Veh. Technol."},{"key":"1278_CR11","doi-asserted-by":"publisher","first-page":"42","DOI":"10.1016\/j.ins.2016.04.015","volume":"379","author":"Y
+        Zhang","year":"2017","unstructured":"Y. Zhang, X. Chen, J. Li, et al., Ensuring
+        attribute privacy protection and fast decryption for outsourced data security
+        in mobile cloud computing. Inf. Sci. 379, 42\u201361 (2017)","journal-title":"Inf.
+        Sci."},{"key":"1278_CR12","unstructured":"G. Yang, W. Tan, H. Jin, T. Zhao,
+        L. Tu, Review wearable sensing system for gait recognition [J]. Clust. Comput.
+        (2018). \n                    https:\/\/doi.org\/10.1007\/s10586-018-1830-y","DOI":"10.1007\/s10586-018-1830-y","doi-asserted-by":"publisher"},{"issue":"10","key":"1278_CR13","doi-asserted-by":"publisher","first-page":"1","DOI":"10.3390\/s16101675","volume":"16","author":"Y
+        Lin","year":"2016","unstructured":"Y. Lin, C. Wang, J. Wang, Z. Dou, A novel
+        dynamic spectrum access framework based on reinforcement learning for cognitive
+        radio sensor networks [J]. Sensors 16(10), 1\u201322 (2016). \n                    https:\/\/doi.org\/10.3390\/s16101675","journal-title":"Sensors"},{"issue":"23","key":"1278_CR14","doi-asserted-by":"publisher","first-page":"15601","DOI":"10.1007\/s11042-015-2649-7","volume":"75","author":"G
+        Yang","year":"2016","unstructured":"G. Yang, Y. Zhang, J. Yang, et al., Automated
+        classification of brain images using wavelet-energy and biogeography-based
+        optimization [J]. Multimed. Tools Appl. 75(23), 15601\u201315617 (2016)","journal-title":"Multimed.
+        Tools Appl."},{"issue":"1","key":"1278_CR15","doi-asserted-by":"publisher","first-page":"136","DOI":"10.1109\/MCOM.2017.1700323","volume":"56","author":"Z
+        Zheng","year":"2018","unstructured":"Z. Zheng, A.K. Sangaiah, T. Wang, Adaptive
+        communication protocols in flying ad hoc network [J]. IEEE Commun. Mag. 56(1),
+        136\u2013142 (2018)","journal-title":"IEEE Commun. Mag."},{"issue":"5","key":"1278_CR16","doi-asserted-by":"publisher","first-page":"1607","DOI":"10.1109\/TNET.2013.2286156","volume":"22","author":"S
+        Su","year":"2014","unstructured":"S. Su, Z. Zhang, A. Liu, et al., Energy-aware
+        virtual network embedding. IEEE\/ACM Trans. Networking 22(5), 1607\u20131620
+        (2014)","journal-title":"IEEE\/ACM Trans. Networking"}],"container-title":["EURASIP
+        Journal on Wireless Communications and Networking"],"language":"en","link":[{"URL":"http:\/\/link.springer.com\/content\/pdf\/10.1186\/s13638-018-1278-z.pdf","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/link.springer.com\/article\/10.1186\/s13638-018-1278-z\/fulltext.html","content-type":"text\/html","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/link.springer.com\/content\/pdf\/10.1186\/s13638-018-1278-z.pdf","content-type":"application\/pdf","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,11,6]],"date-time":"2019-11-06T00:06:54Z","timestamp":1572998814000},"score":1.0,"issued":{"date-parts":[[2018,11,6]]},"references-count":16,"journal-issue":{"published-print":{"date-parts":[[2018,12]]},"issue":"1"},"alternative-id":["1278"],"URL":"http:\/\/dx.doi.org\/10.1186\/s13638-018-1278-z","relation":{"cites":[]},"ISSN":["1687-1499"],"issn-type":[{"value":"1687-1499","type":"electronic"}],"assertion":[{"value":"15
+        August 2018","order":1,"name":"received","label":"Received","group":{"name":"ArticleHistory","label":"Article
+        History"}},{"value":"23 October 2018","order":2,"name":"accepted","label":"Accepted","group":{"name":"ArticleHistory","label":"Article
+        History"}},{"value":"6 November 2018","order":3,"name":"first_online","label":"First
+        Online","group":{"name":"ArticleHistory","label":"Article History"}},{"value":"The
+        authors declare that they have no competing interests.","order":1,"name":"Ethics","group":{"name":"EthicsHeading","label":"Competing
+        interests"}},{"value":"Springer Nature remains neutral with regard to jurisdictional
+        claims in published maps and institutional affiliations.","order":2,"name":"Ethics","group":{"name":"EthicsHeading","label":"Publisher\u2019s
+        Note"}}],"article-number":"258"},{"indexed":{"date-parts":[[2019,12,2]],"date-time":"2019-12-02T03:08:59Z","timestamp":1575256139173},"reference-count":0,"publisher":"eLife
+        Sciences Publications, Ltd","license":[{"URL":"http:\/\/creativecommons.org\/licenses\/by\/4.0\/","start":{"date-parts":[[2018,2,8]],"date-time":"2018-02-08T00:00:00Z","timestamp":1518048000000},"delay-in-days":0,"content-version":"unspecified"}],"content-domain":{"domain":[]},"published-print":{"date-parts":[[2018,2,8]]},"DOI":"10.7554\/elife.35014.025","type":"peer-review","created":{"date-parts":[[2018,3,1]],"date-time":"2018-03-01T10:00:15Z","timestamp":1519898415000},"source":"Crossref","is-referenced-by-count":0,"title":["Decision
+        letter: Dynamics of venom composition across a complex life cycle"],"prefix":"10.7554","member":"4374","review":{"type":"editor-report","stage":"pre-publication"},"deposited":{"date-parts":[[2019,11,13]],"date-time":"2019-11-13T18:31:12Z","timestamp":1573669872000},"score":1.0,"editor":[{"ORCID":"http:\/\/orcid.org\/0000-0002-1966-6959","authenticated-orcid":true,"given":"Alejandro","family":"S\u00e1nchez
+        Alvarado","sequence":"first","affiliation":[{"name":"Stowers Institute for
+        Medical Research, United States"}]}],"issued":{"date-parts":[[2018,2,8]]},"references-count":0,"URL":"http:\/\/dx.doi.org\/10.7554\/elife.35014.025","relation":{"is-review-of":[{"id-type":"doi","id":"10.7554\/eLife.35014","asserted-by":"subject"}]}},{"indexed":{"date-parts":[[2019,12,2]],"date-time":"2019-12-02T03:31:43Z","timestamp":1575257503276},"reference-count":0,"publisher":"Latvia
+        University of Life Sciences and Technologies","issue":"11","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["LAA"],"published-print":{"date-parts":[[2018,2,25]]},"DOI":"10.22616\/j.landarchart.2017.11.07","type":"journal-article","created":{"date-parts":[[2018,3,4]],"date-time":"2018-03-04T19:51:16Z","timestamp":1520193076000},"page":"62-68","source":"Crossref","is-referenced-by-count":0,"title":["The
+        contextual search in the landscape space of the school and manor building"],"prefix":"10.22616","volume":"11","author":[{"given":"Lolita","family":"Hercoga","sequence":"first","affiliation":[]},{"ORCID":"http:\/\/orcid.org\/0000-0001-7096-5850","authenticated-orcid":false,"given":"Aija","family":"Zieme\u013cniece","sequence":"additional","affiliation":[]}],"member":"9905","published-online":{"date-parts":[[2018,3,1]]},"container-title":["Landscape
+        architecture and art"],"link":[{"URL":"http:\/\/llufb.llu.lv\/Raksti\/Landscape_Architecture_Art\/2017\/vol11\/Latvia-Univ-Agricult_Landscape_Architect_Art_VOL_11_2017-62-68.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,3,4]],"date-time":"2018-03-04T19:51:20Z","timestamp":1520193080000},"score":1.0,"issued":{"date-parts":[[2018,2,25]]},"references-count":0,"journal-issue":{"published-online":{"date-parts":[[2018,3,1]]},"published-print":{"date-parts":[[2018,2,25]]},"issue":"11"},"URL":"http:\/\/dx.doi.org\/10.22616\/j.landarchart.2017.11.07","ISSN":["2255-8632","2255-8640"],"issn-type":[{"value":"2255-8632","type":"print"},{"value":"2255-8640","type":"electronic"}]},{"indexed":{"date-parts":[[2019,12,2]],"date-time":"2019-12-02T08:38:04Z","timestamp":1575275884834},"reference-count":37,"publisher":"Springer
+        Science and Business Media LLC","issue":"2","license":[{"URL":"http:\/\/www.springer.com\/tdm","start":{"date-parts":[[2018,4,5]],"date-time":"2018-04-05T00:00:00Z","timestamp":1522886400000},"delay-in-days":0,"content-version":"tdm"}],"content-domain":{"domain":["link.springer.com"],"crossmark-restriction":false},"short-container-title":["Indian
+        J Surg Oncol"],"published-print":{"date-parts":[[2018,6]]},"DOI":"10.1007\/s13193-018-0746-6","type":"journal-article","created":{"date-parts":[[2018,4,5]],"date-time":"2018-04-05T14:56:36Z","timestamp":1522940196000},"page":"241-246","update-policy":"http:\/\/dx.doi.org\/10.1007\/springer_crossmark_policy","source":"Crossref","is-referenced-by-count":0,"title":["Initiating
+        a Robotic Thyroidectomy Program in India"],"prefix":"10.1007","volume":"9","author":[{"ORCID":"http:\/\/orcid.org\/0000-0001-5999-0422","authenticated-orcid":false,"given":"Krishnakumar","family":"Thankappan","sequence":"first","affiliation":[]},{"given":"Subramania","family":"Iyer","sequence":"additional","affiliation":[]}],"member":"297","published-online":{"date-parts":[[2018,4,5]]},"reference":[{"key":"746_CR1","unstructured":"Weinstein
+        GS, O\u2019Malley BW Jr, Snyder W, Sherman E, Quon H (2007) Transoral robotic
+        surgery: radical tonsillectomy. Arch Otolaryngol Head Neck Surg 133:1220\u20131226","DOI":"10.1001\/archotol.133.12.1220","doi-asserted-by":"crossref"},{"key":"746_CR2","doi-asserted-by":"publisher","first-page":"147","DOI":"10.1016\/j.surge.2016.09.004","volume":"15","author":"D
+        Hamilton","year":"2017","unstructured":"Hamilton D, Paleri V (2017) Role of
+        transoral robotic surgery in current head & neck practice. Surgeon 15:147\u2013154","journal-title":"Surgeon"},{"key":"746_CR3","doi-asserted-by":"publisher","first-page":"1043","DOI":"10.1001\/jamaoto.2015.1508","volume":"141","author":"JR
+        Almeida de","year":"2015","unstructured":"de Almeida JR, Li R, Magnuson JS,
+        Smith RV, Smith RV, Moore E, Lawson G et al (2015) Oncologic outcomes after
+        transoral robotic surgery: a multi-institutional study. JAMA Otolaryngol Head
+        Neck Surg 141:1043\u20131051","journal-title":"JAMA Otolaryngol Head Neck
+        Surg"},{"key":"746_CR4","doi-asserted-by":"publisher","first-page":"331","DOI":"10.1177\/107327481502200311","volume":"22","author":"J
+        Burton","year":"2015","unstructured":"Burton J, Wong R, Padhya T (2015) Robotic-assisted
+        surgery in the head and neck. Cancer Control 22:331\u2013334","journal-title":"Cancer
+        Control"},{"key":"746_CR5","doi-asserted-by":"publisher","first-page":"21","DOI":"10.1016\/j.anl.2015.06.013","volume":"43","author":"I
+        Tateya","year":"2016","unstructured":"Tateya I, Shiotani A, Satou Y, Tomifuji
+        M, Morita S, Muto M, Ito J (2016) Transoral surgery for laryngopharyngeal
+        cancer\u2014the paradigm shift of the head and cancer treatment. Auris Nasus
+        Larynx 43:21\u201332","journal-title":"Auris Nasus Larynx"},{"key":"746_CR6","doi-asserted-by":"publisher","first-page":"1952","DOI":"10.1002\/lary.25763","volume":"126","author":"HK
+        Byeon","year":"2016","unstructured":"Byeon HK, Kim d H, Chang JW, Ban MJ,
+        Park JH, Kim WS, Choi EC, Koh YW (2016) Comprehensive application of robotic
+        retroauricular thyroidectomy: the evolution of robotic thyroidectomy. Laryngoscope
+        126:1952\u20131957","journal-title":"Laryngoscope"},{"key":"746_CR7","doi-asserted-by":"publisher","first-page":"3872","DOI":"10.1245\/s10434-014-3896-y","volume":"21","author":"HK
+        Byeon","year":"2014","unstructured":"Byeon HK, Holsinger FC, Tufano RP, Chung
+        HJ, Kim WS, Koh YW, Choi EC (2014) Robotic total thyroidectomy with modified
+        radical neck dissection via unilateral retroauricular approach. Ann Surg Oncol
+        21:3872\u20133875","journal-title":"Ann Surg Oncol"},{"key":"746_CR8","doi-asserted-by":"publisher","first-page":"367","DOI":"10.1089\/lap.2013.0296","volume":"24","author":"WS
+        Kim","year":"2014","unstructured":"Kim WS, Koh YW, Byeon HK, Park YM, Chung
+        HJ, Kim ES, Lee EJ, Park SC, Choi EC (2014) Robot-assisted neck dissection
+        via a transaxillary and retroauricular approach versus a conventional transcervical
+        approach in papillary thyroid cancer with cervical lymph node metastases.
+        J Laparoendosc Adv Surg Tech A 24:367\u2013372","journal-title":"J Laparoendosc
+        Adv Surg Tech A"},{"key":"746_CR9","doi-asserted-by":"publisher","first-page":"4785","DOI":"10.1007\/s00464-016-4808-y","volume":"30","author":"K
+        Tae","year":"2016","unstructured":"Tae K, Song CM, Ji YB, Sung ES, Jeong JH,
+        Kim DS (2016) Oncologic outcomes of robotic thyroidectomy: 5-year experience
+        with propensity score matching. Surg Endosc 30:4785\u20134792","journal-title":"Surg
+        Endosc"},{"key":"746_CR10","doi-asserted-by":"publisher","first-page":"997","DOI":"10.1177\/0194599816636366","volume":"154","author":"ES
+        Sung","year":"2016","unstructured":"Sung ES, Ji YB, Song CM, Yun BR, Chung
+        WS, Tae K (2016) Robotic thyroidectomy: comparison of a postauricular facelift
+        approach with a gasless unilateral axillary approach. Otolaryngol Head Neck
+        Surg 154:997\u20131004","journal-title":"Otolaryngol Head Neck Surg"},{"key":"746_CR11","doi-asserted-by":"publisher","first-page":"1005","DOI":"10.1177\/0194599816638084","volume":"154","author":"CM
+        Song","year":"2016","unstructured":"Song CM, Ji YB, Sung ES, Kim DS, Koo HR,
+        Tae K (2016) Comparison of robotic versus conventional selective neck dissection
+        and total thyroidectomy for papillary thyroid carcinoma. Otolaryngol Head
+        Neck Surg 154:1005\u20131013","journal-title":"Otolaryngol Head Neck Surg"},{"key":"746_CR12","first-page":"331","volume":"70","author":"CR
+        Lee","year":"2015","unstructured":"Lee CR, Chung WY (2015) Robotic surgery
+        for thyroid disease. Minerva Chir 70:331\u2013339","journal-title":"Minerva
+        Chir"},{"key":"746_CR13","doi-asserted-by":"publisher","first-page":"3134","DOI":"10.1007\/s00464-014-3567-x","volume":"28","author":"H
+        Son","year":"2014","unstructured":"Son H, Park S, Lee CR, Lee S, Kim JW, Kang
+        SW, Jeong JJ, Nam KH, Chung WY, Park CS (2014) Factors contributing to surgical
+        outcomes of transaxillary robotic thyroidectomy for papillary thyroid carcinoma.
+        Surg Endosc 28:3134\u20133142","journal-title":"Surg Endosc"},{"key":"746_CR14","doi-asserted-by":"publisher","first-page":"1636","DOI":"10.1002\/lary.21832","volume":"121","author":"DJ
+        Terris","year":"2011","unstructured":"Terris DJ, Singer MC, Seybt MW (2011)
+        Robotic facelift thyroidectomy: II. clinical feasibility and safety. Laryngoscope
+        121:1636\u20131341","journal-title":"Laryngoscope"},{"key":"746_CR15","doi-asserted-by":"publisher","first-page":"237","DOI":"10.1097\/SLE.0b013e3182266dd6","volume":"21","author":"DJ
+        Terris","year":"2011","unstructured":"Terris DJ, Singer MC, Seybt MW (2011)
+        Robotic facelift thyroidectomy: patient selection and technical considerations.
+        Surg Laparosc Endosc Percutan Tech 21:237\u2013242","journal-title":"Surg
+        Laparosc Endosc Percutan Tech"},{"key":"746_CR16","unstructured":"Lang BH,
+        Wong CK, Tsang JS, Wong KP. A systematic review and meta-analysis comparing
+        outcomes between robotic-assisted thyroidectomy and non-robotic endoscopic
+        thyroidectomy. J Surg Res 191:389\u2013398","DOI":"10.1016\/j.jss.2014.04.023","doi-asserted-by":"crossref"},{"key":"746_CR17","first-page":"734541","volume":"2012","author":"J
+        Lee","year":"2012","unstructured":"Lee J, Yun JH, Choi UJ, Kang SW, Jeong
+        JJ, Chung WY (2012) Robotic versus endoscopic thyroidectomy for thyroid cancers:
+        a multi-institutional analysis of early postoperative outcomes and surgical
+        learning curves. J Oncol 2012:734541","journal-title":"J Oncol"},{"key":"746_CR18","doi-asserted-by":"publisher","first-page":"226","DOI":"10.1245\/s10434-010-1220-z","volume":"18","author":"J
+        Lee","year":"2011","unstructured":"Lee J, Yun JH, Nam KH, Soh EY, Chung WY
+        (2011) The learning curve for robotic thyroidectomy: a multicenter study.
+        Ann Surg Oncol 18:226\u2013232","journal-title":"Ann Surg Oncol"},{"key":"746_CR19","doi-asserted-by":"publisher","first-page":"151","DOI":"10.1097\/PPO.0b013e31828aab61","volume":"19","author":"J
+        Lee","year":"2013","unstructured":"Lee J, Chung WY (2013) Robotic thyroidectomy
+        and neck dissection: past, present, and future. Cancer J 19:151\u2013161","journal-title":"Cancer
+        J"},{"key":"746_CR20","doi-asserted-by":"publisher","first-page":"286563","DOI":"10.1155\/2012\/286563","volume":"2012","author":"CM
+        Oliveira","year":"2012","unstructured":"Oliveira CM, Nguyen HT, Ferraz AR,
+        Watters K, Rosman B, Rahbar R (2012) Robotic surgery in otolaryngology and
+        head and neck surgery: a review. Minim Invasive Surg 2012:286563. https:\/\/doi.org\/10.1155\/2012\/286563","journal-title":"Minim
+        Invasive Surg"},{"key":"746_CR21","doi-asserted-by":"publisher","first-page":"1327","DOI":"10.1089\/thy.2010.1666","volume":"20","author":"ND
+        Perrier","year":"2010","unstructured":"Perrier ND, Randolph GW, Inabnet WB,
+        Marple BF, VanHeerden J, Kuppersmith RB (2010) Robotic thyroidectomy: a framework
+        for new technology assessment and safe implementation. Thyroid 20:1327\u20131332","journal-title":"Thyroid"},{"key":"746_CR22","unstructured":"Berber
+        E, Bernet V, Fahey TJ 3rd, Kebebew E, Shaha A, Stack BC Jr, et al. (2016)
+        American Thyroid Association Surgical Affairs Committee. American Thyroid
+        Association Statement on Remote-Access Thyroid Surgery. Thyroid 26:331\u2013337","DOI":"10.1089\/thy.2015.0407","doi-asserted-by":"crossref"},{"key":"746_CR23","doi-asserted-by":"publisher","first-page":"988","DOI":"10.1089\/thy.2012.2210.com2","volume":"22","author":"WB
+        Inabnet 3rd","year":"2012","unstructured":"Inabnet WB 3rd (2012) Robotic thyroidectomy:
+        must we drive a luxury sedan to arrive at our destination safely? Thyroid
+        22:988\u2013990","journal-title":"Thyroid"},{"key":"746_CR24","first-page":"403","volume":"4","author":"SR
+        Bomeli","year":"2015","unstructured":"Bomeli SR, Duke WS, Terris DJ (2015)
+        Robotic facelift thyroid surgery. Gland Surg 4:403\u2013409","journal-title":"Gland
+        Surg"},{"key":"746_CR25","doi-asserted-by":"publisher","first-page":"2797","DOI":"10.1007\/s00464-012-2281-9","volume":"26","author":"A
+        Kiriakopoulos","year":"2012","unstructured":"Kiriakopoulos A, Linos D (2012)
+        Gasless transaxillary robotic versus endoscopic thyroidectomy: exploring the
+        frontiers of scarless thyroidectomy through a preliminary comparison study.
+        Surg Endosc 26:2797\u20132801","journal-title":"Surg Endosc"},{"key":"746_CR26","doi-asserted-by":"publisher","first-page":"705","DOI":"10.1002\/jso.22106","volume":"105","author":"H
+        Yoo","year":"2012","unstructured":"Yoo H, Chae BJ, Park HS, Kim KH, Kim SH,
+        Song BJ, Jung SS, Bae JS (2012) Comparison of surgical outcomes between endoscopic
+        and robotic thyroidectomy. J Surg Oncol 105:705\u2013708","journal-title":"J
+        Surg Oncol"},{"key":"746_CR27","doi-asserted-by":"publisher","first-page":"1016","DOI":"10.1016\/j.surg.2012.08.029","volume":"152","author":"JC
+        Cabot","year":"2012","unstructured":"Cabot JC, Lee CR, Brunaud L, Kleiman
+        DA, Chung WY, Fahey TJ III, Zarnegar R (2012) Robotic and endoscopic transaxillary
+        thyroidectomies may be cost prohibitive when compared to standard cervical
+        thyroidectomy: a cost analysis. Surgery 152:1016\u20131024","journal-title":"Surgery"},{"key":"746_CR28","unstructured":"Liu
+        SY, Ng EK (2016) Robotic versus open thyroidectomy for differentiated thyroid
+        cancer: an evidence-based review. Int J Endocrinol 4309087","DOI":"10.1155\/2016\/4309087","doi-asserted-by":"crossref"},{"key":"746_CR29","doi-asserted-by":"publisher","first-page":"988","DOI":"10.1111\/j.1553-2712.2008.00227.x","volume":"15","author":"KA
+        Ericsson","year":"2008","unstructured":"Ericsson KA (2008) Deliberate practice
+        and acquisition of expert performance: a general overview. Acad Emerg Med
+        15:988\u2013994","journal-title":"Acad Emerg Med"},{"key":"746_CR30","doi-asserted-by":"publisher","first-page":"2184","DOI":"10.1002\/lary.23369","volume":"122","author":"M
+        Curry","year":"2012","unstructured":"Curry M, Malpani A, Li R, Tantillo T,
+        Jog A, Blanco R, Ha PK, Califano J, Kumar R, Richmon J (2012) Objective assessment
+        in residency-based training for transoral robotic surgery. Laryngoscope 122:2184\u20132192","journal-title":"Laryngoscope"},{"key":"746_CR31","doi-asserted-by":"publisher","first-page":"313","DOI":"10.1007\/s00464-007-9727-5","volume":"22","author":"DM
+        Herron","year":"2008","unstructured":"Herron DM, Marohn M (2008) SAGES-MIRA
+        Robotic Surgery Consensus Group. A consensus document on robotic surgery.
+        Surg Endosc 22:313\u2013325","journal-title":"Surg Endosc"},{"key":"746_CR32","first-page":"376","volume":"4","author":"P
+        Bhatia","year":"2015","unstructured":"Bhatia P, Mohamed HE, Kadi A, Kandil
+        E, Walvekar RR (2015) Remote access thyroid surgery. Gland Surg 4:376\u2013387","journal-title":"Gland
+        Surg"},{"key":"746_CR33","doi-asserted-by":"publisher","first-page":"603","DOI":"10.21037\/gs.2016.12.06","volume":"5","author":"H
+        Alabbas","year":"2016","unstructured":"Alabbas H, Bu Ali D, Kandil E (2016)
+        Robotic retroauricular thyroid surgery. Gland Surg 5:603\u2013606","journal-title":"Gland
+        Surg"},{"key":"746_CR34","doi-asserted-by":"publisher","first-page":"11","DOI":"10.1186\/1476-072X-11-11","volume":"11","author":"DT
+        Duncan","year":"2012","unstructured":"Duncan DT, Castro MC, Gortmaker SL,
+        Aldstadt J, Melly SJ, Bennett GG (2012) Racial differences in the built environment\u2014body
+        mass index relationship? A geospatial analysis of adolescents in urban neighbourhoods.
+        Int J Health Geogr 11:11","journal-title":"Int J Health Geogr"},{"key":"746_CR35","first-page":"294","volume":"25","author":"P
+        Chhabra","year":"2007","unstructured":"Chhabra P, Chhabra SK (2007) Distribution
+        and determinants of body mass index of non-smoking adults in Delhi, India.
+        J Health Popul Nutr 25:294\u2013301","journal-title":"J Health Popul Nutr"},{"key":"746_CR36","doi-asserted-by":"publisher","first-page":"473","DOI":"10.1016\/j.surg.2012.08.068","volume":"153","author":"SJ
+        Lee Char","year":"2013","unstructured":"Lee Char SJ, Hills NK, Lo B, Kirkwood
+        KS (2013) Informed consent for innovative surgery: a survey of patients and
+        surgeons. Surgery 153:473\u2013480","journal-title":"Surgery"},{"key":"746_CR37","doi-asserted-by":"publisher","first-page":"524","DOI":"10.1016\/j.surg.2015.08.010","volume":"159","author":"DY
+        Lee","year":"2016","unstructured":"Lee DY, Lee KJ, Han WG, Oh KH, Cho JG,
+        Baek SK, Kwon SY, Woo JS, Jung KY (2016) Comparison of transaxillary approach,
+        retroauricular approach, and conventional open hemithyroidectomy: a prospective
+        study at single institution. Surgery 159:524\u2013531","journal-title":"Surgery"}],"container-title":["Indian
+        Journal of Surgical Oncology"],"language":"en","link":[{"URL":"http:\/\/link.springer.com\/article\/10.1007\/s13193-018-0746-6\/fulltext.html","content-type":"text\/html","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/link.springer.com\/content\/pdf\/10.1007\/s13193-018-0746-6.pdf","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/link.springer.com\/content\/pdf\/10.1007\/s13193-018-0746-6.pdf","content-type":"application\/pdf","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,10,14]],"date-time":"2019-10-14T05:04:39Z","timestamp":1571029479000},"score":1.0,"issued":{"date-parts":[[2018,4,5]]},"references-count":37,"journal-issue":{"published-print":{"date-parts":[[2018,6]]},"issue":"2"},"alternative-id":["746"],"URL":"http:\/\/dx.doi.org\/10.1007\/s13193-018-0746-6","relation":{"cites":[]},"ISSN":["0975-7651","0976-6952"],"issn-type":[{"value":"0975-7651","type":"print"},{"value":"0976-6952","type":"electronic"}],"subject":["Surgery","Oncology"],"assertion":[{"value":"5
+        January 2018","order":1,"name":"received","label":"Received","group":{"name":"ArticleHistory","label":"Article
+        History"}},{"value":"28 March 2018","order":2,"name":"accepted","label":"Accepted","group":{"name":"ArticleHistory","label":"Article
+        History"}},{"value":"5 April 2018","order":3,"name":"first_online","label":"First
+        Online","group":{"name":"ArticleHistory","label":"Article History"}},{"order":1,"name":"Ethics","group":{"name":"EthicsHeading","label":"Compliance
+        with Ethical Standards"}},{"value":"The authors declare that they have no
+        conflict of interest.","order":2,"name":"Ethics","group":{"name":"EthicsHeading","label":"Conflict
+        of Interest"}}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 13:32:30 GMT
+  recorded_at: Thu, 03 Jun 2021 11:37:17 GMT
 recorded_with: VCR 5.1.0

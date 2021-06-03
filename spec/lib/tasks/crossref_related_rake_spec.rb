@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "crossref_related:import_by_month", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  ENV['FROM_DATE'] = "2018-01-04"
-  ENV['UNTIL_DATE'] = "2018-01-04"
+  ENV["FROM_DATE"] = "2018-01-04"
+  ENV["UNTIL_DATE"] = "2018-01-04"
 
   let(:output) { "Queued import for DOIs created from 2018-01-01" }
 
@@ -18,9 +18,9 @@ describe "crossref_related:import_by_month", vcr: true do
   end
 
   it "should enqueue an CrossrefRelatedImportByMonthJob" do
-    expect {
+    expect do
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size)
+    end.to change(enqueued_jobs, :size)
     expect(enqueued_jobs.last[:job]).to be(CrossrefRelatedImportByMonthJob)
   end
 end
@@ -29,7 +29,7 @@ describe "crossref_related:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 2047716 DOIs created from 2018-01-04" }
+  let(:output) { "Queued import for 2809223 DOIs created from 2018-01-04" }
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")
@@ -40,9 +40,9 @@ describe "crossref_related:import", vcr: true do
   end
 
   it "should enqueue an CrossrefRelatedImportJob" do
-    expect {
+    expect do
       capture_stdout { subject.invoke }
-    }.to change(enqueued_jobs, :size).by(25)
+    end.to change(enqueued_jobs, :size).by(25)
     expect(enqueued_jobs.last[:job]).to be(CrossrefRelatedImportJob)
   end
 end

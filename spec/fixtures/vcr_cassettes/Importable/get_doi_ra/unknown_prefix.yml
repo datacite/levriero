@@ -19,32 +19,36 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sat, 01 Aug 2020 13:31:00 GMT
+      - Thu, 03 Jun 2021 08:21:22 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Connection:
       - keep-alive
-      Set-Cookie:
-      - __cfduid=d7b2a3e70bdcc50ab87517578521acacb1596288660; expires=Mon, 31-Aug-20
-        13:31:00 GMT; path=/; domain=.doi.org; HttpOnly; SameSite=Lax; Secure
       Content-Encoding:
       - gzip
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 044bd10c8000000625cb80e200000001
+      - 0a728f89c20000d6c12095d000000001
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v2?s=0gy4il1LbkFl7ae9OnMmGmPGF4%2FIk2CnCmuGC2MIi97%2FZonDnxzowkke4a0zUkfYlIMeY5bwVTr6%2FBp0AnUxo4pw9TeaMq%2FJIcqEMAiT5f%2B1SQKE"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Server:
       - cloudflare
       Cf-Ray:
-      - 5bbfeac0ccf30625-FRA
+      - 659781ef9f5fd6c1-FRA
+      Alt-Svc:
+      - h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400, h3=":443";
+        ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9SyBQ0oGIFpcklpQWgySA8gop+anFCnn5JQqpFZnFJUpAJbVcsQCe3u/aRAAAAA==
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 13:31:00 GMT
+  recorded_at: Thu, 03 Jun 2021 08:21:22 GMT
 recorded_with: VCR 5.1.0

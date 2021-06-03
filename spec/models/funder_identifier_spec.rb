@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe FunderIdentifier, type: :model, vcr: true do
   context "import funder_identifiers" do
@@ -22,7 +22,8 @@ describe FunderIdentifier, type: :model, vcr: true do
       expect(response["@id"]).to eq("https://doi.org/10.13039/100011326")
       expect(response["@type"]).to eq("Funder")
       expect(response["name"]).to eq("London School of Economics and Political Science")
-      expect(response["alternateName"]).to eq(["London School of Economics & Political Science", "The London School of Economics and Political Science", "LSE"])
+      expect(response["alternateName"]).to eq(["London School of Economics & Political Science",
+                                               "London School of Economics", "The London School of Economics and Political Science", "LSE"])
       expect(response["dateModified"]).to eq("2018-07-11T00:00:00Z")
     end
 

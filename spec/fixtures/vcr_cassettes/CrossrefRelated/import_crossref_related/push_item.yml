@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","id":"7dc120aa-62a5-4cdc-a162-5e79930e8e27","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2020-08-01T13:35:38Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","registrantId":"crossref.1121"}}}}'
+      string: '{"data":{"type":"events","id":"84d12b29-723e-48f9-9aff-aa50028235a4","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2021-06-03T08:57:57Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","registrantId":"crossref.1121"}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
@@ -19,39 +19,37 @@ http_interactions:
       - gzip,deflate
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sat, 01 Aug 2020 13:35:38 GMT
+      - Thu, 03 Jun 2021 08:57:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
+      - 401 Unauthorized
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
-      Etag:
-      - W/"a4fccce3c1d1f4f2ce976dbf6dfe59bc"
-      X-Runtime:
-      - '0.059015'
-      X-Credential-Username:
-      - 0000-0002-8599-0773
       X-Request-Id:
-      - 51c9a0d4-c8e0-4258-82df-453bf1200cc0
+      - 38127680-41e0-4324-a0e0-c6363da1bd8e
+      X-Runtime:
+      - '0.014945'
+      X-Rack-Cors:
+      - miss; no-origin
       X-Powered-By:
-      - Phusion Passenger 6.0.6
+      - Phusion Passenger(R) 6.0.8
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.6
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKpvJV8AA3yRTU/EIBCG/wsnTaSdoR+U3ky8eDV78sbScUW3ZQN0E93sfxcwboxGjzDPPPMynNiko2bjidmJjUxOBgVozXuhO96ayXCNveAdSaUaoIGEZDcsvh0o0XSkJYZ01jF6u10jhWwK6/blPtueYzyEsa4nZyvndzVChYB9HQAV8r5T6grwGgBQckwa93efaEDWOLQSERIZ3OoNFdh4F4KnJ+5pryNNOZ72O4p3zqby797CWbds0iM+DTYH/5I+/CwnN3laTGE+1b+YpCgXBXFR79mIN2ymEPSObk0ulaiUEl4mbdwr5WuhFQipJR/aFnlLDfFt+6R4A9ACQtP1xqSmvTW0BPq2n+KzRzJuntPssqvDuk3g5GZtl/qdvKuxgjov15jVe5puYx4JIDhILroNyhHV2Kkq/cNjjm9T7KjnQ8EEcBg44AabsenGZqhQdY+XJ1x2/M+/ns/nDwAAAP//AwC3Xg+mZgIAAA==
+        H4sIAJaZuGAAA6pWSi0qyi8qVrKKrlYqLkksKQUylUwMDJV0lEoyS3JSgTynxBSF5KLUlNS8kszEnGI9pdrYWgAAAAD//wMAnbPDfTgAAAA=
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 13:35:38 GMT
+  recorded_at: Thu, 03 Jun 2021 08:57:58 GMT
 recorded_with: VCR 5.1.0

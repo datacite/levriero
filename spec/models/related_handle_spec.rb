@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe RelatedHandle, type: :model, vcr: true do
   context "instance methods" do
@@ -14,7 +14,7 @@ describe RelatedHandle, type: :model, vcr: true do
 
     it "get_total" do
       response = subject.get_total(from_date: from_date, until_date: until_date)
-      expect(response).to eq(322)
+      expect(response).to eq(321)
     end
   end
 
@@ -30,7 +30,7 @@ describe RelatedHandle, type: :model, vcr: true do
     it "import" do
       until_date = "2020-12-31"
       response = RelatedHandle.import(from_date: from_date, until_date: until_date)
-      expect(response).to eq(322)
+      expect(response).to eq(321)
     end
 
     # it "push_item" do

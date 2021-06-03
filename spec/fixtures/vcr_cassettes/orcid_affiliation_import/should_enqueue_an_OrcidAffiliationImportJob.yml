@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 01 Aug 2020 13:33:26 GMT
+      - Thu, 03 Jun 2021 08:53:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,19 +37,21 @@ http_interactions:
       Content-Encoding:
       - gzip
       X-Request-Id:
-      - 371f52bf-ef81-4881-9080-9fdaadaa5f8c
+      - 0da7d520-9633-4be0-af8b-14944b6e0f97
       Etag:
-      - W/"95449db637d9068ed6ffb9b0c10fa67d"
+      - W/"88a8c8f116783d52d6d95000849c91cc"
       X-Runtime:
-      - '0.024170'
+      - '0.029200'
+      X-Rack-Cors:
+      - miss; no-origin
       X-Powered-By:
-      - Phusion Passenger 6.0.6
+      - Phusion Passenger(R) 6.0.8
       Server:
-      - nginx/1.14.0 + Phusion Passenger 6.0.6
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIACZvJV8AA2yPW0+DQBCF/8sm9IXbApIoCTGtvPRFDPapjWlWGOhEbu4OibXhv7uAmib6MjnzzTm7MxdWCBIsOrxYrIFJXRh1JGoWcWtRT6ICNbe9VizyRovV2L6pyaugLlnETkS9ilxX9Ogo0jZnejZHAqeTlVt0qO5FWWKNgrBrY5IDrOAjr4cCjhIqVCTnyVFn2xxBLZbpRyPctEPzCtIIk5j/IIWfsID3AeQ5ziUI6qRyWtHAtoCWsET40z/nJ2jACNZp9rBNTMPf/Aav9rvW/2SzNDPXj4k59PpKKDTRC/ncu7W5Z/ObHecafZe9uUvNeeb5duDt/EDj8G4ue33ASoLqBpmDTecebCxiNo5fAAAA//8DALP4zziWAQAA
+        H4sIAHyYuGAAA2yPW0+DQBCF/8sm9IXbApIoCTGtvPRFDPapjWlWGOhEbu4OibXhv7uAmib6MjnzzTm7MxdWCBIsOrxYrIFJXRh1JGoWcWtRT6ICNbe9VizyRovV2L6pyaugLlnETkS9ilxX9Ogo0jZnejZHAqeTlVt0qO5FWWKNgrBrY5IDrOAjr4cCjhIqVCTnyVFn2xxBLZbpRyPctEPzCtIIk5j/IIWfsID3AeQ5ziUI6qRyWtHAtoCWsET40z/nJ2jACNZp9rBNTMPf/Aav9rvW/2SzNDPXj4k59PpKKDTRC/ncu7W5Z/ObHecafZe9uUvNeeb5duDt/EDj8G4ue33ASoLqBpmDTecebCxiNo5fAAAA//8DALP4zziWAQAA
     http_version: null
-  recorded_at: Sat, 01 Aug 2020 13:33:26 GMT
+  recorded_at: Thu, 03 Jun 2021 08:53:16 GMT
 recorded_with: VCR 5.1.0
