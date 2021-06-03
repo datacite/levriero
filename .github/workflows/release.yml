@@ -42,12 +42,10 @@ jobs:
           # bundle exec rubocop
           # bundle exec rspec
           bundle exec rspec spec/concerns
-          bundle exec rspec spec/controllers
           bundle exec rspec spec/jobs
           bundle exec rspec spec/lib
           bundle exec rspec spec/models
           bundle exec rspec spec/requests/*.rb
-          bundle exec rspec spec/routing
           echo $?
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
