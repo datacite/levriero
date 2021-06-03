@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 08:25:40 GMT
+      - Thu, 03 Jun 2021 12:58:01 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -44,7 +44,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":1001048,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 08:25:40 GMT
+  recorded_at: Thu, 03 Jun 2021 12:58:01 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=has-orcid:true,from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 08:25:53 GMT
+      - Thu, 03 Jun 2021 12:58:01 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -1390,5 +1390,5 @@ http_interactions:
         conflict of interest.","order":2,"name":"Ethics","group":{"name":"EthicsHeading","label":"Conflict
         of Interest"}}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 08:25:53 GMT
+  recorded_at: Thu, 03 Jun 2021 12:58:02 GMT
 recorded_with: VCR 5.1.0

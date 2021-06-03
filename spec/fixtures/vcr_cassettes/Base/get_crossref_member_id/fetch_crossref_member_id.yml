@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 08:53:28 GMT
+      - Thu, 03 Jun 2021 13:26:00 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -47,5 +47,5 @@ http_interactions:
         Aromatic C-H Bond Halogenation Using Lithium Halides as Halogenating Reagents"],"prefix":"10.1055","volume":"2011","author":[{"given":"Zengming","family":"Shen","sequence":"first","affiliation":[]},{"given":"Yongzhong","family":"Lu","sequence":"additional","affiliation":[]},{"given":"Ruiping","family":"Wang","sequence":"additional","affiliation":[]},{"given":"Xixue","family":"Qiao","sequence":"additional","affiliation":[]}],"member":"194","published-online":{"date-parts":[[2011,3,10]]},"container-title":["Synlett"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/www.thieme-connect.de\/products\/ejournals\/pdf\/10.1055\/s-0030-1259729.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2017,5,22]],"date-time":"2017-05-22T21:42:06Z","timestamp":1495489326000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2011,3,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[2011,4]]},"issue":"07"},"URL":"http:\/\/dx.doi.org\/10.1055\/s-0030-1259729","relation":{},"ISSN":["0936-5214","1437-2096"],"issn-type":[{"value":"0936-5214","type":"print"},{"value":"1437-2096","type":"electronic"}],"subject":["Organic
         Chemistry"]}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 08:53:28 GMT
+  recorded_at: Thu, 03 Jun 2021 13:26:00 GMT
 recorded_with: VCR 5.1.0
