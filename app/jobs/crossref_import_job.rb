@@ -1,4 +1,4 @@
-class CrossrefImportJob < ActiveJob::Base
+class CrossrefImportJob < ApplicationJob
   queue_as :levriero
 
   def perform(item)

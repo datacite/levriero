@@ -1,4 +1,4 @@
-class UsageUpdateParseJob < ActiveJob::Base
+class UsageUpdateParseJob < ApplicationJob
   queue_as :levriero_usage
 
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png".freeze
@@ -8,12 +8,13 @@ class UsageUpdateParseJob < ActiveJob::Base
     # report = Report.new(report_header, options)
     data = Report.translate_datasets dataset, options
     # data = Report.new(response, options).parse_data
-    send_message(data, options[:url], slack_webhook_url: ENV["SLACK_WEBHOOK_URL"])
+    send_message(data, options[:url],
+                 slack_webhook_url: ENV["SLACK_WEBHOOK_URL"])
     options.merge(
       report_meta: {
-        report_id: options[:header].dig("report-id"),
-        created_by: options[:header].dig("created-by"),
-        reporting_period: options[:header].dig("reporting-period"),
+        report_id: options[:header]["report-id"],
+        created_by: options[:header]["created-by"],
+        reporting_period: options[:header]["reporting-period"],
       },
     )
 

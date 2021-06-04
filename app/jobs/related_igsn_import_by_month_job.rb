@@ -1,7 +1,7 @@
-class RelatedIgsnImportByMonthJob < ActiveJob::Base
+class RelatedIgsnImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     RelatedIgsn.import(options)
   end
 end

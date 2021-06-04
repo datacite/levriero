@@ -1,7 +1,7 @@
-class RelatedArxivImportByMonthJob < ActiveJob::Base
+class RelatedArxivImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     RelatedArxiv.import(options)
   end
 end

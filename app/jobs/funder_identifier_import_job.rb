@@ -1,4 +1,4 @@
-class FunderIdentifierImportJob < ActiveJob::Base
+class FunderIdentifierImportJob < ApplicationJob
   queue_as :levriero
 
   def perform(item)

@@ -1,4 +1,4 @@
-class RelatedUrlImportJob < ActiveJob::Base
+class RelatedUrlImportJob < ApplicationJob
   queue_as :levriero
 
   def perform(item)

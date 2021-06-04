@@ -2,7 +2,7 @@ class Doi < Base
   include Searchable
   include Indexable
 
-  def self.get_query_url(options={})
+  def self.get_query_url(options = {})
     if options[:id].present?
       "#{url}/#{options[:id]}"
     else
@@ -12,16 +12,16 @@ class Doi < Base
                  year: options.fetch(:year, nil),
                  "page[size]" => options.dig(:page, :size),
                  "page[number]" => options.dig(:page, :number) }.compact
-      url + "?" + URI.encode_www_form(params)
+      "#{url}?#{URI.encode_www_form(params)}"
     end
   end
 
-  def self.parse_data(result, options={})
-    return nil if result.blank? || result['errors']
+  def self.parse_data(result, options = {})
+    return nil if result.blank? || result["errors"]
 
     if options[:id].present?
       item = result.body.fetch("data", {})
-      return nil unless item.present?
+      return nil if item.blank?
 
       { data: parse_item(item) }
     else

@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe User, type: :model do
   describe "from token" do
     let(:token) { User.generate_token }
     let(:user) { User.new(token) }
 
-    describe 'User attributes' do
+    describe "User attributes" do
       it "has role_id" do
         expect(user.role_id).to eq("staff_admin")
       end

@@ -1,4 +1,4 @@
-class OrcidAffiliationImportJob < ActiveJob::Base
+class OrcidAffiliationImportJob < ApplicationJob
   queue_as :levriero
 
   def perform(item)

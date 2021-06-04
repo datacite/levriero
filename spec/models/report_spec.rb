@@ -1,10 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Report, type: :model, vcr: true do
-  let(:body)     {File.read(fixture_path + 'resolution_compress_small.json')}
-  let(:response) {OpenStruct.new(body:  JSON.parse(body) )}
-  let(:report)   {Report.new(response)}
-  let(:url) {"https://api.stage.datacite.org/reports/9e5461d8-0713-4abd-8e87-e4533a76ab3d"} #original for test
+  let(:body)     { File.read("#{fixture_path}resolution_compress_small.json") }
+  let(:response) { OpenStruct.new(body: JSON.parse(body)) }
+  let(:report)   { Report.new(response) }
+  let(:url) do
+    "https://api.stage.datacite.org/reports/9e5461d8-0713-4abd-8e87-e4533a76ab3d"
+  end
   # let(:url) {"https://api.stage.datacite.org/reports/82022fc3-8b31-47f2-88a8-24814d9bd2f0"}
 
   # describe "parse_multi_subset_report" do
@@ -28,13 +30,20 @@ describe Report, type: :model, vcr: true do
 
   describe "parse_normal_report" do
     context "when report is ok" do
-      let(:body)  {File.read(fixture_path + 'multi_subset_report.json')}
-      let(:uncompressed)  {File.read(fixture_path + 'datacite_resolution_report_2018-09.json')}
-      let(:result) {OpenStruct.new(body: JSON.parse(body), url:"https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")}
-      let(:report) {Report.new(result)}
+      let(:body)  { File.read("#{fixture_path}multi_subset_report.json") }
+      let(:uncompressed) do
+        File.read("#{fixture_path}datacite_resolution_report_2018-09.json")
+      end
+      let(:result) do
+        OpenStruct.new(body: JSON.parse(body),
+                       url: "https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")
+      end
+      let(:report) { Report.new(result) }
 
       it "should parsed it give you two arrays that are in every gzip" do
-        live_results = Maremma.get("https://api.datacite.org/reports/21fd2e8e-5481-4bbd-b2ef-742d8b270a66", host: "https://api.datacite.org/")
+        live_results = Maremma.get(
+          "https://api.datacite.org/reports/21fd2e8e-5481-4bbd-b2ef-742d8b270a66", host: "https://api.datacite.org/"
+        )
         report = Report.new(live_results)
         rr = Report.parse_normal_report report
         expect(rr.size).to eq(0)

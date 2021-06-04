@@ -3,9 +3,10 @@ module Parserable
 
   module ClassMethods
     def correct_checksum?(encoded_report, checksum)
-      #puts checksum
-      #puts Digest::SHA256.hexdigest(Base64.decode64(encoded_report))
+      # puts checksum
+      # puts Digest::SHA256.hexdigest(Base64.decode64(encoded_report))
       return nil if Digest::SHA256.hexdigest(Base64.decode64(encoded_report)) != checksum
+
       true
     end
 
@@ -28,7 +29,7 @@ module Parserable
     # def report_type?
     #   return "normal" unless @data.dig("report","report-header","exceptions").present?
     #   return "normal" unless @data.dig("report","report-header","exceptions").any?
-    #   exceptions = @data.dig("report","report-header","exceptions") 
+    #   exceptions = @data.dig("report","report-header","exceptions")
     # end
 
     # def subsetted_report?

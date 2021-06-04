@@ -1,7 +1,7 @@
-class RelatedHandleImportByMonthJob < ActiveJob::Base
+class RelatedHandleImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     RelatedHandle.import(options)
   end
 end

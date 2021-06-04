@@ -13,9 +13,9 @@ require "active_job/logging"
 Bundler.require(*Rails.groups)
 
 # load ENV variables from .env file if it exists
-env_file = File.expand_path("../../.env", __FILE__)
+env_file = File.expand_path("../.env", __dir__)
 if File.exist?(env_file)
-  require 'dotenv'
+  require "dotenv"
   Dotenv.load! env_file
 end
 
@@ -28,28 +28,28 @@ if File.exist?(env_json_file)
 end
 
 # default values for some ENV variables
-ENV['APPLICATION'] ||= "levriero"
-ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
-ENV['SITE_TITLE'] ||= "DataCite Event Data Agents"
-ENV['LOG_LEVEL'] ||= "info"
-ENV['CONCURRENCY'] ||= "25"
-ENV['GITHUB_URL'] ||= "https://github.com/datacite/levriero"
-ENV['ORCID_API_URL'] ||= "https://pub.orcid.org/v2.1"
-ENV['API_URL'] ||= "https://api.stage.datacite.org"
-ENV['VOLPINO_URL'] ||= "https://api.stage.datacite.org"
-ENV['LAGOTTINO_URL'] ||= "https://api.stage.datacite.org"
-ENV['SASHIMI_QUERY_URL'] ||= "https://api.stage.datacite.org"
-ENV['EVENTDATA_URL'] ||= "https://bus-staging.eventdata.crossref.org"
-ENV['CROSSREF_QUERY_URL'] ||= "https://api.eventdata.crossref.org"
-ENV['TRUSTED_IP'] ||= "10.0.40.1"
-ENV['SLACK_WEBHOOK_URL'] ||= ""
-ENV['USER_AGENT'] ||= "Mozilla/5.0 (compatible; Maremma/#{Maremma::VERSION}; mailto:info@datacite.org)"
+ENV["APPLICATION"] ||= "levriero"
+ENV["MEMCACHE_SERVERS"] ||= "memcached:11211"
+ENV["SITE_TITLE"] ||= "DataCite Event Data Agents"
+ENV["LOG_LEVEL"] ||= "info"
+ENV["CONCURRENCY"] ||= "25"
+ENV["GITHUB_URL"] ||= "https://github.com/datacite/levriero"
+ENV["ORCID_API_URL"] ||= "https://pub.orcid.org/v2.1"
+ENV["API_URL"] ||= "https://api.stage.datacite.org"
+ENV["VOLPINO_URL"] ||= "https://api.stage.datacite.org"
+ENV["LAGOTTINO_URL"] ||= "https://api.stage.datacite.org"
+ENV["SASHIMI_QUERY_URL"] ||= "https://api.stage.datacite.org"
+ENV["EVENTDATA_URL"] ||= "https://bus-staging.eventdata.crossref.org"
+ENV["CROSSREF_QUERY_URL"] ||= "https://api.eventdata.crossref.org"
+ENV["TRUSTED_IP"] ||= "10.0.40.1"
+ENV["SLACK_WEBHOOK_URL"] ||= ""
+ENV["USER_AGENT"] ||= "Mozilla/5.0 (compatible; Maremma/#{Maremma::VERSION}; mailto:info@datacite.org)"
 
 module Levriero
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join("lib")
     config.autoload_paths << Rails.root.join("app", "models", "concerns")
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -72,7 +72,8 @@ module Levriero
     config.logger = config.lograge.logger        ## LogStashLogger needs to be pass to rails logger, see roidrage/lograge#26
     config.log_level = ENV["LOG_LEVEL"].to_sym   ## Log level in a config level configuration
 
-    config.lograge.ignore_actions = ["HeartbeatController#index", "IndexController#index"]
+    config.lograge.ignore_actions = ["HeartbeatController#index",
+                                     "IndexController#index"]
     config.lograge.ignore_custom = lambda do |event|
       event.payload.inspect.length > 100000
     end
@@ -93,14 +94,15 @@ module Levriero
     config.middleware.use Rack::Deflater
 
     # make sure all input is UTF-8
-    config.middleware.insert 0, Rack::UTF8Sanitizer, additional_content_types: ['application/vnd.api+json', 'application/xml']
+    config.middleware.insert 0, Rack::UTF8Sanitizer,
+                             additional_content_types: ["application/vnd.api+json", "application/xml"]
 
     # set Active Job queueing backend
-    if ENV["AWS_REGION"]
-      config.active_job.queue_adapter = :shoryuken
-    else
-      config.active_job.queue_adapter = :inline
-    end
+    config.active_job.queue_adapter = if ENV["AWS_REGION"]
+                                        :shoryuken
+                                      else
+                                        :inline
+                                      end
     config.active_job.queue_name_prefix = Rails.env
 
     config.generators do |g|

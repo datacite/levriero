@@ -6,17 +6,18 @@ class Base
   include ::Bolognese::MetadataUtils
 
   # icon for Slack messages
-  ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
+  ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png".freeze
 
   def queue(_options = {})
-    Rails.logger.error "Queue name has not been specified" unless ENV["ENVIRONMENT"].present?
-    Rails.logger.error "AWS_REGION has not been specified" unless ENV["AWS_REGION"].present?
+    Rails.logger.error "Queue name has not been specified" if ENV["ENVIRONMENT"].blank?
+    Rails.logger.error "AWS_REGION has not been specified" if ENV["AWS_REGION"].blank?
     region = ENV["AWS_REGION"] ||= "eu-west-1"
     Aws::SQS::Client.new(region: region.to_s, stub_responses: false)
   end
 
   def get_message(_options = {})
-    sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
+    sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1,
+                        wait_time_seconds: 1)
   end
 
   def delete_message(message)
@@ -58,7 +59,7 @@ class Base
     # end
 
     params = {
-      query: query + " AND " + updated,
+      query: "#{query} AND #{updated}",
       "resource-type-id" => options[:resource_type_id],
       "page[number]" => options[:number],
       "page[size]" => options[:size],
@@ -78,13 +79,15 @@ class Base
   def queue_jobs(options = {})
     options[:number] = options[:number].to_i || 1
     options[:size] = options[:size].presence || job_batch_size
-    options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
-    options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
+    options[:from_date] =
+      options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
+    options[:until_date] =
+      options[:until_date].presence || Time.now.to_date.iso8601
     options[:content_type] = "json"
 
     total = get_total(options)
 
-    if total > 0
+    if total.positive?
       # walk through results paginated via cursor, unless test environment
       total_pages = Rails.env.test? ? 1 : (total.to_f / job_batch_size).ceil
       error_total = 0
@@ -102,15 +105,18 @@ class Base
     Rails.logger.info text
 
     # send slack notification
-    options[:level] = if total == 0
+    options[:level] = if total.zero?
                         "warning"
-                      elsif error_total > 0
+                      elsif error_total.positive?
                         "danger"
                       else
                         "good"
                       end
     options[:title] = "Report for #{source_id}"
-    send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
+    if options[:slack_webhook_url].present?
+      send_notification_to_slack(text,
+                                 options)
+    end
 
     # return number of dois queued
     total
@@ -127,7 +133,7 @@ class Base
   end
 
   def url
-    ENV["API_URL"] + "/dois?"
+    "#{ENV['API_URL']}/dois?"
   end
 
   def timeout
@@ -139,7 +145,7 @@ class Base
   end
 
   def send_notification_to_slack(text, options = {})
-    return nil unless options[:slack_webhook_url].present?
+    return nil if options[:slack_webhook_url].blank?
 
     attachment = {
       title: options[:title] || "Report",
@@ -164,11 +170,12 @@ class Base
   def self.parse_attributes(element, options = {})
     content = options[:content] || "__content__"
 
-    if element.is_a?(String)
+    case element
+    when String
       element
-    elsif element.is_a?(Hash)
+    when Hash
       element.fetch(content, nil)
-    elsif element.is_a?(Array)
+    when Array
       a = element.map { |e| e.is_a?(Hash) ? e.fetch(content, nil) : e }.uniq
       a = options[:first] ? a.first : a.unwrap
     end
@@ -195,7 +202,7 @@ class Base
   end
 
   def self.get_date(dates, date_type)
-    dd = Array.wrap(dates).find { |d| d["dateType"] == date_type } || {}
+    dd = Array.wrap(dates).detect { |d| d["dateType"] == date_type } || {}
     dd.fetch("date", nil)
   end
 
@@ -208,7 +215,10 @@ class Base
   end
 
   def self.get_date_from_parts(year, month = nil, day = nil)
-    [year.to_s.rjust(4, "0"), month.to_s.rjust(2, "0"), day.to_s.rjust(2, "0")].reject { |part| part == "00" }.join("-")
+    [year.to_s.rjust(4, "0"), month.to_s.rjust(2, "0"),
+     day.to_s.rjust(2, "0")].reject do |part|
+      part == "00"
+    end.join("-")
   end
 
   def self.get_datacite_xml(id)
@@ -293,7 +303,7 @@ class Base
       "@id" => id,
       "@type" => type,
       "datePublished" => date_published,
-      "registrantId" => "crossref." + meta["member"],
+      "registrantId" => "crossref.#{meta['member']}",
     }.compact
   end
 
@@ -307,7 +317,8 @@ class Base
                     "name" => attributes["publisher"] }
                 end
     proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select do |ri|
-                          ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"])
+                          ["IsVersionOf", "IsIdenticalTo", "IsPartOf",
+                           "IsSupplementTo"].include?(ri["relationType"])
                         end.map do |ri|
       ri["relatedIdentifier"]
     end
@@ -342,7 +353,7 @@ class Base
 
   def self.get_researcher_metadata(id)
     orcid = orcid_from_url(id)
-    return {} unless orcid.present?
+    return {} if orcid.blank?
 
     url = ENV["API_URL"] + "/users/#{orcid}"
     response = Maremma.get(url)
@@ -362,7 +373,7 @@ class Base
 
     # otherwise store ORCID metadata with DataCite
     orcid = orcid_from_url(id)
-    return {} unless orcid.present?
+    return {} if orcid.blank?
 
     url = ENV["ORCID_API_URL"] + "/#{orcid}/person"
     response = Maremma.get(url, accept: "application/vnd.orcid+json")

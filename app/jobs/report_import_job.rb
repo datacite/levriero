@@ -1,9 +1,9 @@
-class ReportImportJob < ActiveJob::Base
+class ReportImportJob < ApplicationJob
   queue_as :levriero
 
-  ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
+  ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png".freeze
 
-  def perform(item, options={})
+  def perform(item, options = {})
     response = UsageUpdate.get_data(item, options)
     if response.status != 200
       Rails.logger.error "[Usage Report Parsing] Report #{item} not found"

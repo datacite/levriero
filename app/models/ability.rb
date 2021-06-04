@@ -7,9 +7,10 @@ class Ability
     user ||= User.new(nil) # Guest user
     @user = user
 
-    if user.role_id == "staff_admin"
+    case user.role_id
+    when "staff_admin"
       can :manage, :all
-    elsif user.role_id == "staff_user"
+    when "staff_user"
       can :read, :all
     end
   end

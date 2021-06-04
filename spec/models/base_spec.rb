@@ -1,18 +1,23 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Base, type: :model, vcr: true do
   context "get_datacite_xml" do
     it "fetch metadata scholarly-article" do
       id = "https://doi.org/10.5438/mk65-3m12"
       response = Base.get_datacite_xml(id)
-      expect(response.dig("relatedIdentifiers", "relatedIdentifier").length).to eq(3)
-      expect(response.dig("relatedIdentifiers", "relatedIdentifier").last).to eq("__content__"=>"10.5438/55e5-t5c0", "relatedIdentifierType"=>"DOI", "relationType"=>"References")
+      expect(response.dig("relatedIdentifiers",
+                          "relatedIdentifier").length).to eq(3)
+      expect(response.dig("relatedIdentifiers",
+                          "relatedIdentifier").last).to eq("__content__" => "10.5438/55e5-t5c0",
+                                                           "relatedIdentifierType" => "DOI", "relationType" => "References")
     end
 
     it "fetch metadata dataset" do
       id = "https://doi.org/10.4124/ccvcn4z"
       response = Base.get_datacite_xml(id)
-      expect(response.dig("relatedIdentifiers", "relatedIdentifier")).to eq("__content__"=>"10.1021/ja906895j", "relatedIdentifierType"=>"DOI", "relationType"=>"IsSupplementTo")
+      expect(response.dig("relatedIdentifiers",
+                          "relatedIdentifier")).to eq("__content__" => "10.1021/ja906895j",
+                                                      "relatedIdentifierType" => "DOI", "relationType" => "IsSupplementTo")
     end
   end
 
@@ -21,13 +26,17 @@ describe Base, type: :model, vcr: true do
       id = "https://doi.org/10.5438/mk65-3m12"
       response = Base.get_datacite_json(id)
       expect(response.fetch("relatedIdentifiers", []).length).to eq(3)
-      expect(response.fetch("relatedIdentifiers", []).last).to eq("relatedIdentifier"=>"10.5438/55e5-t5c0", "relatedIdentifierType"=>"DOI", "relationType"=>"References")
+      expect(response.fetch("relatedIdentifiers",
+                            []).last).to eq("relatedIdentifier" => "10.5438/55e5-t5c0",
+                                            "relatedIdentifierType" => "DOI", "relationType" => "References")
     end
 
     it "fetch metadata dataset" do
       id = "https://doi.org/10.4124/ccvcn4z"
       response = Base.get_datacite_json(id)
-      expect(response.fetch("relatedIdentifiers", [])).to eq([{"relatedIdentifier"=>"10.1021/ja906895j", "relatedIdentifierType"=>"DOI", "relationType"=>"IsSupplementTo"}])
+      expect(response.fetch("relatedIdentifiers",
+                            [])).to eq([{ "relatedIdentifier" => "10.1021/ja906895j",
+                                          "relatedIdentifierType" => "DOI", "relationType" => "IsSupplementTo" }])
     end
   end
 
@@ -57,7 +66,7 @@ describe Base, type: :model, vcr: true do
       response = Base.get_datacite_metadata(id)
       expect(response["@id"]).to eq("https://doi.org/10.70112/d7svvt")
       expect(response["@type"]).to eq("Dataset")
-       expect(response["registrantId"]).to eq("datacite.inist.inra")
+      expect(response["registrantId"]).to eq("datacite.inist.inra")
       expect(response["proxyIdentifiers"]).to be_empty
       expect(response["datePublished"]).to eq("2018")
     end
@@ -86,7 +95,7 @@ describe Base, type: :model, vcr: true do
   context "get_crossref_member_id" do
     it "fetch crossref member_id" do
       id = "10.1055/s-0030-1259729"
-      options ={}
+      options = {}
       response = Base.get_crossref_member_id(id, options)
       expect(response).to eq("crossref.194")
     end

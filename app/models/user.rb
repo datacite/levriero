@@ -2,7 +2,8 @@ class User
   # include jwt encode and decode
   include Authenticable
 
-  attr_accessor :name, :uid, :email, :role_id, :jwt, :orcid, :provider_id, :client_id
+  attr_accessor :name, :uid, :email, :role_id, :jwt, :orcid, :provider_id,
+                :client_id
 
   def initialize(token)
     if token.present?

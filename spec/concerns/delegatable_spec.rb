@@ -7,19 +7,16 @@
 #   let(:params)  { {year: 2008} }
 #   let(:params2)  { {year: clients.first.created.year} }
 
-
 #   describe "dois_count_by_client" do
 
-#     before do 
-#         Provider.create(provider)         
-#         Client.create(client) 
+#     before do
+#         Provider.create(provider)
+#         Client.create(client)
 #         sleep 2
 #       end
 
 #     it "should return OK response" do
 #         r = model.dois_count_by_client "clients/tib.tib"
-
-
 
 #     end
 #     # it "should return formatted counts" do

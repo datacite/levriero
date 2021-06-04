@@ -39,4 +39,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
 
-BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP']
+BetterErrors::Middleware.allow_ip! ENV["TRUSTED_IP"]

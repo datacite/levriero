@@ -1,5 +1,5 @@
 class NameIdentifier < Base
-  LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
+  LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
@@ -33,7 +33,8 @@ class NameIdentifier < Base
     end
 
     attributes = get_datacite_json(doi)
-    response = push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+    response = push_item({ "id" => doi, "type" => "dois",
+                           "attributes" => attributes })
   end
 
   def source_id
@@ -45,7 +46,8 @@ class NameIdentifier < Base
   end
 
   def push_data(result, _options = {})
-    return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
+    return result.body.fetch("errors") if result.body.fetch("errors",
+                                                            nil).present?
 
     items = result.body.fetch("data", [])
 
@@ -62,10 +64,11 @@ class NameIdentifier < Base
   def self.push_item(item)
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
-    return nil unless doi.present?
+    return nil if doi.blank?
 
     pid = normalize_doi(doi)
-    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
+    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
+                                                      nil))
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
        "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
@@ -82,7 +85,8 @@ class NameIdentifier < Base
     source_token = ENV["DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN"]
 
     push_items = Array.wrap(creators).reduce([]) do |ssum, iitem|
-      name_identifier = Array.wrap(iitem.fetch("nameIdentifiers", nil)).find do |n|
+      name_identifier = Array.wrap(iitem.fetch("nameIdentifiers",
+                                               nil)).detect do |n|
         n["nameIdentifierScheme"] == "ORCID"
       end
       obj_id = normalize_orcid(name_identifier["nameIdentifier"]) if name_identifier.present?
@@ -111,7 +115,7 @@ class NameIdentifier < Base
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data API
       if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = ENV["LAGOTTINO_URL"] + "/events"
+        push_url = "#{ENV['LAGOTTINO_URL']}/events"
 
         data = {
           "data" => {
@@ -149,7 +153,7 @@ class NameIdentifier < Base
 
       # send to Profiles service, which then pushes to ORCID
       if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = ENV["VOLPINO_URL"] + "/claims"
+        push_url = "#{ENV['VOLPINO_URL']}/claims"
         doi = doi_from_url(iiitem["subj_id"])
         orcid = orcid_from_url(iiitem["obj_id"])
         source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"

@@ -4,18 +4,18 @@ module Importable
   included do
     # strong_parameters throws an error, using attributes hash
     def update_record(attributes)
-      if update_attributes(attributes)
-        Rails.logger.debug self.class.name + " " + id + " updated."
+      if update(attributes)
+        Rails.logger.debug "#{self.class.name} #{id} updated."
       else
-        Rails.logger.error self.class.name + " " + id + " not updated: " + errors.to_a.inspect
+        Rails.logger.error "#{self.class.name} #{id} not updated: #{errors.to_a.inspect}"
       end
     end
 
     def delete_record
       if destroy(refresh: true)
-        Rails.logger.debug self.class.name + " record deleted."
+        Rails.logger.debug "#{self.class.name} record deleted."
       else
-        Rails.logger.error self.class.name + " record not deleted: " + errors.to_a.inspect
+        Rails.logger.error "#{self.class.name} record not deleted: #{errors.to_a.inspect}"
       end
     end
   end
@@ -27,7 +27,8 @@ module Importable
       url = "https://doi.org/ra/#{prefix}"
       result = Maremma.get(url)
 
-      return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
+      return result.body.fetch("errors") if result.body.fetch("errors",
+                                                              nil).present?
 
       result.body.dig("data", 0, "RA")
     end
@@ -48,7 +49,7 @@ module Importable
       doi = doi.delete("\u200B").downcase
 
       # turn DOI into URL, escape unsafe characters
-      "https://doi.org/" + Addressable::URI.encode(doi)
+      "https://doi.org/#{Addressable::URI.encode(doi)}"
     end
 
     def normalize_url(id)
@@ -56,7 +57,8 @@ module Importable
 
       # check for valid protocol. We support AWS S3 and Google Cloud Storage
       uri = Addressable::URI.parse(id)
-      return nil unless uri&.host && %w(http https ftp s3 gs).include?(uri.scheme)
+      return nil unless uri&.host && %w(http https ftp s3
+                                        gs).include?(uri.scheme)
 
       # clean up URL
       PostRank::URI.clean(id)
@@ -70,7 +72,7 @@ module Importable
       id = id.downcase
 
       # turn arXiv into a URL if needed
-      id = "https://arxiv.org/abs/" + id[6..-1] if id.start_with?("arxiv:")
+      id = "https://arxiv.org/abs/#{id[6..-1]}" if id.start_with?("arxiv:")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
@@ -88,14 +90,14 @@ module Importable
       id = id.downcase
 
       # turn igsn into a URL if needed
-      id = "https://hdl.handle.net/10273/" + id unless id.start_with?("http")
+      id = "https://hdl.handle.net/10273/#{id}" unless id.start_with?("http")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # don't use IGSN resolver as no support for ssl
-      id = "https://hdl.handle.net/10273/" + id[15..-1] if id.start_with?("http://igsn.org")
+      id = "https://hdl.handle.net/10273/#{id[15..-1]}" if id.start_with?("http://igsn.org")
 
       # clean up URL
       PostRank::URI.clean(id.downcase)
@@ -109,7 +111,7 @@ module Importable
       id = id.downcase
 
       # turn handle into a URL if needed
-      id = "https://hdl.handle.net/" + id unless id.start_with?("http")
+      id = "https://hdl.handle.net/#{id}" unless id.start_with?("http")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
@@ -128,9 +130,9 @@ module Importable
 
       # strip pmid prefix
       id = id[5..-1] if id.start_with?("pmid:")
-      
+
       # turn handle into a URL if needed
-      id = "https://identifiers.org/pubmed:" + id unless id.start_with?("http")
+      id = "https://identifiers.org/pubmed:#{id}" unless id.start_with?("http")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
@@ -160,7 +162,7 @@ module Importable
       return nil if orcid.blank?
 
       # turn ORCID ID into URL
-      "https://orcid.org/" + Addressable::URI.encode(orcid)
+      "https://orcid.org/#{Addressable::URI.encode(orcid)}"
     end
 
     def validate_ror(ror_id)
@@ -172,11 +174,11 @@ module Importable
       return nil if ror_id.blank?
 
       # turn ROR ID into URL
-      "https://" + Addressable::URI.encode(ror_id)
+      "https://#{Addressable::URI.encode(ror_id)}"
     end
 
     def import_from_api
-      route = self.name.downcase + "s"
+      route = "#{name.downcase}s"
       page_number = 1
       total_pages = 1
       total = 0
@@ -187,11 +189,13 @@ module Importable
         url = ENV["API_URL"] + "/#{route}?" + URI.encode_www_form(params)
 
         response = Maremma.get(url, content_type: "application/vnd.api+json")
-        Rails.logger.error response.body["errors"].inspect if response.body.fetch("errors", nil).present?
+        Rails.logger.error response.body["errors"].inspect if response.body.fetch(
+          "errors", nil
+        ).present?
 
         records = response.body.fetch("data", [])
         records.each do |data|
-          if self.name == "Client"
+          if name == "Client"
             provider_id = data.dig("relationships", "provider", "data", "id")
             data["attributes"]["provider_id"] = provider_id
           end
@@ -200,7 +204,7 @@ module Importable
         end
 
         processed = (page_number - 1) * 100 + records.size
-        Rails.logger.info "#{processed} " + self.name.downcase + "s processed."
+        Rails.logger.info "#{processed} #{name.downcase}s processed."
 
         page_number = response.body.dig("meta", "page").to_i + 1
         total = response.body.dig("meta", "total") || total
@@ -213,7 +217,10 @@ module Importable
     def parse_record(sqs_msg: nil, data: nil)
       id = "https://doi.org/#{data['id']}"
       response = get_datacite_json(id)
-      related_identifiers = Array.wrap(response.fetch("relatedIdentifiers", nil)).select { |r| ["DOI", "URL"].include?(r["relatedIdentifierType"]) }
+      related_identifiers = Array.wrap(response.fetch("relatedIdentifiers",
+                                                      nil)).select do |r|
+        ["DOI", "URL"].include?(r["relatedIdentifierType"])
+      end
 
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
         item = {
@@ -233,7 +240,10 @@ module Importable
         RelatedUrl.push_item(item)
       end
 
-      funding_references = Array.wrap(response.fetch("fundingReferences", nil)).select { |f| f.fetch("funderIdentifierType", nil) == "Crossref Funder ID" }
+      funding_references = Array.wrap(response.fetch("fundingReferences",
+                                                     nil)).select do |f|
+        f.fetch("funderIdentifierType", nil) == "Crossref Funder ID"
+      end
       if funding_references.present?
         item = {
           "doi" => data["id"],
@@ -243,7 +253,13 @@ module Importable
         FunderIdentifier.push_item(item)
       end
 
-      name_identifiers = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
+      name_identifiers = Array.wrap(response.fetch("creators",
+                                                   nil)).select do |n|
+        Array.wrap(n.fetch("nameIdentifiers",
+                           nil)).any? do |n|
+          n["nameIdentifierScheme"] == "ORCID"
+        end
+      end
       if name_identifiers.present?
         item = {
           "doi" => data["id"],
@@ -253,7 +269,17 @@ module Importable
         NameIdentifier.push_item(item)
       end
 
-      affiliation_identifiers = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("affiliation", nil)).any? { |n| n["affiliationIdentifierScheme"] == "ROR" } && Array.wrap(n.fetch("nameIdentifiers", nil)).any? { |n| n["nameIdentifierScheme"] == "ORCID" } }
+      affiliation_identifiers = Array.wrap(response.fetch("creators",
+                                                          nil)).select do |n|
+        Array.wrap(n.fetch("affiliation",
+                           nil)).any? do |n|
+          n["affiliationIdentifierScheme"] == "ROR"
+        end && Array.wrap(n.fetch(
+                            "nameIdentifiers", nil
+                          )).any? do |n|
+                 n["nameIdentifierScheme"] == "ORCID"
+               end
+      end
       if affiliation_identifiers.present?
         item = {
           "doi" => data["id"],
@@ -263,7 +289,12 @@ module Importable
         AffiliationIdentifier.push_item(item)
       end
 
-      orcid_affiliation = Array.wrap(response.fetch("creators", nil)).select { |n| Array.wrap(n.fetch("affiliation", nil)).any? { |n| n["affiliationIdentifierScheme"] == "ROR" } }
+      orcid_affiliation = Array.wrap(response.fetch("creators",
+                                                    nil)).select do |n|
+        Array.wrap(n.fetch("affiliation", nil)).any? do |n|
+          n["affiliationIdentifierScheme"] == "ROR"
+        end
+      end
       if orcid_affiliation.present?
         item = {
           "doi" => data["id"],
@@ -285,7 +316,7 @@ module Importable
 
     def create_record(attributes)
       parameters = ActionController::Parameters.new(attributes)
-      self.new(parameters.permit(self.safe_params))
+      new(parameters.permit(safe_params))
     end
 
     def to_kebab_case(hsh)

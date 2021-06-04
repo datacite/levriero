@@ -1,5 +1,4 @@
 ApiPagination.configure do |config|
- 
   config.page_param do |params|
     if params[:page].is_a? ActionController::Parameters
       params[:page][:number]
@@ -15,5 +14,4 @@ ApiPagination.configure do |config|
       params[:per_page]
     end
   end
-
 end

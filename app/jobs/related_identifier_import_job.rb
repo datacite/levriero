@@ -1,4 +1,4 @@
-class RelatedIdentifierImportJob < ActiveJob::Base
+class RelatedIdentifierImportJob < ApplicationJob
   queue_as :levriero
 
   def perform(item)

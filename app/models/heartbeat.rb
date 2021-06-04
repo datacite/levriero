@@ -17,7 +17,7 @@ class Heartbeat
     memcached_client = Dalli::Client.new
     memcached_client.alive!
     true
-  rescue
+  rescue StandardError
     false
   end
 end

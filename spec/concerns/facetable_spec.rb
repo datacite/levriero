@@ -1,7 +1,6 @@
+require "rails_helper"
 
-require 'rails_helper'
-
-describe 'Clients', elasticsearch: true, type: :controller do
+describe "Clients", elasticsearch: true, type: :controller do
   # let!(:provider) { build(:provider) }
   # let(:model) { ClientsController.new }
   # let!(:clients)  { build_list(:client, 5, provider_id: provider) }
@@ -10,11 +9,10 @@ describe 'Clients', elasticsearch: true, type: :controller do
   # let!(:params3)  { {year: nil} }
   # let!(:ids)  { clients.first.symbol+","+clients.last.symbol }
 
-
   # describe "facet by year" do
-  #   # context "this" do 
-  #     before do 
-  #       Provider.create(provider)         
+  #   # context "this" do
+  #     before do
+  #       Provider.create(provider)
   #       clients.each { |item| Client.create(item) }
   #       # dois.each   { |item| Doi.create(item) }
   #       sleep 2
@@ -42,9 +40,9 @@ describe 'Clients', elasticsearch: true, type: :controller do
   # end
 
   # describe "filter_by_ids" do
-  #   context "this" do 
-  #     before do 
-  #       Provider.create(provider)         
+  #   context "this" do
+  #     before do
+  #       Provider.create(provider)
   #       clients.each { |item| Client.create(item) }
   #       # dois.each   { |item| Doi.create(item) }
   #       sleep 1

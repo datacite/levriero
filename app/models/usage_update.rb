@@ -33,7 +33,7 @@ class UsageUpdate < Base
     # get first day of every month between from_date and until_date
     (from_date..until_date).each do |year|
       meta = Maremma.get(get_query_url("year" => year, size: 25))
-      total_pages = meta.body.dig("data","meta", "total-pages")
+      total_pages = meta.body.dig("data", "meta", "total-pages")
       (1..total_pages).each do |m|
         UsageUpdateImportByYearJob.perform_later(number: m)
       end
@@ -57,14 +57,13 @@ class UsageUpdate < Base
     return OpenStruct.new(body: { "errors" => "No Report given given" }) if report_url.blank?
 
     host = URI.parse(report_url).host.downcase
-    report = Maremma.get(report_url, timeout: 120, host: host)
-    report
+    Maremma.get(report_url, timeout: 120, host: host)
   end
 
   def self.import_reports(options = {})
     reports = Maremma.get(get_query_url(options))
-    reports.body.dig("data").fetch("reports",[]).each do |report|
-      ReportImportJob.perform_later(url + "/" + report.fetch("id", nil))
+    reports.body["data"].fetch("reports", []).each do |report|
+      ReportImportJob.perform_later("#{url}/#{report.fetch('id', nil)}")
     end
   end
 
@@ -78,11 +77,11 @@ class UsageUpdate < Base
       "page[size]" => options[:size],
       "year" => options[:year],
     }
-    url + "?" + URI.encode_www_form(params)
+    "#{url}?#{URI.encode_www_form(params)}"
   end
 
   def self.url
-    ENV["SASHIMI_QUERY_URL"] + "/reports"
+    "#{ENV['SASHIMI_QUERY_URL']}/reports"
   end
 
   def self.grab_record(sqs_msg: nil, data: nil)
@@ -147,7 +146,7 @@ class UsageUpdate < Base
     end
 
     data = wrap_event item, options
-    push_url = ENV["LAGOTTINO_URL"] + "/events"
+    push_url = "#{ENV['LAGOTTINO_URL']}/events"
 
     response = Maremma.post(push_url, data: data.to_json,
                                       bearer: ENV["STAFF_ADMIN_TOKEN"],

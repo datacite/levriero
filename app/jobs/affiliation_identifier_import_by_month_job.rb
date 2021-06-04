@@ -1,7 +1,7 @@
-class AffiliationIdentifierImportByMonthJob < ActiveJob::Base
+class AffiliationIdentifierImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     AffiliationIdentifier.import(options)
   end
 end

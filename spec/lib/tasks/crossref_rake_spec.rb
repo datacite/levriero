@@ -7,7 +7,9 @@ describe "crossref:import_by_month", vcr: true do
   ENV["FROM_DATE"] = "2018-01-04"
   ENV["UNTIL_DATE"] = "2018-12-31"
 
-  let(:output) { "Queued import for DOIs updated from 2018-01-01 until 2018-12-31.\n" }
+  let(:output) do
+    "Queued import for DOIs updated from 2018-01-01 until 2018-12-31.\n"
+  end
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")
@@ -29,7 +31,9 @@ describe "crossref:import", vcr: true do
   include ActiveJob::TestHelper
   include_context "rake"
 
-  let(:output) { "Queued import for 36129 DOIs updated from 2018-01-04 - 2018-12-31.\n" }
+  let(:output) do
+    "Queued import for 36129 DOIs updated from 2018-01-04 - 2018-12-31.\n"
+  end
 
   it "prerequisites should include environment" do
     expect(subject.prerequisites).to include("environment")

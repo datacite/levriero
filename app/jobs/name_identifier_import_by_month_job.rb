@@ -1,7 +1,7 @@
-class NameIdentifierImportByMonthJob < ActiveJob::Base
+class NameIdentifierImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     NameIdentifier.import(options)
   end
 end

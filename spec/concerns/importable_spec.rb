@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Importable", vcr: true do
   # context "Doi" do
@@ -79,7 +79,8 @@ describe "Importable", vcr: true do
   describe "to_kebab_case" do
     it "converts" do
       hsh = { "provider-id" => "bl", "country-code" => "GB" }
-      expect(Doi.to_kebab_case(hsh)).to eq("provider_id"=>"bl", "country_code"=>"GB")
+      expect(Doi.to_kebab_case(hsh)).to eq("provider_id" => "bl",
+                                           "country_code" => "GB")
     end
   end
 

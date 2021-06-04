@@ -1,7 +1,7 @@
-class CrossrefImportImportByMonthJob < ActiveJob::Base
+class CrossrefImportImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     CrossrefImport.import(options)
   end
 end

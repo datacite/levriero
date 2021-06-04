@@ -8,11 +8,10 @@ module Helpable
       event["obj"] = format_for_bus(event["obj"])
       event
     end
-  
+
     def format_for_bus(metadata)
       { "pid" => metadata["@id"],
         "work_type_id" => metadata["@type"] }.compact
     end
-  
   end
 end

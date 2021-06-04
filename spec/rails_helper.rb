@@ -7,7 +7,7 @@ SimpleCov.start
 
 require File.expand_path("../config/environment", __dir__)
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
 require "rspec/rails"
 require "shoulda-matchers"
@@ -31,7 +31,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 def fixture_path
-  File.expand_path("fixtures", __dir__) + "/"
+  "#{File.expand_path('fixtures', __dir__)}/"
 end
 
 RSpec.configure do |config|

@@ -5,5 +5,5 @@ ActiveModelSerializers.config.include_data_default = :if_sideloaded
 ActiveModelSerializers.config.jsonapi_pagination_links_enabled = false
 
 ActiveSupport.on_load(:action_controller) do
-  require 'active_model_serializers/register_jsonapi_renderer'
+  require "active_model_serializers/register_jsonapi_renderer"
 end

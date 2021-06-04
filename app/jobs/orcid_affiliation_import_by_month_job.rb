@@ -1,7 +1,7 @@
-class OrcidAffiliationImportByMonthJob < ActiveJob::Base
+class OrcidAffiliationImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     OrcidAffiliation.import(options)
   end
 end

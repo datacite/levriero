@@ -1,7 +1,7 @@
-class RelatedUrlImportByMonthJob < ActiveJob::Base
+class RelatedUrlImportByMonthJob < ApplicationJob
   queue_as :levriero
 
-  def perform(options={})
+  def perform(options = {})
     RelatedUrl.import(options)
   end
 end

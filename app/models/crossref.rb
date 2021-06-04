@@ -5,7 +5,8 @@ class Crossref < Base
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select { |d| d.day == 1 }.each do |m|
-      CrossrefImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
+      CrossrefImportByMonthJob.perform_later(from_date: m.strftime("%F"),
+                                             until_date: m.end_of_month.strftime("%F"))
     end
 
     "Queued import for DOIs updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
@@ -16,7 +17,8 @@ class Crossref < Base
     until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
 
     crossref = Crossref.new
-    crossref.queue_jobs(crossref.unfreeze(from_date: from_date.strftime("%F"), until_date: until_date.strftime("%F"), host: true))
+    crossref.queue_jobs(crossref.unfreeze(from_date: from_date.strftime("%F"),
+                                          until_date: until_date.strftime("%F"), host: true))
   end
 
   def source_id
@@ -30,9 +32,10 @@ class Crossref < Base
       "until-collected-date" => options[:until_date],
       mailto: "info@datacite.org",
       rows: options[:rows],
-      cursor: options[:cursor] }.compact
+      cursor: options[:cursor],
+    }.compact
 
-    ENV["CROSSREF_QUERY_URL"] + "/v1/events?" + URI.encode_www_form(params)
+    "#{ENV['CROSSREF_QUERY_URL']}/v1/events?#{URI.encode_www_form(params)}"
   end
 
   def get_total(options = {})
@@ -45,13 +48,15 @@ class Crossref < Base
   def queue_jobs(options = {})
     options[:offset] = options[:offset].to_i || 0
     options[:rows] = options[:rows].presence || job_batch_size
-    options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
-    options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
-    options[:content_type] = 'json'
+    options[:from_date] =
+      options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
+    options[:until_date] =
+      options[:until_date].presence || Time.now.to_date.iso8601
+    options[:content_type] = "json"
 
     total, cursor = get_total(options)
 
-    if total > 0
+    if total.positive?
       # walk through results paginated via cursor
       total_pages = (total.to_f / job_batch_size).ceil
       error_total = 0
@@ -67,25 +72,29 @@ class Crossref < Base
       text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     end
 
-    Rails.logger.info "[Event Data] " + text
+    Rails.logger.info "[Event Data] #{text}"
 
     # send slack notification
-    if total == 0
-      options[:level] = "warning"
-    elsif error_total > 0
-      options[:level] = "danger"
-    else
-      options[:level] = "good"
-    end
+    options[:level] = if total.zero?
+                        "warning"
+                      elsif error_total.positive?
+                        "danger"
+                      else
+                        "good"
+                      end
     options[:title] = "Report for #{source_id}"
-    send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
+    if options[:slack_webhook_url].present?
+      send_notification_to_slack(text,
+                                 options)
+    end
 
     # return number of works queued
     total
   end
 
-  def push_data(result, options={})
-    return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
+  def push_data(result, _options = {})
+    return result.body.fetch("errors") if result.body.fetch("errors",
+                                                            nil).present?
 
     items = result.body.dig("data", "message", "events")
     # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
@@ -119,7 +128,10 @@ class Crossref < Base
             "timestamp" => item["timestamp"],
             "license" => item["license"],
             "subj" => subj,
-            "obj" => obj } }}
+            "obj" => obj,
+          },
+        },
+      }
 
       response = Maremma.put(push_url, data: data.to_json,
                                        bearer: ENV["STAFF_ADMIN_TOKEN"],

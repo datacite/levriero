@@ -1,36 +1,40 @@
 module Authenticable
   extend ActiveSupport::Concern
 
-  require 'jwt'
+  require "jwt"
   require "base64"
 
   included do
     # encode JWT token using SHA-256 hash algorithm
     def encode_token(payload)
       # replace newline characters with actual newlines
-      private_key = OpenSSL::PKey::RSA.new(ENV['JWT_PRIVATE_KEY'].to_s.gsub('\n', "\n"))
-      JWT.encode(payload, private_key, 'RS256')
-    rescue JSON::GeneratorError => error
-      Rails.logger.error "JSON::GeneratorError: " + error.message + " for " + payload
-      return nil
+      private_key = OpenSSL::PKey::RSA.new(ENV["JWT_PRIVATE_KEY"].to_s.gsub(
+                                             '\n', "\n"
+                                           ))
+      JWT.encode(payload, private_key, "RS256")
+    rescue JSON::GeneratorError => e
+      Rails.logger.error "JSON::GeneratorError: #{e.message} for #{payload}"
+      nil
     end
 
     # decode JWT token using SHA-256 hash algorithm
     def decode_token(token)
-      public_key = OpenSSL::PKey::RSA.new(ENV['JWT_PUBLIC_KEY'].to_s.gsub('\n', "\n"))
-      payload = (JWT.decode token, public_key, true, { :algorithm => 'RS256' }).first
+      public_key = OpenSSL::PKey::RSA.new(ENV["JWT_PUBLIC_KEY"].to_s.gsub('\n',
+                                                                          "\n"))
+      payload = (JWT.decode token, public_key, true,
+                            { algorithm: "RS256" }).first
 
       # check whether token has expired
       return {} unless Time.now.to_i < payload["exp"].to_i
 
       payload
-    rescue JWT::DecodeError => error
-      Rails.logger.error "JWT::DecodeError: " + error.message + " for " + token
-      return {}
-    rescue OpenSSL::PKey::RSAError => error
-      public_key = ENV['JWT_PUBLIC_KEY'].presence || "nil"
-      Rails.logger.error "OpenSSL::PKey::RSAError: " + error.message + " for " + public_key
-      return {}
+    rescue JWT::DecodeError => e
+      Rails.logger.error "JWT::DecodeError: #{e.message} for #{token}"
+      {}
+    rescue OpenSSL::PKey::RSAError => e
+      public_key = ENV["JWT_PUBLIC_KEY"].presence || "nil"
+      Rails.logger.error "OpenSSL::PKey::RSAError: #{e.message} for #{public_key}"
+      {}
     end
 
     # basic auth
@@ -44,13 +48,14 @@ module Authenticable
     def decode_auth_param(username: nil, password: nil)
       return {} unless username.present? && password.present?
 
-      if username.include?(".")
-        user = Client.where(symbol: username.upcase).first
-      else
-        user = Provider.unscoped.where(symbol: username.upcase).first
-      end
+      user = if username.include?(".")
+               Client.where(symbol: username.upcase).first
+             else
+               Provider.unscoped.where(symbol: username.upcase).first
+             end
 
-      return {} unless user && secure_compare(user.password, encrypt_password_sha256(password))
+      return {} unless user && secure_compare(user.password,
+                                              encrypt_password_sha256(password))
 
       uid = username.downcase
 
@@ -71,14 +76,10 @@ module Authenticable
       }
 
       if uid.include? "."
-        payload.merge!({
-          "provider_id" => uid.split(".", 2).first,
-          "client_id" => uid,
-        })
+        payload["provider_id"] = uid.split(".", 2).first
+        payload["client_id"] = uid
       elsif uid != "admin"
-        payload.merge!({
-          "provider_id" => uid,
-        })
+        payload["provider_id"] = uid
       end
 
       payload
@@ -88,11 +89,12 @@ module Authenticable
     # from Devise
     def secure_compare(a, b)
       return false if a.blank? || b.blank? || a.bytesize != b.bytesize
+
       l = a.unpack "C#{a.bytesize}"
 
       res = 0
       b.each_byte { |byte| res |= byte ^ l.shift }
-      res == 0
+      res.zero?
     end
   end
 
@@ -100,8 +102,10 @@ module Authenticable
     # encode token using SHA-256 hash algorithm
     def encode_token(payload)
       # replace newline characters with actual newlines
-      private_key = OpenSSL::PKey::RSA.new(ENV['JWT_PRIVATE_KEY'].to_s.gsub('\n', "\n"))
-      JWT.encode(payload, private_key, 'RS256')
+      private_key = OpenSSL::PKey::RSA.new(ENV["JWT_PRIVATE_KEY"].to_s.gsub(
+                                             '\n', "\n"
+                                           ))
+      JWT.encode(payload, private_key, "RS256")
     rescue OpenSSL::PKey::RSAError => e
       Rails.logger.error e.inspect
 
@@ -116,16 +120,16 @@ module Authenticable
     end
 
     # generate JWT token
-    def generate_token(attributes={})
+    def generate_token(attributes = {})
       payload = {
-        uid:  attributes.fetch(:uid, "0000-0001-5489-3594"),
+        uid: attributes.fetch(:uid, "0000-0001-5489-3594"),
         name: attributes.fetch(:name, "Josiah Carberry"),
         email: attributes.fetch(:email, nil),
         provider_id: attributes.fetch(:provider_id, nil),
         client_id: attributes.fetch(:client_id, nil),
         role_id: attributes.fetch(:role_id, "staff_admin"),
         iat: Time.now.to_i,
-        exp: Time.now.to_i + attributes.fetch(:exp, 30)
+        exp: Time.now.to_i + attributes.fetch(:exp, 30),
       }.compact
 
       encode_token(payload)
@@ -145,14 +149,10 @@ module Authenticable
       }
 
       if uid.include? "."
-        payload.merge!({
-          "provider_id" => uid.split(".", 2).first,
-          "client_id" => uid
-        })
+        payload["provider_id"] = uid.split(".", 2).first
+        payload["client_id"] = uid
       elsif uid != "admin"
-        payload.merge!({
-          "provider_id" => uid
-        })
+        payload["provider_id"] = uid
       end
 
       payload

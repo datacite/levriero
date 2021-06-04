@@ -6,13 +6,15 @@ describe FunderIdentifier, type: :model, vcr: true do
     let(:until_date) { "2019-06-30" }
 
     it "import_by_month" do
-      response = FunderIdentifier.import_by_month(from_date: from_date, until_date: until_date)
+      response = FunderIdentifier.import_by_month(from_date: from_date,
+                                                  until_date: until_date)
       expect(response).to eq("Queued import for DOIs created from 2018-01-01 until 2019-06-30.")
     end
 
     it "import" do
       until_date = "2019-06-30"
-      response = FunderIdentifier.import(from_date: from_date, until_date: until_date)
+      response = FunderIdentifier.import(from_date: from_date,
+                                         until_date: until_date)
       expect(response).to eq(31)
     end
 

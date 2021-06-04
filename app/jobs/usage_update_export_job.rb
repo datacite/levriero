@@ -1,7 +1,7 @@
-class UsageUpdateExportJob < ActiveJob::Base
+class UsageUpdateExportJob < ApplicationJob
   queue_as :levriero_usage
 
-  def perform(item, options={})
+  def perform(item, options = {})
     response = UsageUpdate.push_item(item, options)
     item = JSON.parse(item)
     if response.status == 201
