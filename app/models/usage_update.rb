@@ -138,7 +138,7 @@ class UsageUpdate < Base
     if item["subj-id"].blank?
       Rails.logger.error OpenStruct.new(body: { "errors" => [{ "title" => "There is no Subject" }] })
       return
-    elsif ENV["LAGOTTINO_TOKEN"].blank?
+    elsif ENV["STAFF_ADMIN_TOKEN"].blank?
       Rails.logger.error OpenStruct.new(body: { "errors" => [{ "title" => "Access token missing." }] })
       return
     elsif item["errors"].present?
@@ -150,7 +150,7 @@ class UsageUpdate < Base
     push_url = ENV["LAGOTTINO_URL"] + "/events"
 
     response = Maremma.post(push_url, data: data.to_json,
-                                      bearer: ENV["LAGOTTINO_TOKEN"],
+                                      bearer: ENV["STAFF_ADMIN_TOKEN"],
                                       content_type: "application/vnd.api+json",
                                       accept: "application/vnd.api+json; version=2")
   end

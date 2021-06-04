@@ -1,0 +1,176 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1039/c8cc06410e?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '16290'
+      Server:
+      - http-kit
+      Date:
+      - Fri, 04 Jun 2021 09:52:28 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Permissions-Policy:
+      - interest-cohort=()
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2021,5,27]],"date-time":"2021-05-27T09:24:03Z","timestamp":1622107443265},"reference-count":41,"publisher":"Royal
+        Society of Chemistry (RSC)","issue":"6","license":[{"URL":"http:\/\/creativecommons.org\/licenses\/by-nc\/3.0\/","start":{"date-parts":[[2018,12,12]],"date-time":"2018-12-12T00:00:00Z","timestamp":1544572800000},"delay-in-days":0,"content-version":"vor"}],"funder":[{"DOI":"10.13039\/501100001659","name":"Deutsche
+        Forschungsgemeinschaft","doi-asserted-by":"publisher","award":["Cluster of
+        Excellence UniCat, EXC 314-2, grant STR","Priority program SPP1613, grant
+        DA402\/7-2"]},{"DOI":"10.13039\/501100002347","name":"Bundesministerium f\u00fcr
+        Bildung und Forschung","doi-asserted-by":"publisher","award":["In situ XAS,
+        grant 05K16KE2","CO2EKAT, grant 03SF0523-A\/B"]},{"DOI":"10.13039\/501100004063","name":"Knut
+        och Alice Wallenbergs Stiftelse","doi-asserted-by":"publisher","award":["3DEM-NATUR"]},{"DOI":"10.13039\/501100006360","name":"Bundesministerium
+        f\u00fcr Wirtschaft und Energie","doi-asserted-by":"publisher","award":["PtTM@HGS\/03ET6080A"]}],"content-domain":{"domain":["rsc.org"],"crossmark-restriction":true},"short-container-title":["Chem.
+        Commun."],"abstract":"<p>Physically mixing distinct Ni(OH)<sub>2<\/sub>and
+        Fe(OOH) particles leads to formation of highly active \u201cphysically mixed\u201d
+        Ni + Fe catalysts with atomically intermixed Ni\u2013(O)\u2013Fe sites.<\/p>","DOI":"10.1039\/c8cc06410e","type":"journal-article","created":{"date-parts":[[2018,12,12]],"date-time":"2018-12-12T16:11:52Z","timestamp":1544631112000},"page":"818-821","update-policy":"http:\/\/dx.doi.org\/10.1039\/rsc_crossmark_policy","source":"Crossref","is-referenced-by-count":26,"title":["Formation
+        of unexpectedly active Ni\u2013Fe oxygen evolution electrocatalysts by physically
+        mixing Ni and Fe oxyhydroxides"],"prefix":"10.1039","volume":"55","author":[{"ORCID":"http:\/\/orcid.org\/0000-0003-4472-955X","authenticated-orcid":false,"given":"Mikaela","family":"G\u00f6rlin","sequence":"first","affiliation":[{"name":"Department
+        of Physics"},{"name":"Free University of Berlin"},{"name":"14195 Berlin"},{"name":"Germany"},{"name":"The
+        Electrochemical Energy, Catalysis, and Materials Science Laboratory"}]},{"given":"Petko","family":"Chernev","sequence":"additional","affiliation":[{"name":"Department
+        of Physics"},{"name":"Free University of Berlin"},{"name":"14195 Berlin"},{"name":"Germany"}]},{"given":"Paul","family":"Paciok","sequence":"additional","affiliation":[{"name":"Ernst
+        Ruska-Centre for Microscopy and Spectroscopy with Electrons"},{"name":"Forschungszentrum
+        J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"ORCID":"http:\/\/orcid.org\/0000-0001-7286-1211","authenticated-orcid":false,"given":"Cheuk-Wai","family":"Tai","sequence":"additional","affiliation":[{"name":"Department
+        of Materials and Environmental Chemistry"},{"name":"Stockholm University"},{"name":"Sweden"}]},{"given":"Jorge","family":"Ferreira
+        de Ara\u00fajo","sequence":"additional","affiliation":[{"name":"The Electrochemical
+        Energy, Catalysis, and Materials Science Laboratory"},{"name":"Department
+        of Chemistry"},{"name":"Technical University of Berlin"},{"name":"10623 Berlin"},{"name":"Germany"}]},{"given":"Tobias","family":"Reier","sequence":"additional","affiliation":[{"name":"The
+        Electrochemical Energy, Catalysis, and Materials Science Laboratory"},{"name":"Department
+        of Chemistry"},{"name":"Technical University of Berlin"},{"name":"10623 Berlin"},{"name":"Germany"}]},{"ORCID":"http:\/\/orcid.org\/0000-0002-2646-0078","authenticated-orcid":false,"given":"Marc","family":"Heggen","sequence":"additional","affiliation":[{"name":"Ernst
+        Ruska-Centre for Microscopy and Spectroscopy with Electrons"},{"name":"Forschungszentrum
+        J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"ORCID":"http:\/\/orcid.org\/0000-0001-8082-0647","authenticated-orcid":false,"given":"Rafal","family":"Dunin-Borkowski","sequence":"additional","affiliation":[{"name":"Ernst
+        Ruska-Centre for Microscopy and Spectroscopy with Electrons"},{"name":"Forschungszentrum
+        J\u00fclich"},{"name":"J\u00fclich"},{"name":"Germany"}]},{"ORCID":"http:\/\/orcid.org\/0000-0002-3884-436X","authenticated-orcid":false,"given":"Peter","family":"Strasser","sequence":"additional","affiliation":[{"name":"The
+        Electrochemical Energy, Catalysis, and Materials Science Laboratory"},{"name":"Department
+        of Chemistry"},{"name":"Technical University of Berlin"},{"name":"10623 Berlin"},{"name":"Germany"}]},{"ORCID":"http:\/\/orcid.org\/0000-0001-6482-7494","authenticated-orcid":false,"given":"Holger","family":"Dau","sequence":"additional","affiliation":[{"name":"Department
+        of Physics"},{"name":"Free University of Berlin"},{"name":"14195 Berlin"},{"name":"Germany"}]}],"member":"292","published-online":{"date-parts":[[2019]]},"reference":[{"key":"C8CC06410E-(cit1)\/*[position()=1]","author":"Lewis","volume":"103","first-page":"15729","year":"2006","journal-title":"Proc.
+        Natl. Acad. Sci. U. S. A.","DOI":"10.1073\/pnas.0603395103","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit2)\/*[position()=1]","author":"Dau","volume":"2","first-page":"724","year":"2010","journal-title":"ChemCatChem","DOI":"10.1002\/cctc.201000126","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit3)\/*[position()=1]","author":"Gust","volume":"42","first-page":"1890","year":"2009","journal-title":"Acc.
+        Chem. Res.","DOI":"10.1021\/ar900209b","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit4)\/*[position()=1]","author":"Luo","volume":"345","first-page":"1593","year":"2014","journal-title":"Science","DOI":"10.1126\/science.1258307","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit5)\/*[position()=1]","author":"Wang","volume":"27","first-page":"2360","year":"2015","journal-title":"Chem.
+        Mater.","DOI":"10.1021\/cm503887t","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit6)\/*[position()=1]","author":"Dresp","volume":"9","first-page":"2020","year":"2016","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C6EE01046F","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit7)\/*[position()=1]","author":"Li","volume":"134","first-page":"7231","year":"2012","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja3010978","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit8)\/*[position()=1]","author":"Mistry","volume":"7","first-page":"12123","year":"2016","journal-title":"Nat.
+        Commun.","DOI":"10.1038\/ncomms12123","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit9)\/*[position()=1]","author":"Man","volume":"3","first-page":"1159","year":"2011","journal-title":"ChemCatChem","DOI":"10.1002\/cctc.201000397","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit10)\/*[position()=1]","author":"Lee","volume":"3","first-page":"399","year":"2012","journal-title":"J.
+        Phys. Lett."},{"key":"C8CC06410E-(cit11)\/*[position()=1]","author":"Reier","volume":"7","first-page":"1601275","year":"2017","journal-title":"Adv.
+        Energy Mater.","DOI":"10.1002\/aenm.201601275","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit12)\/*[position()=1]","author":"Risch","volume":"8","first-page":"661","year":"2015","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C4EE03004D","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit13)\/*[position()=1]","author":"McCrory","volume":"137","first-page":"4347","year":"2015","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja510442p","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit14)\/*[position()=1]","author":"Hong","volume":"8","first-page":"1404","year":"2015","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C4EE03869J","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit15)\/*[position()=1]","author":"Smith","volume":"135","first-page":"11580","year":"2013","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja403102j","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit16)\/*[position()=1]","author":"Gong","volume":"135","first-page":"8452","year":"2013","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja4027715","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit17)\/*[position()=1]","author":"Louie","volume":"135","first-page":"12329","year":"2013","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja405351s","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit18)\/*[position()=1]","author":"Trotochaud","volume":"136","first-page":"6744","year":"2014","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja502379c","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit19)\/*[position()=1]","author":"Corrigan","volume":"134","first-page":"377","year":"1987","journal-title":"J.
+        Electrochem. Soc.","DOI":"10.1149\/1.2100463","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit20)\/*[position()=1]","author":"G\u00f6rlin","volume":"138","first-page":"5603","year":"2016","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/jacs.6b00332","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit21)\/*[position()=1]","author":"Dresp","volume":"8","first-page":"1800338","year":"2018","journal-title":"Adv.
+        Energy Mater.","DOI":"10.1002\/aenm.201800338","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit22)\/*[position()=1]","author":"Smith","volume":"11","first-page":"2476","year":"2018","journal-title":"Energy
+        Environ. Sci.","DOI":"10.1039\/C8EE01063C","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit23)\/*[position()=1]","author":"Gonz\u00e1lez-Flores","volume":"2","first-page":"1986","year":"2018","journal-title":"Sustainable
+        Energy Fuels","DOI":"10.1039\/C8SE00114F","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit24)\/*[position()=1]","author":"Bates","volume":"6","first-page":"155","year":"2016","journal-title":"ACS
+        Catal.","DOI":"10.1021\/acscatal.5b01481","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit25)\/*[position()=1]","author":"Xiao","volume":"115","first-page":"5872","year":"2018","journal-title":"Proc.
+        Natl. Acad. Sci. U. S. A.","DOI":"10.1073\/pnas.1722034115","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit26)\/*[position()=1]","author":"Li","volume":"114","first-page":"1486","year":"2017","journal-title":"Proc.
+        Natl. Acad. Sci. U. S. A.","DOI":"10.1073\/pnas.1620787114","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit27)\/*[position()=1]","author":"Friebel","volume":"137","first-page":"1305","year":"2015","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/ja511559d","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit28)\/*[position()=1]","author":"Wang","volume":"119","first-page":"19573","year":"2015","journal-title":"J.
+        Phys. Chem. C","DOI":"10.1021\/acs.jpcc.5b02685","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit29)\/*[position()=1]","author":"Goldsmith","volume":"114","first-page":"3050","year":"2017","journal-title":"Proc.
+        Natl. Acad. Sci. U. S. A.","DOI":"10.1073\/pnas.1702081114","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit30)\/*[position()=1]","author":"Chen","volume":"137","first-page":"15090","year":"2015","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/jacs.5b10699","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit31)\/*[position()=1]","author":"Hunter","volume":"2","first-page":"747","year":"2018","journal-title":"Joule","DOI":"10.1016\/j.joule.2018.01.008","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit32)\/*[position()=1]","author":"Ahn","volume":"138","first-page":"313","year":"2016","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/jacs.5b10977","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit33)\/*[position()=1]","author":"Burke
+        Stevens","volume":"139","first-page":"11361","year":"2017","journal-title":"J.
+        Am. Chem. Soc.","DOI":"10.1021\/jacs.7b07117","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit34)\/*[position()=1]","author":"Yin","volume":"11","first-page":"3959","year":"2018","journal-title":"Nano
+        Res.","DOI":"10.1007\/s12274-017-1886-7","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit35)\/*[position()=1]","author":"Wang","volume":"4","first-page":"eaap7970","year":"2018","journal-title":"Sci.
+        Adv.","DOI":"10.1126\/sciadv.aap7970","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit36)\/*[position()=1]","author":"Hall","volume":"471","first-page":"1","year":"2015","journal-title":"Proc.
+        R. Soc. London, Ser. A","DOI":"10.1098\/rspa.2014.0792","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit37)\/*[position()=1]","author":"Browne","volume":"4","first-page":"11397","year":"2016","journal-title":"J.
+        Phys. Chem. A"},{"key":"C8CC06410E-(cit38)\/*[position()=1]","author":"Dionigi","volume":"6","first-page":"1600621","year":"2016","journal-title":"Adv.
+        Energy Mater.","DOI":"10.1002\/aenm.201600621","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit39)\/*[position()=1]","author":"Michael","volume":"119","first-page":"11475","year":"2015","journal-title":"J.
+        Phys. Chem. C","DOI":"10.1021\/acs.jpcc.5b02458","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit40)\/*[position()=1]","author":"Klaus","volume":"119","first-page":"18303","year":"2015","journal-title":"J.
+        Phys. Chem. C","DOI":"10.1021\/acs.jpcc.5b04776","doi-asserted-by":"crossref"},{"key":"C8CC06410E-(cit41)\/*[position()=1]","author":"Speck","volume":"2","first-page":"590","year":"2017","journal-title":"Chem","DOI":"10.1016\/j.chempr.2017.03.006","doi-asserted-by":"crossref"}],"container-title":["Chemical
+        Communications"],"original-title":[],"language":"en","link":[{"URL":"http:\/\/pubs.rsc.org\/en\/content\/articlepdf\/2019\/CC\/C8CC06410E","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,11,7]],"date-time":"2019-11-07T13:40:43Z","timestamp":1573134043000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2019]]},"references-count":41,"journal-issue":{"published-print":{"date-parts":[[2019,1,15]]},"issue":"6"},"URL":"http:\/\/dx.doi.org\/10.1039\/c8cc06410e","relation":{"cites":[]},"ISSN":["1359-7345","1364-548X"],"issn-type":[{"value":"1359-7345","type":"print"},{"value":"1364-548X","type":"electronic"}],"subject":["Materials
+        Chemistry","Electronic, Optical and Magnetic Materials","General Chemistry","Surfaces,
+        Coatings and Films","Metals and Alloys","Ceramics and Composites","Catalysis"],"assertion":[{"value":"This
+        document is Similarity Check deposited","name":"similarity_check","explanation":{"URL":"https:\/\/www.crossref.org\/services\/similarity-check\/"},"group":{"name":"similarity_check","label":"SIMILARITY
+        CHECK"}},{"value":"Supplementary Information","URL":"https:\/\/doi.org\/10.1039\/C8CC06410E","name":"related_data","group":{"name":"related_data","label":"RELATED
+        DATA"}},{"value":"Mikaela G\u00f6rlin (ORCID)","URL":"http:\/\/orcid.org\/0000-0003-4472-955X","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Cheuk-Wai
+        Tai (ORCID)","URL":"http:\/\/orcid.org\/0000-0001-7286-1211","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Cheuk-Wai
+        Tai (ResearcherID)","URL":"http:\/\/www.researcherid.com\/rid\/C-5340-2008","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Marc
+        Heggen (ORCID)","URL":"http:\/\/orcid.org\/0000-0002-2646-0078","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Rafal
+        Dunin-Borkowski (ORCID)","URL":"http:\/\/orcid.org\/0000-0001-8082-0647","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Peter
+        Strasser (ORCID)","URL":"http:\/\/orcid.org\/0000-0002-3884-436X","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Holger
+        Dau (ORCID)","URL":"http:\/\/orcid.org\/0000-0001-6482-7494","name":"identifier","group":{"name":"author_identifiers","label":"IDENTIFIERS"}},{"value":"Authors
+        can choose between single-blind and double-blind peer review","order":2,"name":"peer_review_method","group":{"name":"peer_review_method","label":"PEER
+        REVIEW METHOD"}},{"value":"Received 7 August 2018; Accepted 12 December 2018;
+        Accepted Manuscript published 12 December 2018; Advance Article published
+        21 December 2018; Version of Record published 15 January 2019","order":1,"name":"history","group":{"name":"publication_history","label":"PUBLICATION
+        HISTORY"}}]}}'
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:28 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.13039/501100001659?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/plain
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '19'
+      Server:
+      - http-kit
+      Date:
+      - Fri, 04 Jun 2021 09:52:29 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Permissions-Policy:
+      - interest-cohort=()
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: Resource not found.
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:29 GMT
+recorded_with: VCR 5.1.0

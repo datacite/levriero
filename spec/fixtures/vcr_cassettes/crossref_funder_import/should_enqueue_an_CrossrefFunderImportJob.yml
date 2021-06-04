@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 12:57:28 GMT
+      - Fri, 04 Jun 2021 09:18:54 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -42,9 +42,9 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":922127,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":922144,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 12:57:28 GMT
+  recorded_at: Fri, 04 Jun 2021 09:18:47 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=has-funder:true,from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 12:57:29 GMT
+      - Fri, 04 Jun 2021 09:18:55 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -87,7 +87,7 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ3iffu4+4CPwVodHRwOi8vZHguZG9pLm9yZy8xMC4xMDkzL2N2ci9jdnkxMTU=","total-results":922127,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:55Z","timestamp":1574894455120},"reference-count":59,"publisher":"American
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ3iffu4+4CPwVodHRwOi8vZHguZG9pLm9yZy8xMC4xMDkzL2N2ci9jdnkxMTU=","total-results":922144,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:55Z","timestamp":1574894455120},"reference-count":59,"publisher":"American
         Chemical Society (ACS)","funder":[{"DOI":"10.13039\/501100002855","name":"Ministry
         of Science and Technology of the People''s Republic of China","doi-asserted-by":"publisher","award":["2016YFB0600804"]},{"DOI":"10.13039\/501100002338","name":"Ministry
         of Education of the People''s Republic of China","doi-asserted-by":"publisher","award":["DUT18LAB22"]},{"DOI":"10.13039\/501100001809","name":"National
@@ -1893,5 +1893,5 @@ http_interactions:
         J Physiol"}],"container-title":["Cardiovascular Research"],"language":"en","link":[{"URL":"http:\/\/academic.oup.com\/cardiovascres\/article-pdf\/114\/10\/1308\/25195495\/cvy115.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,10,18]],"date-time":"2019-10-18T23:23:23Z","timestamp":1571441003000},"score":1.0,"issued":{"date-parts":[[2018,6,5]]},"references-count":8,"journal-issue":{"published-online":{"date-parts":[[2018,6,5]]},"published-print":{"date-parts":[[2018,8,1]]},"issue":"10"},"URL":"http:\/\/dx.doi.org\/10.1093\/cvr\/cvy115","relation":{"cites":[]},"ISSN":["0008-6363","1755-3245"],"issn-type":[{"value":"0008-6363","type":"print"},{"value":"1755-3245","type":"electronic"}],"subject":["Physiology
         (medical)","Physiology","Cardiology and Cardiovascular Medicine"]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 12:57:29 GMT
+  recorded_at: Fri, 04 Jun 2021 09:18:49 GMT
 recorded_with: VCR 5.1.0

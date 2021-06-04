@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:26:30 GMT
+      - Fri, 04 Jun 2021 09:50:03 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -44,7 +44,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":3352,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:26:30 GMT
+  recorded_at: Fri, 04 Jun 2021 09:49:56 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=has-funder:true,from-created-date:2018-01-04,until-created-date:2018-01-04&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:26:37 GMT
+      - Fri, 04 Jun 2021 09:51:41 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -2009,5 +2009,5 @@ http_interactions:
         of Plasmas"],"language":"en","link":[{"URL":"http:\/\/aip.scitation.org\/doi\/am-pdf\/10.1063\/1.5010932","content-type":"application\/pdf","content-version":"am","intended-application":"syndication"},{"URL":"http:\/\/aip.scitation.org\/doi\/pdf\/10.1063\/1.5010932","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,2,14]],"date-time":"2018-02-14T15:59:01Z","timestamp":1518623941000},"score":1.0,"issued":{"date-parts":[[2018,1]]},"references-count":28,"journal-issue":{"published-print":{"date-parts":[[2018,1]]},"issue":"1"},"alternative-id":["10.1063\/1.5010932"],"URL":"http:\/\/dx.doi.org\/10.1063\/1.5010932","relation":{"cites":[]},"ISSN":["1070-664X","1089-7674"],"issn-type":[{"value":"1070-664X","type":"print"},{"value":"1089-7674","type":"electronic"}],"subject":["Condensed
         Matter Physics"]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:26:37 GMT
+  recorded_at: Fri, 04 Jun 2021 09:51:41 GMT
 recorded_with: VCR 5.1.0

@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1021/jp036075h?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '10851'
+      Server:
+      - http-kit
+      Date:
+      - Fri, 04 Jun 2021 09:52:31 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Permissions-Policy:
+      - interest-cohort=()
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2021,6,2]],"date-time":"2021-06-02T21:41:05Z","timestamp":1622670065271},"reference-count":36,"publisher":"American
+        Chemical Society (ACS)","issue":"4","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["J.
+        Phys. Chem. B"],"published-print":{"date-parts":[[2004,1,1]]},"DOI":"10.1021\/jp036075h","type":"journal-article","created":{"date-parts":[[2004,1,22]],"date-time":"2004-01-22T06:05:22Z","timestamp":1074751522000},"page":"1497-1506","source":"Crossref","is-referenced-by-count":9,"title":["Theoretical
+        Investigation of Small Alkali Cation\u2212Molecule Clusters:\u2009 A Model
+        Potential Approach"],"prefix":"10.1021","volume":"108","author":[{"given":"C.","family":"C\u00e9zard","sequence":"first","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"B.","family":"Bouvier","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"V.","family":"Brenner","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"M.","family":"Defranceschi","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"Ph.","family":"Milli\u00e9","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"J. M.","family":"Soudan","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]},{"given":"J. P.","family":"Dognon","sequence":"additional","affiliation":[{"name":"CEA\/Saclay,
+        DSM\/DRECAM\/SPAM-LFP (CEA-CNRS URA2453), Bat. 522, 91191 Gif sur Yvette,
+        France, CEA Saclay, DEN\/DSOE\/RB, and Paris-Sud University, Bat. 350, 91405
+        Orsay Cedex, France"}]}],"member":"316","published-online":{"date-parts":[[2003,12,31]]},"reference":[{"key":"jp036075hb00001\/jp036075hb00001_1","author":"Izatt
+        R. M.","volume":"91","first-page":"1721","year":"1991","journal-title":"Chem.
+        Rev.","DOI":"10.1021\/cr00008a003","doi-asserted-by":"crossref"},{"key":"jp036075hb00002\/jp036075hb00002_1","author":"Solov''ev
+        V. P.","volume":"61","first-page":"5221","year":"1996","journal-title":"J.
+        Org. Chem.","DOI":"10.1021\/jo952250h","doi-asserted-by":"crossref"},{"key":"jp036075hb00003\/jp036075hb00003_1","author":"Islam
+        M. S.","volume":"94","first-page":"39","year":"1998","journal-title":"J. Chem.
+        Soc., Faraday Trans.","DOI":"10.1039\/a704909i","doi-asserted-by":"crossref"},{"key":"jp036075hb00004\/jp036075hb00004_1","author":"Glendening
+        E. D.","volume":"99","first-page":"3060","year":"1995","journal-title":"J.
+        Phys. Chem.","DOI":"10.1021\/j100010a015","doi-asserted-by":"crossref"},{"key":"jp036075hb00005\/jp036075hb00005_1","author":"Feller
+        D.","volume":"103","first-page":"3526","year":"1995","journal-title":"J. Chem.
+        Phys.","DOI":"10.1063\/1.470237","doi-asserted-by":"crossref"},{"key":"jp036075hb00006\/jp036075hb00006_1","author":"Feller
+        D.","volume":"101","first-page":"2723","year":"1997","journal-title":"J. Phys.
+        Chem. A","DOI":"10.1021\/jp9700185","doi-asserted-by":"crossref"},{"key":"jp036075hb00007\/jp036075hb00007_1","author":"Hill
+        S. E.","volume":"101","first-page":"6125","year":"1997","journal-title":"J.
+        Phys. Chem. A","DOI":"10.1021\/jp971124+","doi-asserted-by":"crossref"},{"key":"jp036075hb00008\/jp036075hb00008_1","author":"Garcia-Muruais
+        A.","volume":"254","first-page":"109","year":"2000","journal-title":"Chem.
+        Phys.","DOI":"10.1016\/S0301-0104(00)00008-2","doi-asserted-by":"crossref"},{"key":"jp036075hb00009\/jp036075hb00009_1","author":"Cabaleiro-Lago
+        E. M.","volume":"106","first-page":"7195","year":"2002","journal-title":"J.
+        Phys. Chem. A","DOI":"10.1021\/jp020713z","doi-asserted-by":"crossref"},{"key":"jp036075hb00010\/jp036075hb00010_1","author":"Kim
+        J.","volume":"102","first-page":"839","year":"1995","journal-title":"J. Chem.
+        Phys.","DOI":"10.1063\/1.469199","doi-asserted-by":"crossref"},{"key":"jp036075hb00012\/jp036075hb00012_1","author":"Derepas
+        A.-L.","volume":"23","first-page":"1013","year":"2002","journal-title":"J.
+        Comput. Chem.","DOI":"10.1002\/jcc.10063","doi-asserted-by":"crossref"},{"key":"jp036075hb00013\/jp036075hb00013_1","author":"Lefevre
+        R. J.","volume":"3","first-page":"1","year":"1965","volume-title":"Advances
+        in Physical Organics Chemistry"},{"key":"jp036075hb00014\/jp036075hb00014_1","author":"Kitagorodskii
+        A. I.","volume":"14","first-page":"975","year":"1961","journal-title":"Tetrahedron"},{"key":"jp036075hb00015\/jp036075hb00015_1","author":"Garel
+        T.","volume":"23","first-page":"L621","year":"1990","journal-title":"J. Phys.
+        A","DOI":"10.1088\/0305-4470\/23\/12\/007","doi-asserted-by":"crossref"},{"key":"jp036075hb00016\/jp036075hb00016_1","author":"Garel
+        T.","volume":"88","first-page":"2473","year":"1991","journal-title":"J. Chim.
+        Phys.","DOI":"10.1051\/jcp\/1991882473","doi-asserted-by":"crossref"},{"key":"jp036075hb00017\/jp036075hb00017_1","author":"Poteau
+        R.","volume":"98","first-page":"6540","year":"1993","journal-title":"J. Chem.
+        Phys.","DOI":"10.1063\/1.464794","doi-asserted-by":"crossref"},{"key":"jp036075hb00018\/jp036075hb00018_1","author":"Poteau
+        R.","volume":"99","first-page":"10089","year":"1993","journal-title":"J. Chem.
+        Phys.","DOI":"10.1063\/1.466243","doi-asserted-by":"crossref"},{"key":"jp036075hb00019\/jp036075hb00019_1","author":"Bertolus
+        M.","volume":"39","first-page":"239","year":"1997","journal-title":"Z. Phys.
+        D","DOI":"10.1007\/s004600050133","doi-asserted-by":"crossref"},{"key":"jp036075hb00020\/jp036075hb00020_1","author":"Gregoire
+        G.","volume":"104","first-page":"5204","year":"2000","journal-title":"J. Phys.
+        Chem. A","DOI":"10.1021\/jp992586l","doi-asserted-by":"crossref"},{"key":"jp036075hb00021\/jp036075hb00021_1","author":"Fletcher
+        R.","volume":"13","first-page":"317","year":"1970","journal-title":"Comput.
+        J.","DOI":"10.1093\/comjnl\/13.3.317","doi-asserted-by":"crossref"},{"key":"jp036075hb00022\/jp036075hb00022_1","author":"Goldfarb
+        D.","volume":"24","first-page":"23","year":"1970","journal-title":"Math. Comput.","DOI":"10.1090\/S0025-5718-1970-0258249-6","doi-asserted-by":"crossref"},{"key":"jp036075hb00023\/jp036075hb00023_1","author":"Shanno
+        D. F.","volume":"24","first-page":"647","year":"1970","journal-title":"Math.
+        Comput.","DOI":"10.1090\/S0025-5718-1970-0274029-X","doi-asserted-by":"crossref"},{"key":"jp036075hb00025\/jp036075hb00025_1","author":"Pacios
+        L. F.","volume":"82","first-page":"2664","year":"1985","journal-title":"J.
+        Chem. Phys.","DOI":"10.1063\/1.448263","doi-asserted-by":"crossref"},{"key":"jp036075hb00026\/jp036075hb00026_1","author":"Hurley
+        M. M.","volume":"84","first-page":"6840","year":"1986","journal-title":"J.
+        Chem. Phys.","DOI":"10.1063\/1.450689","doi-asserted-by":"crossref"},{"key":"jp036075hb00027\/jp036075hb00027_1","author":"Lajohn
+        L. A.","volume":"87","first-page":"2812","year":"1987","journal-title":"J.
+        Chem. Phys.","DOI":"10.1063\/1.453069","doi-asserted-by":"crossref"},{"key":"jp036075hb00028\/jp036075hb00028_1","author":"Ross
+        R. B.","volume":"93","first-page":"6654","year":"1990","journal-title":"J.
+        Chem. Phys.","DOI":"10.1063\/1.458934","doi-asserted-by":"crossref"},{"key":"jp036075hb00029\/jp036075hb00029_1","author":"Hoyau
+        S.","volume":"4","first-page":"1561","year":"1998","journal-title":"Chem.
+        Eur. J.","DOI":"10.1002\/(SICI)1521-3765(19980807)4:8<1561::AID-CHEM1561>3.0.CO;2-Z","doi-asserted-by":"crossref"},{"key":"jp036075hb00030\/jp036075hb00030_1","author":"Boys
+        S. F.","volume":"19","first-page":"553","year":"1970","journal-title":"Mol.
+        Phys.","DOI":"10.1080\/00268977000101561","doi-asserted-by":"crossref"},{"key":"jp036075hb00031\/jp036075hb00031_1","author":"Frisch
+        M. J.","year":"1998","volume-title":"Gaussian 98, revision A7 ed"},{"key":"jp036075hb00032\/jp036075hb00032_1","author":"Dzidic
+        I.","volume":"74","first-page":"1466","year":"1970","journal-title":"J. Phys.
+        Chem.","DOI":"10.1021\/j100702a013","doi-asserted-by":"crossref"},{"key":"jp036075hb00033\/jp036075hb00033_1","author":"Hay
+        P. J.","volume":"82","first-page":"299","year":"1985","journal-title":"J.
+        Chem. Phys.","DOI":"10.1063\/1.448975","doi-asserted-by":"crossref"},{"key":"jp036075hb00034\/jp036075hb00034_1","author":"Armentrout
+        P. B.","volume":"193","first-page":"227","year":"1999","journal-title":"Int.
+        J. Mass Spectrom.","DOI":"10.1016\/S1387-3806(99)00165-7","doi-asserted-by":"crossref"},{"key":"jp036075hb00035\/jp036075hb00035_1","author":"Ahlstr\u00f6m
+        P.","volume":"68","first-page":"563","year":"1989","journal-title":"Mol. Phys.","DOI":"10.1080\/00268978900102361","doi-asserted-by":"crossref"},{"key":"jp036075hb00036\/jp036075hb00036_1","author":"Caillet
+        J.","volume":"31","first-page":"448","year":"1975","journal-title":"Acta Crystallogr.","DOI":"10.1107\/S0567739475001015","doi-asserted-by":"crossref"},{"key":"jp036075hb00037\/jp036075hb00037_1","author":"Gresh
+        N.","year":"1979","volume-title":"Quantum Chem. Symp."},{"key":"jp036075hb00039\/jp036075hb00039_1","author":"Fraga
+        S.","year":"1976","volume-title":"Handbook of Atomic Data"}],"container-title":["The
+        Journal of Physical Chemistry B"],"original-title":[],"language":"en","link":[{"URL":"https:\/\/pubs.acs.org\/doi\/pdf\/10.1021\/jp036075h","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2021,6,2]],"date-time":"2021-06-02T21:02:49Z","timestamp":1622667769000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[2003,12,31]]},"references-count":36,"journal-issue":{"published-print":{"date-parts":[[2004,1,1]]},"issue":"4"},"alternative-id":["10.1021\/jp036075h"],"URL":"http:\/\/dx.doi.org\/10.1021\/jp036075h","relation":{"cites":[]},"ISSN":["1520-6106","1520-5207"],"issn-type":[{"value":"1520-6106","type":"print"},{"value":"1520-5207","type":"electronic"}],"subject":["Physical
+        and Theoretical Chemistry","Materials Chemistry","Surfaces, Coatings and Films"]}}'
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:31 GMT
+recorded_with: VCR 5.1.0

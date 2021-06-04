@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stage.datacite.org/events
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"events","id":"eb3f5430-8e1a-46a7-9192-126006bb52a0","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2021-06-03T13:30:01Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","registrantId":"crossref.1121"}}}}'
+      string: '{"data":{"type":"events","id":"ec0b4f79-086f-416c-bd7c-08597ab4f0be","attributes":{"messageAction":"create","subjId":"https://doi.org/10.1016/s0191-6599(01)00017-1","objId":"https://doi.org/10.2307/1847110","relationTypeId":"cites","sourceId":"crossref-related","sourceToken":"2a9027a7-8441-4e3e-b4f9-3004010356cc","occurredAt":"2002-07-25T17:19:59Z","timestamp":"2021-06-04T09:55:26Z","license":"https://creativecommons.org/publicdomain/zero/1.0/","subj":{"@id":"https://doi.org/10.1016/s0191-6599(01)00017-1","@type":"ScholarlyArticle","datePublished":"2012-01-03","proxyIdentifiers":["1873-541X"],"registrantId":"datacite."},"obj":{"@id":"https://doi.org/10.2307/1847110","@type":"ScholarlyArticle","datePublished":"1957-10","registrantId":"crossref.1121"}}}}'
     headers:
       User-Agent:
       - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
@@ -14,32 +14,36 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json
       Authorization:
-      - Bearer <VOLPINO_TOKEN>
+      - Bearer <STAFF_ADMIN_TOKEN>
       Accept-Encoding:
       - gzip,deflate
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Thu, 03 Jun 2021 13:30:01 GMT
+      - Fri, 04 Jun 2021 09:55:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
       Content-Encoding:
       - gzip
+      X-Credential-Username:
+      - admin
       X-Request-Id:
-      - 44ad3a1d-1f88-4191-bc5c-e82fdabbaca6
+      - 230a2cf9-a61c-4732-8ece-3ecc726dc85b
+      Etag:
+      - W/"cae12dc8840debc249e80a16c6b09b27"
       X-Runtime:
-      - '0.012760'
+      - '0.430392'
       X-Rack-Cors:
       - miss; no-origin
       X-Powered-By:
@@ -49,7 +53,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAFnZuGAAA6pWSi0qyi8qVrKKrlYqLkksKQUylUwMDJV0lEoyS3JSgTynxBSF5KLUlNS8kszEnGI9pdrYWgAAAAD//wMAnbPDfTgAAAA=
+        H4sIAI/4uWAAA5RSwY7bIBD9F06ttNgzjm2Cbyv10muV094wnmRpY2MBXqld5d87sG3abtRqywXBvHnzeLxnMZlkxPAs3CQGQRbG9qi0hH1/lC32Vo6TsnzstDJcgpHEnUhfV8roJ1pS5LNJKbhxSxQzU9zGzx8z22NKaxzqevKu8uFUI1QI2NcRUKPsO63fAb4HAFQSmcb/va/Zgapx3ypEYGT0W7BUwDb4GAMdZaCzSTRleSacKH3wjsu3vQXn/HLgR7wwuCz8J+mn12XmpkCLLZgX6hsMU5SLAvHJnMWAd2KmGM2J7m0uFanECq+TDv4L5evGaGiUUXLftihb2pFkp7XcAbSAsOt6a7np7CwtkX7zp/C5J7J+nnl28WrdRgZOfjZuqb9R8DVWUGdzrd1CoOk+5ZEAjQQlm+6AakA9dLrif3jI8h3LTmZeC6xBCb2E9gCM6Yamr/bQPFyfcPX4H/96+WV5fHTrNSJ5/yN8/xuXHynk1JDlGF4uJUFvoX2ViBsiXt8BAAD//wMAtpbqNBkDAAA=
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:30:01 GMT
+  recorded_at: Fri, 04 Jun 2021 09:55:26 GMT
 recorded_with: VCR 5.1.0

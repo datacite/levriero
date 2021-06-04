@@ -1,0 +1,155 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://doi.org/ra/10.2307
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 04 Jun 2021 09:52:25 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 0a78093fd600009784be153000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v2?s=%2BAIhr%2FfKYRgZrZIn%2Bv1eTais25T8%2BlgibLpWxYTK1ofp4qZTcD50ai8iIE0WXM5aBeaAQGpMaSONwBxNos7nPCGCNBDyReQVjYp1Dh9lhemV2Knb"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 65a044ac7c899784-FRA
+      Alt-Svc:
+      - h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400, h3=":443";
+        ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9I2MDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAbPP7SDYAAAA=
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:24 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.2307/1847110?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+      Content-Length:
+      - '1346'
+      Server:
+      - http-kit
+      Date:
+      - Fri, 04 Jun 2021 09:52:25 GMT
+      X-Rate-Limit-Limit:
+      - '50'
+      X-Rate-Limit-Interval:
+      - 1s
+      Permissions-Policy:
+      - interest-cohort=()
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"work","message-version":"1.0.0","message":{"indexed":{"date-parts":[[2020,7,17]],"date-time":"2020-07-17T12:29:06Z","timestamp":1594988946576},"reference-count":0,"publisher":"JSTOR","issue":"1","content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["The
+        American Historical Review"],"published-print":{"date-parts":[[1957,10]]},"DOI":"10.2307\/1847110","type":"journal-article","created":{"date-parts":[[2006,4,19]],"date-time":"2006-04-19T22:06:06Z","timestamp":1145484366000},"page":"23","source":"Crossref","is-referenced-by-count":14,"title":["The
+        Movement to Abolish Capital Punishment in America, 1787-1861"],"prefix":"10.2307","volume":"63","author":[{"given":"David
+        Brion","family":"Davis","sequence":"first","affiliation":[]}],"member":"1121","container-title":["The
+        American Historical Review"],"original-title":[],"deposited":{"date-parts":[[2018,4,18]],"date-time":"2018-04-18T19:34:06Z","timestamp":1524080046000},"score":1.0,"subtitle":[],"short-title":[],"issued":{"date-parts":[[1957,10]]},"references-count":0,"journal-issue":{"published-print":{"date-parts":[[1957,10]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.2307\/1847110","relation":{},"ISSN":["0002-8762"],"issn-type":[{"value":"0002-8762","type":"print"}],"subject":["Archaeology","Museology","History"]}}'
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:25 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.1016/s0191-6599(01)00017-1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Jun 2021 09:52:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      X-Request-Id:
+      - 45bdf642-0c71-4dcf-9421-24ab73cc37e2
+      Etag:
+      - W/"f8833461e9544deef5ee5728e7ac3a7b"
+      X-Runtime:
+      - '0.072082'
+      X-Rack-Cors:
+      - miss; no-origin
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.8
+      Server:
+      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: null
+  recorded_at: Fri, 04 Jun 2021 09:52:26 GMT
+recorded_with: VCR 5.1.0

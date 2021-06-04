@@ -139,7 +139,7 @@ class CrossrefFunder < Base
     # send to DataCite Event Data API
     # don't send to Profiles service for ORCID claiming
     Array.wrap(push_items).each do |iiitem|
-      if ENV['LAGOTTINO_TOKEN'].present?
+      if ENV['STAFF_ADMIN_TOKEN'].present?
         push_url = ENV['LAGOTTINO_URL'] + "/events"
 
         data = { 
@@ -159,7 +159,7 @@ class CrossrefFunder < Base
               "obj" => iiitem["obj"] } }}
 
         response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV['LAGOTTINO_TOKEN'],
+                                          bearer: ENV['STAFF_ADMIN_TOKEN'],
                                           content_type: 'application/vnd.api+json',
                                           accept: 'application/vnd.api+json; version=2')
 

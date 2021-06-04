@@ -38,7 +38,7 @@ jobs:
       - name: Lint and Test
         env:
           MEMCACHE_SERVERS: "localhost:11211"
-          VOLPINO_TOKEN: ${{ secrets.VOLPINO_TOKEN }}
+          STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
         run: |
           # bundle exec rubocop
           bundle exec rspec

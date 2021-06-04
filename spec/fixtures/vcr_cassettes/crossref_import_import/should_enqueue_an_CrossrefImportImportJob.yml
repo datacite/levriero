@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 12:57:45 GMT
+      - Fri, 04 Jun 2021 09:20:03 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -42,9 +42,9 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":8238416,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":8237107,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 12:57:45 GMT
+  recorded_at: Fri, 04 Jun 2021 09:19:57 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 12:57:51 GMT
+      - Fri, 04 Jun 2021 09:20:12 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -87,7 +87,7 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ41sjB1+4CPxRodHRwOi8vZHguZG9pLm9yZy8xMC4yMTY3NS8yMzU3LTcwN3guMjAxNy52OC5uNC45NzM=","total-results":8238416,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453800},"posted":{"date-parts":[[2018,10,31]]},"group-title":"PaleorXiv","reference-count":0,"publisher":"Center
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ41sjB1+4CPxRodHRwOi8vZHguZG9pLm9yZy8xMC4yMTY3NS8yMzU3LTcwN3guMjAxNy52OC5uNC45NzM=","total-results":8237107,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453800},"posted":{"date-parts":[[2018,10,31]]},"group-title":"PaleorXiv","reference-count":0,"publisher":"Center
         for Open Science","license":[{"URL":"https:\/\/creativecommons.org\/licenses\/by\/4.0\/legalcode","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"unspecified"}],"content-domain":{"domain":[],"crossmark-restriction":false},"abstract":"<p>Highly
         resolved paleontological records can address a key question about our current
         climate crisis: How long until the biosphere rebounds from our actions? There
@@ -1237,5 +1237,5 @@ http_interactions:
         Cristina Kowal Olm","family":"Cunha","sequence":"additional","affiliation":[]},{"given":"Elena","family":"Bohomol","sequence":"additional","affiliation":[]}],"member":"9124","published-online":{"date-parts":[[2018,4,12]]},"container-title":["Enfermagem
         em Foco"],"link":[{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/973\/411","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/revista.cofen.gov.br\/index.php\/enfermagem\/article\/viewFile\/973\/411","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:23:26Z","timestamp":1541006606000},"score":1.0,"issued":{"date-parts":[[2018,4,12]]},"references-count":0,"journal-issue":{"published-online":{"date-parts":[[2018,2,23]]},"issue":"4"},"URL":"http:\/\/dx.doi.org\/10.21675\/2357-707x.2017.v8.n4.973","ISSN":["2357-707X","2177-4285"],"issn-type":[{"value":"2177-4285","type":"print"},{"value":"2357-707X","type":"electronic"}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 12:57:51 GMT
+  recorded_at: Fri, 04 Jun 2021 09:20:06 GMT
 recorded_with: VCR 5.1.0

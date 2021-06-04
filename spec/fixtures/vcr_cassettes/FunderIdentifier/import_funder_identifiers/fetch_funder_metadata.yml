@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:30:18 GMT
+      - Fri, 04 Jun 2021 09:55:55 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -50,5 +50,5 @@ http_interactions:
         School of Economics & Political Science","London School of Economics","The
         London School of Economics and Political Science","LSE"],"location":null}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:30:18 GMT
+  recorded_at: Fri, 04 Jun 2021 09:55:54 GMT
 recorded_with: VCR 5.1.0

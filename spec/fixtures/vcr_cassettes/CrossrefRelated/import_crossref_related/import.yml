@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:28:30 GMT
+      - Fri, 04 Jun 2021 10:00:13 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -44,7 +44,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":8122,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:28:30 GMT
+  recorded_at: Fri, 04 Jun 2021 10:00:13 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=reference-visibility:open,has-references:true,from-created-date:2018-01-04,until-created-date:2018-01-04&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:30:00 GMT
+      - Fri, 04 Jun 2021 10:01:16 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -1543,5 +1543,5 @@ http_interactions:
         decisions through science. Scientific American, Better Decisions through Science"}],"container-title":["CSA
         News"],"language":"en","link":[{"URL":"https:\/\/api.wiley.com\/onlinelibrary\/tdm\/v1\/articles\/10.2134%2Fcsa2018.63.0124","content-type":"application\/pdf","content-version":"vor","intended-application":"text-mining"},{"URL":"http:\/\/onlinelibrary.wiley.com\/wol1\/doi\/10.2134\/csa2018.63.0124\/fullpdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2020,1,10]],"date-time":"2020-01-10T16:25:30Z","timestamp":1578673530000},"score":1.0,"issued":{"date-parts":[[2018,1]]},"references-count":3,"journal-issue":{"published-print":{"date-parts":[[2018,1]]},"issue":"1"},"URL":"http:\/\/dx.doi.org\/10.2134\/csa2018.63.0124","archive":["Portico"],"relation":{"cites":[]},"ISSN":["1529-9163"],"issn-type":[{"value":"1529-9163","type":"print"}]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:30:01 GMT
+  recorded_at: Fri, 04 Jun 2021 10:01:17 GMT
 recorded_with: VCR 5.1.0

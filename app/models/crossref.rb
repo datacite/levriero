@@ -101,7 +101,7 @@ class Crossref < Base
     subj = cached_crossref_response(item["subj_id"])
     obj = cached_datacite_response(item["obj_id"])
 
-    if ENV["LAGOTTINO_TOKEN"].present?
+    if ENV["STAFF_ADMIN_TOKEN"].present?
       push_url = ENV["LAGOTTINO_URL"] + "/events/#{item['id']}"
 
       data = {
@@ -122,7 +122,7 @@ class Crossref < Base
             "obj" => obj } }}
 
       response = Maremma.put(push_url, data: data.to_json,
-                                       bearer: ENV["LAGOTTINO_TOKEN"],
+                                       bearer: ENV["STAFF_ADMIN_TOKEN"],
                                        content_type: "application/vnd.api+json",
                                        accept: "application/vnd.api+json; version=2")
 

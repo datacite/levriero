@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:24:26 GMT
+      - Fri, 04 Jun 2021 09:46:56 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -42,9 +42,9 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2809254,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"*","total-results":2809426,"items":[],"items-per-page":0,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:24:26 GMT
+  recorded_at: Fri, 04 Jun 2021 09:46:49 GMT
 - request:
     method: get
     uri: https://api.crossref.org/works?cursor=*&filter=reference-visibility:open,has-references:true,from-created-date:2018-01-04,until-created-date:2018-12-31&mailto=info@datacite.org&rows=25
@@ -76,7 +76,7 @@ http_interactions:
       Server:
       - http-kit
       Date:
-      - Thu, 03 Jun 2021 13:24:58 GMT
+      - Fri, 04 Jun 2021 09:48:07 GMT
       X-Rate-Limit-Limit:
       - '50'
       X-Rate-Limit-Interval:
@@ -87,7 +87,7 @@ http_interactions:
       - close
     body:
       encoding: ASCII-8BIT
-      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ8zL6q4u4CPwtodHRwOi8vZHguZG9pLm9yZy8xMC4xMDkzL2V1cmhlYXJ0ai9laHkxNTE=","total-results":2809254,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453876},"reference-count":12,"publisher":"Wiley","issue":"1","license":[{"URL":"http:\/\/doi.wiley.com\/10.1002\/tdm_license_1.1","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"tdm"},{"URL":"http:\/\/onlinelibrary.wiley.com\/termsAndConditions#vor","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Heat
+      string: '{"status":"ok","message-type":"work-list","message-version":"1.0.0","message":{"facets":{},"next-cursor":"AoJ8zL6q4u4CPwtodHRwOi8vZHguZG9pLm9yZy8xMC4xMDkzL2V1cmhlYXJ0ai9laHkxNTE=","total-results":2809426,"items":[{"indexed":{"date-parts":[[2019,11,27]],"date-time":"2019-11-27T22:40:53Z","timestamp":1574894453876},"reference-count":12,"publisher":"Wiley","issue":"1","license":[{"URL":"http:\/\/doi.wiley.com\/10.1002\/tdm_license_1.1","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"tdm"},{"URL":"http:\/\/onlinelibrary.wiley.com\/termsAndConditions#vor","start":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T00:00:00Z","timestamp":1540944000000},"delay-in-days":0,"content-version":"vor"}],"content-domain":{"domain":[],"crossmark-restriction":false},"short-container-title":["Heat
         Transfer-Asian Res"],"published-print":{"date-parts":[[2019,1]]},"DOI":"10.1002\/htj.21378","type":"journal-article","created":{"date-parts":[[2018,10,31]],"date-time":"2018-10-31T17:16:12Z","timestamp":1541006172000},"page":"182-215","source":"Crossref","is-referenced-by-count":0,"title":["Improved
         velocity and temperature profiles for integral solution in the laminar boundary
         layer flow on a semi-infinite flat plate"],"prefix":"10.1002","volume":"48","author":[{"ORCID":"http:\/\/orcid.org\/0000-0001-9490-7954","authenticated-orcid":false,"given":"S.
@@ -2065,5 +2065,5 @@ http_interactions:
         Heart Journal"],"language":"en","link":[{"URL":"http:\/\/academic.oup.com\/eurheartj\/article-pdf\/39\/18\/1620\/24785289\/ehy151.pdf","content-type":"unspecified","content-version":"vor","intended-application":"similarity-checking"}],"deposited":{"date-parts":[[2019,10,12]],"date-time":"2019-10-12T05:47:47Z","timestamp":1570859267000},"score":1.0,"issued":{"date-parts":[[2018,3,22]]},"references-count":15,"journal-issue":{"published-online":{"date-parts":[[2018,3,22]]},"published-print":{"date-parts":[[2018,5,7]]},"issue":"18"},"URL":"http:\/\/dx.doi.org\/10.1093\/eurheartj\/ehy151","relation":{"cites":[]},"ISSN":["0195-668X","1522-9645"],"issn-type":[{"value":"0195-668X","type":"print"},{"value":"1522-9645","type":"electronic"}],"subject":["Cardiology
         and Cardiovascular Medicine"]}],"items-per-page":25,"query":{"start-index":0,"search-terms":null}}}'
     http_version: null
-  recorded_at: Thu, 03 Jun 2021 13:24:59 GMT
+  recorded_at: Fri, 04 Jun 2021 09:48:01 GMT
 recorded_with: VCR 5.1.0

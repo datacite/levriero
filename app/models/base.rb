@@ -8,22 +8,22 @@ class Base
   # icon for Slack messages
   ICON_URL = "https://raw.githubusercontent.com/datacite/toccatore/master/lib/toccatore/images/toccatore.png"
 
-  def queue(options={})
-    Rails.logger.error "Queue name has not been specified" unless ENV['ENVIRONMENT'].present?
-    Rails.logger.error "AWS_REGION has not been specified" unless ENV['AWS_REGION'].present?
-    region = ENV['AWS_REGION'] ||= 'eu-west-1'
+  def queue(_options = {})
+    Rails.logger.error "Queue name has not been specified" unless ENV["ENVIRONMENT"].present?
+    Rails.logger.error "AWS_REGION has not been specified" unless ENV["AWS_REGION"].present?
+    region = ENV["AWS_REGION"] ||= "eu-west-1"
     Aws::SQS::Client.new(region: region.to_s, stub_responses: false)
   end
 
-  def get_message(options={})
+  def get_message(_options = {})
     sqs.receive_message(queue_url: queue_url, max_number_of_messages: 1, wait_time_seconds: 1)
   end
 
   def delete_message(message)
     response = sqs.delete_message({
-      queue_url: queue_url,
-      receipt_handle: message[:receipt_handle]    
-    })
+                                    queue_url: queue_url,
+                                    receipt_handle: message[:receipt_handle],
+                                  })
     if response.successful?
       Rails.logger.info "Message #{message[:receipt_handle]} deleted"
     else
@@ -31,14 +31,14 @@ class Base
     end
   end
 
-  def queue_url(options={})
-    options[:queue_name] ||= "#{ENV['ENVIRONMENT']}_usage" 
-    queue_name = options[:queue_name] 
+  def queue_url(options = {})
+    options[:queue_name] ||= "#{ENV['ENVIRONMENT']}_usage"
+    queue_name = options[:queue_name]
     # puts "Using  #{sqs.get_queue_url(queue_name: queue_name).queue_url} queue"
     sqs.get_queue_url(queue_name: queue_name).queue_url
   end
-  
-  def get_query_url(options={})
+
+  def get_query_url(options = {})
     options[:number] ||= 1
     options[:size] ||= 1000
     updated = "updated:[#{options[:from_date]}T00:00:00Z TO #{options[:until_date]}T23:59:59Z]"
@@ -57,29 +57,30 @@ class Base
     #   query = query
     # end
 
-    params = { 
+    params = {
       query: query + " AND " + updated,
       "resource-type-id" => options[:resource_type_id],
       "page[number]" => options[:number],
       "page[size]" => options[:size],
       "exclude_registration_agencies" => options[:exclude_registration_agencies],
-      affiliation: true }
+      affiliation: true,
+    }
 
-    url +  URI.encode_www_form(params)
+    url + URI.encode_www_form(params)
   end
 
-  def get_total(options={})
+  def get_total(options = {})
     query_url = get_query_url(options.merge(size: 0))
     result = Maremma.get(query_url, options)
     result.body.dig("meta", "total").to_i
   end
 
-  def queue_jobs(options={})
+  def queue_jobs(options = {})
     options[:number] = options[:number].to_i || 1
     options[:size] = options[:size].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
     options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
-    options[:content_type] = 'json'
+    options[:content_type] = "json"
 
     total = get_total(options)
 
@@ -101,13 +102,13 @@ class Base
     Rails.logger.info text
 
     # send slack notification
-    if total == 0
-      options[:level] = "warning"
-    elsif error_total > 0
-      options[:level] = "danger"
-    else
-      options[:level] = "good"
-    end
+    options[:level] = if total == 0
+                        "warning"
+                      elsif error_total > 0
+                        "danger"
+                      else
+                        "good"
+                      end
     options[:title] = "Report for #{source_id}"
     send_notification_to_slack(text, options) if options[:slack_webhook_url].present?
 
@@ -120,13 +121,13 @@ class Base
     push_data(data, options)
   end
 
-  def get_data(options={})
+  def get_data(options = {})
     query_url = get_query_url(options)
     Maremma.get(query_url, options)
   end
 
   def url
-    ENV['API_URL'] + "/dois?"
+    ENV["API_URL"] + "/dois?"
   end
 
   def timeout
@@ -137,30 +138,30 @@ class Base
     Rails.env.test? ? 25 : 1000
   end
 
-  def send_notification_to_slack(text, options={})
+  def send_notification_to_slack(text, options = {})
     return nil unless options[:slack_webhook_url].present?
 
     attachment = {
       title: options[:title] || "Report",
       text: text,
-      color: options[:level] || "good"
+      color: options[:level] || "good",
     }
 
     notifier = Slack::Notifier.new options[:slack_webhook_url],
-                                    username: "Event Data Agent",
-                                    icon_url: ICON_URL
+                                   username: "Event Data Agent",
+                                   icon_url: ICON_URL
     response = notifier.post attachments: [attachment]
     response.first
   end
 
   def self.doi_from_url(url)
-    if /\A(?:(http|https):\/\/(dx\.)?(doi.org|handle.test.datacite.org|handle.stage.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(url)
+    if /\A(?:(http|https):\/\/(dx\.)?(doi.org|handle.test.datacite.org|handle.stage.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match?(url)
       uri = Addressable::URI.parse(url)
-      uri.path.gsub(/^\//, '').downcase
+      uri.path.gsub(/^\//, "").downcase
     end
   end
 
-  def self.parse_attributes(element, options={})
+  def self.parse_attributes(element, options = {})
     content = options[:content] || "__content__"
 
     if element.is_a?(String)
@@ -170,8 +171,6 @@ class Base
     elsif element.is_a?(Array)
       a = element.map { |e| e.is_a?(Hash) ? e.fetch(content, nil) : e }.uniq
       a = options[:first] ? a.first : a.unwrap
-    else
-      nil
     end
   end
 
@@ -183,12 +182,12 @@ class Base
 
   def self.map_hash_keys(element: nil, mapping: nil)
     Array.wrap(element).map do |a|
-      a.map {|k, v| [mapping.fetch(k, k), v] }.reduce({}) do |hsh, (k, v)|
-        if v.is_a?(Hash)
-          hsh[k] = to_schema_org(v)
-        else
-          hsh[k] = v
-        end
+      a.map { |k, v| [mapping.fetch(k, k), v] }.reduce({}) do |hsh, (k, v)|
+        hsh[k] = if v.is_a?(Hash)
+                   to_schema_org(v)
+                 else
+                   v
+                 end
 
         hsh
       end
@@ -202,12 +201,14 @@ class Base
 
   def self.get_date_from_date_parts(date_as_parts)
     date_parts = date_as_parts.fetch("date-parts", []).first
-    year, month, day = date_parts[0], date_parts[1], date_parts[2]
+    year = date_parts[0]
+    month = date_parts[1]
+    day = date_parts[2]
     get_date_from_parts(year, month, day)
   end
 
   def self.get_date_from_parts(year, month = nil, day = nil)
-    [year.to_s.rjust(4, '0'), month.to_s.rjust(2, '0'), day.to_s.rjust(2, '0')].reject { |part| part == "00" }.join("-")
+    [year.to_s.rjust(4, "0"), month.to_s.rjust(2, "0"), day.to_s.rjust(2, "0")].reject { |part| part == "00" }.join("-")
   end
 
   def self.get_datacite_xml(id)
@@ -217,14 +218,14 @@ class Base
       return {}
     end
 
-    url = ENV['API_URL'] + "/dois/#{doi}"
+    url = ENV["API_URL"] + "/dois/#{doi}"
     response = Maremma.get(url)
 
     if response.status != 200
       Rails.logger.info "DOI #{doi} not found"
       return {}
     end
-    
+
     xml = response.body.dig("data", "attributes", "xml")
     xml = Base64.decode64(xml) if xml.present?
     Maremma.from_xml(xml).to_h.fetch("resource", {})
@@ -237,14 +238,14 @@ class Base
       return {}
     end
 
-    url = ENV['API_URL'] + "/dois/#{doi}?affiliation=true"
+    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true"
     response = Maremma.get(url)
 
     if response.status != 200
       Rails.logger.info "DOI #{doi} not found"
       return {}
     end
-    
+
     (response.body.dig("data", "attributes") || {}).except("xml")
   end
 
@@ -252,7 +253,7 @@ class Base
     doi = doi_from_url(id)
     return {} if doi.blank?
 
-    url = ENV['API_URL'] + "/dois/#{doi}"
+    url = ENV["API_URL"] + "/dois/#{doi}"
     response = Maremma.get(url)
     return {} if response.status != 200
 
@@ -263,10 +264,10 @@ class Base
     doi = doi_from_url(id)
     return {} if doi.blank?
 
-    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
+    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"
     sleep(0.24) # to avoid crossref rate limitting
-    response =  Maremma.get(url, host: true)	
-    return {} if response.status != 200	
+    response =  Maremma.get(url, host: true)
+    return {} if response.status != 200
 
     meta = response.body.dig("data", "message")
 
@@ -282,28 +283,32 @@ class Base
       type = "ScholarlyArticle"
     end
 
-    if meta.dig("issued", "date-parts")
-      date_published = get_date_from_date_parts(meta["issued"])
-    # elsif
+    date_published = if meta.dig("issued", "date-parts")
+                       get_date_from_date_parts(meta["issued"])
+                       # elsif
 
-    else
-      date_published = nil
-    end
+                     end
 
     {
       "@id" => id,
       "@type" => type,
       "datePublished" => date_published,
-      "registrantId" => "crossref." + meta["member"] }.compact
+      "registrantId" => "crossref." + meta["member"],
+    }.compact
   end
 
   def self.parse_datacite_metadata(id: nil, response: nil)
     attributes = response.body.dig("data", "attributes")
     relationships = response.body.dig("data", "relationships")
-    
+
     client_id = relationships.dig("client", "data", "id")
-    publisher = attributes["publisher"].present? ? { "@type" => "Organization", "name" => attributes["publisher"] } : nil
-    proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select { |ri| ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"]) }. map do |ri|
+    publisher = if attributes["publisher"].present?
+                  { "@type" => "Organization",
+                    "name" => attributes["publisher"] }
+                end
+    proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select do |ri|
+                          ["IsVersionOf", "IsIdenticalTo", "IsPartOf", "IsSupplementTo"].include?(ri["relationType"])
+                        end.map do |ri|
       ri["relatedIdentifier"]
     end
     resource_type_general = attributes.dig("types", "resourceTypeGeneral")
@@ -316,36 +321,38 @@ class Base
       "@type" => type,
       "datePublished" => get_date(attributes["dates"], "Issued"),
       "proxyIdentifiers" => proxy_identifiers,
-      "registrantId" => registrant_id }.compact
+      "registrantId" => registrant_id,
+    }.compact
   end
 
-  def self.get_crossref_member_id(id, options={})
+  def self.get_crossref_member_id(id, _options = {})
     doi = doi_from_url(id)
     # return "crossref.citations" unless doi.present?
-  
-    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"	
+
+    url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"
     sleep(0.24) # to avoid crossref rate limitting
-    response =  Maremma.get(url, host: true)	
+    response =  Maremma.get(url, host: true)
     Rails.logger.debug "[Crossref Response] [#{response.status}] for DOI #{doi} metadata"
-    return "crossref.citations" if response.status != 200	
+    return "crossref.citations" if response.status != 200
 
-    message = response.body.dig("data", "message")	
+    message = response.body.dig("data", "message")
 
-    "crossref.#{message["member"]}"
+    "crossref.#{message['member']}"
   end
 
   def self.get_researcher_metadata(id)
     orcid = orcid_from_url(id)
     return {} unless orcid.present?
 
-    url = ENV['API_URL'] + "/users/#{orcid}"
+    url = ENV["API_URL"] + "/users/#{orcid}"
     response = Maremma.get(url)
     return {} if response.status != 200
 
     # parse_researcher_metadata(id: id, response: response)
     {
-      "@id" => "https://orcid.org/#{response.body.dig("data","id")}",
-      "@type" => "Person" }.compact
+      "@id" => "https://orcid.org/#{response.body.dig('data', 'id')}",
+      "@type" => "Person",
+    }.compact
   end
 
   def self.get_orcid_metadata(id)
@@ -357,7 +364,7 @@ class Base
     orcid = orcid_from_url(id)
     return {} unless orcid.present?
 
-    url = ENV['ORCID_API_URL'] + "/#{orcid}/person"
+    url = ENV["ORCID_API_URL"] + "/#{orcid}/person"
     response = Maremma.get(url, accept: "application/vnd.orcid+json")
     return {} if response.status != 200
 
@@ -366,51 +373,51 @@ class Base
     data = {
       "data" => {
         "type" => "users",
-        "attributes" => attributes
-      }
+        "attributes" => attributes,
+      },
     }
     url = ENV["VOLPINO_URL"] + "/users/#{orcid}"
-    response = Maremma.put(url, accept: 'application/vnd.api+json', 
-                                content_type: 'application/vnd.api+json',
+    response = Maremma.put(url, accept: "application/vnd.api+json",
+                                content_type: "application/vnd.api+json",
                                 data: data.to_json,
-                                bearer: ENV["LAGOTTINO_TOKEN"])
-    
+                                bearer: ENV["STAFF_ADMIN_TOKEN"])
+
     if [200, 201].include?(response.status)
       Rails.logger.info "[Event Data] User #{orcid} created in Profiles service."
     elsif response.status == 409
       Rails.logger.info "[Event Data] User #{orcid} already existed in Profiles service."
     elsif response.body["errors"].present?
-      Rails.logger.error "[Event Data] Creating user #{orcid} had an error: #{response.body['errors'].first['title']}"
+      Rails.logger.error "[Event Data] Creating user #{orcid} had an error: #{response.body['errors']}"
     end
 
     return {} unless [200, 201].include?(response.status)
 
     {
       "@id" => "https://orcid.org/#{orcid}",
-      "@type" => "Person" }.compact
+      "@type" => "Person",
+    }.compact
   end
 
   def self.parse_message(message: nil)
     given_names = message.dig("name", "given-names", "value")
     family_name = message.dig("name", "family-name", "value")
 
-    if message.dig("name", "credit-name", "value").present?
-      name = message.dig("name", "credit-name", "value")
-    elsif given_names.present? || family_name.present?
-      name = [given_names, family_name].join(" ")
-    else
-      name = nil
-    end
+    name = if message.dig("name", "credit-name", "value").present?
+             message.dig("name", "credit-name", "value")
+           elsif given_names.present? || family_name.present?
+             [given_names, family_name].join(" ")
+           end
 
     {
       "name" => name,
       "givenNames" => given_names,
-      "familyName" => family_name }.compact
+      "familyName" => family_name,
+    }.compact
   end
 
   def unfreeze(hsh)
     new_hash = {}
-    hsh.each_pair { |k,v| new_hash.merge!({k.downcase.to_sym => v})  }
+    hsh.each_pair { |k, v| new_hash.merge!({ k.downcase.to_sym => v }) }
     new_hash
   end
 end
