@@ -303,7 +303,7 @@ class Base
       "@id" => id,
       "@type" => type,
       "datePublished" => date_published,
-      "registrantId" => "crossref.#{meta['member']}",
+      "registrantId" => meta["member"].present? ? "crossref.#{meta['member']}" : nil,
     }.compact
   end
 
