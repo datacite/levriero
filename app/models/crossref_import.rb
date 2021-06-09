@@ -187,7 +187,7 @@ class CrossrefImport < Base
       end
 
       if registration_agencies[prefix].nil?
-        Rails.logger.error "No DOI registration agency for prefix #{prefix} found."
+        Rails.logger.error "No DOI registration agency for DOI #{related_identifier} found."
         source_id = "crossref_related"
         source_token = ENV["CROSSREF_RELATED_SOURCE_TOKEN"]
         obj = {}
