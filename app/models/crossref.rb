@@ -118,7 +118,7 @@ class Crossref < Base
           "id" => item["id"],
           "type" => "events",
           "attributes" => {
-            "messageAction" => item["message_action"],
+            "messageAction" => item["action"],
             "subjId" => item["subj_id"],
             "objId" => item["obj_id"],
             "relationTypeId" => item["relation_type_id"].to_s.dasherize,
