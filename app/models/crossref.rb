@@ -31,6 +31,7 @@ class Crossref < Base
       "from-collected-date" => options[:from_date],
       "until-collected-date" => options[:until_date],
       mailto: "info@datacite.org",
+      scholix: true,
       rows: options[:rows],
       cursor: options[:cursor],
     }.compact
