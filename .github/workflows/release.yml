@@ -39,6 +39,7 @@ jobs:
         env:
           MEMCACHE_SERVERS: "localhost:11211"
           STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
+          STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
         run: |
           # bundle exec rubocop
           bundle exec rspec

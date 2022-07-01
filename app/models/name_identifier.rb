@@ -152,7 +152,7 @@ class NameIdentifier < Base
       end
 
       # send to Profiles service, which then pushes to ORCID
-      if ENV["STAFF_ADMIN_TOKEN"].present?
+      if ENV["STAFF_PROFILES_ADMIN_TOKEN"].present?
         push_url = "#{ENV['VOLPINO_URL']}/claims"
         doi = doi_from_url(iiitem["subj_id"])
         orcid = orcid_from_url(iiitem["obj_id"])
@@ -168,7 +168,7 @@ class NameIdentifier < Base
         }
 
         response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
+                                          bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
                                           content_type: "application/json")
 
         if response.status == 202
