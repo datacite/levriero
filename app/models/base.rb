@@ -391,7 +391,7 @@ class Base
     response = Maremma.put(url, accept: "application/vnd.api+json",
                                 content_type: "application/vnd.api+json",
                                 data: data.to_json,
-                                bearer: ENV["STAFF_ADMIN_TOKEN"])
+                                bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"])
 
     if [200, 201].include?(response.status)
       Rails.logger.info "[Event Data] User #{orcid} created in Profiles service."
