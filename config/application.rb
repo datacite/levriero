@@ -22,10 +22,10 @@ end
 # load ENV variables from container environment if json file exists
 # see https://github.com/phusion/baseimage-docker#envvar_dumps
 env_json_file = "/etc/container_environment.json"
-if File.exist?(env_json_file)
-  env_vars = JSON.parse(File.read(env_json_file))
-  env_vars.each { |k, v| ENV[k] = v }
-end
+# if File.exist?(env_json_file)
+#   env_vars = JSON.parse(File.read(env_json_file))
+#   env_vars.each { |k, v| ENV[k] = v }
+# end
 
 # default values for some ENV variables
 ENV["APPLICATION"] ||= "levriero"
@@ -35,7 +35,7 @@ ENV["LOG_LEVEL"] ||= "info"
 ENV["CONCURRENCY"] ||= "25"
 ENV["GITHUB_URL"] ||= "https://github.com/datacite/levriero"
 ENV["ORCID_API_URL"] ||= "https://pub.orcid.org/v2.1"
-ENV["API_URL"] ||= Rails.env.development? ? "http://lupo-api" : "https://api.stage.datacite.org"
+ENV["API_URL"] ||= "https://api.stage.datacite.org"
 ENV["VOLPINO_URL"] ||= "https://api.stage.datacite.org"
 ENV["LAGOTTINO_URL"] ||= "https://api.stage.datacite.org"
 ENV["SASHIMI_QUERY_URL"] ||= "https://api.stage.datacite.org"
