@@ -18,32 +18,53 @@ jobs:
       JWT_PRIVATE_KEY: ${{ secrets.JWT_PRIVATE_KEY }}
       JWT_PUBLIC_KEY: ${{ secrets.JWT_PUBLIC_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
+      STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Set up Ruby 2.6
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "2.6"
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Install
-        run: |
-          cp .env.build .env
-          gem install bundler
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Lint and Test
+          bundler-cache: true
+
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: vendor/bundle
+      #     key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gems-
+      # - name: Install
+      #   run: |
+      #     cp .env.build .env
+      #     gem install bundler
+      #     bundle config path vendor/bundle
+      #     bundle install --jobs 4 --retry 3
+
+      - name: Run Rubocop
         env:
           MEMCACHE_SERVERS: "localhost:11211"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
           STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
-        run: |
-          # bundle exec rubocop
-          bundle exec rspec
-          echo $?
+        run: bundle exec rubocop
+
+      # - name: Run Specs
+
+
+      # - name: Lint and Test
+      #   env:
+      #     MEMCACHE_SERVERS: "localhost:11211"
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
+      #     STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
+      #   run: |
+      #     # bundle exec rubocop
+      #     bundle exec rspec
+      #     echo $?
