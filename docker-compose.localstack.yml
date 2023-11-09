@@ -17,7 +17,7 @@ services:
       - ./spec:/home/app/webapp/spec
     platform: linux/amd64
     networks:
-      - lupo_public
+      - localstack_datacite
     depends_on:
       - memcached
 
@@ -25,9 +25,8 @@ services:
     image: memcached:1.4.31
     platform: linux/amd64
     networks:
-      - lupo_public
+      - localstack_datacite
 
 networks:
-  lupo_public:
+  localstack_datacite:
     external: true
-  default:
