@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%2Bcreators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D&resource-type-id=
+    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.nameIdentifiers.nameIdentifierScheme:ORCID%20%20creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2018-01-04T00:00:00Z%20TO%202018-12-31T23:59:59Z%5D&resource-type-id=
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 04 Jun 2021 09:49:09 GMT
+      - Thu, 09 Nov 2023 06:18:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,25 +33,43 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding, Origin
+      - Accept-Encoding
       Content-Encoding:
       - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
       X-Request-Id:
-      - dab25058-f01f-4110-91b6-b66a3d05e4a7
+      - c83d810e-1ec9-4c3c-8920-cdb3e30ce712
+      X-Download-Options:
+      - noopen
       Etag:
-      - W/"68a0cc8d4aab3af45ed912bcb9fbe60b"
+      - W/"ef4528858e1dca3969039c661c507edf"
+      X-Frame-Options:
+      - SAMEORIGIN
       X-Runtime:
-      - '0.024893'
-      X-Rack-Cors:
-      - miss; no-origin
+      - '0.018262'
+      X-Content-Type-Options:
+      - nosniff
       X-Powered-By:
-      - Phusion Passenger(R) 6.0.8
+      - Phusion Passenger(R) 6.0.18
       Server:
-      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIABX3uWAAA2yPW0+DQBCF/8sm9IXbApIoCTGtvPRFDPapjWlWGOhEbu4OibXhv7uAmib6MjnzzTm7MxdWCBIsOrxYrIFJXRh1JGoWcWtRT6ICNbe9VizyRovV2L6pyaugLlnETkS9ilxX9Ogo0jZnejZHAqeTlVt0qO5FWWKNgrBrY5IDrOAjr4cCjhIqVCTnyVFn2xxBLZbpRyPctEPzCtIIk5j/IIWfsID3AeQ5ziUI6qRyWtHAtoCWsET40z/nJ2jACNZp9rBNTMPf/Aav9rvW/2SzNDPXj4k59PpKKDTRC/ncu7W5Z/ObHecafZe9uUvNeeb5duDt/EDj8G4ue33ASoLqBpmDTecebCxiNo5fAAAA//8DALP4zziWAQAA
+        H4sIALd5TGUAA2xPy06EQBD8l0nYC68BJFESYla57EUMclpjNiM0bEdezjSJ64Z/dwA1m+ilU11d1V19ZqUgwaLnF4u1MKMzo55EwyJurehR1KCWdtCIRd5ksQa7NzVrFTQVi9iRaFCR64oBHUVa5sxrCyRwelm7ZY/qVlQVNigI+y4mOcIGPopmLOEgoUZFcpkctLcrENQqmS8a4V03tq8gjTCJ+Q+l8BNW4n0EeYoLCYJ6qZxOtLAroSOsEP70T8URWjCCbZrd7xLT/LVdpLvE/zizNDO3D4k5DvpHKDWj4/jcu7a5Z/OrnHNNfZe9mafmMvN8O/ByP9B0eLOUvY6/kaD6URZg02kAG8uYTdMXAAAA//8DAL+WSSCUAQAA
     http_version: null
-  recorded_at: Fri, 04 Jun 2021 09:49:03 GMT
+  recorded_at: Thu, 09 Nov 2023 06:17:18 GMT
 recorded_with: VCR 5.1.0

@@ -23,7 +23,7 @@ end
 
 gem 'iso8601', '~> 0.9.0'
 if next?
-  gem 'maremma', '~> 4.9.4'
+  gem 'maremma', '~> 4.9.6'
 else
   gem 'maremma', '~> 4.6.1'
 end

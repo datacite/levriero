@@ -480,7 +480,7 @@ DEPENDENCIES
   lograge (~> 0.11.2)
   logstash-event (~> 1.2, >= 1.2.02)
   logstash-logger (~> 0.26.1)
-  maremma (~> 4.9.4)
+  maremma (~> 4.9.6)
   next_rails
   nokogiri (~> 1.13.2)
   oj (>= 2.8.3)
