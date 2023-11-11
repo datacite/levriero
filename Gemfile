@@ -1,15 +1,8 @@
-def next?
-  File.basename(__FILE__) == "Gemfile.next"
-end
+
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-if next?
-  gem 'rails', '6.0'
-else
-  gem 'rails', '~> 5.2.0'
-end
-
+gem 'rails', '6.0'
 gem 'bootsnap', '~> 1.2', '>= 1.2.1'
 gem 'dotenv'
 gem "oj", ">= 2.8.3"
