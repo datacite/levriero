@@ -15,19 +15,9 @@ gem 'dotenv'
 gem "oj", ">= 2.8.3"
 gem "oj_mimic_json", "~> 1.0", ">= 1.0.1"
 gem 'equivalent-xml', '~> 0.6.0'
-if next?
-  gem 'nokogiri', '~> 1.13.2'
-else
-  gem 'nokogiri', '~> 1.10.4'
-end
-
+gem 'nokogiri', '~> 1.13.2'
 gem 'iso8601', '~> 0.9.0'
-if next?
-  gem 'maremma', '~> 4.9.6'
-else
-  gem 'maremma', '~> 4.6.1'
-end
-
+gem 'maremma', '~> 4.9.6'
 gem "dalli", "~> 2.7.6"
 gem "lograge", "~> 0.11.2"
 gem "logstash-event", "~> 1.2", ">= 1.2.02"
@@ -43,11 +33,7 @@ gem 'cancancan', '~> 2.0'
 gem 'country_select', '~> 3.1'
 gem 'countries', '~> 2.1', '>= 2.1.2'
 gem "facets", require: false
-if next?
-  gem "bolognese", "~> 1.11.5"
-else
-  gem "bolognese", "~> 1.5"
-end
+gem "bolognese", "~> 1.11.5"
 gem "shoryuken", "~> 4.0"
 gem 'rack-cors', '~> 1.0', :require => 'rack/cors'
 gem 'rack-utf8_sanitizer', '~> 1.6'
@@ -56,7 +42,6 @@ gem 'aws-sdk-sqs', '~> 1.3'
 gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 gem 'git', '~> 1.5'
 gem "sprockets", "~> 3.7", ">= 3.7.2"
-gem 'next_rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
