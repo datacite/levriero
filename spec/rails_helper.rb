@@ -38,16 +38,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # add custom json method
   config.include RequestSpecHelper, type: :request
-
-  # Tracker deprecation messages in each file
-  if ENV["DEPRECATION_TRACKER"]
-    DeprecationTracker.track_rspec(
-      config,
-      shitlist_path: "spec/support/deprecation_warning.shitlist.json",
-      mode: ENV["DEPRECATION_TRACKER"],
-      transform_message: -> (message) { message.gsub("#{Rails.root}/", "") }
-    )
-  end
 end
 
 VCR.configure do |c|
