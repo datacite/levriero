@@ -128,15 +128,15 @@ jobs:
         # commit and push changes to trigger terraform workflow
         run: |
           export GIT_SHA=${{ steps.extract_variables.outputs.GIT_SHA_SHORT }}
-          export GIT_TAG=${{ steps.extract_variables.outputs.GIT_TAG }}
-          wget https://github.com/jwilder/dockerize/releases/download/v0.6.0/dockerize-linux-amd64-v0.6.0.tar.gz
-          tar -xzvf dockerize-linux-amd64-v0.6.0.tar.gz
-          rm dockerize-linux-amd64-v0.6.0.tar.gz
-          ./dockerize -template stage/services/levriero/_levriero.auto.tfvars.tmpl:stage/services/levriero/_levriero.auto.tfvars
+          export GIT_TAG=${{ steps.extract_variables.outputs.TAG }}
+
+          export VERSION_FILENAME=stage/services/levriero/_levriero.auto.tfvars
+
+          sed -e "s/{{ .Env.GIT_SHA }}/$GIT_SHA/g" -e "s/{{ .Env.GIT_TAG }}/$GIT_TAG/g" $VERSION_FILENAME.tmpl > $VERSION_FILENAME
 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add stage/services/levriero/_levriero.auto.tfvars
+          git add $VERSION_FILENAME
           git commit -m "Adding levriero git variables for commit ${{ steps.extract_variables.outputs.GIT_SHA }}"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
