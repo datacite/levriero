@@ -282,38 +282,45 @@ describe "Importable", vcr: true do
   end
 
   describe "parse_record" do
+    let!(:data) {{"id" => "fake_id"}}
+
     describe "has related identifiers" do
       describe "with related identifier type 'DOI'" do
         it "sends push_item to RelatedIdentifier" do
           json = {
-            "relatedIdentifiers": [
-              {"relatedIdentifierType": "DOI"}.transform_keys(&:to_s),
-              {"relatedIdentifierType": "FOO"}.transform_keys(&:to_s),
+            "relatedIdentifiers" => [
+              {"relatedIdentifierType" => "DOI"},
+              {"relatedIdentifierType" => "FOO"}
             ]
           }.transform_keys(&:to_s)
 
           allow(RelatedIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(RelatedIdentifier).to(have_received(:push_item).once)
+          expect(RelatedIdentifier)
+            .to(have_received(:push_item).with({
+              "id" => "fake_id",
+              "type" => "dois",
+              "attributes" => json
+            }).once)
         end
       end
 
       describe "without related identifier type 'DOI'" do
         it "does not send push_item to RelatedIdentifier" do
           json = {
-            "relatedIdentifiers": [
-              {"relatedIdentifierType": "URL"}.transform_keys(&:to_s),
-              {"relatedIdentifierType": "FOO"}.transform_keys(&:to_s),
+            "relatedIdentifiers" => [
+              {"relatedIdentifierType" => "URL"},
+              {"relatedIdentifierType" => "FOO"}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(RelatedIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(RelatedIdentifier).not_to(have_received(:push_item))
         end
@@ -322,18 +329,23 @@ describe "Importable", vcr: true do
       describe "with related identifier type 'URL'" do
         it "sends push_item to RelatedIdentifier" do
           json = {
-            "relatedIdentifiers": [
-              {"relatedIdentifierType": "URL"}.transform_keys(&:to_s),
-              {"relatedIdentifierType": "FOO"}.transform_keys(&:to_s),
+            "relatedIdentifiers" => [
+              {"relatedIdentifierType" => "URL"},
+              {"relatedIdentifierType" => "FOO"}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(RelatedUrl).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(RelatedUrl).to(have_received(:push_item).once)
+          expect(RelatedUrl)
+          .to(have_received(:push_item).with({
+            "id" => "fake_id",
+            "type" => "dois",
+            "attributes" => json
+          }).once)
         end
       end
 
@@ -341,15 +353,15 @@ describe "Importable", vcr: true do
         it "does not send push_item to RelatedIdentifier" do
           json = {
             "relatedIdentifiers": [
-              {"relatedIdentifierType": "DOI"}.transform_keys(&:to_s),
-              {"relatedIdentifierType": "FOO"}.transform_keys(&:to_s),
+              {"relatedIdentifierType" => "DOI"},
+              {"relatedIdentifierType" => "FOO"}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(RelatedUrl).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(RelatedUrl).not_to(have_received(:push_item))
         end
@@ -360,34 +372,39 @@ describe "Importable", vcr: true do
       describe "with funding identifier type 'Crossref Funder ID" do
         it "sends push_item to FunderIdentifier" do
           json = {
-            "fundingReferences": [
-              {"funderIdentifierType": "Foo"}.transform_keys(&:to_s),
-              {"funderIdentifierType": "Crossref Funder ID"}.transform_keys(&:to_s),
+            "fundingReferences" => [
+              {"funderIdentifierType" => "Foo"},
+              {"funderIdentifierType" => "Crossref Funder ID"},
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(FunderIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(FunderIdentifier).to(have_received(:push_item).once)
+          expect(FunderIdentifier)
+            .to(have_received(:push_item).with({
+              "doi" => "fake_id",
+              "type" => "dois",
+              "attributes" => json
+            }).once)
         end
       end
 
       describe "without funding identifier type 'Crossref Funder ID" do
         it "does not send push_item to FunderIdentifier" do
           json = {
-            "fundingReferences": [
-              {"funderIdentifierType": "Foo"}.transform_keys(&:to_s),
-              {"funderIdentifierType": "Bar"}.transform_keys(&:to_s),
+            "fundingReferences" => [
+              {"funderIdentifierType" => "Foo"},
+              {"funderIdentifierType" => "Bar"}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(FunderIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(FunderIdentifier).not_to(have_received(:push_item))
         end
@@ -398,40 +415,45 @@ describe "Importable", vcr: true do
       describe "with name identifier scheme equal to 'ORCID'" do
         it "sends push_item to NameIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "ORCID"}.transform_keys(&:to_s),
-                  {"nameIdentifierScheme": "FOO"}.transform_keys(&:to_s),
-              ]}.transform_keys(&:to_s),
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "ORCID"},
+                  {"nameIdentifierScheme" => "FOO"}
+              ]}
             ]
           }.transform_keys(&:to_s)
 
           allow(NameIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(NameIdentifier).to(have_received(:push_item).once)
+          expect(NameIdentifier)
+            .to(have_received(:push_item).with({
+              "doi" => "fake_id",
+              "type" => "dois",
+              "attributes" => json
+            }).once)
         end
       end
 
       describe "without name identifier scheme equal to 'ORCID'" do
         it "does not send push_item to NameIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "FOO"}.transform_keys(&:to_s),
-                  {"nameIdentifierScheme": "BAR"}.transform_keys(&:to_s),
-              ]}.transform_keys(&:to_s),
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "FOO"},
+                  {"nameIdentifierScheme" => "BAR"}
+              ]},
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(NameIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(NameIdentifier).not_to(have_received(:push_item))
         end
@@ -456,9 +478,14 @@ describe "Importable", vcr: true do
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(AffiliationIdentifier).to(have_received(:push_item).once)
+          expect(AffiliationIdentifier)
+            .to(have_received(:push_item).with({
+              "doi" => "fake_id",
+              "type" => "dois",
+              "attributes" => json
+            }).once)
         end
       end
 
@@ -536,38 +563,43 @@ describe "Importable", vcr: true do
       describe "with affiliation identifier scheme equal to 'ROR'" do
         it "sends push_item to OrcidAffiliation" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "ROR"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "ROR"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(OrcidAffiliation).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
-          expect(OrcidAffiliation).to(have_received(:push_item).once)
+          expect(OrcidAffiliation)
+            .to(have_received(:push_item).with({
+              "doi" => "fake_id",
+              "type" => "dois",
+              "attributes" => json
+            }).once)
         end
       end
 
       describe "with affiliation identifier scheme not equal to 'ROR'" do
         it "does not send push_item to OrcidAffiliation" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "ORCID"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "ORCID"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(OrcidAffiliation).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(OrcidAffiliation).not_to(have_received(:push_item))
         end
