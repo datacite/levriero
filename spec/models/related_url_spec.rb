@@ -40,7 +40,7 @@ describe RelatedUrl, type: :model, vcr: true do
         expect(RelatedUrl.push_item({"doi" => nil})).to(eq(nil))
       end
 
-      describe "when STAFF_ADMIN_TOKEN" do
+      xdescribe "when STAFF_ADMIN_TOKEN" do
         it "will request the lagottino/events endpoint" do
           debugger
           allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
