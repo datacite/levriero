@@ -35,11 +35,48 @@ describe RelatedUrl, type: :model, vcr: true do
       expect(response).to eq(19)
     end
 
-    # it "push_item" do
-    #   doi = "10.4224/crm.2010f.selm-1"
-    #   attributes = RelatedUrl.get_datacite_json(doi)
-    #   response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    describe "push_item" do
+      it "returns nil if the doi is blank" do
+        expect(RelatedUrl.push_item({"doi" => nil})).to(eq(nil))
+      end
+
+      describe "when STAFF_ADMIN_TOKEN" do
+        it "will request the lagottino/events endpoint" do
+          debugger
+          allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
+          allow(ENV).to(receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com"))
+          allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
+          allow(Maremma).to(receive(:post).and_return({"status" => 200}))
+
+          item = {
+            "attributes" => {
+              "doi" => "https://doi.org/10.0001/foo.bar",
+              "updated" => "2023-11-15",
+              "relatedIdentifiers" => [
+                {
+                  "relatedIdentifierType" => "URL",
+                  "relatedIdentifier" => "https://doi.org/10.0001/example.one",
+                  "relationType" => "example-one"
+                },
+                {
+                  "relatedIdentifierType" => "DOI",
+                  "relatedIdentifier" => "https://doi.org/10.0001/example.two",
+                  "relationType" => "example-two"
+                },
+                {
+                  "relatedIdentifierType" => "URL",
+                  "relatedIdentifier" => "https://doi.org/10.0001/example.three",
+                  "relationType" => "example-three"
+                }
+              ]
+            }
+          }
+
+          debugger
+          expect(RelatedUrl.push_item(item)).to(eq(2))
+          expect(Maremma).to(have_received(:post)).twice
+        end
+      end
+    end
   end
 end

@@ -50,6 +50,7 @@ class RelatedUrl < Base
   end
 
   def self.push_item(item)
+    debugger
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
     return nil if doi.blank?
