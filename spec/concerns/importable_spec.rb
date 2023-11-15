@@ -292,7 +292,7 @@ describe "Importable", vcr: true do
               {"relatedIdentifierType" => "DOI"},
               {"relatedIdentifierType" => "FOO"}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(RelatedIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -422,7 +422,7 @@ describe "Importable", vcr: true do
                   {"nameIdentifierScheme" => "FOO"}
               ]}
             ]
-          }.transform_keys(&:to_s)
+          }
 
           allow(NameIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -464,16 +464,16 @@ describe "Importable", vcr: true do
       describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
         it "sends push_item to AffiliationIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "ROR"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "ROR"}
                 ],
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "ORCID"}.transform_keys(&:to_s)
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "ORCID"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -492,21 +492,21 @@ describe "Importable", vcr: true do
       describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
         it "does not send push_item to AffiliationIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "ROR"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "ROR"}
                 ],
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "FOO"}.transform_keys(&:to_s)
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "FOO"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(AffiliationIdentifier).not_to(have_received(:push_item))
         end
@@ -515,21 +515,21 @@ describe "Importable", vcr: true do
       describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
         it "does not send push_item to AffiliationIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "FOO"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "FOO"}
                 ],
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "ORCID"}.transform_keys(&:to_s)
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "ORCID"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(AffiliationIdentifier).not_to(have_received(:push_item))
         end
@@ -538,21 +538,21 @@ describe "Importable", vcr: true do
       describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
         it "does not send push_item to AffiliationIdentifier" do
           json = {
-            "creators": [
+            "creators" => [
               {
-                "affiliation": [
-                  {"affiliationIdentifierScheme": "FOO"}.transform_keys(&:to_s)
+                "affiliation" => [
+                  {"affiliationIdentifierScheme" => "FOO"}
                 ],
-                "nameIdentifiers": [
-                  {"nameIdentifierScheme": "BAR"}.transform_keys(&:to_s)
+                "nameIdentifiers" => [
+                  {"nameIdentifierScheme" => "BAR"}
                 ]
-              }.transform_keys(&:to_s)
-            ]}.transform_keys(&:to_s)
+              }
+            ]}
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
-          Base.parse_record(data: {"id": "fake-id"})
+          Base.parse_record(data: data)
 
           expect(AffiliationIdentifier).not_to(have_received(:push_item))
         end
