@@ -70,14 +70,14 @@ describe Crossref, type: :model, vcr: true do
       it "sends a Slack notification when slack_webhook_url is present" do
         allow_any_instance_of(Crossref).to receive(:get_total).and_return([1, "cursor"])
         allow_any_instance_of(Crossref).to receive(:process_data).and_return([1, "cursor"])
-  
+
         allow(Rails.logger).to receive(:info)
-  
+
         # Stubbing HTTP request to the Slack webhook
         stub_request(:post, /slack_webhook_url/).to_return(status: 200, body: "", headers: {})
-  
+
         expect_any_instance_of(Crossref).to receive(:send_notification_to_slack)
-  
+
         Crossref.new.queue_jobs(slack_webhook_url: "https://example.com/slack_webhook")
       end
     end
@@ -85,13 +85,13 @@ describe Crossref, type: :model, vcr: true do
     context "when there are no DOIs to import" do
       it "returns 0 and logs a message when there are no DOIs to import" do
         allow_any_instance_of(Crossref).to receive(:get_total).and_return([0, nil])
-    
+
         # Spy on Rails.logger
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
-    
+
         response = Crossref.new.queue_jobs(from_date: from_date, until_date: until_date)
-    
+
         expect(response).to eq(0)
         expect(logger_spy).to have_received(:info).with("[Event Data] No DOIs updated #{from_date} - #{until_date}.")
         expect(logger_spy).to have_received(:info).once
@@ -111,10 +111,10 @@ describe Crossref, type: :model, vcr: true do
         "source_token" => "example_source_token",
         "occurred_at" => "2023-01-05T12:00:00Z",
         "timestamp" => 1641379200,
-        "license" => "example_license"
+        "license" => "example_license",
       }
     end
-  
+
     before(:each) do
       allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN")
       allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
@@ -123,7 +123,7 @@ describe Crossref, type: :model, vcr: true do
       allow(Base).to receive(:cached_datacite_response).and_return({ "foo" => "bar" })
       allow(Time).to receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z")
     end
-  
+
     context "when STAFF_ADMIN_TOKEN is present" do
       before do
         allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
@@ -148,21 +148,21 @@ describe Crossref, type: :model, vcr: true do
                 "timestamp" => 1641379200,
                 "license" => "example_license",
                 "subj" => nil,
-                "obj" => nil
-              }
-            }
+                "obj" => nil,
+              },
+            },
           }
 
-          stub_request(:put, push_url)
-            .with(
+          stub_request(:put, push_url).
+            with(
               body: data.to_json,
               headers: {
                 "Authorization" => "Bearer example_admin_token",
                 "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2"
-              }
-            )
-            .to_return(status: 200, body: { "data" => { "id" => "example_id" } }.to_json, headers: {})
+                "Accept" => "application/vnd.api+json; version=2",
+              },
+            ).
+            to_return(status: 200, body: { "data" => { "id" => "example_id" } }.to_json, headers: {})
 
           expect(Rails.logger).to receive(:info).with("[Event Data] example_subj_id example_relation_type_id example_obj_id pushed to Event Data service.")
 
@@ -191,21 +191,21 @@ describe Crossref, type: :model, vcr: true do
                 "timestamp" => 1641379200,
                 "license" => "example_license",
                 "subj" => nil,
-                "obj" => nil
-              }
-            }
+                "obj" => nil,
+              },
+            },
           }
 
-          stub_request(:put, push_url)
-            .with(
+          stub_request(:put, push_url).
+            with(
               body: data.to_json,
               headers: {
                 "Authorization" => "Bearer example_admin_token",
                 "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2"
-              }
-            )
-            .to_return(status: 409, body: { "errors" => [{ "title" => "Conflict" }] }.to_json, headers: {})
+                "Accept" => "application/vnd.api+json; version=2",
+              },
+            ).
+            to_return(status: 409, body: { "errors" => [{ "title" => "Conflict" }] }.to_json, headers: {})
 
           expect(Rails.logger).to receive(:info).with("[Event Data] example_subj_id example_relation_type_id example_obj_id already pushed to Event Data service.")
 
@@ -214,10 +214,10 @@ describe Crossref, type: :model, vcr: true do
       end
 
       context "when the push results in an error" do
-        let(:error_message) { "An error occurred during the put request."}
+        let(:error_message) { "An error occurred during the put request." }
         before do
-          allow(Maremma).to receive(:put) do |_, options|
-            OpenStruct.new(status: 500, body:  { "errors" => error_message})
+          allow(Maremma).to receive(:put) do |_, _options|
+            OpenStruct.new(status: 500, body: { "errors" => error_message })
           end
         end
         it "logs error information" do
@@ -237,24 +237,24 @@ describe Crossref, type: :model, vcr: true do
                 "timestamp" => 1641379200,
                 "license" => "example_license",
                 "subj" => nil,
-                "obj" => nil
-              }
-            }
+                "obj" => nil,
+              },
+            },
           }
 
           error_logs = []
           allow(Rails.logger).to receive(:error) { |log| error_logs << log }
-          
-          stub_request(:put, push_url)
-            .with(
+
+          stub_request(:put, push_url).
+            with(
               body: data.to_json,
               headers: {
                 "Authorization" => "Bearer example_admin_token",
                 "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2"
-              }
-            )
-            .to_return(status: 500, body: { "errors" => [{ "title" => error_message }] }.to_json, headers: {})
+                "Accept" => "application/vnd.api+json; version=2",
+              },
+            ).
+            to_return(status: 500, body: { "errors" => [{ "title" => error_message }] }.to_json, headers: {})
 
           Crossref.push_item(item)
 
