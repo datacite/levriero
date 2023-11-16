@@ -51,7 +51,7 @@ describe RelatedUrl, type: :model, vcr: true do
             allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
           end
 
-          it "make request to lagottino for those related identifiers with type 'URL'" do
+          it "makes request to lagottino for those related identifiers with type 'URL'" do
             item = {
               "attributes" => {
                 "doi" => "https://doi.org/10.0001/foo.bar",
@@ -128,7 +128,7 @@ describe RelatedUrl, type: :model, vcr: true do
         end
 
         describe "is invalid" do
-          it "is not set will only request logottino for those related identifiers with type 'URL'" do
+          it "will not make request to lagottino" do
             allow(Maremma).to(receive(:post))
 
             item = {
