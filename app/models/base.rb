@@ -317,9 +317,11 @@ class Base
                     "name" => attributes["publisher"] }
                 end
     proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select do |ri|
-      ["IsVersionOf", "IsIdenticalTo", "IsPartOf",
-       "IsSupplementTo"].include?(ri["relationType"])
-    end.pluck("relatedIdentifier")
+                          ["IsVersionOf", "IsIdenticalTo", "IsPartOf",
+                           "IsSupplementTo"].include?(ri["relationType"])
+                        end.map do |ri|
+      ri["relatedIdentifier"]
+    end
     resource_type_general = attributes.dig("types", "resourceTypeGeneral")
     type = Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.dasherize] # || attributes.dig("types", "schemaOrg")
 

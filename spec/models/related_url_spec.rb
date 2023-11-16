@@ -46,7 +46,7 @@ describe RelatedUrl, type: :model, vcr: true do
             allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
             allow(ENV).to(receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com"))
             allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
-            allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
+            allow(Base).to(receive(:cached_datacite_response).and_return({"foo" => "bar"}))
             allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 200)))
             allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
           end
@@ -91,12 +91,12 @@ describe RelatedUrl, type: :model, vcr: true do
                     "relatedIdentifierType" => "URL",
                     "relatedIdentifier" => "https://doi.org/10.0001/example.one",
                     "relationType" => "example-one",
-                  },
+                  }
                 ],
               },
             }
 
-            json_data = {
+            json_data = ({
               "data" => {
                 "type" => "events",
                 "attributes" => {
@@ -109,21 +109,21 @@ describe RelatedUrl, type: :model, vcr: true do
                   "occurredAt" => "2023-11-15",
                   "timestamp" => "2023-11-15T12:17:47Z",
                   "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-                  "subj" => { "foo" => "bar" },
-                  "obj" => {},
-                },
-              },
-            }.to_json
+                  "subj" => {"foo" => "bar"},
+                  "obj" => {}
+                }
+              }
+            }).to_json
 
             expect(RelatedUrl.push_item(item)).to(eq(1))
 
             expect(Maremma).to(have_received(:post).with(
-                                 "https://fake.lagattino.com/events",
-                                 data: json_data,
-                                 bearer: "STAFF_ADMIN_TOKEN",
-                                 content_type: "application/vnd.api+json",
-                                 accept: "application/vnd.api+json; version=2",
-                               ))
+              "https://fake.lagattino.com/events",
+              data: json_data,
+              bearer: "STAFF_ADMIN_TOKEN",
+              content_type: "application/vnd.api+json",
+              accept: "application/vnd.api+json; version=2"
+            ))
           end
         end
 

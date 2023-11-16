@@ -23,7 +23,7 @@ class UsageUpdateParseJob < ApplicationJob
 
   def send_message(data, item, _options = {})
     errors = data.select { |hsh| hsh.fetch("errors", nil) }
-    if data.empty?
+    if data.length.zero?
       # options[:level] = "warning"
       Rails.logger.error "[Usage Report Parsing] Error parsing Report #{item}. Report is empty"
     elsif !errors.empty?

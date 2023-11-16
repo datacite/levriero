@@ -13,7 +13,7 @@ RESCUABLE_EXCEPTIONS = [CanCan::AccessDenied,
 DOI_FORMAT = %r(\A10\.\d{4,5}/.+).freeze
 
 # Format used for URL validation
-URL_FORMAT = %r(\A(http|https|ftp)://[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?/.*)?\z).freeze
+URL_FORMAT = %r(\A(http|https|ftp)://[a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?/.*)?\z).freeze
 
 # Form queue options
 QUEUE_OPTIONS = ["high", "default", "low"].freeze

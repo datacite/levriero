@@ -72,7 +72,7 @@ module Importable
       id = id.downcase
 
       # turn arXiv into a URL if needed
-      id = "https://arxiv.org/abs/#{id[6..]}" if id.start_with?("arxiv:")
+      id = "https://arxiv.org/abs/#{id[6..-1]}" if id.start_with?("arxiv:")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
@@ -97,7 +97,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # don't use IGSN resolver as no support for ssl
-      id = "https://hdl.handle.net/10273/#{id[15..]}" if id.start_with?("http://igsn.org")
+      id = "https://hdl.handle.net/10273/#{id[15..-1]}" if id.start_with?("http://igsn.org")
 
       # clean up URL
       PostRank::URI.clean(id.downcase)
@@ -129,7 +129,7 @@ module Importable
       id = id.downcase
 
       # strip pmid prefix
-      id = id[5..] if id.start_with?("pmid:")
+      id = id[5..-1] if id.start_with?("pmid:")
 
       # turn handle into a URL if needed
       id = "https://identifiers.org/pubmed:#{id}" unless id.start_with?("http")
