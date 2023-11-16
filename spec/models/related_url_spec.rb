@@ -129,7 +129,7 @@ describe RelatedUrl, type: :model, vcr: true do
 
         describe "is invalid" do
           it "is not set will only request logottino for those related identifiers with type 'URL'" do
-            allow(Maremma).to(receive(:post))
+            allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 409))
 
             item = {
               "attributes" => {
