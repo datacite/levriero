@@ -101,9 +101,13 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(RelatedIdentifier).to receive(:cached_doi_ra).and_return('DataCite')
         allow(RelatedIdentifier).to receive(:cached_datacite_response).and_return({})
         allow(related_identifier).to receive(:set_event_for_bus).and_return({})
+        allow(Rails.logger).to receive(:info)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
         expect(Maremma).to have_received(:post).twice
+
+        expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
+        expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
       end
     end
 
@@ -134,7 +138,59 @@ describe RelatedIdentifier, type: :model, vcr: true do
         expect(Maremma).to have_received(:post).twice
         
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related already pushed to Event Data service.")
+        expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related already pushed to Event Data service.")
 
+      end
+    end
+
+    context 'when there is error while creating the event' do
+      let(:error_message) { "An error occurred during the put request." }
+      before do
+        allow(ENV).to receive(:[]).with('STAFF_ADMIN_TOKEN').and_return('STAFF_ADMIN_TOKEN')
+        allow(ENV).to receive(:[]).with('LAGOTTINO_URL').and_return('https://fake.lagattino.com')
+        allow(ENV).to receive(:[]).with('DATACITE_RELATED_SOURCE_TOKEN').and_return('DATACITE_RELATED_SOURCE_TOKEN')
+        allow(ENV).to receive(:[]).with('USER_AGENT').and_return('default_user_agent')
+        allow(ENV).to receive(:[]).with("EVENTDATA_TOKEN").and_return("EVENTDATA_TOKEN")
+        allow(ENV).to receive(:[]).with("EVENTDATA_URL").and_return("https://fake.eventdataurl.com")
+        allow(Base).to receive(:cached_datacite_response).and_return({ 'foo' => 'bar' })
+        allow(Maremma).to receive(:post) do |_, _options|
+          OpenStruct.new(status: 500, body: { "errors" => error_message })
+        end
+        allow(Time.zone).to receive(:now).and_return(Time.zone.parse('2023-11-15T12:17:47Z'))
+      end
+
+      it 'queues jobs and pushes to Event Data services' do
+        related_identifier = RelatedIdentifier.new
+        allow(related_identifier).to receive(:normalize_doi).with(valid_doi).and_return('normalized_doi')
+        allow(related_identifier).to receive(:normalize_doi).with(valid_related_identifier).and_return('normalized_related_identifier')
+        allow(related_identifier).to receive(:validate_prefix).with(valid_related_identifier).and_return('datacite')
+        allow(RelatedIdentifier).to receive(:cached_doi_ra).and_return('DataCite')
+        allow(RelatedIdentifier).to receive(:cached_datacite_response).and_return({})
+        allow(related_identifier).to receive(:set_event_for_bus).and_return({})
+        allow(Rails.logger).to receive(:error)
+
+        expect(RelatedIdentifier.push_item(item)).to eq(1)
+        expect(Maremma).to have_received(:post).twice
+        
+        expect(Rails.logger).to have_received(:error).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related had an error: An error occurred during the put request.")
+        expect(Rails.logger).to have_received(:error).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related had an error:")
+      end
+
+      it 'Does not sent an event to Event Data Bus.' do
+        allow(ENV).to receive(:[]).with("EVENTDATA_TOKEN").and_return(nil)
+        related_identifier = RelatedIdentifier.new
+        allow(related_identifier).to receive(:normalize_doi).with(valid_doi).and_return('normalized_doi')
+        allow(related_identifier).to receive(:normalize_doi).with(valid_related_identifier).and_return('normalized_related_identifier')
+        allow(related_identifier).to receive(:validate_prefix).with(valid_related_identifier).and_return('datacite')
+        allow(RelatedIdentifier).to receive(:cached_doi_ra).and_return('DataCite')
+        allow(RelatedIdentifier).to receive(:cached_datacite_response).and_return({})
+        allow(related_identifier).to receive(:set_event_for_bus).and_return({})
+        allow(Rails.logger).to receive(:info)
+
+        expect(RelatedIdentifier.push_item(item)).to eq(1)
+        expect(Maremma).to have_received(:post).once
+        
+        expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related was not sent to Event Data Bus.")
       end
     end
   
