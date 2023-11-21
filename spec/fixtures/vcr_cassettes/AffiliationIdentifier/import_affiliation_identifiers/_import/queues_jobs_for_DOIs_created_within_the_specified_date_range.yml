@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois?affiliation=true&exclude_registration_agencies=true&page%5Bnumber%5D=0&page%5Bsize%5D=0&query=creators.affiliation.affiliationIdentifierScheme:ROR%20AND%20updated:%5B2019-07-13T00:00:00Z%20TO%202019-07-19T23:59:59Z%5D&resource-type-id=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Nov 2023 11:58:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 9ae8fd8f-d365-4a08-ade4-3aea49e44f1e
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"0d02a890a0f13e09832aa0967d8880a8"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.228302'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIANamWGUAA0yOW2vDMAyF/4shfcnNaQgjgTA6+rKXdXR56hjFs5VULLfZMqwr+e9z0m30RRx9OjrShSlBghWvbwHrYFYXRgOJlhU8uKpn0YBZ2tEpViRTwFrsP8zsNdDWrGAnotEUcSxGjAw5WzTHSiSIBt3EakBzL+oaWxSEQ1+StrCCL9laBUcNDRrSy+TodnuJYK6W+aKXPfS2ewftZduS/yGD33AFnxb0uZQaBA3aRDdnbvWjgp6wRtAv8gQdeOlmv9v7m6etb0f3LChHXO6aJ3nI78IkrTh36Lcc/Grn/8/yap06nOVLObg/VhrMYLWEkM4jhKhKNk0/AAAA//8DAFaFxFFdAQAA
+    http_version: null
+  recorded_at: Sat, 18 Nov 2023 11:56:53 GMT
+recorded_with: VCR 5.1.0
