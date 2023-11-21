@@ -53,7 +53,7 @@ end
 
 describe "push_item" do
   it "returns nil when the doi is blank" do
-    expect(FunderIdentifier.push_item({attributes: {doi: nil}})).to(eq(nil))
+    expect(FunderIdentifier.push_item({ attributes: { doi: nil } })).to(eq(nil))
   end
 
   describe "when STAFF_ADMIN_TOKEN" do
@@ -61,8 +61,8 @@ describe "push_item" do
       allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
       allow(ENV).to(receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com"))
       allow(ENV).to(receive(:[]).with("DATACITE_FUNDER_SOURCE_TOKEN").and_return("DATACITE_FUNDER_SOURCE_TOKEN"))
-      allow(Base).to(receive(:cached_datacite_response).and_return({"foo" => "bar"}))
-      allow(Base).to(receive(:cached_funder_response).and_return({"bar" => "foo"}))
+      allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
+      allow(Base).to(receive(:cached_funder_response).and_return({ "bar" => "foo" }))
       allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 200)))
       allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
     end
@@ -76,18 +76,18 @@ describe "push_item" do
             "fundingReferences" => [
               {
                 "funderIdentifier" => "https://doi.org/10.0001/example.one",
-                "funderIdentifierType" => "Crossref Funder ID"
+                "funderIdentifierType" => "Crossref Funder ID",
               },
               {
                 "funderIdentifier" => "https://doi.org/10.0001/example.two",
-                "funderIdentifierType" => "Foo"
+                "funderIdentifierType" => "Foo",
               },
               {
                 "funderIdentifier" => "https://doi.org/10.0001/example.three",
-                "funderIdentifierType" => "Crossref Funder ID"
+                "funderIdentifierType" => "Crossref Funder ID",
               },
-            ]
-          }
+            ],
+          },
         }
 
         expect(FunderIdentifier.push_item(item)).to(eq(2))
@@ -103,13 +103,13 @@ describe "push_item" do
             "fundingReferences" => [
               {
                 "funderIdentifier" => "https://doi.org/10.0001/example.one",
-                "funderIdentifierType" => "Crossref Funder ID"
+                "funderIdentifierType" => "Crossref Funder ID",
               },
             ],
           },
         }
 
-        json_data = ({
+        json_data = {
           "data" => {
             "type" => "events",
             "attributes" => {
@@ -122,21 +122,21 @@ describe "push_item" do
               "occurredAt" => "2023-11-15",
               "timestamp" => "2023-11-15T12:17:47Z",
               "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-              "subj" => {"foo" => "bar"},
-              "obj" => {"bar" => "foo"},
-            }
-          }
-        }).to_json
+              "subj" => { "foo" => "bar" },
+              "obj" => { "bar" => "foo" },
+            },
+          },
+        }.to_json
 
         expect(FunderIdentifier.push_item(item)).to(eq(1))
 
         expect(Maremma).to(have_received(:post).with(
-          "https://fake.lagattino.com/events",
-          data: json_data,
-          bearer: "STAFF_ADMIN_TOKEN",
-          content_type: "application/vnd.api+json",
-          accept: "application/vnd.api+json; version=2"
-        ))
+                             "https://fake.lagattino.com/events",
+                             data: json_data,
+                             bearer: "STAFF_ADMIN_TOKEN",
+                             content_type: "application/vnd.api+json",
+                             accept: "application/vnd.api+json; version=2",
+                           ))
       end
     end
 
@@ -151,7 +151,7 @@ describe "push_item" do
             "fundingReferences" => [
               {
                 "funderIdentifier" => "https://doi.org/10.0001/example.one",
-                "funderIdentifierType" => "Crossref Funder ID"
+                "funderIdentifierType" => "Crossref Funder ID",
               },
             ],
           },

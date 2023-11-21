@@ -45,7 +45,7 @@ describe RelatedUrl, type: :model, vcr: true do
           allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
           allow(ENV).to(receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com"))
           allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
-          allow(Base).to(receive(:cached_datacite_response).and_return({"foo" => "bar"}))
+          allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
           allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 200)))
           allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
         end

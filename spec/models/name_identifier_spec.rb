@@ -56,59 +56,59 @@ describe NameIdentifier, type: :model, vcr: true do
       end
 
       before(:each) do
-        allow(ENV)
-          .to(receive(:[])
-            .with(staff_admin_token)
-            .and_return(staff_admin_token))
+        allow(ENV).
+          to(receive(:[]).
+            with(staff_admin_token).
+            and_return(staff_admin_token))
 
-        allow(ENV)
-          .to(receive(:[])
-            .with("LAGOTTINO_URL")
-            .and_return("https://fake.lagattino.com"))
+        allow(ENV).
+          to(receive(:[]).
+            with("LAGOTTINO_URL").
+            and_return("https://fake.lagattino.com"))
 
-        allow(ENV)
-          .to(receive(:[])
-            .with("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN")
-            .and_return("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN"))
+        allow(ENV).
+          to(receive(:[]).
+            with("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN").
+            and_return("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN"))
 
-        allow(ENV)
-          .to(receive(:[])
-            .with(staff_profiles_admin_token)
-            .and_return(staff_profiles_admin_token))
+        allow(ENV).
+          to(receive(:[]).
+            with(staff_profiles_admin_token).
+            and_return(staff_profiles_admin_token))
 
-        allow(ENV)
-          .to(receive(:[])
-            .with("VOLPINO_URL")
-            .and_return("https://fake.volpino.com"))
+        allow(ENV).
+          to(receive(:[]).
+            with("VOLPINO_URL").
+            and_return("https://fake.volpino.com"))
 
-        allow(Base)
-          .to(receive(:cached_datacite_response)
-          .and_return("foo" => "bar"))
+        allow(Base).
+          to(receive(:cached_datacite_response).
+          and_return("foo" => "bar"))
 
-        allow(Base)
-          .to(receive(:cached_orcid_response)
-          .and_return("bar" => "foo"))
+        allow(Base).
+          to(receive(:cached_orcid_response).
+          and_return("bar" => "foo"))
 
-        allow(Maremma)
-          .to(receive(:post)
-            .with("https://fake.lagattino.com/events",
-              data: lagottino_json,
-              accept: "application/vnd.api+json; version=2",
-              content_type: "application/vnd.api+json",
-              bearer: staff_admin_token)
-            .and_return(OpenStruct.new(status: 200)))
+        allow(Maremma).
+          to(receive(:post).
+            with("https://fake.lagattino.com/events",
+                 data: lagottino_json,
+                 accept: "application/vnd.api+json; version=2",
+                 content_type: "application/vnd.api+json",
+                 bearer: staff_admin_token).
+            and_return(OpenStruct.new(status: 200)))
 
-        allow(Maremma)
-          .to(receive(:post)
-            .with("https://fake.volpino.com/claims",
-              data: volpino_json,
-              content_type: "application/json",
-              bearer: staff_profiles_admin_token)
-            .and_return(OpenStruct.new(status: 202)))
+        allow(Maremma).
+          to(receive(:post).
+            with("https://fake.volpino.com/claims",
+                 data: volpino_json,
+                 content_type: "application/json",
+                 bearer: staff_profiles_admin_token).
+            and_return(OpenStruct.new(status: 202)))
 
-        allow(Time)
-          .to(receive_message_chain(:zone, :now, :iso8601)
-            .and_return("2023-11-15T12:17:47Z"))
+        allow(Time).
+          to(receive_message_chain(:zone, :now, :iso8601).
+            and_return("2023-11-15T12:17:47Z"))
       end
 
       describe "returns nil" do
@@ -209,10 +209,10 @@ describe NameIdentifier, type: :model, vcr: true do
             "attributes" => {
               "doi" => "https://doi.org/10.0001/foo.bar",
               "updated" => "2023-11-15",
-              "relatedIdentifiers": [
+              relatedIdentifiers: [
                 { "relatedIdentifierType" => "DOI" },
               ],
-              "creators": [],
+              creators: [],
             },
           }
 
@@ -248,9 +248,9 @@ describe NameIdentifier, type: :model, vcr: true do
 
             expect(NameIdentifier.push_item(item)).to(eq(1))
 
-            expect(Maremma)
-              .to(have_received(:post)
-                .with(
+            expect(Maremma).
+              to(have_received(:post).
+                with(
                   "https://fake.lagattino.com/events",
                   data: lagottino_json,
                   bearer: staff_admin_token,
@@ -282,9 +282,9 @@ describe NameIdentifier, type: :model, vcr: true do
 
             expect(NameIdentifier.push_item(item)).to(eq(1))
 
-            expect(Maremma)
-              .not_to(have_received(:post)
-                .with(
+            expect(Maremma).
+              not_to(have_received(:post).
+                with(
                   "https://fake.lagattino.com/events",
                   data: lagottino_json,
                   bearer: staff_admin_token,
@@ -315,22 +315,23 @@ describe NameIdentifier, type: :model, vcr: true do
 
             NameIdentifier.push_item(item)
 
-            expect(Maremma)
-              .to(have_received(:post)
-                .with(
+            expect(Maremma).
+              to(have_received(:post).
+                with(
                   "https://fake.volpino.com/claims",
                   data: volpino_json,
                   bearer: staff_profiles_admin_token,
-                  content_type: "application/json"))
+                  content_type: "application/json",
+                ))
           end
         end
 
         describe "is invalid" do
           it "does not make request to volpino" do
-            allow(ENV)
-              .to(receive(:[])
-                .with(staff_profiles_admin_token)
-                .and_return(nil))
+            allow(ENV).
+              to(receive(:[]).
+                with(staff_profiles_admin_token).
+                and_return(nil))
 
             item = {
               "attributes" => {
@@ -347,13 +348,14 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
-            expect(Maremma)
-              .not_to(have_received(:post)
-                .with(
+            expect(Maremma).
+              not_to(have_received(:post).
+                with(
                   "https://fake.volpino.com/claims",
                   data: volpino_json,
                   bearer: staff_profiles_admin_token,
-                  content_type: "application/json"))
+                  content_type: "application/json",
+                ))
           end
         end
       end
