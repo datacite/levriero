@@ -282,16 +282,16 @@ describe "Importable", vcr: true do
   end
 
   describe "parse_record" do
-    let!(:data) {{"id" => "fake_id"}}
+    let!(:data) { { "id" => "fake_id" } }
 
     describe "has related identifiers" do
       describe "with related identifier type 'DOI'" do
         it "sends push_item to RelatedIdentifier" do
           json = {
             "relatedIdentifiers" => [
-              {"relatedIdentifierType" => "DOI"},
-              {"relatedIdentifierType" => "FOO"}
-            ]
+              { "relatedIdentifierType" => "DOI" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
           }
 
           allow(RelatedIdentifier).to(receive(:push_item))
@@ -299,12 +299,12 @@ describe "Importable", vcr: true do
 
           Base.parse_record(data: data)
 
-          expect(RelatedIdentifier)
-            .to(have_received(:push_item).with({
-              "id" => "fake_id",
-              "type" => "dois",
-              "attributes" => json
-            }).once)
+          expect(RelatedIdentifier).
+            to(have_received(:push_item).with({
+                                                "id" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
@@ -312,9 +312,9 @@ describe "Importable", vcr: true do
         it "does not send push_item to RelatedIdentifier" do
           json = {
             "relatedIdentifiers" => [
-              {"relatedIdentifierType" => "URL"},
-              {"relatedIdentifierType" => "FOO"}
-            ]
+              { "relatedIdentifierType" => "URL" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
           }
 
           allow(RelatedIdentifier).to(receive(:push_item))
@@ -330,9 +330,9 @@ describe "Importable", vcr: true do
         it "sends push_item to RelatedIdentifier" do
           json = {
             "relatedIdentifiers" => [
-              {"relatedIdentifierType" => "URL"},
-              {"relatedIdentifierType" => "FOO"}
-            ]
+              { "relatedIdentifierType" => "URL" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
           }
 
           allow(RelatedUrl).to(receive(:push_item))
@@ -340,22 +340,22 @@ describe "Importable", vcr: true do
 
           Base.parse_record(data: data)
 
-          expect(RelatedUrl)
-          .to(have_received(:push_item).with({
-            "id" => "fake_id",
-            "type" => "dois",
-            "attributes" => json
-          }).once)
+          expect(RelatedUrl).
+            to(have_received(:push_item).with({
+                                                "id" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
       describe "without related identifier type 'URL'" do
         it "does not send push_item to RelatedIdentifier" do
           json = {
-            "relatedIdentifiers": [
-              {"relatedIdentifierType" => "DOI"},
-              {"relatedIdentifierType" => "FOO"}
-            ]
+            relatedIdentifiers: [
+              { "relatedIdentifierType" => "DOI" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
           }
 
           allow(RelatedUrl).to(receive(:push_item))
@@ -373,9 +373,9 @@ describe "Importable", vcr: true do
         it "sends push_item to FunderIdentifier" do
           json = {
             "fundingReferences" => [
-              {"funderIdentifierType" => "Foo"},
-              {"funderIdentifierType" => "Crossref Funder ID"},
-            ]
+              { "funderIdentifierType" => "Foo" },
+              { "funderIdentifierType" => "Crossref Funder ID" },
+            ],
           }
 
           allow(FunderIdentifier).to(receive(:push_item))
@@ -383,12 +383,12 @@ describe "Importable", vcr: true do
 
           Base.parse_record(data: data)
 
-          expect(FunderIdentifier)
-            .to(have_received(:push_item).with({
-              "doi" => "fake_id",
-              "type" => "dois",
-              "attributes" => json
-            }).once)
+          expect(FunderIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
@@ -396,9 +396,9 @@ describe "Importable", vcr: true do
         it "does not send push_item to FunderIdentifier" do
           json = {
             "fundingReferences" => [
-              {"funderIdentifierType" => "Foo"},
-              {"funderIdentifierType" => "Bar"}
-            ]
+              { "funderIdentifierType" => "Foo" },
+              { "funderIdentifierType" => "Bar" },
+            ],
           }
 
           allow(FunderIdentifier).to(receive(:push_item))
@@ -418,10 +418,11 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "ORCID"},
-                  {"nameIdentifierScheme" => "FOO"}
-              ]}
-            ]
+                  { "nameIdentifierScheme" => "ORCID" },
+                  { "nameIdentifierScheme" => "FOO" },
+                ],
+              },
+            ],
           }
 
           allow(NameIdentifier).to(receive(:push_item))
@@ -429,12 +430,12 @@ describe "Importable", vcr: true do
 
           Base.parse_record(data: data)
 
-          expect(NameIdentifier)
-            .to(have_received(:push_item).with({
-              "doi" => "fake_id",
-              "type" => "dois",
-              "attributes" => json
-            }).once)
+          expect(NameIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
@@ -444,10 +445,11 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "FOO"},
-                  {"nameIdentifierScheme" => "BAR"}
-              ]},
-            ]
+                  { "nameIdentifierScheme" => "FOO" },
+                  { "nameIdentifierScheme" => "BAR" },
+                ],
+              },
+            ],
           }
 
           allow(NameIdentifier).to(receive(:push_item))
@@ -467,25 +469,26 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "ROR"}
+                  { "affiliationIdentifierScheme" => "ROR" },
                 ],
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "ORCID"}
-                ]
-              }
-            ]}
+                  { "nameIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
           Base.parse_record(data: data)
 
-          expect(AffiliationIdentifier)
-            .to(have_received(:push_item).with({
-              "doi" => "fake_id",
-              "type" => "dois",
-              "attributes" => json
-            }).once)
+          expect(AffiliationIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
@@ -495,13 +498,14 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "ROR"}
+                  { "affiliationIdentifierScheme" => "ROR" },
                 ],
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "FOO"}
-                ]
-              }
-            ]}
+                  { "nameIdentifierScheme" => "FOO" },
+                ],
+              },
+            ],
+          }
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -518,13 +522,14 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "FOO"}
+                  { "affiliationIdentifierScheme" => "FOO" },
                 ],
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "ORCID"}
-                ]
-              }
-            ]}
+                  { "nameIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -541,13 +546,14 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "FOO"}
+                  { "affiliationIdentifierScheme" => "FOO" },
                 ],
                 "nameIdentifiers" => [
-                  {"nameIdentifierScheme" => "BAR"}
-                ]
-              }
-            ]}
+                  { "nameIdentifierScheme" => "BAR" },
+                ],
+              },
+            ],
+          }
 
           allow(AffiliationIdentifier).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
@@ -566,22 +572,23 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "ROR"}
-                ]
-              }
-            ]}
+                  { "affiliationIdentifierScheme" => "ROR" },
+                ],
+              },
+            ],
+          }
 
           allow(OrcidAffiliation).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
 
           Base.parse_record(data: data)
 
-          expect(OrcidAffiliation)
-            .to(have_received(:push_item).with({
-              "doi" => "fake_id",
-              "type" => "dois",
-              "attributes" => json
-            }).once)
+          expect(OrcidAffiliation).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
         end
       end
 
@@ -591,10 +598,11 @@ describe "Importable", vcr: true do
             "creators" => [
               {
                 "affiliation" => [
-                  {"affiliationIdentifierScheme" => "ORCID"}
-                ]
-              }
-            ]}
+                  { "affiliationIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
 
           allow(OrcidAffiliation).to(receive(:push_item))
           allow(Base).to(receive(:get_datacite_json).and_return(json))
