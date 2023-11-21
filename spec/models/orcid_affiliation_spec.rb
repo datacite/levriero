@@ -90,14 +90,18 @@ describe OrcidAffiliation, type: :model, vcr: true do
     end
 
     describe "#push_item" do
+      before do
+        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
+        allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
+        allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
+        allow(ENV).to receive(:[]).with("API_URL").and_return("https://fake.api.com")
+        allow(Rails.logger).to receive(:info)
+      end
+
       it "push_item with valid data" do
         # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
         allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 201,
                                                                    body: { "data" => { "id" => "example_id" } }))
-        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
-        allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
-        allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
-        allow(Rails.logger).to receive(:info)
 
         item = {
           "attributes" => {
@@ -137,10 +141,6 @@ describe OrcidAffiliation, type: :model, vcr: true do
         # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
         allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 409,
                                                                    body: { "data" => { "id" => "example_id" } }))
-        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
-        allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
-        allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
-        allow(Rails.logger).to receive(:info)
 
         item = {
           "attributes" => {
@@ -180,9 +180,6 @@ describe OrcidAffiliation, type: :model, vcr: true do
         # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
         allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 500,
                                                                    body: { "errors" => "An error occurred during the put request." }))
-        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
-        allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
-        allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
         allow(Rails.logger).to receive(:error)
 
         item = {
