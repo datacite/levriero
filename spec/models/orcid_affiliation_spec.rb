@@ -100,6 +100,7 @@ describe OrcidAffiliation, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("VOLPINO_URL").and_return("https://fake.volpinoapi.com")
         allow(ENV).to receive(:[]).with("SLACK_WEBHOOK_URL").and_return("")
         allow(ENV).to receive(:[]).with("http_proxy").and_return(nil)
+        allow(ENV).to receive(:[]).with("no_proxy").and_return(nil)
         allow(Rails.logger).to receive(:info)
       end
 
