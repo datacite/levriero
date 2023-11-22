@@ -95,6 +95,11 @@ describe OrcidAffiliation, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
         allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
         allow(ENV).to receive(:[]).with("API_URL").and_return("https://fake.api.com")
+        allow(ENV).to receive(:[]).with("USER_AGENT").and_return("USER_AGENT")
+        allow(ENV).to receive(:[]).with("CROSSREF_QUERY_URL").and_return("https://fake.crossrefurl.com")
+        allow(ENV).to receive(:[]).with("VOLPINO_URL").and_return("https://fake.volpinoapi.com")
+        allow(ENV).to receive(:[]).with("SLACK_WEBHOOK_URL").and_return("")
+        allow(ENV).to receive(:[]).with("http_proxy").and_return(nil)
         allow(Rails.logger).to receive(:info)
       end
 
