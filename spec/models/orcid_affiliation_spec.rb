@@ -99,7 +99,7 @@ describe OrcidAffiliation, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("CROSSREF_QUERY_URL").and_return("https://fake.crossrefurl.com")
         allow(ENV).to receive(:[]).with("VOLPINO_URL").and_return("https://fake.volpinoapi.com")
         allow(ENV).to receive(:[]).with("SLACK_WEBHOOK_URL").and_return("")
-        allow(ENV).to receive(:[]).with("TRUSTED_IP").and_return("123444")
+        allow(ENV).to receive(:[]).with("http_proxy").and_return(nil)
         allow(Rails.logger).to receive(:info)
       end
 
