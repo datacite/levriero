@@ -105,6 +105,7 @@ describe OrcidAffiliation, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("STAFF_PROFILES_ADMIN_TOKEN").and_return(nil)
         allow(ENV).to receive(:[]).with("ORCID_API_URL").and_return("https://fake.orcidapiurl.com")
         allow(ENV).to receive(:[]).with("SSL_CERT_FILE").and_return("https://fake.orcidapiurl.com")
+        allow(ENV).to receive(:[]).with("SSL_CERT_DIR").and_return("https://fake.orcidapiurl.com")
         allow(Rails.logger).to receive(:info)
       end
 

@@ -48,7 +48,7 @@ ENV["USER_AGENT"] ||= "Mozilla/5.0 (compatible; Maremma/#{Maremma::VERSION}; mai
 module Levriero
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 6.1
     config.autoload_paths << Rails.root.join("lib")
     config.autoload_paths << Rails.root.join("app", "models", "concerns")
 
