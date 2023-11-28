@@ -31,7 +31,19 @@ describe Crossref, type: :model, vcr: true do
 
     context "with missing parameters" do
       it "queues jobs for the default date range (yesterday to today)" do
+        # Stub Date.current to return a fixed date
+        allow(Date).to receive(:current).and_return(Date.new(2023, 1, 2))
+
+        # Use a spy on Date.parse
+        date_spy = spy("Date")
+        allow(Date).to receive(:parse).and_wrap_original do |original_method, *args|
+          date_spy.parse(*args)
+          original_method.call(*args)
+        end
+
+        # Mocking Date.parse
         response = Crossref.import
+
         expect(response).to be_a(Integer).and be >= 0
       end
     end
