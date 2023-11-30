@@ -4,50 +4,8 @@ on:
     types: [published]
 jobs:
   test:
-    runs-on: ubuntu-latest
-    services:
-      memcached:
-        image: memcached:1.4.31
-        ports:
-          - 11211/udp
-    env:
-      MEMCACHE_SERVERS: "localhost:11211"
-      SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-      SESSION_ENCRYPTED_COOKIE_SALT: ${{ secrets.SESSION_ENCRYPTED_COOKIE_SALT }}
-      JWT_PRIVATE_KEY: ${{ secrets.JWT_PRIVATE_KEY }}
-      JWT_PUBLIC_KEY: ${{ secrets.JWT_PUBLIC_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Ruby 2.6
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Install
-        run: |
-          cp .env.build .env
-          gem install bundler
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Lint and Test
-        env:
-          MEMCACHE_SERVERS: "localhost:11211"
-          STAFF_ADMIN_TOKEN: ${{ secrets.STAFF_ADMIN_TOKEN }}
-          STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
-        run: |
-          # bundle exec rubocop
-          bundle exec rspec
-          echo $?
-      # - name: Publish code coverage
-      #   uses: paambaati/codeclimate-action@v2.7.5
-      #   env:
-      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+    uses: ./.github/workflows/parallel_ci.yml
+    secrets: inherit
 
   build:
     needs: test
@@ -100,47 +58,5 @@ jobs:
 
   deploy:
     needs: [test, build]
-    runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Extract variables
-        shell: bash
-        run: |
-          echo "::set-output name=BRANCH::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-          echo "::set-output name=TAG::$(git tag --points-at HEAD)"
-          echo "::set-output name=GIT_SHA::$(git rev-parse HEAD)"
-          echo "::set-output name=GIT_SHA_SHORT::$(git rev-parse --short HEAD)"
-        id: extract_variables
-
-      - name: Checkout terraform config repo
-        uses: actions/checkout@v2
-        with:
-          # public repo with terraform configuration
-          repository: 'datacite/mastino'
-          persist-credentials: false
-      - name: Commit changes to terraform config repository
-        # use go template in terraform config repository to update git sha and tag
-        # commit and push changes to trigger terraform workflow
-        run: |
-          export GIT_SHA=${{ steps.extract_variables.outputs.GIT_SHA_SHORT }}
-          export GIT_TAG=${{ steps.extract_variables.outputs.TAG }}
-
-          export VERSION_FILENAME=prod-eu-west/services/levriero/_levriero.auto.tfvars
-
-          sed -e "s/{{ .Env.GIT_SHA }}/$GIT_SHA/g" -e "s/{{ .Env.GIT_TAG }}/$GIT_TAG/g" $VERSION_FILENAME.tmpl > $VERSION_FILENAME
-
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add $VERSION_FILENAME
-          git commit -m "Adding levriero git variables for tag ${{ steps.extract_variables.outputs.GIT_TAG }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          repository: 'datacite/mastino'
-          branch: 'refs/heads/master'
-          tags: false
+    uses: ./.github/workflows/update_terraform.yml
+    secrets: inherit
