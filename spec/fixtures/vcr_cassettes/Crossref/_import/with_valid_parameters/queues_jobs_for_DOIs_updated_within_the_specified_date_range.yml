@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eventdata.crossref.org/v1/events?from-collected-date=2018-01-04&mailto=info@datacite.org&rows=0&scholix=true&source=crossref&until-collected-date=2018-01-31
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Content-Type:
+      - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '123'
+      Server:
+      - http-kit
+      Date:
+      - Thu, 16 Nov 2023 07:28:28 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok","message-type":"event-list","message":{"next-cursor":null,"total-results":0,"items-per-page":0,"events":[]}}'
+    http_version: null
+  recorded_at: Thu, 16 Nov 2023 07:27:08 GMT
+recorded_with: VCR 5.1.0

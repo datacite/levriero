@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://example.com/slack/webhook
+    body:
+      encoding: US-ASCII
+      string: payload=%7B%22username%22%3A%22Event+Data+Agent%22%2C%22icon_url%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2Fdatacite%2Ftoccatore%2Fmaster%2Flib%2Ftoccatore%2Fimages%2Ftoccatore.png%22%2C%22attachments%22%3A%5B%7B%22title%22%3A%22Report+for+crossref%22%2C%22text%22%3A%22Queued+import+for+5+DOIs+updated+2018-01-04+-+2018-08-05.%22%2C%22color%22%3A%22good%22%7D%5D%7D
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - max-age=604800
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Thu, 16 Nov 2023 07:31:51 GMT
+      Expires:
+      - Thu, 23 Nov 2023 07:31:51 GMT
+      Server:
+      - EOS (vny/0453)
+      Content-Length:
+      - '433'
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html PUBLIC
+        \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n         \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n\t<head>\n\t\t<title>404
+        - Not Found</title>\n\t</head>\n\t<body>\n\t\t<h1>404 - Not Found</h1>\n\t\t<script
+        type=\"text/javascript\" src=\"//obj.ac.bcon.ecdns.net/ec_tpm_bcon.js\"></script>\n\t</body>\n</html>\n"
+    http_version: null
+  recorded_at: Thu, 16 Nov 2023 07:30:32 GMT
+recorded_with: VCR 5.1.0
