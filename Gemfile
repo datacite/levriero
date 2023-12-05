@@ -35,6 +35,7 @@ gem "shoryuken", "~> 4.0"
 gem "simple_command"
 gem "slack-notifier", "~> 2.3", ">= 2.3.2"
 gem "sprockets", "~> 3.7", ">= 3.7.2"
+gem "json-canonicalization", '0.3.1'
 
 group :development, :test do
   gem "better_errors"
