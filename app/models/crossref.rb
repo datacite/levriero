@@ -27,16 +27,15 @@ class Crossref < Base
 
   def get_query_url(options = {})
     params = {
-      source: "crossref",
-      "from-collected-date" => options[:from_date],
-      "until-collected-date" => options[:until_date],
-      mailto: "info@datacite.org",
-      scholix: true,
-      rows: options[:rows],
-      cursor: options[:cursor],
+      "not-asserted-by" => "https://ror.org/04wxnsj81",
+      "object.registration-agency" => "DataCite",
+      "from-updated-time" => options[:from_date],
+      "until-updated-time" => options[:until_date],
+      "cursor" => options[:cursor],
+      "rows" => options[:rows]
     }.compact
 
-    "#{ENV['CROSSREF_QUERY_URL']}/v1/events?#{URI.encode_www_form(params)}"
+    "#{ENV['CROSSREF_QUERY_URL']}/relationships?#{URI.encode_www_form(params)}"
   end
 
   def get_total(options = {})
@@ -94,11 +93,9 @@ class Crossref < Base
   end
 
   def push_data(result, _options = {})
-    return result.body.fetch("errors") if result.body.fetch("errors",
-                                                            nil).present?
+    return result.body.fetch("errors") if result.body.fetch("errors", nil).present?
 
-    items = result.body.dig("data", "message", "events")
-    # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
+    items = result.body.dig("data", "message", "relationships")
 
     Array.wrap(items).map do |item|
       CrossrefImportJob.perform_later(item)
@@ -108,45 +105,53 @@ class Crossref < Base
   end
 
   def self.push_item(item)
-    subj = cached_crossref_response(item["subj_id"])
-    obj = cached_datacite_response(item["obj_id"])
+    uuid = SecureRandom.uuid
+    subj_id = item.fetch("subject", "id")
+    obj_id = item.fetch("object", "id")
 
-    if ENV["STAFF_ADMIN_TOKEN"].present?
-      push_url = ENV["LAGOTTINO_URL"] + "/events/#{item['id']}"
+    subj = cached_crossref_response(subj_id)
+    obj = cached_datacite_response(obj_id)
 
-      data = {
-        "data" => {
-          "id" => item["id"],
-          "type" => "events",
-          "attributes" => {
-            "messageAction" => item["action"],
-            "subjId" => item["subj_id"],
-            "objId" => item["obj_id"],
-            "relationTypeId" => item["relation_type_id"].to_s.dasherize,
-            "sourceId" => item["source_id"].to_s.dasherize,
-            "sourceToken" => item["source_token"],
-            "occurredAt" => item["occurred_at"],
-            "timestamp" => item["timestamp"],
-            "license" => item["license"],
-            "subj" => subj,
-            "obj" => obj,
-          },
+    return if ENV["STAFF_ADMIN_TOKEN"].blank?
+
+    # so the id is important!!!
+    # need to check this out
+    push_url = ENV["LAGOTTINO_URL"] + "/events/#{uuid}"
+
+    data = {
+      "data" => {
+        "id" => uuid,
+        "type" => "events",
+        "attributes" => {
+          "messageAction" => "add",
+          "subjId" => subj_id,
+          "objId" => obj_id,
+          "relationTypeId" => item["relationship_type"].to_s.dasherize,
+          "sourceId" => "crossref",
+          "sourceToken" => item["source_token"], # well this may very well be null now. it might be used to do a lookup on the crossref side.
+          "occurredAt" => item["updated_time"],
+          "timestamp" => Time.now.utc,
+          "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
+          "subj" => subj,
+          "obj" => obj,
         },
-      }
+      },
+    }
 
-      response = Maremma.put(push_url, data: data.to_json,
-                                       bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                       content_type: "application/vnd.api+json",
-                                       accept: "application/vnd.api+json; version=2")
+    response = Maremma.put(
+      push_url,
+      data: data.to_json,
+      bearer: ENV["STAFF_ADMIN_TOKEN"],
+      content_type: "application/vnd.api+json",
+      accept: "application/vnd.api+json; version=2")
 
-      if [200, 201].include?(response.status)
-        Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
-      elsif response.status == 409
-        Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
-      elsif response.body["errors"].present?
-        Rails.logger.error "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors']}"
-        Rails.logger.error data.inspect
-      end
+    if [200, 201].include?(response.status)
+      Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
+    elsif response.status == 409
+      Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
+    elsif response.body["errors"].present?
+      Rails.logger.error "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors']}"
+      Rails.logger.error data.inspect
     end
   end
 end
