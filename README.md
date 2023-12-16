@@ -1,7 +1,10 @@
 # Message broker for Event Data Services
 
-<!-- [![Identifier](https://img.shields.io/badge/doi-10.5438%2Ft1jg--hvhn-fca709.svg)](https://doi.org/10.5438/t1jg-hvhn) -->
-[![Build Status](https://travis-ci.org/datacite/levriero.svg?branch=master)](https://travis-ci.org/datacite/levriero) [![Code Climate](https://codeclimate.com/github/datacite/levriero/badges/gpa.svg)](https://codeclimate.com/github/datacite/levriero) [![Test Coverage](https://codeclimate.com/github/datacite/levriero/badges/coverage.svg)](https://codeclimate.com/github/datacite/levriero/coverage)
+[![Identifier](https://img.shields.io/badge/doi-10.5438%2Ft1jg--hvhn-fca709.svg)](https://doi.org/10.5438/t1jg-hvhn)
+[![Build Status](https://github.com/datacite/levriero/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/datacite/levriero/workflows/Deploy/badge.svg)
+![Release](https://github.com/datacite/levriero/workflows/Release/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ddb43ea782a1f201edfc/maintainability)](https://codeclimate.com/github/datacite/levriero/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ddb43ea782a1f201edfc/test_coverage)](https://codeclimate.com/github/datacite/levriero/test_coverage)
 
 Levriero runs agents for the Crossref/DataCite Event Data service.
 
