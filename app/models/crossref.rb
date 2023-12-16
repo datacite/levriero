@@ -64,11 +64,8 @@ class Crossref < Base
     if count.zero?
       text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
-      loop do
+      while count.postive? && cursor.present?
         count, cursor = process_data(options)
-
-        break if count.zero? || cursor.blank?
-
         options[:cursor] = cursor
         total += count
       end
@@ -83,15 +80,16 @@ class Crossref < Base
   end
 
   def push_data(result, _options = {})
-    if result.body.fetch("errors", nil).present? do
-      return result.body.fetch("errors")
-    end
+    errors = result.body.fetch("errors", nil)
+
+    return errors if errors.present?
 
     items = Array.wrap(result
       .body
       .dig("data", "message", "relationships")
       .select { |item| allowed_relationship_types.includes?(item["relationship_type"].to_s.dasherize) })
-      .map { |item| CrossrefImportJob.perform_later(item) }
+
+    items.map { |item| CrossrefImportJob.perform_later(item) }
 
     [items.length, result.body.dig("data", "message", "next-cursor")]
   end
