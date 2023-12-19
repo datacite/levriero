@@ -30,12 +30,13 @@ gem "oj", ">= 2.8.3"
 gem "oj_mimic_json", "~> 1.0", ">= 1.0.1"
 gem "rack-cors", "~> 1.0", require: "rack/cors"
 gem "rack-utf8_sanitizer", "~> 1.6"
-gem "rails", "6.0"
+gem "rails", "6.1.7.3"
 gem "sentry-raven", "~> 2.9"
 gem "shoryuken", "~> 4.0"
 gem "simple_command"
 gem "slack-notifier", "~> 2.3", ">= 2.3.2"
 gem "sprockets", "~> 3.7", ">= 3.7.2"
+gem 'next_rails'
 gem "json-canonicalization", '0.3.1'
 
 group :development, :test do
