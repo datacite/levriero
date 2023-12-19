@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:2.0.0
+FROM phusion/passenger-full:2.0.1
 LABEL maintainer="kgarza@datacite.org"
 
 # Set correct environment variables.
