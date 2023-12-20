@@ -1,26 +1,36 @@
 class Crossref < Base
-  def self.import_by_month(options = {})
-    from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
-    until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+  def self.import_by_month_dates(options={})
+    {
+      from_date: (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month,
+      until_date: (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+    }
+  end
 
-    # get first day of every month between from_date and until_date
-    (from_date..until_date).select { |d| d.day == 1 }.each do |m|
-      CrossrefImportByMonthJob.perform_later(from_date: m.strftime("%F"),
-                                             until_date: m.end_of_month.strftime("%F"))
+  def self.import_dates(options={})
+    {
+      from_date: options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day,
+      until_date: options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
+    }
+  end
+
+  def self.import_by_month(options = {})
+    dates = import_by_month_dates(options)
+
+    (dates[:from_date]..dates[:until_date]).select { |d| d.day == 1 }.each do |m|
+      CrossrefImportByMonthJob.perform_later(from_date: m.strftime("%F"), until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for DOIs updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
+    "Queued import for DOIs updated from #{dates[:from_date].strftime('%F')} until #{dates[:until_date].strftime('%F')}."
   end
 
   def self.import(options = {})
-    from_date = options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day
-    until_date = options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
-
+    dates = import_dates(options)
     crossref = Crossref.new
 
     crossref.queue_jobs(crossref.unfreeze(
-      from_date: from_date.strftime("%F"),
-      until_date: until_date.strftime("%F"), host: true))
+      from_date: dates[:from_date].strftime("%F"),
+      until_date: dates[:until_date].strftime("%F"),
+      host: true))
   end
 
   def source_id
@@ -37,26 +47,15 @@ class Crossref < Base
       "object.registration-agency" => "DataCite",
       "from-updated-time" => options[:from_date],
       "until-updated-time" => options[:until_date],
-      "cursor" => options[:cursor],
-      "rows" => options[:rows]
+      "cursor" => options[:cursor]
     }.compact
 
     "#{ENV['CROSSREF_QUERY_URL']}/relationships?#{URI.encode_www_form(params)}"
   end
 
-  def get_total(options = {})
-    query_url = get_query_url(options.merge(rows: 0))
-    result = Maremma.get(query_url, options)
-    message = result.body.dig("data", "message").to_h
-    [message["total-results"].to_i, message["next-cursor"]]
-  end
-
   def queue_jobs(options = {})
-    options[:offset] = options[:offset].to_i || 0
-    options[:rows] = options[:rows].presence || job_batch_size
     options[:from_date] = options[:from_date].presence || (Time.now.to_date - 1.day).iso8601
     options[:until_date] = options[:until_date].presence || Time.now.to_date.iso8601
-    options[:content_type] = "json"
 
     count, cursor = process_data(options)
     total = count
@@ -64,7 +63,7 @@ class Crossref < Base
     if count.zero?
       text = "No DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
-      while count.postive? && cursor.present?
+      while count.positive? && cursor.present?
         count, cursor = process_data(options)
         options[:cursor] = cursor
         total += count
@@ -74,7 +73,7 @@ class Crossref < Base
     end
 
     Rails.logger.info("[Event Data] #{text}")
-    send_slack_notification(options, text)
+    send_slack_notification(options, text, total)
 
     total
   end
@@ -113,7 +112,7 @@ class Crossref < Base
           "subjId" => subj_id,
           "objId" => obj_id,
           "relationTypeId" => item["relationship_type"].to_s.dasherize,
-          "sourceId" => source_id,
+          "sourceId" => "crossref",
           "sourceToken" => item["source_token"], # well this may very well be null now. it might be used to do a lookup on the crossref side.
           "occurredAt" => item["updated_time"],
           "timestamp" => Time.now.utc,
@@ -143,7 +142,7 @@ class Crossref < Base
 
   private
 
-  def send_slack_notification(options, text)
+  def send_slack_notification(options, text, total)
     options[:level] = total.zero? ? "warning" : "good"
     options[:title] = "Report for #{source_id}"
 
