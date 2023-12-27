@@ -1,17 +1,17 @@
 class Crossref < Base
-  def self.import_by_month_dates(options={})
-    {
-      from_date: (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month,
-      until_date: (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
-    }
-  end
+  # def self.import_by_month_dates(options={})
+  #   {
+  #     from_date: (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month,
+  #     until_date: (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+  #   }
+  # end
 
-  def self.import_dates(options={})
-    {
-      from_date: options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day,
-      until_date: options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
-    }
-  end
+  # def self.import_dates(options={})
+  #   {
+  #     from_date: options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day,
+  #     until_date: options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
+  #   }
+  # end
 
   def self.import_by_month(options = {})
     dates = import_by_month_dates(options)
@@ -138,6 +138,22 @@ class Crossref < Base
       Rails.logger.error "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors']}"
       Rails.logger.error data.inspect
     end
+  end
+
+  protected
+
+  def self.import_by_month_dates(options={})
+    {
+      from_date: (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month,
+      until_date: (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
+    }
+  end
+
+  def self.import_dates(options={})
+    {
+      from_date: options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current - 1.day,
+      until_date: options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current
+    }
   end
 
   private
