@@ -87,9 +87,10 @@ GEM
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
-    bibtex-ruby (6.0.0)
+    bibtex-ruby (6.1.0)
       latex-decode (~> 0.0)
-    bolognese (2.0.3)
+      racc (~> 1.7)
+    bolognese (2.1.0)
       activesupport (>= 4.2.5)
       benchmark_methods (~> 0.7)
       bibtex-ruby (>= 5.1.0)
@@ -276,7 +277,8 @@ GEM
     msgpack (1.4.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
-    namae (1.1.1)
+    namae (1.2.0)
+      racc (~> 1.7)
     net-imap (0.3.7)
       date
       net-protocol
@@ -461,7 +463,7 @@ DEPENDENCIES
   aws-sdk-sqs (~> 1.3)
   bcrypt (~> 3.1.7)
   better_errors
-  bolognese (~> 2.0.3)
+  bolognese (~> 2.1.0)
   bootsnap (~> 1.2, >= 1.2.1)
   byebug
   cancancan (~> 2.0)
