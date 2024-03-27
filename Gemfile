@@ -60,7 +60,7 @@ group :test do
   gem "faker", "~> 3.2", ">= 3.2.3"
   gem "rubocop-rspec", "~> 2.0", require: false
   gem "shoulda-matchers", "~> 4.1", ">= 4.1.2"
-  gem "simplecov"
+  gem "simplecov", "~> 0.22.0"
   gem "vcr", "~> 6.1"
   gem "webmock", "~> 3.1"
 end
