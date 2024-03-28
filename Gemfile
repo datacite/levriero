@@ -15,7 +15,7 @@ gem "dalli", "~> 2.7.6"
 gem "dotenv"
 gem "equivalent-xml", "~> 0.6.0"
 gem "facets", require: false
-gem "faraday_middleware-aws-sigv4", "~> 0.3.0"
+gem "faraday_middleware-aws-sigv4", "~> 0.2.4"
 gem "git", "~> 1.5"
 gem "iso8601", "~> 0.9.0"
 gem "jwt"
@@ -56,11 +56,11 @@ end
 group :test do
   gem "capybara"
   gem "codeclimate-test-reporter", "~> 1.0.0"
-  gem "factory_bot_rails", "~> 6.4", ">= 6.4.3"
-  gem "faker", "~> 3.2", ">= 3.2.3"
-  gem "rubocop-rspec", "~> 2.0", require: false
+  gem "factory_bot_rails", "~> 4.8", ">= 4.8.2"
+  gem "faker"
+  gem "rubocop-rspec", "~> 1.28"
   gem "shoulda-matchers", "~> 4.1", ">= 4.1.2"
-  gem "simplecov", "~> 0.22.0"
-  gem "vcr", "~> 6.1"
+  gem "simplecov"
+  gem "vcr", "~> 5.1"
   gem "webmock", "~> 3.1"
 end
