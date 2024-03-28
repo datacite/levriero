@@ -1,0 +1,21 @@
+name: Build/Deploy Branch to Staging
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    uses: ./.github/workflows/parallel_ci.yml
+    secrets: inherit
+  call_build_and_push:
+    needs: test
+    uses: ./.github/workflows/build.yml
+    with:
+      image_name: ${{ github.repository }}
+      image_tag: ${{ github.ref_name }}
+    secrets: inherit
+  deploy:
+    needs: [test, call_build_and_push]
+    uses: ./.github/workflows/_update_terraform.yml
+    with:
+      image_tag: ${{ github.ref_name }}
+      deployment_environment: staging
+    secrets: inherit

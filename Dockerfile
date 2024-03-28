@@ -33,6 +33,11 @@ COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 # Use Amazon NTP servers
 COPY vendor/docker/ntp.conf /etc/ntp.conf
 
+# Add Runit script for shoryuken workers
+WORKDIR /home/app/webapp
+RUN mkdir /etc/service/shoryuken
+ADD vendor/docker/shoryuken.sh /etc/service/shoryuken/run
+
 # Copy webapp folder
 COPY . /home/app/webapp/
 RUN mkdir -p tmp/pids && \
@@ -41,7 +46,6 @@ RUN mkdir -p tmp/pids && \
     chmod -R 755 /home/app/webapp
 
 # Install Ruby gems
-COPY Gemfile* /home/app/webapp/
 WORKDIR /home/app/webapp
 RUN mkdir -p vendor/bundle && \
     chown -R app:app . && \
@@ -53,10 +57,6 @@ RUN mkdir -p vendor/bundle && \
 # enable SSH
 RUN rm -f /etc/service/sshd/down && \
     /etc/my_init.d/00_regen_ssh_host_keys.sh
-
-# Add Runit script for shoryuken workers
-RUN mkdir /etc/service/shoryuken
-ADD vendor/docker/shoryuken.sh /etc/service/shoryuken/run
 
 # Run additional scripts during container startup (i.e. not at build time)
 RUN mkdir -p /etc/my_init.d
