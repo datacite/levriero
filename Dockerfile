@@ -3,7 +3,6 @@ LABEL maintainer="kgarza@datacite.org"
 
 # Set correct environment variables.
 ENV HOME /home/app
-ENV DOCKERIZE_VERSION v0.6.0
 
 # Allow app user to read /etc/container_environment
 RUN usermod -a -G docker_env app
@@ -18,10 +17,6 @@ RUN bash -lc 'rvm --default use ruby-3.1.4'
 RUN apt-get update && apt-get upgrade -y --allow-unauthenticated -o Dpkg::Options::="--force-confold" && \
     apt-get install ntp wget tzdata shared-mime-info -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# install dockerize
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
-    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Enable Passenger and Nginx and remove the default site
 # Preserve env variables for nginx
