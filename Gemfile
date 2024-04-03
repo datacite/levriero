@@ -61,6 +61,6 @@ group :test do
   gem "rubocop-rspec", "~> 1.28"
   gem "shoulda-matchers", "~> 4.1", ">= 4.1.2"
   gem "simplecov"
-  gem "vcr", "~> 5.1"
+  gem "vcr", "~> 6.2"
   gem "webmock", "~> 3.1"
 end

@@ -441,7 +441,7 @@ GEM
     unicode-display_width (2.5.0)
     unicode-types (1.9.0)
     unicode_utils (1.4.0)
-    vcr (5.1.0)
+    vcr (6.2.0)
     webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -508,7 +508,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets (~> 3.7, >= 3.7.2)
-  vcr (~> 5.1)
+  vcr (~> 6.2)
   webmock (~> 3.1)
 
 BUNDLED WITH
