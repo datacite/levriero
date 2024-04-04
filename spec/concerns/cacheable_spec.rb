@@ -19,7 +19,10 @@ describe "Cacheable", type: :concern do
 
     describe "when there is a cache hit" do
       it "will fetch the value from cache" do
-        allow(Rails).to(receive_message_chain(:cache, :fetch).and_return({message: "from cache"}))
+        Rails.cache.fetch("datacite/100", expires: 1.day) do
+          { message: "from cache" }
+        end
+
         allow(Base).to(receive(:get_datacite_metadata).and_return({message: "from get_datacite_metadata"}))
 
         result = RelatedIdentifier.cached_datacite_response(100)
