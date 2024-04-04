@@ -11,7 +11,7 @@ gem "bootsnap", "~> 1.2", ">= 1.2.1"
 gem "cancancan", "~> 2.0"
 gem "countries", "~> 2.1", ">= 2.1.2"
 gem "country_select", "~> 3.1"
-gem "dalli", "~> 2.7.6"
+gem "dalli", "~> 3.2", ">= 3.2.8"
 gem "dotenv"
 gem "equivalent-xml", "~> 0.6.0"
 gem "facets", require: false

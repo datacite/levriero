@@ -43,7 +43,6 @@ describe "Cacheable", type: :concern do
 
     describe "when there is a cache hit" do
       it "will fetch the value from cache" do
-        debugger
         Rails.cache.fetch("ras/100", expires: 1.day) { { message: "from cache" } }
         result = RelatedIdentifier.cached_doi_ra("100")
         expect(result).to(eq({message: "from cache"}))

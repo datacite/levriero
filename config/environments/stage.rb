@@ -16,7 +16,7 @@ Rails.application.configure do
   # Disable/enable fragment and page caching in ActionController
   config.perform_caching = true
   config.action_controller.perform_caching = true
-  config.cache_store = :dalli_store, nil, { namespace: ENV["APPLICATION"] }
+  config.cache_store = :mem_cache_store, ENV["MEMCACHE_SERVERS"], { namespace: ENV["APPLICATION"] }
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
