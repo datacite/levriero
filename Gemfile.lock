@@ -156,7 +156,7 @@ GEM
       rexml
     csl-styles (1.0.1.11)
       csl (~> 1.0)
-    dalli (2.7.11)
+    dalli (3.2.8)
     date (3.3.4)
     diff-lcs (1.5.1)
     docile (1.4.0)
@@ -441,7 +441,7 @@ GEM
     unicode-display_width (2.5.0)
     unicode-types (1.9.0)
     unicode_utils (1.4.0)
-    vcr (5.1.0)
+    vcr (6.2.0)
     webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -470,7 +470,7 @@ DEPENDENCIES
   codeclimate-test-reporter (~> 1.0.0)
   countries (~> 2.1, >= 2.1.2)
   country_select (~> 3.1)
-  dalli (~> 2.7.6)
+  dalli (~> 3.2, >= 3.2.8)
   dotenv
   equivalent-xml (~> 0.6.0)
   facets
@@ -508,7 +508,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets (~> 3.7, >= 3.7.2)
-  vcr (~> 5.1)
+  vcr (~> 6.2)
   webmock (~> 3.1)
 
 BUNDLED WITH
