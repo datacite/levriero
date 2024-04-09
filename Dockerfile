@@ -51,7 +51,7 @@ RUN mkdir -p vendor/bundle && \
     chown -R app:app . && \
     chmod -R 755 . && \
     gem update --system 3.4.22 && \
-    gem install bundler -v 2.4.20 && \
+    gem install bundler -v 2.5.6 && \
     /sbin/setuser app bundle install --path vendor/bundle
 
 # enable SSH
