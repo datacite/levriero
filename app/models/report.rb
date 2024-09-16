@@ -89,17 +89,14 @@ class Report < Base
   end
 
   def compressed_report?
-    # puts @data.dig("report","report-header","exceptions")
     return nil if @data.dig("report", "report-header",
                             "exceptions").blank?
     return nil unless @data.dig("report", "report-header", "exceptions").any?
 
-    # @data.dig("report","report-header","exceptions").include?(COMPRESSED_HASH_MESSAGE)
     exceptions = @data.dig("report", "report-header", "exceptions")
-    code = exceptions.first.fetch("code", "")
-    if code == 69
-      true
-    end
+    codes = exceptions.map { |exception| exception.fetch("code", "") }
+
+    codes.include?(69)
   end
 
   # def correct_checksum?
