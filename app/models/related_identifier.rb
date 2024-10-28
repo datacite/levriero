@@ -1,5 +1,6 @@
 class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
+  DATACITE_CROSSREF = "datacite_crossref"
 
   include Helpable
   include Cacheable
@@ -58,23 +59,24 @@ class RelatedIdentifier < Base
   def self.push_item(item)
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
+
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
-    related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
-                                                          nil)).select do |r|
+
+    related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select do |r|
       r["relatedIdentifierType"] == "DOI"
     end
+
     registration_agencies = {}
 
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
-      related_identifier = iitem.fetch("relatedIdentifier",
-                                       nil).to_s.strip.downcase
+      related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
       prefix = validate_prefix(related_identifier)
+
       unless registration_agencies[prefix]
-        registration_agencies[prefix] =
-          cached_doi_ra(related_identifier)
+        registration_agencies[prefix] = cached_doi_ra(related_identifier)
       end
 
       if registration_agencies[prefix].nil?
@@ -87,7 +89,7 @@ class RelatedIdentifier < Base
         source_token = ENV["DATACITE_RELATED_SOURCE_TOKEN"]
         obj = cached_datacite_response(obj_id)
       elsif registration_agencies[prefix] == "Crossref"
-        source_id = "datacite_crossref"
+        source_id = DATACITE_CROSSREF
         source_token = ENV["DATACITE_CROSSREF_SOURCE_TOKEN"]
         obj = cached_crossref_response(obj_id)
       elsif registration_agencies[prefix].present?
@@ -112,7 +114,6 @@ class RelatedIdentifier < Base
                   "subj" => subj,
                   "obj" => obj }
       end
-
       ssum
     end
 
@@ -158,7 +159,8 @@ class RelatedIdentifier < Base
       end
 
       # send to Event Data Bus
-      if ENV["EVENTDATA_TOKEN"].present?
+      # we only send datacite_crossref events to the bus
+      if ENV["EVENTDATA_TOKEN"].present? && iiitem['source_id'] == DATACITE_CROSSREF
         iiitem = set_event_for_bus(iiitem)
 
         host = ENV["EVENTDATA_URL"]
