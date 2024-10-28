@@ -109,7 +109,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
       end
 
-      it "does push the event to the event data bus when source_id is not datacite_crossref" do
+      it "does push the event to the event data bus when source_id is datacite_crossref" do
         related_identifier = RelatedIdentifier.new
         allow(ENV).to receive(:[]).with("DATACITE_CROSSREF_SOURCE_TOKEN").and_return("fake-token")
         allow(related_identifier).to receive(:normalize_doi).with(valid_doi).and_return("normalized_doi")
