@@ -6,7 +6,7 @@ gem "active_model_serializers", "~> 0.10.0"
 gem "api-pagination"
 gem "aws-sdk-sqs", "~> 1.3"
 gem "bcrypt", "~> 3.1.7"
-gem "bolognese", "~> 2.2", git: "https://github.com/datacite/bolognese.git", branch: "schema-4.6" #change to 2.3 when released
+gem "bolognese", "~> 2.3"
 gem "bootsnap", "~> 1.2", ">= 1.2.1"
 gem "cancancan", "~> 2.0"
 gem "countries", "~> 2.1", ">= 2.1.2"
