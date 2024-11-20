@@ -6,7 +6,7 @@ gem "active_model_serializers", "~> 0.10.0"
 gem "api-pagination"
 gem "aws-sdk-sqs", "~> 1.3"
 gem "bcrypt", "~> 3.1.7"
-gem "bolognese", "~> 2.2"
+gem "bolognese", "~> 2.3"
 gem "bootsnap", "~> 1.2", ">= 1.2.1"
 gem "cancancan", "~> 2.0"
 gem "countries", "~> 2.1", ">= 2.1.2"
@@ -37,6 +37,7 @@ gem "slack-notifier", "~> 2.3", ">= 2.3.2"
 gem "sprockets", "~> 3.7", ">= 3.7.2"
 gem 'next_rails'
 gem "json-canonicalization", '0.3.1'
+gem 'msgpack', "~> 1.4.4"
 
 group :development, :test do
   gem "better_errors"
