@@ -36,130 +36,83 @@ describe RelatedUrl, type: :model, vcr: true do
     end
 
     describe "push_item" do
+      before(:each) do
+        allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
+        allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
+        allow(RelatedUrl).to(receive(:send_event_import_message).and_return(nil))
+        allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
+        allow(RelatedUrl).to(receive(:send_event_import_message).and_return(nil))
+      end
+
       it "returns nil if the doi is blank" do
         expect(RelatedUrl.push_item("doi" => nil)).to(eq(nil))
       end
 
-      describe "when STAFF_ADMIN_TOKEN" do
-        before(:each) do
-          allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("STAFF_ADMIN_TOKEN"))
-          allow(ENV).to(receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com"))
-          allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
-          allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
-          allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 200)))
-          allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
-        end
-
-        describe "is valid" do
-          it "makes request to lagottino for those related identifiers with type 'URL'" do
-            item = {
-              "attributes" => {
-                "doi" => "https://doi.org/10.0001/foo.bar",
-                "updated" => "2023-11-15",
-                "relatedIdentifiers" => [
-                  {
-                    "relatedIdentifierType" => "URL",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.one",
-                    "relationType" => "example-one",
-                  },
-                  {
-                    "relatedIdentifierType" => "DOI",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.two",
-                    "relationType" => "example-two",
-                  },
-                  {
-                    "relatedIdentifierType" => "URL",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.three",
-                    "relationType" => "example-three",
-                  },
-                ],
+      it "sends to the events queue for those related identifiers with type 'URL'" do
+        item = {
+          "attributes" => {
+            "doi" => "https://doi.org/10.0001/foo.bar",
+            "updated" => "2023-11-15",
+            "relatedIdentifiers" => [
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.one",
+                "relationType" => "example-one",
               },
-            }
-
-            expect(RelatedUrl.push_item(item)).to(eq(2))
-
-            expect(Maremma).to(have_received(:post).twice)
-          end
-
-          it "passes the expected values to lagottino" do
-            item = {
-              "attributes" => {
-                "doi" => "https://doi.org/10.0001/foo.bar",
-                "updated" => "2023-11-15",
-                "relatedIdentifiers" => [
-                  {
-                    "relatedIdentifierType" => "URL",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.one",
-                    "relationType" => "example-one",
-                  },
-                ],
+              {
+                "relatedIdentifierType" => "DOI",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.two",
+                "relationType" => "example-two",
               },
-            }
-
-            json_data = {
-              "data" => {
-                "type" => "events",
-                "attributes" => {
-                  "messageAction" => "create",
-                  "subjId" => "https://doi.org/10.0001/foo.bar",
-                  "objId" => "https://doi.org/10.0001/example.one",
-                  "relationTypeId" => "example-one",
-                  "sourceId" => "datacite-url",
-                  "sourceToken" => "DATACITE_URL_SOURCE_TOKEN",
-                  "occurredAt" => "2023-11-15",
-                  "timestamp" => "2023-11-15T12:17:47Z",
-                  "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-                  "subj" => { "foo" => "bar" },
-                  "obj" => {},
-                },
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.three",
+                "relationType" => "example-three",
               },
-            }.to_json
+            ],
+          },
+        }
 
-            expect(RelatedUrl.push_item(item)).to(eq(1))
+        expect(RelatedUrl.push_item(item)).to(eq(2))
+        expect(RelatedUrl).to(have_received(:send_event_import_message).twice)
+      end
 
-            expect(Maremma).to(have_received(:post).with(
-                                 "https://fake.lagattino.com/events",
-                                 data: json_data,
-                                 bearer: "STAFF_ADMIN_TOKEN",
-                                 content_type: "application/vnd.api+json",
-                                 accept: "application/vnd.api+json; version=2",
-                               ))
-          end
-        end
-
-        describe "is invalid" do
-          it "will not make request to lagottino" do
-            allow(ENV).to(receive(:[]).with("STAFF_ADMIN_TOKEN").and_return(nil))
-
-            item = {
-              "attributes" => {
-                "doi" => "https://doi.org/10.0001/foo.bar",
-                "updated" => "2023-11-15",
-                "relatedIdentifiers" => [
-                  {
-                    "relatedIdentifierType" => "URL",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.one",
-                    "relationType" => "example-one",
-                  },
-                  {
-                    "relatedIdentifierType" => "DOI",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.two",
-                    "relationType" => "example-two",
-                  },
-                  {
-                    "relatedIdentifierType" => "URL",
-                    "relatedIdentifier" => "https://doi.org/10.0001/example.three",
-                    "relationType" => "example-three",
-                  },
-                ],
+      it "passes the expected values to events queue" do
+        item = {
+          "attributes" => {
+            "doi" => "https://doi.org/10.0001/foo.bar",
+            "updated" => "2023-11-15",
+            "relatedIdentifiers" => [
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.one",
+                "relationType" => "example-one",
               },
-            }
+            ],
+          },
+        }
 
-            expect(RelatedUrl.push_item(item)).to(eq(2))
+        json_data = {
+          "data" => {
+            "type" => "events",
+            "attributes" => {
+              "messageAction" => "create",
+              "subjId" => "https://doi.org/10.0001/foo.bar",
+              "objId" => "https://doi.org/10.0001/example.one",
+              "relationTypeId" => "example-one",
+              "sourceId" => "datacite-url",
+              "sourceToken" => "DATACITE_URL_SOURCE_TOKEN",
+              "occurredAt" => "2023-11-15",
+              "timestamp" => "2023-11-15T12:17:47Z",
+              "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
+              "subj" => { "foo" => "bar" },
+              "obj" => {},
+            },
+          },
+        }
 
-            expect(Maremma).not_to(have_received(:post))
-          end
-        end
+        expect(RelatedUrl.push_item(item)).to(eq(1))
+        expect(RelatedUrl).to(have_received(:send_event_import_message).with(json_data).once)
       end
     end
   end

@@ -89,33 +89,28 @@ class RelatedUrl < Base
 
     # there can be one or more related_url per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Data Query API
-      if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['LAGOTTINO_URL']}/events"
-
-        data = {
-          "data" => {
-            "type" => "events",
-            "attributes" => {
-              "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
-              "objId" => iiitem["obj_id"],
-              "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
-              "sourceId" => iiitem["source_id"].to_s.dasherize,
-              "sourceToken" => iiitem["source_token"],
-              "occurredAt" => iiitem["occurred_at"],
-              "timestamp" => iiitem["timestamp"],
-              "license" => iiitem["license"],
-              "subj" => iiitem["subj"],
-              "obj" => iiitem["obj"],
-            },
+      data = {
+        "data" => {
+          "type" => "events",
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
           },
-        }
+        },
+      }
 
-        send_event_import_message(data)
+      send_event_import_message(data)
 
-        Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to the events queue."
-      end
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
     end
 
     push_items.length
