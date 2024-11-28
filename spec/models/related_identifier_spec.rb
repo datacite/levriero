@@ -104,7 +104,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Rails.logger).to receive(:info)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(Maremma).to have_received(:post).with("https://fake.lagattino.com/events", anything).once
+        expect(RelatedIdentifier).to have_received(:send_event_import_message, anything).once
 
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
       end
@@ -123,7 +123,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Rails.logger).to receive(:info)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(Maremma).to have_received(:post).with("https://fake.lagattino.com/events", anything).once
+        expect(RelatedIdentifier).to have_received(:send_event_import_message, anything).once
         expect(Maremma).to have_received(:post).with("https://fake.eventdataurl.com/events", anything).once
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
         expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
@@ -154,7 +154,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Rails.logger).to receive(:info)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(Maremma).to have_received(:post).with("https://fake.lagattino.com/events", anything).once
+        expect(RelatedIdentifier).to have_received(:send_event_import_message, anything).once
 
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related already pushed to Event Data service.")
       end
@@ -187,7 +187,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Rails.logger).to receive(:error)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(Maremma).to have_received(:post).with("https://fake.lagattino.com/events", anything).once
+        expect(RelatedIdentifier).to have_received(:send_event_import_message, anything).once
 
         expect(Rails.logger).to have_received(:error).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related had an error: An error occurred during the put request.")
       end
@@ -204,7 +204,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Rails.logger).to receive(:info)
 
         expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(Maremma).to have_received(:post).with("https://fake.lagattino.com/events", anything).once
+        expect(RelatedIdentifier).to have_received(:send_event_import_message, anything).once
 
         expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related was not sent to Event Data Bus.")
       end

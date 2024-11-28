@@ -4,6 +4,7 @@ class RelatedIdentifier < Base
 
   include Helpable
   include Cacheable
+  include Queueable
 
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
@@ -143,19 +144,9 @@ class RelatedIdentifier < Base
           },
         }
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                          content_type: "application/vnd.api+json",
-                                          accept: "application/vnd.api+json; version=2")
+        send_event_import_message(data)
 
-        if [200, 201].include?(response.status)
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors']}"
-          Rails.logger.error data.inspect
-        end
+        Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue"
       end
 
       # send to Event Data Bus
