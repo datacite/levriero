@@ -1,50 +1,61 @@
 require "rails_helper"
 
 describe Crossref, type: :model, vcr: true do
-  let(:from_date) { "2018-01-04" }
-  let(:until_date) { "2018-08-05" }
+  let(:from_date) { "2023-12-17" }
+  let(:until_date) { "2023-12-18" }
 
-  describe ".import_by_month" do
-    context "with valid parameters" do
-      it "queues jobs for each month between from_date and until_date" do
-        response = Crossref.import_by_month(from_date: from_date, until_date: until_date)
-        expect(response).to eq("Queued import for DOIs updated from 2018-01-01 until 2018-08-31.")
+  describe ".import_by_month_dates" do
+    describe "returns the correct dates" do
+      it "when dates are provided" do
+        options = {
+          from_date: from_date,
+          until_date: until_date
+        }
+
+        expect(Crossref.import_by_month_dates(options)).to(eq({
+          from_date: Date.parse("2023-12-01"),
+          until_date: Date.parse("2023-12-31")
+        }))
       end
-    end
 
-    context "with missing parameters" do
-      it "queues jobs with default dates (current month)" do
-        response = Crossref.import_by_month
-        expect(response).to start_with("Queued import for DOIs updated from")
+      it "when dates are not provided" do
+        allow(Date).to(receive(:current).and_return(Date.parse("2023-01-12")))
+
+        from_date = nil
+        until_date = nil
+
+        expect(Crossref.import_by_month_dates).to(eq({
+          from_date: Date.parse("2023-01-01"),
+          until_date: Date.parse("2023-01-31")
+        }))
       end
     end
   end
 
-  describe ".import" do
-    context "with valid parameters" do
-      it "queues jobs for DOIs updated within the specified date range" do
-        until_date = "2018-01-31"
-        response = Crossref.import(from_date: from_date, until_date: until_date)
-        expect(response).to be_a(Integer).and be >= 0
+  describe ".import_dates" do
+    describe "returns the correct dates" do
+      it "when dates are provided" do
+        options = {
+          from_date: from_date,
+          until_date: until_date
+        }
+
+        expect(Crossref.import_dates(options)).to(eq({
+          from_date: Date.parse(from_date),
+          until_date: Date.parse(until_date)
+        }))
       end
-    end
 
-    context "with missing parameters" do
-      it "queues jobs for the default date range (yesterday to today)" do
-        # Stub Date.current to return a fixed date
-        allow(Date).to receive(:current).and_return(Date.new(2023, 1, 2))
+      it "when dates are not provided" do
+        allow(Date).to(receive(:current).and_return(Date.parse("2023-01-12")))
 
-        # Use a spy on Date.parse
-        date_spy = spy("Date")
-        allow(Date).to receive(:parse).and_wrap_original do |original_method, *args|
-          date_spy.parse(*args)
-          original_method.call(*args)
-        end
+        from_date = nil
+        until_date = nil
 
-        # Mocking Date.parse
-        response = Crossref.import
-
-        expect(response).to be_a(Integer).and be >= 0
+        expect(Crossref.import_dates).to(eq({
+          from_date: Date.parse("2023-01-11"),
+          until_date: Date.parse("2023-01-12")
+        }))
       end
     end
   end
@@ -59,20 +70,19 @@ describe Crossref, type: :model, vcr: true do
   describe "#get_query_url" do
     it "returns a valid query URL with the given options" do
       crossref = Crossref.new
-      query_url = crossref.get_query_url(from_date: from_date, until_date: until_date, rows: 10, cursor: "abc123")
-      expect(query_url).to include("source=crossref")
-      expect(query_url).to include("from-collected-date=#{from_date}")
-      expect(query_url).to include("until-collected-date=#{until_date}")
-      expect(query_url).to include("rows=10")
+      query_url = crossref.get_query_url(from_date: from_date, until_date: until_date, cursor: "abc123")
+      expect(query_url).to include("from-updated-time=#{from_date}")
+      expect(query_url).to include("until-updated-time=#{until_date}")
       expect(query_url).to include("cursor=abc123")
+      expect(query_url).to include("not-asserted-by=https%3A%2F%2Fror.org%2F04wxnsj81")
+      expect(query_url).to include("object.registration-agency=DataCite")
     end
   end
 
   describe "#queue_jobs" do
     context "when there are DOIs to import" do
       it "queues jobs and returns the total number of works queued" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([5, "next_cursor"])
-        allow_any_instance_of(Crossref).to receive(:process_data).and_return([5, "next_cursor"])
+        allow_any_instance_of(Crossref).to receive(:process_data).and_return([5, nil])
 
         response = Crossref.new.queue_jobs(from_date: from_date, until_date: until_date)
 
@@ -80,8 +90,7 @@ describe Crossref, type: :model, vcr: true do
       end
 
       it "sends a Slack notification when slack_webhook_url is present" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([1, "cursor"])
-        allow_any_instance_of(Crossref).to receive(:process_data).and_return([1, "cursor"])
+        allow_any_instance_of(Crossref).to receive(:process_data).and_return([1, nil])
 
         allow(Rails.logger).to receive(:info)
 
@@ -96,7 +105,7 @@ describe Crossref, type: :model, vcr: true do
 
     context "when there are no DOIs to import" do
       it "returns 0 and logs a message when there are no DOIs to import" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([0, nil])
+        allow_any_instance_of(Crossref).to receive(:process_data).and_return([0, nil])
 
         # Spy on Rails.logger
         logger_spy = spy("logger")
