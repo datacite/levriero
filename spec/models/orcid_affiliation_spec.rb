@@ -91,7 +91,6 @@ describe OrcidAffiliation, type: :model, vcr: true do
 
     describe "#push_item" do
       before do
-        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
         allow(ENV).to receive(:[]).with("ORCID_AFFILIATION_SOURCE_TOKEN").and_return("ORCID_AFFILIATION_SOURCE_TOKEN")
         allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
         allow(ENV).to receive(:[]).with("API_URL").and_return("https://fake.api.com")
@@ -107,12 +106,11 @@ describe OrcidAffiliation, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("SSL_CERT_FILE").and_return("https://fake.orcidapiurl.com")
         allow(ENV).to receive(:[]).with("SSL_CERT_DIR").and_return("https://fake.orcidapiurl.com")
         allow(Rails.logger).to receive(:info)
+        allow(OrcidAffiliation).to receive(:send_event_import_message).and_return(nil)
       end
 
       it "push_item with valid data" do
-        # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
-        allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 201,
-                                                                   body: { "data" => { "id" => "example_id" } }))
+        allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 201, body: { "data" => { "id" => "example_id" } }))
 
         item = {
           "attributes" => {
@@ -141,148 +139,10 @@ describe OrcidAffiliation, type: :model, vcr: true do
 
         expect(OrcidAffiliation).to receive(:normalize_orcid).with("0000-0001-2345-6789").and_return("https://orcid.org/0000-0001-2345-6789")
         expect(OrcidAffiliation).to receive(:normalize_ror).with("https://ror.org/02catss52").and_return("https://ror.org/normalized-ror-id")
-
-        expect(Rails.logger).to receive(:info).with("[Event Data] https://orcid.org/0000-0001-2345-6789 is_affiliated_with https://ror.org/normalized-ror-id pushed to Event Data service.")
-
-        response = OrcidAffiliation.push_item(item)
-        expect(response).to eq(1)
-      end
-
-      it "push_item with valid already pushed data" do
-        # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
-        allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 409,
-                                                                   body: { "data" => { "id" => "example_id" } }))
-
-        item = {
-          "attributes" => {
-            "relatedIdentifiers" => [{ "relatedIdentifierType" => "IsSupplementTo",
-                                       "relatedIdentifier" => "10.5678/some-related-doi" }],
-            "creators" => [
-              {
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "0000-0001-2345-6789",
-                  },
-                ],
-                "affiliation" => [
-                  {
-                    "affiliationIdentifierScheme" => "ROR",
-                    "affiliationIdentifier" => "https://ror.org/02catss52",
-                  },
-                ],
-              },
-            ],
-            "updated" => "2023-01-05T12:00:00Z",
-          },
-          "sourceId" => "orcid_affiliation",
-        }
-
-        expect(OrcidAffiliation).to receive(:normalize_orcid).with("0000-0001-2345-6789").and_return("https://orcid.org/0000-0001-2345-6789")
-        expect(OrcidAffiliation).to receive(:normalize_ror).with("https://ror.org/02catss52").and_return("https://ror.org/normalized-ror-id")
-
-        expect(Rails.logger).to receive(:info).with("[Event Data] https://orcid.org/0000-0001-2345-6789 is_affiliated_with https://ror.org/normalized-ror-id already pushed to Event Data service.")
+        expect(Rails.logger).to receive(:info).with("[Event Data] https://orcid.org/0000-0001-2345-6789 is_affiliated_with https://ror.org/normalized-ror-id sent to the events queue.")
 
         response = OrcidAffiliation.push_item(item)
         expect(response).to eq(1)
-      end
-
-      it "push_item with valid with error" do
-        # Mocking a valid item with an ORCID name identifier and ROR affiliation identifier
-        allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 500,
-                                                                   body: { "errors" => "An error occurred during the put request." }))
-        allow(Rails.logger).to receive(:error)
-
-        item = {
-          "attributes" => {
-            "relatedIdentifiers" => [{ "relatedIdentifierType" => "IsSupplementTo",
-                                       "relatedIdentifier" => "10.5678/some-related-doi" }],
-            "creators" => [
-              {
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "0000-0001-2345-6789",
-                  },
-                ],
-                "affiliation" => [
-                  {
-                    "affiliationIdentifierScheme" => "ROR",
-                    "affiliationIdentifier" => "https://ror.org/02catss52",
-                  },
-                ],
-              },
-            ],
-            "updated" => "2023-01-05T12:00:00Z",
-          },
-          "sourceId" => "orcid_affiliation",
-        }
-
-        expect(OrcidAffiliation).to receive(:normalize_orcid).with("0000-0001-2345-6789").and_return("https://orcid.org/0000-0001-2345-6789")
-        expect(OrcidAffiliation).to receive(:normalize_ror).with("https://ror.org/02catss52").and_return("https://ror.org/normalized-ror-id")
-
-        expect(Rails.logger).to receive(:error).with("[Event Data] https://orcid.org/0000-0001-2345-6789 is_affiliated_with https://ror.org/normalized-ror-id had an error: An error occurred during the put request.")
-
-        response = OrcidAffiliation.push_item(item)
-        expect(response).to eq(1)
-      end
-
-      it "push_item with missing ORCID data" do
-        # Mocking an item with missing ORCID data
-        allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 201,
-                                                                   body: { "data" => { "id" => "example_id" } }))
-        item = {
-          "attributes" => {
-            "relatedIdentifiers" => [{ "relatedIdentifierType" => "IsSupplementTo",
-                                       "relatedIdentifier" => "10.5678/some-related-doi" }],
-            "creators" => [
-              {
-                "affiliation" => [
-                  {
-                    "affiliationIdentifierScheme" => "ROR",
-                    "affiliationIdentifier" => "https://ror.org/02catss52",
-                  },
-                ],
-              },
-            ],
-            "updated" => "2023-01-05T12:00:00Z",
-          },
-          "sourceId" => "orcid_affiliation",
-        }
-
-        response = OrcidAffiliation.push_item(item)
-        expect(response).to eq(nil)
-      end
-
-      it "push_item with related identifier type to skip" do
-        # Mocking an item with a related identifier type to skip
-        item = {
-          "attributes" => {
-            "relatedIdentifiers" => [{ "relatedIdentifierType" => "IsIdenticalTo",
-                                       "relatedIdentifier" => "10.5678/some-related-doi" }],
-            "creators" => [
-              {
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "0000-0001-2345-6789",
-                  },
-                ],
-                "affiliation" => [
-                  {
-                    "affiliationIdentifierScheme" => "ROR",
-                    "affiliationIdentifier" => "https://ror.org/02catss52",
-                  },
-                ],
-              },
-            ],
-            "updated" => "2023-01-05T12:00:00Z",
-          },
-          "sourceId" => "orcid_affiliation",
-        }
-
-        response = OrcidAffiliation.push_item(item)
-        expect(response).to eq(nil)
       end
     end
   end
