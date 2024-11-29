@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    env_file: .env
+    environment:
+      - LOG_LEVEL=info
+    image: datacite/levriero
+    build: .
+    ports:
+      - "8045:80"
+      - "2245:22"
+    volumes:
+      - ./app:/home/app/webapp/app
+      - ./config:/home/app/webapp/config
+      - ./lib:/home/app/webapp/lib
+      - ./spec:/home/app/webapp/spec
+    platform: linux/amd64
+    networks:
+      - localstack_datacite
+    depends_on:
+      - memcached
+
+  memcached:
+    image: memcached:1.4.31
+    platform: linux/amd64
+    networks:
+      - localstack_datacite
+
+networks:
+  localstack_datacite:
+    external: true
