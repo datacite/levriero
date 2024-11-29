@@ -140,7 +140,7 @@ class RelatedIdentifier < Base
         },
       }
 
-      send_event_import_message(data)
+      send_event_import_message(data.to_json)
 
       Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
 

@@ -15,7 +15,7 @@ module Queueable
       queue_name_prefix = ENV["SQS_PREFIX"].present? ? ENV["SQS_PREFIX"] : Rails.env
       queue_url =
         sqs.get_queue_url(queue_name: "#{queue_name_prefix}_#{options[:queue_name]}").queue_url
-      options[:shoryuken_class] ||= "DoiImportWorker"
+      options[:shoryuken_class] ||= "EventImportWorker"
 
       options = {
         queue_url: queue_url,
