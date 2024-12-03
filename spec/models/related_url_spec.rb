@@ -112,7 +112,7 @@ describe RelatedUrl, type: :model, vcr: true do
         }
 
         expect(RelatedUrl.push_item(item)).to(eq(1))
-        expect(RelatedUrl).to(have_received(:send_event_import_message).with(json_data.to_json).once)
+        expect(RelatedUrl).to(have_received(:send_event_import_message).with(json_data).once)
       end
     end
   end

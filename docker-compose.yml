@@ -15,17 +15,20 @@ services:
       - ./config:/home/app/webapp/config
       - ./lib:/home/app/webapp/lib
       - ./spec:/home/app/webapp/spec
-    networks:
-      - public
+    depends_on:
+      - localstack
+
   memcached:
-    image: memcached:1.4.31
-    networks:
-      - public
-networks:
-  public:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      - subnet: 10.0.70.0/24
-        gateway: 10.0.70.1
+    image: memcached:1.6.32
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

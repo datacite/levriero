@@ -87,16 +87,17 @@ describe EventImportWorker do
       end
 
       context "when response body contains a non-empty error object value" do
-        it "logs response had an error message" do
-          response = OpenStruct.new(
+        let(:response) {
+          OpenStruct.new(
             status: 500,
             body: {
               "errors" => {
                 "message" => "foo"
               }
-            }
-          )
+          })
+        }
 
+        it "logs response had an error message" do
           allow(Rails.logger).to(receive(:error))
           allow(Maremma).to(receive(:post).and_return(response))
           expected_log = "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id} had an error"
@@ -105,15 +106,6 @@ describe EventImportWorker do
         end
 
         it "logs the error data object" do
-          response = OpenStruct.new(
-            status: 500,
-            body: {
-              "errors" => {
-                "message" => "foo"
-              }
-            }
-          )
-
           allow(Rails.logger).to(receive(:error))
           allow(Maremma).to(receive(:post).and_return(response))
           expect(Rails.logger).to(receive(:error).with(data.inspect))

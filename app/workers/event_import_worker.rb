@@ -19,7 +19,9 @@ class EventImportWorker
   def post_to_event_service(data)
     Maremma.post(
       "#{ENV["LAGOTTINO_URL"]}/events",
-      data: data.to_json,
+      # i don't believe calling to_json here is required...i want to test this
+      # data: data.to_json,
+      data: data,
       bearer: ENV["STAFF_ADMIN_TOKEN"],
       content_type: "application/vnd.api+json",
       accept: "application/vnd.api+json; version=2")

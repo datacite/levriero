@@ -128,7 +128,7 @@ describe "push_item" do
         }
 
         expect(FunderIdentifier.push_item(item)).to(eq(1))
-        expect(FunderIdentifier).to(have_received(:send_event_import_message).with(json_data.to_json).once)
+        expect(FunderIdentifier).to(have_received(:send_event_import_message).with(json_data).once)
       end
     end
   end
