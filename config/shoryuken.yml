@@ -4,6 +4,7 @@ pidfile: tmp/pids/shoryuken.pid
 queues:
   - doi
   - levriero
+  - events
 
 groups:
   usage:
@@ -11,3 +12,4 @@ groups:
     queues:
       - usage
       - levriero_usage
+      - events
