@@ -10,6 +10,7 @@ class EventImportWorker
     end
 
     response = post_to_event_service(data)
+    data = JSON.parse(data)
     prefix = log_prefix(data)
     handle_logging(data, response, prefix)
   end
@@ -17,10 +18,10 @@ class EventImportWorker
   private
 
   def post_to_event_service(data)
+    url = "#{ENV["LAGOTTINO_URL"]}/events"
+
     Maremma.post(
       "#{ENV["LAGOTTINO_URL"]}/events",
-      # i don't believe calling to_json here is required...i want to test this
-      # data: data.to_json,
       data: data,
       bearer: ENV["STAFF_ADMIN_TOKEN"],
       content_type: "application/vnd.api+json",

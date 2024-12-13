@@ -1,15 +1,27 @@
+# - the global concurrency is 50 threads
+# - the only queues within the global context are doi and levriero i.e. we process,
+#   at most, 50 messages from the doi and levriero queues in parallel
+
+# - the events group defines concurrency for the events queue i.e. we process,
+#   at most, 10 events in parallel
+
+# - the usage group defines concurrency for the usage and levriero_usage queues
+#   i.e. we process, at most, 4 messages in parallel
+
 concurrency: 50
 delay: 0
 pidfile: tmp/pids/shoryuken.pid
 queues:
   - doi
   - levriero
-  - events
 
 groups:
+  events:
+    concurrency: 10
+    queues:
+      - events
   usage:
     concurrency: 4
     queues:
       - usage
       - levriero_usage
-      - events
