@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+if Rails.env.development?
+  Aws.config.update({
+    endpoint: ENV["AWS_ENDPOINT"],
+    region: "us-east-1",
+    credentials: Aws::Credentials.new("test", "test")
+  })
+end
+
 # Shoryuken middleware to capture worker errors and send them on to Sentry.io
 module Shoryuken
   module Middleware
