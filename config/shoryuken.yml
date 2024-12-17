@@ -6,8 +6,12 @@ queues:
   - levriero
 
 groups:
+  levriero_usage:
+    concurrency: 10
+    queues:
+      - levriero_usage
   usage:
     concurrency: 4
     queues:
       - usage
-      - levriero_usage
+      # - levriero_usage
