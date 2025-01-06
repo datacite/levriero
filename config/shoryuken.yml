@@ -24,4 +24,3 @@ groups:
     concurrency: 4
     queues:
       - usage
-      - levriero_usage
