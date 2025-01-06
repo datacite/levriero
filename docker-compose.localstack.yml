@@ -6,7 +6,8 @@ services:
     environment:
       - LOG_LEVEL=info
       - AWS_ENDPOINT=http://localstack:4566
-      - LAGOTTINO_URL=http://lupo_web
+      # - LAGOTTINO_URL=http://lupo_web # use this to to connect to localstack network
+      - LAGOTTINO_URL=https://api.stage.datacite.org # use this value to run specs locally
     image: datacite/levriero
     ports:
       - "8045:80"
