@@ -10,6 +10,7 @@ class EventImportWorker
     end
 
     response = post_to_event_service(data)
+    data = JSON.parse(data)
     prefix = log_prefix(data)
     handle_logging(data, response, prefix)
   end

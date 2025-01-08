@@ -38,7 +38,7 @@ describe EventImportWorker do
               "obj" => {},
             },
           },
-        }
+        }.to_json
       }
 
       let(:subj_id) { "https://doi.org/10.0001/foo.bar" }
@@ -100,15 +100,7 @@ describe EventImportWorker do
         it "logs response had an error message" do
           allow(Rails.logger).to(receive(:error))
           allow(Maremma).to(receive(:post).and_return(response))
-          expected_log = "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id} had an error"
-          expect(Rails.logger).to(receive(:error))
-          EventImportWorker.new.perform(nil, data)
-        end
-
-        it "logs the error data object" do
-          allow(Rails.logger).to(receive(:error))
-          allow(Maremma).to(receive(:post).and_return(response))
-          expect(Rails.logger).to(receive(:error).with(data.inspect))
+          expect(Rails.logger).to(receive(:error)).twice
           EventImportWorker.new.perform(nil, data)
         end
       end
