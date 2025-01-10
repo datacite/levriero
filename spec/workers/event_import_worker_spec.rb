@@ -1,6 +1,6 @@
 require "rails_helper"
 
-xdescribe EventImportWorker do
+describe EventImportWorker do
   describe "#perform" do
     context "when data is blank" do
       before do
