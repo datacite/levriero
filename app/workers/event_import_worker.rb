@@ -4,9 +4,6 @@ class EventImportWorker
   shoryuken_options queue: -> { "#{ENV['RAILS_ENV']}_events" }, auto_delete: true
 
   def perform(sqs_msg=nil, data=nil)
-    Rails.logger.info("DOI Import Worker")
-    Rails.logger.info(data)
-    Rails.logger.info(JSON.parse(data))
     if data.blank?
       Rails.logger.info("[EventImportWorker] data object is blank.")
       return
@@ -14,8 +11,7 @@ class EventImportWorker
 
     response = post_to_event_service(data)
     data = JSON.parse(data)
-    # prefix = log_prefix(data)
-    prefix ="wendel.fabian.chinsamy"
+    prefix = log_prefix(data)
     handle_logging(data, response, prefix)
   end
 
@@ -31,6 +27,8 @@ class EventImportWorker
   end
 
   def log_prefix(data)
+    Rails.logger.info("starting to create log prefix")
+    Rails.logger.info(data)
     subj_id = data["data"]["attributes"]["subjId"]
     relation_type_id = data["data"]["attributes"]["relationTypeId"]
     obj_id = data["data"]["attributes"]["objId"]
