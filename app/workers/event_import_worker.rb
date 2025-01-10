@@ -4,6 +4,8 @@ class EventImportWorker
   shoryuken_options queue: -> { "#{ENV['RAILS_ENV']}_events" }, auto_delete: true
 
   def perform(sqs_msg=nil, data=nil)
+    Rails.logger.info("Start of doi import worker")
+    Rails.logger.info(data)
     if data.blank?
       Rails.logger.info("[EventImportWorker] data object is blank.")
       return
