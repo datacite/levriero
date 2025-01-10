@@ -7,15 +7,16 @@ class EventImportWorker
     Rails.logger.info("DOI Import Worker")
     Rails.logger.info(data)
     Rails.logger.info(JSON.parse(data))
-    # if data.blank?
-    #   Rails.logger.info("[EventImportWorker] data object is blank.")
-    #   return
-    # end
+    if data.blank?
+      Rails.logger.info("[EventImportWorker] data object is blank.")
+      return
+    end
 
-    # response = post_to_event_service(data)
-    # data = JSON.parse(data)
+    response = post_to_event_service(data)
+    data = JSON.parse(data)
     # prefix = log_prefix(data)
-    # handle_logging(data, response, prefix)
+    prefix ="wendel.fabian.chinsamy"
+    handle_logging(data, response, prefix)
   end
 
   private
