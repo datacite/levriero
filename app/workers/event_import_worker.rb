@@ -29,7 +29,7 @@ class EventImportWorker
   def log_prefix(data)
     Rails.logger.info("starting to create log prefix")
     Rails.logger.info(data)
-    subj_id = "wendel.fabian.chinsamy"
+    subj_id = "https://doi.org/10.0001/foo.bar"
     # subj_id = data["data"]["attributes"]["subjId"]
     relation_type_id = data["data"]["attributes"]["relationTypeId"]
     obj_id = data["data"]["attributes"]["objId"]

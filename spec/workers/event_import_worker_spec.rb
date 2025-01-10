@@ -41,6 +41,7 @@ describe EventImportWorker do
         }.to_json
       }
 
+      # let(:subj_id) { "https://doi.org/10.0001/foo.bar" }
       let(:subj_id) { "https://doi.org/10.0001/foo.bar" }
       let(:relation_type_id) { "example-one" }
       let(:obj_id) { "https://doi.org/10.0001/example.one" }
@@ -82,7 +83,7 @@ describe EventImportWorker do
           allow(Rails.logger).to(receive(:info))
           allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 409)))
           expected_log = "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id} already pushed to the Event Data service."
-          # expect(Rails.logger).to(receive(:info).with(expected_log))
+          expect(Rails.logger).to(receive(:info).with(expected_log))
           EventImportWorker.new.perform(nil, data)
         end
       end
