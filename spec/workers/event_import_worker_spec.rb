@@ -81,7 +81,7 @@ describe EventImportWorker do
         it "logs pushed to event data service message" do
           allow(Rails.logger).to(receive(:info))
           allow(Maremma).to(receive(:post).and_return(OpenStruct.new(status: 409)))
-          expected_log = "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id} already pushed to the Event Data service."
+          # expected_log = "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id} already pushed to the Event Data service."
           expect(Rails.logger).to(receive(:info).with(expected_log))
           EventImportWorker.new.perform(nil, data)
         end
