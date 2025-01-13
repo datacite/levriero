@@ -58,9 +58,11 @@ class RelatedIdentifier < Base
   end
 
   def self.push_item(item)
-    Rails.logger.info("Related Identifier: push_item")
+    Rails.logger.info("Related Identifier: push_item start")
     attributes = item.fetch("attributes", {})
+    Rails.logger.info("Related Identifier: attributes -> #{attributes.inspect}")
     doi = attributes.fetch("doi", nil)
+    Rails.logger.info("Related Identifier: doi -> #{doi.inspect}")
 
     if doi.blank?
       Rails.logger.info("[Related Identifier: doi is blank]")

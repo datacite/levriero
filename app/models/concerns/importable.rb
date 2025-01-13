@@ -223,9 +223,6 @@ module Importable
           ["DOI", "URL"].include?(r["relatedIdentifierType"])
       end
 
-      Rails.logger.info("importable the response is: #{response.inspect}")
-      Rails.logger.info(related_identifiers.inspect)
-
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
         item = {
           "id" => data["id"],
