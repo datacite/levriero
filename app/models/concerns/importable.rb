@@ -215,14 +215,19 @@ module Importable
     end
 
     def parse_record(sqs_msg: nil, data: nil)
+      Rails.logger.info("[Event Import Worker]: Parse Record")
       id = "https://doi.org/#{data['id']}"
       response = get_datacite_json(id)
-      related_identifiers = Array.wrap(response.fetch("relatedIdentifiers",
-                                                      nil)).select do |r|
-        ["DOI", "URL"].include?(r["relatedIdentifierType"])
+
+      related_identifiers = Array.wrap(
+        response.fetch("relatedIdentifiers", nil)).select do |r|
+          ["DOI", "URL"].include?(r["relatedIdentifierType"])
       end
 
+      Rails.logger.info(related_identifiers.inspect)
+
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
+        Rails.logger.info("[Event Import Worker]: There are doi related identifiers")
         item = {
           "id" => data["id"],
           "type" => "dois",
@@ -232,6 +237,7 @@ module Importable
       end
 
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "URL" }
+        Rails.logger.info("[Event Import Worker]: There are url related identifiers")
         item = {
           "id" => data["id"],
           "type" => "dois",
