@@ -62,12 +62,12 @@ class RelatedIdentifier < Base
     doi = attributes.fetch("doi", nil)
 
     if doi.blank?
-      Rail.logger.info("[Related Identifier: doi is blank]")
+      Rails.logger.info("[Related Identifier: doi is blank]")
     end
 
     if cached_doi_ra(doi) == "DataCite"
-      Rail.logger.info("[Related Identifier: doi is #{cached_doi_ra(doi)}]")
-      Rail.logger.info("[Related Identifier: cached doi ra is datacite]")
+      Rails.logger.info("[Related Identifier: doi is #{cached_doi_ra(doi)}]")
+      Rails.logger.info("[Related Identifier: cached doi ra is datacite]")
     end
 
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
