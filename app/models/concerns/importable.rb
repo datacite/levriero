@@ -227,7 +227,6 @@ module Importable
       Rails.logger.info(related_identifiers.inspect)
 
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
-        Rails.logger.info("[Event Import Worker]: There are doi related identifiers")
         item = {
           "id" => data["id"],
           "type" => "dois",

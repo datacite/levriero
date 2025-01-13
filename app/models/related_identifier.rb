@@ -61,6 +61,15 @@ class RelatedIdentifier < Base
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
 
+    if doi.blank?
+      Rail.logger.info("[Related Identifier: doi is blank]")
+    end
+
+    if cached_doi_ra(doi) == "DataCite"
+      Rail.logger.info("[Related Identifier: doi is #{cached_doi_ra(doi)}]")
+      Rail.logger.info("[Related Identifier: cached doi ra is datacite]")
+    end
+
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
@@ -118,6 +127,8 @@ class RelatedIdentifier < Base
       ssum
     end
 
+    Rails.logger.info("[Related Identifier]: push items count is #{push_items.length}")
+
     # there can be one or more related_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
       data = {
@@ -140,6 +151,8 @@ class RelatedIdentifier < Base
         },
       }
 
+      Rails.logger.info("[Related Identifier]: pushed to queue data")
+      Rails.logger.info("[Related Identifier]: #{data}")
       send_event_import_message(data)
 
       Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
