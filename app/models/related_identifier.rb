@@ -58,6 +58,7 @@ class RelatedIdentifier < Base
   end
 
   def self.push_item(item)
+    Rails.logger.info("Related Identifier: push_item")
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
 
