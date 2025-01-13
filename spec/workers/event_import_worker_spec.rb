@@ -41,7 +41,6 @@ describe EventImportWorker do
         }.to_json
       }
 
-      # let(:subj_id) { "https://doi.org/10.0001/foo.bar" }
       let(:subj_id) { "https://doi.org/10.0001/foo.bar" }
       let(:relation_type_id) { "example-one" }
       let(:obj_id) { "https://doi.org/10.0001/example.one" }

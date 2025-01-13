@@ -9,10 +9,14 @@ class EventImportWorker
       return
     end
 
+    Rails.logger.info("[Event Import Worker] - Send request to event service: Start")
     response = post_to_event_service(data)
-    data = JSON.parse(data)
-    prefix = log_prefix(data)
-    handle_logging(data, response, prefix)
+    Rails.logger.info("[Event Import Worker] - Response received")
+    Rails.logger.info(response.inspect)
+    Rails.logger.info("[Event Import Worker] - Send request to event service: End")
+    # data = JSON.parse(data)
+    # prefix = log_prefix(data)
+    # handle_logging(data, response, prefix)
   end
 
   private
@@ -29,8 +33,7 @@ class EventImportWorker
   def log_prefix(data)
     Rails.logger.info("starting to create log prefix")
     Rails.logger.info(data)
-    subj_id = "https://doi.org/10.0001/foo.bar"
-    # subj_id = data["data"]["attributes"]["subjId"]
+    subj_id = data["data"]["attributes"]["subjId"]
     relation_type_id = data["data"]["attributes"]["relationTypeId"]
     obj_id = data["data"]["attributes"]["objId"]
 
