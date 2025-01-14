@@ -79,8 +79,10 @@ class FunderIdentifier < Base
       source_id = "datacite_funder"
       source_token = ENV["DATACITE_FUNDER_SOURCE_TOKEN"]
 
+      Rails.logger.info("[Event Import Worker]: Funding references funder_identifier #{funder_identifier.present?}")
+      Rails.logger.info("[Event Import Worker]: Funding references obj_id #{obj_id.present?}")
+
       if funder_identifier.present? && obj_id.present?
-        Rails.logger.info("[Event Import Worker]: Funding references inside important if")
         subj = cached_datacite_response(pid)
         Rails.logger.info("[Event Import Worker]: Funding references subj #{subj}")
         obj = cached_funder_response(obj_id)
