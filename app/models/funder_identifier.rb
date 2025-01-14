@@ -73,7 +73,7 @@ class FunderIdentifier < Base
 
       obj_id = normalize_doi(funder_identifier)
 
-      Rails.logger.info("[Event Import Worker]: Funding references obj_id #{funder_identifier}")
+      Rails.logger.info("[Event Import Worker]: Funding references obj_id #{obj_id}")
 
       relation_type_id = "is_funded_by"
       source_id = "datacite_funder"
