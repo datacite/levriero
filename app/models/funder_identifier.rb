@@ -64,9 +64,16 @@ class FunderIdentifier < Base
     end
 
     push_items = Array.wrap(funder_identifiers).reduce([]) do |ssum, iitem|
+      Rails.logger.info("[Event Import Worker]: Funding references inside push_items")
+
       funder_identifier = iitem.fetch("funderIdentifier",
                                       nil).to_s.strip.downcase
+
+      Rails.logger.info("[Event Import Worker]: Funding references funder_identifier #{funder_identifier}")
+
       obj_id = normalize_doi(funder_identifier)
+
+      Rails.logger.info("[Event Import Worker]: Funding references obj_id #{funder_identifier}")
 
       relation_type_id = "is_funded_by"
       source_id = "datacite_funder"
@@ -87,6 +94,8 @@ class FunderIdentifier < Base
                   "license" => LICENSE,
                   "subj" => subj,
                   "obj" => obj }
+
+        Rails.logger.info("[Event Import Worker]: Funding references ssum #{ssum.inspect}")
       end
 
       ssum
