@@ -65,7 +65,13 @@ class RelatedIdentifier < Base
     doi = attributes.fetch("doi", nil)
     Rails.logger.info("Related Identifier: doi -> #{doi.inspect}")
 
-    Rails.logger.info("[Related Identifier: cached_doi_ra #{cached_doi_ra(doi)}]")
+    begin
+      cdr = cached_doi_ra(doi)
+      Rails.logger.info("[Related Identifier: cached_doi_ra #{cdr}]")
+    rescue => err
+      Rails.logger.info(err.inspect)
+      Rails.logger.error(err)
+    end
 
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
