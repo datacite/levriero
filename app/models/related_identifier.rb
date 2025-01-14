@@ -58,22 +58,12 @@ class RelatedIdentifier < Base
   end
 
   def self.push_item(item)
-    Rails.logger.info("Related Identifier: push_item start")
-    Rails.logger.info("Related Identifier: #{item.inspect}")
     attributes = item.fetch("attributes", {})
-    Rails.logger.info("Related Identifier: attributes -> #{attributes.inspect}")
     doi = attributes.fetch("doi", nil)
-    Rails.logger.info("Related Identifier: doi -> #{doi.inspect}")
-
-    begin
-      cdr = cached_doi_ra(doi)
-      Rails.logger.info("[Related Identifier: cached_doi_ra #{cdr}]")
-    rescue => err
-      Rails.logger.info(err.inspect)
-      Rails.logger.error(err)
-    end
 
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
+
+    Rails.logger.info("[Event Import Worker]: we got a ra now!")
 
     pid = normalize_doi(doi)
 

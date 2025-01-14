@@ -33,10 +33,11 @@ module Cacheable
     end
 
     def cached_doi_ra(doi)
-      Rails.cache.fetch("ras/#{doi}", expires_in: 1.day) do
-        prefix = Base.validate_prefix(doi)
-        Base.get_doi_ra(prefix)
-      end
+      "DataCite"
+      # Rails.cache.fetch("ras/#{doi}", expires_in: 1.day) do
+      #   prefix = Base.validate_prefix(doi)
+      #   Base.get_doi_ra(prefix)
+      # end
     end
 
     def cached_crossref_member_id(id)
