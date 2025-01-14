@@ -67,8 +67,6 @@ class RelatedIdentifier < Base
     # return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
     return nil unless doi.present? && cdr == "DataCite"
 
-    Rails.logger.info("[Event Import Worker]: we got a ra now!")
-
     pid = normalize_doi(doi)
 
     related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select do |r|
@@ -124,8 +122,6 @@ class RelatedIdentifier < Base
       ssum
     end
 
-    Rails.logger.info("[Related Identifier]: push items count is #{push_items.length}")
-
     # there can be one or more related_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
       data = {
@@ -148,8 +144,6 @@ class RelatedIdentifier < Base
         },
       }
 
-      Rails.logger.info("[Related Identifier]: pushed to queue data")
-      Rails.logger.info("[Related Identifier]: #{data}")
       send_event_import_message(data)
 
       Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
