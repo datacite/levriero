@@ -66,8 +66,7 @@ class FunderIdentifier < Base
     push_items = Array.wrap(funder_identifiers).reduce([]) do |ssum, iitem|
       funder_identifier = iitem.fetch("funderIdentifier",
                                       nil).to_s.strip.downcase
-      # obj_id = normalize_doi(funder_identifier)
-      obj_id = "https://doi.org/10.4224/17210691"
+      obj_id = normalize_doi(funder_identifier)
 
       relation_type_id = "is_funded_by"
       source_id = "datacite_funder"
