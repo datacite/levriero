@@ -61,7 +61,11 @@ class RelatedIdentifier < Base
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
 
-    return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
+    # remove this when done
+    cdr = "DataCite"
+
+    # return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
+    return nil unless doi.present? && cdr == "DataCite"
 
     Rails.logger.info("[Event Import Worker]: we got a ra now!")
 
