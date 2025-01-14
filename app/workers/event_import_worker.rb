@@ -11,7 +11,7 @@ class EventImportWorker
 
     Rails.logger.info("[Event Import Worker] - Send request to event service: Start")
     response = post_to_event_service(data)
-    # data = JSON.parse(data)
+    data = JSON.parse(data)
     prefix = log_prefix(data)
     handle_logging(data, response, prefix)
     Rails.logger.info("[Event Import Worker] - Send request to event service: End")
