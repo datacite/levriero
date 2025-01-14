@@ -80,8 +80,11 @@ class FunderIdentifier < Base
       source_token = ENV["DATACITE_FUNDER_SOURCE_TOKEN"]
 
       if funder_identifier.present? && obj_id.present?
+        Rails.logger.info("[Event Import Worker]: Funding references inside important if")
         subj = cached_datacite_response(pid)
+        Rails.logger.info("[Event Import Worker]: Funding references subj #{subj}")
         obj = cached_funder_response(obj_id)
+        Rails.logger.info("[Event Import Worker]: Funding references obj #{obj}")
 
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
