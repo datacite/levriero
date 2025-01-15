@@ -74,9 +74,7 @@ class FunderIdentifier < Base
 
       if funder_identifier.present? && obj_id.present?
         subj = cached_datacite_response(pid)
-        Rails.logger.info("[Event Import Worker]: Funding references subj #{subj}")
         obj = cached_funder_response(obj_id)
-        Rails.logger.info("[Event Import Worker]: Funding references obj #{obj}")
 
         ssum << { "message_action" => "create",
                   "subj_id" => pid,
@@ -89,8 +87,6 @@ class FunderIdentifier < Base
                   "license" => LICENSE,
                   "subj" => subj,
                   "obj" => obj }
-
-        Rails.logger.info("[Event Import Worker]: Funding references ssum #{ssum.inspect}")
       end
 
       ssum

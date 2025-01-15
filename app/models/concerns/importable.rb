@@ -42,10 +42,7 @@ module Importable
     end
 
     def normalize_doi(doi)
-      Rails.logger.info("[Event Import Worker]: normalize doi method")
-      Rails.logger.info("[Event Import Worker]: normalize doi -> doi = #{doi}")
       doi = validate_doi(doi)
-      Rails.logger.info("[Event Import Worker]: normalize doi (After validation) -> doi = #{doi}")
       return nil if doi.blank?
 
       # remove non-printing whitespace and downcase
