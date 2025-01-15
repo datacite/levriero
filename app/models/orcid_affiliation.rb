@@ -110,6 +110,7 @@ class OrcidAffiliation < Base
 
       # there can be one or more affiliation_identifier per DOI
       Array.wrap(push_items).each do |iiitem|
+        subj1 = "#{iiitem["obj"]["id"]}#{"abc"}"
         data = {
           "data" => {
             "type" => "events",
@@ -124,7 +125,7 @@ class OrcidAffiliation < Base
               "timestamp" => iiitem["timestamp"],
               "license" => iiitem["license"],
               # "subj" => iiitem["subj"],
-              "subj" => "#{iiitem["obj"]}abc",
+              "subj" => subj1,
               "obj" => iiitem["obj"],
             },
           },
