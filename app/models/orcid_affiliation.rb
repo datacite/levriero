@@ -52,15 +52,12 @@ class OrcidAffiliation < Base
   end
 
   def self.push_item(item)
-    Rails.logger.info("[Event Import Worker]: orcid_affiliation push_item")
-
     attributes = item.fetch("attributes", {})
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
        "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end
-    Rails.logger.info("[Event Import Worker]: orcid_affiliation skip_doi = #{skip_doi}")
 
     total_push_items = []
 
@@ -70,7 +67,6 @@ class OrcidAffiliation < Base
         n["nameIdentifierScheme"] == "ORCID"
       end
       skip_orcid = name_identifier.blank?
-      Rails.logger.info("[Event Import Worker]: orcid_affiliation skip_orcid = #{skip_orcid}")
 
       affiliation_identifiers = Array.wrap(creator).reduce([]) do |sum, c|
         Array.wrap(c["affiliation"]).each do |a|
@@ -79,8 +75,6 @@ class OrcidAffiliation < Base
 
         sum
       end
-
-      Rails.logger.info("[Event Import Worker]: orcid_affiliation aff_identifiers = #{affiliation_identifiers}")
 
       return nil if affiliation_identifiers.blank? || skip_doi || skip_orcid
 
@@ -112,6 +106,8 @@ class OrcidAffiliation < Base
         ssum
       end
 
+      Rails.logger.info("[Event Import Worker]: send orcid aff push_items = #{push_items.inspect}")
+
       # there can be one or more affiliation_identifier per DOI
       Array.wrap(push_items).each do |iiitem|
         data = {
@@ -133,6 +129,8 @@ class OrcidAffiliation < Base
           },
         }
 
+        Rails.logger.info("[Event Import Worker]: send orcid aff to events")
+        Rails.logger.info("[Event Import Worker]: orcid data = #{data.inspect}")
         send_event_import_message(data)
 
         Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
