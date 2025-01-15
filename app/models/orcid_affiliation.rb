@@ -116,7 +116,8 @@ class OrcidAffiliation < Base
             "type" => "events",
             "attributes" => {
               "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
+              # "subjId" => iiitem["subj_id"],
+              "subjId" => subj1,
               "objId" => iiitem["obj_id"],
               "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
               "sourceId" => iiitem["source_id"].to_s.dasherize,
@@ -125,7 +126,7 @@ class OrcidAffiliation < Base
               "timestamp" => iiitem["timestamp"],
               "license" => iiitem["license"],
               # "subj" => iiitem["subj"],
-              "subj" => subj1,
+              "subj" => iiitem["obj"],
               "obj" => iiitem["obj"],
             },
           },
