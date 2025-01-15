@@ -60,6 +60,7 @@ class OrcidAffiliation < Base
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
        "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
     end
+    Rails.logger.info("[Event Import Worker]: orcid_affiliation skip_doi = #{skip_doi}")
 
     total_push_items = []
 
