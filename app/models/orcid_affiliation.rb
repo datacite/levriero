@@ -124,7 +124,7 @@ class OrcidAffiliation < Base
               "timestamp" => iiitem["timestamp"],
               "license" => iiitem["license"],
               # "subj" => iiitem["subj"],
-              "subj" => iitem["obj"],
+              "subj" => iiitem["obj"],
               "obj" => iiitem["obj"],
             },
           },
