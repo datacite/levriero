@@ -52,9 +52,10 @@ class OrcidAffiliation < Base
   end
 
   def self.push_item(item)
+    Rails.logger.info("[Event Import Worker]: orcid_affiliation push_item")
+
     attributes = item.fetch("attributes", {})
-    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
-                                                      nil))
+    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil))
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
        "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
@@ -68,6 +69,7 @@ class OrcidAffiliation < Base
         n["nameIdentifierScheme"] == "ORCID"
       end
       skip_orcid = name_identifier.blank?
+      Rails.logger.info("[Event Import Worker]: orcid_affiliation skip_orcid = #{skip_orcid}")
 
       affiliation_identifiers = Array.wrap(creator).reduce([]) do |sum, c|
         Array.wrap(c["affiliation"]).each do |a|
@@ -76,6 +78,8 @@ class OrcidAffiliation < Base
 
         sum
       end
+
+      Rails.logger.info("[Event Import Worker]: orcid_affiliation aff_identifiers = #{affiliation_identifiers}")
 
       return nil if affiliation_identifiers.blank? || skip_doi || skip_orcid
 
