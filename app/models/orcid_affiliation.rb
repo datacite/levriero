@@ -110,14 +110,12 @@ class OrcidAffiliation < Base
 
       # there can be one or more affiliation_identifier per DOI
       Array.wrap(push_items).each do |iiitem|
-        subj1 = "#{iiitem["obj"]["id"]}#{"efg"}"
         data = {
           "data" => {
             "type" => "events",
             "attributes" => {
               "messageAction" => iiitem["message_action"],
-              # "subjId" => iiitem["subj_id"],
-              "subjId" => subj1,
+              "subjId" => iiitem["subj_id"],
               "objId" => iiitem["obj_id"],
               "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
               "sourceId" => iiitem["source_id"].to_s.dasherize,
@@ -125,8 +123,7 @@ class OrcidAffiliation < Base
               "occurredAt" => iiitem["occurred_at"],
               "timestamp" => iiitem["timestamp"],
               "license" => iiitem["license"],
-              # "subj" => iiitem["subj"],
-              "subj" => iiitem["obj"],
+              "subj" => iiitem["subj"],
               "obj" => iiitem["obj"],
             },
           },
