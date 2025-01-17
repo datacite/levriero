@@ -106,8 +106,6 @@ class OrcidAffiliation < Base
         ssum
       end
 
-      Rails.logger.info("[Event Import Worker]: send orcid aff push_items = #{push_items.inspect}")
-
       # there can be one or more affiliation_identifier per DOI
       Array.wrap(push_items).each do |iiitem|
         data = {
@@ -129,8 +127,6 @@ class OrcidAffiliation < Base
           },
         }
 
-        Rails.logger.info("[Event Import Worker]: send orcid aff to events")
-        Rails.logger.info("[Event Import Worker]: orcid data = #{data.inspect}")
         send_event_import_message(data)
 
         Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."

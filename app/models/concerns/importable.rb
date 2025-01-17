@@ -241,14 +241,10 @@ module Importable
         RelatedUrl.push_item(item)
       end
 
-      Rails.logger.info("[Event Import Worker]: Funding references #{response.fetch("fundingReferences", [])}")
-
       funding_references = Array.wrap(response.fetch("fundingReferences",
                                                      nil)).select do |f|
         f.fetch("funderIdentifierType", nil) == "Crossref Funder ID"
       end
-
-      Rails.logger.info("[Event Import Worker]: Funding references count #{funding_references.length}")
 
       if funding_references.present?
         item = {
