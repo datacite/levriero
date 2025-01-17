@@ -249,9 +249,11 @@ class Base
     end
 
     url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true"
+    Rails.logger.info("[EventImportWorker]: get_datacite_json #{url}")
     response = Maremma.get(url)
 
     if response.status != 200
+      Rails.logger.info("[EventImportWorker]: response failed: #{response.inspect}")
       Rails.logger.info "DOI #{doi} not found"
       return {}
     end
