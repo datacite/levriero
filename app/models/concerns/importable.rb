@@ -268,7 +268,7 @@ module Importable
           "type" => "dois",
           "attributes" => response,
         }
-        # NameIdentifier.push_item(item)
+        NameIdentifier.push_item(item)
       end
 
       affiliation_identifiers = Array.wrap(response.fetch("creators",
@@ -288,7 +288,7 @@ module Importable
           "type" => "dois",
           "attributes" => response,
         }
-        # AffiliationIdentifier.push_item(item)
+        AffiliationIdentifier.push_item(item)
       end
 
       orcid_affiliation = Array.wrap(response.fetch("creators",
@@ -303,7 +303,7 @@ module Importable
           "type" => "dois",
           "attributes" => response,
         }
-        # OrcidAffiliation.push_item(item)
+        OrcidAffiliation.push_item(item)
       end
 
       related_identifiers + name_identifiers + funding_references + affiliation_identifiers + orcid_affiliation
