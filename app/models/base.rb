@@ -250,7 +250,6 @@ class Base
 
     url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true"
     Rails.logger.info("[EventImportWorker]: get_datacite_json #{url}")
-    sleep 3
     response = Maremma.get(url)
 
     if response.status != 200
