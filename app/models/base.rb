@@ -253,7 +253,7 @@ class Base
     response = Maremma.get(url)
 
     if response.status != 200
-      Rails.logger.info("[EventImportWorker]: response failed (#{url}): #{response.inspect}")
+      Rails.logger.info("[EventImportWorker]: response failed (#{url}):#{response.inspect}")
       Rails.logger.info "DOI #{doi} not found"
       return {}
     end
