@@ -61,11 +61,7 @@ class RelatedIdentifier < Base
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
 
-    # remove this when done
-    cdr = "DataCite"
-
-    # return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
-    return nil unless doi.present? && cdr == "DataCite"
+    return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
 
