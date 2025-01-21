@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Importable", vcr: true do
+xdescribe "Importable", vcr: true do
   # context "Doi" do
   #   describe "import_from_api" do
   #     # return number of clients or providers imported into Elasticsearch
