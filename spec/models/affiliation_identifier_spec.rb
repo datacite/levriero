@@ -35,24 +35,10 @@ describe AffiliationIdentifier, type: :model, vcr: true do
     end
 
     describe "#push_data" do
-      it "pushes data to the Event Data service" do
-        # Mock a successful result from the Event Data service
+      it "pushes data to the events queue" do
         successful_result = double("result", body: { "data" => [{ "attributes" => {} }] })
-
-        allow(Maremma).to receive(:post).and_return(successful_result)
-
         result = AffiliationIdentifier.new.push_data(successful_result)
         expect(result).to eq(1)
-      end
-
-      it "handles errors from the Event Data service" do
-        # Mock an error result from the Event Data service
-        error_result = double("result", body: { "errors" => "Error message" })
-
-        allow(Maremma).to receive(:post).and_return(error_result)
-
-        result = AffiliationIdentifier.new.push_data(error_result)
-        expect(result).to eq("Error message")
       end
     end
 
@@ -83,138 +69,18 @@ describe AffiliationIdentifier, type: :model, vcr: true do
         }
       end
 
-      context "when STAFF_ADMIN_TOKEN is present" do
+      context "when can add to events queue" do
         before do
-          allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return("example_admin_token")
           allow(AffiliationIdentifier).to receive(:cached_datacite_response).and_return({})
           allow(AffiliationIdentifier).to receive(:cached_ror_response).and_return({})
-          allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
           allow(ENV).to receive(:[]).with("DATACITE_AFFILIATION_SOURCE_TOKEN").and_return("DATACITE_AFFILIATION_SOURCE_TOKEN")
           allow(Rails.logger).to receive(:info)
+          allow(AffiliationIdentifier).to receive(:send_event_import_message).and_return(nil)
         end
 
-        it "pushes affiliation identifiers to the Event Data service" do
-          allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 200,
-                                                                     body: { "data" => { "id" => "example_id" } }))
-          push_url = "https://fake.lagattino.com/events"
-          expected_data = {
-            "data" => {
-              "type" => "events",
-              "attributes" => {
-                "messageAction" => "create",
-                "subjId" => "https://doi.org/10.1234/example-doi",
-                "objId" => "https://ror.org/02catss52",
-                "relationTypeId" => "is_authored_at",
-                "sourceId" => "datacite_affiliation",
-                "sourceToken" => "DATACITE_AFFILIATION_SOURCE_TOKEN",
-                "occurredAt" => "2023-01-05T12:00:00Z",
-                "timestamp" => Time.zone.now.iso8601,
-                "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-                "subj" => {},
-                "obj" => {},
-              },
-            },
-          }
-
-          expect(Rails.logger).to receive(:info).with("[Event Data] https://doi.org/10.1234/example-doi is_authored_at https://ror.org/02catss52 pushed to Event Data service.")
-
-          stub_request(:post, push_url).
-            with(
-              body: expected_data.to_json,
-              headers: {
-                "Authorization" => "Bearer example_admin_token",
-                "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2",
-              },
-            ).
-            to_return(status: 200, body: { "data" => { "id" => "example_id" } }.to_json, headers: {})
-
-          AffiliationIdentifier.push_item(item)
-        end
-
-        it "skips pushing if STAFF_ADMIN_TOKEN is not present" do
-          allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return(nil)
-          expect(Maremma).not_to receive(:post)
-
-          AffiliationIdentifier.push_item(item)
-        end
-
-        it "returns 409 for already pushed events" do
-          allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 409,
-                                                                     body: { "data" => { "id" => "example_id" } }))
-          push_url = "https://fake.lagattino.com/events"
-          expected_data = {
-            "data" => {
-              "type" => "events",
-              "attributes" => {
-                "messageAction" => "create",
-                "subjId" => "https://doi.org/10.1234/example-doi",
-                "objId" => "https://ror.org/02catss52",
-                "relationTypeId" => "is_authored_at",
-                "sourceId" => "datacite_affiliation",
-                "sourceToken" => "DATACITE_AFFILIATION_SOURCE_TOKEN",
-                "occurredAt" => "2023-01-05T12:00:00Z",
-                "timestamp" => Time.zone.now.iso8601,
-                "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-                "subj" => {},
-                "obj" => {},
-              },
-            },
-          }
-
-          expect(Rails.logger).to receive(:info).with("[Event Data] https://doi.org/10.1234/example-doi is_authored_at https://ror.org/02catss52 already pushed to Event Data service.")
-
-          stub_request(:post, push_url).
-            with(
-              body: expected_data.to_json,
-              headers: {
-                "Authorization" => "Bearer example_admin_token",
-                "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2",
-              },
-            ).
-            to_return(status: 200, body: { "data" => { "id" => "example_id" } }.to_json, headers: {})
-
-          AffiliationIdentifier.push_item(item)
-        end
-
-        it "returns 500 when there is error while pushing an event" do
-          allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 500,
-                                                                     body: { "errors" => "An error occurred during the put request." }))
-          allow(Rails.logger).to receive(:error)
-
-          push_url = "https://fake.lagattino.com/events"
-          expected_data = {
-            "data" => {
-              "type" => "events",
-              "attributes" => {
-                "messageAction" => "create",
-                "subjId" => "https://doi.org/10.1234/example-doi",
-                "objId" => "https://ror.org/02catss52",
-                "relationTypeId" => "is_authored_at",
-                "sourceId" => "datacite_affiliation",
-                "sourceToken" => "DATACITE_AFFILIATION_SOURCE_TOKEN",
-                "occurredAt" => "2023-01-05T12:00:00Z",
-                "timestamp" => Time.zone.now.iso8601,
-                "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
-                "subj" => {},
-                "obj" => {},
-              },
-            },
-          }
-
-          expect(Rails.logger).to receive(:error).with("[Event Data] https://doi.org/10.1234/example-doi is_authored_at https://ror.org/02catss52 had an error: An error occurred during the put request.")
-
-          stub_request(:post, push_url).
-            with(
-              body: expected_data.to_json,
-              headers: {
-                "Authorization" => "Bearer example_admin_token",
-                "Content-Type" => "application/vnd.api+json",
-                "Accept" => "application/vnd.api+json; version=2",
-              },
-            ).
-            to_return(status: 200, body: { "data" => { "id" => "example_id" } }.to_json, headers: {})
+        it "pushes affiliation identifiers to the events queue" do
+          expect(Rails.logger).to receive(:info).with("[Event Data] https://doi.org/10.1234/example-doi is_authored_at https://ror.org/02catss52 sent to the events queue.")
+          expect(AffiliationIdentifier).to receive(:send_event_import_message).once
 
           AffiliationIdentifier.push_item(item)
         end

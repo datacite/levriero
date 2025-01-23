@@ -5,6 +5,7 @@ services:
     env_file: .env
     environment:
       - LOG_LEVEL=info
+      - LAGOTTINO_URL=https://api.stage.datacite.org
     image: datacite/levriero
     build: .
     ports:
@@ -27,5 +28,5 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.0.70.0/24
-        gateway: 10.0.70.1
+        - subnet: 10.0.70.0/24
+          gateway: 10.0.70.1

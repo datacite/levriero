@@ -19,8 +19,6 @@ describe NameIdentifier, type: :model, vcr: true do
     end
 
     describe "#push_item" do
-      let(:staff_admin_token) { "STAFF_ADMIN_TOKEN" }
-
       let(:staff_profiles_admin_token) { "STAFF_PROFILES_ADMIN_TOKEN" }
 
       let(:lagottino_json) do
@@ -58,11 +56,6 @@ describe NameIdentifier, type: :model, vcr: true do
       before(:each) do
         allow(ENV).
           to(receive(:[]).
-            with(staff_admin_token).
-            and_return(staff_admin_token))
-
-        allow(ENV).
-          to(receive(:[]).
             with("LAGOTTINO_URL").
             and_return("https://fake.lagattino.com"))
 
@@ -91,15 +84,6 @@ describe NameIdentifier, type: :model, vcr: true do
 
         allow(Maremma).
           to(receive(:post).
-            with("https://fake.lagattino.com/events",
-                 data: lagottino_json,
-                 accept: "application/vnd.api+json; version=2",
-                 content_type: "application/vnd.api+json",
-                 bearer: staff_admin_token).
-            and_return(OpenStruct.new(status: 200)))
-
-        allow(Maremma).
-          to(receive(:post).
             with("https://fake.volpino.com/claims",
                  data: volpino_json,
                  content_type: "application/json",
@@ -109,6 +93,8 @@ describe NameIdentifier, type: :model, vcr: true do
         allow(Time).
           to(receive_message_chain(:zone, :now, :iso8601).
             and_return("2023-11-15T12:17:47Z"))
+
+        allow(NameIdentifier).to(receive(:send_event_import_message).and_return(nil))
       end
 
       describe "returns nil" do
@@ -220,9 +206,9 @@ describe NameIdentifier, type: :model, vcr: true do
         end
       end
 
-      describe "when STAFF_ADMIN_TOKEN" do
-        describe "is valid" do
-          it "makes request to lagottino for the first name identifier with scheme 'ORCID'" do
+      describe "when values" do
+        describe "are valid" do
+          it "send message to events for the first name identifier with scheme 'ORCID'" do
             item = {
               "attributes" => {
                 "doi" => "https://doi.org/10.0001/foo.bar",
@@ -247,22 +233,12 @@ describe NameIdentifier, type: :model, vcr: true do
             }
 
             expect(NameIdentifier.push_item(item)).to(eq(1))
-
-            expect(Maremma).
-              to(have_received(:post).
-                with(
-                  "https://fake.lagattino.com/events",
-                  data: lagottino_json,
-                  bearer: staff_admin_token,
-                  content_type: "application/vnd.api+json",
-                  accept: "application/vnd.api+json; version=2",
-                ))
+            expect(NameIdentifier).to(have_received(:send_event_import_message).once)
           end
         end
 
         describe "is invalid" do
-          it "will not make request to lagottino" do
-            allow(ENV).to(receive(:[]).with(staff_admin_token).and_return(nil))
+          it "will not send a message the events queue" do
             allow(ENV).to(receive(:[]).with("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN").and_return("DATACITE_ORCID_AUTO_UPDATE_SOURCE_TOKEN"))
 
             item = {
@@ -281,16 +257,7 @@ describe NameIdentifier, type: :model, vcr: true do
             }
 
             expect(NameIdentifier.push_item(item)).to(eq(1))
-
-            expect(Maremma).
-              not_to(have_received(:post).
-                with(
-                  "https://fake.lagattino.com/events",
-                  data: lagottino_json,
-                  bearer: staff_admin_token,
-                  content_type: "application/vnd.api+json",
-                  accept: "application/vnd.api+json; version=2",
-                ))
+            expect(NameIdentifier).not_to(receive(:send_event_import_message))
           end
         end
       end
