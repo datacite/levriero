@@ -1,6 +1,8 @@
 require "digest"
 
 class UsageUpdate < Base
+  include Queueable
+
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
   USAGE_RELATIONS = [
@@ -146,12 +148,14 @@ class UsageUpdate < Base
     end
 
     data = wrap_event item, options
-    push_url = "#{ENV['LAGOTTINO_URL']}/events"
 
-    response = Maremma.post(push_url, data: data.to_json,
-                                      bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                      content_type: "application/vnd.api+json",
-                                      accept: "application/vnd.api+json; version=2")
+    send_event_import_message(data)
+
+    subj_id = data["data"]["attributes"]["subjId"]
+    relation_type_id = data["data"]["attributes"]["relationTypeId"]
+    obj_id = data["data"]["attributes"]["objId"]
+
+    Rails.logger.info("[Event Data] #{subj_id} #{relation_type_id} #{obj_id} sent to the events queue.")
   end
 
   def self.wrap_event(item, options = {})
