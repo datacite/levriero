@@ -5,7 +5,7 @@ class EventImportWorker
 
   def perform(sqs_msg=nil, data=nil)
     if data.blank?
-      Rails.logger.info("[EventImportWorker] data object is blank.")
+      Rails.logger.info("[Event Data] data object is blank.")
       return
     end
 
