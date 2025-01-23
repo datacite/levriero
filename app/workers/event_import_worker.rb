@@ -31,7 +31,7 @@ class EventImportWorker
     relation_type_id = data["data"]["attributes"]["relationTypeId"]
     obj_id = data["data"]["attributes"]["objId"]
 
-    "[EventImportWorker] #{subj_id} #{relation_type_id} #{obj_id}"
+    "[Event Data] #{subj_id} #{relation_type_id} #{obj_id}"
   end
 
   def handle_logging(data, response, prefix)
