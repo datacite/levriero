@@ -149,8 +149,6 @@ class CrossrefImport < Base
 
       send_event_import_message(data)
 
-      puts "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-
       Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
     end
 
