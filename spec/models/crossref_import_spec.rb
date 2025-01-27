@@ -47,15 +47,6 @@ describe CrossrefImport, type: :model, vcr: true do
       expect(response).to eq(17739)
     end
 
-    # it "push_item" do
-    #   item = {
-    #     "DOI" => "10.1021/jp036075h",
-    #     "created" => { "date-time" => "2015-10-05T10:01:19Z" }
-    #   }
-    #   response = CrossrefImport.push_item(item)
-    #   expect(response).to eq(1)
-    # end
-
     it "push_related_items" do
       item = {
         "DOI" => "10.1016/s0191-6599(01)00017-1",
@@ -101,6 +92,24 @@ describe CrossrefImport, type: :model, vcr: true do
       response = CrossrefImport.push_import_item(item: item, pid: pid).first
       expect(response["subj_id"]).to eq(pid)
       expect(response["relation_type_id"]).to be_nil
+    end
+  end
+
+  context "push_item" do
+    it "sends a message to the events queue" do
+      allow(CrossrefImport).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      item = {
+        "DOI" => "10.1021/jp036075h",
+        "created" => { "date-time" => "2015-10-05T10:01:19Z" },
+        "funder" => [{ "DOI" => "https://doi.org/10.13039/501100001659" }],
+      }
+
+      CrossrefImport.push_item(item)
+
+      expect(CrossrefImport).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.1021/jp036075h is_funded_by https://doi.org/10.13039/501100001659 sent to the events queue."))
     end
   end
 end
