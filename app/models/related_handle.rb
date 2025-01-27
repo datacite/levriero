@@ -1,4 +1,6 @@
 class RelatedHandle < Base
+  include Queueable
+
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
   def self.import_by_month(options = {})
