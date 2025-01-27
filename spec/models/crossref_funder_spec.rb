@@ -46,15 +46,23 @@ describe CrossrefFunder, type: :model, vcr: true do
                                        until_date: until_date)
       expect(response).to eq(3352)
     end
+  end
 
-    # it "push_item" do
-    #   item = {
-    #     "DOI" => "10.1039/c8cc06410e",
-    #     "funder" => [{ "DOI" => "https://doi.org/10.13039/501100001659" }],
-    #     "created" => { "date-time" => "2015-10-05T10:01:19Z" }
-    #   }
-    #   response = CrossrefFunder.push_item(item)
-    #   expect(response).to eq(1)
-    # end
+  context "push_item" do
+    it "sends item to the events queue" do
+      allow(CrossrefFunder).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      item = {
+        "DOI" => "10.1039/c8cc06410e",
+        "funder" => [{ "DOI" => "https://doi.org/10.13039/501100001659" }],
+        "created" => { "date-time" => "2015-10-05T10:01:19Z" }
+      }
+
+      CrossrefFunder.push_item(item)
+
+      expect(CrossrefFunder).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.1039/c8cc06410e is_funded_by https://doi.org/10.13039/501100001659 sent to the events queue."))
+    end
   end
 end
