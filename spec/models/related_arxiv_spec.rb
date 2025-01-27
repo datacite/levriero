@@ -37,7 +37,6 @@ describe RelatedArxiv, type: :model, vcr: true do
     end
 
     it "push_item" do
-      # allow(ENV).to(receive(:[]).and_return("token"))
       allow(RelatedArxiv).to(receive(:send_event_import_message).and_return(nil))
       allow(Rails.logger).to(receive(:info))
 
