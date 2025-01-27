@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.20375/0000-001a-6248-5?affiliation=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Jan 2025 08:22:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 1c160ae9-fa8f-420b-9786-f8ad363e876c
+      Etag:
+      - W/"ac30c359ab481c12d444b45fb9b81e14"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.039171'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.24
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.24
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAF5Cl2cAA5RWWXOqSBT+L77eSQIYMzFvRr2I45IggjI1D013C63NUtDgksp/n9MgbsnMnbGSKvj6fGenz/loECRQ4+WjwUjjpaEq95rS/L31oMDvTlFUdPekPT7ftRq/NcQ+oSBCYpbBGxIiZV4uaCbJAP6CnaR0xXYXQoBl+arCvpFnhEaCrRhNwcCff4FBLmgaIUGN2xOcUiTi8u2jEaFQemlNe1PpJRjgDAkWR5WsPL5R8AmwYILTSkH5CBpWPKc+5fdJ5DekSJJ7nGUBTeGs1zGNzuCu1wcTOI4EYpHEPz6PYri0uKQIQE3RFBmqt6ZY1B4Dp8xeXMcAVTjal09gQtIaFW5ViTeyLKek9IWjyM+RD2iUc16VpqxDCrWR7lkd4HrME1SmN2QZlp4yQZM0xrKIUPSMClkDHNAQTVNf8k5oSrM4T3Ft+vsDnULUiF+cf0oBDi6T6xx/VDDk5BRLJYARt+LGNyyZAfXeUtV2Wz21U+fcHl8IR8UDFBEon0xSLSJoeExyxg70+LiK0xCV5WiwEDL5IMsMeAEOl81SJTZlfiCyEctEFUX5WreXNEJohlOWyNCOmn0aj+KqAWpbeURY5Jt0RVMa4dqFXShT99ZrP3rO1iehvccaL7y1wsazx63BXrkXTgpX57l7UJhtm/rI8pkxmChLp7VZOrvCC+dtI+Ic742HNz9+xqF98Jr2fqnNfaqrmReN20YYKGTQeRrt25vlwgyWGlfcWavAIS6wNoldRw1GmuA4bHGvqyhgF/zZ5fiQPGJtc8lvkibOyWGce81hNDoY23GvXzh9dTyv9Tg8x00zAL+51AP8p9qGpbfXYD/xtMf/75N+kj8stYB7Tj939Z+Qh0lC9Hnlj6ZyovcLpNl7L7SzkfVeeI4NMmYAeE4Hk42xfvzD6HaekWNyLzITN4TcsdfE1e2c6DxEjr23B3zrWgoz++0hyO/G3cf9uDduTmbPEG9nO7I62/G8LyZrQ5l2FfWt277iQx18o7dbQy3AbnuPD6XNK6yUkRj4smwOOeSgwJtW4DnzH3a/3bcO2+IW77JKfqRN9q7zU/GaRomB/Vtbz+CL4un2obbzNjAhTzv+FroZcezIdbY51lsRcBW0MDPXqnijZiVX68EDm3k6PyAd4tqYr/MNf5111b5pbYursyrmLXGGGXIm4Av0Mefgv/FjvO5A/k7yxx5ouRBDzdu7i0lBFsO1a5strM/9cx/bc7p45aZm5+5iGHg9qIus+2LCSdf4cXqW+m84J93ODvyxN7PLmkfjUz6Bl4FP3O3zjeu0FOS4ibsw/O/xYaV7NjTkN+jpc/geh9wDP5DTzuvemS0mw2NPrOE7nXt7mYd+bvf6u6m12Y0OHdlLAv537zNFG6/fH0fWHPJf6XIdc/i1p8oYv/PpcIw1hO9AwPm57roLHDUgvVbiOT8jd9beeiGGHqrxY93r90GVl7fBMHG1QMHKLsHN94tc8QgNQD8338z+s/S3kjvU/XPDW1/WZf4D7u08lZdeIESSvTw8BITfB+WNfR9R8fCvN76cmXDZz6WC6nIOqUBykNn1na3U48y+vsWrkSUHIZGrC8s6WLACAJHmFI5FNXJXLCLIg+khZwfKzvyC0W03ziNRmpBv2RQGhcXkqlFO73gb8RiRs1CN3Aim9Qw4S8JULofFV+SGm6BUnIXk23R14VUV8hfgUqZclCg5bhd3inqnPlnq04uqwN89pNwtQ/dh3IGXv5Cr9yFyXlbyhFzp//1OUy1FfWm2X5rNildvCDK8gCXl0oI5o9LDj+tdFFYmP6b3BKUMBef9s5LOGp9y2UrjAhbF9B+4Z1ItWNFCShj6wvkPu29F/Py8KGR21gOr5EXxbnBZr++w6eoGPNbtVvZUziscfn8DAAD//wMAvBqIssILAAA=
+  recorded_at: Mon, 27 Jan 2025 08:22:54 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.20375/0000-001a-6248-5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Jan 2025 08:22:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - db847ab8-6ba6-475a-839e-bdd3b71c1427
+      Etag:
+      - W/"a8e7a3d197503ec27be30938a683b231"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.026845'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.24
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.24
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAF9Cl2cAA5RWWXOqSBT+L77eSQIYMzFvRr2I45IggjI1D013C63NUtDgksp/n9MgbsnMnbGSKvj6fGenz/loECRQ4+WjwUjjpaEq95rS/L31oMDvTlFUdPekPT7ftRq/NcQ+oSBCYpbBGxIiZV4uaCbJAP6CnaR0xXYXQoBl+arCvpFnhEaCrRhNwcCff4FBLmgaIUGN2xOcUiTi8u2jEaFQemlNe1PpJRjgDAkWR5WsPL5R8AmwYILTSkH5CBpWPKc+5fdJ5DekSJJ7nGUBTeGs1zGNzuCu1wcTOI4EYpHEPz6PYri0uKQIQE3RFBmqt6ZY1B4Dp8xeXMcAVTjal09gQtIaFW5ViTeyLKek9IWjyM+RD2iUc16VpqxDCrWR7lkd4HrME1SmN2QZlp4yQZM0xrKIUPSMClkDHNAQTVNf8k5oSrM4T3Ft+vsDnULUiF+cf0oBDi6T6xx/VDDk5BRLJYARt+LGNyyZAfXeUtV2Wz21U+fcHl8IR8UDFBEon0xSLSJoeExyxg70+LiK0xCV5WiwEDL5IMsMeAEOl81SJTZlfiCyEctEFUX5WreXNEJohlOWyNCOmn0aj+KqAWpbeURY5Jt0RVMa4dqFXShT99ZrP3rO1iehvccaL7y1wsazx63BXrkXTgpX57l7UJhtm/rI8pkxmChLp7VZOrvCC+dtI+Ic742HNz9+xqF98Jr2fqnNfaqrmReN20YYKGTQeRrt25vlwgyWGlfcWavAIS6wNoldRw1GmuA4bHGvqyhgF/zZ5fiQPGJtc8lvkibOyWGce81hNDoY23GvXzh9dTyv9Tg8x00zAL+51AP8p9qGpbfXYD/xtMf/75N+kj8stYB7Tj939Z+Qh0lC9Hnlj6ZyovcLpNl7L7SzkfVeeI4NMmYAeE4Hk42xfvzD6HaekWNyLzITN4TcsdfE1e2c6DxEjr23B3zrWgoz++0hyO/G3cf9uDduTmbPEG9nO7I62/G8LyZrQ5l2FfWt277iQx18o7dbQy3AbnuPD6XNK6yUkRj4smwOOeSgwJtW4DnzH3a/3bcO2+IW77JKfqRN9q7zU/GaRomB/Vtbz+CL4un2obbzNjAhTzv+FroZcezIdbY51lsRcBW0MDPXqnijZiVX68EDm3k6PyAd4tqYr/MNf5111b5pbYursyrmLXGGGXIm4Av0Mefgv/FjvO5A/k7yxx5ouRBDzdu7i0lBFsO1a5strM/9cx/bc7p45aZm5+5iGHg9qIus+2LCSdf4cXqW+m84J93ODvyxN7PLmkfjUz6Bl4FP3O3zjeu0FOS4ibsw/O/xYaV7NjTkN+jpc/geh9wDP5DTzuvemS0mw2NPrOE7nXt7mYd+bvf6u6m12Y0OHdlLAv537zNFG6/fH0fWHPJf6XIdc/i1p8oYv/PpcIw1hO9AwPm57roLHDUgvVbiOT8jd9beeiGGHqrxY93r90GVl7fBMHG1QMHKLsHN94tc8QgNQD8338z+s/S3kjvU/XPDW1/WZf4D7u08lZdeIESSvTw8BITfB+WNfR9R8fCvN76cmXDZz6WC6nIOqUBykNn1na3U48y+vsWrkSUHIZGrC8s6WLACAJHmFI5FNXJXLCLIg+khZwfKzvyC0W03ziNRmpBv2RQGhcXkqlFO73gb8RiRs1CN3Aim9Qw4S8JULofFV+SGm6BUnIXk23R14VUV8hfgUqZclCg5bhd3inqnPlnq04uqwN89pNwtQ/dh3IGXv5Cr9yFyXlbyhFzp//1OUy1FfWm2X5rNildvCDK8gCXl0oI5o9LDj+tdFFYmP6b3BKUMBef9s5LOGp9y2UrjAhbF9B+4Z1ItWNFCShj6wvkPu29F/Py8KGR21gOr5EXxbnBZr++w6eoGPNbtVvZUziscfn8DAAD//wMAvBqIssILAAA=
+  recorded_at: Mon, 27 Jan 2025 08:22:54 GMT
+recorded_with: VCR 6.2.0

@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.23705/d9evittp?affiliation=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Jan 2025 08:32:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 264a914e-d24b-41bc-9c4f-712caa68edb3
+      Etag:
+      - W/"d68fc0a48fcc644bbf2b0301151163d5"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.038915'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.24
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.24
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Mon, 27 Jan 2025 08:32:26 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.23705/d9evittp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Jan 2025 08:32:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 208ef755-2b37-4c41-a62a-e437645acfca
+      Etag:
+      - W/"c8b5879070863ee34e70ceb75908d52a"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.021284'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.24
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.24
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Mon, 27 Jan 2025 08:32:27 GMT
+recorded_with: VCR 6.2.0
