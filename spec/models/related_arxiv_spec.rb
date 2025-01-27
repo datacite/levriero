@@ -36,11 +36,18 @@ describe RelatedArxiv, type: :model, vcr: true do
       expect(response).to eq(2)
     end
 
-    # it "push_item" do
-    #   doi = "10.21373/1563194933866"
-    #   attributes = RelatedArxiv.get_datacite_json(doi)
-    #   response = RelatedArxiv.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    it "push_item" do
+      # allow(ENV).to(receive(:[]).and_return("token"))
+      allow(RelatedArxiv).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      doi = "10.21373/1563194933866"
+      attributes = RelatedArxiv.get_datacite_json(doi)
+      response = RelatedArxiv.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+
+      expect(RelatedArxiv).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.21373/1563194933866 is_reviewed_by https://arxiv.org/abs/0706.0001 sent to the events queue."))
+      expect(response).to eq(1)
+    end
   end
 end
