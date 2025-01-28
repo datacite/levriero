@@ -1,4 +1,6 @@
 class Crossref < Base
+  include Queueable
+
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
@@ -111,42 +113,28 @@ class Crossref < Base
     subj = cached_crossref_response(item["subj_id"])
     obj = cached_datacite_response(item["obj_id"])
 
-    if ENV["STAFF_ADMIN_TOKEN"].present?
-      push_url = ENV["LAGOTTINO_URL"] + "/events/#{item['id']}"
-
-      data = {
-        "data" => {
-          "id" => item["id"],
-          "type" => "events",
-          "attributes" => {
-            "messageAction" => item["action"],
-            "subjId" => item["subj_id"],
-            "objId" => item["obj_id"],
-            "relationTypeId" => item["relation_type_id"].to_s.dasherize,
-            "sourceId" => item["source_id"].to_s.dasherize,
-            "sourceToken" => item["source_token"],
-            "occurredAt" => item["occurred_at"],
-            "timestamp" => item["timestamp"],
-            "license" => item["license"],
-            "subj" => subj,
-            "obj" => obj,
-          },
+    data = {
+      "data" => {
+        "id" => item["id"],
+        "type" => "events",
+        "attributes" => {
+          "messageAction" => item["action"],
+          "subjId" => item["subj_id"],
+          "objId" => item["obj_id"],
+          "relationTypeId" => item["relation_type_id"].to_s.dasherize,
+          "sourceId" => item["source_id"].to_s.dasherize,
+          "sourceToken" => item["source_token"],
+          "occurredAt" => item["occurred_at"],
+          "timestamp" => item["timestamp"],
+          "license" => item["license"],
+          "subj" => subj,
+          "obj" => obj,
         },
-      }
+      },
+    }
 
-      response = Maremma.put(push_url, data: data.to_json,
-                                       bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                       content_type: "application/vnd.api+json",
-                                       accept: "application/vnd.api+json; version=2")
+    send_event_import_message(data)
 
-      if [200, 201].include?(response.status)
-        Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} pushed to Event Data service."
-      elsif response.status == 409
-        Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} already pushed to Event Data service."
-      elsif response.body["errors"].present?
-        Rails.logger.error "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} had an error: #{response.body['errors']}"
-        Rails.logger.error data.inspect
-      end
-    end
+    Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} sent to the events queue."
   end
 end
