@@ -40,4 +40,12 @@ class AgentsController < ApplicationController
     render json: { message: "[Crossref-Import Agent] Queued import for #{total} DOIs." }.to_json,
            status: :ok
   end
+
+  def zbmath
+    authorize! :import, Zbmath
+    total = Zbmath.import
+
+    render json: { message: "[zbMATH Agent] Queued import for #{total} DOIs." }.to_json,
+           status: :ok
+  end
 end
