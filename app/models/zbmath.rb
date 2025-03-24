@@ -104,7 +104,7 @@ class Zbmath
              "license" => LICENSE,
              "subj" => subj,
              "obj" => obj,
-             "source_token" => "4c891c31-519e-4d98-ac8d-876ad0f28635" }
+             "source_token" => ENV["ZBMATH_RELATED_SOURCE_TOKEN"] || "4c891c31-519e-4d98-ac8d-876ad0f28635" }
       # TODO: Move source token to an ENV variable
       x
     end
@@ -133,7 +133,7 @@ class Zbmath
                "license" => LICENSE,
                "subj" => subj,
                "obj" => {},
-               "source_token" => "759c2591-7161-4c17-8e35-b3e1a28b4568" }
+               "source_token" => ENV["ZBMATH_AUTHOR_SOURCE_TOKEN"] || "759c2591-7161-4c17-8e35-b3e1a28b4568" }
       end
       x
     end)
@@ -161,7 +161,7 @@ class Zbmath
              "license" => LICENSE,
              "subj" => subj,
              "obj" => {},
-             "source_token" => "9908552f-593b-4825-817e-bca48644624b" }
+             "source_token" => ENV["ZBMATH_IDENTIFIER_SOURCE_TOKEN"] || "9908552f-593b-4825-817e-bca48644624b" }
       x
     end)
 
