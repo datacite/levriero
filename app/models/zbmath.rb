@@ -35,17 +35,21 @@ class Zbmath
 
   def get_records(options = {})
     client = OAI::Client.new "https://oai.portal.mardi4nfdi.de/oai/OAIHandler"
+    count = 0
     begin
-      response = client.list_records metadata_prefix: "datacite_articles", from: options[:from],
-                                     until: options[:until]
-
       # Get the metadata - read_datacite expects a string of the XML tree with the <resource> element as the root,
       # and OAI wraps the data in a <metadata> element so strip this with string slicing (a little ugly, but a lot
-      # simpler and more efficient than parsing the XML, restructuring the tree and then serializing back to string)
-      response.each do |record|
+      # simpler and more efficient than parsing the XML, restructuring the tree and then serializing back to string).
+      #
+      # Using the .full.each pattern allows transparent handling of the resumption token pattern in the OAI protocol
+      # rather than having to deal with it manually. The client should only load one page into memory ay a time, so the
+      # efficiency should be ok.
+      response = client.list_records(metadata_prefix: "datacite_articles", from: options[:from],
+                                     until: options[:until]).full.each do |record|
         ZbmathImportJob.perform_later(record.metadata.to_s[12..-14])
+        count += 1
       end
-      response.count
+      count
     rescue OAI::NoMatchException
       Rails.logger.info "No ZBMath records updated between #{options[:from]} and #{options[:until]}."
       nil

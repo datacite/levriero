@@ -2,13 +2,13 @@ require "rails_helper"
 
 describe Zbmath, type: :model, vcr: true do
   let(:from_date) { "2025-01-01" }
-  let(:until_date) { "2025-12-31" }
+  let(:until_date) { "2025-02-28" }
 
   describe ".import_by_month" do
     context "with valid date range" do
       it "queues jobs for DOIs created within the specified month range" do
         response = Zbmath.import_by_month(from_date: from_date, until_date: until_date)
-        expect(response).to eq("Queued import for ZBMath Records updated from 2025-01-01 until 2025-12-31.")
+        expect(response).to eq("Queued import for ZBMath Records updated from 2025-01-01 until 2025-02-28.")
       end
     end
 
@@ -36,7 +36,7 @@ describe Zbmath, type: :model, vcr: true do
 
         response = Zbmath.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Records updated from 2025-01-01 until 2025-12-31.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Records updated from 2025-01-01 until 2025-02-28.")
       end
     end
 
