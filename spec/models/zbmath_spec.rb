@@ -81,23 +81,54 @@ describe Zbmath, type: :model, vcr: true do
   end
 
   describe "#parse_zbmath_record" do
-    it "sends a message to the events queue" do
-      allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
-      allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-      allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+    context "with a DataCite DOI as the main DOI" do
+      it "sends a message to the events queue" do
+        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
+        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
 
-      logger_spy = spy("logger")
-      allow(Rails).to receive(:logger).and_return(logger_spy)
+        logger_spy = spy("logger")
+        allow(Rails).to receive(:logger).and_return(logger_spy)
 
-      metadata = File.read("#{fixture_path}oai_zbmath_org_942.xml")
-      response = Zbmath.parse_zbmath_record(metadata)
+        metadata = File.read("#{fixture_path}oai_zbmath_org_942_datacite.xml")
+        response = Zbmath.parse_zbmath_record(metadata)
 
-      expect(response).to be_a(Integer).and eq 5
-      expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 cites https://doi.org/10.1145/76359.76371 sent to the events queue.")
-      expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 is_cited_by https://zbmath.org/946 sent to the events queue.")
-      expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 is_authored_by https://zbmath.org/authors/tesauro.gerald sent to the events queue.")
-      expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 is_identical_to https://zbmath.org/0772.68075 sent to the events queue.")
-      expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 is_identical_to oai:zbmath.org:942 sent to the events queue.")
+        expect(response).to be_a(Integer).and eq 5
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 cites https://doi.org/10.1145/76359.76371 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_cited_by https://zbmath.org/946 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_authored_by https://zbmath.org/authors/tesauro.gerald sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_identical_to https://zbmath.org/0772.68075 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_identical_to oai:zbmath.org:942 sent to the events queue.")
+      end
+    end
+    context "with a non-DataCite DOI as the main DOI" do
+      it "sends a message to the events queue for Related Identifiers" do
+        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
+        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+
+        logger_spy = spy("logger")
+        allow(Rails).to receive(:logger).and_return(logger_spy)
+
+        metadata = File.read("#{fixture_path}oai_zbmath_org_942_nonDC_RI.xml")
+        response = Zbmath.parse_zbmath_record(metadata)
+
+        expect(response).to be_a(Integer).and eq 1
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 cites https://doi.org/10.5438/sjx9-hb16 sent to the events queue.")
+      end
+      it "doesn't send any messages when there are no relevant identifiers" do
+        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
+        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+
+        logger_spy = spy("logger")
+        allow(Rails).to receive(:logger).and_return(logger_spy)
+
+        metadata = File.read("#{fixture_path}oai_zbmath_org_942.xml")
+        response = Zbmath.parse_zbmath_record(metadata)
+
+        expect(response).to be_a(Integer).and eq 0
+      end
     end
   end
 end

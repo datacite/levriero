@@ -61,10 +61,20 @@ class Zbmath
 
     # Check that the record is for a DataCite DOI
     doi = meta.fetch("doi", nil)
-    return nil if doi.blank? # && cached_doi_ra(doi) == "DataCite"
+    return nil if doi.blank?
+
+    ra = cached_doi_ra(doi)
 
     pid = normalize_doi(doi)
-    subj = cached_datacite_response(pid)
+
+    if ra == "DataCite"
+      subj = cached_datacite_response(pid)
+    elsif ra == "Crossref"
+      subj = cached_crossref_response(pid)
+    else
+      subj = {}
+    end
+
     # parse out valid related identifiers
     related_doi_identifiers = Array.wrap(meta.fetch("related_identifiers", nil)).select do |r|
       %w(DOI URL).include?(r["relatedIdentifierType"]) && r["relatedIdentifier"] != "https://zbmath.org"
@@ -72,6 +82,7 @@ class Zbmath
 
     # loop through related identifiers and build event objects
     items = Array.wrap(related_doi_identifiers).reduce([]) do |x, item|
+
       related_identifier = item.fetch("relatedIdentifier", nil).to_s.strip.downcase
       related_identifier_type = item.fetch("relatedIdentifierType", nil).to_s.strip
 
@@ -79,11 +90,16 @@ class Zbmath
         obj_id = normalize_doi(related_identifier)
 
         # Get RA and populate obj
-        ra = cached_doi_ra(related_identifier)
-        obj = if ra == "DataCite"
+        related_ra = cached_doi_ra(related_identifier)
+        obj = if related_ra == "DataCite"
                 cached_datacite_response(obj_id)
-              elsif ra == "Crossref"
-                cached_crossref_response(obj_id)
+              elsif related_ra == "Crossref"
+                # Don't bother hitting Crossref API if we won't process the relationship
+                if ra == "DataCite"
+                  cached_crossref_response(obj_id)
+                else
+                  {}
+                end
               else
                 {}
               end
@@ -91,80 +107,82 @@ class Zbmath
         # It's a URL so no PID object on the other end
         obj_id = normalize_url(related_identifier)
         obj = {}
+        related_ra = nil
       end
-
-      x << { "message_action" => "create",
-             "id" => SecureRandom.uuid,
-             "subj_id" => pid,
-             "obj_id" => obj_id,
-             "relation_type_id" => item["relationType"].to_s.underscore,
-             "source_id" => "zbmath_related",
-             "occurred_at" => Time.zone.now.utc,
-             "timestamp" => Time.zone.now.iso8601,
-             "license" => LICENSE,
-             "subj" => subj,
-             "obj" => obj,
-             "source_token" => ENV["ZBMATH_RELATED_SOURCE_TOKEN"] || "4c891c31-519e-4d98-ac8d-876ad0f28635" }
-      # TODO: Move source token to an ENV variable
-      x
-    end
-
-    # extract creator identifiers
-    creator_identifiers = Array.wrap(meta.fetch("creators", nil)).select do |c|
-      c["nameIdentifiers"].present? && c["nameIdentifiers"].any? do |n|
-        n["nameIdentifierScheme"] == "zbMATH Author Code"
-      end
-    end
-
-    # loop through creator identifiers, build event objects and add them to the event array
-    items.concat(Array.wrap(creator_identifiers).reduce([]) do |x, item|
-      name_identifiers = Array.wrap(item.fetch("nameIdentifiers", nil)).select do |n|
-        n["nameIdentifierScheme"] == "zbMATH Author Code"
-      end
-      name_identifiers.each do |n|
+      if ra == "DataCite" || related_ra == "DataCite"
         x << { "message_action" => "create",
                "id" => SecureRandom.uuid,
                "subj_id" => pid,
-               "obj_id" => "https://zbmath.org/authors/#{n['nameIdentifier']}",
-               "relation_type_id" => "is_authored_by",
-               "source_id" => "zbmath_author",
+               "obj_id" => obj_id,
+               "relation_type_id" => item["relationType"].to_s.underscore,
+               "source_id" => "zbmath_related",
+               "occurred_at" => Time.zone.now.utc,
+               "timestamp" => Time.zone.now.iso8601,
+               "license" => LICENSE,
+               "subj" => subj,
+               "obj" => obj,
+               "source_token" => ENV["ZBMATH_RELATED_SOURCE_TOKEN"] || "4c891c31-519e-4d98-ac8d-876ad0f28635" }
+      end
+      x
+    end
+
+    if ra == "DataCite"
+    # extract creator identifiers
+      creator_identifiers = Array.wrap(meta.fetch("creators", nil)).select do |c|
+        c["nameIdentifiers"].present? && c["nameIdentifiers"].any? do |n|
+          n["nameIdentifierScheme"] == "zbMATH Author Code"
+        end
+      end
+
+      # loop through creator identifiers, build event objects and add them to the event array
+      items.concat(Array.wrap(creator_identifiers).reduce([]) do |x, item|
+        name_identifiers = Array.wrap(item.fetch("nameIdentifiers", nil)).select do |n|
+          n["nameIdentifierScheme"] == "zbMATH Author Code"
+        end
+        name_identifiers.each do |n|
+          x << { "message_action" => "create",
+                 "id" => SecureRandom.uuid,
+                 "subj_id" => pid,
+                 "obj_id" => "https://zbmath.org/authors/#{n['nameIdentifier']}",
+                 "relation_type_id" => "is_authored_by",
+                 "source_id" => "zbmath_author",
+                 "occurred_at" => Time.zone.now.utc,
+                 "timestamp" => Time.zone.now.iso8601,
+                 "license" => LICENSE,
+                 "subj" => subj,
+                 "obj" => {},
+                 "source_token" => ENV["ZBMATH_AUTHOR_SOURCE_TOKEN"] || "759c2591-7161-4c17-8e35-b3e1a28b4568" }
+        end
+        x
+      end)
+
+      # gather alternate identifiers
+      alternate_identifiers = Array.wrap(meta.fetch("identifiers", nil)).select do |a|
+        ["zbMATH Identifier", "zbMATH Document ID", "URL"].include?(a["identifierType"])
+      end
+
+      # loop through alternate identifiers, build event objects and add them to the event array
+      items.concat(Array.wrap(alternate_identifiers).reduce([]) do |x, item|
+        item_url = if item["identifierType"] == "zbMATH Identifier"
+                     "https://zbmath.org/#{item['identifier']}"
+                   else
+                     item["identifier"]
+                   end
+        x << { "message_action" => "create",
+               "id" => SecureRandom.uuid,
+               "subj_id" => pid,
+               "obj_id" => item_url,
+               "relation_type_id" => "is_identical_to",
+               "source_id" => "zbmath_identifier",
                "occurred_at" => Time.zone.now.utc,
                "timestamp" => Time.zone.now.iso8601,
                "license" => LICENSE,
                "subj" => subj,
                "obj" => {},
-               "source_token" => ENV["ZBMATH_AUTHOR_SOURCE_TOKEN"] || "759c2591-7161-4c17-8e35-b3e1a28b4568" }
-      end
-      x
-    end)
-
-    # gather alternate identifiers
-    alternate_identifiers = Array.wrap(meta.fetch("identifiers", nil)).select do |a|
-      ["zbMATH Identifier", "zbMATH Document ID", "URL"].include?(a["identifierType"])
+               "source_token" => ENV["ZBMATH_IDENTIFIER_SOURCE_TOKEN"] || "9908552f-593b-4825-817e-bca48644624b" }
+        x
+      end)
     end
-
-    # loop through alternate identifiers, build event objects and add them to the event array
-    items.concat(Array.wrap(alternate_identifiers).reduce([]) do |x, item|
-      item_url = if item["identifierType"] == "zbMATH Identifier"
-                   "https://zbmath.org/#{item['identifier']}"
-                 else
-                   item["identifier"]
-                 end
-      x << { "message_action" => "create",
-             "id" => SecureRandom.uuid,
-             "subj_id" => pid,
-             "obj_id" => item_url,
-             "relation_type_id" => "is_identical_to",
-             "source_id" => "zbmath_identifier",
-             "occurred_at" => Time.zone.now.utc,
-             "timestamp" => Time.zone.now.iso8601,
-             "license" => LICENSE,
-             "subj" => subj,
-             "obj" => {},
-             "source_token" => ENV["ZBMATH_IDENTIFIER_SOURCE_TOKEN"] || "9908552f-593b-4825-817e-bca48644624b" }
-      x
-    end)
-
     # Loop items and send events to the queue
     Array.wrap(items).each do |item|
       data = {
