@@ -1,14 +1,14 @@
 require "rails_helper"
 
-describe Zbmath, type: :model, vcr: true do
+describe ZbmathArticle, type: :model, vcr: true do
   let(:from_date) { "2025-01-01" }
   let(:until_date) { "2025-02-28" }
 
   describe ".import_by_month" do
     context "with valid date range" do
       it "queues jobs for DOIs created within the specified month range" do
-        response = Zbmath.import_by_month(from_date: from_date, until_date: until_date)
-        expect(response).to eq("Queued import for ZBMath Records updated from 2025-01-01 until 2025-02-28.")
+        response = ZbmathArticle.import_by_month(from_date: from_date, until_date: until_date)
+        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-01 until 2025-02-28.")
       end
     end
 
@@ -22,8 +22,8 @@ describe Zbmath, type: :model, vcr: true do
           date_spy.parse(*args)
           original_method.call(*args)
         end
-        response = Zbmath.import_by_month
-        expect(response).to eq("Queued import for ZBMath Records updated from 2025-01-01 until 2025-01-31.")
+        response = ZbmathArticle.import_by_month
+        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-01 until 2025-01-31.")
       end
     end
   end
@@ -34,9 +34,9 @@ describe Zbmath, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        response = Zbmath.import(from_date: from_date, until_date: until_date)
+        response = ZbmathArticle.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Records updated from 2025-01-01 until 2025-02-28.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 2025-01-01 until 2025-02-28.")
       end
     end
 
@@ -54,9 +54,9 @@ describe Zbmath, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        response = Zbmath.import
+        response = ZbmathArticle.import
         expect(response).to be_a(Integer).and be >= 0
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Records updated from 2025-01-01 until 2025-01-02.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 2025-01-01 until 2025-01-02.")
       end
     end
 
@@ -65,17 +65,17 @@ describe Zbmath, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        response = Zbmath.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
+        response = ZbmathArticle.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
         expect(response).to eq(nil)
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Records updated from 1990-01-01 until 1990-01-02.")
-        expect(logger_spy).to have_received(:info).with("No ZBMath records updated between 1990-01-01 and 1990-01-02.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 1990-01-01 until 1990-01-02.")
+        expect(logger_spy).to have_received(:info).with("No ZBMath Article records updated between 1990-01-01 and 1990-01-02.")
       end
     end
   end
 
   describe "#source_id" do
     it "returns the source_id" do
-      zbmath = Zbmath.new
+      zbmath = ZbmathArticle.new
       expect(zbmath.source_id).to eq("zbmath")
     end
   end
@@ -83,15 +83,15 @@ describe Zbmath, type: :model, vcr: true do
   describe "#parse_zbmath_record" do
     context "with a DataCite DOI as the main DOI" do
       it "sends a message to the events queue" do
-        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
-        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
         metadata = File.read("#{fixture_path}oai_zbmath_org_942_datacite.xml")
-        response = Zbmath.parse_zbmath_record(metadata)
+        response = ZbmathArticle.parse_zbmath_record(metadata)
 
         expect(response).to be_a(Integer).and eq 5
         expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 cites https://doi.org/10.1145/76359.76371 sent to the events queue.")
@@ -103,29 +103,29 @@ describe Zbmath, type: :model, vcr: true do
     end
     context "with a non-DataCite DOI as the main DOI" do
       it "sends a message to the events queue for Related Identifiers" do
-        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
-        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
         metadata = File.read("#{fixture_path}oai_zbmath_org_942_nonDC_RI.xml")
-        response = Zbmath.parse_zbmath_record(metadata)
+        response = ZbmathArticle.parse_zbmath_record(metadata)
 
         expect(response).to be_a(Integer).and eq 1
         expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 cites https://doi.org/10.5438/sjx9-hb16 sent to the events queue.")
       end
       it "doesn't send any messages when there are no relevant identifiers" do
-        allow(Zbmath).to(receive(:send_event_import_message).and_return(nil))
-        allow(Zbmath).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(Zbmath).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
         metadata = File.read("#{fixture_path}oai_zbmath_org_942.xml")
-        response = Zbmath.parse_zbmath_record(metadata)
+        response = ZbmathArticle.parse_zbmath_record(metadata)
 
         expect(response).to be_a(Integer).and eq 0
       end

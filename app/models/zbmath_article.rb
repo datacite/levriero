@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 include Bolognese::MetadataUtils
-class Zbmath
+class ZbmathArticle
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/"
   ARXIV_PREFIX = ENV["ARXIV_PREFIX"] || "10.48550"
 
@@ -15,18 +15,18 @@ class Zbmath
 
     # get first day of every month between from_date and until_date
     (from_date..until_date).select { |d| d.day == 1 }.each do |m|
-      ZbmathImportByMonthJob.perform_later(from_date: m.strftime("%F"),
+      ZbmathArticleImportByMonthJob.perform_later(from_date: m.strftime("%F"),
                                            until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for ZBMath Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
+    "Queued import for ZBMath Article Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
   end
 
   def self.import(options = {})
     from_date = options[:from_date].present? ? DateTime.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? DateTime.parse(options[:until_date]) : Date.current
-    Rails.logger.info "Importing ZBMath Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
-    zbmath = Zbmath.new
+    Rails.logger.info "Importing ZBMath Article Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
+    zbmath = ZbmathArticle.new
     zbmath.get_records(from: from_date.strftime("%F"), until: until_date.strftime("%F"))
   end
 
@@ -38,7 +38,6 @@ class Zbmath
     # Check if the record has an ARXIV identifier as the primary identifier and convert it to a DOI
     identifier = record.xpath_first(record._source, ".//metadata/resource/identifier")
     if identifier && identifier.attributes.fetch("identifierType").value.downcase == "arxiv"
-      puts "ARXIV found in main identifier- converting to DOI"
       arxiv_identifier = if identifier.text.downcase.start_with?("arxiv:")
                            "arXiv.#{identifier.text[6..]}"
                          else
@@ -75,12 +74,12 @@ class Zbmath
         doi = check_for_arxiv(record)
         # Remove any extra identifiers
         record = remove_extra_identifiers(record)
-        ZbmathImportJob.perform_later(record.metadata.to_s[10..-12], doi: doi )
+        ZbmathArticleImportJob.perform_later(record.metadata.to_s[10..-12], doi: doi )
         count += 1
       end
       count
     rescue OAI::NoMatchException
-      Rails.logger.info "No ZBMath records updated between #{options[:from]} and #{options[:until]}."
+      Rails.logger.info "No ZBMath Article records updated between #{options[:from]} and #{options[:until]}."
       nil
     end
   end

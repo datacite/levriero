@@ -41,11 +41,11 @@ class AgentsController < ApplicationController
            status: :ok
   end
 
-  def zbmath
-    authorize! :import, Zbmath
-    total = Zbmath.import
+  def zbmath_article
+    authorize! :import, ZbmathArticle
+    total = ZbmathArticle.import
 
-    render json: { message: "[zbMATH Agent] Queued import for #{total} DOIs." }.to_json,
+    render json: { message: "[zbMATH Article Agent] Queued import for #{total} records." }.to_json,
            status: :ok
   end
 end
