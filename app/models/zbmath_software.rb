@@ -48,7 +48,6 @@ class ZbmathSoftware
       # efficiency should be ok.
       client.list_records(metadata_prefix: "datacite_swmath", from: options[:from],
                           until: options[:until]).full.each do |record|
-        puts "Processing #{record.header.identifier}"
         ZbmathSoftwareImportJob.perform_later(record.metadata.to_s[10..-12])
         count += 1
       end
@@ -66,7 +65,6 @@ class ZbmathSoftware
     subj_id = Array.wrap(meta.fetch("identifiers", nil)).find do |r|
       r["identifierType"] == "URL" && r["identifier"].start_with?("https://swmath.org/software")
     end&.fetch("identifier", nil)
-    # puts subj_id
     return nil if subj_id.blank?
 
     # parse out valid related identifiers
@@ -81,26 +79,15 @@ class ZbmathSoftware
 
 
       if related_identifier_type == "DOI"
-        # puts "processing DOI #{related_identifier}"
         obj_id = normalize_doi(related_identifier)
-        # Get RA and populate obj
+        # Get RA and populate obj if it's a DataCite DOI
         related_ra = cached_doi_ra(related_identifier)
-        # puts related_ra
-        # obj = if related_ra == "DataCite"
-        #         cached_datacite_response(obj_id)
-        #       elsif related_ra == "Crossref"
-        #         # Don't bother hitting Crossref API if we won't process the relationship
-        #         if ra == "DataCite" || arxiv_pid.present?
-        #           cached_crossref_response(obj_id)
-        #         else
-        #           {}
-        #         end
-        #       else
-        #         {}
-        #       end
-        obj = {}
+        obj = if related_ra == "DataCite"
+                cached_datacite_response(obj_id)
+              else
+                {}
+              end
       else
-        # puts "processing arXiv #{related_identifier}"
         # It's a arXiv ID so convert it to a DOI and get the DataCite metadata
         arxiv_identifier = if related_identifier.downcase.start_with?("arxiv:")
                              "arXiv.#{related_identifier[6..]}"
@@ -108,7 +95,7 @@ class ZbmathSoftware
                              "arXiv.#{related_identifier}"
                            end
         obj_id = normalize_doi("#{ARXIV_PREFIX}/#{arxiv_identifier}")
-        obj = {} # cached_datacite_response(obj_id)
+        obj = cached_datacite_response(obj_id)
         related_ra = "DataCite"
       end
 

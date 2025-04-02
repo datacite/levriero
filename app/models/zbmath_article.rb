@@ -69,7 +69,6 @@ class ZbmathArticle
       # efficiency should be ok.
       client.list_records(metadata_prefix: "datacite_articles", from: options[:from],
                           until: options[:until]).full.each do |record|
-        puts "Processing #{record.header.identifier}"
         # Check if the record has a DOI via arXiv
         doi = check_for_arxiv(record)
         # Remove any extra identifiers
@@ -109,7 +108,6 @@ class ZbmathArticle
         r["identifierType"] == "zbMATH Identifier"
       end&.fetch("identifier", nil)
       if zbmath_identifier.present? && zbmath_identifier.downcase.start_with?("arxiv:")
-        puts "ARXIV found in zbMATH identifier - converting to DOI"
         arxiv_identifier = "#{ARXIV_PREFIX}/arxiv.#{zbmath_identifier[6..]}"
       end
     end
@@ -127,20 +125,18 @@ class ZbmathArticle
     ra = cached_doi_ra(doi)
     pid = normalize_doi(doi)
 
-    # TEMPORARY DISABLE FOR TESTING
-    # subj = if ra == "DataCite"
-    #          cached_datacite_response(pid)
-    #        elsif ra == "Crossref"
-    #          cached_crossref_response(pid)
-    #        else
-    #          {}
-    #        end
-    subj = {}
+    subj = if ra == "DataCite"
+             cached_datacite_response(pid)
+           elsif ra == "Crossref"
+             cached_crossref_response(pid)
+           else
+             {}
+           end
 
-    # If there's an arXiv identifier as well, populate information for use in adding any
+    # If there's an arXiv identifier as well, populate information for use in adding events
     arxiv_pid = arxiv_identifier.present? && arxiv_identifier.downcase != doi.downcase ? normalize_doi(arxiv_identifier) : nil
-    # arxiv_subj = arxiv_pid.present? ? cached_datacite_response(arxiv_pid) : {}
-    arxiv_subj = {}
+    arxiv_subj = arxiv_pid.present? ? cached_datacite_response(arxiv_pid) : {}
+
 
     # parse out valid related identifiers
     related_doi_identifiers = Array.wrap(meta.fetch("related_identifiers", nil)).select do |r|
@@ -157,19 +153,18 @@ class ZbmathArticle
         obj_id = normalize_doi(related_identifier)
         # Get RA and populate obj
         related_ra = cached_doi_ra(related_identifier)
-        # obj = if related_ra == "DataCite"
-        #         cached_datacite_response(obj_id)
-        #       elsif related_ra == "Crossref"
-        #         # Don't bother hitting Crossref API if we won't process the relationship
-        #         if ra == "DataCite" || arxiv_pid.present?
-        #           cached_crossref_response(obj_id)
-        #         else
-        #           {}
-        #         end
-        #       else
-        #         {}
-        #       end
-        obj = {}
+        obj = if related_ra == "DataCite"
+                cached_datacite_response(obj_id)
+              elsif related_ra == "Crossref"
+                # Don't bother hitting Crossref API if we won't process the relationship
+                if ra == "DataCite" || arxiv_pid.present?
+                  cached_crossref_response(obj_id)
+                else
+                  {}
+                end
+              else
+                {}
+              end
       else
         # It's a URL so no PID object on the other end
         obj_id = normalize_url(related_identifier)
