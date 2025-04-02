@@ -48,4 +48,12 @@ class AgentsController < ApplicationController
     render json: { message: "[zbMATH Article Agent] Queued import for #{total} records." }.to_json,
            status: :ok
   end
+
+  def zbmath_software
+    authorize! :import, ZbmathSoftware
+    total = ZbmathSoftware.import
+
+    render json: { message: "[zbMATH Software Agent] Queued import for #{total} records." }.to_json,
+           status: :ok
+  end
 end
