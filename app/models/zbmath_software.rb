@@ -16,7 +16,7 @@ class ZbmathSoftware
     # get first day of every month between from_date and until_date
     (from_date..until_date).select { |d| d.day == 1 }.each do |m|
       ZbmathSoftwareImportByMonthJob.perform_later(from_date: m.strftime("%F"),
-                                           until_date: m.end_of_month.strftime("%F"))
+                                                   until_date: m.end_of_month.strftime("%F"))
     end
 
     "Queued import for ZBMath Software Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
@@ -33,7 +33,6 @@ class ZbmathSoftware
   def source_id
     "zbmath"
   end
-
 
   def get_records(options = {})
     client = OAI::Client.new "https://oai.portal.mardi4nfdi.de/oai/OAIHandler"
@@ -58,11 +57,10 @@ class ZbmathSoftware
     end
   end
 
-  def self.parse_zbmath_record(record, options = {})
-
+  def self.parse_zbmath_record(record, _options = {})
     meta = read_datacite(string: record)
     # The subject here is the swMATH identifier, and occurring DataCite DOIs will be the objects
-    subj_id = Array.wrap(meta.fetch("identifiers", nil)).find do |r|
+    subj_id = Array.wrap(meta.fetch("identifiers", nil)).detect do |r|
       r["identifierType"] == "URL" && r["identifier"].start_with?("https://swmath.org/software")
     end&.fetch("identifier", nil)
     return nil if subj_id.blank?
@@ -76,7 +74,6 @@ class ZbmathSoftware
     items = Array.wrap(related_doi_identifiers).reduce([]) do |x, item|
       related_identifier = item.fetch("relatedIdentifier", nil).to_s.strip.downcase
       related_identifier_type = item.fetch("relatedIdentifierType", nil).to_s.strip
-
 
       if related_identifier_type == "DOI"
         obj_id = normalize_doi(related_identifier)

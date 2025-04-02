@@ -16,7 +16,7 @@ class ZbmathArticle
     # get first day of every month between from_date and until_date
     (from_date..until_date).select { |d| d.day == 1 }.each do |m|
       ZbmathArticleImportByMonthJob.perform_later(from_date: m.strftime("%F"),
-                                           until_date: m.end_of_month.strftime("%F"))
+                                                  until_date: m.end_of_month.strftime("%F"))
     end
 
     "Queued import for ZBMath Article Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
@@ -73,7 +73,7 @@ class ZbmathArticle
         doi = check_for_arxiv(record)
         # Remove any extra identifiers
         record = remove_extra_identifiers(record)
-        ZbmathArticleImportJob.perform_later(record.metadata.to_s[10..-12], doi: doi )
+        ZbmathArticleImportJob.perform_later(record.metadata.to_s[10..-12], doi: doi)
         count += 1
       end
       count
@@ -84,8 +84,7 @@ class ZbmathArticle
   end
 
   def self.parse_zbmath_record(record, options = {})
-
-    meta = read_datacite(string: record, doi: options[:doi].present? ? options[:doi] : nil)
+    meta = read_datacite(string: record, doi: options[:doi].presence)
 
     # Extract any arXiv identifiers to potentially fill in for a missing DOI
     arxiv_identifier = options[:doi]
@@ -137,7 +136,6 @@ class ZbmathArticle
     arxiv_pid = arxiv_identifier.present? && arxiv_identifier.downcase != doi.downcase ? normalize_doi(arxiv_identifier) : nil
     arxiv_subj = arxiv_pid.present? ? cached_datacite_response(arxiv_pid) : {}
 
-
     # parse out valid related identifiers
     related_doi_identifiers = Array.wrap(meta.fetch("related_identifiers", nil)).select do |r|
       %w(DOI URL).include?(r["relatedIdentifierType"]) && r["relatedIdentifier"] != "https://zbmath.org"
@@ -147,7 +145,6 @@ class ZbmathArticle
     items = Array.wrap(related_doi_identifiers).reduce([]) do |x, item|
       related_identifier = item.fetch("relatedIdentifier", nil).to_s.strip.downcase
       related_identifier_type = item.fetch("relatedIdentifierType", nil).to_s.strip
-
 
       if related_identifier_type == "DOI"
         obj_id = normalize_doi(related_identifier)
@@ -205,7 +202,7 @@ class ZbmathArticle
       x
     end
 
-    if ra == "DataCite" or arxiv_pid.present?
+    if (ra == "DataCite") || arxiv_pid.present?
       # extract creator identifiers
       creator_identifiers = Array.wrap(meta.fetch("creators", nil)).select do |c|
         c["nameIdentifiers"].present? && c["nameIdentifiers"].any? do |n|
