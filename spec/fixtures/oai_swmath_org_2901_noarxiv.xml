@@ -1,0 +1,68 @@
+<resource xmlns="http://datacite.org/schema/kernel-4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">
+  <identifier identifierType="swMATH">oai:swmath.org:2901</identifier>
+  <alternateIdentifiers>
+    <alternateIdentifier alternateIdentifierType="URL">https://swmath.org/software/2901</alternateIdentifier>
+  </alternateIdentifiers>
+  <creators>
+    <creator>
+      <creatorName nameType="Personal">Leuschel, M.</creatorName>
+      <givenName>M.</givenName>
+      <familyName>Leuschel</familyName>
+    </creator>
+    <creator>
+      <creatorName nameType="Personal">Jörgensen, J.</creatorName>
+      <givenName>J.</givenName>
+      <familyName>Jörgensen</familyName>
+    </creator>
+  </creators>
+  <titles>
+    <title>LOGEN</title>
+  </titles>
+  <descriptions>
+    <description xml:lang="en" descriptionType="Abstract">:unav</description>
+    <description xml:lang="en" descriptionType="TechnicalInfo">operating systems: Linux, OS X, Win 32</description>
+  </descriptions>
+  <publicationYear>1999</publicationYear>
+  <subjects>
+    <subject subjectScheme="msc2020">03</subject>
+    <subject subjectScheme="msc2020">68</subject>
+    <subject subjectScheme="keyword">COGEN approach</subject>
+  </subjects>
+  <language>English</language>
+  <resourceType resourceTypeGeneral="Software">:none</resourceType>
+  <formats>
+    <format>application/xml</format>
+  </formats>
+  <publisher>http://eprints.ecs.soton.ac.uk/2681/</publisher>
+  <relatedIdentifiers>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsSourceOf">http://eprints.ecs.soton.ac.uk/2681/</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/7776353</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/7196157</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/2102949</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5589970</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/2240708</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/1615252</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/7453190</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/7440192</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5531079</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5267180</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5189207</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5195839</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/1497829</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/7776347</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5496628</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/5900394</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1017/S1471068421000211</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1017/S1471068419000310</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1017/S1471068403001662</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/s10990-008-9030-8</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/b98187</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/978-3-642-00515-2_5</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/11506676_4</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/978-3-540-71410-1_5</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/b96926</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1017/S1471068421000600</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/978-3-540-78769-3_6</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsCitedBy">10.1007/978-3-642-20551-4_13</relatedIdentifier>
+  </relatedIdentifiers>
+</resource>
