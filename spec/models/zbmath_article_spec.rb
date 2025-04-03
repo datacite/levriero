@@ -8,7 +8,7 @@ describe ZbmathArticle, type: :model, vcr: true do
     context "with valid date range" do
       it "queues jobs for DOIs created within the specified month range" do
         response = ZbmathArticle.import_by_month(from_date: from_date, until_date: until_date)
-        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-01 until 2025-02-28.")
+        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-01T00:00:00+00:00 until 2025-02-28T23:59:59+00:00.")
       end
     end
 
@@ -36,7 +36,7 @@ describe ZbmathArticle, type: :model, vcr: true do
 
         response = ZbmathArticle.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 2025-01-01 until 2025-02-28.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 2025-01-01T00:00:00+00:00 until 2025-02-28T00:00:00+00:00.")
       end
     end
 
@@ -61,14 +61,14 @@ describe ZbmathArticle, type: :model, vcr: true do
     end
 
     context "when there are no updated records" do
-      it "catches the OAI error and returns a message" do
+      it "catches the OAI error and returns nil" do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
         response = ZbmathArticle.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
         expect(response).to eq(nil)
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 1990-01-01 until 1990-01-02.")
-        expect(logger_spy).to have_received(:info).with("No ZBMath Article records updated between 1990-01-01 and 1990-01-02.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 1990-01-01T00:00:00+00:00 until 1990-01-02T00:00:00+00:00.")
+        expect(logger_spy).to have_received(:info).with("No ZBMath Article records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
       end
     end
   end
@@ -80,7 +80,7 @@ describe ZbmathArticle, type: :model, vcr: true do
     end
   end
 
-  describe "#parse_zbmath_record" do
+  describe "#process_zbmath_record" do
     context "with a DataCite DOI as the main DOI" do
       it "sends a message to the events queue" do
         allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
@@ -90,15 +90,15 @@ describe ZbmathArticle, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        metadata = File.read("#{fixture_path}oai_zbmath_org_942_datacite.xml")
-        response = ZbmathArticle.parse_zbmath_record(metadata)
+        response = ZbmathArticle.process_zbmath_record("oai:zbmath.org:902693786")
 
-        expect(response).to be_a(Integer).and eq 5
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 cites https://doi.org/10.1145/76359.76371 sent to the events queue.")
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_cited_by https://zbmath.org/946 sent to the events queue.")
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_authored_by https://zbmath.org/authors/tesauro.gerald sent to the events queue.")
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_identical_to https://zbmath.org/0772.68075 sent to the events queue.")
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.5438/sjx9-hb16 is_identical_to oai:zbmath.org:942 sent to the events queue.")
+        expect(response).to be_a(Integer).and eq 6
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_authored_by https://zbmath.org/authors/sergeant-perthuis.gregoire sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_authored_by https://zbmath.org/authors/smithe.toby-st-clere sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_authored_by https://zbmath.org/authors/boitel.leo sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_identical_to https://zbmath.org/arXiv:2503.15705 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_identical_to oai:zbmath.org:902693786 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.48550/arxiv.2503.15705 is_identical_to https://zbmath.org/902693786 sent to the events queue.")
       end
     end
     context "with a non-DataCite DOI as the main DOI" do
@@ -110,11 +110,10 @@ describe ZbmathArticle, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        metadata = File.read("#{fixture_path}oai_zbmath_org_942_nonDC_RI.xml")
-        response = ZbmathArticle.parse_zbmath_record(metadata)
+        response = ZbmathArticle.process_zbmath_record("oai:zbmath.org:7857807")
 
         expect(response).to be_a(Integer).and eq 1
-        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/bf00992697 cites https://doi.org/10.5438/sjx9-hb16 sent to the events queue.")
+        expect(logger_spy).to have_received(:info).with("[Event Data] https://doi.org/10.1007/978-981-97-1235-9_2 cites https://doi.org/10.13154/tosc.v2018.i3.93-123 sent to the events queue.")
       end
       it "doesn't send any messages when there are no relevant identifiers" do
         allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
@@ -124,8 +123,7 @@ describe ZbmathArticle, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        metadata = File.read("#{fixture_path}oai_zbmath_org_942.xml")
-        response = ZbmathArticle.parse_zbmath_record(metadata)
+        response = ZbmathArticle.process_zbmath_record("oai:zbmath.org:942")
 
         expect(response).to be_a(Integer).and eq 0
       end
