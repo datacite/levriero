@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oai.portal.mardi4nfdi.de/oai/OAIHandler?from=2025-01-01&metadataPrefix=datacite_articles&until=2025-01-02&verb=ListIdentifiers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Date:
+      - Thu, 03 Apr 2025 19:31:40 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8" ?><?xml-stylesheet type="text/xsl"
+        href="/oai/stylesheet"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2025-04-03T19:31:39Z</responseDate><request
+        from="2025-01-01" metadataPrefix="datacite_articles" until="2025-01-02" verb="ListIdentifiers">https://oai.portal.mardi4nfdi.de/oai/OAIHandler</request><ListIdentifiers><header><identifier>oai:zbmath.org:902636232</identifier><datestamp>2025-03-28T04:55:20Z</datestamp><setSpec>49</setSpec><setSpec>35</setSpec><setSpec>74</setSpec></header><header><identifier>oai:zbmath.org:902636290</identifier><datestamp>2025-03-28T04:55:20Z</datestamp></header><header><identifier>oai:zbmath.org:902636453</identifier><datestamp>2025-03-28T04:55:20Z</datestamp></header><header><identifier>oai:zbmath.org:902636664</identifier><datestamp>2025-03-28T04:55:20Z</datestamp><setSpec>54</setSpec></header><header><identifier>oai:zbmath.org:902636671</identifier><datestamp>2025-03-28T04:55:20Z</datestamp><setSpec>05</setSpec><setSpec>54</setSpec></header><header><identifier>oai:zbmath.org:902637040</identifier><datestamp>2025-03-28T04:55:20Z</datestamp><setSpec>60</setSpec></header></ListIdentifiers></OAI-PMH>
+  recorded_at: Thu, 03 Apr 2025 19:31:40 GMT
+recorded_with: VCR 6.3.1

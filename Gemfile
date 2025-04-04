@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "active_model_serializers", "~> 0.10.0"
+gem "addressable", "2.8.0"
 gem "api-pagination"
 gem "aws-sdk-sqs", "~> 1.3"
 gem "bcrypt", "~> 3.1.7"
@@ -25,6 +26,7 @@ gem "logstash-event", "~> 1.2", ">= 1.2.02"
 gem "logstash-logger", "~> 0.26.1"
 gem "maremma", "~> 5.0"
 gem "nokogiri", "~> 1.16", ">= 1.16.3"
+gem "oai", "~> 1.2", ">= 1.2.1"
 gem "oj", ">= 2.8.3"
 gem "oj_mimic_json", "~> 1.0", ">= 1.0.1"
 gem "rack-cors", "~> 1.0", require: "rack/cors"
@@ -35,6 +37,7 @@ gem "shoryuken", "~> 4.0"
 gem "simple_command"
 gem "slack-notifier", "~> 2.3", ">= 2.3.2"
 gem "sprockets", "~> 3.7", ">= 3.7.2"
+gem "stringio", "3.0.1"
 gem 'next_rails'
 gem "json-canonicalization", '0.3.1'
 gem 'msgpack', "~> 1.4.4"
@@ -50,8 +53,8 @@ end
 
 group :development do
   gem "listen", "~> 3.9"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring", "~> 4.2"
+  gem "spring-watcher-listen", "~> 2.1"
 end
 
 group :test do

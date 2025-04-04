@@ -1,0 +1,644 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oai.portal.mardi4nfdi.de/oai/OAIHandler?identifier=oai:zbmath.org:942&metadataPrefix=datacite_articles&verb=GetRecord
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Date:
+      - Thu, 03 Apr 2025 19:50:05 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiID8+PD94bWwtc3R5bGVzaGVldCB0eXBlPSJ0ZXh0L3hzbCIgaHJlZj0iL29haS9zdHlsZXNoZWV0Ij8+PE9BSS1QTUggeG1sbnM9Imh0dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wLyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lm9wZW5hcmNoaXZlcy5vcmcvT0FJLzIuMC8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvT0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyNS0wNC0wM1QxOTo1MDowNFo8L3Jlc3BvbnNlRGF0ZT48cmVxdWVzdCBpZGVudGlmaWVyPSJvYWk6emJtYXRoLm9yZzo5NDIiIG1ldGFkYXRhUHJlZml4PSJkYXRhY2l0ZV9hcnRpY2xlcyIgdmVyYj0iR2V0UmVjb3JkIj5odHRwczovL29haS5wb3J0YWwubWFyZGk0bmZkaS5kZS9vYWkvT0FJSGFuZGxlcjwvcmVxdWVzdD48R2V0UmVjb3JkPjxyZWNvcmQ+PGhlYWRlcj48aWRlbnRpZmllcj5vYWk6emJtYXRoLm9yZzo5NDI8L2lkZW50aWZpZXI+PGRhdGVzdGFtcD4yMDI1LTAzLTI4VDA1OjE2OjE5WjwvZGF0ZXN0YW1wPjxzZXRTcGVjPjY4PC9zZXRTcGVjPjwvaGVhZGVyPjxtZXRhZGF0YT48cmVzb3VyY2UgeG1sbnM9Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC00IgogICAgICAgICAgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIKICAgICAgICAgIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL2RhdGFjaXRlLm9yZy9zY2hlbWEva2VybmVsLTQgaHR0cDovL3NjaGVtYS5kYXRhY2l0ZS5vcmcvbWV0YS9rZXJuZWwtNC9tZXRhZGF0YS54c2QiPgogICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMDA3L0JGMDA5OTI2OTc8L2lkZW50aWZpZXI+CiAgIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9InpiTUFUSCBJZGVudGlmaWVyIj4wNzcyLjY4MDc1PC9hbHRlcm5hdGVJZGVudGlmaWVyPgogICAgICA8YWx0ZXJuYXRlSWRlbnRpZmllciBhbHRlcm5hdGVJZGVudGlmaWVyVHlwZT0iemJNQVRIIERvY3VtZW50IElEIj5vYWk6emJtYXRoLm9yZzo5NDI8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHBzOi8vemJtYXRoLm9yZy85NDI8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgIDxjcmVhdG9ycz4KICAgICAgPGNyZWF0b3I+CiAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPlRlc2F1cm8sIEdlcmFsZDwvY3JlYXRvck5hbWU+CiAgICAgICAgIDxnaXZlbk5hbWU+VGVzYXVybzwvZ2l2ZW5OYW1lPgogICAgICAgICA8ZmFtaWx5TmFtZT5HZXJhbGQ8L2ZhbWlseU5hbWU+CiAgICAgICAgIDxuYW1lSWRlbnRpZmllciBzY2hlbWVVUkk9Imh0dHBzOi8vemJtYXRoLm9yZy8iCiAgICAgICAgICAgICAgICAgICAgICAgICBuYW1lSWRlbnRpZmllclNjaGVtZT0iemJNQVRIIEF1dGhvciBDb2RlIj50ZXNhdXJvLmdlcmFsZDwvbmFtZUlkZW50aWZpZXI+CiAgICAgIDwvY3JlYXRvcj4KICAgPC9jcmVhdG9ycz4KICAgPHRpdGxlcz4KICAgICAgPHRpdGxlIHhtbDpsYW5nPSJlbiI+UHJhY3RpY2FsIGlzc3VlcyBpbiB0ZW1wb3JhbCBkaWZmZXJlbmNlIGxlYXJuaW5nPC90aXRsZT4KICAgPC90aXRsZXM+CiAgIDxwdWJsaXNoZXIgeG1sOmxhbmc9ImVuIj5TcHJpbmdlciBVUywgTmV3IFlvcmssIE5ZPC9wdWJsaXNoZXI+CiAgIDxwdWJsaWNhdGlvblllYXI+MTk5MjwvcHVibGljYXRpb25ZZWFyPgogICA8c3ViamVjdHM+CiAgICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9Im1zYzIwMjAiIGNsYXNzaWZpY2F0aW9uQ29kZT0iNjhUMDUiPkxlYXJuaW5nIGFuZCBhZGFwdGl2ZSBzeXN0ZW1zIGluIGFydGlmaWNpYWwgaW50ZWxsaWdlbmNlPC9zdWJqZWN0PgogICAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJrZXl3b3JkIj50ZW1wb3JhbCBkaWZmZXJlbmNlIGxlYXJuaW5nPC9zdWJqZWN0PgogICAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJrZXl3b3JkIj5uZXVyYWwgbmV0d29yazwvc3ViamVjdD4KICAgICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0ia2V5d29yZCI+Y29ubmVjdGlvbmlzdCBtZXRob2RzPC9zdWJqZWN0PgogICAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJrZXl3b3JkIj5mZWF0dXJlIGRpc2NvdmVyeTwvc3ViamVjdD4KICAgICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0ia2V5d29yZCI+YmFja2dhbW1vbjwvc3ViamVjdD4KICAgPC9zdWJqZWN0cz4KICAgPGxhbmd1YWdlPkVuZ2xpc2g8L2xhbmd1YWdlPgogICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj5qb3VybmFsIGFydGljbGU8L3Jlc291cmNlVHlwZT4KICAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25UeXBlPSJDaXRlcyIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj4xMC4xMTQ1Lzc2MzU5Ljc2MzcxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iVVJMIiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+aHR0cHM6Ly96Ym1hdGgub3JnLzk0NjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiCiAgICAgICAgICAgICAgICAgICAgICAgICByZXNvdXJjZVR5cGVHZW5lcmFsPSJKb3VybmFsQXJ0aWNsZSI+MTAuMTAxNi8wMDA0LTM3MDIoNzQpOTAwMjctNzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiCiAgICAgICAgICAgICAgICAgICAgICAgICByZXNvdXJjZVR5cGVHZW5lcmFsPSJKb3VybmFsQXJ0aWNsZSI+MTAuMTAxNi8wODkzLTYwODAoODkpOTAwMjAtODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiCiAgICAgICAgICAgICAgICAgICAgICAgICByZXNvdXJjZVR5cGVHZW5lcmFsPSJKb3VybmFsQXJ0aWNsZSI+MTAuMTAxNi8wMDA0LTM3MDIoODgpOTAwNzYtODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiCiAgICAgICAgICAgICAgICAgICAgICAgICByZXNvdXJjZVR5cGVHZW5lcmFsPSJKb3VybmFsQXJ0aWNsZSI+MTAuMTIxNC9hb21zLzExNzc3Mjk1ODY8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJVUkwiIHJlbGF0aW9uVHlwZT0iSXNDaXRlZEJ5Ij5odHRwczovL3pibWF0aC5vcmcvNjc2ODgzNzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiCiAgICAgICAgICAgICAgICAgICAgICAgICByZXNvdXJjZVR5cGVHZW5lcmFsPSJKb3VybmFsQXJ0aWNsZSI+MTAuMTE0Ny9yZC4zMy4wMjEwPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25UeXBlPSJDaXRlcyIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj4xMC4xMTQ3L3JkLjExNi4wNjAxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25UeXBlPSJDaXRlcyIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj4xMC4xMDE2LzAwMDQtMzcwMig4OSk5MDAxNy05PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25UeXBlPSJDaXRlcyIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj4xMC4xMTM3LzExMTYwMjU8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiCiAgICAgICAgICAgICAgICAgICAgICAgICByZWxhdGlvblR5cGU9IkNpdGVzIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVzb3VyY2VUeXBlR2VuZXJhbD0iSm91cm5hbEFydGljbGUiPjEwLjExMDkvUFJPQy4xOTc2LjEwMjg2PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIgogICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpb25UeXBlPSJDaXRlcyIKICAgICAgICAgICAgICAgICAgICAgICAgIHJlc291cmNlVHlwZUdlbmVyYWw9IkpvdXJuYWxBcnRpY2xlIj4xMC4xMjg3L21uc2MuMjMuOC44NTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICAgPHJpZ2h0c0xpc3Q+CiAgICAgIDxyaWdodHMgeG1sOmxhbmc9ImVuIgogICAgICAgICAgICAgIHNjaGVtZVVSST0iaHR0cHM6Ly9hcGkuemJtYXRoLm9yZy92MS8iCiAgICAgICAgICAgICAgcmlnaHRzSWRlbnRpZmllclNjaGVtZT0iemJNQVRIIgogICAgICAgICAgICAgIHJpZ2h0c0lkZW50aWZpZXI9IkNDLUJZLVNBIDQuMCIKICAgICAgICAgICAgICByaWdodHNVUkk9Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS1zYS80LjAvIj4KICAgICAgICAgICAgICAgICAgICBUaGUgemJNQVRIIE9wZW4gT0FJLVBNSCBBUEkgaXMgc3ViamVjdCB0byB0aGUgVGVybXMgYW5kIENvbmRpdGlvbnMgZm9yIHRoZSB6Yk1BVEggT3BlbiBBUEkgU2VydmljZSBvZiBGSVogS2FybHNydWhlIOKAkyBMZWlibml6LUluc3RpdHV0IGbDvHIgSW5mb3JtYXRpb25zaW5mcmFzdHJ1a3R1ciBHbWJILgpDb250ZW50IGdlbmVyYXRlZCBieSB6Yk1BVEggT3Blbiwgc3VjaCBhcyByZXZpZXdzLCBjbGFzc2lmaWNhdGlvbnMsIHNvZnR3YXJlLCBvciBhdXRob3IgZGlzYW1iaWd1YXRpb24gZGF0YSwgYXJlIGRpc3RyaWJ1dGVkIHVuZGVyIENDLUJZLVNBIDQuMC4gVGhpcyBkZWZpbmVzIHRoZSBsaWNlbnNlIGZvciB0aGUgd2hvbGUgZGF0YXNldCwgd2hpY2ggYWxzbyBjb250YWlucyBub24tY29weXJpZ2h0ZWQgYmlibGlvZ3JhcGhpYyBtZXRhZGF0YSBhbmQgcmVmZXJlbmNlIGRhdGEgZGVyaXZlZCBmcm9tIEk0T0MgKENDMCkuIE5vdGUgdGhhdCB0aGUgQVBJIG9ubHkgcHJvdmlkZXMgYSBzdWJzZXQgb2YgdGhlIGRhdGEgaW4gdGhlIHpiTUFUSCBPcGVuIFdlYiBpbnRlcmZhY2UuIEluIHNldmVyYWwgY2FzZXMsIHRoaXJkLXBhcnR5IGluZm9ybWF0aW9uLCBzdWNoIGFzIGFic3RyYWN0cywgY2Fubm90IGJlIG1hZGUgYXZhaWxhYmxlIHVuZGVyIGEgc3VpdGFibGUgbGljZW5zZSB0aHJvdWdoIHRoZSBBUEkuIEluIHRob3NlIGNhc2VzLCB3ZSByZXBsYWNlZCB0aGUgZGF0YSB3aXRoIHRoZSBzdHJpbmcKInpiTUFUSCBPcGVuIFdlYiBJbnRlcmZhY2UgY29udGVudHMgdW5hdmFpbGFibGUgZHVlIHRvIGNvbmZsaWN0aW5nIGxpY2Vuc2VzLiI8L3JpZ2h0cz4KICAgPC9yaWdodHNMaXN0PgogICA8cmVsYXRlZEl0ZW1zPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMTQ1Lzc2MzU5Ljc2MzcxPC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkVocmVuZmV1Y2h0LCBBbmRyemVqPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5BbmRyemVqPC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPkVocmVuZmV1Y2h0PC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgICAgIDxjcmVhdG9yPgogICAgICAgICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5XYXJtdXRoLCBNYW5mcmVkPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5NYW5mcmVkPC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPldhcm11dGg8L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkhhdXNzbGVyLCBEYXZpZDwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+RGF2aWQ8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+SGF1c3NsZXI8L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkJsdW1lciwgQW5zZWxtPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5BbnNlbG08L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+Qmx1bWVyPC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5BIEVocmVuZmV1Y2h0IEEgSGF1c3NsZXIgRCBcJmFtcDsgV2FybXV0aCBNICgpIExlYXJuYWJpbGl0eSBhbmQgdGhlIFZhcG5pay1DaGVydm9uZW5raXMgZGltZW5zaW9uSkFDTSAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk4OTwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iVVJMIj5odHRwczovL3pibWF0aC5vcmcvOTQ2PC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkRheWFuLCBQZXRlcjwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+UGV0ZXI8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+RGF5YW48L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgPC9jcmVhdG9ycz4KICAgICAgICAgPHRpdGxlcz4KICAgICAgICAgICAgPHRpdGxlPlAgKCkgVGhlIGNvbnZlcmdlbmNlIG9mIFREKD8pTWFjaGluZSBMZWFybmluZyAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk5MjwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMDE2LzAwMDQtMzcwMig3NCk5MDAyNy03PC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkdyaWZmaXRoLCBBcm5vbGQ8L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPkFybm9sZDwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5HcmlmZml0aDwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICA8L2NyZWF0b3JzPgogICAgICAgICA8dGl0bGVzPgogICAgICAgICAgICA8dGl0bGU+QUsgKCkgQSBjb21wYXJpc29uIGFuZCBldmFsdWF0aW9uIG9mIHRocmVlIG1hY2hpbmUgbGVhcm5pbmcgcHJvY2VkdXJlcyBhcyBhcHBsaWVkIHRvIHRoZSBnYW1lIG9mIGNoZWNrZXJzQXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UgLTwvdGl0bGU+CiAgICAgICAgIDwvdGl0bGVzPgogICAgICAgICA8cHVibGljYXRpb25ZZWFyPjE5NzQ8L3B1YmxpY2F0aW9uWWVhcj4KICAgICAgPC9yZWxhdGVkSXRlbT4KICAgICAgPHJlbGF0ZWRJdGVtIHJlbGF0ZWRJdGVtVHlwZT0iSm91cm5hbEFydGljbGUiIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiPgogICAgICAgICA8cmVsYXRlZEl0ZW1JZGVudGlmaWVyIHJlbGF0ZWRJdGVtSWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTAxNi8wODkzLTYwODAoODkpOTAwMjAtODwvcmVsYXRlZEl0ZW1JZGVudGlmaWVyPgogICAgICAgICA8Y3JlYXRvcnM+CiAgICAgICAgICAgIDxjcmVhdG9yPgogICAgICAgICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5XaGl0ZSwgSGFsYmVydDwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+SGFsYmVydDwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5XaGl0ZTwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+U3RpbmNoY29tYmUsIE1heHdlbGw8L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPk1heHdlbGw8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+U3RpbmNoY29tYmU8L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkhvcm5paywgS3VydDwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+S3VydDwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5Ib3JuaWs8L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgPC9jcmVhdG9ycz4KICAgICAgICAgPHRpdGxlcz4KICAgICAgICAgICAgPHRpdGxlPksgU3RpbmNoY29tYmUgTSBcJmFtcDsgV2hpdGUgSCAoKSBNdWx0aWxheWVyIGZlZWRmb3J3YXJkIG5ldHdvcmtzIGFyZSB1bml2ZXJzYWwgYXBwcm94aW1hdG9yc05ldXJhbCBOZXR3b3JrcyAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk4OTwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMDE2LzAwMDQtMzcwMig4OCk5MDA3Ni04PC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPk1haGFqYW4sIFNhbmpveTwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+U2Fuam95PC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPk1haGFqYW48L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkxlZSwgS2FpPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5LYWk8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+TGVlPC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5LLUYgXCZhbXA7IE1hamFoYW4gUyAoKSBBIHBhdHRlcm4gY2xhc3NpZmljYXRpb24gYXBwcm9hY2ggdG8gZXZhbHVhdGlvbiBmdW5jdGlvbiBsZWFybmluZ0FydGlmaWNpYWwgSW50ZWxsaWdlbmNlIC08L3RpdGxlPgogICAgICAgICA8L3RpdGxlcz4KICAgICAgICAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgICAgIDwvcmVsYXRlZEl0ZW0+CiAgICAgIDxyZWxhdGVkSXRlbSByZWxhdGVkSXRlbVR5cGU9IkpvdXJuYWxBcnRpY2xlIiByZWxhdGlvblR5cGU9IkNpdGVzIj4KICAgICAgICAgPHJlbGF0ZWRJdGVtSWRlbnRpZmllciByZWxhdGVkSXRlbUlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjEyMTQvYW9tcy8xMTc3NzI5NTg2PC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPk1vbnJvLCBTdXR0b248L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPlN1dHRvbjwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5Nb25ybzwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+Um9iYmlucywgSGVyYmVydDwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+SGVyYmVydDwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5Sb2JiaW5zPC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5IIFwmYW1wOyBNb25ybyBTICgpIEEgc3RvY2hhc3RpYyBhcHByb3hpbWF0aW9uIG1ldGhvZEFubmFscyBvZiBNYXRoZW1hdGljYWwgU3RhdGlzdGljcyAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk1MTwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iVVJMIj5odHRwczovL3pibWF0aC5vcmcvNjc2ODgzNzwvcmVsYXRlZEl0ZW1JZGVudGlmaWVyPgogICAgICAgICA8Y3JlYXRvcnM+CiAgICAgICAgICAgIDxjcmVhdG9yPgogICAgICAgICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5IaW50b24sIEdlb2ZmcmV5PC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5HZW9mZnJleTwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5IaW50b248L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPldpbGxpYW1zLCBSb25hbGQ8L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPlJvbmFsZDwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT5XaWxsaWFtczwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+UnVtZWxoYXJ0LCBEYXZpZDwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+RGF2aWQ8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+UnVtZWxoYXJ0PC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5ERSBIaW50b24gR0UgXCZhbXA7IFdpbGxpYW1zIFJKICgpIExlYXJuaW5nIGludGVybmFsIHJlcHJlc2VudGF0aW9ucyBieSBlcnJvciBwcm9wYWdhdGlvbiBJbjogRCBSdW1lbGhhcnQgXCZhbXA7IEogTWNDbGVsbGFuZCAoRWRzKVBhcmFsbGVsIGRpc3RyaWJ1dGVkIHByb2Nlc3NpbmcgVm9sIENhbWJyaWRnZSBNQTogTUlUIFByZXNzPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk4NjwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMTQ3L3JkLjMzLjAyMTA8L3JlbGF0ZWRJdGVtSWRlbnRpZmllcj4KICAgICAgICAgPGNyZWF0b3JzPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+OnVuYXY8L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPjp1bmF2PC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPjp1bmF2PC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5BICgpIFNvbWUgc3R1ZGllcyBpbiBtYWNoaW5lIGxlYXJuaW5nIHVzaW5nIHRoZSBnYW1lIG9mIGNoZWNrZXJzSUJNIEogb2YgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IC08L3RpdGxlPgogICAgICAgICA8L3RpdGxlcz4KICAgICAgICAgPHB1YmxpY2F0aW9uWWVhcj46dW5hdjwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMTQ3L3JkLjExNi4wNjAxPC9yZWxhdGVkSXRlbUlkZW50aWZpZXI+CiAgICAgICAgIDxjcmVhdG9ycz4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPjp1bmF2PC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT46dW5hdjwvZ2l2ZW5OYW1lPgogICAgICAgICAgICAgICA8ZmFtaWx5TmFtZT46dW5hdjwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICA8L2NyZWF0b3JzPgogICAgICAgICA8dGl0bGVzPgogICAgICAgICAgICA8dGl0bGU+QSAoKSBTb21lIHN0dWRpZXMgaW4gbWFjaGluZSBsZWFybmluZyB1c2luZyB0aGUgZ2FtZSBvZiBjaGVja2VycyBJST9yZWNlbnQgcHJvZ3Jlc3NJQk0gSiBvZiBSZXNlYXJjaCBhbmQgRGV2ZWxvcG1lbnQgLTwvdGl0bGU+CiAgICAgICAgIDwvdGl0bGVzPgogICAgICAgICA8cHVibGljYXRpb25ZZWFyPjp1bmF2PC9wdWJsaWNhdGlvblllYXI+CiAgICAgIDwvcmVsYXRlZEl0ZW0+CiAgICAgIDxyZWxhdGVkSXRlbSByZWxhdGVkSXRlbVR5cGU9IkpvdXJuYWxBcnRpY2xlIiByZWxhdGlvblR5cGU9IkNpdGVzIj4KICAgICAgICAgPHJlbGF0ZWRJdGVtSWRlbnRpZmllciByZWxhdGVkSXRlbUlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjEwMTYvMDAwNC0zNzAyKDg5KTkwMDE3LTk8L3JlbGF0ZWRJdGVtSWRlbnRpZmllcj4KICAgICAgICAgPGNyZWF0b3JzPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+VGVzYXVybywgR2VyYWxkPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5HZXJhbGQ8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+VGVzYXVybzwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICA8L2NyZWF0b3JzPgogICAgICAgICA8dGl0bGVzPgogICAgICAgICAgICA8dGl0bGU+RyBcJmFtcDsgU2Vqbm93c2tpIFRKICgpIEEgcGFyYWxsZWwgbmV0d29yayB0aGF0IGxlYXJucyB0byBwbGF5IGJhY2tnYW1tb25BcnRpZmljaWFsIEludGVsbGlnZW5jZSAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk4OTwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRlZEl0ZW1UeXBlPSJKb3VybmFsQXJ0aWNsZSIgcmVsYXRpb25UeXBlPSJDaXRlcyI+CiAgICAgICAgIDxyZWxhdGVkSXRlbUlkZW50aWZpZXIgcmVsYXRlZEl0ZW1JZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMTM3LzExMTYwMjU8L3JlbGF0ZWRJdGVtSWRlbnRpZmllcj4KICAgICAgICAgPGNyZWF0b3JzPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+VmFwbmlrLCBWbGFkaW1pcjwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+VmxhZGltaXI8L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+VmFwbmlrPC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgICAgIDxjcmVhdG9yPgogICAgICAgICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5DaGVydm9uZW5raXMsIEFsZXhleTwvY3JlYXRvck5hbWU+CiAgICAgICAgICAgICAgIDxnaXZlbk5hbWU+QWxleGV5PC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPkNoZXJ2b25lbmtpczwvZmFtaWx5TmFtZT4KICAgICAgICAgICAgPC9jcmVhdG9yPgogICAgICAgICA8L2NyZWF0b3JzPgogICAgICAgICA8dGl0bGVzPgogICAgICAgICAgICA8dGl0bGU+Vk4gXCZhbXA7IENoZXJ2b25lbmtpcyAoKSBPbiB0aGUgdW5pZm9ybSBjb252ZXJnZW5jZSBvZiByZWxhdGl2ZSBmcmVxdWVuY2llcyBvZiBldmVudHMgdG8gdGhlaXIgcHJvYmFiaWxpdGllc1RoZW9yeSBQcm9iIEFwcGwgLTwvdGl0bGU+CiAgICAgICAgIDwvdGl0bGVzPgogICAgICAgICA8cHVibGljYXRpb25ZZWFyPjE5NzE8L3B1YmxpY2F0aW9uWWVhcj4KICAgICAgPC9yZWxhdGVkSXRlbT4KICAgICAgPHJlbGF0ZWRJdGVtIHJlbGF0ZWRJdGVtVHlwZT0iSm91cm5hbEFydGljbGUiIHJlbGF0aW9uVHlwZT0iQ2l0ZXMiPgogICAgICAgICA8cmVsYXRlZEl0ZW1JZGVudGlmaWVyIHJlbGF0ZWRJdGVtSWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTEwOS9QUk9DLjE5NzYuMTAyODY8L3JlbGF0ZWRJdGVtSWRlbnRpZmllcj4KICAgICAgICAgPGNyZWF0b3JzPgogICAgICAgICAgICA8Y3JlYXRvcj4KICAgICAgICAgICAgICAgPGNyZWF0b3JOYW1lIG5hbWVUeXBlPSJQZXJzb25hbCI+OnVuYXY8L2NyZWF0b3JOYW1lPgogICAgICAgICAgICAgICA8Z2l2ZW5OYW1lPjp1bmF2PC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPjp1bmF2PC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5CIGV0IGFsICgpIFN0YXRpb25hcnkgYW5kIG5vbnN0YXRpb25hcnkgbGVhcm5pbmcgY2hhcmFjdGVyaXN0aWNzIG9mIHRoZSBMTVMgYWRhcHRpdmUgZmlsdGVyUHJvY2VlZGluZ3Mgb2YgdGhlIElFRUUgLTwvdGl0bGU+CiAgICAgICAgIDwvdGl0bGVzPgogICAgICAgICA8cHVibGljYXRpb25ZZWFyPjp1bmF2PC9wdWJsaWNhdGlvblllYXI+CiAgICAgIDwvcmVsYXRlZEl0ZW0+CiAgICAgIDxyZWxhdGVkSXRlbSByZWxhdGVkSXRlbVR5cGU9IkpvdXJuYWxBcnRpY2xlIiByZWxhdGlvblR5cGU9IkNpdGVzIj4KICAgICAgICAgPHJlbGF0ZWRJdGVtSWRlbnRpZmllciByZWxhdGVkSXRlbUlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjEyODcvbW5zYy4yMy44Ljg1MzwvcmVsYXRlZEl0ZW1JZGVudGlmaWVyPgogICAgICAgICA8Y3JlYXRvcnM+CiAgICAgICAgICAgIDxjcmVhdG9yPgogICAgICAgICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5aYWRlaCwgTm9ybWFuPC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5Ob3JtYW48L2dpdmVuTmFtZT4KICAgICAgICAgICAgICAgPGZhbWlseU5hbWU+WmFkZWg8L2ZhbWlseU5hbWU+CiAgICAgICAgICAgIDwvY3JlYXRvcj4KICAgICAgICAgICAgPGNyZWF0b3I+CiAgICAgICAgICAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPktvYmxpc2thLCBHYXJ5PC9jcmVhdG9yTmFtZT4KICAgICAgICAgICAgICAgPGdpdmVuTmFtZT5HYXJ5PC9naXZlbk5hbWU+CiAgICAgICAgICAgICAgIDxmYW1pbHlOYW1lPktvYmxpc2thPC9mYW1pbHlOYW1lPgogICAgICAgICAgICA8L2NyZWF0b3I+CiAgICAgICAgIDwvY3JlYXRvcnM+CiAgICAgICAgIDx0aXRsZXM+CiAgICAgICAgICAgIDx0aXRsZT5OIFwmYW1wOyBLb2JsaXNrYSBHICgpIE9uIG9wdGltYWwgZG91YmxpbmcgaW4gYmFja2dhbW1vbk1hbmFnZW1lbnQgU2NpZW5jZSAtPC90aXRsZT4KICAgICAgICAgPC90aXRsZXM+CiAgICAgICAgIDxwdWJsaWNhdGlvblllYXI+MTk3NzwvcHVibGljYXRpb25ZZWFyPgogICAgICA8L3JlbGF0ZWRJdGVtPgogICAgICA8cmVsYXRlZEl0ZW0gcmVsYXRpb25UeXBlPSJJc1B1Ymxpc2hlZEluIiByZWxhdGVkSXRlbVR5cGU9IkJvb2siPgogICAgICAgICA8cmVsYXRlZEl0ZW1JZGVudGlmaWVyIHJlbGF0ZWRJdGVtSWRlbnRpZmllclR5cGU9IklTU04iPjA4ODUtNjEyNTwvcmVsYXRlZEl0ZW1JZGVudGlmaWVyPgogICAgICAgICA8dGl0bGVzPgogICAgICAgICAgICA8dGl0bGU+TWFjaGluZSBMZWFybmluZzwvdGl0bGU+CiAgICAgICAgIDwvdGl0bGVzPgogICAgICAgICA8cHVibGljYXRpb25ZZWFyPjE5OTI8L3B1YmxpY2F0aW9uWWVhcj4KICAgICAgICAgPHZvbHVtZT44PC92b2x1bWU+CiAgICAgICAgIDxpc3N1ZT4zLTQ8L2lzc3VlPgogICAgICAgICA8Zmlyc3RQYWdlPjI1NzwvZmlyc3RQYWdlPgogICAgICAgICA8bGFzdFBhZ2U+Mjc3PC9sYXN0UGFnZT4KICAgICAgICAgPHB1Ymxpc2hlcj5TcHJpbmdlciBVUywgTmV3IFlvcmssIE5ZPC9wdWJsaXNoZXI+CiAgICAgIDwvcmVsYXRlZEl0ZW0+CiAgIDwvcmVsYXRlZEl0ZW1zPgo8L3Jlc291cmNlPjwvbWV0YWRhdGE+PC9yZWNvcmQ+PC9HZXRSZWNvcmQ+PC9PQUktUE1IPg==
+  recorded_at: Thu, 03 Apr 2025 19:50:05 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=ljVCeC3cLF92N2kan%2BjlQCX5GAC4tsD6bYl8gxwijHeEHX3Om2MIEK7JpQeZQqlg9XLAGg8Ig8LnndFRfbMdRA2U1t8sk4fjyJWiE%2B01R0beHoq8JY7Svxg%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17cb6b800747-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=20114&min_rtt=15726&rtt_var=8361&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=184059&cwnd=251&unsent_bytes=0&cid=0ba4ba3ebb09ec75&ts=108&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:05 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1145
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=6zDCa0esLcjNzHPyAXpfSW%2Fd%2FfkjnOoQZr%2BnSYX7GYMvTWyPeUR3%2BUIbRBgRrfuNfq4J5jZiCfGuyijsi5Gwweyi9JCC8JKSFKSchorHFvDqc4aLqQDPAY4%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17cc8c00b331-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=16775&min_rtt=16062&rtt_var=5155&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=180222&cwnd=210&unsent_bytes=0&cid=e2cc8cdf6f922d42&ts=108&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q0MTUyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAOCp3aDYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:05 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1016
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=XpnUXZZfIZDewTbfJvnXUeIln%2FOX6jUt%2Fz2nQ1SSfE7AsdM7Us37voaT1aTpVMArAbSJ%2BjhVb%2FVX8LBLpIgnxAPm9Ugm5aL%2FE3IKWDXGpjqr%2FBvJdL4tBWs%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17cd89f43628-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=22624&min_rtt=19781&rtt_var=9449&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=146403&cwnd=250&unsent_bytes=0&cid=82fd682a493f20c5&ts=132&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDMyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAH0F06DYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:05 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1016
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:05 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=0gVcJ%2FQ6rGZ5EkvgTnRdLHSU0AUcSum%2BUMp8rRMiI7G0y%2FN15%2BtrOEx%2FmE7iMBHsf%2BExqm2B69OkyX4zRa%2BgrjpDPxn93pU0rraAQdOUiKvw8pRK2bPP5OE%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17cecff19578-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=22025&min_rtt=21820&rtt_var=8592&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=123438&cwnd=251&unsent_bytes=0&cid=cb38416258b2268a&ts=119&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDMyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAH0F06DYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:05 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1016
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=1p7sx1t6c%2F5iFuX8WC%2B3Gu5zubmw8w3qLMO83Ug0dwpnwDCfsYcKSIt4PK8O1dzUJEQhpTqv58CKnbQtkUyK9q44E3ZN6WhbyHJMU4TpGJt%2FMrG39F%2B%2BYR8%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17cfce6db31c-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=16178&min_rtt=14596&rtt_var=5522&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=198301&cwnd=249&unsent_bytes=0&cid=d1b8233807cc0b95&ts=163&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDMyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAH0F06DYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:06 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1214
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=imfrkc7i1zXlzOYov6NJYJ4urWc5YAqm1S43UoBXcEHbBqmmFLMna204ZbRZW6uxV%2FCfiNTANN4rzX61udnaBO2l9wVn1GF%2BZhQyfKWzUeTgS7jTNAZ7GA4%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d13adfcc9e-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15626&min_rtt=15614&rtt_var=4412&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=184823&cwnd=249&unsent_bytes=0&cid=a35baa150c834ede&ts=131&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QyNDEyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAGopwqDYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:06 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1147
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=i09oaoPQx13UBkbNN57GG%2Fi3JyPzOr%2BlXwPNeshv2OQmyWzgU%2Bm%2FnqWzscJnsCscukjuK1r0UgbnfXRS%2BZdAETykbCX9Ijo5iPlRyI3v8413Ps5adThFgoc%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d25d2535f5-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=18160&min_rtt=18102&rtt_var=6905&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=155942&cwnd=248&unsent_bytes=0&cid=09bb57cd604eef0d&ts=198&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q0MTcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAKOy2EDYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:06 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1147
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=iktiFYOyU0z%2F3TGCZX2UQauAQhP7j19ZxxfuntoGLsMLnTky%2FNr1kjBBbROrukZDzY4r5WRljBSMLoeQZ%2BWv3nAOVmkjdODaKsGqGM8%2Fa51yQR7T%2BAeemXs%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d3fde5b3a8-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=14918&min_rtt=13740&rtt_var=4919&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=210633&cwnd=249&unsent_bytes=0&cid=032c0cddcce8cb78&ts=115&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q0MTcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAKOy2EDYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:06 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1016
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:06 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=n%2FDCPLhR%2Fc11ExT1er2D83RFshL1SkWrgyg%2B8mN7BbHueZxcdg7vGomr6oSTJq0hV%2Bnl8FojqJOlPgz8bjokpv689cxauiMIKzeIsQP7HdK2U2TEzks2hWw%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d50f1eb0fb-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=17564&min_rtt=16090&rtt_var=5846&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=179898&cwnd=245&unsent_bytes=0&cid=a68750d4d5f60aa3&ts=124&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDMyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAH0F06DYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:06 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1137
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:07 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=lsUpEPkfDSvhIM8iHj4hZEtfhnp6plptaNqKyhs%2BPqMZxbnWth3NEHVeWMGuPxmMv5lI514hTi4Lt7ZF5XG1YsIJBnGbL0bYJdx%2FQCFayroLAwhrEvCO8%2FU%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d63c4894d3-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=21029&min_rtt=20620&rtt_var=8551&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=121191&cwnd=249&unsent_bytes=0&cid=af61abee12ac009c&ts=124&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q0NjcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAH3YBODYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:07 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1109
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:07 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=THtS4Mp4xIyKm7Iul2cn7aH%2FBSATQkmBeX8lV94HU8elVEO75A1U4mDouZMAR%2BKDDcuwvMQqMFUioeqbYJ8KiSYbfRhVOrKwssgPrr1BlQWbxIdYnwlzYsY%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d76f339499-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=22139&min_rtt=21099&rtt_var=6865&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=137199&cwnd=251&unsent_bytes=0&cid=e947c0f9047e1b46&ts=123&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9Q0MDSyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAXRsdmjYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:07 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1287
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Apr 2025 19:50:07 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=np%2FV7djcbRRPcP5CpMZXF8JmgWIYnh%2FBcl4Ru%2F3YvhF%2BB03l4YSr19uiO5PGXnLoEWyCykqVXAJO6dukFvdjxUf6MFNmYPcD05z1jRJFTzYHlUaRgh7joSg%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92ab17d899ae2219-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=17824&min_rtt=16428&rtt_var=7041&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=129337&cwnd=228&unsent_bytes=0&cid=8d9e4e901c09411b&ts=105&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QyMLcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAWwEJlTYAAAA=
+  recorded_at: Thu, 03 Apr 2025 19:50:07 GMT
+recorded_with: VCR 6.3.1
