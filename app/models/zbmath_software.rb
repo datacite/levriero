@@ -19,15 +19,15 @@ class ZbmathSoftware
                                                    until_date: m.end_of_month.strftime("%F"))
     end
 
-    "Queued import for ZBMath Software Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
+    "Queued import for ZBMath Software Records updated from #{from_date} until #{until_date}."
   end
 
   def self.import(options = {})
     from_date = options[:from_date].present? ? DateTime.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? DateTime.parse(options[:until_date]) : Date.current
-    Rails.logger.info "Importing ZBMath Software Records updated from #{from_date.strftime('%F')} until #{until_date.strftime('%F')}."
+    Rails.logger.info "Importing ZBMath Software Records updated from #{from_date} until #{until_date}."
     zbmath = ZbmathSoftware.new
-    zbmath.get_records(from: from_date.strftime("%F"), until: until_date.strftime("%F"))
+    zbmath.get_records(from: from_date, until: until_date)
   end
 
   def source_id
@@ -38,27 +38,44 @@ class ZbmathSoftware
     client = OAI::Client.new "https://oai.portal.mardi4nfdi.de/oai/OAIHandler"
     count = 0
     begin
-      # Get the metadata - read_datacite expects a string of the XML tree with the <resource> element as the root,
-      # and OAI wraps the data in a <metadata> element so strip this with string slicing (a little ugly, but a lot
-      # simpler and more efficient than parsing the XML, restructuring the tree and then serializing back to string).
-      #
       # Using the .full.each pattern allows transparent handling of the resumption token pattern in the OAI protocol
       # rather than having to deal with it manually. The client should only load one page into memory at a time, so the
       # efficiency should be ok.
-      client.list_records(metadata_prefix: "datacite_swmath", from: options[:from],
+      client.list_identifiers(metadata_prefix: "datacite_swmath", from: options[:from],
                           until: options[:until]).full.each do |record|
-        ZbmathSoftwareImportJob.perform_later(record.metadata.to_s[10..-12])
+        ZbmathSoftwareImportJob.perform_later(record.identifier)
         count += 1
       end
-      count
     rescue OAI::NoMatchException
       Rails.logger.info "No ZBMath Software records updated between #{options[:from]} and #{options[:until]}."
+      return nil
+    end
+    count
+  end
+
+  def get_zbmath_record(identifier)
+    client = OAI::Client.new "https://oai.portal.mardi4nfdi.de/oai/OAIHandler"
+    begin
+      response = client.get_record(identifier: identifier, metadata_prefix: "datacite_swmath")
+      response.record
+    rescue OAI::IdException
+      Rails.logger.info "ZBMath Software record #{identifier} not found in the OAI server."
       nil
     end
   end
 
-  def self.parse_zbmath_record(record, _options = {})
-    meta = read_datacite(string: record)
+  def self.process_zbmath_record(identifier)
+    # Get the record
+    z = ZbmathSoftware.new
+    record = z.get_zbmath_record(identifier)
+    return nil if record.nil?
+
+    # Get the metadata - read_datacite expects a string of the XML tree with the <resource> element as the root,
+    # and OAI wraps the data in a <metadata> element so strip this with string slicing (a little ugly, but a lot
+    # simpler and more efficient than parsing the XML, restructuring the tree and then serializing back to string).
+    meta = read_datacite(string: record.metadata.to_s[10..-12])
+
+    # Get the subject
     # The subject here is the swMATH identifier, and occurring DataCite DOIs will be the objects
     subj_id = Array.wrap(meta.fetch("identifiers", nil)).detect do |r|
       r["identifierType"] == "URL" && r["identifier"].start_with?("https://swmath.org/software")

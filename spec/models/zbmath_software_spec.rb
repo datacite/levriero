@@ -8,7 +8,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
     context "with valid date range" do
       it "queues jobs for DOIs created within the specified month range" do
         response = ZbmathSoftware.import_by_month(from_date: from_date, until_date: until_date)
-        expect(response).to eq("Queued import for ZBMath Software Records updated from 2025-02-01 until 2025-02-28.")
+        expect(response).to eq("Queued import for ZBMath Software Records updated from 2025-02-01T00:00:00+00:00 until 2025-02-28T23:59:59+00:00.")
       end
     end
 
@@ -36,7 +36,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
 
         response = ZbmathSoftware.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Software Records updated from 2025-02-01 until 2025-02-02.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Software Records updated from 2025-02-01T00:00:00+00:00 until 2025-02-02T12:00:00+00:00.")
       end
     end
 
@@ -67,8 +67,8 @@ describe ZbmathSoftware, type: :model, vcr: true do
 
         response = ZbmathSoftware.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
         expect(response).to eq(nil)
-        expect(logger_spy).to have_received(:info).with("Importing ZBMath Software Records updated from 1990-01-01 until 1990-01-02.")
-        expect(logger_spy).to have_received(:info).with("No ZBMath Software records updated between 1990-01-01 and 1990-01-02.")
+        expect(logger_spy).to have_received(:info).with("Importing ZBMath Software Records updated from 1990-01-01T00:00:00+00:00 until 1990-01-02T00:00:00+00:00.")
+        expect(logger_spy).to have_received(:info).with("No ZBMath Software records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
       end
     end
   end
@@ -80,7 +80,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
     end
   end
 
-  describe "#parse_zbmath_record" do
+  describe "#process_zbmath_record" do
     context "when there are relationships to DataCite DOIs" do
       it "sends a message to the events queue" do
         allow(ZbmathSoftware).to(receive(:send_event_import_message).and_return(nil))
@@ -90,8 +90,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        metadata = File.read("#{fixture_path}oai_swmath_org_2901.xml")
-        response = ZbmathSoftware.parse_zbmath_record(metadata)
+        response = ZbmathSoftware.process_zbmath_record("oai:swmath.org:2901")
 
         expect(response).to be_a(Integer).and eq 5
         expect(logger_spy).to have_received(:info).with("[Event Data] https://swmath.org/software/2901 is_cited_by https://doi.org/10.48550/arxiv.2108.00739 sent to the events queue.")
@@ -102,7 +101,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
       end
     end
     context "with there are no relationships to DataCite DOIs" do
-      it "sends a message to the events queue for Related Identifiers" do
+      it "doesn't send any messages to the events queue" do
         allow(ZbmathSoftware).to(receive(:send_event_import_message).and_return(nil))
         allow(ZbmathSoftware).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
         allow(ZbmathSoftware).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
@@ -110,8 +109,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        metadata = File.read("#{fixture_path}oai_swmath_org_2901_noarxiv.xml")
-        response = ZbmathSoftware.parse_zbmath_record(metadata)
+        response = ZbmathSoftware.process_zbmath_record("oai:swmath.org:6768")
 
         expect(response).to be_a(Integer).and eq 0
         expect(logger_spy).not_to have_received(:info)
