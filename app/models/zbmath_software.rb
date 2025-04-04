@@ -42,7 +42,7 @@ class ZbmathSoftware
       # rather than having to deal with it manually. The client should only load one page into memory at a time, so the
       # efficiency should be ok.
       client.list_identifiers(metadata_prefix: "datacite_swmath", from: options[:from],
-                          until: options[:until]).full.each do |record|
+                              until: options[:until]).full.each do |record|
         ZbmathSoftwareImportJob.perform_later(record.identifier)
         count += 1
       end

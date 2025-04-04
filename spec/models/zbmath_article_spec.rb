@@ -65,7 +65,7 @@ describe ZbmathArticle, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        response = ZbmathArticle.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
+        response = ZbmathArticle.import({ from_date: "1990-01-01", until_date: "1990-01-02" })
         expect(response).to eq(nil)
         expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 1990-01-01T00:00:00+00:00 until 1990-01-02T00:00:00+00:00.")
         expect(logger_spy).to have_received(:info).with("No ZBMath Article records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
@@ -84,8 +84,8 @@ describe ZbmathArticle, type: :model, vcr: true do
     context "with a DataCite DOI as the main DOI" do
       it "sends a message to the events queue" do
         allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
-        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({ obj: "obj" }))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({ subj: "subj" }))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
@@ -104,8 +104,8 @@ describe ZbmathArticle, type: :model, vcr: true do
     context "with a non-DataCite DOI as the main DOI" do
       it "sends a message to the events queue for Related Identifiers" do
         allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
-        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({ obj: "obj" }))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({ subj: "subj" }))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
@@ -117,8 +117,8 @@ describe ZbmathArticle, type: :model, vcr: true do
       end
       it "doesn't send any messages when there are no relevant identifiers" do
         allow(ZbmathArticle).to(receive(:send_event_import_message).and_return(nil))
-        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathArticle).to(receive(:cached_crossref_response).and_return({ obj: "obj" }))
+        allow(ZbmathArticle).to(receive(:cached_datacite_response).and_return({ subj: "subj" }))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)

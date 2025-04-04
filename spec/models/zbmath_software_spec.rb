@@ -65,7 +65,7 @@ describe ZbmathSoftware, type: :model, vcr: true do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
 
-        response = ZbmathSoftware.import(options = {from_date: "1990-01-01", until_date: "1990-01-02"})
+        response = ZbmathSoftware.import({ from_date: "1990-01-01", until_date: "1990-01-02" })
         expect(response).to eq(nil)
         expect(logger_spy).to have_received(:info).with("Importing ZBMath Software Records updated from 1990-01-01T00:00:00+00:00 until 1990-01-02T00:00:00+00:00.")
         expect(logger_spy).to have_received(:info).with("No ZBMath Software records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
@@ -84,8 +84,8 @@ describe ZbmathSoftware, type: :model, vcr: true do
     context "when there are relationships to DataCite DOIs" do
       it "sends a message to the events queue" do
         allow(ZbmathSoftware).to(receive(:send_event_import_message).and_return(nil))
-        allow(ZbmathSoftware).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(ZbmathSoftware).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathSoftware).to(receive(:cached_crossref_response).and_return({ obj: "obj" }))
+        allow(ZbmathSoftware).to(receive(:cached_datacite_response).and_return({ subj: "subj" }))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
@@ -103,8 +103,8 @@ describe ZbmathSoftware, type: :model, vcr: true do
     context "with there are no relationships to DataCite DOIs" do
       it "doesn't send any messages to the events queue" do
         allow(ZbmathSoftware).to(receive(:send_event_import_message).and_return(nil))
-        allow(ZbmathSoftware).to(receive(:cached_crossref_response).and_return({obj: "obj"}))
-        allow(ZbmathSoftware).to(receive(:cached_datacite_response).and_return({subj: "subj"}))
+        allow(ZbmathSoftware).to(receive(:cached_crossref_response).and_return({ obj: "obj" }))
+        allow(ZbmathSoftware).to(receive(:cached_datacite_response).and_return({ subj: "subj" }))
 
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
