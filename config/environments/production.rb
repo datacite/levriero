@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.perform_caching = true
   config.action_controller.perform_caching = true
-  config.cache_store = :mem_cache_store, ENV["MEMCACHE_SERVERS"], { namespace: ENV["APPLICATION"] }
+  config.cache_store = :mem_cache_store, ENV["MEMCACHE_SERVERS"], { namespace: ENV["APPLICATION"], pool: { size: 32, timeout: 60} }
 
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
   # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or

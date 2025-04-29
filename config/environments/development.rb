@@ -15,7 +15,7 @@ Rails.application.configure do
   # config.action_controller.perform_caching = true
   config.perform_caching = true
   config.action_controller.perform_caching = true
-  config.cache_store = :mem_cache_store, ENV["MEMCACHE_SERVERS"], { namespace: ENV["APPLICATION"] }
+  config.cache_store = :mem_cache_store, ENV["MEMCACHE_SERVERS"], { namespace: ENV["APPLICATION"], pool: { size: 32, timeout: 60}  }
 
   # Don't care if the mailer can't send.
   # config.action_mailer.raise_delivery_errors = false
