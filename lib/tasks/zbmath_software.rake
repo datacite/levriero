@@ -9,6 +9,16 @@ namespace :zbmath_software do
     puts response
   end
 
+  desc "Import all zbMATH software by day"
+  task import_by_day: :environment do
+    from_date = ENV["FROM_DATE"] || Date.current.strftime("%F")
+    until_date = ENV["UNTIL_DATE"] || Date.current.strftime("%F")
+
+    response = ZbmathSoftware.import_by_day(from_date: from_date,
+                                            until_date: until_date)
+    puts response
+  end
+
   desc "Import all zbMATH software"
   task import: :environment do
     from_date = ENV["FROM_DATE"] || (Date.current - 1.day).strftime("%F")

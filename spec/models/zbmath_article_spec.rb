@@ -28,6 +28,30 @@ describe ZbmathArticle, type: :model, vcr: true do
     end
   end
 
+  describe ".import_by_day" do
+    context "with valid date range" do
+      it "queues jobs for DOIs created within the specified day range" do
+        response = ZbmathArticle.import_by_day(from_date: from_date, until_date: until_date)
+        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-01 until 2025-02-28.")
+      end
+    end
+
+    context "with missing date range" do
+      it "queues jobs with default dates (current day)" do
+        # Stub Date to be fixed
+        allow(Date).to receive(:current).and_return(Date.new(2025, 1, 2))
+
+        date_spy = spy("Date")
+        allow(Date).to receive(:parse).and_wrap_original do |original_method, *args|
+          date_spy.parse(*args)
+          original_method.call(*args)
+        end
+        response = ZbmathArticle.import_by_day
+        expect(response).to eq("Queued import for ZBMath Article Records updated from 2025-01-02 until 2025-01-02.")
+      end
+    end
+  end
+
   describe ".import" do
     context "with valid date range" do
       it "queues jobs for DOIs updated within the specified date range" do
@@ -64,11 +88,29 @@ describe ZbmathArticle, type: :model, vcr: true do
       it "catches the OAI error and returns nil" do
         logger_spy = spy("logger")
         allow(Rails).to receive(:logger).and_return(logger_spy)
+        allow(Rails.logger).to receive(:warn)
 
         response = ZbmathArticle.import({ from_date: "1990-01-01", until_date: "1990-01-02" })
         expect(response).to eq(nil)
         expect(logger_spy).to have_received(:info).with("Importing ZBMath Article Records updated from 1990-01-01T00:00:00+00:00 until 1990-01-02T00:00:00+00:00.")
-        expect(logger_spy).to have_received(:info).with("No ZBMath Article records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
+        expect(Rails.logger).to have_received(:warn).with("No ZBMath Article records updated between 1990-01-01T00:00:00+00:00 and 1990-01-02T00:00:00+00:00.")
+      end
+    end
+
+    context "when a filename is specified" do
+      it "retrieves record IDs and writes them to a file" do
+        file = double('file')
+        allow(File).to receive(:open).with("test.txt", "w").and_return(file)
+        allow(file).to receive(:write)
+        logger_spy = spy("logger")
+        allow(Rails).to receive(:logger).and_return(logger_spy)
+        response = ZbmathArticle.import({ from_date: from_date, until_date: until_date , filename: "test.txt" })
+        expect(response).to be_a(Integer).and be >= 0
+        expect(logger_spy).to have_received(:info).with("Getting ZBMath Article record identifiers updated from 2025-01-01T00:00:00+00:00 until 2025-02-28T00:00:00+00:00 and writing to test.txt.")
+        expect(file).to have_received(:write).with("oai:zbmath.org:902636232\n")
+        expect(file).to have_received(:write).with("oai:zbmath.org:902636290\n")
+        expect(file).to have_received(:write).with("oai:zbmath.org:902636453\n")
+
       end
     end
   end
