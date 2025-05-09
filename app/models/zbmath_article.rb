@@ -22,12 +22,31 @@ class ZbmathArticle
     "Queued import for ZBMath Article Records updated from #{from_date} until #{until_date}."
   end
 
+  def self.import_by_day(options = {})
+    from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current)
+    until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current)
+
+    # queue a job for every day between from_date and until_date
+    (from_date..until_date).each do |d|
+      ZbmathArticleImportByDayJob.perform_later(from_date: d.strftime("%Y-%m-%dT00:00:00Z"),
+                                                until_date: d.strftime("%Y-%m-%dT23:59:59Z"))
+    end
+
+    "Queued import for ZBMath Article Records updated from #{from_date} until #{until_date}."
+  end
+
   def self.import(options = {})
     from_date = options[:from_date].present? ? DateTime.parse(options[:from_date]) : Date.current - 1.day
     until_date = options[:until_date].present? ? DateTime.parse(options[:until_date]) : Date.current
-    Rails.logger.info "Importing ZBMath Article Records updated from #{from_date} until #{until_date}."
     zbmath = ZbmathArticle.new
-    zbmath.get_records(from: from_date, until: until_date)
+    if options[:filename]
+      filename = options[:filename]
+      Rails.logger.info "Getting ZBMath Article record identifiers updated from #{from_date} until #{until_date} and writing to #{filename}."
+      zbmath.get_records(from: from_date, until: until_date, filename: filename)
+    else
+      Rails.logger.info "Importing ZBMath Article Records updated from #{from_date} until #{until_date}."
+      zbmath.get_records(from: from_date, until: until_date)
+    end
   end
 
   def source_id
@@ -60,17 +79,36 @@ class ZbmathArticle
     count = 0
     client = OAI::Client.new "https://oai.portal.mardi4nfdi.de/oai/OAIHandler"
     begin
+      # If option to write to file is set, open the file
+      if options[:filename]
+        out_file = File.open(options[:filename], "w")
+      end
+
       # Using the .full.each pattern allows transparent handling of the resumption token pattern in the OAI protocol
       # rather than having to deal with it manually. The client should only load one page into memory at a time, so the
       # efficiency should be ok.
       client.list_identifiers(metadata_prefix: "datacite_articles", from: options[:from],
                               until: options[:until]).full.each do |record|
-        ZbmathArticleImportJob.perform_later(record.identifier)
+
+        # If option to write to file is set, write the record to the file
+        if options[:filename]
+          out_file.write(record.identifier.to_s + "\n")
+        else
+          Rails.logger.info "Queueing ZBMath Article record #{record.identifier} for import."
+          ZbmathArticleImportJob.perform_later(record.identifier)
+        end
         count += 1
       end
     rescue OAI::NoMatchException
-      Rails.logger.info "No ZBMath Article records updated between #{options[:from]} and #{options[:until]}."
+      Rails.logger.warn "No ZBMath Article records updated between #{options[:from]} and #{options[:until]}."
       return nil
+    rescue OAI::Exception => e
+      if e.message.include?("Gateway Timeout")
+        Rails.logger.warn "Got Gateway Timeout error from OAI server for ZBMath Article records updated between #{options[:from]} and #{options[:until]}."
+        raise RuntimeError("Gateway Timeout")
+      else
+        raise e
+      end
     end
     count
   end
@@ -81,8 +119,15 @@ class ZbmathArticle
       response = client.get_record(identifier: identifier, metadata_prefix: "datacite_articles")
       response.record
     rescue OAI::IdException
-      Rails.logger.info "ZBMath Article records #{identifier} not found in the OAI server."
+      Rails.logger.warn "ZBMath Article records #{identifier} not found in the OAI server."
       nil
+    rescue OAI::Exception => e
+      if e.message.include?("Gateway Timeout")
+        Rails.logger.warn "Got Gateway Timeout error from OAI server for ZBMath Article record #{identifier}."
+        raise RuntimeError("Gateway Timeout")
+      else
+        raise e
+      end
     end
   end
 
@@ -90,7 +135,10 @@ class ZbmathArticle
     # Get the record
     z = ZbmathArticle.new
     record = z.get_zbmath_record(identifier)
-    return nil if record.nil?
+    if record.nil?
+      Rails.logger.warn "No valid record returned from OAI server for ZBMath Article record #{identifier}."
+      return nil
+    end
 
     # Check if the record has a DOI via arXiv as the primary identifier to be passed into the read_datacite method
     arxiv_doi = z.check_for_arxiv(record)
@@ -101,7 +149,12 @@ class ZbmathArticle
     # Get the metadata - read_datacite expects a string of the XML tree with the <resource> element as the root,
     # and OAI wraps the data in a <metadata> element so strip this with string slicing (a little ugly, but a lot
     # simpler and more efficient than parsing the XML, restructuring the tree and then serializing back to string).
-    meta = read_datacite(string: record.metadata.to_s[10..-12], doi: arxiv_doi)
+    begin
+      meta = read_datacite(string: record.metadata.to_s[10..-12], doi: arxiv_doi)
+    rescue Exception => e
+      Rails.logger.error "Error processing ZBMath Article record #{identifier}: #{e.message}"
+      raise
+    end
 
     # Extract any arXiv identifiers from the related_identifiers metadata to potentially fill in for a missing DOI
     arxiv_identifier = nil
@@ -278,29 +331,33 @@ class ZbmathArticle
     end
     # Loop items and send events to the queue
     Array.wrap(items).each do |item|
-      data = {
-        "data" => {
-          "id" => item["id"],
-          "type" => "events",
-          "attributes" => {
-            "messageAction" => item["message_action"],
-            "subjId" => item["subj_id"],
-            "objId" => item["obj_id"],
-            "relationTypeId" => item["relation_type_id"].to_s.dasherize,
-            "sourceId" => item["source_id"],
-            "occurredAt" => item["occurred_at"],
-            "timestamp" => item["timestamp"],
-            "license" => item["license"],
-            "subj" => item["subj"],
-            "obj" => item["obj"],
-            "sourceToken" => item["source_token"],
+      if item["subj_id"].present? && item["obj_id"].present? && item["relation_type_id"].present?
+        data = {
+          "data" => {
+            "id" => item["id"],
+            "type" => "events",
+            "attributes" => {
+              "messageAction" => item["message_action"],
+              "subjId" => item["subj_id"],
+              "objId" => item["obj_id"],
+              "relationTypeId" => item["relation_type_id"].to_s.dasherize,
+              "sourceId" => item["source_id"],
+              "occurredAt" => item["occurred_at"],
+              "timestamp" => item["timestamp"],
+              "license" => item["license"],
+              "subj" => item["subj"],
+              "obj" => item["obj"],
+              "sourceToken" => item["source_token"],
+            },
           },
-        },
-      }
+        }
 
-      send_event_import_message(data)
+        send_event_import_message(data)
 
-      Rails.logger.info("[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} sent to the events queue.")
+        Rails.logger.info("[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} sent to the events queue.")
+      else
+        Rails.logger.warn("ZBMath Article record #{identifier} generated an invalid event: #{item}")
+      end
     end
     items.length
   end
