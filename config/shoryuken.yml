@@ -16,10 +16,6 @@ queues:
   - levriero
 
 groups:
-  events:
-    concurrency: 10
-    queues:
-      - events
   usage:
     concurrency: 4
     queues:
