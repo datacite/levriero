@@ -108,7 +108,7 @@ describe NameIdentifier, type: :model, vcr: true do
               "doi" => "https://doi.org/10.0001/foo.bar",
               "updated" => "2023-11-15",
               "relatedIdentifiers" => [
-                { "relatedIdentifierType" => "IsIdenticalTo" },
+                { "relationType" => "IsIdenticalTo" },
               ],
               "creators" => [
                 "nameIdentifiers" => [
@@ -130,7 +130,7 @@ describe NameIdentifier, type: :model, vcr: true do
               "doi" => "https://doi.org/10.0001/foo.bar",
               "updated" => "2023-11-15",
               "relatedIdentifiers" => [
-                { "relatedIdentifierType" => "IsPartOf" },
+                { "relationType" => "IsPartOf" },
               ],
               "creators" => [
                 "nameIdentifiers" => [
@@ -152,7 +152,7 @@ describe NameIdentifier, type: :model, vcr: true do
               "doi" => "https://doi.org/10.0001/foo.bar",
               "updated" => "2023-11-15",
               "relatedIdentifiers" => [
-                { "relatedIdentifierType" => "IsPreviousVersionOf" },
+                { "relationType" => "IsPreviousVersionOf" },
               ],
               "creators" => [
                 "nameIdentifiers" => [
@@ -174,7 +174,7 @@ describe NameIdentifier, type: :model, vcr: true do
               "doi" => "https://doi.org/10.0001/foo.bar",
               "updated" => "2023-11-15",
               "relatedIdentifiers" => [
-                { "relatedIdentifierType" => "IsVersionOf" },
+                { "relationType" => "IsVersionOf" },
               ],
               "creators" => [
                 "nameIdentifiers" => [
