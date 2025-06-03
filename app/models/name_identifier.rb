@@ -72,8 +72,7 @@ class NameIdentifier < Base
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
                                                       nil))
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
-       "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relationType"] || "")
     end
     creators = attributes.fetch("creators", []).select do |n|
       Array.wrap(n.fetch("nameIdentifiers", nil)).any? do |n|
