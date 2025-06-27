@@ -141,28 +141,35 @@ class NameIdentifier < Base
       if ENV["STAFF_PROFILES_ADMIN_TOKEN"].present?
         push_url = "#{ENV['VOLPINO_URL']}/claims"
         doi = doi_from_url(iiitem["subj_id"])
-        orcid = orcid_from_url(iiitem["obj_id"])
-        source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
-        data = {
-          "claim" => {
-            "doi" => doi,
-            "orcid" => orcid,
-            "source_id" => source_id,
-            "claim_action" => "create",
-          },
-        }
+        # Capture the prefix
+        prefix = validate_prefix(doi)
+        # Check prefix against known exclusions
+        if !ENV["EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING"].to_s.split(",").include?(prefix)
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
-                                          content_type: "application/json")
+          orcid = orcid_from_url(iiitem["obj_id"])
+          source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
-        if response.status == 202
-          Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
-        elsif response.status == 409
-          Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors']}"
+          data = {
+            "claim" => {
+              "doi" => doi,
+              "orcid" => orcid,
+              "source_id" => source_id,
+              "claim_action" => "create",
+            },
+          }
+
+          response = Maremma.post(push_url, data: data.to_json,
+                                            bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
+                                            content_type: "application/json")
+
+          if response.status == 202
+            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
+          elsif response.status == 409
+            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
+          elsif response.body["errors"].present?
+            Rails.logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors']}"
+          end
         end
       end
     end
