@@ -81,7 +81,6 @@ class RelatedIdentifier < Base
       end
 
       if registration_agencies[prefix].nil?
-        Rails.logger.error "No DOI registration agency for DOI #{related_identifier} found."
         source_id = "datacite_related"
         source_token = ENV["DATACITE_RELATED_SOURCE_TOKEN"]
         obj = {}
@@ -146,7 +145,7 @@ class RelatedIdentifier < Base
 
       # send to Event Data Bus
       # we only send datacite_crossref events to the bus
-      if ENV["EVENTDATA_TOKEN"].present? && iiitem['source_id'] == DATACITE_CROSSREF
+      if ENV["EVENTDATA_TOKEN"].present? && iiitem["source_id"] == DATACITE_CROSSREF
         iiitem = set_event_for_bus(iiitem)
 
         host = ENV["EVENTDATA_URL"]
