@@ -74,6 +74,11 @@ describe NameIdentifier, type: :model, vcr: true do
             with("VOLPINO_URL").
             and_return("https://fake.volpino.com"))
 
+        allow(ENV).
+          to(receive(:[]).
+            with("EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING").
+            and_return(""))
+
         allow(Base).
           to(receive(:cached_datacite_response).
           and_return("foo" => "bar"))
