@@ -45,6 +45,51 @@ http_interactions:
         from geonames.org under a CC-BY 3.0 license","license":"http://creativecommons.org/licenses/by/3.0/"},"nuts_level1":{"name":null,"code":null},"nuts_level2":{"name":null,"code":null},"nuts_level3":{"name":null,"code":null}},"postcode":null,"primary":false,"line":null,"country_geonames_id":2635167}],"links":["http://www.ebi.ac.uk/"],"aliases":[],"acronyms":["EBI","EMBL-EBI"],"status":"active","wikipedia_url":"http://en.wikipedia.org/wiki/European_Bioinformatics_Institute","labels":[],"country":{"country_name":"United
         Kingdom","country_code":"GB"},"external_ids":{"ISNI":{"preferred":null,"all":["0000
         0000 9709 7726"]},"FundRef":{"preferred":"100012116","all":["100012116"]},"OrgRef":{"preferred":null,"all":["2056296"]},"Wikidata":{"preferred":null,"all":["Q1341845"]},"GRID":{"preferred":"grid.225360.0","all":"grid.225360.0"}}}'
-    http_version: null
   recorded_at: Sat, 18 Nov 2023 11:56:53 GMT
-recorded_with: VCR 5.1.0
+- request:
+    method: get
+    uri: https://api.ror.org/v1/organizations/ror.org/02catss52
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Jul 2025 13:55:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1458'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Vary:
+      - Cookie, Origin
+      X-Frame-Options:
+      - SAMEORIGIN
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      X-Powered-By:
+      - Phusion Passenger 6.0.7
+      Server:
+      - nginx/1.18.0 + Phusion Passenger 6.0.7
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"https://ror.org/02catss52","name":"European Bioinformatics Institute","email_address":null,"ip_addresses":[],"established":1992,"types":["Facility","Funder"],"relationships":[{"label":"European
+        Molecular Biology Laboratory","type":"Parent","id":"https://ror.org/03mstc592"},{"label":"ELIXIR","type":"Related","id":"https://ror.org/044rwnt51"}],"addresses":[{"lat":52.2,"lng":0.11667,"state":null,"state_code":null,"city":"Cambridge","geonames_city":{"id":2653941,"city":"Cambridge","geonames_admin1":{"name":"England","id":null,"ascii_name":null,"code":"GB.ENG"},"geonames_admin2":{"name":null,"id":null,"ascii_name":null,"code":null},"license":{"attribution":"Data
+        from geonames.org under a CC-BY 3.0 license","license":"http://creativecommons.org/licenses/by/3.0/"},"nuts_level1":{"name":null,"code":null},"nuts_level2":{"name":null,"code":null},"nuts_level3":{"name":null,"code":null}},"postcode":null,"primary":false,"line":null,"country_geonames_id":null}],"links":["http://www.ebi.ac.uk/"],"aliases":[],"acronyms":["EBI","EMBL-EBI"],"status":"active","wikipedia_url":"http://en.wikipedia.org/wiki/European_Bioinformatics_Institute","labels":[],"country":{"country_name":"United
+        Kingdom","country_code":"GB"},"external_ids":{"ISNI":{"preferred":null,"all":["0000
+        0000 9709 7726"]},"FundRef":{"preferred":"100012116","all":["100012116"]},"Wikidata":{"preferred":null,"all":["Q1341845"]},"GRID":{"preferred":"grid.225360.0","all":"grid.225360.0"}}}'
+  recorded_at: Fri, 18 Jul 2025 13:55:52 GMT
+recorded_with: VCR 6.3.1
