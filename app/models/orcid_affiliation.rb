@@ -141,7 +141,7 @@ class OrcidAffiliation < Base
   def self.get_ror_metadata(id)
     return {} if id.blank?
 
-    url = "https://api.ror.org/organizations/#{id[8..]}"
+    url = "https://api.ror.org/v1/organizations/#{id[8..]}"
     response = Maremma.get(url, host: true)
     return {} if response.status != 200
 
