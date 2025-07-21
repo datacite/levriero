@@ -48,10 +48,6 @@ jobs:
           # bundle exec rubocop
           bundle exec rspec
           echo $?
-      - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
   build:
     needs: test
