@@ -58,7 +58,7 @@ describe OrcidAffiliation, type: :model, vcr: true do
     describe ".get_ror_metadata" do
       it "returns metadata for a valid id" do
         id = "https://ror.org/012345678"
-        expected_url = "https://api.ror.org/organizations/012345678"
+        expected_url = "https://api.ror.org/v2/organizations/012345678"
         response_body = { "data" => { "name" => "Organization Name", "country" => { "country_name" => "Country" } } }
 
         allow(Maremma).to receive(:get).and_return(OpenStruct.new(status: 200,
@@ -82,7 +82,7 @@ describe OrcidAffiliation, type: :model, vcr: true do
 
       it "returns an empty hash for an invalid id" do
         id = "invalid_id"
-        stub_request(:get, "https://api.ror.org/organizations/invalid_id").
+        stub_request(:get, "https://api.ror.org/v2/organizations/invalid_id").
           to_return(status: 404)
 
         expect(described_class.get_ror_metadata(id)).to eq({})
