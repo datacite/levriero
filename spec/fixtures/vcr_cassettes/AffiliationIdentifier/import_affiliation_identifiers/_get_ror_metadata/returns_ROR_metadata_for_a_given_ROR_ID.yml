@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.ror.org/v2/organizations/ror.org/02catss52
+    uri: https://api.ror.org/v2/organizations/02catss52
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 29 Sep 2025 15:15:17 GMT
+      - Mon, 29 Sep 2025 15:42:24 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -27,7 +27,7 @@ http_interactions:
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 28be73a8-c69e-40fb-9668-8fb01eeb94ec
+      - 4414b515-ac3b-4f3c-af2d-a055a4b10407
       Allow:
       - GET, PUT, HEAD, OPTIONS
       X-Amzn-Remapped-Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       X-Amzn-Remapped-Connection:
       - keep-alive
       X-Amz-Apigw-Id:
-      - Rq5U7GcEDoEEPWA=
+      - Rq9TLGZ7joEEcPQ=
       Vary:
       - Cookie, Origin
       X-Amzn-Remapped-Server:
@@ -47,7 +47,7 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger 6.0.7
       X-Amzn-Remapped-Date:
-      - Mon, 29 Sep 2025 15:15:17 GMT
+      - Mon, 29 Sep 2025 15:42:24 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"admin":{"created":{"date":"2018-11-14","schema_version":"1.0"},"last_modified":{"date":"2024-12-11","schema_version":"2.1"}},"domains":[],"established":1992,"external_ids":[{"all":["100012116"],"preferred":"100012116","type":"fundref"},{"all":["grid.225360.0"],"preferred":"grid.225360.0","type":"grid"},{"all":["0000
@@ -55,5 +55,5 @@ http_interactions:
         Kingdom","country_subdivision_code":"ENG","country_subdivision_name":"England","lat":52.2,"lng":0.11667,"name":"Cambridge"},"geonames_id":2653941}],"names":[{"lang":null,"types":["acronym"],"value":"EBI"},{"lang":null,"types":["acronym"],"value":"EMBL-EBI"},{"lang":"en","types":["ror_display","label"],"value":"European
         Bioinformatics Institute"}],"relationships":[{"label":"European Molecular
         Biology Laboratory","type":"parent","id":"https://ror.org/03mstc592"},{"label":"ELIXIR","type":"related","id":"https://ror.org/044rwnt51"}],"status":"active","types":["facility","funder"]}'
-  recorded_at: Mon, 29 Sep 2025 15:15:17 GMT
+  recorded_at: Mon, 29 Sep 2025 15:42:24 GMT
 recorded_with: VCR 6.3.1
