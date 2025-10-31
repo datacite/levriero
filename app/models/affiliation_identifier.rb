@@ -141,10 +141,10 @@ class AffiliationIdentifier < Base
     message = response.body.fetch("data", {})
 
     # ROR v2 replaced the single "name" field with a "names" array.
-    # Prefer long-form, human-readable names (type: "label") over short forms like "EBI".
-    # Fallback to "alias" or "primary" if no "label" exists.
+    # Prefer long-form, human-readable names (type: "ror_display") over short forms like "EBI".
+    # Fallback to "alias" or "primary" if no "ror_display" exists.
 
-    name_entry = message["names"].find { |n| n["types"].include?("label") } ||
+    name_entry = message["names"].find { |n| n["types"].include?("ror_display") } ||
                  message["names"].find { |n| n["types"].include?("alias") } ||
                  message["names"].find { |n| n["types"].include?("primary") } ||
                  message["names"].first
