@@ -134,21 +134,30 @@ class AffiliationIdentifier < Base
   def self.get_ror_metadata(id)
     return {} if id.blank?
 
-    url = "https://api.ror.org/v1/organizations/#{id[8..]}"
+    url = "https://api.ror.org/v2/organizations/#{id.delete_prefix('https://ror.org/')}"
     response = Maremma.get(url, host: true)
     return {} if response.status != 200
 
     message = response.body.fetch("data", {})
 
+    # ROR v2 replaced the single "name" field with a "names" array.
+    # Prefer long-form, human-readable names (type: "ror_display") over short forms like "EBI".
+    # Fallback to "alias" or "primary" if no "ror_display" exists.
+
+    name_entry = message["names"].find { |n| n["types"].include?("ror_display") } ||
+                 message["names"].find { |n| n["types"].include?("alias") } ||
+                 message["names"].find { |n| n["types"].include?("primary") } ||
+                 message["names"].first
+
     location = {
       "type" => "postalAddress",
-      "addressCountry" => message.dig("country", "country_name"),
+      "addressCountry" => message.dig("locations", 0, "geonames_details", "country_name"),
     }
 
     {
       "@id" => id,
       "@type" => "Organization",
-      "name" => message["name"],
+      "name" => name_entry&.dig("value"),
       "location" => location,
     }.compact
   end

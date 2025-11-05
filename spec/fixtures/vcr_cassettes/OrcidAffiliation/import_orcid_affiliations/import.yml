@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 09 Nov 2023 06:16:00 GMT
+      - Mon, 29 Sep 2025 15:15:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -41,23 +41,21 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Xss-Protection:
-      - 1; mode=block
+      - '0'
       X-Request-Id:
-      - 72ea1ee0-08ba-4ca5-ba53-b16f19abf551
-      X-Download-Options:
-      - noopen
+      - 474623ba-05ba-47fa-a97f-d715664503f3
       Etag:
-      - W/"95b768cfd39af22a2c41e046351840de"
+      - W/"98dd462f5e4bf31ec1117bc7462a56d9"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.173954'
+      - '0.095063'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger(R) 6.0.18
+      - Phusion Passenger(R) 6.1.0
       Server:
-      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+      - nginx/1.18.0 + Phusion Passenger(R) 6.1.0
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Allow-Methods:
@@ -69,7 +67,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIACB5TGUAA2xPTWuDQBD9Lwvm4ndESgQpab3kUov1lBLC1h3NUL+6O0LT4H/vqk0JtJfhzZv3Zt5cmODEWfR6sFgDE7ow6ojXLPKsBT3zCtTc9hqxyB8tVmP7riatgrpkETsR9SpyXd6jo0jLnGltgQROJytXdKjueVlijZywa2OSA6zgs6gHAUcJFSqS8+SovW2BoBbJdNEIH9qheQNphEnsXSmFX7AQHwPIc1xI4NRJ5bS8gZ2AlrBE+NO/FCdowAi2afa4S0zz13aT7hb/48zSzNw+JebQ6x9BaEbHWXv+xvbubD/IPU9TP2Vv5ql5nQV+vg40HW7mstfxVxJUN8gCbDr3YKOI2Th+AwAA//8DAIA3cwaUAQAA
-    http_version: null
-  recorded_at: Thu, 09 Nov 2023 06:14:47 GMT
-recorded_with: VCR 5.1.0
+        H4sIAIii2mgAA2xPy07DQAz8l5VyymuTqKBGilAhl14oCjmVompJnNQiL3a9EqXKv7NpAQXBxRqPx2PPiZWCBIufnh3WwoROjHoSDYu5c0EPogZ1bgeDWByMDmuwe1WTVkFTsZgdiAYV+74Y0FNkZN5kWyCB18vaL3tUN6KqsEFB2HcJSQ07zXl4Be9Fo0vYS6hRkTyP98agKxDUTDfdtha3nW5fQFqLNOG/eIUfMGPfNMhjUkgQ1EvldaKFdQkdYYXwp38sDtCCFa022d06te2ftdnHc/zPZrbJ7NV9auvB5IbSMOankAdLl1+7QZRzbqivsrXzjf09i4I8jAy9WJ7L1mS4JJCgei0LcOk4gItlwsbxEwAA//8DAJ0+rPitAQAA
+  recorded_at: Mon, 29 Sep 2025 15:15:21 GMT
+recorded_with: VCR 6.3.1

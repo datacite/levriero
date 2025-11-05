@@ -2,49 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.ror.org/organizations/id
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-      Accept-Encoding:
-      - gzip,deflate
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Tue, 21 Nov 2023 11:32:54 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '41'
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Vary:
-      - Cookie, Origin
-      X-Frame-Options:
-      - SAMEORIGIN
-      Allow:
-      - GET, HEAD, OPTIONS
-      X-Powered-By:
-      - Phusion Passenger 6.0.7
-      Server:
-      - nginx/1.18.0 + Phusion Passenger 6.0.7
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":["''id'' is not a valid ROR ID"]}'
-  recorded_at: Tue, 21 Nov 2023 11:31:29 GMT
-- request:
-    method: get
-    uri: https://api.ror.org/v1/organizations/id
+    uri: https://api.ror.org/v2/organizations/id
     body:
       encoding: US-ASCII
       string: ''
@@ -61,27 +19,37 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Fri, 18 Jul 2025 13:55:53 GMT
+      - Mon, 29 Sep 2025 15:15:23 GMT
       Content-Type:
       - application/json
       Content-Length:
       - '41'
       Connection:
       - keep-alive
-      Status:
-      - 404 Not Found
-      Vary:
-      - Cookie, Origin
-      X-Frame-Options:
-      - SAMEORIGIN
+      X-Amzn-Requestid:
+      - '05158496-4906-4e1e-b8a8-3a30f7f80113'
       Allow:
       - GET, PUT, HEAD, OPTIONS
+      X-Amzn-Remapped-Content-Length:
+      - '41'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Amzn-Remapped-Connection:
+      - keep-alive
+      X-Amz-Apigw-Id:
+      - Rq5VyE6xDoEEphg=
+      Vary:
+      - Cookie, Origin
+      X-Amzn-Remapped-Server:
+      - nginx/1.18.0 + Phusion Passenger 6.0.7
+      Status:
+      - 404 Not Found
       X-Powered-By:
       - Phusion Passenger 6.0.7
-      Server:
-      - nginx/1.18.0 + Phusion Passenger 6.0.7
+      X-Amzn-Remapped-Date:
+      - Mon, 29 Sep 2025 15:15:23 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"errors":["''id'' is not a valid ROR ID"]}'
-  recorded_at: Fri, 18 Jul 2025 13:55:53 GMT
+  recorded_at: Mon, 29 Sep 2025 15:15:23 GMT
 recorded_with: VCR 6.3.1
