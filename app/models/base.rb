@@ -248,7 +248,7 @@ class Base
       return {}
     end
 
-    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true"
+    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true&include=client"
     response = Maremma.get(url)
 
     if response.status != 200
@@ -256,7 +256,10 @@ class Base
       return {}
     end
 
-    (response.body.dig("data", "attributes") || {}).except("xml")
+    attributes = (response.body.dig("data", "attributes") || {}).except("xml")
+    included = response.body.dig("included")
+    
+    included.present? ? attributes.merge("included" => included) : attributes
   end
 
   def self.get_datacite_metadata(id)
