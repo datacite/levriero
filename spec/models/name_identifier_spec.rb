@@ -54,6 +54,8 @@ describe NameIdentifier, type: :model, vcr: true do
       end
 
       before(:each) do
+        allow(ENV).to receive(:[]).and_call_original
+        
         allow(ENV).
           to(receive(:[]).
             with("LAGOTTINO_URL").
