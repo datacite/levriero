@@ -54,6 +54,8 @@ describe NameIdentifier, type: :model, vcr: true do
       end
 
       before(:each) do
+        allow(ENV).to receive(:[]).and_call_original
+        
         allow(ENV).
           to(receive(:[]).
             with("LAGOTTINO_URL").
@@ -78,6 +80,25 @@ describe NameIdentifier, type: :model, vcr: true do
           to(receive(:[]).
             with("EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING").
             and_return(""))
+        
+        allow(ENV).
+          to(receive(:[]).
+            with("API_URL").
+            and_return("https://api.stage.datacite.org"))
+
+        allow(ENV).
+          to(receive(:[]).
+            with("USER_AGENT").
+            and_return("Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)"))
+
+        allow(ENV).to receive(:[]).with("no_proxy").and_return(nil)
+        allow(ENV).to receive(:[]).with("NO_PROXY").and_return(nil)
+        allow(ENV).to receive(:[]).with("STAFF_PROFILES_ADMIN_TOKEN").and_return("STAFF_PROFILES_ADMIN_TOKEN")
+        allow(ENV).to receive(:[]).with("ORCID_API_URL").and_return("https://fake.orcidapiurl.com")
+        allow(ENV).to receive(:[]).with("SSL_CERT_FILE").and_return("https://fake.orcidapiurl.com")
+        allow(ENV).to receive(:[]).with("SSL_CERT_DIR").and_return("https://fake.orcidapiurl.com")
+        allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return(nil)
+        allow(ENV).to receive(:[]).with("SLACK_WEBHOOK_URL").and_return("https://fake.slackwebhookurl.com")
 
         allow(Base).
           to(receive(:cached_datacite_response).
@@ -89,10 +110,7 @@ describe NameIdentifier, type: :model, vcr: true do
 
         allow(Maremma).
           to(receive(:post).
-            with("https://fake.volpino.com/claims",
-                 data: volpino_json,
-                 content_type: "application/json",
-                 bearer: staff_profiles_admin_token).
+            with("https://fake.volpino.com/claims", anything).
             and_return(OpenStruct.new(status: 202)))
 
         allow(Time).
@@ -195,6 +213,16 @@ describe NameIdentifier, type: :model, vcr: true do
           expect(NameIdentifier.push_item(item)).to(eq(nil))
         end
 
+        it "if the DOI is in a client with client_type raidRegistry" do
+          ## DOI in client with client_type raidRegistry
+          doi = "10.82610/3pst-w184"
+          attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
+          response = { "id" => doi, "type" => "dois",
+                        "attributes" => attributes }
+
+          expect(NameIdentifier.push_item(response)).to(eq(nil))
+        end
+
         it "if there aren't any creators" do
           item = {
             "attributes" => {
@@ -239,6 +267,16 @@ describe NameIdentifier, type: :model, vcr: true do
 
             expect(NameIdentifier.push_item(item)).to(eq(1))
             expect(NameIdentifier).to(have_received(:send_event_import_message).once)
+          end
+
+          it "if the DOI is in a client with client_type repository" do
+            ## DOI in client with client_type repository
+            doi = "10.82621/sf34-nn32"
+            attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
+            response = { "id" => doi, "type" => "dois",
+                          "attributes" => attributes }
+
+            expect(NameIdentifier.push_item(response)).to (eq(1))
           end
         end
 

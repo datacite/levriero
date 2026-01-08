@@ -34,7 +34,7 @@ class NameIdentifier < Base
       return message
     end
 
-    attributes = get_datacite_json(doi)
+    attributes = get_datacite_json(doi, include_client: true)
     response = push_item({ "id" => doi, "type" => "dois",
                            "attributes" => attributes })
   end
@@ -71,9 +71,12 @@ class NameIdentifier < Base
     pid = normalize_doi(doi)
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
                                                       nil))
+
+    ## Don't process DOIs with certain relationTypes or DOIs in a client with clientType raidRegistry
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relationType"] || "")
-    end
+    end || item.dig("attributes", "included", 0, "attributes", "clientType") == "raidRegistry"
+
     creators = attributes.fetch("creators", []).select do |n|
       Array.wrap(n.fetch("nameIdentifiers", nil)).any? do |n|
         n["nameIdentifierScheme"] == "ORCID"
