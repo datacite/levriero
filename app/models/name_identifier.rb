@@ -34,7 +34,7 @@ class NameIdentifier < Base
       return message
     end
 
-    attributes = get_datacite_json(doi)
+    attributes = get_datacite_json(doi, include_client: true)
     response = push_item({ "id" => doi, "type" => "dois",
                            "attributes" => attributes })
   end

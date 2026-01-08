@@ -216,8 +216,7 @@ describe NameIdentifier, type: :model, vcr: true do
         it "if the DOI is in a client with client_type raidRegistry" do
           ## DOI in client with client_type raidRegistry
           doi = "10.82610/3pst-w184"
-          attributes = NameIdentifier.get_datacite_json(doi)
-          pp attributes
+          attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
           response = { "id" => doi, "type" => "dois",
                         "attributes" => attributes }
 
@@ -273,8 +272,7 @@ describe NameIdentifier, type: :model, vcr: true do
           it "if the DOI is in a client with client_type repository" do
             ## DOI in client with client_type repository
             doi = "10.82621/sf34-nn32"
-            attributes = NameIdentifier.get_datacite_json(doi)
-            pp attributes
+            attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
             response = { "id" => doi, "type" => "dois",
                           "attributes" => attributes }
 

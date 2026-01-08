@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.stage.datacite.org/dois/10.20375/0000-001a-6248-5?affiliation=true&include=client
+    uri: https://api.stage.datacite.org/dois/10.20375/0000-001a-6248-5?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 19 Dec 2025 16:28:05 GMT
+      - Thu, 08 Jan 2026 14:00:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -41,13 +41,13 @@ http_interactions:
       X-Xss-Protection:
       - '0'
       X-Request-Id:
-      - b1f4c4c5-81ed-48e5-b058-9b92b7f257e0
+      - da5ad14c-4ec5-4dde-a6d6-2b90461f8431
       Etag:
-      - W/"7f8632250079e1bb25c84991fa74259e"
+      - W/"deb48d1f9cf577965f355fea8f8ebb29"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.036866'
+      - '0.092985'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -65,8 +65,8 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
-  recorded_at: Fri, 19 Dec 2025 16:28:05 GMT
+        H4sIAHm4X2kAA5RWWXOqSBT+L77eSQIYMzFvRr2I45IggjI1D013C63NUtDgksp/n9MgbsnMnbGSKvj6fGenz/loECRQ4+WjwUjjpaEq95rS/L31oMDvTlFUdPekPT7ftRq/NcQ+oSBCYpbBGxIiZV4uaCbJAP6CnaR0xXYXQoBl+arCvpFnhEaCrRhNwcCff4FBLmgaIUGN2xOcUiTi8u2jEaFQemlNe1PpJRjgDAkWR5WsPL5R8AmwYILTSkH5CBpWPKc+5fdJ5DekSJJ7nGUBTeGs1zGNzuCu1wcTOI4EYpHEPz6PYri0uKQIQE3RFBmqt6ZY1B4Dp8xeXMcAVTjal09gQtIaFW5ViTeyLKek9IWjyM+RD2iUc16VpqxDCrWR7lkd4HrME1SmN2QZlp4yQZM0xrKIUPSMClkDHNAQTVNf8k5oSrM4T3Ft+vsDnULUiF+cf0oBDi6T6xx/VDDk5BRLJYARt+LGNyyZAfXeUtV2Wz21U+fcHl8IR8UDFBEon0xSLSJoeExyxg70+LiK0xCV5WiwEDL5IMsMeAEOl81SJTZlfiCyEctEFUX5WreXNEJohlOWyNCOmn0aj+KqAWpbeURY5Jt0RVMa4dqFXShT99ZrP3rO1iehvccaL7y1wsazx63BXrkXTgpX57l7UJhtm/rI8pkxmChLp7VZOrvCC+dtI+Ic742HNz9+xqF98Jr2fqnNfaqrmReN20YYKGTQeRrt25vlwgyWGlfcWavAIS6wNoldRw1GmuA4bHGvqyhgF/zZ5fiQPGJtc8lvkibOyWGce81hNDoY23GvXzh9dTyv9Tg8x00zAL+51AP8p9qGpbfXYD/xtMf/75N+kj8stYB7Tj939Z+Qh0lC9Hnlj6ZyovcLpNl7L7SzkfVeeI4NMmYAeE4Hk42xfvzD6HaekWNyLzITN4TcsdfE1e2c6DxEjr23B3zrWgoz++0hyO/G3cf9uDduTmbPEG9nO7I62/G8LyZrQ5l2FfWt277iQx18o7dbQy3AbnuPD6XNK6yUkRj4smwOOeSgwJtW4DnzH3a/3bcO2+IW77JKfqRN9q7zU/GaRomB/Vtbz+CL4un2obbzNjAhTzv+FroZcezIdbY51lsRcBW0MDPXqnijZiVX68EDm3k6PyAd4tqYr/MNf5111b5pbYursyrmLXGGGXIm4Av0Mefgv/FjvO5A/k7yxx5ouRBDzdu7i0lBFsO1a5strM/9cx/bc7p45aZm5+5iGHg9qIus+2LCSdf4cXqW+m84J93ODvyxN7PLmkfjUz6Bl4FP3O3zjeu0FOS4ibsw/O/xYaV7NjTkN+jpc/geh9wDP5DTzuvemS0mw2NPrOE7nXt7mYd+bvf6u6m12Y0OHdlLAv537zNFG6/fH0fWHPJf6XIdc/i1p8oYv/PpcIw1hO9AwPm57roLHDUgvVbiOT8jd9beeiGGHqrxY93r90GVl7fBMHG1QMHKLsHN94tc8QgNQD8338z+s/S3kjvU/XPDW1/WZf4D7u08lZdeIESSvTw8BITfB+WNfR9R8fCvN76cmXDZz6WC6nIOqUBykNn1na3U48y+vsWrkSUHIZGrC8s6WLACAJHmFI5FNXJXLCLIg+khZwfKzvyC0W03ziNRmpBv2RQGhcXkqlFO73gb8RiRs1CN3Aim9Qw4S8JULofFV+SGm6BUnIXk23R14VUV8hfgUqZclCg5bhd3inqnPlnq04uqwN89pNwtQ/dh3IGXv5Cr9yFyXlbyhFzp//1OUy1FfWm2X5rNildvCDK8gCXl0oI5o9LDj+tdFFYmP6b3BKUMBef9s5LOGp9y2UrjAhbF9B+4Z1ItWNFCShj6wvkPu29F/Py8KGR21gOr5EXxbnBZr++w6eoGPNbtVvZUziscfn8DAAD//wMAvBqIssILAAA=
+  recorded_at: Thu, 08 Jan 2026 14:00:25 GMT
 - request:
     method: get
     uri: https://api.stage.datacite.org/dois/10.20375/0000-001a-6248-5
@@ -86,7 +86,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 19 Dec 2025 16:28:06 GMT
+      - Thu, 08 Jan 2026 14:00:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -108,13 +108,13 @@ http_interactions:
       X-Xss-Protection:
       - '0'
       X-Request-Id:
-      - ecbaff60-b04c-4f1e-9d62-e0ab3e237c80
+      - 8c13469b-c691-4d62-ad0b-ca9d8a4c924d
       Etag:
-      - W/"7d92ae5889cacbc7fc38c24dc96db832"
+      - W/"7fb32fde0c8af95193537b83e55175ec"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.024045'
+      - '0.023270'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -132,6 +132,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIABZ9RWkAA5RWWXOqSBT+L77eSQIYMzFvRr2I45IggjI1D013C63NUtDgksp/n9MgbsnMnbGSKvj6fGenz/loECRQ4+WjwUjjpaEq95rS/L31oMDvTlFUdPekPT7ftRq/NcQ+oSBCYpbBGxIiZV4uaCbJAP6CnaR0xXYXQoBl+arCvpFnhEaCrRhNwcCff4FBLmgaIUGN2xOcUiTi8u2jEaFQemlNe1PpJRjgDAkWR5WsPL5R8AmwYILTSkH5CBpWPKc+5fdJ5DekSJJ7nGUBTeGs1zGNzuCu1wcTOI4EYpHEPz6PYri0uKQIQE3RFBmqt6ZY1B4Dp8xeXMcAVTjal09gQtIaFW5ViTeyLKek9IWjyM+RD2iUc16VpqxDCrWR7lkd4HrME1SmN2QZlp4yQZM0xrKIUPSMClkDHNAQTVNf8k5oSrM4T3Ft+vsDnULUiF+cf0oBDi6T6xx/VDDk5BRLJYARt+LGNyyZAfXeUtV2Wz21U+fcHl8IR8UDFBEon0xSLSJoeExyxg70+LiK0xCV5WiwEDL5IMsMeAEOl81SJTZlfiCyEctEFUX5WreXNEJohlOWyNCOmn0aj+KqAWpbeURY5Jt0RVMa4dqFXShT99ZrP3rO1iehvccaL7y1wsazx63BXrkXTgpX57l7UJhtm/rI8pkxmChLp7VZOrvCC+dtI+Ic742HNz9+xqF98Jr2fqnNfaqrmReN20YYKGTQeRrt25vlwgyWGlfcWavAIS6wNoldRw1GmuA4bHGvqyhgF/zZ5fiQPGJtc8lvkibOyWGce81hNDoY23GvXzh9dTyv9Tg8x00zAL+51AP8p9qGpbfXYD/xtMf/75N+kj8stYB7Tj939Z+Qh0lC9Hnlj6ZyovcLpNl7L7SzkfVeeI4NMmYAeE4Hk42xfvzD6HaekWNyLzITN4TcsdfE1e2c6DxEjr23B3zrWgoz++0hyO/G3cf9uDduTmbPEG9nO7I62/G8LyZrQ5l2FfWt277iQx18o7dbQy3AbnuPD6XNK6yUkRj4smwOOeSgwJtW4DnzH3a/3bcO2+IW77JKfqRN9q7zU/GaRomB/Vtbz+CL4un2obbzNjAhTzv+FroZcezIdbY51lsRcBW0MDPXqnijZiVX68EDm3k6PyAd4tqYr/MNf5111b5pbYursyrmLXGGGXIm4Av0Mefgv/FjvO5A/k7yxx5ouRBDzdu7i0lBFsO1a5strM/9cx/bc7p45aZm5+5iGHg9qIus+2LCSdf4cXqW+m84J93ODvyxN7PLmkfjUz6Bl4FP3O3zjeu0FOS4ibsw/O/xYaV7NjTkN+jpc/geh9wDP5DTzuvemS0mw2NPrOE7nXt7mYd+bvf6u6m12Y0OHdlLAv537zNFG6/fH0fWHPJf6XIdc/i1p8oYv/PpcIw1hO9AwPm57roLHDUgvVbiOT8jd9beeiGGHqrxY93r90GVl7fBMHG1QMHKLsHN94tc8QgNQD8338z+s/S3kjvU/XPDW1/WZf4D7u08lZdeIESSvTw8BITfB+WNfR9R8fCvN76cmXDZz6WC6nIOqUBykNn1na3U48y+vsWrkSUHIZGrC8s6WLACAJHmFI5FNXJXLCLIg+khZwfKzvyC0W03ziNRmpBv2RQGhcXkqlFO73gb8RiRs1CN3Aim9Qw4S8JULofFV+SGm6BUnIXk23R14VUV8hfgUqZclCg5bhd3inqnPlnq04uqwN89pNwtQ/dh3IGXv5Cr9yFyXlbyhFzp//1OUy1FfWm2X5rNildvCDK8gCXl0oI5o9LDj+tdFFYmP6b3BKUMBef9s5LOGp9y2UrjAhbF9B+4Z1ItWNFCShj6wvkPu29F/Py8KGR21gOr5EXxbnBZr++w6eoGPNbtVvZUziscfn8DAAD//wMAvBqIssILAAA=
-  recorded_at: Fri, 19 Dec 2025 16:28:06 GMT
+        H4sIAHq4X2kAA5RWWXOqSBT+L77eSQIYMzFvRr2I45IggjI1D013C63NUtDgksp/n9MgbsnMnbGSKvj6fGenz/loECRQ4+WjwUjjpaEq95rS/L31oMDvTlFUdPekPT7ftRq/NcQ+oSBCYpbBGxIiZV4uaCbJAP6CnaR0xXYXQoBl+arCvpFnhEaCrRhNwcCff4FBLmgaIUGN2xOcUiTi8u2jEaFQemlNe1PpJRjgDAkWR5WsPL5R8AmwYILTSkH5CBpWPKc+5fdJ5DekSJJ7nGUBTeGs1zGNzuCu1wcTOI4EYpHEPz6PYri0uKQIQE3RFBmqt6ZY1B4Dp8xeXMcAVTjal09gQtIaFW5ViTeyLKek9IWjyM+RD2iUc16VpqxDCrWR7lkd4HrME1SmN2QZlp4yQZM0xrKIUPSMClkDHNAQTVNf8k5oSrM4T3Ft+vsDnULUiF+cf0oBDi6T6xx/VDDk5BRLJYARt+LGNyyZAfXeUtV2Wz21U+fcHl8IR8UDFBEon0xSLSJoeExyxg70+LiK0xCV5WiwEDL5IMsMeAEOl81SJTZlfiCyEctEFUX5WreXNEJohlOWyNCOmn0aj+KqAWpbeURY5Jt0RVMa4dqFXShT99ZrP3rO1iehvccaL7y1wsazx63BXrkXTgpX57l7UJhtm/rI8pkxmChLp7VZOrvCC+dtI+Ic742HNz9+xqF98Jr2fqnNfaqrmReN20YYKGTQeRrt25vlwgyWGlfcWavAIS6wNoldRw1GmuA4bHGvqyhgF/zZ5fiQPGJtc8lvkibOyWGce81hNDoY23GvXzh9dTyv9Tg8x00zAL+51AP8p9qGpbfXYD/xtMf/75N+kj8stYB7Tj939Z+Qh0lC9Hnlj6ZyovcLpNl7L7SzkfVeeI4NMmYAeE4Hk42xfvzD6HaekWNyLzITN4TcsdfE1e2c6DxEjr23B3zrWgoz++0hyO/G3cf9uDduTmbPEG9nO7I62/G8LyZrQ5l2FfWt277iQx18o7dbQy3AbnuPD6XNK6yUkRj4smwOOeSgwJtW4DnzH3a/3bcO2+IW77JKfqRN9q7zU/GaRomB/Vtbz+CL4un2obbzNjAhTzv+FroZcezIdbY51lsRcBW0MDPXqnijZiVX68EDm3k6PyAd4tqYr/MNf5111b5pbYursyrmLXGGGXIm4Av0Mefgv/FjvO5A/k7yxx5ouRBDzdu7i0lBFsO1a5strM/9cx/bc7p45aZm5+5iGHg9qIus+2LCSdf4cXqW+m84J93ODvyxN7PLmkfjUz6Bl4FP3O3zjeu0FOS4ibsw/O/xYaV7NjTkN+jpc/geh9wDP5DTzuvemS0mw2NPrOE7nXt7mYd+bvf6u6m12Y0OHdlLAv537zNFG6/fH0fWHPJf6XIdc/i1p8oYv/PpcIw1hO9AwPm57roLHDUgvVbiOT8jd9beeiGGHqrxY93r90GVl7fBMHG1QMHKLsHN94tc8QgNQD8338z+s/S3kjvU/XPDW1/WZf4D7u08lZdeIESSvTw8BITfB+WNfR9R8fCvN76cmXDZz6WC6nIOqUBykNn1na3U48y+vsWrkSUHIZGrC8s6WLACAJHmFI5FNXJXLCLIg+khZwfKzvyC0W03ziNRmpBv2RQGhcXkqlFO73gb8RiRs1CN3Aim9Qw4S8JULofFV+SGm6BUnIXk23R14VUV8hfgUqZclCg5bhd3inqnPlnq04uqwN89pNwtQ/dh3IGXv5Cr9yFyXlbyhFzp//1OUy1FfWm2X5rNildvCDK8gCXl0oI5o9LDj+tdFFYmP6b3BKUMBef9s5LOGp9y2UrjAhbF9B+4Z1ItWNFCShj6wvkPu29F/Py8KGR21gOr5EXxbnBZr++w6eoGPNbtVvZUziscfn8DAAD//wMAvBqIssILAAA=
+  recorded_at: Thu, 08 Jan 2026 14:00:25 GMT
 recorded_with: VCR 6.3.1

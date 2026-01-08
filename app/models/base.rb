@@ -241,14 +241,14 @@ class Base
     Maremma.from_xml(xml).to_h.fetch("resource", {})
   end
 
-  def self.get_datacite_json(id)
+  def self.get_datacite_json(id, include_client: false)
     doi = doi_from_url(id)
     if doi.blank?
       Rails.logger.error "#{id} is not a valid DOI"
       return {}
     end
 
-    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true&include=client"
+    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true#{include_client ? "&include=client" : ""}"
     response = Maremma.get(url)
 
     if response.status != 200
