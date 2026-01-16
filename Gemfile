@@ -45,10 +45,10 @@ gem 'msgpack', "~> 1.4.4"
 group :development, :test do
   gem "better_errors"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "rspec-rails", "~> 6.1", ">= 6.1.1"
-  gem "rubocop", "~> 1.3", ">= 1.3.1"
-  gem "rubocop-performance", "~> 1.5", ">= 1.5.1"
-  gem "rubocop-rails", "~> 2.8", ">= 2.8.1"
+  gem "rspec-rails", "~> 8.0", ">= 8.0.2"
+  gem "rubocop", "~> 1.82", ">= 1.82.1"
+  gem "rubocop-performance", "~> 1.26", ">= 1.26.1"
+  gem "rubocop-rails", "~> 2.34", ">= 2.34.3"
 end
 
 group :development do

@@ -38,6 +38,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # add custom json method
   config.include RequestSpecHelper, type: :request
+
+  ActiveJob::Base.queue_adapter = :test
 end
 
 VCR.configure do |c|
