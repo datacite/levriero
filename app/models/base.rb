@@ -65,6 +65,7 @@ class Base
       "page[size]" => options[:size],
       "exclude_registration_agencies" => options[:exclude_registration_agencies],
       affiliation: true,
+      detail: true
     }
 
     url + URI.encode_www_form(params)

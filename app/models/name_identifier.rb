@@ -64,7 +64,7 @@ class NameIdentifier < Base
   end
 
   def self.push_item(item)
-    attributes = item.fetch("attributes", {})
+    attributes = item.fetch("attributes", {}).merge("relationships" => item.fetch("relationships", {}))
     doi = attributes.fetch("doi", nil)
     return nil if doi.blank?
 
