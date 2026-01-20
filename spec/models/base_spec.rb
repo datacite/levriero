@@ -109,4 +109,24 @@ describe Base, type: :model, vcr: true do
       expect(response["@type"]).to eq("Person")
     end
   end
+
+  context "get_client" do
+    before { Rails.cache.clear }
+
+    it "fetch client" do
+      client_id = "datacite.datacite"
+      response = Base.get_client(client_id)
+      expect(response["symbol"]).to eq("DATACITE.DATACITE")
+      expect(response["clientType"]).to eq("periodical")
+    end
+
+    it "fetch cached client" do
+      client_id = "datacite.datacite"
+
+      expect(Base).to receive(:get_client).once
+
+      Base.cached_client(client_id)
+      Base.cached_client(client_id)
+    end
+  end
 end

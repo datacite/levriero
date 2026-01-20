@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.stage.datacite.org/dois/10.82610/3pst-w184?affiliation=true&include=client
+    uri: https://api.stage.datacite.org/dois/10.82610/3pst-w184?affiliation=true
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 19 Dec 2025 15:59:31 GMT
+      - Fri, 16 Jan 2026 15:12:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -41,13 +41,13 @@ http_interactions:
       X-Xss-Protection:
       - '0'
       X-Request-Id:
-      - 605016c8-a7a2-4ba6-b5e6-7959a1b063fe
+      - e4ce5ac0-4ed9-4aa1-b25a-f27f0258c48a
       Etag:
-      - W/"3f12c684d92914a4b5ebdbf00613bff8"
+      - W/"5543e24ae6f7592aaf2291f3786950b7"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.076719'
+      - '0.074076'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -65,6 +65,140 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
-  recorded_at: Fri, 19 Dec 2025 15:59:31 GMT
+        H4sIAERVamkAA5RWWZOiSBD+Kxu+ztgNKD1ixDx4bHusoqMIysQ8FEWJpcURUGBrh/99szjUtmd3YzvCoMn6MuvLg8x8r7mIo1r7vUbdWrsmS08t5UWWnhtRwutHudWsfa3xU0TgzA1pAm+I85g6KSeJ0ALhP6lFMdnSt7tTkCXptpDdA6lLAk63lMRg8ucvuIJxEgeIk9HjCY4J4mH+9l4LkC94LcIk+fpHL3RPYEvIjILvHLTCADGQejQjgV7AS+AW+ZSd9JsJ4RqQYxRxGgbFdcLaRw7vtQTviE9WsfB7x3mUtJ+fwxhT9ymMvdqjzu9AzxL81eGn1JsvrWZd+/aifVJc5teA+mzRG/Vrl18X4MMpZ6SgwVDg1dpBylgpBqiRP8v3IgoCIDSj1GE02eWERMYx5QKJw4AjGgjx+6VE4TwAG4JAKGuaIrLm7AnmVQ5AJ6+AsMoKGCTlv4JWijxypQYs8kKJoXjatem8Z8C1DnU4EWXg0wQLGsAmikMMEhRzinMv8kCjGQQV9IhL0SxnAScxScI0xrmLAwLsIcntWid1aZjRJIW3iwAxoOV+KqFKzolfShJ6ruhvw9hHlaMZ6OSlULgSU2/HkwlNeOk1SXBMIxGsUsEj4SQswlfZSwOXBt6CbElMAlxd8+YLwvO+1nSso+f65gkrLHP2Ep0um8cR7TLH1zN7wFL7LFHTXAwmhkfn5+Zf8+GYYUWTsa+z0XDHnYF6ngW7MzIkioYLCffDbNJwG+5JbUxPaoZ9nE33neN0qW2M1ZuxUXbMsf7kyFLP7uA13SgrWtmZL8ehO1wcZ7QFd79KG0uP3MEqdRrjYNLQ92hg8s1Si+31OLWtI9d7I48M9WgWlGert2yjvErI0tL/b6t7xWNFD21L3k38xQ447tF6wSa+drJPGrfXi91E4Qz7KnN6kjRRZAaYw0bIIQ52b/SlRzvefMAOtqUCFzuy1yMPWQvmBIvI9hnDbKHiwUobHRbz5XL0ZWp00ll/pMAzm8pdw+zJ66nhSfOeFtkDM3UHzEeWeZp7oTfqv+2xbwIv7YQhH6Ne54MsxwhZr9PaNMYMeGX4oO4ca+U5/iu3zfJu1mU40DOQJaO9unQa+nnS6/YdZaHCvVd7htAxynt6wi83gnpJC7la4QO0tplT3JP7X/LyN5YcOUM2gyebs3GGG9PWRLEBxxKy+oRPBW55Hyva/SxjRf5sqDlDHveXqx9QQ6XMNJfLqhaH05fJSYMa1CO7l9cinfs7yR12zyLPUAt7ZP0oauIMNdrvcPgdp1SS9L0nTYwDVMoB+Aqe5vhTLkQ87mJV5OeYXeMeTItaGC6g9t7YXb4kqKkE4rcqnscM7ErOoIgF2CzO15V+V974bxGGbwfv1bzWNgqThB4emtQZsDP4XtXH0bXGCbJ04ATfNGPARdTYQZ3ur/g92IgcRbVt67XSO9lrPXPX431ZIx74dXYa5mmjmCuy7rKFYqbwveycvkR/rM0DfGcKWuvyxjrSSeFbC/rIC/DOSps+xJbDXefq/NpraOtLT/C53gG+e9+/Q3dNY3Y3tbww9Bh5wqFfjgtopyuBKJqiTzgS88SseqVcNe6rJDcFlqqxk4/AAvN8gDlPWF1sAUVLB/gWOTEMoVdoxWI5SDqYw/iutXmcEoBx6N4CRQMXOfmggJ0gubXpjJJjL0wD6NJS8ZbMoJMbVEzTvG+Hx4CFyL2BKskDMK669g0J/PP2/lnyoBvBHLuBxNtse8eqiM0nwT0mX3WIWMoUSWnWJbUuaYb0rd1U2o3GE2wPdu66B/MIWP4Hrhr/+Y4HM12kOXJv9tW6rNRlzZDVdvOlLbcKvWqKCvd2NMrnOGaUCIbvHxdHhJ4YjBr/eNsXC2RSu4jFIobJ7OZrxqPeTaECFSq+GPmf8P+2oBYal8td5pKbgZ+/LnfZepCLBP1ONts+CMtEPWKv+fsgh7+/AQAA//8DAMAUTdJgCwAA
+  recorded_at: Fri, 16 Jan 2026 15:12:04 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/clients/aa.lmcvmw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 16 Jan 2026 15:12:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 2243b59d-a5ff-4761-958f-0d7de38c1c55
+      Etag:
+      - W/"bf56ce9f6f9919eef46eb8a376a3111e"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.010872'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.1.0
+      Server:
+      - nginx/1.24.0 + Phusion Passenger(R) 6.1.0
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAERVamkAA3SRy07DMBBFf6XyEqWRmz6A7CLYVFAWoQKJqgvjDGUkx7Zsp1BV+XfGTcOzZJPMzbnjO+M9q0QQLN8zrFjOhEhVLbf1G0tY2FkgSSoEHTwJIgSHz00AH3kt6vi7LPB6UII1g4wQv6ufjSK5KNLbxdXD4pHEHQjH8oxnE+qhAjgtAtwd7LpRKmEVeOnQBjS6l5TQm0ZsCFmtk2OGZRfICaxK2KAPbkfdK1ML1BSJnVHlYNwN1LUxFnRl4vFdjd7rw7D0Vr1oHerQF6BABmc0yk5pE9a4T1Q6oOxxU3GcIZ8O+eWSn+cTnvNpyjl/ogyNrU5D4zwb9xD6Qgbc0kDBNdDG5ErEDfhXtIcFW2e2WIGL378u6et2esizlnpIshsXsKn/mIqbcn6/nBf/Wa2DF3zvrrYzro7OEU8vslk2++48sm3ygxnxU8y6pecDAAD//wMA+sRxmmgCAAA=
+  recorded_at: Fri, 16 Jan 2026 15:12:04 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/clients/aa.lmcvmw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 16 Jan 2026 15:12:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - e828eae0-49c8-4af0-8245-c016f302dbfe
+      Etag:
+      - W/"bf56ce9f6f9919eef46eb8a376a3111e"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.011113'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.1.0
+      Server:
+      - nginx/1.24.0 + Phusion Passenger(R) 6.1.0
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAERVamkAA3SRy07DMBBFf6XyEqWRmz6A7CLYVFAWoQKJqgvjDGUkx7Zsp1BV+XfGTcOzZJPMzbnjO+M9q0QQLN8zrFjOhEhVLbf1G0tY2FkgSSoEHTwJIgSHz00AH3kt6vi7LPB6UII1g4wQv6ufjSK5KNLbxdXD4pHEHQjH8oxnE+qhAjgtAtwd7LpRKmEVeOnQBjS6l5TQm0ZsCFmtk2OGZRfICaxK2KAPbkfdK1ML1BSJnVHlYNwN1LUxFnRl4vFdjd7rw7D0Vr1oHerQF6BABmc0yk5pE9a4T1Q6oOxxU3GcIZ8O+eWSn+cTnvNpyjl/ogyNrU5D4zwb9xD6Qgbc0kDBNdDG5ErEDfhXtIcFW2e2WIGL378u6et2esizlnpIshsXsKn/mIqbcn6/nBf/Wa2DF3zvrrYzro7OEU8vslk2++48sm3ygxnxU8y6pecDAAD//wMA+sRxmmgCAAA=
+  recorded_at: Fri, 16 Jan 2026 15:12:04 GMT
 recorded_with: VCR 6.3.1

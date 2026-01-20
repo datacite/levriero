@@ -241,14 +241,14 @@ class Base
     Maremma.from_xml(xml).to_h.fetch("resource", {})
   end
 
-  def self.get_datacite_json(id, include_client: false)
+  def self.get_datacite_json(id)
     doi = doi_from_url(id)
     if doi.blank?
       Rails.logger.error "#{id} is not a valid DOI"
       return {}
     end
 
-    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true#{include_client ? "&include=client" : ""}"
+    url = ENV["API_URL"] + "/dois/#{doi}?affiliation=true"
     response = Maremma.get(url)
 
     if response.status != 200
@@ -257,9 +257,27 @@ class Base
     end
 
     attributes = (response.body.dig("data", "attributes") || {}).except("xml")
-    included = response.body.dig("included")
-    
-    included.present? ? attributes.merge("included" => included) : attributes
+    relationships = response.body.dig("data", "relationships") || {}
+
+    attributes.merge("relationships" => relationships)
+  end
+
+  def self.get_client(id)
+    url = ENV["API_URL"] + "/clients/#{id}"
+    response = Maremma.get(url)
+    return {} if response.status != 200
+
+    response.body.dig("data", "attributes") || {}
+  end
+
+  def self.raid_registry_record?(attributes)
+    client_id = attributes.dig("relationships", "client", "data", "id")
+    return false if client_id.blank?
+
+    client = cached_client(client_id)
+    return false if client.blank?
+
+    client.dig("clientType") == "raidRegistry"
   end
 
   def self.get_datacite_metadata(id)
