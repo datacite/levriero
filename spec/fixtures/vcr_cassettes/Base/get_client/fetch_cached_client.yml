@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/clients/datacite.datacite
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 Jan 2026 11:41:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 01133556-7056-4c6d-92b1-4f603059740e
+      Etag:
+      - W/"bcd6aceb0902437f315eb5c61736e6d5"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.014238'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.1.1
+      Server:
+      - nginx/1.24.0 + Phusion Passenger(R) 6.1.1
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAOlpb2kAA4xSwW7bMAz9lUHHwTYsO24S34J0h116GHxq0YMqMwkBWRIouWhQ+N9HxXE6YC1QXUyR7z3zkXoXvYpKtO8Ce9FeLhojFEsgMhHPHrikDYKNgRMqRsKXMUJIPKuGVL5nwp4JP/6AdwGjI4QEDufhxZkE2HW7/e/uV7EEXDyDItFWpZSsaiKQVREeLoJ2NCYTPQRN6CM6u6SMssdRHRnyJMCyyIHEc3Ztr5t79UDoetTKcL13g0LLvYqfN1uFo2N2wGM4KYJCu4FxBPU8i/k/zoPtXepvvmMI9jIn/pol6QltZGXZrJp8vdk0rAMGdCRnUc+FVb6V61pMmRjpRtQEbDWNPLnPZZWX607W7apu621RluUjK42+v4EqmZd1Xm27ctvKu7ZqFhCGnY74yrYjjTAlH0algYUT+suGPLlX7IFS/Om2P5a8QIOYWEmziKOI4/Af9X7/FckTHPBtfhsz5enKkWXRrOrNv8QrdMo+IGv2VX0DIz/DPE98/gIAAP//AwCxlO1a1AIAAA==
+  recorded_at: Tue, 20 Jan 2026 11:41:29 GMT
+recorded_with: VCR 6.3.1

@@ -54,6 +54,8 @@ describe NameIdentifier, type: :model, vcr: true do
       end
 
       before(:each) do
+        allow(NameIdentifier).to receive(:push_item).and_call_original
+
         allow(ENV).to receive(:[]).and_call_original
         
         allow(ENV).
@@ -95,8 +97,6 @@ describe NameIdentifier, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("NO_PROXY").and_return(nil)
         allow(ENV).to receive(:[]).with("STAFF_PROFILES_ADMIN_TOKEN").and_return("STAFF_PROFILES_ADMIN_TOKEN")
         allow(ENV).to receive(:[]).with("ORCID_API_URL").and_return("https://fake.orcidapiurl.com")
-        allow(ENV).to receive(:[]).with("SSL_CERT_FILE").and_return("https://fake.orcidapiurl.com")
-        allow(ENV).to receive(:[]).with("SSL_CERT_DIR").and_return("https://fake.orcidapiurl.com")
         allow(ENV).to receive(:[]).with("STAFF_ADMIN_TOKEN").and_return(nil)
         allow(ENV).to receive(:[]).with("SLACK_WEBHOOK_URL").and_return("https://fake.slackwebhookurl.com")
 
@@ -216,11 +216,11 @@ describe NameIdentifier, type: :model, vcr: true do
         it "if the DOI is in a client with client_type raidRegistry" do
           ## DOI in client with client_type raidRegistry
           doi = "10.82610/3pst-w184"
-          attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
+          attributes = NameIdentifier.get_datacite_json(doi)
           response = { "id" => doi, "type" => "dois",
                         "attributes" => attributes }
 
-          expect(NameIdentifier.push_item(response)).to(eq(nil))
+          expect(NameIdentifier.push_item(response)).to eq(nil)
         end
 
         it "if there aren't any creators" do
@@ -272,7 +272,7 @@ describe NameIdentifier, type: :model, vcr: true do
           it "if the DOI is in a client with client_type repository" do
             ## DOI in client with client_type repository
             doi = "10.82621/sf34-nn32"
-            attributes = NameIdentifier.get_datacite_json(doi, include_client: true)
+            attributes = NameIdentifier.get_datacite_json(doi)
             response = { "id" => doi, "type" => "dois",
                           "attributes" => attributes }
 

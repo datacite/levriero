@@ -34,7 +34,7 @@ class NameIdentifier < Base
       return message
     end
 
-    attributes = get_datacite_json(doi, include_client: true)
+    attributes = get_datacite_json(doi)
     response = push_item({ "id" => doi, "type" => "dois",
                            "attributes" => attributes })
   end
@@ -72,10 +72,12 @@ class NameIdentifier < Base
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
                                                       nil))
 
-    ## Don't process DOIs with certain relationTypes or DOIs in a client with clientType raidRegistry
+    raid_registry_record = raid_registry_record?(attributes)
+
+    ## Don't process DOIs with certain relationTypes or DOIs in a raidRegistry
     skip_doi = related_identifiers.any? do |related_identifier|
       ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relationType"] || "")
-    end || item.dig("attributes", "included", 0, "attributes", "clientType") == "raidRegistry"
+    end || raid_registry_record
 
     creators = attributes.fetch("creators", []).select do |n|
       Array.wrap(n.fetch("nameIdentifiers", nil)).any? do |n|
