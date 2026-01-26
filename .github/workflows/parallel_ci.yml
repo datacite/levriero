@@ -8,7 +8,7 @@ jobs:
             fail-fast: true
         services:
             memcached:
-                image: memcached:1.4.31
+                image: memcached:1.6.32
                 ports:
                     - 11211/udp
         env:
@@ -26,10 +26,10 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v3
         
-            - name: Set up Ruby 3.1.4
+            - name: Set up Ruby
               uses: ruby/setup-ruby@v1
               with:
-                ruby-version: "3.1.4"
+                ruby-version: "3.2.9"
                 bundler-cache: true
         
             - name: Run Specs

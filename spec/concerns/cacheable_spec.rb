@@ -19,7 +19,7 @@ describe "Cacheable", type: :concern do
 
     describe "when there is a cache hit" do
       it "will fetch the value from cache" do
-        Rails.cache.fetch("datacite/100", expires: 1.day) { { message: "from cache" } }
+        Rails.cache.fetch("datacite/100", expires_in: 1.day) { { message: "from cache" } }
         allow(Base).to(receive(:get_datacite_metadata).and_return({message: "from get_datacite_metadata"}))
         result = RelatedIdentifier.cached_datacite_response(100)
         expect(result).to(eq({message: "from cache"}))
@@ -43,7 +43,7 @@ describe "Cacheable", type: :concern do
 
     describe "when there is a cache hit" do
       it "will fetch the value from cache" do
-        Rails.cache.fetch("ras/100", expires: 1.day) { { message: "from cache" } }
+        Rails.cache.fetch("ras/100", expires_in: 1.day) { { message: "from cache" } }
         result = RelatedIdentifier.cached_doi_ra("100")
         expect(result).to(eq({message: "from cache"}))
       end
