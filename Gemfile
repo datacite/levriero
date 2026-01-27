@@ -38,7 +38,7 @@ gem "shoryuken", "~> 7.0"
 gem "simple_command"
 gem "slack-notifier", "~> 2.3", ">= 2.3.2"
 gem "sprockets", "~> 3.7", ">= 3.7.2"
-gem "stringio", "3.0.1"
+gem "stringio", "3.0.1.1"
 gem 'next_rails'
 gem "json-canonicalization", '0.3.1'
 gem 'msgpack', "~> 1.4.4"
