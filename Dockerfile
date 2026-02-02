@@ -1,5 +1,5 @@
-FROM phusion/passenger-full:3.1.5
-LABEL maintainer="kgarza@datacite.org"
+FROM phusion/passenger-full:3.1.6
+LABEL maintainer="support@datacite.org"
 
 # Set correct environment variables.
 ENV HOME=/home/app
@@ -12,7 +12,7 @@ RUN usermod -a -G docker_env app
 CMD ["/sbin/my_init"]
 
 # Use Ruby
-RUN bash -lc 'rvm --default use ruby-3.2.9'
+RUN bash -lc 'rvm --default use ruby-3.2.10'
 
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y --allow-unauthenticated -o Dpkg::Options::="--force-confold" && \
