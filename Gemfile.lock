@@ -555,7 +555,7 @@ GEM
       base64
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    stringio (3.0.1)
+    stringio (3.0.1.1)
     sxp (2.0.0)
       matrix (~> 0.4)
       rdf (~> 3.3)
@@ -655,7 +655,7 @@ DEPENDENCIES
   spring (~> 4.2)
   spring-watcher-listen (~> 2.1)
   sprockets (~> 3.7, >= 3.7.2)
-  stringio (= 3.0.1)
+  stringio (= 3.0.1.1)
   vcr (~> 6.2)
   webmock (~> 3.1)
 
