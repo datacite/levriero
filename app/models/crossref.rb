@@ -29,23 +29,21 @@ class Crossref < Base
 
   def get_query_url(options = {})
     params = {
-      source: "crossref",
-      "from-collected-date" => options[:from_date],
-      "until-collected-date" => options[:until_date],
+      "from-created-date" => options[:from_date],
+      "until-created-date" => options[:until_date],
       mailto: "info@datacite.org",
-      scholix: true,
       rows: options[:rows],
-      cursor: options[:cursor],
+      page: options[:page],
     }.compact
 
-    "#{ENV['CROSSREF_QUERY_URL']}/v1/events?#{URI.encode_www_form(params)}"
+    "#{ENV['CROSSREF_QUERY_URL']}/beta/datacitations?#{URI.encode_www_form(params)}"
   end
 
   def get_total(options = {})
     query_url = get_query_url(options.merge(rows: 0))
     result = Maremma.get(query_url, options)
     message = result.body.dig("data", "message").to_h
-    [message["total-results"].to_i, message["next-cursor"]]
+    [message["total-results"].to_i, message["next-page"]]
   end
 
   def queue_jobs(options = {})
@@ -57,18 +55,18 @@ class Crossref < Base
       options[:until_date].presence || Time.now.to_date.iso8601
     options[:content_type] = "json"
 
-    total, cursor = get_total(options)
+    total, page = get_total(options)
 
     if total.positive?
-      # walk through results paginated via cursor
+      # walk through results paginated via page
       total_pages = (total.to_f / job_batch_size).ceil
       error_total = 0
 
       (0...total_pages).each do |page|
         options[:offset] = page * job_batch_size
         options[:total] = total
-        options[:cursor] = cursor
-        count, cursor = process_data(options)
+        options[:page] = page
+        count, page = process_data(options)
       end
       text = "Queued import for #{total} DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
