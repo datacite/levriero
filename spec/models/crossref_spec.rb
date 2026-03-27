@@ -117,22 +117,20 @@ describe Crossref, type: :model, vcr: true do
       allow(Rails.logger).to(receive(:info))
 
       item = {
-        "id" => "example_id",
-        "action" => "example_action",
-        "subj_id" => "example_subj_id",
-        "obj_id" => "example_obj_id",
-        "relation_type_id" => "example_relation_type_id",
-        "source_id" => "example_source_id",
-        "source_token" => "example_source_token",
-        "occurred_at" => "2023-01-05T12:00:00Z",
-        "timestamp" => 1641379200,
-        "license" => "example_license",
+        "timestamp": "2002-07-25T03:18:25Z",
+        "relation": "example_relation_type",
+        "subject": {
+          "id": "example_subj_id"
+        },
+        "object": {
+          "id": "example_obj_id"
+        }
       }
 
       Crossref.push_item(item)
 
       expect(Crossref).to(have_received(:send_event_import_message).once)
-      expect(Rails.logger).to(have_received(:info).with("[Event Data] example_subj_id example_relation_type_id example_obj_id sent to the events queue."))
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] example_subj_id example_relation_type example_obj_id sent to the events queue."))
     end
   end
 end
