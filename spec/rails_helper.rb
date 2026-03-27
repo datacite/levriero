@@ -55,7 +55,7 @@ VCR.configure do |c|
   c.filter_sensitive_data("<STAFF_ADMIN_TOKEN>") { ENV["STAFF_ADMIN_TOKEN"] }
   c.filter_sensitive_data("<SLACK_WEBHOOK_URL>") { ENV["SLACK_WEBHOOK_URL"] }
   c.configure_rspec_metadata!
-  c.default_cassette_options = { match_requests_on: %i[method uri] }
+  c.default_cassette_options = { record: vcr_mode, match_requests_on: %i[method uri] }
 end
 
 def capture_stdout

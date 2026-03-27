@@ -60,19 +60,17 @@ describe Crossref, type: :model, vcr: true do
     it "returns a valid query URL with the given options" do
       crossref = Crossref.new
       query_url = crossref.get_query_url(from_date: from_date, until_date: until_date, rows: 10, cursor: "abc123")
-      expect(query_url).to include("source=crossref")
-      expect(query_url).to include("from-collected-date=#{from_date}")
-      expect(query_url).to include("until-collected-date=#{until_date}")
+      expect(query_url).to include("from-created-date=#{from_date}")
+      expect(query_url).to include("until-created-date=#{until_date}")
       expect(query_url).to include("rows=10")
-      expect(query_url).to include("cursor=abc123")
     end
   end
 
   describe "#queue_jobs" do
     context "when there are DOIs to import" do
       it "queues jobs and returns the total number of works queued" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([5, "next_cursor"])
-        allow_any_instance_of(Crossref).to receive(:process_data).and_return([5, "next_cursor"])
+        allow_any_instance_of(Crossref).to receive(:get_total).and_return(5)
+        allow_any_instance_of(Crossref).to receive(:process_data).and_return(5)
 
         response = Crossref.new.queue_jobs(from_date: from_date, until_date: until_date)
 
@@ -80,8 +78,8 @@ describe Crossref, type: :model, vcr: true do
       end
 
       it "sends a Slack notification when slack_webhook_url is present" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([1, "cursor"])
-        allow_any_instance_of(Crossref).to receive(:process_data).and_return([1, "cursor"])
+        allow_any_instance_of(Crossref).to receive(:get_total).and_return(1)
+        allow_any_instance_of(Crossref).to receive(:process_data).and_return(1)
 
         allow(Rails.logger).to receive(:info)
 
@@ -96,7 +94,7 @@ describe Crossref, type: :model, vcr: true do
 
     context "when there are no DOIs to import" do
       it "returns 0 and logs a message when there are no DOIs to import" do
-        allow_any_instance_of(Crossref).to receive(:get_total).and_return([0, nil])
+        allow_any_instance_of(Crossref).to receive(:get_total).and_return(0)
 
         # Spy on Rails.logger
         logger_spy = spy("logger")
