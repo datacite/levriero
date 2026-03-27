@@ -106,19 +106,19 @@ class Crossref < Base
   end
 
   def self.push_item(item)
-    subj = cached_crossref_response(item[:subject][:id])
-    obj = cached_datacite_response(item[:object][:id])
+    subj = cached_crossref_response(item["subject"]["id"])
+    obj = cached_datacite_response(item["object"]["id"])
 
     data = {
       "data" => {
         "type" => "events",
         "attributes" => {
-          "subjId" => item[:subject][:id],
-          "objId" => item[:object][:id],
-          "relationTypeId" => item[:relation].to_s.dasherize,
+          "subjId" => item["subject"]["id"],
+          "objId" => item["object"]["id"],
+          "relationTypeId" => item["relation"].to_s.dasherize,
           "sourceId" => ENV["CROSSREF_SOURCE_ID"],
           "sourceToken" => ENV["CROSSREF_SOURCE_TOKEN"],
-          "timestamp" => item[:timestamp],
+          "timestamp" => item["timestamp"],
           "subj" => subj,
           "obj" => obj,
         },
@@ -127,6 +127,6 @@ class Crossref < Base
 
     send_event_import_message(data)
 
-    Rails.logger.info "[Event Data] #{item[:subject][:id]} #{item[:relation]} #{item[:object][:id]} sent to the events queue."
+    Rails.logger.info "[Event Data] #{item["subject"]["id"]} #{item["relation"]} #{item["object"]["id"]} sent to the events queue."
   end
 end

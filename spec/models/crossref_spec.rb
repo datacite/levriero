@@ -117,13 +117,13 @@ describe Crossref, type: :model, vcr: true do
       allow(Rails.logger).to(receive(:info))
 
       item = {
-        "timestamp": "2002-07-25T03:18:25Z",
-        "relation": "example_relation_type",
-        "subject": {
-          "id": "example_subj_id"
+        "timestamp" => "2002-07-25T03:18:25Z",
+        "relation" => "example_relation_type",
+        "subject" => {
+          "id" => "example_subj_id"
         },
-        "object": {
-          "id": "example_obj_id"
+        "object" => {
+          "id" => "example_obj_id"
         }
       }
 
