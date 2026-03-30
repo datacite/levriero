@@ -116,7 +116,7 @@ class Crossref < Base
           "subjId" => item["subject"]["id"],
           "objId" => item["object"]["id"],
           "relationTypeId" => item["relation"].to_s.dasherize,
-          "sourceId" => ENV["CROSSREF_SOURCE_ID"],
+          "sourceId" => "crossref",
           "sourceToken" => ENV["CROSSREF_SOURCE_TOKEN"],
           "timestamp" => item["timestamp"],
           "subj" => subj,
