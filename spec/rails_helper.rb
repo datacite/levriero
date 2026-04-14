@@ -13,7 +13,6 @@ require "rspec/rails"
 require "shoulda-matchers"
 require "webmock/rspec"
 require "rack/test"
-require "colorize"
 
 WebMock.allow_net_connect!
 
