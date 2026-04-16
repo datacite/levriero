@@ -298,7 +298,10 @@ class Base
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"
     sleep(0.24) # to avoid crossref rate limitting
     response =  Maremma.get(url, host: true)
-    return {} if response.status != 200
+    if response.status != 200
+      Rails.logger.error "DOI #{doi} not found in Crossref: #{response.body.inspect}, status: #{response.status}"
+      return {}
+    end
 
     meta = response.body.dig("data", "message")
 
