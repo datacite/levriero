@@ -293,7 +293,10 @@ class Base
 
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)
-    return {} if doi.blank?
+    if doi.blank?
+      Rails.logger.error "#{id} is not a valid DOI"
+      return {}
+    end
 
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"
     sleep(0.24) # to avoid crossref rate limitting
