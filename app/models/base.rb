@@ -293,18 +293,12 @@ class Base
 
   def self.get_crossref_metadata(id)
     doi = doi_from_url(id)
-    if doi.blank?
-      Rails.logger.error "#{id} is not a valid DOI"
-      return {}
-    end
+    return {} if doi.blank?
 
     url = "https://api.crossref.org/works/#{Addressable::URI.encode(doi)}?mailto=info@datacite.org"
     sleep(0.24) # to avoid crossref rate limitting
     response =  Maremma.get(url, host: true)
-    if response.status != 200
-      Rails.logger.error "DOI #{doi} not found in Crossref: #{response.body.inspect}, status: #{response.status}"
-      return {}
-    end
+    return {} if response.status != 200
 
     meta = response.body.dig("data", "message")
 
