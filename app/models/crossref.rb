@@ -29,23 +29,21 @@ class Crossref < Base
 
   def get_query_url(options = {})
     params = {
-      source: "crossref",
-      "from-collected-date" => options[:from_date],
-      "until-collected-date" => options[:until_date],
+      "from-created-date" => options[:from_date],
+      "until-created-date" => options[:until_date],
       mailto: "info@datacite.org",
-      scholix: true,
       rows: options[:rows],
-      cursor: options[:cursor],
+      page: options[:page],
     }.compact
 
-    "#{ENV['CROSSREF_QUERY_URL']}/v1/events?#{URI.encode_www_form(params)}"
+    "#{ENV['CROSSREF_QUERY_URL']}/beta/datacitations?#{URI.encode_www_form(params)}"
   end
 
   def get_total(options = {})
     query_url = get_query_url(options.merge(rows: 0))
     result = Maremma.get(query_url, options)
     message = result.body.dig("data", "message").to_h
-    [message["total-results"].to_i, message["next-cursor"]]
+    message["total-results"].to_i
   end
 
   def queue_jobs(options = {})
@@ -57,18 +55,18 @@ class Crossref < Base
       options[:until_date].presence || Time.now.to_date.iso8601
     options[:content_type] = "json"
 
-    total, cursor = get_total(options)
+    total = get_total(options)
 
     if total.positive?
-      # walk through results paginated via cursor
+      # walk through results paginated via page
       total_pages = (total.to_f / job_batch_size).ceil
       error_total = 0
 
-      (0...total_pages).each do |page|
-        options[:offset] = page * job_batch_size
+      (0...total_pages).each do |page_num|
+        options[:offset] = page_num * job_batch_size
         options[:total] = total
-        options[:cursor] = cursor
-        count, cursor = process_data(options)
+        options[:page] = page_num
+        process_data(options)
       end
       text = "Queued import for #{total} DOIs updated #{options[:from_date]} - #{options[:until_date]}."
     else
@@ -99,34 +97,28 @@ class Crossref < Base
     return result.body.fetch("errors") if result.body.fetch("errors",
                                                             nil).present?
 
-    items = result.body.dig("data", "message", "events")
+    items = result.body.dig("data", "message", "items")
     # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
       CrossrefImportJob.perform_later(item)
     end
-
-    [items.length, result.body.dig("data", "message", "next-cursor")]
   end
 
   def self.push_item(item)
-    subj = cached_crossref_response(item["subj_id"])
-    obj = cached_datacite_response(item["obj_id"])
+    subj = cached_crossref_response(item["subject"]["id"])
+    obj = cached_datacite_response(item["object"]["id"])
 
     data = {
       "data" => {
-        "id" => item["id"],
         "type" => "events",
         "attributes" => {
-          "messageAction" => item["action"],
-          "subjId" => item["subj_id"],
-          "objId" => item["obj_id"],
-          "relationTypeId" => item["relation_type_id"].to_s.dasherize,
-          "sourceId" => item["source_id"].to_s.dasherize,
-          "sourceToken" => item["source_token"],
-          "occurredAt" => item["occurred_at"],
+          "subjId" => item["subject"]["id"],
+          "objId" => item["object"]["id"],
+          "relationTypeId" => item["relation"].to_s.dasherize,
+          "sourceId" => "crossref",
+          "sourceToken" => ENV["CROSSREF_SOURCE_TOKEN"],
           "timestamp" => item["timestamp"],
-          "license" => item["license"],
           "subj" => subj,
           "obj" => obj,
         },
@@ -135,6 +127,6 @@ class Crossref < Base
 
     send_event_import_message(data)
 
-    Rails.logger.info "[Event Data] #{item['subj_id']} #{item['relation_type_id']} #{item['obj_id']} sent to the events queue."
+    Rails.logger.info "[Event Data] #{item["subject"]["id"]} #{item["relation"]} #{item["object"]["id"]} sent to the events queue."
   end
 end
