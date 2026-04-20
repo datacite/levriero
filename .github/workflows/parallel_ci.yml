@@ -1,11 +1,17 @@
 name: Parallel CI
 on:
     workflow_call:
+        inputs:
+            fail-fast:
+                description: "Stop all jobs if any job fails"
+                required: false
+                type: boolean
+                default: true
 jobs:
     parallel-test:
         runs-on: ubuntu-latest
         strategy:
-            fail-fast: true
+            fail-fast: ${{ inputs.fail-fast }}
         services:
             memcached:
                 image: memcached:1.6.32
