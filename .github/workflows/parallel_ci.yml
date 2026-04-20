@@ -24,7 +24,7 @@ jobs:
             STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
         
             - name: Set up Ruby
               uses: ruby/setup-ruby@v1
