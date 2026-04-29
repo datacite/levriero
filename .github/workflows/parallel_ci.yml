@@ -1,6 +1,12 @@
 name: Parallel CI
 on:
     workflow_call:
+        inputs:
+            fail-fast:
+                description: "Stop all jobs if any job fails"
+                required: false
+                type: boolean
+                default: true
 jobs:
     security:
         runs-on: ubuntu-latest
@@ -23,7 +29,7 @@ jobs:
     parallel-test:
         runs-on: ubuntu-latest
         strategy:
-            fail-fast: true
+            fail-fast: ${{ inputs.fail-fast }}
         services:
             memcached:
                 image: memcached:1.6.32
@@ -42,7 +48,7 @@ jobs:
             STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
         
             - name: Set up Ruby
               uses: ruby/setup-ruby@v1
