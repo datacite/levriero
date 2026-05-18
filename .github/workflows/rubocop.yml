@@ -1,0 +1,20 @@
+name: RuboCop
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: "default doc job cable storage ujs test db"
+      BUNDLE_PATH: "vendor/bundle"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby 3.2.10
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2.10
+        bundler-cache: true
+    - name: Run RuboCop
+      run: bundle exec rubocop --parallel

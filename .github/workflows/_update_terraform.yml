@@ -46,13 +46,10 @@ jobs:
         if: ${{ (inputs.deployment_environment == 'production') }}
         run: |
           ./dockerize -template prod-eu-west/services/levriero/_levriero.auto.tfvars.tmpl:prod-eu-west/services/levriero/_levriero.auto.tfvars
-          ./dockerize -template test/services/levriero/_levriero.auto.tfvars.tmpl:test/services/levriero/_levriero.auto.tfvars
-
           git add prod-eu-west/services/levriero/_levriero.auto.tfvars
-          git add test/services/levriero/_levriero.auto.tfvars
           git commit -m "Adding levriero git variables for tag ${{ inputs.image_tag }}"
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           repository: 'datacite/mastino'

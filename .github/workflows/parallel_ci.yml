@@ -1,11 +1,35 @@
 name: Parallel CI
 on:
     workflow_call:
+        inputs:
+            fail-fast:
+                description: "Stop all jobs if any job fails"
+                required: false
+                type: boolean
+                default: true
 jobs:
+    security:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                ruby-version: "4.0.1"
+                bundler-cache: true
+
+            - name: Run Brakeman
+              run: bundle exec brakeman --no-pager
+
+            - name: Run Bundler Audit
+              run: |
+                bundle exec bundler-audit check --update
     parallel-test:
         runs-on: ubuntu-latest
         strategy:
-            fail-fast: true
+            fail-fast: ${{ inputs.fail-fast }}
         services:
             memcached:
                 image: memcached:1.6.32
@@ -24,12 +48,12 @@ jobs:
             STAFF_PROFILES_ADMIN_TOKEN: ${{ secrets.STAFF_PROFILES_ADMIN_TOKEN }}
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
         
             - name: Set up Ruby
               uses: ruby/setup-ruby@v1
               with:
-                ruby-version: "3.2.9"
+                ruby-version: "4.0.1"
                 bundler-cache: true
         
             - name: Run Specs

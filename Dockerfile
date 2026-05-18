@@ -1,5 +1,5 @@
-FROM phusion/passenger-full:3.1.5
-LABEL maintainer="kgarza@datacite.org"
+FROM phusion/passenger-ruby40:3.1.6
+LABEL maintainer="support@datacite.org"
 
 # Set correct environment variables.
 ENV HOME=/home/app
@@ -12,7 +12,7 @@ RUN usermod -a -G docker_env app
 CMD ["/sbin/my_init"]
 
 # Use Ruby
-RUN bash -lc 'rvm --default use ruby-3.2.9'
+RUN bash -lc 'rvm --default use ruby-4.0.1'
 
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y --allow-unauthenticated -o Dpkg::Options::="--force-confold" && \
@@ -65,7 +65,10 @@ RUN mkdir -p /etc/my_init.d
 # install custom ssh key during startup
 COPY vendor/docker/10_ssh.sh /etc/my_init.d/10_ssh.sh
 
-COPY vendor/docker/80_flush_cache.sh /etc/my_init.d/80_flush_cache.sh
+# COPY vendor/docker/80_flush_cache.sh /etc/my_init.d/80_flush_cache.sh
+
+ARG GIT_TAG=1.0
+ENV GIT_TAG=${GIT_TAG}
 
 # Expose web
 EXPOSE 80
