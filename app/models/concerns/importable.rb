@@ -61,7 +61,7 @@ module Importable
                                         gs).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -79,7 +79,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -89,18 +89,20 @@ module Importable
 
       id = id.downcase
 
-      # turn igsn into a URL if needed
-      id = "https://hdl.handle.net/10273/#{id}" unless id.start_with?("http")
+      id = if id.start_with?("http://igsn.org/")
+        "https://hdl.handle.net/10273/#{id.delete_prefix("http://igsn.org/")}"
+      elsif !id.start_with?("http")
+        "https://hdl.handle.net/10273/#{id}"
+      else
+        id
+      end
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
-      # don't use IGSN resolver as no support for ssl
-      id = "https://hdl.handle.net/10273/#{id[15..]}" if id.start_with?("http://igsn.org")
-
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -118,7 +120,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -139,7 +141,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -316,6 +318,20 @@ module Importable
 
     def to_kebab_case(hsh)
       hsh.stringify_keys.transform_keys!(&:underscore)
+    end
+
+    private
+
+    def clean_url(uri)
+      uri.normalize!
+
+      if uri.query_values
+        filtered = uri.query_values.reject { |k, _| k.match?(/^utm|^ref$|^sources$/) }
+        uri.query_values = filtered.empty? ? nil : filtered
+      end
+
+      uri.fragment = nil
+      uri.to_s
     end
   end
 end

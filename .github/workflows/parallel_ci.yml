@@ -8,6 +8,24 @@ on:
                 type: boolean
                 default: true
 jobs:
+    security:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                ruby-version: "4.0.1"
+                bundler-cache: true
+
+            - name: Run Brakeman
+              run: bundle exec brakeman --no-pager
+
+            - name: Run Bundler Audit
+              run: |
+                bundle exec bundler-audit check --update
     parallel-test:
         runs-on: ubuntu-latest
         strategy:
@@ -35,7 +53,7 @@ jobs:
             - name: Set up Ruby
               uses: ruby/setup-ruby@v1
               with:
-                ruby-version: "3.2.10"
+                ruby-version: "4.0.1"
                 bundler-cache: true
         
             - name: Run Specs
