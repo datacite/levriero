@@ -106,7 +106,7 @@ GEM
       logger (~> 1.7)
       racc (~> 1.7)
     bigdecimal (3.3.1)
-    bolognese (2.6.1)
+    bolognese (2.7.0)
       activesupport (~> 8.1, >= 8.1.2)
       bibtex-ruby (~> 6.2)
       builder (~> 3.3)
@@ -212,7 +212,7 @@ GEM
       zlib (~> 3.0)
     faraday-multipart (1.2.0)
       multipart-post (~> 2.0)
-    faraday-net_http (3.4.2)
+    faraday-net_http (3.4.3)
       net-http (~> 0.5)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
@@ -238,7 +238,7 @@ GEM
       reline (>= 0.4.2)
     iso8601 (0.13.0)
     jmespath (1.6.2)
-    json (2.19.5)
+    json (2.19.7)
     json-canonicalization (1.0.0)
     json-ld (3.3.2)
       htmlentities (~> 4.3)
@@ -626,4 +626,4 @@ DEPENDENCIES
   webmock (~> 3.26.2)
 
 BUNDLED WITH
-   2.6.9
+  4.0.3
