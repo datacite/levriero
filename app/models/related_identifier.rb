@@ -2,7 +2,6 @@ class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
   DATACITE_CROSSREF = "datacite_crossref"
 
-  include Helpable
   include Cacheable
   include Queueable
 
@@ -143,30 +142,6 @@ class RelatedIdentifier < Base
 
       Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
 
-      # send to Event Data Bus
-      # we only send datacite_crossref events to the bus
-      if ENV["EVENTDATA_TOKEN"].present? && iiitem["source_id"] == DATACITE_CROSSREF
-        iiitem = set_event_for_bus(iiitem)
-
-        host = ENV["EVENTDATA_URL"]
-        push_url = "#{host}/events"
-        response = Maremma.post(push_url, data: iiitem.to_json,
-                                          bearer: ENV["EVENTDATA_TOKEN"],
-                                          content_type: "json",
-                                          host: host)
-
-        # return 0 if successful, 1 if error
-        if response.status == 201
-          Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error:"
-          Rails.logger.error "[Event Data Bus] #{response.body['errors']}"
-        end
-      else
-        Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} was not sent to Event Data Bus."
-      end
     end
     push_items.length
   end

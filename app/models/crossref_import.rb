@@ -125,7 +125,6 @@ class CrossrefImport < Base
 
     Rails.logger.info push_items.inspect
 
-    # don't send to Event Data Bus
     Array.wrap(push_items).each do |iiitem|
       data = {
         "data" => {
