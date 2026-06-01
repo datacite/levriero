@@ -85,8 +85,6 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(ENV).to receive(:[]).with("LAGOTTINO_URL").and_return("https://fake.lagattino.com")
         allow(ENV).to receive(:[]).with("DATACITE_RELATED_SOURCE_TOKEN").and_return("DATACITE_RELATED_SOURCE_TOKEN")
         allow(ENV).to receive(:[]).with("USER_AGENT").and_return("default_user_agent")
-        allow(ENV).to receive(:[]).with("EVENTDATA_TOKEN").and_return("EVENTDATA_TOKEN")
-        allow(ENV).to receive(:[]).with("EVENTDATA_URL").and_return("https://fake.eventdataurl.com")
         allow(Base).to receive(:cached_datacite_response).and_return({ "foo" => "bar" })
         allow(Maremma).to receive(:post).and_return(OpenStruct.new(status: 201))
         allow(RelatedIdentifier).to receive(:send_event_import_message).and_return(nil)
@@ -107,26 +105,6 @@ describe RelatedIdentifier, type: :model, vcr: true do
         expect(RelatedIdentifier).to have_received(:send_event_import_message).once
 
         expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related sent to the events queue.")
-      end
-
-      it "does push the event to the event data bus when source_id is datacite_crossref" do
-        related_identifier = RelatedIdentifier.new
-        allow(ENV).to receive(:[]).with("DATACITE_CROSSREF_SOURCE_TOKEN").and_return("fake-token")
-        allow(related_identifier).to receive(:normalize_doi).with(valid_doi).and_return("normalized_doi")
-        allow(related_identifier).to receive(:normalize_doi).with(valid_related_identifier).and_return("normalized_related_identifier")
-        allow(related_identifier).to receive(:validate_prefix).with(valid_related_identifier).and_return("datacite")
-        allow(RelatedIdentifier).to receive(:cached_doi_ra).with("https://doi.org/10.5678/related").and_return("Crossref")
-        allow(RelatedIdentifier).to receive(:cached_doi_ra).with("https://doi.org/10.1234/example").and_return("DataCite")
-        allow(RelatedIdentifier).to receive(:cached_crossref_response).and_return({})
-        allow(RelatedIdentifier).to receive(:cached_datacite_response).and_return({})
-        allow(related_identifier).to receive(:set_event_for_bus).and_return({})
-        allow(Rails.logger).to receive(:info)
-
-        expect(RelatedIdentifier.push_item(item)).to eq(1)
-        expect(RelatedIdentifier).to have_received(:send_event_import_message).once
-        expect(Maremma).to have_received(:post).with("https://fake.eventdataurl.com/events", anything).once
-        expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related sent to the events queue.")
-        expect(Rails.logger).to have_received(:info).with("[Event Data Bus] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related pushed to Event Data service.")
       end
     end
 

@@ -172,7 +172,6 @@ class CrossrefRelated < Base
 
     # there can be one or more references per DOI
     # send to DataCite Event Data Query API
-    # don't send to Event Data Bus
     Array.wrap(push_items).each do |iiitem|
       data = {
         "data" => {
