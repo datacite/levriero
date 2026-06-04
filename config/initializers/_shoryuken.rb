@@ -1,14 +1,30 @@
 # frozen_string_literal: true
 
+if Rails.env.development?
+  Aws.config.update({
+    endpoint: ENV["AWS_ENDPOINT"],
+    region: "us-east-1",
+    credentials: Aws::Credentials.new("test", "test")
+  })
+end
+
 # Shoryuken middleware to capture worker errors and send them on to Sentry.io
 module Shoryuken
   module Middleware
     module Server
-      class RavenReporter
-        def call(_worker_instance, queue, _sqs_msg, body, &block)
-          tags = { job: body["job_class"], queue: queue }
-          context = { message: body }
-          Raven.capture(tags: tags, extra: context, &block)
+      class SentryReporter
+        def call(worker_instance, queue, sqs_msg, body)
+          Sentry.with_scope do |scope|
+            scope.set_tags(job: body['job_class'], queue: queue)
+            scope.set_extras(message: body)
+
+            begin
+              yield
+            rescue => e
+              Sentry.capture_exception(e)
+              raise e
+            end
+          end
         end
       end
     end
@@ -19,7 +35,7 @@ Shoryuken.configure_server do |config|
   config.server_middleware do |chain|
     # remove logging of timing events
     chain.remove Shoryuken::Middleware::Server::Timing
-    chain.add Shoryuken::Middleware::Server::RavenReporter
+    chain.add Shoryuken::Middleware::Server::SentryReporter
   end
 end
 

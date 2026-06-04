@@ -13,7 +13,6 @@ require "rspec/rails"
 require "shoulda-matchers"
 require "webmock/rspec"
 require "rack/test"
-require "colorize"
 
 WebMock.allow_net_connect!
 
@@ -38,6 +37,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # add custom json method
   config.include RequestSpecHelper, type: :request
+
+  ActiveJob::Base.queue_adapter = :test
 end
 
 VCR.configure do |c|
@@ -53,7 +54,7 @@ VCR.configure do |c|
   c.filter_sensitive_data("<STAFF_ADMIN_TOKEN>") { ENV["STAFF_ADMIN_TOKEN"] }
   c.filter_sensitive_data("<SLACK_WEBHOOK_URL>") { ENV["SLACK_WEBHOOK_URL"] }
   c.configure_rspec_metadata!
-  c.default_cassette_options = { match_requests_on: %i[method uri] }
+  c.default_cassette_options = { record: vcr_mode, match_requests_on: %i[method uri] }
 end
 
 def capture_stdout

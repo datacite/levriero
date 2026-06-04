@@ -1,0 +1,644 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oai.portal.mardi4nfdi.de/oai/OAIHandler?identifier=oai:swmath.org:2901&metadataPrefix=datacite_swmath&verb=GetRecord
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Date:
+      - Fri, 04 Apr 2025 12:04:31 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiID8+PD94bWwtc3R5bGVzaGVldCB0eXBlPSJ0ZXh0L3hzbCIgaHJlZj0iL29haS9zdHlsZXNoZWV0Ij8+PE9BSS1QTUggeG1sbnM9Imh0dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wLyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lm9wZW5hcmNoaXZlcy5vcmcvT0FJLzIuMC8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvT0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyNS0wNC0wNFQxMjowNDozMVo8L3Jlc3BvbnNlRGF0ZT48cmVxdWVzdCBpZGVudGlmaWVyPSJvYWk6c3dtYXRoLm9yZzoyOTAxIiBtZXRhZGF0YVByZWZpeD0iZGF0YWNpdGVfc3dtYXRoIiB2ZXJiPSJHZXRSZWNvcmQiPmh0dHBzOi8vb2FpLnBvcnRhbC5tYXJkaTRuZmRpLmRlL29haS9PQUlIYW5kbGVyPC9yZXF1ZXN0PjxHZXRSZWNvcmQ+PHJlY29yZD48aGVhZGVyPjxpZGVudGlmaWVyPm9haTpzd21hdGgub3JnOjI5MDE8L2lkZW50aWZpZXI+PGRhdGVzdGFtcD4yMDI1LTAzLTAyVDEwOjAyOjUwWjwvZGF0ZXN0YW1wPjxzZXRTcGVjPjY4PC9zZXRTcGVjPjxzZXRTcGVjPjAzPC9zZXRTcGVjPjwvaGVhZGVyPjxtZXRhZGF0YT48cmVzb3VyY2UgeG1sbnM9Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC00IgogICAgICAgICAgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIKICAgICAgICAgIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL2RhdGFjaXRlLm9yZy9zY2hlbWEva2VybmVsLTQgaHR0cDovL3NjaGVtYS5kYXRhY2l0ZS5vcmcvbWV0YS9rZXJuZWwtNC9tZXRhZGF0YS54c2QiPgogICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0ic3dNQVRIIj5vYWk6c3dtYXRoLm9yZzoyOTAxPC9pZGVudGlmaWVyPgogICA8YWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHBzOi8vc3dtYXRoLm9yZy9zb2Z0d2FyZS8yOTAxPC9hbHRlcm5hdGVJZGVudGlmaWVyPgogICA8L2FsdGVybmF0ZUlkZW50aWZpZXJzPgogICA8Y3JlYXRvcnM+CiAgICAgIDxjcmVhdG9yPgogICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5MZXVzY2hlbCwgTS48L2NyZWF0b3JOYW1lPgogICAgICAgICA8Z2l2ZW5OYW1lPk0uPC9naXZlbk5hbWU+CiAgICAgICAgIDxmYW1pbHlOYW1lPkxldXNjaGVsPC9mYW1pbHlOYW1lPgogICAgICA8L2NyZWF0b3I+CiAgICAgIDxjcmVhdG9yPgogICAgICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5Kw7ZyZ2Vuc2VuLCBKLjwvY3JlYXRvck5hbWU+CiAgICAgICAgIDxnaXZlbk5hbWU+Si48L2dpdmVuTmFtZT4KICAgICAgICAgPGZhbWlseU5hbWU+SsO2cmdlbnNlbjwvZmFtaWx5TmFtZT4KICAgICAgPC9jcmVhdG9yPgogICA8L2NyZWF0b3JzPgogICA8dGl0bGVzPgogICAgICA8dGl0bGU+TE9HRU48L3RpdGxlPgogICA8L3RpdGxlcz4KICAgPGRlc2NyaXB0aW9ucz4KICAgICAgPGRlc2NyaXB0aW9uIHhtbDpsYW5nPSJlbiIgZGVzY3JpcHRpb25UeXBlPSJBYnN0cmFjdCI+OnVuYXY8L2Rlc2NyaXB0aW9uPgogICAgICA8ZGVzY3JpcHRpb24geG1sOmxhbmc9ImVuIiBkZXNjcmlwdGlvblR5cGU9IlRlY2huaWNhbEluZm8iPm9wZXJhdGluZyBzeXN0ZW1zOiBMaW51eCwgT1MgWCwgV2luIDMyPC9kZXNjcmlwdGlvbj4KICAgPC9kZXNjcmlwdGlvbnM+CiAgIDxwdWJsaWNhdGlvblllYXI+MTk5OTwvcHVibGljYXRpb25ZZWFyPgogICA8c3ViamVjdHM+CiAgICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9Im1zYzIwMjAiPjAzPC9zdWJqZWN0PgogICAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJtc2MyMDIwIj42ODwvc3ViamVjdD4KICAgICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0ia2V5d29yZCI+Q09HRU4gYXBwcm9hY2g8L3N1YmplY3Q+CiAgIDwvc3ViamVjdHM+CiAgIDxsYW5ndWFnZT5FbmdsaXNoPC9sYW5ndWFnZT4KICAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJTb2Z0d2FyZSI+Om5vbmU8L3Jlc291cmNlVHlwZT4KICAgPGZvcm1hdHM+CiAgICAgIDxmb3JtYXQ+YXBwbGljYXRpb24veG1sPC9mb3JtYXQ+CiAgIDwvZm9ybWF0cz4KICAgPHB1Ymxpc2hlcj5odHRwOi8vZXByaW50cy5lY3Muc290b24uYWMudWsvMjY4MS88L3B1Ymxpc2hlcj4KICAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iVVJMIiByZWxhdGlvblR5cGU9IklzU291cmNlT2YiPmh0dHA6Ly9lcHJpbnRzLmVjcy5zb3Rvbi5hYy51ay8yNjgxLzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNzc3NjM1MzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNzE5NjE1NzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvMjEwMjk0OTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTU4OTk3MDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvMjI0MDcwODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvMTYxNTI1MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNzQ1MzE5MDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNzQ0MDE5MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTUzMTA3OTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTI2NzE4MDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTE4OTIwNzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTE5NTgzOTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvMTQ5NzgyOTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNzc3NjM0NzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTQ5NjYyODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IlVSTCIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPmh0dHBzOi8vYXBpLnpibWF0aC5vcmcvdjEvZG9jdW1lbnQvNTkwMDM5NDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMTcvUzE0NzEwNjg0MjEwMDAyMTE8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJhclhpdiIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjIxMDguMDA3Mzk8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNDaXRlZEJ5Ij4xMC4xMDE3L1MxNDcxMDY4NDE5MDAwMzEwPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iYXJYaXYiIHJlbGF0aW9uVHlwZT0iSXNDaXRlZEJ5Ij4xOTA3LjEyMzQ1PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+MTAuMTAxNy9TMTQ3MTA2ODQwMzAwMTY2MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvczEwOTkwLTAwOC05MDMwLTg8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iSXNDaXRlZEJ5Ij4xMC4xMDA3L2I5ODE4NzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9ImFyWGl2IiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+MjAwOC4wMjkzMTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9ImFyWGl2IiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+MTYwNy4wNDQ1OTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvOTc4LTMtNjQyLTAwNTE1LTJfNTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvMTE1MDY2NzZfNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvOTc4LTMtNTQwLTcxNDEwLTFfNTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvYjk2OTI2PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+MTAuMTAxNy9TMTQ3MTA2ODQyMTAwMDYwMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9ImFyWGl2IiByZWxhdGlvblR5cGU9IklzQ2l0ZWRCeSI+MjExMi4xMDIwMTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvOTc4LTMtNTQwLTc4NzY5LTNfNjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJJc0NpdGVkQnkiPjEwLjEwMDcvOTc4LTMtNjQyLTIwNTUxLTRfMTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KPC9yZXNvdXJjZT48L21ldGFkYXRhPjwvcmVjb3JkPjwvR2V0UmVjb3JkPjwvT0FJLVBNSD4=
+  recorded_at: Fri, 04 Apr 2025 12:04:31 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1017
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=2IkUC%2BD%2F9skwXBh4%2FEchbXLGKKe5yITcdvZxux%2FVLsIYdWR9fAj%2BG5fK4LSgUOV4DKHgy8vHVgTe34OOETCGoOcqqS3Jo7f0KJUwavVaH8E80KDPPrLpjnw%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab34c9c60752-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15776&min_rtt=14666&rtt_var=5117&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=197315&cwnd=246&unsent_bytes=0&cid=1f34b70e0dbf73a1&ts=95&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAF6IU1DYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1017
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=7nUIRvN4bNSxDeywmDAT3nfRKT%2Bu7TeNgoee9BQj5B5W3PE7ql99eAK7a2xFWW3a1SwRDc5r%2Fga7gkVAk7VSqtnhAO748sWX15ZbopheBpyWXXJ%2BumlPO1c%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab35cc66eb14-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15726&min_rtt=14525&rtt_var=5162&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=199311&cwnd=247&unsent_bytes=0&cid=e6e4659526f0ccdb&ts=95&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAF6IU1DYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1017
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=PYJhdsBLus8bY8NsV6q8K6EmQETba0fnNOSr%2F715eGH34yg03QiNcvfbTlDJ2smyHVWJiVxv46ywIRHwFEzM0q1H2d4mfSSUsS6jVkE9xC4Isn0CRYh0en0%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab36b97dcc8d-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=16073&min_rtt=14683&rtt_var=5374&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=197114&cwnd=251&unsent_bytes=0&cid=8adda1a2e2540a8b&ts=120&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAF6IU1DYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=fGSO9%2FGdIWQGusVN58LuChAMuWa%2FVRZIrwmhkiChnsqKd8J%2BaNSvPZ2SHcGNhb5GpR%2BJVra%2Flvdv9J1i1qsYipjn5duKggrM3aODMFcPviMCgUBnqvd6%2BcI%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab37cd61b352-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=14153&min_rtt=13691&rtt_var=5464&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=211525&cwnd=245&unsent_bytes=0&cid=99be7dcdb8d388d1&ts=122&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=ZfdRKQqW22rjiCWcqVAID2sxljvAIVhbU6gDvzEraTXkt68k%2B%2B68jnGNARQmKIYZYNK205t9ZGHI%2BMmI2mqPAxr23HG5SsP%2BW73lm3B0DZvk%2F8nlzsoJA9k%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab38db9bb31c-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15084&min_rtt=15052&rtt_var=5709&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=189157&cwnd=214&unsent_bytes=0&cid=474102ad6549c197&ts=127&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=f6CVgVAdEBUUog%2FWwBkq4rSot9SZr89Q4UdwG3L7Vguu02TbIdX%2FQFmlszmLIqT166sOOqeiEF5mVumYZxf78cwB5f27ZXQIBVbYCoFQY77I%2BOhP4CbOx10%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3a0ff9b3b4-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15392&min_rtt=15370&rtt_var=4362&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=187213&cwnd=245&unsent_bytes=0&cid=bbd59252d475949b&ts=95&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:32 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=M0kD5uV8zieh816INyZSQXA1Fc0xvw9Wd5oPgwE26c4y3c3doIwsGVBXlotQ0kK23yz7XIYZ0Gv2pk84ov7H0pEFQzWUfN1s7zNKoCIgobThPEOrHTIfup0%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3aed13b32e-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=16025&min_rtt=14732&rtt_var=5302&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=196485&cwnd=233&unsent_bytes=0&cid=daba0d6e97b9319d&ts=121&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:33 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=5wV%2BhBIZqLaD8Ao5re1yTxJ50NYF5CB%2BHCm%2F0ra%2BpPTlKDCuVne3lRpZu3ApCYZYeeubhzCsxFdnn1wROn5PRLPfxYWxSK5Yg%2Fcs9pWWjg9YAbhlpSoCd4E%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3c0c1b35fb-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15826&min_rtt=14809&rtt_var=5075&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=195437&cwnd=230&unsent_bytes=0&cid=d933f9c9ce1f2757&ts=123&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:33 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=9QTjuabUzxL3%2FhqF%2BzwxG%2BYH4xzukpLIy5gOcHnHkiOlBEDIhW95j1VP%2FJXpCMb2QbZfBsuxg73aVUgnBEewCFWmYW6dB3OG1Cw1N7zbzWSRzPS95kiCkfE%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3d1de9b101-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=16431&min_rtt=13645&rtt_var=6337&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2779&recv_bytes=862&delivery_rate=212114&cwnd=214&unsent_bytes=0&cid=837180698a6014a5&ts=114&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:33 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1017
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=Y8vGoouHbkokGjNKLS4xpRU5Z%2FH2fUt%2FSIEo2UTFy4kxb0POYbQGC4FiwfOV1pnKHuYpRuoItIO0Wx3giZszUasehDxMHFFir3L10zBggVNOjUvDsD96fro%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3e1a15cc85-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15088&min_rtt=13862&rtt_var=4997&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2780&recv_bytes=862&delivery_rate=208795&cwnd=242&unsent_bytes=0&cid=a83c5eebadd163b7&ts=125&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwNDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAF6IU1DYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:33 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=6uGGHC05gSqL3Y%2B%2BtM4OCD4b5fA%2B32%2FKRM9DpO8xJBcH8oMaCs7GkZIsraVv%2FE%2BilpnAKp65lbzuMiqOaReqVDoAYHXVDirWaTpbzcc6nZlb5Tb%2BkkVkZ70%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab3f2ce36aaf-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=14222&min_rtt=13945&rtt_var=5784&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=179174&cwnd=215&unsent_bytes=0&cid=2af2e22f748e9d4c&ts=92&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:33 GMT
+- request:
+    method: get
+    uri: https://doi.org/ra/10.1007
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2025 12:04:34 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin, accept-encoding
+      Permissions-Policy:
+      - interest-cohort=(),browsing-topics=()
+      Content-Encoding:
+      - gzip
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=cCxv9YLKd%2B9ulqbay%2F83enO3w9YRqj63647NWGSVs%2FyiofqmBUcaTA9UV2Yrf7LZY6yng7LSMmJN0EeGCSSktcpVrUyw%2BYoI0FF%2BptAzrSHdVwqlso0mQrw%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 92b0ab401ad83613-MAN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=15047&min_rtt=13232&rtt_var=6259&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2781&recv_bytes=862&delivery_rate=218863&cwnd=241&unsent_bytes=0&cid=2acfbc4195f1d8dc&ts=201&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4vmUlCoBmIFBSUXf08lKwUlQwM9QwMDcyUdiGiQI0jQuSi/uLgoNU0JKFjLFQsAxkrz2jYAAAA=
+  recorded_at: Fri, 04 Apr 2025 12:04:34 GMT
+recorded_with: VCR 6.3.1

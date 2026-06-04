@@ -1,4 +1,6 @@
 class RelatedArxiv < Base
+  include Queueable
+
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
   def self.import_by_month(options = {})
@@ -89,41 +91,28 @@ class RelatedArxiv < Base
     # there can be one or more related_arxiv per DOI
     Array.wrap(push_items).each do |iiitem|
       # send to DataCite Event Data Query API
-      if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['LAGOTTINO_URL']}/events"
-
-        data = {
-          "data" => {
-            "type" => "events",
-            "attributes" => {
-              "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
-              "objId" => iiitem["obj_id"],
-              "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
-              "sourceId" => iiitem["source_id"].to_s.dasherize,
-              "sourceToken" => iiitem["source_token"],
-              "occurredAt" => iiitem["occurred_at"],
-              "timestamp" => iiitem["timestamp"],
-              "license" => iiitem["license"],
-              "subj" => iiitem["subj"],
-              "obj" => iiitem["obj"],
-            },
+      data = {
+        "data" => {
+          "type" => "events",
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
           },
-        }
+        },
+      }
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                          content_type: "application/vnd.api+json",
-                                          accept: "application/vnd.api+json; version=2")
+      send_event_import_message(data)
 
-        if [200, 201].include?(response.status)
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors']}"
-        end
-      end
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
     end
 
     push_items.length

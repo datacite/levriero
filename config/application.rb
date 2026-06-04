@@ -1,10 +1,10 @@
 require_relative "boot"
 
 require "rails"
-# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
 require "action_controller/railtie"
+require "action_view/railtie"
 require "rails/test_unit/railtie"
 require "active_job/logging"
 
@@ -39,18 +39,16 @@ ENV["API_URL"] ||= "https://api.stage.datacite.org"
 ENV["VOLPINO_URL"] ||= "https://api.stage.datacite.org"
 ENV["LAGOTTINO_URL"] ||= "https://api.stage.datacite.org"
 ENV["SASHIMI_QUERY_URL"] ||= "https://api.stage.datacite.org"
-ENV["EVENTDATA_URL"] ||= "https://bus-staging.eventdata.crossref.org"
-ENV["CROSSREF_QUERY_URL"] ||= "https://api.eventdata.crossref.org"
+ENV["CROSSREF_QUERY_URL"] ||= "https://api.crossref.org"
 ENV["TRUSTED_IP"] ||= "10.0.40.1"
 ENV["SLACK_WEBHOOK_URL"] ||= ""
 ENV["USER_AGENT"] ||= "Mozilla/5.0 (compatible; Maremma/#{Maremma::VERSION}; mailto:info@datacite.org)"
+ENV["EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING"] ||= ""
 
 module Levriero
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
-    config.autoload_paths << Rails.root.join("lib")
-    config.autoload_paths << Rails.root.join("app", "models", "concerns")
+    config.load_defaults 8.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

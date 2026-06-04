@@ -36,11 +36,17 @@ describe RelatedIgsn, type: :model, vcr: true do
       expect(response).to eq(1)
     end
 
-    # it "push_item" do
-    #   doi = "10.23705/d9evittp"
-    #   attributes = RelatedIgsn.get_datacite_json(doi)
-    #   response = RelatedIgsn.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    it "push_item" do
+      allow(RelatedIgsn).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      doi = "10.23705/d9evittp"
+      attributes = RelatedIgsn.get_datacite_json(doi)
+      response = RelatedIgsn.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+
+      expect(RelatedIgsn).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.23705/d9evittp is_variant_form_of https://igsn.org/test sent to the events queue."))
+      expect(response).to eq(1)
+    end
   end
 end

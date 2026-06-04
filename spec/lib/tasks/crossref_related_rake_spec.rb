@@ -5,7 +5,7 @@ describe "crossref_related:import_by_month", vcr: true do
   include_context "rake"
 
   ENV["FROM_DATE"] = "2018-01-04"
-  ENV["UNTIL_DATE"] = "2018-01-04"
+  ENV["UNTIL_DATE"] = "2018-12-31"
 
   let(:output) { "Queued import for DOIs created from 2018-01-01" }
 

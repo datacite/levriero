@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.0001/foo.bar
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 15 Nov 2023 11:00:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 94a192b2-64ba-4bab-99ab-3891ead2100a
+      X-Download-Options:
+      - noopen
+      X-Runtime:
+      - '0.006172'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIALKkVGUAAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
+    http_version: null
+  recorded_at: Wed, 15 Nov 2023 11:00:02 GMT
+recorded_with: VCR 5.1.0

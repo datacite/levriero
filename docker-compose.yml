@@ -1,10 +1,9 @@
-version: '2.1'
-
 services:
   web:
     env_file: .env
     environment:
       - LOG_LEVEL=info
+      - LAGOTTINO_URL=https://api.stage.datacite.org
     image: datacite/levriero
     build: .
     ports:
@@ -18,7 +17,7 @@ services:
     networks:
       - public
   memcached:
-    image: memcached:1.4.31
+    image: memcached:1.6.32
     networks:
       - public
 networks:
@@ -27,5 +26,5 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.0.70.0/24
-        gateway: 10.0.70.1
+        - subnet: 10.0.70.0/24
+          gateway: 10.0.70.1

@@ -7,33 +7,26 @@ describe Report, type: :model, vcr: true do
   let(:url) do
     "https://api.stage.datacite.org/reports/9e5461d8-0713-4abd-8e87-e4533a76ab3d"
   end
-  # let(:url) {"https://api.stage.datacite.org/reports/82022fc3-8b31-47f2-88a8-24814d9bd2f0"}
 
-  # describe "parse_multi_subset_report" do
-  #   context "when report is ok" do
-  #     let(:body)  {File.read(fixture_path + 'multi_subset_report.json')}
-  #     let(:uncompressed)  {File.read(fixture_path + 'datacite_resolution_report_2018-09.json')}
-  #     let(:result) {OpenStruct.new(body: JSON.parse(body), url:"https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")}
-  #     let(:report) {Report.new(result)}
+  describe "parse_multi_subset_report" do
+    context "when report is ok" do
+      it "should parse and return all datasets from all subsets" do
+        allow(UsageUpdateParseJob).to receive(:perform_later)
 
-  #     it "should parsed it give you two arrays that are in every gzip" do
-  #       live_results = Maremma.get(url, host: "https://api.stage.datacite.org/")
-  #       report = Report.new(live_results)
-
-  #       rr = Report.parse_multi_subset_report report
-  #       expect(rr).to be_a(Array)
-  #       expect(rr.size).to eq(408)
-  #       expect(rr.first.dig("performance")).to be_present
-  #     end
-  #   end
-  # end
+        response = UsageUpdate.get_data("https://api.datacite.org/reports/d0b2b372-1d0a-4aa6-8aad-a04673050cb2")
+        report = Report.new(response)
+        rr = Report.parse_multi_subset_report report
+        
+        expect(rr).to be_a(Array)
+        expect(rr.size).to eq(57929)
+        expect(rr.first.dig("performance")).to be_present
+      end
+    end
+  end
 
   describe "parse_normal_report" do
     context "when report is ok" do
       let(:body)  { File.read("#{fixture_path}multi_subset_report.json") }
-      let(:uncompressed) do
-        File.read("#{fixture_path}datacite_resolution_report_2018-09.json")
-      end
       let(:result) do
         OpenStruct.new(body: JSON.parse(body),
                        url: "https://api.stage.datacite.org/reports/5cac6ca0-9391-4e1d-95cf-ba2f475cbfad")

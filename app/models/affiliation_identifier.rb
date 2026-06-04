@@ -1,6 +1,8 @@
 class AffiliationIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
+  include Queueable
+
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
@@ -102,43 +104,28 @@ class AffiliationIdentifier < Base
 
     # there can be one or more affiliation_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Data API
-      if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['LAGOTTINO_URL']}/events"
-
-        data = {
-          "data" => {
-            "type" => "events",
-            "attributes" => {
-              "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
-              "objId" => iiitem["obj_id"],
-              "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
-              "sourceId" => iiitem["source_id"].to_s.dasherize,
-              "sourceToken" => iiitem["source_token"],
-              "occurredAt" => iiitem["occurred_at"],
-              "timestamp" => iiitem["timestamp"],
-              "license" => iiitem["license"],
-              "subj" => iiitem["subj"],
-              "obj" => iiitem["obj"],
-            },
+      data = {
+        "data" => {
+          "type" => "events",
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
           },
-        }
+        },
+      }
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                          content_type: "application/vnd.api+json",
-                                          accept: "application/vnd.api+json; version=2")
+      send_event_import_message(data)
 
-        if [200, 201].include?(response.status)
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors']}"
-          Rails.logger.error data.inspect
-        end
-      end
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
     end
 
     push_items.length
@@ -147,21 +134,30 @@ class AffiliationIdentifier < Base
   def self.get_ror_metadata(id)
     return {} if id.blank?
 
-    url = "https://api.ror.org/organizations/#{id[8..-1]}"
+    url = "https://api.ror.org/v2/organizations/#{id.delete_prefix('https://ror.org/')}"
     response = Maremma.get(url, host: true)
     return {} if response.status != 200
 
     message = response.body.fetch("data", {})
 
+    # ROR v2 replaced the single "name" field with a "names" array.
+    # Prefer long-form, human-readable names (type: "ror_display") over short forms like "EBI".
+    # Fallback to "alias" or "primary" if no "ror_display" exists.
+
+    name_entry = message["names"].find { |n| n["types"].include?("ror_display") } ||
+                 message["names"].find { |n| n["types"].include?("alias") } ||
+                 message["names"].find { |n| n["types"].include?("primary") } ||
+                 message["names"].first
+
     location = {
       "type" => "postalAddress",
-      "addressCountry" => message.dig("country", "country_name"),
+      "addressCountry" => message.dig("locations", 0, "geonames_details", "country_name"),
     }
 
     {
       "@id" => id,
       "@type" => "Organization",
-      "name" => message["name"],
+      "name" => name_entry&.dig("value"),
       "location" => location,
     }.compact
   end

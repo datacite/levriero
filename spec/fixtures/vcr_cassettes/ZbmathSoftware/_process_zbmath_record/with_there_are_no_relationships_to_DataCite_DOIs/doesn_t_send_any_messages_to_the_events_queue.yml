@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oai.portal.mardi4nfdi.de/oai/OAIHandler?identifier=oai:swmath.org:6768&metadataPrefix=datacite_swmath&verb=GetRecord
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Date:
+      - Fri, 04 Apr 2025 12:04:34 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        <?xml version="1.0" encoding="UTF-8" ?><?xml-stylesheet type="text/xsl" href="/oai/stylesheet"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2025-04-04T12:04:34Z</responseDate><request identifier="oai:swmath.org:6768" metadataPrefix="datacite_swmath" verb="GetRecord">https://oai.portal.mardi4nfdi.de/oai/OAIHandler</request><GetRecord><record><header><identifier>oai:swmath.org:6768</identifier><datestamp>2025-03-02T12:26:56Z</datestamp></header><metadata><resource xmlns="http://datacite.org/schema/kernel-4"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">
+           <identifier identifierType="swMATH">oai:swmath.org:6768</identifier>
+           <alternateIdentifiers>
+              <alternateIdentifier alternateIdentifierType="URL">https://swmath.org/software/6768</alternateIdentifier>
+           </alternateIdentifiers>
+           <creators>
+              <creator>
+                 <creatorName nameType="Personal">Verzani, John</creatorName>
+                 <givenName>John</givenName>
+                 <familyName>Verzani</familyName>
+              </creator>
+              <creator>
+                 <creatorName nameType="Personal">Noel, Yvonnick</creatorName>
+                 <givenName>Yvonnick</givenName>
+                 <familyName>Noel</familyName>
+              </creator>
+           </creators>
+           <titles>
+              <title>pmg</title>
+           </titles>
+           <descriptions>
+              <description xml:lang="en" descriptionType="Abstract">:unav</description>
+           </descriptions>
+           <publicationYear>2008</publicationYear>
+           <subjects/>
+           <language>English</language>
+           <resourceType resourceTypeGeneral="Software">:none</resourceType>
+           <formats>
+              <format>application/xml</format>
+           </formats>
+           <publisher>https://github.com/cran/pmg</publisher>
+           <relatedIdentifiers>
+              <relatedIdentifier relatedIdentifierType="URL" relationType="IsSourceOf">http://cran.r-project.org/web/packages/pmg/index.html</relatedIdentifier>
+              <relatedIdentifier relatedIdentifierType="URL" relationType="IsCitedBy">https://api.zbmath.org/v1/document/</relatedIdentifier>
+           </relatedIdentifiers>
+        </resource></metadata></record></GetRecord></OAI-PMH>
+  recorded_at: Fri, 04 Apr 2025 12:04:34 GMT
+recorded_with: VCR 6.3.1

@@ -37,11 +37,17 @@ describe RelatedPmid, type: :model, vcr: true do
       expect(response).to eq(594)
     end
 
-    # it "push_item" do
-    #   doi = "10.7272/42z6-cf76"
-    #   attributes = RelatedPmid.get_datacite_json(doi)
-    #   response = RelatedPmid.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    it "push_item" do
+      allow(RelatedPmid).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      doi = "10.7272/42z6-cf76"
+      attributes = RelatedPmid.get_datacite_json(doi)
+      response = RelatedPmid.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+
+      expect(RelatedPmid).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.7272/42z6-cf76 references https://identifiers.org/pubmed:22038908 sent to the events queue."))
+      expect(response).to eq(1)
+    end
   end
 end

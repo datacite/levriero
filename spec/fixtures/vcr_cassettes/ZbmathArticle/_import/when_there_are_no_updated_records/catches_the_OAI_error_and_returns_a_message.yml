@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oai.portal.mardi4nfdi.de/oai/OAIHandler?from=1990-01-01T00:00:00Z&metadataPrefix=datacite_articles&until=1990-01-02T00:00:00Z&verb=ListIdentifiers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Date:
+      - Thu, 03 Apr 2025 19:31:40 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8" ?><?xml-stylesheet type="text/xsl"
+        href="/oai/stylesheet"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2025-04-03T19:31:40Z</responseDate><request
+        from="1990-01-01T00:00:00Z" metadataPrefix="datacite_articles" until="1990-01-02T00:00:00Z"
+        verb="ListIdentifiers">https://oai.portal.mardi4nfdi.de/oai/OAIHandler</request><error
+        code="noRecordsMatch">The combination of the values of the from, until, set,
+        and metadataPrefix arguments results in an empty list.</error></OAI-PMH>
+  recorded_at: Thu, 03 Apr 2025 19:31:40 GMT
+recorded_with: VCR 6.3.1

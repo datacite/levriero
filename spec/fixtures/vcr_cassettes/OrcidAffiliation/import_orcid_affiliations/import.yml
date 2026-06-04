@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; mailto:info@datacite.org)
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 04 Jun 2021 09:55:56 GMT
+      - Mon, 29 Sep 2025 15:15:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,25 +33,40 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding, Origin
+      - Accept-Encoding
       Content-Encoding:
       - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
       X-Request-Id:
-      - b3c23da2-872b-40bd-a61f-19d3a16ab134
+      - 474623ba-05ba-47fa-a97f-d715664503f3
       Etag:
-      - W/"5a9647a50de3be1b623c66ae240109a0"
+      - W/"98dd462f5e4bf31ec1117bc7462a56d9"
+      X-Frame-Options:
+      - SAMEORIGIN
       X-Runtime:
-      - '0.024760'
-      X-Rack-Cors:
-      - miss; no-origin
+      - '0.095063'
+      X-Content-Type-Options:
+      - nosniff
       X-Powered-By:
-      - Phusion Passenger(R) 6.0.8
+      - Phusion Passenger(R) 6.1.0
       Server:
-      - nginx/1.14.0 + Phusion Passenger(R) 6.0.8
+      - nginx/1.18.0 + Phusion Passenger(R) 6.1.0
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKz4uWAAA2yPW2uDQBCF/8uCefG2KlIiSEnqS15qsT6llLDV0Qz11t0Rmgb/e1fTlED7Mpz55pzdmTMrBQkWvbxarIVZnRn1JBoWceuinkQNamkHrVjkTRZrsHtXs1dBU7GIHYkGFbmuGNBRpG3O/GyBBE4va7fsUd2LqsIGBWHfxSRHWMFn0YwlHCTUqEguk4POdgWCuljmH41w243tG0gjTGJ+RQq/4AI+RpCnuJAgqJfK6UQLuxI6wgrhT/9cHKEFI9ik2cMuMQ1/+xu82e9W/5PN0szcPCbmOOgrodREL+Rzb23zO9sLcs41+il7M0/N6yzwcj/QOFwvZa8PWElQ/SgLsOk0gI1lzKbpGwAA//8DAIxZ9R6WAQAA
-    http_version: null
-  recorded_at: Fri, 04 Jun 2021 09:55:56 GMT
-recorded_with: VCR 5.1.0
+        H4sIAIii2mgAA2xPy07DQAz8l5VyymuTqKBGilAhl14oCjmVompJnNQiL3a9EqXKv7NpAQXBxRqPx2PPiZWCBIufnh3WwoROjHoSDYu5c0EPogZ1bgeDWByMDmuwe1WTVkFTsZgdiAYV+74Y0FNkZN5kWyCB18vaL3tUN6KqsEFB2HcJSQ07zXl4Be9Fo0vYS6hRkTyP98agKxDUTDfdtha3nW5fQFqLNOG/eIUfMGPfNMhjUkgQ1EvldaKFdQkdYYXwp38sDtCCFa022d06te2ftdnHc/zPZrbJ7NV9auvB5IbSMOankAdLl1+7QZRzbqivsrXzjf09i4I8jAy9WJ7L1mS4JJCgei0LcOk4gItlwsbxEwAA//8DAJ0+rPitAQAA
+  recorded_at: Mon, 29 Sep 2025 15:15:21 GMT
+recorded_with: VCR 6.3.1

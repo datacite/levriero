@@ -44,5 +44,11 @@ module Cacheable
         Base.get_crossref_member_id(id)
       end
     end
+
+    def cached_client(id)
+      Rails.cache.fetch("clients/#{id}", expires_in: 1.day) do
+        Base.get_client(id)
+      end
+    end
   end
 end

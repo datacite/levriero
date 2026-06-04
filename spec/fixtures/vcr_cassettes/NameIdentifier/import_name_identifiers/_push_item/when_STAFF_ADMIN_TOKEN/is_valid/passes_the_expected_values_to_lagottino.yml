@@ -1,0 +1,191 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/dois/10.0001/foo.bar
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 17 Nov 2023 13:50:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 13559718-6b68-4e94-974c-7017350554a1
+      X-Download-Options:
+      - noopen
+      X-Runtime:
+      - '0.006050'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, PATCH, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Accept,Access-Control-Allow-Origin,Access-Control-Expose-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With
+      Access-Control-Expose-Headers:
+      - Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAKxvV2UAAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
+    http_version: null
+  recorded_at: Fri, 17 Nov 2023 13:50:36 GMT
+- request:
+    method: get
+    uri: https://api.stage.datacite.org/users/0000-0000-0000-0000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 17 Nov 2023 13:50:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 6e755acb-f771-4c7c-a63b-1ffde81b2377
+      X-Download-Options:
+      - noopen
+      X-Runtime:
+      - '0.022551'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Server:
+      - nginx/1.18.0 + Phusion Passenger(R) 6.0.18
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAK1vV2UAAwzHMQqAMAwF0KuELC4iDp08h5s4FP1qsTSQpKCId9ftvYehKmo8TA+bR68/OfSBW/bkGf/GA6QwqbqAbqkUFZRFzlR22kRpFVhpnHAl847f+f0AAAD//wMArpOW4VcAAAA=
+    http_version: null
+  recorded_at: Fri, 17 Nov 2023 13:50:37 GMT
+- request:
+    method: get
+    uri: https://pub.orcid.org/v2.1/0000-0000-0000-0000/person
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.9.8; mailto:info@datacite.org)
+      Accept:
+      - application/vnd.orcid+json
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 17 Nov 2023 13:50:38 GMT
+      Content-Type:
+      - application/vnd.orcid+json;charset=UTF-8
+      Content-Length:
+      - '307'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 8278719e6c602a3b-CDG
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Target:
+      - reg-prod-papi-dfw-x2
+      X-Via:
+      - x2
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "response-code" : 404,
+          "developer-message" : "404 Not Found: The resource was not found. Full validation error: ORCID iD 0000-0000-0000-0000 not found",
+          "user-message" : "The resource was not found.",
+          "error-code" : 9016,
+          "more-info" : "https://members.orcid.org/api/resources/troubleshooting"
+        }
+    http_version: null
+  recorded_at: Fri, 17 Nov 2023 13:50:38 GMT
+recorded_with: VCR 5.1.0

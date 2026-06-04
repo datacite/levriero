@@ -1,81 +1,6 @@
 require "rails_helper"
 
 describe "Importable", vcr: true do
-  # context "Doi" do
-  #   describe "import_from_api" do
-  #     # return number of clients or providers imported into Elasticsearch
-  #     it "import" do
-  #       expect(Client.import_from_api).to eq(1440)
-  #     end
-  #   end
-
-  #   describe "import_record" do
-  #     let(:client) { create(:client) }
-  #     let(:data_for_client) { { "id" => client.attributes[:symbol].downcase, "type" => "clients", "attributes" => client.attributes.except(:id, :created_at, :updated_at) } }
-  #     let(:attributes) { attributes_for(:client) }
-  #     let(:data) { { "id" => attributes["id"], "type" => "clients", "attributes" => attributes } }
-
-  #     it "create" do
-  #       client = Client.import_record(data)
-  #       expect(client).to be_valid
-  #     end
-
-  #     it "update" do
-  #       client = Client.import_record(data_for_client)
-  #       expect(client).to be_valid
-  #     end
-
-  #     it "update invalid" do
-  #       data_for_client["attributes"][:contact_email] = nil
-  #       client = Client.import_record(data_for_client)
-  #       expect(client).not_to be_valid
-  #       expect(client.errors.to_a).to eq(["Contact email can't be blank"])
-  #     end
-  #   end
-
-  #   describe "create_record" do
-  #     let(:attributes) { attributes_for(:client) }
-
-  #     it "valid" do
-  #       client = Client.create_record(attributes)
-  #       expect(client).to be_valid
-  #     end
-
-  #     it "missing attribute" do
-  #       client = Client.create_record(attributes.except(:contact_email))
-  #       expect(client).not_to be_valid
-  #       expect(client.errors.to_a).to eq(["Contact email can't be blank"])
-  #     end
-  #   end
-
-  #   describe "update_record" do
-  #     let(:client) { create(:client) }
-
-  #     it "valid" do
-  #       attributes = { "contact_email" => "info@example.org" }
-  #       client.update_record(attributes)
-  #       expect(client).to be_valid
-  #       expect(client.contact_email).to eq("info@example.org")
-  #     end
-
-  #     it "missing attribute" do
-  #       attributes = { "contact_email" => nil }
-  #       client.update_record(attributes)
-  #       expect(client).not_to be_valid
-  #       expect(client.errors.to_a).to eq(["Contact email can't be blank"])
-  #     end
-  #   end
-
-  #   describe "delete_record" do
-  #     let(:client) { create(:client) }
-
-  #     it "valid" do
-  #       client.delete_record
-  #       expect(client.destroyed?).to be true
-  #     end
-  #   end
-  # end
-
   describe "to_kebab_case" do
     it "converts" do
       hsh = { "provider-id" => "bl", "country-code" => "GB" }
@@ -278,6 +203,340 @@ describe "Importable", vcr: true do
     it "unknown prefix" do
       prefix = "10.9999"
       expect(Doi.get_doi_ra(prefix)).to be_nil
+    end
+  end
+
+  describe "parse_record" do
+    let!(:data) { { "id" => "fake_id" } }
+
+    describe "has related identifiers" do
+      describe "with related identifier type 'DOI'" do
+        it "sends push_item to RelatedIdentifier" do
+          json = {
+            "relatedIdentifiers" => [
+              { "relatedIdentifierType" => "DOI" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
+          }
+
+          allow(RelatedIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(RelatedIdentifier).
+            to(have_received(:push_item).with({
+                                                "id" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "without related identifier type 'DOI'" do
+        it "does not send push_item to RelatedIdentifier" do
+          json = {
+            "relatedIdentifiers" => [
+              { "relatedIdentifierType" => "URL" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
+          }
+
+          allow(RelatedIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(RelatedIdentifier).not_to(have_received(:push_item))
+        end
+      end
+
+      describe "with related identifier type 'URL'" do
+        it "sends push_item to RelatedIdentifier" do
+          json = {
+            "relatedIdentifiers" => [
+              { "relatedIdentifierType" => "URL" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
+          }
+
+          allow(RelatedUrl).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(RelatedUrl).
+            to(have_received(:push_item).with({
+                                                "id" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "without related identifier type 'URL'" do
+        it "does not send push_item to RelatedIdentifier" do
+          json = {
+            relatedIdentifiers: [
+              { "relatedIdentifierType" => "DOI" },
+              { "relatedIdentifierType" => "FOO" },
+            ],
+          }
+
+          allow(RelatedUrl).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(RelatedUrl).not_to(have_received(:push_item))
+        end
+      end
+    end
+
+    describe "has funding references" do
+      describe "with funding identifier type 'Crossref Funder ID" do
+        it "sends push_item to FunderIdentifier" do
+          json = {
+            "fundingReferences" => [
+              { "funderIdentifierType" => "Foo" },
+              { "funderIdentifierType" => "Crossref Funder ID" },
+            ],
+          }
+
+          allow(FunderIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(FunderIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "without funding identifier type 'Crossref Funder ID" do
+        it "does not send push_item to FunderIdentifier" do
+          json = {
+            "fundingReferences" => [
+              { "funderIdentifierType" => "Foo" },
+              { "funderIdentifierType" => "Bar" },
+            ],
+          }
+
+          allow(FunderIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(FunderIdentifier).not_to(have_received(:push_item))
+        end
+      end
+    end
+
+    describe "has name identifiers" do
+      describe "with name identifier scheme equal to 'ORCID'" do
+        it "sends push_item to NameIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "ORCID" },
+                  { "nameIdentifierScheme" => "FOO" },
+                ],
+              },
+            ],
+          }
+
+          allow(NameIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(NameIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "without name identifier scheme equal to 'ORCID'" do
+        it "does not send push_item to NameIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "FOO" },
+                  { "nameIdentifierScheme" => "BAR" },
+                ],
+              },
+            ],
+          }
+
+          allow(NameIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(NameIdentifier).not_to(have_received(:push_item))
+        end
+      end
+    end
+
+    describe "has affliation identifiers" do
+      describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
+        it "sends push_item to AffiliationIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "ROR" },
+                ],
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
+
+          allow(AffiliationIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(AffiliationIdentifier).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
+        it "does not send push_item to AffiliationIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "ROR" },
+                ],
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "FOO" },
+                ],
+              },
+            ],
+          }
+
+          allow(AffiliationIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(AffiliationIdentifier).not_to(have_received(:push_item))
+        end
+      end
+
+      describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
+        it "does not send push_item to AffiliationIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "FOO" },
+                ],
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
+
+          allow(AffiliationIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(AffiliationIdentifier).not_to(have_received(:push_item))
+        end
+      end
+
+      describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
+        it "does not send push_item to AffiliationIdentifier" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "FOO" },
+                ],
+                "nameIdentifiers" => [
+                  { "nameIdentifierScheme" => "BAR" },
+                ],
+              },
+            ],
+          }
+
+          allow(AffiliationIdentifier).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(AffiliationIdentifier).not_to(have_received(:push_item))
+        end
+      end
+    end
+
+    describe "has orcid affiliations" do
+      describe "with affiliation identifier scheme equal to 'ROR'" do
+        it "sends push_item to OrcidAffiliation" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "ROR" },
+                ],
+              },
+            ],
+          }
+
+          allow(OrcidAffiliation).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(OrcidAffiliation).
+            to(have_received(:push_item).with({
+                                                "doi" => "fake_id",
+                                                "type" => "dois",
+                                                "attributes" => json,
+                                              }).once)
+        end
+      end
+
+      describe "with affiliation identifier scheme not equal to 'ROR'" do
+        it "does not send push_item to OrcidAffiliation" do
+          json = {
+            "creators" => [
+              {
+                "affiliation" => [
+                  { "affiliationIdentifierScheme" => "ORCID" },
+                ],
+              },
+            ],
+          }
+
+          allow(OrcidAffiliation).to(receive(:push_item))
+          allow(Base).to(receive(:get_datacite_json).and_return(json))
+
+          Base.parse_record(data: data)
+
+          expect(OrcidAffiliation).not_to(have_received(:push_item))
+        end
+      end
     end
   end
 end

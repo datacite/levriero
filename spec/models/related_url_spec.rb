@@ -35,11 +35,85 @@ describe RelatedUrl, type: :model, vcr: true do
       expect(response).to eq(19)
     end
 
-    # it "push_item" do
-    #   doi = "10.4224/crm.2010f.selm-1"
-    #   attributes = RelatedUrl.get_datacite_json(doi)
-    #   response = RelatedUrl.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    describe "push_item" do
+      before(:each) do
+        allow(ENV).to(receive(:[]).with("DATACITE_URL_SOURCE_TOKEN").and_return("DATACITE_URL_SOURCE_TOKEN"))
+        allow(Base).to(receive(:cached_datacite_response).and_return({ "foo" => "bar" }))
+        allow(RelatedUrl).to(receive(:send_event_import_message).and_return(nil))
+        allow(Time).to(receive_message_chain(:zone, :now, :iso8601).and_return("2023-11-15T12:17:47Z"))
+        allow(RelatedUrl).to(receive(:send_event_import_message).and_return(nil))
+      end
+
+      it "returns nil if the doi is blank" do
+        expect(RelatedUrl.push_item("doi" => nil)).to(eq(nil))
+      end
+
+      it "sends to the events queue for those related identifiers with type 'URL'" do
+        item = {
+          "attributes" => {
+            "doi" => "https://doi.org/10.0001/foo.bar",
+            "updated" => "2023-11-15",
+            "relatedIdentifiers" => [
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.one",
+                "relationType" => "example-one",
+              },
+              {
+                "relatedIdentifierType" => "DOI",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.two",
+                "relationType" => "example-two",
+              },
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.three",
+                "relationType" => "example-three",
+              },
+            ],
+          },
+        }
+
+        expect(RelatedUrl.push_item(item)).to(eq(2))
+        expect(RelatedUrl).to(have_received(:send_event_import_message).twice)
+      end
+
+      it "passes the expected values to events queue" do
+        item = {
+          "attributes" => {
+            "doi" => "https://doi.org/10.0001/foo.bar",
+            "updated" => "2023-11-15",
+            "relatedIdentifiers" => [
+              {
+                "relatedIdentifierType" => "URL",
+                "relatedIdentifier" => "https://doi.org/10.0001/example.one",
+                "relationType" => "example-one",
+              },
+            ],
+          },
+        }
+
+        json_data = {
+          "data" => {
+            "type" => "events",
+            "attributes" => {
+              "messageAction" => "create",
+              "subjId" => "https://doi.org/10.0001/foo.bar",
+              "objId" => "https://doi.org/10.0001/example.one",
+              "relationTypeId" => "example-one",
+              "sourceId" => "datacite-url",
+              "sourceToken" => "DATACITE_URL_SOURCE_TOKEN",
+              "occurredAt" => "2023-11-15",
+              "timestamp" => "2023-11-15T12:17:47Z",
+              "license" => "https://creativecommons.org/publicdomain/zero/1.0/",
+              "subj" => { "foo" => "bar" },
+              "obj" => {},
+            },
+          },
+        }
+
+        expect(RelatedUrl.push_item(item)).to(eq(1))
+        expect(RelatedUrl).to(have_received(:send_event_import_message).with(json_data).once)
+      end
+    end
   end
 end

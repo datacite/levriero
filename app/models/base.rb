@@ -256,7 +256,28 @@ class Base
       return {}
     end
 
-    (response.body.dig("data", "attributes") || {}).except("xml")
+    attributes = (response.body.dig("data", "attributes") || {}).except("xml")
+    relationships = response.body.dig("data", "relationships") || {}
+
+    attributes.merge("relationships" => relationships)
+  end
+
+  def self.get_client(id)
+    url = ENV["API_URL"] + "/clients/#{id}"
+    response = Maremma.get(url)
+    return {} if response.status != 200
+
+    response.body.dig("data", "attributes") || {}
+  end
+
+  def self.raid_registry_record?(attributes)
+    client_id = attributes.dig("relationships", "client", "data", "id")
+    return false if client_id.blank?
+
+    client = cached_client(client_id)
+    return false if client.blank?
+
+    client.dig("clientType") == "raidRegistry"
   end
 
   def self.get_datacite_metadata(id)
@@ -317,11 +338,9 @@ class Base
                     "name" => attributes["publisher"] }
                 end
     proxy_identifiers = Array.wrap(attributes["relatedIdentifiers"]).select do |ri|
-                          ["IsVersionOf", "IsIdenticalTo", "IsPartOf",
-                           "IsSupplementTo"].include?(ri["relationType"])
-                        end.map do |ri|
-      ri["relatedIdentifier"]
-    end
+      ["IsVersionOf", "IsIdenticalTo", "IsPartOf",
+       "IsSupplementTo"].include?(ri["relationType"])
+    end.pluck("relatedIdentifier")
     resource_type_general = attributes.dig("types", "resourceTypeGeneral")
     type = Bolognese::Utils::DC_TO_SO_TRANSLATIONS[resource_type_general.to_s.dasherize] # || attributes.dig("types", "schemaOrg")
 
@@ -391,7 +410,7 @@ class Base
     response = Maremma.put(url, accept: "application/vnd.api+json",
                                 content_type: "application/vnd.api+json",
                                 data: data.to_json,
-                                bearer: ENV["STAFF_ADMIN_TOKEN"])
+                                bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"])
 
     if [200, 201].include?(response.status)
       Rails.logger.info "[Event Data] User #{orcid} created in Profiles service."

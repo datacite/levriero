@@ -48,12 +48,19 @@ describe CrossrefRelated, type: :model, vcr: true do
     end
 
     it "push_item" do
+      allow(CrossrefRelated).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
       item = {
         "DOI" => "10.1016/s0191-6599(01)00017-1",
         "reference" => [{ "DOI" => "10.2307/1847110" }],
         "created" => { "date-time" => "2002-07-25T17:19:59Z" },
       }
+
       response = CrossrefRelated.push_item(item)
+
+      expect(CrossrefRelated).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.1016/s0191-6599(01)00017-1 cites https://doi.org/10.2307/1847110 sent to the events queue."))
       expect(response).to eq(1)
     end
   end

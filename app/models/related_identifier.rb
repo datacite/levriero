@@ -1,8 +1,9 @@
 class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
+  DATACITE_CROSSREF = "datacite_crossref"
 
-  include Helpable
   include Cacheable
+  include Queueable
 
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
@@ -58,27 +59,27 @@ class RelatedIdentifier < Base
   def self.push_item(item)
     attributes = item.fetch("attributes", {})
     doi = attributes.fetch("doi", nil)
+
     return nil unless doi.present? && cached_doi_ra(doi) == "DataCite"
 
     pid = normalize_doi(doi)
-    related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
-                                                          nil)).select do |r|
+
+    related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select do |r|
       r["relatedIdentifierType"] == "DOI"
     end
+
     registration_agencies = {}
 
     push_items = Array.wrap(related_doi_identifiers).reduce([]) do |ssum, iitem|
-      related_identifier = iitem.fetch("relatedIdentifier",
-                                       nil).to_s.strip.downcase
+      related_identifier = iitem.fetch("relatedIdentifier", nil).to_s.strip.downcase
       obj_id = normalize_doi(related_identifier)
       prefix = validate_prefix(related_identifier)
+
       unless registration_agencies[prefix]
-        registration_agencies[prefix] =
-          cached_doi_ra(related_identifier)
+        registration_agencies[prefix] = cached_doi_ra(related_identifier)
       end
 
       if registration_agencies[prefix].nil?
-        Rails.logger.error "No DOI registration agency for DOI #{related_identifier} found."
         source_id = "datacite_related"
         source_token = ENV["DATACITE_RELATED_SOURCE_TOKEN"]
         obj = {}
@@ -87,7 +88,7 @@ class RelatedIdentifier < Base
         source_token = ENV["DATACITE_RELATED_SOURCE_TOKEN"]
         obj = cached_datacite_response(obj_id)
       elsif registration_agencies[prefix] == "Crossref"
-        source_id = "datacite_crossref"
+        source_id = DATACITE_CROSSREF
         source_token = ENV["DATACITE_CROSSREF_SOURCE_TOKEN"]
         obj = cached_crossref_response(obj_id)
       elsif registration_agencies[prefix].present?
@@ -112,74 +113,35 @@ class RelatedIdentifier < Base
                   "subj" => subj,
                   "obj" => obj }
       end
-
       ssum
     end
 
     # there can be one or more related_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Data Query API
-      if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['LAGOTTINO_URL']}/events"
-
-        data = {
-          "data" => {
-            "type" => "events",
-            "id" => iiitem["id"],
-            "attributes" => {
-              "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
-              "objId" => iiitem["obj_id"],
-              "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
-              "sourceId" => iiitem["source_id"].to_s.dasherize,
-              "sourceToken" => iiitem["source_token"],
-              "occurredAt" => iiitem["occurred_at"],
-              "timestamp" => iiitem["timestamp"],
-              "license" => iiitem["license"],
-              "subj" => iiitem["subj"],
-              "obj" => iiitem["obj"],
-            },
+      data = {
+        "data" => {
+          "type" => "events",
+          "id" => iiitem["id"],
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
           },
-        }
+        },
+      }
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                          content_type: "application/vnd.api+json",
-                                          accept: "application/vnd.api+json; version=2")
+      send_event_import_message(data)
 
-        if [200, 201].include?(response.status)
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors']}"
-          Rails.logger.error data.inspect
-        end
-      end
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
 
-      # send to Event Data Bus
-      if ENV["EVENTDATA_TOKEN"].present?
-        iiitem = set_event_for_bus(iiitem)
-
-        host = ENV["EVENTDATA_URL"]
-        push_url = "#{host}/events"
-        response = Maremma.post(push_url, data: iiitem.to_json,
-                                          bearer: ENV["EVENTDATA_TOKEN"],
-                                          content_type: "json",
-                                          host: host)
-
-        # return 0 if successful, 1 if error
-        if response.status == 201
-          Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error:"
-          Rails.logger.error "[Event Data Bus] #{response.body['errors']}"
-        end
-      else
-        Rails.logger.info "[Event Data Bus] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} was not sent to Event Data Bus."
-      end
     end
     push_items.length
   end

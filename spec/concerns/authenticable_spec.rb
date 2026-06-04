@@ -26,10 +26,5 @@ describe User, type: :model do
       token = subject.encode_token("name" => "Josiah Carberry")
       expect(token).to start_with("eyJhbG")
     end
-
-    # it "empty string" do
-    #   token = subject.encode_token("")
-    #   expect(token).to be_nil
-    # end
   end
 end

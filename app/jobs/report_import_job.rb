@@ -5,10 +5,7 @@ class ReportImportJob < ApplicationJob
 
   def perform(item, options = {})
     response = UsageUpdate.get_data(item, options)
-    if response.status != 200
-      Rails.logger.error "[Usage Report Parsing] Report #{item} not found"
-      {}
-    else
+    if response.status == 200
       # report = Report.new(response, options)
       Rails.logger.debug "[Usage Report] Started to parse #{item}."
       UsageUpdate.redirect(response)
@@ -16,6 +13,9 @@ class ReportImportJob < ApplicationJob
       #   when "normal" then Report.parse_normal_report report
       #   when "compressed" then Report.parse_multi_subset_report report
       # end
+    else
+      Rails.logger.error "[Usage Report Parsing] Report #{item} not found"
+      {}
     end
   end
 end

@@ -36,11 +36,17 @@ describe RelatedHandle, type: :model, vcr: true do
       expect(response).to eq(321)
     end
 
-    # it "push_item" do
-    #   doi = "10.20375/0000-001a-6248-5"
-    #   attributes = RelatedHandle.get_datacite_json(doi)
-    #   response = RelatedHandle.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
-    #   expect(response).to eq(1)
-    # end
+    it "push_item" do
+      allow(RelatedHandle).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
+      doi = "10.20375/0000-001a-6248-5"
+      attributes = RelatedHandle.get_datacite_json(doi)
+      response = RelatedHandle.push_item({ "id" => doi, "type" => "dois", "attributes" => attributes })
+
+      expect(RelatedHandle).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.20375/0000-001a-6248-5 is_identical_to https://hdl.handle.net/21.t11991/0000-001a-6248-5 sent to the events queue."))
+      expect(response).to eq(1)
+    end
   end
 end

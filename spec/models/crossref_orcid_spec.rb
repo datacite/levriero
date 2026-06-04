@@ -48,13 +48,20 @@ describe CrossrefOrcid, type: :model, vcr: true do
     end
 
     it "push_item" do
+      allow(CrossrefOrcid).to(receive(:send_event_import_message).and_return(nil))
+      allow(Rails.logger).to(receive(:info))
+
       item = {
         "DOI" => "10.1039/c5ee02393a",
         "author" => [{ "ORCID" => "http://orcid.org/0000-0001-5423-6818" }],
         "created" => { "date-time" => "2015-10-05T10:01:19Z" },
       }
+
       response = CrossrefOrcid.push_item(item)
+
       expect(response).to eq(1)
+      expect(CrossrefOrcid).to(have_received(:send_event_import_message).once)
+      expect(Rails.logger).to(have_received(:info).with("[Event Data] https://doi.org/10.1039/c5ee02393a is_authored_by https://orcid.org/0000-0001-5423-6818 sent to the events queue."))
     end
   end
 end

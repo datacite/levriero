@@ -61,7 +61,7 @@ module Importable
                                         gs).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -72,14 +72,14 @@ module Importable
       id = id.downcase
 
       # turn arXiv into a URL if needed
-      id = "https://arxiv.org/abs/#{id[6..-1]}" if id.start_with?("arxiv:")
+      id = "https://arxiv.org/abs/#{id[6..]}" if id.start_with?("arxiv:")
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -89,18 +89,20 @@ module Importable
 
       id = id.downcase
 
-      # turn igsn into a URL if needed
-      id = "https://hdl.handle.net/10273/#{id}" unless id.start_with?("http")
+      id = if id.start_with?("http://igsn.org/")
+        "https://hdl.handle.net/10273/#{id.delete_prefix("http://igsn.org/")}"
+      elsif !id.start_with?("http")
+        "https://hdl.handle.net/10273/#{id}"
+      else
+        id
+      end
 
       # check for valid protocol.
       uri = Addressable::URI.parse(id)
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
-      # don't use IGSN resolver as no support for ssl
-      id = "https://hdl.handle.net/10273/#{id[15..-1]}" if id.start_with?("http://igsn.org")
-
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -118,7 +120,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -129,7 +131,7 @@ module Importable
       id = id.downcase
 
       # strip pmid prefix
-      id = id[5..-1] if id.start_with?("pmid:")
+      id = id[5..] if id.start_with?("pmid:")
 
       # turn handle into a URL if needed
       id = "https://identifiers.org/pubmed:#{id}" unless id.start_with?("http")
@@ -139,7 +141,7 @@ module Importable
       return nil unless uri&.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id.downcase)
+      clean_url(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -217,9 +219,10 @@ module Importable
     def parse_record(sqs_msg: nil, data: nil)
       id = "https://doi.org/#{data['id']}"
       response = get_datacite_json(id)
-      related_identifiers = Array.wrap(response.fetch("relatedIdentifiers",
-                                                      nil)).select do |r|
-        ["DOI", "URL"].include?(r["relatedIdentifierType"])
+
+      related_identifiers = Array.wrap(
+        response.fetch("relatedIdentifiers", nil)).select do |r|
+          ["DOI", "URL"].include?(r["relatedIdentifierType"])
       end
 
       if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
@@ -244,6 +247,7 @@ module Importable
                                                      nil)).select do |f|
         f.fetch("funderIdentifierType", nil) == "Crossref Funder ID"
       end
+
       if funding_references.present?
         item = {
           "doi" => data["id"],
@@ -304,13 +308,6 @@ module Importable
         OrcidAffiliation.push_item(item)
       end
 
-      Rails.logger.info "[Event Data] #{related_identifiers.length} related_identifiers found for DOI #{data['id']}" if related_identifiers.present?
-      Rails.logger.info "[Event Data] #{name_identifiers.length} name_identifiers found for DOI #{data['id']}" if name_identifiers.present?
-      Rails.logger.info "[Event Data] #{affiliation_identifiers.length} affiliation_identifiers found for DOI #{data['id']}" if affiliation_identifiers.present?
-      Rails.logger.info "[Event Data] #{orcid_affiliation.length} orcid_affiliations found for DOI #{data['id']}" if affiliation_identifiers.present?
-      Rails.logger.info "[Event Data] #{funding_references.length} funding_references found for DOI #{data['id']}" if funding_references.present?
-      Rails.logger.info "No events found for DOI #{data['id']}" if related_identifiers.blank? && name_identifiers.blank? && funding_references.blank? && affiliation_identifiers.blank?
-
       related_identifiers + name_identifiers + funding_references + affiliation_identifiers + orcid_affiliation
     end
 
@@ -321,6 +318,20 @@ module Importable
 
     def to_kebab_case(hsh)
       hsh.stringify_keys.transform_keys!(&:underscore)
+    end
+
+    private
+
+    def clean_url(uri)
+      uri.normalize!
+
+      if uri.query_values
+        filtered = uri.query_values.reject { |k, _| k.match?(/^utm|^ref$|^sources$/) }
+        uri.query_values = filtered.empty? ? nil : filtered
+      end
+
+      uri.fragment = nil
+      uri.to_s
     end
   end
 end

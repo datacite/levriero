@@ -1,6 +1,8 @@
 class NameIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
 
+  include Queueable
+
   def self.import_by_month(options = {})
     from_date = (options[:from_date].present? ? Date.parse(options[:from_date]) : Date.current).beginning_of_month
     until_date = (options[:until_date].present? ? Date.parse(options[:until_date]) : Date.current).end_of_month
@@ -69,10 +71,14 @@ class NameIdentifier < Base
     pid = normalize_doi(doi)
     related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
                                                       nil))
+
+    raid_registry_record = raid_registry_record?(attributes)
+
+    ## Don't process DOIs with certain relationTypes or DOIs in a raidRegistry
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
-       "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
-    end
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relationType"] || "")
+    end || raid_registry_record
+
     creators = attributes.fetch("creators", []).select do |n|
       Array.wrap(n.fetch("nameIdentifiers", nil)).any? do |n|
         n["nameIdentifierScheme"] == "ORCID"
@@ -113,70 +119,62 @@ class NameIdentifier < Base
 
     # there can be one or more name_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
-      # send to DataCite Event Data API
-      if ENV["STAFF_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['LAGOTTINO_URL']}/events"
-
-        data = {
-          "data" => {
-            "type" => "events",
-            "attributes" => {
-              "messageAction" => iiitem["message_action"],
-              "subjId" => iiitem["subj_id"],
-              "objId" => iiitem["obj_id"],
-              "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
-              "sourceId" => iiitem["source_id"].to_s.dasherize,
-              "sourceToken" => iiitem["source_token"],
-              "occurredAt" => iiitem["occurred_at"],
-              "timestamp" => iiitem["timestamp"],
-              "license" => iiitem["license"],
-              "subj" => iiitem["subj"],
-              "obj" => iiitem["obj"],
-            },
+      data = {
+        "data" => {
+          "type" => "events",
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
           },
-        }
+        },
+      }
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_ADMIN_TOKEN"],
-                                          content_type: "application/vnd.api+json",
-                                          accept: "application/vnd.api+json; version=2")
+      send_event_import_message(data)
 
-        if [200, 201].include?(response.status)
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} pushed to Event Data service."
-        elsif response.status == 409
-          Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} already pushed to Event Data service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} had an error: #{response.body['errors']}"
-          Rails.logger.error data.inspect
-        end
-      end
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
 
       # send to Profiles service, which then pushes to ORCID
       if ENV["STAFF_PROFILES_ADMIN_TOKEN"].present?
         push_url = "#{ENV['VOLPINO_URL']}/claims"
         doi = doi_from_url(iiitem["subj_id"])
-        orcid = orcid_from_url(iiitem["obj_id"])
-        source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
-        data = {
-          "claim" => {
-            "doi" => doi,
-            "orcid" => orcid,
-            "source_id" => source_id,
-            "claim_action" => "create",
-          },
-        }
+        # Capture the prefix
+        prefix = validate_prefix(doi)
+        # Check prefix against known exclusions
+        if !ENV["EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING"].to_s.split(",").include?(prefix)
 
-        response = Maremma.post(push_url, data: data.to_json,
-                                          bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
-                                          content_type: "application/json")
+          orcid = orcid_from_url(iiitem["obj_id"])
+          source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
-        if response.status == 202
-          Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
-        elsif response.status == 409
-          Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
-        elsif response.body["errors"].present?
-          Rails.logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors']}"
+          data = {
+            "claim" => {
+              "doi" => doi,
+              "orcid" => orcid,
+              "source_id" => source_id,
+              "claim_action" => "create",
+            },
+          }
+
+          response = Maremma.post(push_url, data: data.to_json,
+                                            bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
+                                            content_type: "application/json")
+
+          if response.status == 202
+            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
+          elsif response.status == 409
+            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
+          elsif response.body["errors"].present?
+            Rails.logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors']}"
+          end
         end
       end
     end

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ror.org/v2/organizations/02catss52
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Sep 2025 15:42:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1322'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 4414b515-ac3b-4f3c-af2d-a055a4b10407
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      X-Amzn-Remapped-Content-Length:
+      - '1322'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Amzn-Remapped-Connection:
+      - keep-alive
+      X-Amz-Apigw-Id:
+      - Rq9TLGZ7joEEcPQ=
+      Vary:
+      - Cookie, Origin
+      X-Amzn-Remapped-Server:
+      - nginx/1.18.0 + Phusion Passenger 6.0.7
+      Status:
+      - 200 OK
+      X-Powered-By:
+      - Phusion Passenger 6.0.7
+      X-Amzn-Remapped-Date:
+      - Mon, 29 Sep 2025 15:42:24 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"admin":{"created":{"date":"2018-11-14","schema_version":"1.0"},"last_modified":{"date":"2024-12-11","schema_version":"2.1"}},"domains":[],"established":1992,"external_ids":[{"all":["100012116"],"preferred":"100012116","type":"fundref"},{"all":["grid.225360.0"],"preferred":"grid.225360.0","type":"grid"},{"all":["0000
+        0000 9709 7726"],"preferred":null,"type":"isni"},{"all":["Q1341845"],"preferred":null,"type":"wikidata"}],"id":"https://ror.org/02catss52","links":[{"type":"website","value":"http://www.ebi.ac.uk/"},{"type":"wikipedia","value":"http://en.wikipedia.org/wiki/European_Bioinformatics_Institute"}],"locations":[{"geonames_details":{"continent_code":"EU","continent_name":"Europe","country_code":"GB","country_name":"United
+        Kingdom","country_subdivision_code":"ENG","country_subdivision_name":"England","lat":52.2,"lng":0.11667,"name":"Cambridge"},"geonames_id":2653941}],"names":[{"lang":null,"types":["acronym"],"value":"EBI"},{"lang":null,"types":["acronym"],"value":"EMBL-EBI"},{"lang":"en","types":["ror_display","label"],"value":"European
+        Bioinformatics Institute"}],"relationships":[{"label":"European Molecular
+        Biology Laboratory","type":"parent","id":"https://ror.org/03mstc592"},{"label":"ELIXIR","type":"related","id":"https://ror.org/044rwnt51"}],"status":"active","types":["facility","funder"]}'
+  recorded_at: Mon, 29 Sep 2025 15:42:24 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1039/c8cc06410e?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Content-Length:
+      - '117'
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html><body><h1>429 Too Many Requests</h1>
+        You have sent too many requests in a given amount of time.
+        </body></html>
+  recorded_at: Tue, 28 Jan 2025 08:55:45 GMT
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.13039/501100001659?mailto=info@datacite.org
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/5.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Content-Length:
+      - '117'
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html><body><h1>429 Too Many Requests</h1>
+        You have sent too many requests in a given amount of time.
+        </body></html>
+  recorded_at: Tue, 28 Jan 2025 08:55:56 GMT
+recorded_with: VCR 6.2.0
