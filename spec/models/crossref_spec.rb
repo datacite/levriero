@@ -120,17 +120,59 @@ describe Crossref, type: :model, vcr: true do
         "timestamp" => "2002-07-25T03:18:25Z",
         "relation" => "example_relation_type",
         "subject" => {
-          "id" => "example_subj_id"
+          "id" => "example_subj_id",
         },
         "object" => {
-          "id" => "example_obj_id"
-        }
+          "id" => "example_obj_id",
+        },
       }
 
       Crossref.push_item(item)
 
       expect(Crossref).to(have_received(:send_event_import_message).once)
       expect(Rails.logger).to(have_received(:info).with("[Event Data] example_subj_id example_relation_type example_obj_id sent to the events queue."))
+    end
+  end
+
+  describe "#push_data" do
+    let(:model) { described_class.new }
+
+    let(:item) do
+      {
+        "subject" => { "id" => "https://doi.org/10.1234/subj" },
+        "object" => { "id" => "https://doi.org/10.5678/obj" },
+      }
+    end
+
+    let(:result) do
+      instance_double(Faraday::Response,
+                      body: { "data" => { "message" => { "items" => [item] } } })
+    end
+
+    it "does not enqueue when both subject and object are Crossref" do
+      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.1234/subj").and_return("Crossref")
+      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.5678/obj").and_return("Crossref")
+      allow(CrossrefImportJob).to receive(:perform_later)
+
+      model.push_data(result)
+
+      expect(CrossrefImportJob).not_to have_received(:perform_later)
+    end
+
+    it "enqueues when object is DataCite" do
+      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.1234/subj").and_return("Crossref")
+      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.5678/obj").and_return("DataCite")
+      allow(CrossrefImportJob).to receive(:perform_later)
+
+      model.push_data(result)
+
+      expect(CrossrefImportJob).to have_received(:perform_later).once
+    end
+
+    it "returns errors if present" do
+      error_result = instance_double(Faraday::Response, body: { "errors" => ["Example error"] })
+
+      expect(model.push_data(error_result)).to eq(["Example error"])
     end
   end
 end
