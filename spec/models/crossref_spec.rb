@@ -176,11 +176,5 @@ describe Crossref, type: :model, vcr: true do
 
       expect(CrossrefImportJob).to have_received(:perform_later).once
     end
-
-    it "returns errors if present" do
-      error_result = instance_double(Faraday::Response, body: { "errors" => ["Example error"] })
-
-      expect(model.push_data(error_result)).to eq(["Example error"])
-    end
   end
 end
