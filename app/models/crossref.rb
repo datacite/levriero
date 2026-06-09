@@ -101,11 +101,8 @@ class Crossref < Base
     # Rails.logger.info "Extracting related identifiers for #{items.size} DOIs updated from #{options[:from_date]} until #{options[:until_date]}."
 
     Array.wrap(items).map do |item|
-      subj_id = item.dig("subject", "id")
-      obj_id = item.dig("object", "id")
-
-      subj_ra = self.class.cached_doi_ra(subj_id)
-      obj_ra = self.class.cached_doi_ra(obj_id)
+      subj_ra = item.dig("subject", "registration-agency")
+      obj_ra = item.dig("object", "registration-agency")
 
       next if subj_ra&.downcase == "crossref" && obj_ra&.downcase == "crossref"
 

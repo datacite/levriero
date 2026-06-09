@@ -24,7 +24,6 @@ describe Crossref, type: :model, vcr: true do
     context "with valid parameters" do
       it "queues jobs for DOIs updated within the specified date range" do
         until_date = "2018-01-31"
-        allow(described_class).to receive(:cached_doi_ra).and_return("DataCite")
         response = Crossref.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
       end
@@ -34,7 +33,6 @@ describe Crossref, type: :model, vcr: true do
       it "queues jobs for the default date range (yesterday to today)" do
         # Stub Date.current to return a fixed date
         allow(Date).to receive(:current).and_return(Date.new(2023, 1, 2))
-        allow(described_class).to receive(:cached_doi_ra).and_return("DataCite")
 
         # Use a spy on Date.parse
         date_spy = spy("Date")
@@ -139,34 +137,42 @@ describe Crossref, type: :model, vcr: true do
   describe "#push_data" do
     let(:model) { described_class.new }
 
-    let(:item) do
+    let(:item_crossref_to_datacite) do
       {
-        "subject" => { "id" => "https://doi.org/10.1234/subj" },
-        "object" => { "id" => "https://doi.org/10.5678/obj" },
+        "subject" => { "id" => "https://doi.org/10.1234/subj", "registration-agency" => "Crossref" },
+        "object" => { "id" => "https://doi.org/10.5678/obj", "registration-agency" => "DataCite" },
       }
     end
 
-    let(:result) do
+    let(:item_crossref_to_crossref) do
+      {
+        "subject" => { "id" => "https://doi.org/10.1234/subj", "registration-agency" => "Crossref" },
+        "object" => { "id" => "https://doi.org/10.5678/obj", "registration-agency" => "Crossref" },
+      }
+    end
+
+    let(:result_crossref_to_datacite) do
       instance_double(Faraday::Response,
-                      body: { "data" => { "message" => { "items" => [item] } } })
+                      body: { "data" => { "message" => { "items" => [item_crossref_to_datacite] } } })
+    end
+
+    let(:result_crossref_to_crossref) do
+      instance_double(Faraday::Response,
+                      body: { "data" => { "message" => { "items" => [item_crossref_to_crossref] } } })
     end
 
     it "does not enqueue when both subject and object are Crossref" do
-      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.1234/subj").and_return("Crossref")
-      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.5678/obj").and_return("Crossref")
       allow(CrossrefImportJob).to receive(:perform_later)
 
-      model.push_data(result)
+      model.push_data(result_crossref_to_crossref)
 
       expect(CrossrefImportJob).not_to have_received(:perform_later)
     end
 
     it "enqueues when object is DataCite" do
-      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.1234/subj").and_return("Crossref")
-      allow(described_class).to receive(:cached_doi_ra).with("https://doi.org/10.5678/obj").and_return("DataCite")
       allow(CrossrefImportJob).to receive(:perform_later)
 
-      model.push_data(result)
+      model.push_data(result_crossref_to_datacite)
 
       expect(CrossrefImportJob).to have_received(:perform_later).once
     end
