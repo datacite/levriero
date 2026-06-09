@@ -107,7 +107,7 @@ class Crossref < Base
       subj_ra = self.class.cached_doi_ra(subj_id)
       obj_ra = self.class.cached_doi_ra(obj_id)
 
-      next if subj_ra&.downcase == "crossref" || obj_ra&.downcase == "crossref"
+      next if subj_ra&.downcase == "crossref" && obj_ra&.downcase == "crossref"
 
       CrossrefImportJob.perform_later(item)
     end

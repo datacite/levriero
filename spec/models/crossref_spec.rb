@@ -24,6 +24,7 @@ describe Crossref, type: :model, vcr: true do
     context "with valid parameters" do
       it "queues jobs for DOIs updated within the specified date range" do
         until_date = "2018-01-31"
+        allow(described_class).to receive(:cached_doi_ra).and_return("DataCite")
         response = Crossref.import(from_date: from_date, until_date: until_date)
         expect(response).to be_a(Integer).and be >= 0
       end
@@ -33,6 +34,7 @@ describe Crossref, type: :model, vcr: true do
       it "queues jobs for the default date range (yesterday to today)" do
         # Stub Date.current to return a fixed date
         allow(Date).to receive(:current).and_return(Date.new(2023, 1, 2))
+        allow(described_class).to receive(:cached_doi_ra).and_return("DataCite")
 
         # Use a spy on Date.parse
         date_spy = spy("Date")
@@ -112,8 +114,8 @@ describe Crossref, type: :model, vcr: true do
   describe "#push_item" do
     it "sends a message to the events queue" do
       allow(Crossref).to(receive(:send_event_import_message).and_return(nil))
-      allow(Base).to(receive(:cached_crossref_response).and_return({ subj: "subj" }))
-      allow(Base).to(receive(:cached_datacite_response).and_return({ obj: "obj" }))
+      allow(described_class).to(receive(:cached_crossref_response).and_return({ subj: "subj" }))
+      allow(described_class).to(receive(:cached_datacite_response).and_return({ obj: "obj" }))
       allow(Rails.logger).to(receive(:info))
 
       item = {
