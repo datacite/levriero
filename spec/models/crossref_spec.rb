@@ -112,25 +112,69 @@ describe Crossref, type: :model, vcr: true do
   describe "#push_item" do
     it "sends a message to the events queue" do
       allow(Crossref).to(receive(:send_event_import_message).and_return(nil))
-      allow(Base).to(receive(:cached_crossref_response).and_return({ subj: "subj" }))
-      allow(Base).to(receive(:cached_datacite_response).and_return({ obj: "obj" }))
+      allow(described_class).to(receive(:cached_crossref_response).and_return({ subj: "subj" }))
+      allow(described_class).to(receive(:cached_datacite_response).and_return({ obj: "obj" }))
       allow(Rails.logger).to(receive(:info))
 
       item = {
         "timestamp" => "2002-07-25T03:18:25Z",
         "relation" => "example_relation_type",
         "subject" => {
-          "id" => "example_subj_id"
+          "id" => "example_subj_id",
         },
         "object" => {
-          "id" => "example_obj_id"
-        }
+          "id" => "example_obj_id",
+        },
       }
 
       Crossref.push_item(item)
 
       expect(Crossref).to(have_received(:send_event_import_message).once)
       expect(Rails.logger).to(have_received(:info).with("[Event Data] example_subj_id example_relation_type example_obj_id sent to the events queue."))
+    end
+  end
+
+  describe "#push_data" do
+    let(:model) { described_class.new }
+
+    let(:item_crossref_to_datacite) do
+      {
+        "subject" => { "id" => "https://doi.org/10.1234/subj", "registration-agency" => "Crossref" },
+        "object" => { "id" => "https://doi.org/10.5678/obj", "registration-agency" => "DataCite" },
+      }
+    end
+
+    let(:item_crossref_to_crossref) do
+      {
+        "subject" => { "id" => "https://doi.org/10.1234/subj", "registration-agency" => "Crossref" },
+        "object" => { "id" => "https://doi.org/10.5678/obj", "registration-agency" => "Crossref" },
+      }
+    end
+
+    let(:result_crossref_to_datacite) do
+      instance_double(Faraday::Response,
+                      body: { "data" => { "message" => { "items" => [item_crossref_to_datacite] } } })
+    end
+
+    let(:result_crossref_to_crossref) do
+      instance_double(Faraday::Response,
+                      body: { "data" => { "message" => { "items" => [item_crossref_to_crossref] } } })
+    end
+
+    it "does not enqueue when both subject and object are Crossref" do
+      allow(CrossrefImportJob).to receive(:perform_later)
+
+      model.push_data(result_crossref_to_crossref)
+
+      expect(CrossrefImportJob).not_to have_received(:perform_later)
+    end
+
+    it "enqueues when object is DataCite" do
+      allow(CrossrefImportJob).to receive(:perform_later)
+
+      model.push_data(result_crossref_to_datacite)
+
+      expect(CrossrefImportJob).to have_received(:perform_later).once
     end
   end
 end
