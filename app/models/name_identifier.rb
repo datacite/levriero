@@ -76,7 +76,7 @@ class NameIdentifier < Base
 
     ## Don't process DOIs with certain relationTypes or DOIs in a raidRegistry
     skip_doi = related_identifiers.any? do |related_identifier|
-      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf", "IsVersionOf"].include?(related_identifier["relationType"] || "")
+      ["IsPartOf"].include?(related_identifier["relationType"] || "")
     end || raid_registry_record
 
     creators = attributes.fetch("creators", []).select do |n|
