@@ -125,28 +125,6 @@ describe NameIdentifier, type: :model, vcr: true do
           expect(NameIdentifier.push_item("doi" => nil)).to(eq(nil))
         end
 
-        it "if there is a related identifier type of 'IsIdenticalTo'" do
-          item = {
-            "attributes" => {
-              "doi" => "https://doi.org/10.0001/foo.bar",
-              "updated" => "2023-11-15",
-              "relatedIdentifiers" => [
-                { "relationType" => "IsIdenticalTo" },
-              ],
-              "creators" => [
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "https://doi.org/10.0001/example.one",
-                  },
-                ],
-              ],
-            },
-          }
-
-          expect(NameIdentifier.push_item(item)).to(eq(nil))
-        end
-
         it "if there is a related identifier type of 'IsPartOf'" do
           item = {
             "attributes" => {
@@ -154,50 +132,6 @@ describe NameIdentifier, type: :model, vcr: true do
               "updated" => "2023-11-15",
               "relatedIdentifiers" => [
                 { "relationType" => "IsPartOf" },
-              ],
-              "creators" => [
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "https://doi.org/10.0001/example.one",
-                  },
-                ],
-              ],
-            },
-          }
-
-          expect(NameIdentifier.push_item(item)).to(eq(nil))
-        end
-
-        it "if there is a related identifier type of 'IsPreviousVersionOf'" do
-          item = {
-            "attributes" => {
-              "doi" => "https://doi.org/10.0001/foo.bar",
-              "updated" => "2023-11-15",
-              "relatedIdentifiers" => [
-                { "relationType" => "IsPreviousVersionOf" },
-              ],
-              "creators" => [
-                "nameIdentifiers" => [
-                  {
-                    "nameIdentifierScheme" => "ORCID",
-                    "nameIdentifier" => "https://doi.org/10.0001/example.one",
-                  },
-                ],
-              ],
-            },
-          }
-
-          expect(NameIdentifier.push_item(item)).to(eq(nil))
-        end
-
-        it "if there is a related identifier type of 'IsVersionOf'" do
-          item = {
-            "attributes" => {
-              "doi" => "https://doi.org/10.0001/foo.bar",
-              "updated" => "2023-11-15",
-              "relatedIdentifiers" => [
-                { "relationType" => "IsVersionOf" },
               ],
               "creators" => [
                 "nameIdentifiers" => [
@@ -277,6 +211,72 @@ describe NameIdentifier, type: :model, vcr: true do
                           "attributes" => attributes }
 
             expect(NameIdentifier.push_item(response)).to (eq(1))
+          end
+
+          it "if there is a related identifier type of 'IsIdenticalTo'" do
+            item = {
+              "attributes" => {
+                "doi" => "https://doi.org/10.0001/foo.bar",
+                "updated" => "2023-11-15",
+                "relatedIdentifiers" => [
+                  { "relationType" => "IsIdenticalTo" },
+                ],
+                "creators" => [
+                  "nameIdentifiers" => [
+                    {
+                      "nameIdentifierScheme" => "ORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                  ],
+                ],
+              },
+            }
+
+            expect(NameIdentifier.push_item(item)).to(eq(1))
+          end
+
+          it "if there is a related identifier type of 'IsPreviousVersionOf'" do
+            item = {
+              "attributes" => {
+                "doi" => "https://doi.org/10.0001/foo.bar",
+                "updated" => "2023-11-15",
+                "relatedIdentifiers" => [
+                  { "relationType" => "IsPreviousVersionOf" },
+                ],
+                "creators" => [
+                  "nameIdentifiers" => [
+                    {
+                      "nameIdentifierScheme" => "ORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                  ],
+                ],
+              },
+            }
+
+            expect(NameIdentifier.push_item(item)).to(eq(1))
+          end
+
+          it "if there is a related identifier type of 'IsVersionOf'" do
+            item = {
+              "attributes" => {
+                "doi" => "https://doi.org/10.0001/foo.bar",
+                "updated" => "2023-11-15",
+                "relatedIdentifiers" => [
+                  { "relationType" => "IsVersionOf" },
+                ],
+                "creators" => [
+                  "nameIdentifiers" => [
+                    {
+                      "nameIdentifierScheme" => "ORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                  ],
+                ],
+              },
+            }
+
+            expect(NameIdentifier.push_item(item)).to(eq(1))
           end
         end
 
