@@ -52,8 +52,83 @@ class AffiliationIdentifier < Base
   end
 
   def self.push_item(item)
-    # Do not link events for affiliations, return a count of zero
-    0
+    attributes = item.fetch("attributes", {})
+    doi = attributes.fetch("doi", nil)
+    return nil if doi.blank?
+
+    pid = normalize_doi(doi)
+    related_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers",
+                                                      nil))
+    skip_doi = related_identifiers.any? do |related_identifier|
+      ["IsIdenticalTo", "IsPartOf", "IsPreviousVersionOf",
+       "IsVersionOf"].include?(related_identifier["relatedIdentifierType"])
+    end
+
+    affiliation_identifiers = attributes.fetch("creators",
+                                               []).reduce([]) do |sum, c|
+      Array.wrap(c["affiliation"]).each do |a|
+        sum << a["affiliationIdentifier"] if a["affiliationIdentifierScheme"] == "ROR"
+      end
+
+      sum
+    end
+
+    return nil if affiliation_identifiers.blank? || skip_doi
+
+    source_id = item.fetch("sourceId", "datacite_affiliation")
+    relation_type_id = "is_authored_at"
+    source_token = ENV["DATACITE_AFFILIATION_SOURCE_TOKEN"]
+
+    push_items = Array.wrap(affiliation_identifiers).reduce([]) do |ssum, iitem|
+      obj_id = normalize_ror(iitem)
+
+      if obj_id.present?
+        subj = cached_datacite_response(pid)
+        obj = cached_ror_response(obj_id)
+
+        ssum << { "message_action" => "create",
+                  "subj_id" => pid,
+                  "obj_id" => obj_id,
+                  "relation_type_id" => relation_type_id,
+                  "source_id" => source_id,
+                  "source_token" => source_token,
+                  "occurred_at" => attributes.fetch("updated"),
+                  "timestamp" => Time.zone.now.iso8601,
+                  "license" => LICENSE,
+                  "subj" => subj,
+                  "obj" => obj }
+      end
+
+      ssum
+    end
+
+    # there can be one or more affiliation_identifier per DOI
+    Array.wrap(push_items).each do |iiitem|
+      data = {
+        "data" => {
+          "type" => "events",
+          "attributes" => {
+            "messageAction" => iiitem["message_action"],
+            "subjId" => iiitem["subj_id"],
+            "objId" => iiitem["obj_id"],
+            "relationTypeId" => iiitem["relation_type_id"].to_s.dasherize,
+            "sourceId" => iiitem["source_id"].to_s.dasherize,
+            "sourceToken" => iiitem["source_token"],
+            "occurredAt" => iiitem["occurred_at"],
+            "timestamp" => iiitem["timestamp"],
+            "license" => iiitem["license"],
+            "subj" => iiitem["subj"],
+            "obj" => iiitem["obj"],
+          },
+        },
+      }
+
+      send_event_import_message(data)
+
+      Rails.logger.info "[Event Data] #{iiitem['subj_id']} #{iiitem['relation_type_id']} #{iiitem['obj_id']} sent to the events queue."
+    end
+
+    push_items.length
   end
 
   def self.get_ror_metadata(id)

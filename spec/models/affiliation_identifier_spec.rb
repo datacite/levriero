@@ -78,9 +78,11 @@ describe AffiliationIdentifier, type: :model, vcr: true do
           allow(AffiliationIdentifier).to receive(:send_event_import_message).and_return(nil)
         end
 
-        it "does not send events" do
-          expect(AffiliationIdentifier.push_item(item)).to eq(0)
-          expect(AffiliationIdentifier).not_to have_received(:send_event_import_message)
+        it "pushes affiliation identifiers to the events queue" do
+          expect(Rails.logger).to receive(:info).with("[Event Data] https://doi.org/10.1234/example-doi is_authored_at https://ror.org/02catss52 sent to the events queue.")
+          expect(AffiliationIdentifier).to receive(:send_event_import_message).once
+
+          AffiliationIdentifier.push_item(item)
         end
       end
     end
