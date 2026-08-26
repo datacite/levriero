@@ -203,6 +203,41 @@ describe NameIdentifier, type: :model, vcr: true do
             expect(NameIdentifier).not_to(have_received(:send_event_import_message))
           end
 
+          it "sends a Profiles claim for the first name identifier with scheme 'ORCID'" do
+            item = {
+              "attributes" => {
+                "doi" => "https://doi.org/10.0001/foo.bar",
+                "updated" => "2023-11-15",
+                "creators" => [
+                  "nameIdentifiers" => [
+                    {
+                      "nameIdentifierScheme" => "ORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                    {
+                      "nameIdentifierScheme" => "SNORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                    {
+                      "nameIdentifierScheme" => "ORCID",
+                      "nameIdentifier" => "https://orcid.org/0000-0000-0000-0000",
+                    },
+                  ],
+                ],
+              },
+            }
+
+            expect(NameIdentifier.push_item(item)).to(eq(1))
+            expect(Maremma).
+              to(have_received(:post).
+                with(
+                  "https://fake.volpino.com/claims",
+                  data: volpino_json,
+                  bearer: staff_profiles_admin_token,
+                  content_type: "application/json",
+                ))
+          end
+
           it "if the DOI is in a client with client_type repository" do
             ## DOI in client with client_type repository
             doi = "10.82621/sf34-nn32"
