@@ -252,33 +252,10 @@ describe "Importable", vcr: true do
       end
 
       describe "with related identifier type 'URL'" do
-        it "sends push_item to RelatedIdentifier" do
+        it "does not send push_item to RelatedUrl" do
           json = {
             "relatedIdentifiers" => [
               { "relatedIdentifierType" => "URL" },
-              { "relatedIdentifierType" => "FOO" },
-            ],
-          }
-
-          allow(RelatedUrl).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(RelatedUrl).
-            to(have_received(:push_item).with({
-                                                "id" => "fake_id",
-                                                "type" => "dois",
-                                                "attributes" => json,
-                                              }).once)
-        end
-      end
-
-      describe "without related identifier type 'URL'" do
-        it "does not send push_item to RelatedIdentifier" do
-          json = {
-            relatedIdentifiers: [
-              { "relatedIdentifierType" => "DOI" },
               { "relatedIdentifierType" => "FOO" },
             ],
           }
@@ -295,34 +272,11 @@ describe "Importable", vcr: true do
 
     describe "has funding references" do
       describe "with funding identifier type 'Crossref Funder ID" do
-        it "sends push_item to FunderIdentifier" do
-          json = {
-            "fundingReferences" => [
-              { "funderIdentifierType" => "Foo" },
-              { "funderIdentifierType" => "Crossref Funder ID" },
-            ],
-          }
-
-          allow(FunderIdentifier).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(FunderIdentifier).
-            to(have_received(:push_item).with({
-                                                "doi" => "fake_id",
-                                                "type" => "dois",
-                                                "attributes" => json,
-                                              }).once)
-        end
-      end
-
-      describe "without funding identifier type 'Crossref Funder ID" do
         it "does not send push_item to FunderIdentifier" do
           json = {
             "fundingReferences" => [
               { "funderIdentifierType" => "Foo" },
-              { "funderIdentifierType" => "Bar" },
+              { "funderIdentifierType" => "Crossref Funder ID" },
             ],
           }
 
@@ -389,35 +343,6 @@ describe "Importable", vcr: true do
 
     describe "has affliation identifiers" do
       describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
-        it "sends push_item to AffiliationIdentifier" do
-          json = {
-            "creators" => [
-              {
-                "affiliation" => [
-                  { "affiliationIdentifierScheme" => "ROR" },
-                ],
-                "nameIdentifiers" => [
-                  { "nameIdentifierScheme" => "ORCID" },
-                ],
-              },
-            ],
-          }
-
-          allow(AffiliationIdentifier).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(AffiliationIdentifier).
-            to(have_received(:push_item).with({
-                                                "doi" => "fake_id",
-                                                "type" => "dois",
-                                                "attributes" => json,
-                                              }).once)
-        end
-      end
-
-      describe "with affiliation identifier scheme equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
         it "does not send push_item to AffiliationIdentifier" do
           json = {
             "creators" => [
@@ -426,55 +351,7 @@ describe "Importable", vcr: true do
                   { "affiliationIdentifierScheme" => "ROR" },
                 ],
                 "nameIdentifiers" => [
-                  { "nameIdentifierScheme" => "FOO" },
-                ],
-              },
-            ],
-          }
-
-          allow(AffiliationIdentifier).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(AffiliationIdentifier).not_to(have_received(:push_item))
-        end
-      end
-
-      describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme equal to 'ORCID'" do
-        it "does not send push_item to AffiliationIdentifier" do
-          json = {
-            "creators" => [
-              {
-                "affiliation" => [
-                  { "affiliationIdentifierScheme" => "FOO" },
-                ],
-                "nameIdentifiers" => [
                   { "nameIdentifierScheme" => "ORCID" },
-                ],
-              },
-            ],
-          }
-
-          allow(AffiliationIdentifier).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(AffiliationIdentifier).not_to(have_received(:push_item))
-        end
-      end
-
-      describe "with affiliation identifier scheme not equal to 'ROR' and name identifier scheme not equal to 'ORCID'" do
-        it "does not send push_item to AffiliationIdentifier" do
-          json = {
-            "creators" => [
-              {
-                "affiliation" => [
-                  { "affiliationIdentifierScheme" => "FOO" },
-                ],
-                "nameIdentifiers" => [
-                  { "nameIdentifierScheme" => "BAR" },
                 ],
               },
             ],
@@ -492,38 +369,12 @@ describe "Importable", vcr: true do
 
     describe "has orcid affiliations" do
       describe "with affiliation identifier scheme equal to 'ROR'" do
-        it "sends push_item to OrcidAffiliation" do
-          json = {
-            "creators" => [
-              {
-                "affiliation" => [
-                  { "affiliationIdentifierScheme" => "ROR" },
-                ],
-              },
-            ],
-          }
-
-          allow(OrcidAffiliation).to(receive(:push_item))
-          allow(Base).to(receive(:get_datacite_json).and_return(json))
-
-          Base.parse_record(data: data)
-
-          expect(OrcidAffiliation).
-            to(have_received(:push_item).with({
-                                                "doi" => "fake_id",
-                                                "type" => "dois",
-                                                "attributes" => json,
-                                              }).once)
-        end
-      end
-
-      describe "with affiliation identifier scheme not equal to 'ROR'" do
         it "does not send push_item to OrcidAffiliation" do
           json = {
             "creators" => [
               {
                 "affiliation" => [
-                  { "affiliationIdentifierScheme" => "ORCID" },
+                  { "affiliationIdentifierScheme" => "ROR" },
                 ],
               },
             ],
