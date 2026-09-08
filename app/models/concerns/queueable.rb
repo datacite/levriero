@@ -9,7 +9,7 @@ module Queueable
     end
 
     def send_orcid_claim_message(data)
-      send_message(data, shoryuken_class: "CreateClaim", queue_name: "volpino")
+      send_message(data, shoryuken_class: "CreateClaimWorker", queue_name: "volpino")
     end
 
     private
