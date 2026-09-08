@@ -1,6 +1,18 @@
 class RelatedIdentifier < Base
   LICENSE = "https://creativecommons.org/publicdomain/zero/1.0/".freeze
   DATACITE_CROSSREF = "datacite_crossref"
+  RELATIONS_TO_LINK = %w[
+    references
+    cites
+    is_cited_by
+    is_referenced_by
+    is_supplement_to
+    is_supplemented_by
+    is_part_of
+    has_part
+    has_version
+    is_version_of
+  ].freeze
 
   include Cacheable
   include Queueable
@@ -65,7 +77,7 @@ class RelatedIdentifier < Base
     pid = normalize_doi(doi)
 
     related_doi_identifiers = Array.wrap(attributes.fetch("relatedIdentifiers", nil)).select do |r|
-      r["relatedIdentifierType"] == "DOI"
+      r["relatedIdentifierType"] == "DOI" && RELATIONS_TO_LINK.include?(r["relationType"].to_s.underscore)
     end
 
     registration_agencies = {}

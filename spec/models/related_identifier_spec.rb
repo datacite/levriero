@@ -73,7 +73,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
             {
               "relatedIdentifierType" => "DOI",
               "relatedIdentifier" => "https://doi.org/10.5678/related",
-              "relationType" => "example-type",
+              "relationType" => "IsCitedBy",
             },
           ],
         },
@@ -91,7 +91,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
         allow(Time.zone).to receive(:now).and_return(Time.zone.parse("2023-11-15T12:17:47Z"))
       end
 
-      it "queues jobs and pushes to the events queue" do
+      it "queues jobs and pushes to the events queue for allowed relation type" do
         related_identifier = RelatedIdentifier.new
         allow(related_identifier).to receive(:normalize_doi).with(valid_doi).and_return("normalized_doi")
         allow(related_identifier).to receive(:normalize_doi).with(valid_related_identifier).and_return("normalized_related_identifier")
@@ -104,7 +104,29 @@ describe RelatedIdentifier, type: :model, vcr: true do
         expect(RelatedIdentifier.push_item(item)).to eq(1)
         expect(RelatedIdentifier).to have_received(:send_event_import_message).once
 
-        expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example example_type https://doi.org/10.5678/related sent to the events queue.")
+        expect(Rails.logger).to have_received(:info).with("[Event Data] https://doi.org/10.1234/example is_cited_by https://doi.org/10.5678/related sent to the events queue.")
+      end
+
+      it "does not send events for disallowed relation types" do
+        item_with_disallowed = {
+          "attributes" => {
+            "doi" => "https://doi.org/10.1234/example",
+            "updated" => "2023-11-15",
+            "relatedIdentifiers" => [
+              {
+                "relatedIdentifierType" => "DOI",
+                "relatedIdentifier" => "https://doi.org/10.5678/related",
+                "relationType" => "IsIdenticalTo",
+              },
+            ],
+          },
+        }
+
+        allow(RelatedIdentifier).to receive(:cached_doi_ra).and_return("DataCite")
+        allow(Rails.logger).to receive(:info)
+
+        expect(RelatedIdentifier.push_item(item_with_disallowed)).to eq(0)
+        expect(RelatedIdentifier).not_to have_received(:send_event_import_message)
       end
     end
 
@@ -118,7 +140,7 @@ describe RelatedIdentifier, type: :model, vcr: true do
               {
                 "relatedIdentifierType" => "DOI",
                 "relatedIdentifier" => valid_related_identifier,
-                "relationType" => "example-one",
+                "relationType" => "IsCitedBy",
               },
             ],
           },

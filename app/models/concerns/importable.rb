@@ -222,39 +222,16 @@ module Importable
 
       related_identifiers = Array.wrap(
         response.fetch("relatedIdentifiers", nil)).select do |r|
-          ["DOI", "URL"].include?(r["relatedIdentifierType"])
+          r["relatedIdentifierType"] == "DOI"
       end
 
-      if related_identifiers.any? { |r| r["relatedIdentifierType"] == "DOI" }
+      if related_identifiers.any?
         item = {
           "id" => data["id"],
           "type" => "dois",
           "attributes" => response,
         }
         RelatedIdentifier.push_item(item)
-      end
-
-      if related_identifiers.any? { |r| r["relatedIdentifierType"] == "URL" }
-        item = {
-          "id" => data["id"],
-          "type" => "dois",
-          "attributes" => response,
-        }
-        RelatedUrl.push_item(item)
-      end
-
-      funding_references = Array.wrap(response.fetch("fundingReferences",
-                                                     nil)).select do |f|
-        f.fetch("funderIdentifierType", nil) == "Crossref Funder ID"
-      end
-
-      if funding_references.present?
-        item = {
-          "doi" => data["id"],
-          "type" => "dois",
-          "attributes" => response,
-        }
-        FunderIdentifier.push_item(item)
       end
 
       name_identifiers = Array.wrap(response.fetch("creators",
@@ -273,42 +250,7 @@ module Importable
         NameIdentifier.push_item(item)
       end
 
-      affiliation_identifiers = Array.wrap(response.fetch("creators",
-                                                          nil)).select do |n|
-        Array.wrap(n.fetch("affiliation",
-                           nil)).any? do |n|
-          n["affiliationIdentifierScheme"] == "ROR"
-        end && Array.wrap(n.fetch(
-                            "nameIdentifiers", nil
-                          )).any? do |n|
-                 n["nameIdentifierScheme"] == "ORCID"
-               end
-      end
-      if affiliation_identifiers.present?
-        item = {
-          "doi" => data["id"],
-          "type" => "dois",
-          "attributes" => response,
-        }
-        AffiliationIdentifier.push_item(item)
-      end
-
-      orcid_affiliation = Array.wrap(response.fetch("creators",
-                                                    nil)).select do |n|
-        Array.wrap(n.fetch("affiliation", nil)).any? do |n|
-          n["affiliationIdentifierScheme"] == "ROR"
-        end
-      end
-      if orcid_affiliation.present?
-        item = {
-          "doi" => data["id"],
-          "type" => "dois",
-          "attributes" => response,
-        }
-        OrcidAffiliation.push_item(item)
-      end
-
-      related_identifiers + name_identifiers + funding_references + affiliation_identifiers + orcid_affiliation
+      related_identifiers + name_identifiers
     end
 
     def create_record(attributes)
