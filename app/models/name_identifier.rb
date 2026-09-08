@@ -106,9 +106,9 @@ class NameIdentifier < Base
 
     # there can be one or more name_identifier per DOI
     Array.wrap(push_items).each do |iiitem|
+
       # send to Profiles service, which then pushes to ORCID
       if ENV["STAFF_PROFILES_ADMIN_TOKEN"].present?
-        push_url = "#{ENV['VOLPINO_URL']}/claims"
         doi = doi_from_url(iiitem["subj_id"])
 
         # Capture the prefix
@@ -128,17 +128,9 @@ class NameIdentifier < Base
             },
           }
 
-          response = Maremma.post(push_url, data: data.to_json,
-                                            bearer: ENV["STAFF_PROFILES_ADMIN_TOKEN"],
-                                            content_type: "application/json")
+          send_orcid_claim_message(data)
 
-          if response.status == 202
-            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} pushed to Profiles service."
-          elsif response.status == 409
-            Rails.logger.info "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} already pushed to Profiles service."
-          elsif response.body["errors"].present?
-            Rails.logger.error "[Profiles] claim ORCID ID #{orcid} for DOI #{doi} had an error: #{response.body['errors']}"
-          end
+          Rails.logger.info "[Claims] claim ORCID ID #{orcid} for DOI #{doi} pushed to claims queue."
         end
       end
     end

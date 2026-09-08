@@ -42,7 +42,7 @@ describe NameIdentifier, type: :model, vcr: true do
         }.to_json
       end
 
-      let(:volpino_json) do
+      let(:claim_data) do
         {
           "claim" => {
             "doi" => "10.0001/foo.bar",
@@ -50,14 +50,14 @@ describe NameIdentifier, type: :model, vcr: true do
             "source_id" => "orcid_update",
             "claim_action" => "create",
           },
-        }.to_json
+        }
       end
 
       before(:each) do
         allow(NameIdentifier).to receive(:push_item).and_call_original
 
         allow(ENV).to receive(:[]).and_call_original
-        
+
         allow(ENV).
           to(receive(:[]).
             with("LAGOTTINO_URL").
@@ -75,14 +75,9 @@ describe NameIdentifier, type: :model, vcr: true do
 
         allow(ENV).
           to(receive(:[]).
-            with("VOLPINO_URL").
-            and_return("https://fake.volpino.com"))
-
-        allow(ENV).
-          to(receive(:[]).
             with("EXCLUDE_PREFIXES_FROM_ORCID_CLAIMING").
             and_return(""))
-        
+
         allow(ENV).
           to(receive(:[]).
             with("API_URL").
@@ -107,11 +102,6 @@ describe NameIdentifier, type: :model, vcr: true do
         allow(Base).
           to(receive(:cached_orcid_response).
           and_return("bar" => "foo"))
-
-        allow(Maremma).
-          to(receive(:post).
-            with("https://fake.volpino.com/claims", anything).
-            and_return(OpenStruct.new(status: 202)))
 
         allow(Time).
           to(receive_message_chain(:zone, :now, :iso8601).
@@ -199,6 +189,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
             expect(NameIdentifier).not_to(have_received(:send_event_import_message))
           end
@@ -227,15 +218,11 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
-            expect(Maremma).
-              to(have_received(:post).
-                with(
-                  "https://fake.volpino.com/claims",
-                  data: volpino_json,
-                  bearer: staff_profiles_admin_token,
-                  content_type: "application/json",
-                ))
+            expect(NameIdentifier).
+              to(have_received(:send_orcid_claim_message).
+                with(claim_data))
           end
 
           it "if the DOI is in a client with client_type repository" do
@@ -245,6 +232,7 @@ describe NameIdentifier, type: :model, vcr: true do
             response = { "id" => doi, "type" => "dois",
                           "attributes" => attributes }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(response)).to (eq(1))
           end
 
@@ -267,6 +255,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
 
@@ -289,6 +278,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
 
@@ -311,6 +301,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
         end
@@ -334,6 +325,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
             expect(NameIdentifier).not_to(receive(:send_event_import_message))
           end
@@ -342,7 +334,7 @@ describe NameIdentifier, type: :model, vcr: true do
 
       describe "STAFF_PROFILES_ADMIN_TOKEN" do
         describe "is valid" do
-          it "makes request to volpino" do
+          it "pushes claim to orcid_claims queue" do
             item = {
               "attributes" => {
                 "doi" => "https://doi.org/10.0001/foo.bar",
@@ -358,21 +350,18 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
+
             NameIdentifier.push_item(item)
 
-            expect(Maremma).
-              to(have_received(:post).
-                with(
-                  "https://fake.volpino.com/claims",
-                  data: volpino_json,
-                  bearer: staff_profiles_admin_token,
-                  content_type: "application/json",
-                ))
+            expect(NameIdentifier).
+              to(have_received(:send_orcid_claim_message).
+                with(claim_data))
           end
         end
 
         describe "is invalid" do
-          it "does not make request to volpino" do
+          it "does not push claim to orcid_claims queue" do
             allow(ENV).
               to(receive(:[]).
                 with(staff_profiles_admin_token).
@@ -393,14 +382,12 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
-            expect(Maremma).
-              not_to(have_received(:post).
-                with(
-                  "https://fake.volpino.com/claims",
-                  data: volpino_json,
-                  bearer: staff_profiles_admin_token,
-                  content_type: "application/json",
-                ))
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
+
+            NameIdentifier.push_item(item)
+
+            expect(NameIdentifier).
+              not_to(have_received(:send_orcid_claim_message))
           end
         end
       end
