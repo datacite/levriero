@@ -189,6 +189,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
             expect(NameIdentifier).not_to(have_received(:send_event_import_message))
           end
@@ -217,15 +218,11 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
-            expect(Maremma).
-              to(have_received(:post).
-                with(
-                  "https://fake.volpino.com/claims",
-                  data: volpino_json,
-                  bearer: staff_profiles_admin_token,
-                  content_type: "application/json",
-                ))
+            expect(NameIdentifier).
+              to(have_received(:send_orcid_claim_message).
+                with(claim_data))
           end
 
           it "if the DOI is in a client with client_type repository" do
@@ -235,6 +232,7 @@ describe NameIdentifier, type: :model, vcr: true do
             response = { "id" => doi, "type" => "dois",
                           "attributes" => attributes }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(response)).to (eq(1))
           end
 
@@ -257,6 +255,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
 
@@ -279,6 +278,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
 
@@ -301,6 +301,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
           end
         end
@@ -324,6 +325,7 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
             expect(NameIdentifier.push_item(item)).to(eq(1))
             expect(NameIdentifier).not_to(receive(:send_event_import_message))
           end
