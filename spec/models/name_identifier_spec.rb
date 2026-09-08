@@ -44,12 +44,10 @@ describe NameIdentifier, type: :model, vcr: true do
 
       let(:claim_data) do
         {
-          "claim" => {
-            "doi" => "10.0001/foo.bar",
-            "orcid" => "0000-0000-0000-0000",
-            "source_id" => "orcid_update",
-            "claim_action" => "create",
-          },
+          "doi" => "10.0001/foo.bar",
+          "orcid" => "0000-0000-0000-0000",
+          "source_id" => "orcid_update",
+          "claim_action" => "create",
         }
       end
 
