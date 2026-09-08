@@ -120,12 +120,10 @@ class NameIdentifier < Base
           source_id = iiitem["source_id"] == "datacite_orcid_auto_update" ? "orcid_update" : "orcid_search"
 
           data = {
-            "claim" => {
-              "doi" => doi,
-              "orcid" => orcid,
-              "source_id" => source_id,
-              "claim_action" => "create",
-            },
+            "doi" => doi,
+            "orcid" => orcid,
+            "source_id" => source_id,
+            "claim_action" => "create",
           }
 
           send_orcid_claim_message(data)
