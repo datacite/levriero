@@ -380,6 +380,8 @@ describe NameIdentifier, type: :model, vcr: true do
               },
             }
 
+            allow(NameIdentifier).to(receive(:send_orcid_claim_message).and_return(nil))
+
             NameIdentifier.push_item(item)
 
             expect(NameIdentifier).
